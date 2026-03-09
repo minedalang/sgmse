@@ -2,6 +2,7 @@
 joint_train_logs/
 log/
 log3/
+logs/
 nohup.out
 
 # Test outputs
