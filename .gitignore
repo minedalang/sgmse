@@ -1,0 +1,41 @@
+# Logs and training outputs
+joint_train_logs/
+log/
+log3/
+nohup.out
+
+# Test outputs
+vb_test_*/
+debug_*/
+*_output/
+
+# Data
+*.wav
+*.pth
+*.ckpt
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Zip files
+*.zip
+*.tar.gz
+
+# Jupyter
+.ipynb_checkpoints/
