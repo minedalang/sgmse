@@ -344,12 +344,12 @@ class NCSNpp_v2(nn.Module):
         # Upsampling block 上采样
         for i_level in reversed(range(num_resolutions)):
             for i_block in range(num_res_blocks + 1):
-                out_ch = nf * ch_mult[i_level] #被改动
+                out_ch = nf * ch_mult[i_level]
                 skip_ch = hs_c.pop()
 
                 if self.film_modulate:
                     modules.append(
-                        DecoderResBlockWithFiLM(
+                        DecoderResBlockWithFiLM(   #增加了film的上采样块
                             resblock_ctor=ResnetBlock,
                             in_ch=in_ch + skip_ch,
                             out_ch=out_ch,
@@ -502,7 +502,7 @@ class NCSNpp_v2(nn.Module):
         for i_level in reversed(range(self.num_resolutions)):
             for i_block in range(self.num_res_blocks + 1):
                 h_in = torch.cat([h, hs.pop()], dim=1)  #被改动
-
+                
                 if self.film_modulate:
                     h = modules[m_idx](h_in, temb, y_cond=y_cond)
                 else:

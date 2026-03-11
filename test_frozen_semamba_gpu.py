@@ -9,7 +9,7 @@ from sgmse.joint_model import JointSemambaSgmseModel
 from sgmse.joint_data_module import JointWaveDataModule
 
 # 设置路径 - 使用冻结 SEMamba 的模型
-CKPT_PATH = "joint_train_logs/y45ofr5m-sgmse-sbve-edm-crossattn-film-mode3-batchsize4*8-joint-frozen-semamba-3-6/last.ckpt"
+CKPT_PATH = "joint_train_logs/39t57jtw-None/last.ckpt"
 SEMAMBA_ROOT = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main"
 SEMAMBA_CONFIG = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml"
 SEMAMBA_CKPT = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/g_00134000.pth"
