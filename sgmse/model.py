@@ -309,7 +309,7 @@ class ScoreModel(pl.LightningModule):
 
         # 采样一个x_t
         t = torch.rand(x.shape[0], device=x.device) * (self.sde.T - self.t_eps) + self.t_eps
-        mean, std = self.sde.marginal_prob(x, y, t) 
+        mean, std = self.sde.marginal_prob(x, y.detach(), t)  #y=y_pre的情况需要加detach。在传播路径如y -> mean -> x_t -> net -> loss下，当y=y_pre时，y会收到不合适的梯度，semamba的训练目标发生偏移
         z = torch.randn_like(x)
         x_t = mean + std[:, None, None, None] * z
 
