@@ -148,8 +148,7 @@ if __name__ == '__main__':
         log_every_n_steps=10,
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
-        callbacks=callbacks,
-        detect_anomaly=True
+        callbacks=callbacks
     )
     # 针对两种ckpt，分情况加载
     # ---- optional: initialize weights from an existing checkpoint (no optimizer/loop restore) ----

@@ -316,7 +316,7 @@ class _BaseJointWaveDataModule(pl.LightningDataModule):
                 # 在联合训练中，反响传播时spec_fwd可能会产生NaN，需要改为下面这种方式
                 eps = 1e-8  # 关键：防止 mag=0 导致梯度爆炸，可在 1e-6~1e-3 之间调
                 mag = torch.sqrt(spec.real * spec.real + spec.imag * spec.imag + eps)
-                phase = spec / (mag + eps)
+                phase = spec / mag.clamp(min=1e-8)
                 spec = mag.pow(e) * phase
                 if (not torch.isfinite(spec.real).all()) or (not torch.isfinite(spec.imag).all()):
                     real = torch.nan_to_num(spec.real, nan=0.0, posinf=0.0, neginf=0.0)
