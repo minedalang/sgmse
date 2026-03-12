@@ -9,14 +9,14 @@ from sgmse.joint_model import JointSemambaSgmseModel
 from sgmse.joint_data_module import JointWaveDataModule
 
 # 设置路径 - 使用冻结 SEMamba 的模型
-CKPT_PATH = "joint_train_logs/39t57jtw-None/last.ckpt"
+CKPT_PATH = "joint_train_logs/7cxldqe7-sgmse-sbve-edm-newcrossattnFilm-model2-batchsize4*8-joint-frozenSemamba-noTrainedSgmse-3-12/last.ckpt"
 SEMAMBA_ROOT = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main"
 SEMAMBA_CONFIG = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml"
 SEMAMBA_CKPT = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/g_00134000.pth"
 
 # 测试音频 - 使用 DNS 测试集
 TEST_WAV = "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_testset/noisy/book_00198_chp_0017_reader_00957_5_8Vo48iZX8Ro_snr-17.85_tl-26_fileid_147.wav"
-OUTPUT_DIR = "debug_frozen_gpu_output"
+OUTPUT_DIR = "vb_test_enhanced_dir_by_7cxldqe7_model2"
 
 # 使用GPU
 device = torch.device("cuda")
@@ -84,9 +84,17 @@ print("=" * 60)
 from sgmse.joint_model import _match_length
 y_pre_aligned = _match_length(y_pre, y_t)
 
+# mode2: y_in = pre_enhanced, y_cond = noisy
 # mode3: y_in = noisy, y_cond = pre_enhanced
-y_in = y_t.squeeze(0)     # [1,T]
-y_cond = y_pre_aligned.squeeze(0)  # [1,T]
+# 根据模型类型选择
+if model.train_type == "mode2":
+    y_in = y_pre_aligned.squeeze(0)   # [1,T] - 增强后的作为输入
+    y_cond = y_t.squeeze(0)            # [1,T] - noisy 作为条件
+else:  # mode3
+    y_in = y_t.squeeze(0)              # [1,T] - noisy 作为输入
+    y_cond = y_pre_aligned.squeeze(0)  # [1,T] - 增强后的作为条件
+
+print(f"train_type: {model.train_type}")
 
 print(f"y_in shape: {y_in.shape}, y_cond shape: {y_cond.shape}")
 
