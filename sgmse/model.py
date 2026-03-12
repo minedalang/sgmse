@@ -780,10 +780,10 @@ class ScoreModel(pl.LightningModule):
 
     def get_sb_sampler(self, sde, y, sampler_type="ode", N=None,score_fn=None, **kwargs):
         N = sde.N if N is None else N
-        sde = self.sde.copy()
-        sde.N = N if N is not None else sde.N
+        sde = sde.copy()
+        sde.N = N
         score_fn = self if score_fn is None else score_fn
-        return sampling.get_sb_sampler(sde, score_fn=score_fn, y=y, sampler_type=sampler_type, **kwargs)
+        return sampling.get_sb_sampler(sde, score_fn=score_fn, y=y, sampler_type=sampler_type,**kwargs)
 
     def train_dataloader(self):
         return self.data_module.train_dataloader(self.contrastive_weight)
@@ -894,7 +894,7 @@ class ScoreModel(pl.LightningModule):
         # Schrödinger bridge sampling with VE SDE
         # sbve有专属采样器，接受预测的x0
         elif self.sde.__class__.__name__ == 'SBVESDE':
-            sampler = self.get_sb_sampler(sde=self.sde, y=Y.cuda(),score_fn=score_fn, sampler_type=self.sde.sampler_type)
+            sampler = self.get_sb_sampler(sde=self.sde, y=Y.cuda(),score_fn=score_fn, sampler_type=self.sde.sampler_type,N=N)
         else:
             raise ValueError("Invalid SDE type for speech enhancement: {}".format(self.sde.__class__.__name__))
 

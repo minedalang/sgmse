@@ -142,7 +142,7 @@ def get_ode_sampler(
 
     return ode_sampler
 
-def get_sb_sampler(sde, y, score_fn, eps=1e-4, n_steps=50, sampler_type="ode", **kwargs):
+def get_sb_sampler(sde, y, score_fn, eps=1e-4, sampler_type="ode", **kwargs):
     # print(f"score_fn:{score_fn.keywords}")
     # y_cond = score_fn.keywords.get("y_cond", "<not set>")
     # print("y_cond =", y_cond)
