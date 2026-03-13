@@ -68,20 +68,6 @@ def _load_mono(path: str, expected_sr: Optional[int] = None) -> torch.Tensor:
     return wav
 
 
-def _center_crop_or_pad(x: torch.Tensor, target_len: int, shuffle: bool) -> torch.Tensor:
-    """x: [1, T] -> [1, target_len]"""
-    cur_len = x.size(-1)
-    pad = max(target_len - cur_len, 0)
-    if pad == 0:
-        if shuffle:
-            start = int(np.random.uniform(0, cur_len - target_len))
-        else:
-            start = int((cur_len - target_len) / 2)
-        return x[..., start : start + target_len]
-    left = pad // 2
-    right = left + (pad % 2)
-    return F.pad(x, (left, right), mode="constant", value=0.0)
-
 
 class WavePairs(Dataset):
     """base_dir 数据集：返回 (clean_wav, noisy_wav, spk_id).
@@ -140,6 +126,7 @@ class WavePairs(Dataset):
         return 0
 
     def __getitem__(self, i: int):
+        
         x = _load_mono(self.clean_files[i], expected_sr=self.expected_sr)
         y = _load_mono(self.noisy_files[i], expected_sr=self.expected_sr)
         spk_id = self._parse_spk_id(self.clean_files[i])
@@ -149,9 +136,26 @@ class WavePairs(Dataset):
         x = x[..., :min_len]
         y = y[..., :min_len]
 
+        # 裁剪部分用于训练
         target_len = (self.num_frames - 1) * self.hop_length
-        x = _center_crop_or_pad(x, target_len, shuffle=self.shuffle)
-        y = _center_crop_or_pad(y, target_len, shuffle=self.shuffle)
+
+        cur_len = x.size(-1)  # 这里已经做过 min_len 对齐了
+        pad = max(target_len - cur_len, 0)
+
+        if pad == 0:
+            # 同一个 start 同时裁 clean/noisy（关键修复点）
+            if self.shuffle and cur_len > target_len:
+                start = int(np.random.uniform(0, cur_len - target_len))
+            else:
+                start = int((cur_len - target_len) / 2)
+            x = x[..., start : start + target_len]
+            y = y[..., start : start + target_len]
+        else:
+            # 同样的 pad 同时 pad clean/noisy
+            left = pad // 2
+            right = left + (pad % 2)
+            x = F.pad(x, (left, right), mode="constant", value=0.0)
+            y = F.pad(y, (left, right), mode="constant", value=0.0)
 
         # 归一化，保证 x/y 在同一尺度
         if self.normalize == "noisy":
@@ -237,9 +241,13 @@ class WavePairsScp(Dataset):
         return str(self.clean_dir / self.clean_template.format(fileid=fileid))
 
     def __getitem__(self, i: int):
+
         utt = self.uttids[i]
         noisy_path = self.noisy_files[i]
         clean_path = self._resolve_clean_path(utt, noisy_path)
+        print("noisy_path",noisy_path)
+        print("clean_path",clean_path)
+
         spk_id = self._parse_spk_id(utt, noisy_path)
 
         y = _load_mono(noisy_path, expected_sr=self.expected_sr)
@@ -250,8 +258,21 @@ class WavePairsScp(Dataset):
         y = y[..., :min_len]
 
         target_len = (self.num_frames - 1) * self.hop_length
-        x = _center_crop_or_pad(x, target_len, shuffle=self.shuffle)
-        y = _center_crop_or_pad(y, target_len, shuffle=self.shuffle)
+        cur_len = x.size(-1)  # 已经 min_len 对齐
+        pad = max(target_len - cur_len, 0)
+
+        if pad == 0:
+            if self.shuffle and cur_len > target_len:
+                start = int(np.random.uniform(0, cur_len - target_len))
+            else:
+                start = int((cur_len - target_len) / 2)
+            x = x[..., start : start + target_len]
+            y = y[..., start : start + target_len]
+        else:
+            left = pad // 2
+            right = left + (pad % 2)
+            x = F.pad(x, (left, right), mode="constant", value=0.0)
+            y = F.pad(y, (left, right), mode="constant", value=0.0)
 
         if self.normalize == "noisy":
             normfac = y.abs().max()
