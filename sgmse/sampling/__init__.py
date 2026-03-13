@@ -193,7 +193,7 @@ def get_sb_sampler(sde, y, score_fn, eps=1e-4, sampler_type="ode", **kwargs):
                 sigma_prev = sigma_t
                 sigma_bar_prev = sigma_bart
 
-            return xt, n_steps
+            return xt, sde.N + 1
 
     def ode_sampler():
         """The SB-ODE sampler function."""
@@ -242,7 +242,7 @@ def get_sb_sampler(sde, y, score_fn, eps=1e-4, sampler_type="ode", **kwargs):
                 sigma_prev = sigma_t
                 sigma_bar_prev = sigma_bart
 
-            return xt, n_steps
+            return xt, sde.N + 1
     
     if sampler_type == "sde":
         return sde_sampler

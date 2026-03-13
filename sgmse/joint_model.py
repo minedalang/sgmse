@@ -34,6 +34,10 @@ from pystoi import stoi
 from sgmse.util.other import si_sdr
 
 from sgmse.model import ScoreModel
+from sgmse.sdes import SBVESDE
+
+from contextlib import contextmanager
+import copy
 
 
 def _load_yaml(path: str) -> Dict[str, Any]:
@@ -133,6 +137,26 @@ class JointSemambaSgmseModel(ScoreModel):
             help="Optional SEMamba auxiliary supervision (stabilizes joint training)",
         )
         parser.add_argument("--semamba_aux_weight", type=float, default=0.1)
+
+        # ===== CTM-style distillation (Scheme-B) =====
+        parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
+        parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
+        parser.add_argument("--ctm_k_teacher", type=int, default=4, help="Number of substeps for teacher partial solve t->u")
+        parser.add_argument(
+            "--ctm_u_mode",
+            type=str,
+            choices=("random", "fixed"),
+            default="random",
+            help="How to choose u in [s,t): random per-sample or fixed fraction.",
+        )
+        parser.add_argument("--ctm_u_frac", type=float, default=0.5, help="When ctm_u_mode=fixed, u = s + frac*(t-s)")
+        parser.add_argument("--ctm_tmin", type=float, default=1e-4, help="Endpoint time used as '0' in CTM (avoid numerical issues)")
+        parser.add_argument("--ctm_weight", type=float, default=1.0, help="Weight of CTM distillation loss")
+        parser.add_argument("--ctm_mix_base", type=float, default=0.0, help="Mix in base diffusion loss (0 disables)")
+        parser.add_argument("--ctm_prior_weight", type=float, default=0.0, help="Aux prior loss weight: ||x0_est - xD||")
+        parser.add_argument("--ctm_lambda0", type=float, default=0.0, help="Guidance strength in teacher solver toward xD")
+        parser.add_argument("--ctm_lambda_pow", type=float, default=2.0, help="Guidance schedule power for lambda(t) = lambda0*(1-t)^p")
+        parser.add_argument("--ctm_time_l1", type=float, default=0.0, help="Optional time-domain L1 on endpoint (slow)")
         return parser
 
     def __init__(
@@ -147,6 +171,20 @@ class JointSemambaSgmseModel(ScoreModel):
         semamba_lr_mult: float = 0.1,
         semamba_aux_loss: str = "none",
         semamba_aux_weight: float = 0.1,
+
+        # CTM distillation
+        ctm_distill: bool = False,
+        ctm_teacher_ckpt: Optional[str] = None,
+        ctm_k_teacher: int = 4,
+        ctm_u_mode: str = "random",
+        ctm_u_frac: float = 0.5,
+        ctm_tmin: float = 1e-4,
+        ctm_weight: float = 1.0,
+        ctm_mix_base: float = 0.0,
+        ctm_prior_weight: float = 0.0,
+        ctm_lambda0: float = 0.0,
+        ctm_lambda_pow: float = 2.0,
+        ctm_time_l1: float = 0.0,
         data_module_cls=None,
         **kwargs,
     ):
@@ -161,6 +199,28 @@ class JointSemambaSgmseModel(ScoreModel):
         self.semamba_lr_mult = semamba_lr_mult
         self.semamba_aux_loss = semamba_aux_loss
         self.semamba_aux_weight = semamba_aux_weight
+
+        # CTM distillation cfg
+        self.ctm_distill = bool(ctm_distill)
+        self.ctm_teacher_ckpt = ctm_teacher_ckpt
+        self.ctm_k_teacher = int(ctm_k_teacher)
+        self.ctm_u_mode = str(ctm_u_mode)
+        self.ctm_u_frac = float(ctm_u_frac)
+        self.ctm_tmin = float(ctm_tmin)
+        self.ctm_weight = float(ctm_weight)
+        self.ctm_mix_base = float(ctm_mix_base)
+        self.ctm_prior_weight = float(ctm_prior_weight)
+        self.ctm_lambda0 = float(ctm_lambda0)
+        self.ctm_lambda_pow = float(ctm_lambda_pow)
+        self.ctm_time_l1 = float(ctm_time_l1)
+
+        # Teacher backbone (frozen) for CTM distillation
+        self.teacher_dnn = None
+        self.teacher_ema = None
+        if self.ctm_distill:
+            if not self.ctm_teacher_ckpt:
+                raise ValueError("--ctm_distill requires --ctm_teacher_ckpt")
+            self._init_teacher_from_ckpt(self.ctm_teacher_ckpt)
 
         self.semamba, self.semamba_cfg, self._sem_stft, self._sem_istft = _load_semamba(
             semamba_root=semamba_root,
@@ -181,6 +241,158 @@ class JointSemambaSgmseModel(ScoreModel):
             for p in self.semamba.parameters():
                 p.requires_grad = False
             self.semamba.eval()
+
+    # ------------------------- CTM distillation helpers -------------------------
+    def _init_teacher_from_ckpt(self, ckpt_path: str) -> None:
+        """Create a frozen teacher_dnn from a Lightning checkpoint.
+
+        We load dnn.* weights; if an EMA state is present, we copy EMA weights into teacher_dnn.
+        """
+        try:
+            ckpt = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+        except TypeError:
+            ckpt = torch.load(ckpt_path, map_location="cpu")
+        state = ckpt["state_dict"] if isinstance(ckpt, dict) and "state_dict" in ckpt else ckpt
+        # copy architecture
+        self.teacher_dnn = copy.deepcopy(self.dnn).eval()
+        for p in self.teacher_dnn.parameters():
+            p.requires_grad = False
+
+        # extract dnn weights
+        dnn_state = {}
+        if isinstance(state, dict):
+            for k, v in state.items():
+                if k.startswith("dnn."):
+                    dnn_state[k[len("dnn."):]] = v
+        if dnn_state:
+            self.teacher_dnn.load_state_dict(dnn_state, strict=False)
+
+        # if checkpoint contains EMA, prefer EMA weights
+        if isinstance(ckpt, dict) and "ema" in ckpt:
+            try:
+                from torch_ema import ExponentialMovingAverage
+
+                self.teacher_ema = ExponentialMovingAverage(self.teacher_dnn.parameters(), decay=self.ema_decay)
+                self.teacher_ema.load_state_dict(ckpt["ema"])
+                self.teacher_ema.copy_to(self.teacher_dnn.parameters())
+            except Exception as e:
+                print(f"[CTM] Warning: failed to restore teacher EMA weights: {e}")
+
+    @contextmanager
+    def _use_target_ema(self):
+        """Temporarily swap student dnn weights to EMA (target network) weights."""
+        self.ema.store(self.dnn.parameters())
+        self.ema.copy_to(self.dnn.parameters())
+        try:
+            yield
+        finally:
+            self.ema.restore(self.dnn.parameters())
+
+    def _forward_with_dnn(self, dnn: torch.nn.Module, x_t, y, t, y_cond=None):
+        """Same as ScoreModel.forward but using the provided dnn module.
+
+        NOTE: Tailored for backbone='ncsnpp_v2' and SBVE+EDM (x0 prediction).
+        """
+        y_cond = y if y_cond is None else y_cond
+        if self.backbone != "ncsnpp_v2":
+            raise NotImplementedError("CTM distill currently supports backbone=ncsnpp_v2 only")
+        if self.loss_weighting != "edm" or self.loss_type not in ("denoiser", "data_prediction"):
+            raise ValueError("CTM distill expects SBVE x0-prediction setup: --loss_type denoiser --loss_weighting edm")
+        if self.sde.__class__.__name__ != "SBVESDE":
+            raise ValueError("CTM distill currently implemented for sde=sbve only")
+
+        # EDM coordinate transform
+        w_xt, w_yt = self.sde.weights(t)
+        x_in = (x_t - w_yt * y) / (w_xt + 1e-12)
+
+        # network forward
+        Fnet = dnn(self._c_in(t) * x_in, self._c_in(t) * y, t, y_cond=self._c_in(t) * y_cond)
+
+        # optional scaling
+        if self.network_scaling == "1/sigma":
+            std = self._sigma_for_precond(t)
+            Fnet = Fnet / std[:, None, None, None]
+        elif self.network_scaling == "1/t":
+            Fnet = Fnet / t[:, None, None, None]
+
+        # SBVE expects x0_hat
+        x_hat = self._c_skip(t) * x_in + self._c_out(t) * Fnet
+        return x_hat
+
+    def _sbve_ode_transition(self, x_prev, y, t_prev, t_cur, x0_hat, xD=None):
+        """One deterministic SBVE ODE update from t_prev -> t_cur.
+
+        Matches the update in sampling.get_sb_sampler(..., sampler_type='ode').
+        Optionally applies Scheme-B guidance toward xD after the SB update.
+        """
+        sde: SBVESDE = self.sde
+        # schedules for prev & cur times
+        sigma_prev, sigma_T, sigma_bar_prev, alpha_prev, alpha_T, _ = sde._sigmas_alphas(t_prev)
+        sigma_t, sigma_T2, sigma_bart, alpha_t, alpha_T2, _ = sde._sigmas_alphas(t_cur)
+        sigma_T = sigma_T2
+        alpha_T = alpha_T2
+
+        weight_prev = alpha_t * sigma_t * sigma_bart / (alpha_prev * sigma_prev * sigma_bar_prev + sde.eps)
+        weight_estimate = (
+            alpha_t
+            / (sigma_T**2 + sde.eps)
+            * (sigma_bart**2 - sigma_bar_prev * sigma_t * sigma_bart / (sigma_prev + sde.eps))
+        )
+        weight_prior_mean = (
+            alpha_t
+            / (alpha_T * sigma_T**2 + sde.eps)
+            * (sigma_t**2 - sigma_prev * sigma_t * sigma_bart / (sigma_bar_prev + sde.eps))
+        )
+
+        weight_prev = weight_prev[:, None, None, None]
+        weight_estimate = weight_estimate[:, None, None, None]
+        weight_prior_mean = weight_prior_mean[:, None, None, None]
+
+        x_new = weight_prev * x_prev + weight_estimate * x0_hat + weight_prior_mean * y
+
+        # Scheme-B guidance: pull toward discriminative estimate xD
+        if xD is not None and self.ctm_lambda0 > 0.0:
+            dt = (t_prev - t_cur).clamp_min(0.0)
+            lam = self.ctm_lambda0 * torch.pow((1.0 - t_cur).clamp_min(0.0), self.ctm_lambda_pow)
+            gamma = 1.0 - torch.exp(-(lam * dt).clamp_min(0.0))
+            x_new = x_new + gamma[:, None, None, None] * (xD - x_new)
+
+        return x_new
+
+    def _teacher_partial_solve(self, x_t, y, t, u, y_cond=None, xD=None):
+        """Teacher solver from t -> u with K substeps, optionally guided toward xD."""
+        if self.teacher_dnn is None:
+            raise RuntimeError("Teacher not initialized")
+        K = max(int(self.ctm_k_teacher), 1)
+        x = x_t
+        t_prev = t
+        for k in range(K):
+            frac = (k + 1) / K
+            t_cur = t - (t - u) * frac
+            with torch.no_grad():
+                x0_hat = self._forward_with_dnn(self.teacher_dnn, x, y, t_cur, y_cond=y_cond)
+            x = self._sbve_ode_transition(x, y, t_prev, t_cur, x0_hat, xD=xD)
+            t_prev = t_cur
+        return x
+
+    def _G_apply(self, which: str, x_prev, y, t_prev, t_cur, y_cond=None, xD=None):
+        """Apply jump operator from t_prev -> t_cur using student/target/teacher model."""
+        if which not in ("student", "target", "teacher"):
+            raise ValueError("which must be one of: student/target/teacher")
+
+        if which == "teacher":
+            with torch.no_grad():
+                x0_hat = self._forward_with_dnn(self.teacher_dnn, x_prev, y, t_cur, y_cond=y_cond)
+            return self._sbve_ode_transition(x_prev, y, t_prev, t_cur, x0_hat, xD=xD)
+
+        if which == "target":
+            with torch.no_grad(), self._use_target_ema():
+                x0_hat = self._forward_with_dnn(self.dnn, x_prev, y, t_cur, y_cond=y_cond)
+                return self._sbve_ode_transition(x_prev, y, t_prev, t_cur, x0_hat, xD=None)
+
+        # student
+        x0_hat = self._forward_with_dnn(self.dnn, x_prev, y, t_cur, y_cond=y_cond)
+        return self._sbve_ode_transition(x_prev, y, t_prev, t_cur, x0_hat, xD=None)
 
     def configure_optimizers(self):
         # 给 SEMamba 单独一个 lr（可选）
@@ -204,6 +416,11 @@ class JointSemambaSgmseModel(ScoreModel):
         else:
             optimizer = torch.optim.Adam(base_params, lr=self.lr)
         return optimizer
+    def on_fit_start(self):
+        # Make sure teacher model is on the same device
+        super().on_fit_start()
+        if self.teacher_dnn is not None:
+            self.teacher_dnn.to(self.device)
 
     def _semamba_forward(self, y_noisy: torch.Tensor) -> torch.Tensor:
         """y_noisy: [B,1,T] -> y_pre: [B,1,T]"""
@@ -292,6 +509,80 @@ class JointSemambaSgmseModel(ScoreModel):
         X = self._sgmse_stft(x_wav)
         Y_noisy = self._sgmse_stft(y_wav)
         Y_pre = self._sgmse_stft(y_pre)
+
+        # =============== CTM distillation branch ===============
+        if self.ctm_distill:
+            # Determine main y / conditioning and discriminative prior xD in spec-domain
+            if self.train_type == "mode3":
+                y_main = Y_noisy
+                y_cond = Y_pre
+                xD = Y_pre
+            else:  # mode2
+                y_main = Y_pre
+                y_cond = Y_noisy
+                xD = Y_pre
+
+            # Sample times: t in (t_eps, T), s in (tmin, t), u in [s,t)
+            B = X.shape[0]
+            device = X.device
+            t = torch.rand(B, device=device) * (self.sde.T - self.t_eps) + self.t_eps
+            t0 = torch.full_like(t, float(self.ctm_tmin))
+            s = t0 + torch.rand(B, device=device) * (t - t0)
+            if self.ctm_u_mode == "fixed":
+                u = s + float(self.ctm_u_frac) * (t - s)
+            else:
+                u = s + torch.rand(B, device=device) * (t - s)
+
+            # Sample x_t from SBVE marginal (uses clean X and y_main)
+            mean, std = self.sde.marginal_prob(X, y_main, t)
+            z = torch.randn_like(X)
+            x_t = mean + std[:, None, None, None] * z
+
+            # Teacher partial solve t->u (guided toward xD)
+            x_u_teacher = self._teacher_partial_solve(x_t, y_main, t, u, y_cond=y_cond, xD=xD)
+
+            # Target (EMA) generates endpoint target via two jumps: u->s, s->t0
+            x_s_tgt = self._G_apply("target", x_u_teacher, y_main, u, s, y_cond=y_cond)
+            x_0_tgt = self._G_apply("target", x_s_tgt, y_main, s, t0, y_cond=y_cond)
+
+            # Student: one jump t->s, then target jump s->t0
+            x_s_est = self._G_apply("student", x_t, y_main, t, s, y_cond=y_cond)
+            x_0_est = self._G_apply("target", x_s_est, y_main, s, t0, y_cond=y_cond)
+
+            # CTM loss (complex MSE)
+            diff = x_0_est - x_0_tgt
+            loss_ctm = torch.mean(0.5 * torch.sum(torch.abs(diff).reshape(B, -1) ** 2, dim=-1))
+
+            # Optional: mix in base diffusion loss for stability
+            loss_base = torch.tensor(0.0, device=device)
+            if self.ctm_mix_base > 0.0:
+                forward_out = self(x_t, y_main, t, y_cond=y_cond)
+                loss_base = self._loss(forward_out, x_t, z, t, mean, X, y_main)
+
+            # Optional prior loss: pull endpoint toward SEMamba estimate (stopgrad)
+            loss_prior = torch.tensor(0.0, device=device)
+            if self.ctm_prior_weight > 0.0:
+                d2 = x_0_est - xD.detach()
+                loss_prior = torch.mean(0.5 * torch.sum(torch.abs(d2).reshape(B, -1) ** 2, dim=-1))
+
+            # Optional time-domain L1 (slow)
+            loss_td = torch.tensor(0.0, device=device)
+            if self.ctm_time_l1 > 0.0:
+                x0_est_wav = self._spec_to_wave_batch(x_0_est)
+                x0_tgt_wav = self._spec_to_wave_batch(x_0_tgt)
+                loss_td = torch.mean(torch.abs(x0_est_wav - x0_tgt_wav))
+
+            loss = self.ctm_weight * loss_ctm + self.ctm_mix_base * loss_base + self.ctm_prior_weight * loss_prior + self.ctm_time_l1 * loss_td
+
+            self.log("train_loss", loss, on_step=True, on_epoch=True, sync_dist=True, prog_bar=True)
+            self.log("ctm_loss", loss_ctm, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            if self.ctm_mix_base > 0.0:
+                self.log("base_loss", loss_base, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            if self.ctm_prior_weight > 0.0:
+                self.log("prior_loss", loss_prior, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            if self.ctm_time_l1 > 0.0:
+                self.log("td_l1", loss_td, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            return loss
 
         # ======== [DEBUG] 打印 STFT 频谱统计 ========
         # self._print_tensor_stats("X(clean_spec)", X, batch_idx)
