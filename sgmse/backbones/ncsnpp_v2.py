@@ -15,12 +15,15 @@
 
 # pylint: skip-file
 '''
-bottleneck cross-attn 保留，但改成：q=h, k/v=cond
+NCSN++ v2 backbone with:
+- bottleneck cross-attn using q=h, k/v=cond
+- optional decoder FiLM on selected levels
+- optional lightweight TF-Grid-style evidence selector that builds Y_hint from (y, y_cond) 
+    加入轻量化TF-GridNet作为evidence selector，从y_cond中预测y_hint通过交叉注意力注入网络主干
+    TF-GridNet有A，B两个方案，A是输出一个soft mask, 作为noisy的掩码，指明noisy像语音的部分。B是输出softmask M和置信度C，表示noisy的哪里像语音，并指明有多信。
+- low-resolution cross-attn blocks that inject Y_hint instead of raw noisy FiLM
 
-去掉当前 level-end 的 FiLM
-
-改成在 decoder 的每个 ResBlock 内做 FiLM，使条件更强
-
+参考训练命令 CUDA_VISIBLE_DEVICES=4,5,6,7 python joint_train.py --sde sbve --loss_type denoiser --loss_weighting edm --c_in edm --c_out edm --c_skip edm --cross_attn  --train_type mode2 --selector_type tfgrid_a --selector_hidden_ch 32 --selector_num_blocks 2 --selector_attn_levels 6,5 --dataset joint_scp --train_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tr_synthetic/wav.scp --valid_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/cv_synthetic/wav.scp --test_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tt_real_recordings/wav.scp --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/clean --batch_size 8 --wandb_name sgmse-sbve-edm-nofilm-tfgridnetA-model2-bs4*8-joint-freezeSemmaba-noTrainedSgmse --semamba_ckpt /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/g_00134000.pth --semamba_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main --semamba_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml
 '''
 from .ncsnpp_utils import layers, layerspp, normalization
 import torch.nn as nn
@@ -39,6 +42,35 @@ conv1x1 = layerspp.conv1x1
 get_act = layers.get_act
 get_normalization = normalization.get_normalization
 default_initializer = layers.default_init
+
+def _parse_level_spec(levels_str: str, default: str = "none"):
+    """Parse level string into a set of decoder level indices.
+
+    Decoder loop uses i_level in reversed(range(num_resolutions)); larger i_level means lower resolution.
+    Examples: 'all', 'none', 'first', 'last', '6,5'.
+    """
+    if levels_str is None:
+        levels_str = default
+    levels_str = str(levels_str).lower().strip()
+    if levels_str == "none":
+        return set()
+    if levels_str == "all":
+        return set(range(32))
+    if levels_str == "first":
+        return {0}
+    if levels_str == "last":
+        return {6}
+    levels = set()
+    for part in levels_str.split(','):
+        part = part.strip()
+        if part:
+            levels.add(int(part))
+    return levels
+
+
+def _complex_to_2ch(y: torch.Tensor) -> torch.Tensor:
+    return torch.cat([y.real, y.imag], dim=1)
+
 
 class BottleneckCrossAttention(nn.Module):
     """
@@ -115,11 +147,86 @@ class BottleneckCrossAttention(nn.Module):
 
         return h + self.gate * out
     
+class TFGridLiteBlock(nn.Module):
+    """A lightweight TF-grid-style block: separate frequency/time depthwise mixing + residual gate."""
+    def __init__(self, channels: int):
+        super().__init__()
+        groups = max(1, min(channels // 4, 32))
+        self.norm = nn.GroupNorm(groups, channels, eps=1e-6)
+        self.in_proj = nn.Conv2d(channels, channels, kernel_size=1)
+        self.freq_dw = nn.Conv2d(channels, channels, kernel_size=(3, 1), padding=(1, 0), groups=channels)
+        self.time_dw = nn.Conv2d(channels, channels, kernel_size=(1, 3), padding=(0, 1), groups=channels)
+        self.mix = nn.Sequential(
+            nn.SiLU(),
+            nn.Conv2d(channels, channels, kernel_size=1),
+            nn.SiLU(),
+            nn.Conv2d(channels, channels, kernel_size=1),
+        )
+        self.gate = nn.Parameter(torch.tensor(0.1))
+        for m in [self.in_proj, self.freq_dw, self.time_dw, self.mix[1], self.mix[3]]:
+            m.weight.data = default_initializer()(m.weight.shape)
+            nn.init.zeros_(m.bias)
+
+    def forward(self, x: torch.Tensor) -> torch.Tensor:
+        h = self.in_proj(self.norm(x))
+        h = self.freq_dw(h) + self.time_dw(h)
+        h = self.mix(h)
+        return x + self.gate * h
+
+
+class TFGridEvidenceSelector(nn.Module):
+    """Lightweight selector that converts (y_main, y_aux) into a speech-biased Y_hint.
+
+    Version A: Y_hint = M * y_aux
+    Version B: Y_hint = (M * C) * y_aux where C is an extra confidence branch.
+    """
+    def __init__(self, in_channels: int = 6, hidden_channels: int = 32, num_blocks: int = 2, version: str = "a"):
+        super().__init__()
+        self.version = version.lower()
+        self.stem = nn.Sequential(
+            nn.Conv2d(in_channels, hidden_channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+        )
+        self.blocks = nn.Sequential(*[TFGridLiteBlock(hidden_channels) for _ in range(num_blocks)])
+        self.mask_head = nn.Conv2d(hidden_channels, 1, kernel_size=1)
+        self.conf_head = nn.Conv2d(hidden_channels, 1, kernel_size=1) if self.version == "b" else None
+        init_layers = [self.stem[0], self.mask_head]
+        if self.conf_head is not None:
+            init_layers.append(self.conf_head)
+        for m in init_layers:
+            m.weight.data = default_initializer()(m.weight.shape)
+            nn.init.zeros_(m.bias)
+
+    def forward(self, y_main: torch.Tensor, y_aux: torch.Tensor, return_mask: bool = False):
+        diff = y_aux - y_main
+        feat = torch.cat([
+            y_main.real, y_main.imag,
+            y_aux.real, y_aux.imag,
+            diff.real, diff.imag,
+        ], dim=1)
+        h = self.blocks(self.stem(feat))
+        mask = torch.sigmoid(self.mask_head(h))
+        if self.conf_head is not None:
+            conf = torch.sigmoid(self.conf_head(h))
+            scale = mask * conf
+        else:
+            conf = None
+            scale = mask
+        y_hint = torch.complex(y_aux.real * scale, y_aux.imag * scale)
+        if return_mask:
+            return y_hint, mask, conf
+        return y_hint
+
+
 class DecoderResBlockWithFiLM(nn.Module):
     """
     在 decoder 的每个 ResBlock 后做一次 FiLM / AdaGN 风格调制，
     比“每个 level 末尾调一次”更强、更直接。
     """
+    @staticmethod
+    def _parse_film_levels(film_levels_str: str):
+        return _parse_level_spec(film_levels_str, default="first")
+
     def __init__(
         self,
         resblock_ctor,
@@ -176,6 +283,11 @@ class DecoderResBlockWithFiLM(nn.Module):
     
 @BackboneRegistry.register("ncsnpp_v2")
 class NCSNpp_v2(nn.Module):
+
+    @staticmethod
+    def _parse_film_levels(film_levels_str: str):
+        return _parse_level_spec(film_levels_str, default="first")
+
     """NCSN++ model, adapted from https://github.com/yang-song/score_sde repository"""
 
     @staticmethod
@@ -186,6 +298,14 @@ class NCSNpp_v2(nn.Module):
         parser.add_argument("--attn_resolutions", type=int, nargs='+', default=[16])
         parser.add_argument("--cross_attn", action='store_true', default=False)
         parser.add_argument("--film_modulate", action='store_true', default=False)
+        parser.add_argument("--film_levels", type=str, default="first",
+            help="FiLM applied to which upsample levels: 'all', 'first', 'last', 'none', or comma-separated indices like '0,1,2'")
+        parser.add_argument("--selector_type", type=str, default="none", choices=("none", "tfgrid_a", "tfgrid_b"),
+            help="Evidence selector type. tfgrid_a: mask only, tfgrid_b: mask * confidence.")
+        parser.add_argument("--selector_hidden_ch", type=int, default=32, help="Hidden channels in lightweight TF-grid selector.")
+        parser.add_argument("--selector_num_blocks", type=int, default=2, help="Number of TF-grid-style blocks in selector.")
+        parser.add_argument("--selector_attn_levels", type=str, default="6,5",
+            help="Decoder low-resolution levels that receive Y_hint via cross-attn, e.g. '6,5'.")
         return parser
     def __init__(self,
         nf = 128,
@@ -194,6 +314,11 @@ class NCSNpp_v2(nn.Module):
         attn_resolutions = (16,),
         cross_attn = False,
         film_modulate=False,
+        film_levels="first",
+        selector_type="none",
+        selector_hidden_ch=32,
+        selector_num_blocks=2,
+        selector_attn_levels="6,5",
         nonlinearity = 'swish',
         resamp_with_conv = True,
         fir = True,
@@ -219,6 +344,10 @@ class NCSNpp_v2(nn.Module):
         self.attn_resolutions = attn_resolutions = attn_resolutions
         self.cross_attn = cross_attn
         self.film_modulate = film_modulate
+        self.film_levels = self._parse_film_levels(film_levels)
+        self.selector_type = str(selector_type).lower()
+        self.use_selector = self.selector_type != "none"
+        self.selector_attn_levels = _parse_level_spec(selector_attn_levels, default="6,5")
         self.num_resolutions = num_resolutions = len(ch_mult)
         self.all_resolutions = all_resolutions = [image_size // (2 ** i) for i in range(num_resolutions)]
         self.skip_rescale = skip_rescale = skip_rescale
@@ -290,6 +419,17 @@ class NCSNpp_v2(nn.Module):
         else:
             raise ValueError(f'resblock type {resblock_type} unrecognized.')
 
+        if self.use_selector:
+            selector_version = "a" if self.selector_type == "tfgrid_a" else "b"
+            self.evidence_selector = TFGridEvidenceSelector(
+                in_channels=6,
+                hidden_channels=int(selector_hidden_ch),
+                num_blocks=int(selector_num_blocks),
+                version=selector_version,
+            )
+        else:
+            self.evidence_selector = None
+
         # Downsampling block
 
         channels = in_channels
@@ -346,8 +486,8 @@ class NCSNpp_v2(nn.Module):
             for i_block in range(num_res_blocks + 1):
                 out_ch = nf * ch_mult[i_level]
                 skip_ch = hs_c.pop()
-
-                if self.film_modulate:
+                # 只在i_level=0层级的上采样块加film
+                if self.film_modulate and i_level in self.film_levels:
                     modules.append(
                         DecoderResBlockWithFiLM(   #增加了film的上采样块
                             resblock_ctor=ResnetBlock,
@@ -366,6 +506,8 @@ class NCSNpp_v2(nn.Module):
             if all_resolutions[i_level] in attn_resolutions:
                 modules.append(AttnBlock(channels=in_ch))
 
+            if self.use_selector and i_level in self.selector_attn_levels:
+                modules.append(BottleneckCrossAttention(channels=in_ch, cond_in_channels=2))
 
             if progressive != 'none':
                 if i_level == num_resolutions - 1:
@@ -409,6 +551,7 @@ class NCSNpp_v2(nn.Module):
 
     def forward(self, x, y, t, y_cond=None):
         y_cond = y if y_cond is None else y_cond
+        y_hint = self.evidence_selector(y, y_cond) if self.use_selector else y_cond
 
         # timestep/noise_level embedding; only for continuous training
         modules = self.all_modules
@@ -491,7 +634,8 @@ class NCSNpp_v2(nn.Module):
         if self.cross_attn:
             # NEW: Bottleneck Cross-Attention
             # 使用原始含噪语音 y 的时频信息对 h 做一次 cross-attention
-            h = self.bottleneck_cross_attn(h, y_cond) #h: (B, C, H, W), y: (B, 1, H_y, W_y) complex
+            cond_for_bottleneck = y_hint if self.use_selector else y_cond
+            h = self.bottleneck_cross_attn(h, cond_for_bottleneck) #h: (B, C, H, W), cond: (B, 1, H_y, W_y) complex
 
         h = modules[m_idx](h, temb)  # ResNet block
         m_idx += 1
@@ -503,7 +647,7 @@ class NCSNpp_v2(nn.Module):
             for i_block in range(self.num_res_blocks + 1):
                 h_in = torch.cat([h, hs.pop()], dim=1)  #被改动
                 
-                if self.film_modulate:
+                if self.film_modulate and i_level in self.film_levels:
                     h = modules[m_idx](h_in, temb, y_cond=y_cond)
                 else:
                     h = modules[m_idx](h_in, temb)
@@ -513,6 +657,10 @@ class NCSNpp_v2(nn.Module):
             # edit: from -1 to -2
             if h.shape[-2] in self.attn_resolutions:
                 h = modules[m_idx](h)
+                m_idx += 1
+
+            if self.use_selector and i_level in self.selector_attn_levels:
+                h = modules[m_idx](h, y_hint)
                 m_idx += 1
 
             # 渐进式的上采样：将上采样过程中的低分辨率特征与高分特征进行结合
