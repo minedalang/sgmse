@@ -9,14 +9,14 @@ from sgmse.joint_model import JointSemambaSgmseModel
 from sgmse.joint_data_module import JointWaveDataModule
 
 # 设置路径 - 使用冻结 SEMamba 的模型
-CKPT_PATH = "joint_train_logs/7cxldqe7-sgmse-sbve-edm-newcrossattnFilm-model2-batchsize4*8-joint-frozenSemamba-noTrainedSgmse-3-12/last.ckpt"
+CKPT_PATH = "joint_train_logs/xqq5xglv-None/last.ckpt"
 SEMAMBA_ROOT = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main"
 SEMAMBA_CONFIG = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml"
 SEMAMBA_CKPT = "/home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/g_00134000.pth"
 
 # 测试音频 - 使用 DNS 测试集
 TEST_WAV = "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_testset/noisy/book_00198_chp_0017_reader_00957_5_8Vo48iZX8Ro_snr-17.85_tl-26_fileid_147.wav"
-OUTPUT_DIR = "vb_test_enhanced_dir_by_7cxldqe7_model2"
+OUTPUT_DIR = "vb_test_enhanced_dir_by_vb_test_enhanced_dir_by_vb_test_enhanced_dir_by_vb_test_enhanced_dir_by_xqq5xglv_None_v323"
 
 # 使用GPU
 device = torch.device("cuda")
@@ -103,10 +103,10 @@ with torch.inference_mode():
     enhanced = model.enhance(
         y_in.squeeze(0).cpu(),  # [T] - 移到CPU因为enhance内部可能有问题
         y_cond=y_cond.squeeze(0).cpu(),
-        sampler_type="pc",
+        sampler_type="ode",
         predictor="reverse_diffusion",
         corrector="ald",
-        N=10,  # 用较少的步数加快调试
+        N=30,  # 用较少的步数加快调试
         snr=0.5,
     )
 

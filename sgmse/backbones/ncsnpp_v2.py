@@ -470,7 +470,7 @@ class NCSNpp_v2(nn.Module):
 
         in_ch = hs_c[-1]
         if self.cross_attn:
-            # NEW: 瓶颈处的 cross-attention，用原始含噪语音 y 作为条件
+            # 瓶颈处的 cross-attention
             self.bottleneck_cross_attn = BottleneckCrossAttention(
                 channels=in_ch,
                 cond_in_channels=2  # y.real + y.imag
@@ -505,7 +505,7 @@ class NCSNpp_v2(nn.Module):
 
             if all_resolutions[i_level] in attn_resolutions:
                 modules.append(AttnBlock(channels=in_ch))
-
+            # 交叉注意力引入y_cond
             if self.use_selector and i_level in self.selector_attn_levels:
                 modules.append(BottleneckCrossAttention(channels=in_ch, cond_in_channels=2))
 

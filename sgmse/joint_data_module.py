@@ -25,7 +25,7 @@ import pytorch_lightning as pl
 import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
-from torchaudio import load
+from torchaudio import load,save
 
 
 def get_window(window_type: str, window_length: int) -> torch.Tensor:
@@ -245,9 +245,6 @@ class WavePairsScp(Dataset):
         utt = self.uttids[i]
         noisy_path = self.noisy_files[i]
         clean_path = self._resolve_clean_path(utt, noisy_path)
-        print("noisy_path",noisy_path)
-        print("clean_path",clean_path)
-
         spk_id = self._parse_spk_id(utt, noisy_path)
 
         y = _load_mono(noisy_path, expected_sr=self.expected_sr)

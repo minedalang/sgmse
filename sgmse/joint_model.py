@@ -27,7 +27,7 @@ import torch.nn.functional as F
 import math
 import numpy as np
 import torch.distributed as dist
-from torchaudio import load
+from torchaudio import load,save
 from librosa import resample
 from pesq import pesq
 from pystoi import stoi
@@ -38,7 +38,7 @@ from sgmse.sdes import SBVESDE
 
 from contextlib import contextmanager
 import copy
-
+import os
 
 def _load_yaml(path: str) -> Dict[str, Any]:
     try:
@@ -492,7 +492,31 @@ class JointSemambaSgmseModel(ScoreModel):
             spk_ids = None
         else:
             x_wav, y_wav, spk_ids = batch
+        '''
+        # 保存一组样本，判断样本是否匹配
+        if self.global_step == 0 and batch_idx == 0:
+            save_dir = "./"
+            os.makedirs(save_dir, exist_ok=True)
 
+            x_wav, y_wav, spk_id = batch   # x=clean, y=noisy
+
+            sr = getattr(self, "sr", 16000)
+
+            # 只存 batch 里的第一个样本
+            clean = x_wav[0].detach().cpu()
+            noisy = y_wav[0].detach().cpu()
+
+            if clean.dim() == 1:
+                clean = clean.unsqueeze(0)
+            if noisy.dim() == 1:
+                noisy = noisy.unsqueeze(0)
+
+            save(os.path.join(save_dir, "train_step0_batch0_clean.wav"), clean, sr)
+            save(os.path.join(save_dir, "train_step0_batch0_noisy.wav"), noisy, sr)
+
+            print(f"[debug] saved first training batch sample to {save_dir}")
+        '''
+        
         # ======== [DEBUG] 打印输入统计 ========
         # self._print_tensor_stats("x_wav(clean)", x_wav, batch_idx)
         # self._print_tensor_stats("y_wav(noisy)", y_wav, batch_idx)
@@ -500,7 +524,6 @@ class JointSemambaSgmseModel(ScoreModel):
         # SEMamba 前向：noisy -> y_pre
         y_pre = self._semamba_forward(y_wav)
         y_pre = _match_length(y_pre, y_wav)
-        
         # ======== [DEBUG] 打印 SEMamba 输出 ========
         # self._print_tensor_stats("y_pre(SEMamba)", y_pre, batch_idx)
 
@@ -640,44 +663,34 @@ class JointSemambaSgmseModel(ScoreModel):
         )
 
 
-    def _eval_metrics_on_files(self):
-        """每个 epoch 的第一个 val batch 调用：全文件推理并算 PESQ/SI-SDR/ESTOI（DDP汇总）。"""
+    def _eval_metrics_on_files_single_rank(self):
+        """只在 rank 0 上做整套文件级评测：PESQ / SI-SDR / ESTOI。
+        不做任何 DDP all_reduce，不参与 collectives。
+        """
         num_eval = int(getattr(self, "num_eval_files", 0) or 0)
         if num_eval <= 0:
-            return
+            return None
 
-        # DDP 信息
-        if dist.is_available() and dist.is_initialized():
-            world_size = dist.get_world_size()
-            rank = dist.get_rank()
-        else:
-            world_size, rank = 1, 0
-
-        per_gpu = int(math.ceil(num_eval / world_size))
-        start = rank * per_gpu
-        end = min((rank + 1) * per_gpu, num_eval)
-
-        clean_all, noisy_all = self._get_valid_file_lists(num_eval)
-        clean_files = clean_all[start:end]
-        noisy_files = noisy_all[start:end]
+        clean_files, noisy_files = self._get_valid_file_lists(num_eval)
 
         local_pesq_sum = 0.0
         local_si_sdr_sum = 0.0
         local_estoi_sum = 0.0
         local_count = 0.0
 
-        # 推理（注意：self.enhance 会走扩散采样，很慢，所以 num_eval_files 建议设小一点，比如 5~20）
         with torch.no_grad():
             for clean_file, noisy_file in zip(clean_files, noisy_files):
                 try:
                     x, sr_x = load(clean_file)   # [C,T]
                     y, sr_y = load(noisy_file)
+
                     x = x[:1, :]  # mono
                     y = y[:1, :]
+
                     x = x.squeeze(0).cpu().numpy()
                     y = y.squeeze(0).cpu().numpy()
 
-                    # （可选）确保采样率一致；你训练一般是 16k，严格对齐更好
+                    # 采样率不一致时，先统一
                     if sr_x != sr_y:
                         min_sr = min(sr_x, sr_y)
                         x = resample(x, orig_sr=sr_x, target_sr=min_sr)
@@ -686,15 +699,15 @@ class JointSemambaSgmseModel(ScoreModel):
 
                     # 统一长度
                     L = min(len(x), len(y))
-                    if L < 1600:  # 太短就跳过，避免 PESQ 报错（可按需调）
+                    if L < 1600:
                         continue
                     x = x[:L]
                     y = y[:L]
 
-                    # === Joint 推理：noisy -> SEMamba -> y_pre -> SGMSE enhance ===
+                    # Joint 推理：noisy -> SEMamba -> y_pre -> SGMSE enhance
                     y_t = torch.from_numpy(y).float().unsqueeze(0).unsqueeze(0).to(self.device)  # [1,1,T]
-                    y_pre = self._semamba_forward(y_t)            # [1,1,T']
-                    y_pre = _match_length(y_pre, y_t)             # [1,1,T]
+                    y_pre = self._semamba_forward(y_t)   # [1,1,T']
+                    y_pre = _match_length(y_pre, y_t)    # [1,1,T]
 
                     if self.train_type == "mode2":
                         y_in = y_pre.squeeze(0)   # [1,T]
@@ -703,14 +716,13 @@ class JointSemambaSgmseModel(ScoreModel):
                         y_in = y_t.squeeze(0)     # [1,T]
                         y_cond = y_pre.squeeze(0) # [1,T]
 
-                    # enhance() 在你的 ScoreModel 版本里返回 numpy.ndarray (T,)
                     x_hat = self.enhance(y_in, y_cond=y_cond, N=self.sde.N)
 
-                    # === 评测统一到 16k（PESQ wb 需要 16k） ===
+                    # 统一到 16k，PESQ(wb) 需要 16k
                     x_16k = resample(x, orig_sr=sr_x, target_sr=16000) if sr_x != 16000 else x
                     x_hat_16k = resample(x_hat, orig_sr=sr_y, target_sr=16000) if sr_y != 16000 else x_hat
 
-                    # 对齐长度 + clip，避免 pesq/si_sdr 出错
+                    # 对齐长度
                     L2 = min(len(x_16k), len(x_hat_16k))
                     if L2 < 1600:
                         continue
@@ -722,52 +734,80 @@ class JointSemambaSgmseModel(ScoreModel):
                     local_estoi_sum += float(stoi(x_16k, x_hat_16k, 16000, extended=True))
                     local_count += 1.0
 
-                except Exception:
-                    # 单个文件评测失败就跳过，不让训练崩
+                except Exception as e:
+                    print(
+                        f"[rank0][eval_metrics] failed on clean={clean_file}, noisy={noisy_file}, err={repr(e)}",
+                        flush=True,
+                    )
                     continue
 
-        # DDP 汇总
-        t = torch.tensor(
-            [local_pesq_sum, local_si_sdr_sum, local_estoi_sum, local_count],
-            device=self.device,
-            dtype=torch.float64,
-        )
-        if dist.is_available() and dist.is_initialized() and world_size > 1:
-            dist.all_reduce(t, op=dist.ReduceOp.SUM)
+        if local_count <= 0:
+            print("[rank0][eval_metrics] no valid files were evaluated.", flush=True)
+            return None
 
-        g_count = max(float(t[3].item()), 1.0)
-        g_pesq = (t[0] / g_count).item()
-        g_si = (t[1] / g_count).item()
-        g_estoi = (t[2] / g_count).item()
+        g_pesq = local_pesq_sum / local_count
+        g_si = local_si_sdr_sum / local_count
+        g_estoi = local_estoi_sum / local_count
+        return g_pesq, g_si, g_estoi
+    
+    def on_validation_epoch_end(self):
+        """验证 epoch 结束后，只在 rank 0 做整套文件级评测。
+        其它 rank 在 barrier 等待，避免下一轮训练提前开始造成 DDP 失同步。
+        每隔 10 个 epoch 才评测一次。
+        """
+        # Lightning 的 sanity check 阶段不跑这套慢评测
+        if getattr(self.trainer, "sanity_checking", False):
+            return
+        # 每隔 10 个 epoch 才跑一次
+        # current_epoch 从 0 开始，所以会在 9, 19, 29, ... 跑
+        if (self.current_epoch + 1) % 10 != 0:
+            return
+        print("on_validation_epoch_end start")
+        is_distributed = dist.is_available() and dist.is_initialized()
+        is_global_zero = bool(getattr(self.trainer, "is_global_zero", True))
 
-        # 我们已经手动 all_reduce 了，所以 sync_dist=False
-        self.log("val_pesq", g_pesq, on_step=False, on_epoch=True, prog_bar=True, sync_dist=False)
-        self.log("val_si_sdr", g_si, on_step=False, on_epoch=True, prog_bar=True, sync_dist=False)
-        self.log("val_estoi", g_estoi, on_step=False, on_epoch=True, prog_bar=False, sync_dist=False)
+        metrics = None
+        if is_global_zero:
+            print(f"[rank0] start file-level validation metrics at epoch={self.current_epoch}", flush=True)
+            metrics = self._eval_metrics_on_files_single_rank()
+            print(f"[rank0] finish file-level validation metrics at epoch={self.current_epoch}", flush=True)
+
+            if metrics is not None:
+                g_pesq, g_si, g_estoi = metrics
+                self.log("val_pesq", g_pesq, prog_bar=True, rank_zero_only=True)
+                self.log("val_si_sdr", g_si, prog_bar=True, rank_zero_only=True)
+                self.log("val_estoi", g_estoi, prog_bar=False, rank_zero_only=True)
+        print("on_validation_epoch_end end")
+
+        # 非 rank0 这里等一下，避免 rank0 还在做 enhance/PESQ，
+        # 其它 rank 已经进入下一轮训练，导致 collective 失同步
+        if is_distributed:
+            dist.barrier()
+
     def validation_step(self, batch, batch_idx):
-        # 只在每个验证 epoch 的第一个 batch 做一次全文件评测
-        if batch_idx == 0:
-            self._eval_metrics_on_files()
-
-        # 原来的 valid_loss 仍保留（扩散训练目标）
+        # 不要在 validation_step 里做全文件评测
+        # 文件级评测已经挪到 on_validation_epoch_end
+        print("validation_step start")
         if len(batch) == 2:
             x_wav, y_wav = batch
             spk_ids = None
         else:
             x_wav, y_wav, spk_ids = batch
 
-        with torch.set_grad_enabled(self.semamba_trainable):
+        # 验证阶段不要重新开 grad，先用纯 no_grad 更稳
+        with torch.no_grad():
             y_pre = self._semamba_forward(y_wav)
             y_pre = _match_length(y_pre, y_wav)
 
-        X = self._sgmse_stft(x_wav)
-        Y_noisy = self._sgmse_stft(y_wav)
-        Y_pre = self._sgmse_stft(y_pre)
+            X = self._sgmse_stft(x_wav)
+            Y_noisy = self._sgmse_stft(y_wav)
+            Y_pre = self._sgmse_stft(y_pre)
 
-        if spk_ids is not None:
-            loss = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx)
-        else:
-            loss = self._step((X, Y_noisy, Y_pre), batch_idx)
-
+            if spk_ids is not None:
+                loss = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx)
+            else:
+                loss = self._step((X, Y_noisy, Y_pre), batch_idx)
         self.log("valid_loss", loss, on_step=False, on_epoch=True, sync_dist=True, prog_bar=True)
+        print("validation_step end")
+
         return loss
