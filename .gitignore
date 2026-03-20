@@ -43,3 +43,6 @@ Thumbs.db
 .train_full.log
 .gitignore
 .gitignore
+train.log
+echo
+joint_enhance_zhz7x8vt.log

@@ -16,6 +16,7 @@
 
 from __future__ import annotations
 
+import argparse
 import importlib
 import sys
 import types
@@ -35,6 +36,7 @@ from sgmse.util.other import si_sdr
 
 from sgmse.model import ScoreModel
 from sgmse.sdes import SBVESDE
+from sgmse.frontends import build_frontend
 
 from contextlib import contextmanager
 import copy
@@ -116,27 +118,40 @@ def _match_length(y: torch.Tensor, ref: torch.Tensor) -> torch.Tensor:
     return F.pad(y, (left, right), mode="constant", value=0.0)
 
 
-class JointSemambaSgmseModel(ScoreModel):
+class JointFrontendSgmseModel(ScoreModel):
     strict_loading = False
     @staticmethod
     def add_argparse_args(parser):
         # 继承 ScoreModel 的参数
         ScoreModel.add_argparse_args(parser)
 
-        # 增加的 SEMamba相关参数
-        parser.add_argument("--semamba_root", type=str, required=True, help="Path to Semamba-2-10 repo root")
-        parser.add_argument("--semamba_config", type=str, required=True, help="Path to Semamba config.yaml")
-        parser.add_argument("--semamba_ckpt", type=str, default=None, help="Optional SEMamba checkpoint .pth")
-        parser.add_argument("--semamba_trainable", action="store_true", help="Enable joint training for SEMamba")
-        parser.add_argument("--semamba_lr_mult", type=float, default=0.1, help="SEMamba lr multiplier relative to --lr")
+        # 可插拔前端相关参数
+        parser.add_argument("--frontend", type=str, choices=("semamba", "storm", "tfgridnet"), default="semamba")
+        parser.add_argument("--frontend_root", type=str, default=None, help="Frontend repo root (Semamba/Storm/TF-GridNet)")
+        parser.add_argument("--frontend_config", type=str, default=None, help="Frontend config path (.yaml/.yml/.json)")
+        parser.add_argument("--frontend_ckpt", type=str, default=None, help="Optional frontend checkpoint")
+        parser.add_argument("--frontend_module", type=str, default=None, help="For storm/tfgridnet: python module name to import")
+        parser.add_argument("--frontend_class", type=str, default=None, help="For storm/tfgridnet: class/builder name inside frontend_module")
+        parser.add_argument("--frontend_state_dict_key", type=str, default=None, help="Optional checkpoint key for external frontends")
+        parser.add_argument("--frontend_trainable", action="store_true", help="Enable joint training for the frontend")
+        parser.add_argument("--frontend_lr_mult", type=float, default=0.1, help="Frontend lr multiplier relative to --lr")
         parser.add_argument(
-            "--semamba_aux_loss",
+            "--frontend_aux_loss",
             type=str,
             choices=("none", "time_l1"),
             default="none",
-            help="Optional SEMamba auxiliary supervision (stabilizes joint training)",
+            help="Optional frontend auxiliary supervision (stabilizes joint training)",
         )
-        parser.add_argument("--semamba_aux_weight", type=float, default=0.1)
+        parser.add_argument("--frontend_aux_weight", type=float, default=0.1)
+
+        # 兼容旧命令行（semamba_* 仍可用，优先级低于 frontend_*）
+        parser.add_argument("--semamba_root", type=str, default=None, help=argparse.SUPPRESS)
+        parser.add_argument("--semamba_config", type=str, default=None, help=argparse.SUPPRESS)
+        parser.add_argument("--semamba_ckpt", type=str, default=None, help=argparse.SUPPRESS)
+        parser.add_argument("--semamba_trainable", action="store_true", help=argparse.SUPPRESS)
+        parser.add_argument("--semamba_lr_mult", type=float, default=None, help=argparse.SUPPRESS)
+        parser.add_argument("--semamba_aux_loss", type=str, default=None, help=argparse.SUPPRESS)
+        parser.add_argument("--semamba_aux_weight", type=float, default=None, help=argparse.SUPPRESS)
 
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
@@ -164,13 +179,24 @@ class JointSemambaSgmseModel(ScoreModel):
         backbone: str,
         sde: str,
         train_type: str = "mode3",
-        semamba_root: str = "",
-        semamba_config: str = "",
+        frontend: str = "semamba",
+        frontend_root: Optional[str] = None,
+        frontend_config: Optional[str] = None,
+        frontend_ckpt: Optional[str] = None,
+        frontend_module: Optional[str] = None,
+        frontend_class: Optional[str] = None,
+        frontend_state_dict_key: Optional[str] = None,
+        frontend_trainable: bool = False,
+        frontend_lr_mult: float = 0.1,
+        frontend_aux_loss: str = "none",
+        frontend_aux_weight: float = 0.1,
+        semamba_root: Optional[str] = None,
+        semamba_config: Optional[str] = None,
         semamba_ckpt: Optional[str] = None,
         semamba_trainable: bool = False,
-        semamba_lr_mult: float = 0.1,
-        semamba_aux_loss: str = "none",
-        semamba_aux_weight: float = 0.1,
+        semamba_lr_mult: Optional[float] = None,
+        semamba_aux_loss: Optional[str] = None,
+        semamba_aux_weight: Optional[float] = None,
 
         # CTM distillation
         ctm_distill: bool = False,
@@ -196,9 +222,23 @@ class JointSemambaSgmseModel(ScoreModel):
             **kwargs,
         )
 
-        self.semamba_lr_mult = semamba_lr_mult
-        self.semamba_aux_loss = semamba_aux_loss
-        self.semamba_aux_weight = semamba_aux_weight
+        # 兼容旧 semamba_* 参数
+        if frontend == "semamba":
+            frontend_root = frontend_root or semamba_root
+            frontend_config = frontend_config or semamba_config
+            frontend_ckpt = frontend_ckpt or semamba_ckpt
+            frontend_trainable = bool(frontend_trainable or semamba_trainable)
+            if semamba_lr_mult is not None:
+                frontend_lr_mult = semamba_lr_mult
+            if semamba_aux_loss is not None:
+                frontend_aux_loss = semamba_aux_loss
+            if semamba_aux_weight is not None:
+                frontend_aux_weight = semamba_aux_weight
+
+        self.frontend_name = str(frontend)
+        self.frontend_lr_mult = float(frontend_lr_mult)
+        self.frontend_aux_loss = str(frontend_aux_loss)
+        self.frontend_aux_weight = float(frontend_aux_weight)
 
         # CTM distillation cfg
         self.ctm_distill = bool(ctm_distill)
@@ -222,25 +262,22 @@ class JointSemambaSgmseModel(ScoreModel):
                 raise ValueError("--ctm_distill requires --ctm_teacher_ckpt")
             self._init_teacher_from_ckpt(self.ctm_teacher_ckpt)
 
-        self.semamba, self.semamba_cfg, self._sem_stft, self._sem_istft = _load_semamba(
-            semamba_root=semamba_root,
-            config_path=semamba_config,
-            ckpt_path=semamba_ckpt,
+        self.frontend = build_frontend(
+            frontend_name=self.frontend_name,
+            frontend_root=frontend_root,
+            frontend_config=frontend_config,
+            frontend_ckpt=frontend_ckpt,
+            frontend_module=frontend_module,
+            frontend_class=frontend_class,
+            frontend_state_dict_key=frontend_state_dict_key,
+            **kwargs,
         )
 
-        # STFT cfg from SEMamba
-        stft_cfg = self.semamba_cfg.get("stft_cfg", {})
-        model_cfg = self.semamba_cfg.get("model_cfg", {})
-        self.sem_n_fft = int(stft_cfg.get("n_fft", 400))
-        self.sem_hop = int(stft_cfg.get("hop_size", 100))
-        self.sem_win = int(stft_cfg.get("win_size", 400))
-        self.sem_cf = float(model_cfg.get("compress_factor", 1.0))
-
-        self.semamba_trainable = bool(semamba_trainable)
-        if not self.semamba_trainable:
-            for p in self.semamba.parameters():
+        self.frontend_trainable = bool(frontend_trainable)
+        if not self.frontend_trainable:
+            for p in self.frontend.parameters():
                 p.requires_grad = False
-            self.semamba.eval()
+            self.frontend.eval()
 
     # ------------------------- CTM distillation helpers -------------------------
     def _init_teacher_from_ckpt(self, ckpt_path: str) -> None:
@@ -401,16 +438,16 @@ class JointSemambaSgmseModel(ScoreModel):
         for n, p in self.named_parameters():
             if not p.requires_grad:
                 continue
-            if n.startswith("semamba."):
+            if n.startswith("frontend."):
                 sem_params.append(p)
             else:
                 base_params.append(p)
 
-        if self.semamba_trainable and sem_params:
+        if self.frontend_trainable and sem_params:
             optimizer = torch.optim.Adam(
                 [
                     {"params": base_params, "lr": self.lr},
-                    {"params": sem_params, "lr": self.lr * float(self.semamba_lr_mult)},
+                    {"params": sem_params, "lr": self.lr * float(self.frontend_lr_mult)},
                 ]
             )
         else:
@@ -422,29 +459,9 @@ class JointSemambaSgmseModel(ScoreModel):
         if self.teacher_dnn is not None:
             self.teacher_dnn.to(self.device)
 
-    def _semamba_forward(self, y_noisy: torch.Tensor) -> torch.Tensor:
-        """y_noisy: [B,1,T] -> y_pre: [B,1,T]"""
-        y = y_noisy.squeeze(1)  # [B, T]
-        noisy_mag, noisy_pha, _ = self._sem_stft(
-            y,
-            n_fft=self.sem_n_fft,
-            hop_size=self.sem_hop,
-            win_size=self.sem_win,
-            compress_factor=self.sem_cf,
-            center=True,
-            addeps=False,
-        )
-        den_mag, den_pha, _ = self.semamba(noisy_mag, noisy_pha)
-        y_pre = self._sem_istft(
-            den_mag,
-            den_pha,
-            n_fft=self.sem_n_fft,
-            hop_size=self.sem_hop,
-            win_size=self.sem_win,
-            compress_factor=self.sem_cf,
-            center=True,
-        )
-        return y_pre.unsqueeze(1)  # [B,1,T']
+    def _frontend_forward(self, y_noisy: torch.Tensor) -> torch.Tensor:
+        """统一前端前向：输入/输出均为波形 `[B,1,T]`。"""
+        return self.frontend(y_noisy)
 
     def _sgmse_stft(self, wav: torch.Tensor) -> torch.Tensor:
         """torch.stft 只接受 1D([T]) 或 2D([B,T])。
@@ -522,7 +539,7 @@ class JointSemambaSgmseModel(ScoreModel):
         # self._print_tensor_stats("y_wav(noisy)", y_wav, batch_idx)
 
         # SEMamba 前向：noisy -> y_pre
-        y_pre = self._semamba_forward(y_wav)
+        y_pre = self._frontend_forward(y_wav)
         y_pre = _match_length(y_pre, y_wav)
         # ======== [DEBUG] 打印 SEMamba 输出 ========
         # self._print_tensor_stats("y_pre(SEMamba)", y_pre, batch_idx)
@@ -622,10 +639,10 @@ class JointSemambaSgmseModel(ScoreModel):
 
 
         # 可选：给 SEMamba 一个简单的时间域监督，稳定 joint training
-        if self.semamba_trainable and self.semamba_aux_loss == "time_l1":
+        if self.frontend_trainable and self.frontend_aux_loss == "time_l1":
             aux = torch.mean(torch.abs(y_pre - x_wav))
-            self.log("semamba_aux", aux, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-            loss = loss + self.semamba_aux_weight * aux
+            self.log("frontend_aux", aux, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            loss = loss + self.frontend_aux_weight * aux
 
         # ======== [DEBUG] 打印梯度范数 ========
         # if batch_idx % 100 == 0:
@@ -706,7 +723,7 @@ class JointSemambaSgmseModel(ScoreModel):
 
                     # Joint 推理：noisy -> SEMamba -> y_pre -> SGMSE enhance
                     y_t = torch.from_numpy(y).float().unsqueeze(0).unsqueeze(0).to(self.device)  # [1,1,T]
-                    y_pre = self._semamba_forward(y_t)   # [1,1,T']
+                    y_pre = self._frontend_forward(y_t)   # [1,1,T']
                     y_pre = _match_length(y_pre, y_t)    # [1,1,T]
 
                     if self.train_type == "mode2":
@@ -762,7 +779,6 @@ class JointSemambaSgmseModel(ScoreModel):
         # current_epoch 从 0 开始，所以会在 9, 19, 29, ... 跑
         if (self.current_epoch + 1) % 10 != 0:
             return
-        print("on_validation_epoch_end start")
         is_distributed = dist.is_available() and dist.is_initialized()
         is_global_zero = bool(getattr(self.trainer, "is_global_zero", True))
 
@@ -777,7 +793,6 @@ class JointSemambaSgmseModel(ScoreModel):
                 self.log("val_pesq", g_pesq, prog_bar=True, rank_zero_only=True)
                 self.log("val_si_sdr", g_si, prog_bar=True, rank_zero_only=True)
                 self.log("val_estoi", g_estoi, prog_bar=False, rank_zero_only=True)
-        print("on_validation_epoch_end end")
 
         # 非 rank0 这里等一下，避免 rank0 还在做 enhance/PESQ，
         # 其它 rank 已经进入下一轮训练，导致 collective 失同步
@@ -787,7 +802,6 @@ class JointSemambaSgmseModel(ScoreModel):
     def validation_step(self, batch, batch_idx):
         # 不要在 validation_step 里做全文件评测
         # 文件级评测已经挪到 on_validation_epoch_end
-        print("validation_step start")
         if len(batch) == 2:
             x_wav, y_wav = batch
             spk_ids = None
@@ -796,7 +810,7 @@ class JointSemambaSgmseModel(ScoreModel):
 
         # 验证阶段不要重新开 grad，先用纯 no_grad 更稳
         with torch.no_grad():
-            y_pre = self._semamba_forward(y_wav)
+            y_pre = self._frontend_forward(y_wav)
             y_pre = _match_length(y_pre, y_wav)
 
             X = self._sgmse_stft(x_wav)
@@ -808,6 +822,9 @@ class JointSemambaSgmseModel(ScoreModel):
             else:
                 loss = self._step((X, Y_noisy, Y_pre), batch_idx)
         self.log("valid_loss", loss, on_step=False, on_epoch=True, sync_dist=True, prog_bar=True)
-        print("validation_step end")
 
         return loss
+
+
+# 向后兼容旧类名
+JointSemambaSgmseModel = JointFrontendSgmseModel

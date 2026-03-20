@@ -15,7 +15,7 @@ torch.set_float32_matmul_precision('high')
 from sgmse.backbones.shared import BackboneRegistry
 from sgmse.sdes import SDERegistry
 
-from sgmse.joint_model import JointSemambaSgmseModel
+from sgmse.joint_model import JointFrontendSgmseModel
 '''
 CUDA_VISIBLE_DEVICES=0,1,2,3 \
 python /home/xyf/cwh_project/sgmse-main/joint_train.py \
@@ -82,7 +82,7 @@ if __name__ == '__main__':
             default="mode3",
             help="mode3: y=noisy, y_cond=SEMamba(noisy). mode2: y=SEMamba(noisy), y_cond=noisy"
         )
-        # 此外semamba相关参数，在JointSemambaSgmseModel的add_argparse_args中
+        # 前端相关参数（semamba/storm/tfgridnet）在 JointFrontendSgmseModel.add_argparse_args 中
     temp_args, _ = base_parser.parse_known_args()
 
     backbone_cls = BackboneRegistry.get_by_name(temp_args.backbone)
@@ -95,7 +95,7 @@ if __name__ == '__main__':
     trainer_parser.add_argument("--max_epochs", type=int, default=-1)
 
     # model / sde / backbone args
-    JointSemambaSgmseModel.add_argparse_args(parser.add_argument_group("JointModel", description=JointSemambaSgmseModel.__name__))
+    JointFrontendSgmseModel.add_argparse_args(parser.add_argument_group("JointModel", description=JointFrontendSgmseModel.__name__))
     sde_class.add_argparse_args(parser.add_argument_group("SDE", description=sde_class.__name__))
     backbone_cls.add_argparse_args(parser.add_argument_group("Backbone", description=backbone_cls.__name__))
 
@@ -112,7 +112,7 @@ if __name__ == '__main__':
         raise SystemExit("--ckpt(resume) 和 --init_ckpt(init weights) 不能同时使用")
     arg_groups = get_argparse_groups(parser, args)
 
-    model = JointSemambaSgmseModel(
+    model = JointFrontendSgmseModel(
         backbone=args.backbone,
         sde=args.sde,
         train_type=args.train_type,
