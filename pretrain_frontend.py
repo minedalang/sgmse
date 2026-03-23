@@ -13,7 +13,30 @@ from sgmse.frontend_pretrain_model import FrontendPretrainModel
 set_torch_cuda_arch_list()
 torch.set_float32_matmul_precision('high')
 
+'''
+python pretrain_frontend.py \
+  --frontend tfgridnet \
+  --frontend_root /home/xyf/cwh_project/espnet \
+  --frontend_module espnet2.enh.separator.tfgridnet_separator \
+  --frontend_class TFGridNet \
+  --frontend_config TF-GridNet-config/tfgridnet.yaml \
+  --dataset joint_scp \
+  --train_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tr_synthetic/wav.scp \
+  --valid_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/cv_synthetic/wav.scp \
+  --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/clean \
+  --clean_template clean_fileid_{fileid}.wav \
+  --batch_size 8 \
+  --num_workers 4 \
+  --expected_sr 16000 \
+  --lr 1e-4 \
+  --pretrain_loss l1 \
+  --accelerator cuda \
+  --devices 2 \
+  --max_epochs 100 \
+  --wandb_name tfgridnet_pretrain_3-20
 
+
+'''
 def get_argparse_groups(parser, args):
     groups = {}
     for group in parser._action_groups:
@@ -49,7 +72,7 @@ if __name__ == '__main__':
         )
 
     trainer_parser = parser.add_argument_group("Trainer", description="Lightning Trainer")
-    trainer_parser.add_argument("--accelerator", type=str, default="gpu")
+    trainer_parser.add_argument("--accelerator", type=str, default="cuda")
     trainer_parser.add_argument("--devices", default="auto")
     trainer_parser.add_argument("--accumulate_grad_batches", type=int, default=1)
     trainer_parser.add_argument("--max_epochs", type=int, default=-1)
@@ -109,6 +132,6 @@ if __name__ == '__main__':
         print(f"[Init ckpt] loaded state_dict strict=False: missing={len(missing)} unexpected={len(unexpected)}")
 
     if args.ckpt is not None:
-        trainer.fit(model, ckpt_path=args.ckpt)
+        trainer.fit(model, datamodule=model.data_module, ckpt_path=args.ckpt)
     else:
-        trainer.fit(model, ckpt_path=None)
+        trainer.fit(model, datamodule=model.data_module, ckpt_path=None)

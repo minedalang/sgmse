@@ -679,8 +679,14 @@ class JointFrontendSgmseModel(ScoreModel):
             "Expected WavePairs(clean_files/noisy_files) or WavePairsScp(uttids/noisy_files/_resolve_clean_path)."
         )
 
-
-    def _eval_metrics_on_files_single_rank(self):
+    def _cuda_mem(self, prefix=""):
+        if torch.cuda.is_available():
+            dev = torch.cuda.current_device()
+            alloc = torch.cuda.memory_allocated(dev) / 1024**2
+            reserv = torch.cuda.memory_reserved(dev) / 1024**2
+            peak = torch.cuda.max_memory_allocated(dev) / 1024**2
+            print(f"[rank0][mem] {prefix} alloc={alloc:.1f}MB reserved={reserv:.1f}MB peak={peak:.1f}MB", flush=True)
+    def _eval_metrics_on_files_single_rank(self, num_eval):
         """只在 rank 0 上做整套文件级评测：PESQ / SI-SDR / ESTOI。
         不做任何 DDP all_reduce，不参与 collectives。
         """
@@ -696,8 +702,11 @@ class JointFrontendSgmseModel(ScoreModel):
         local_count = 0.0
 
         with torch.no_grad():
-            for clean_file, noisy_file in zip(clean_files, noisy_files):
+            for idx,(clean_file, noisy_file) in enumerate(zip(clean_files, noisy_files)):
                 try:
+                    if torch.cuda.is_available():
+                        torch.cuda.reset_peak_memory_stats()
+                        self._cuda_mem(f"before file {idx}")
                     x, sr_x = load(clean_file)   # [C,T]
                     y, sr_y = load(noisy_file)
 
@@ -725,7 +734,6 @@ class JointFrontendSgmseModel(ScoreModel):
                     y_t = torch.from_numpy(y).float().unsqueeze(0).unsqueeze(0).to(self.device)  # [1,1,T]
                     y_pre = self._frontend_forward(y_t)   # [1,1,T']
                     y_pre = _match_length(y_pre, y_t)    # [1,1,T]
-
                     if self.train_type == "mode2":
                         y_in = y_pre.squeeze(0)   # [1,T]
                         y_cond = y_t.squeeze(0)   # [1,T]
@@ -734,7 +742,10 @@ class JointFrontendSgmseModel(ScoreModel):
                         y_cond = y_pre.squeeze(0) # [1,T]
 
                     x_hat = self.enhance(y_in, y_cond=y_cond, N=self.sde.N)
-
+                    self._cuda_mem(f"after enhance {idx}")
+                    if isinstance(x_hat, torch.Tensor):
+                        x_hat = x_hat.detach().float().cpu().numpy()
+                    self._cuda_mem(f"after x_hat to cpu {idx}")
                     # 统一到 16k，PESQ(wb) 需要 16k
                     x_16k = resample(x, orig_sr=sr_x, target_sr=16000) if sr_x != 16000 else x
                     x_hat_16k = resample(x_hat, orig_sr=sr_y, target_sr=16000) if sr_y != 16000 else x_hat
@@ -775,17 +786,23 @@ class JointFrontendSgmseModel(ScoreModel):
         # Lightning 的 sanity check 阶段不跑这套慢评测
         if getattr(self.trainer, "sanity_checking", False):
             return
+        
         # 每隔 10 个 epoch 才跑一次
         # current_epoch 从 0 开始，所以会在 9, 19, 29, ... 跑
         if (self.current_epoch + 1) % 10 != 0:
             return
-        is_distributed = dist.is_available() and dist.is_initialized()
+        
+        num_eval = int(getattr(self, "num_eval_files", 0) or 0)
+        if num_eval <= 0:
+            print(f"num_evel=0, skip file-level validation metrics")
+            return None
+        
         is_global_zero = bool(getattr(self.trainer, "is_global_zero", True))
 
         metrics = None
         if is_global_zero:
             print(f"[rank0] start file-level validation metrics at epoch={self.current_epoch}", flush=True)
-            metrics = self._eval_metrics_on_files_single_rank()
+            metrics = self._eval_metrics_on_files_single_rank(num_eval=num_eval)
             print(f"[rank0] finish file-level validation metrics at epoch={self.current_epoch}", flush=True)
 
             if metrics is not None:
@@ -796,8 +813,9 @@ class JointFrontendSgmseModel(ScoreModel):
 
         # 非 rank0 这里等一下，避免 rank0 还在做 enhance/PESQ，
         # 其它 rank 已经进入下一轮训练，导致 collective 失同步
-        if is_distributed:
-            dist.barrier()
+        # gemini说Lightning 会自动处理 epoch 级别的同步，所以删除
+        # if is_distributed:
+        #     dist.barrier()
 
     def validation_step(self, batch, batch_idx):
         # 不要在 validation_step 里做全文件评测
