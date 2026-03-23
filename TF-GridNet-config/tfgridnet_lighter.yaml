@@ -1,0 +1,17 @@
+input_dim: 0
+n_srcs: 2
+n_fft: 128
+stride: 64
+window: hann
+n_imics: 1
+n_layers: 3  #6->3
+lstm_hidden_units: 192
+attn_n_head: 2  #4->2
+attn_approx_qk_dim: 512
+emb_dim: 32 #48->32
+emb_ks: 4
+emb_hs: 1
+activation: prelu
+eps: 1.0e-5
+use_builtin_complex: false
+ref_channel: -1

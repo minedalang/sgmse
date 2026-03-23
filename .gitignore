@@ -1,5 +1,5 @@
 # Logs and training outputs
-fronted_pretrain_logs/
+frontend_pretrain_logs/
 joint_train_logs/
 log/
 log3/
