@@ -148,12 +148,13 @@ class BottleneckCrossAttention(nn.Module):
         return h + self.gate * out
     
 class TFGridLiteBlock(nn.Module):
-    """A lightweight TF-grid-style block: separate frequency/time depthwise mixing + residual gate."""
-    def __init__(self, channels: int):
+    """A lightweight TF-grid-style block with timestep bias injection."""
+    def __init__(self, channels: int, temb_dim: int = None):
         super().__init__()
         groups = max(1, min(channels // 4, 32))
         self.norm = nn.GroupNorm(groups, channels, eps=1e-6)
         self.in_proj = nn.Conv2d(channels, channels, kernel_size=1)
+        self.temb_proj = nn.Linear(temb_dim, channels) if temb_dim is not None else None
         self.freq_dw = nn.Conv2d(channels, channels, kernel_size=(3, 1), padding=(1, 0), groups=channels)
         self.time_dw = nn.Conv2d(channels, channels, kernel_size=(1, 3), padding=(0, 1), groups=channels)
         self.mix = nn.Sequential(
@@ -163,48 +164,108 @@ class TFGridLiteBlock(nn.Module):
             nn.Conv2d(channels, channels, kernel_size=1),
         )
         self.gate = nn.Parameter(torch.tensor(0.1))
-        for m in [self.in_proj, self.freq_dw, self.time_dw, self.mix[1], self.mix[3]]:
-            m.weight.data = default_initializer()(m.weight.shape)
-            nn.init.zeros_(m.bias)
+        init_layers = [self.in_proj, self.freq_dw, self.time_dw, self.mix[1], self.mix[3]]
+        if self.temb_proj is not None:
+            init_layers.append(self.temb_proj)
+        for m in init_layers:
+            if hasattr(m, "weight"):
+                m.weight.data = default_initializer()(m.weight.shape)
+            if hasattr(m, "bias") and m.bias is not None:
+                nn.init.zeros_(m.bias)
 
-    def forward(self, x: torch.Tensor) -> torch.Tensor:
+    def forward(self, x: torch.Tensor, temb: torch.Tensor = None) -> torch.Tensor:
         h = self.in_proj(self.norm(x))
+        if temb is not None and self.temb_proj is not None:
+            h = h + self.temb_proj(F.silu(temb))[:, :, None, None]
         h = self.freq_dw(h) + self.time_dw(h)
         h = self.mix(h)
         return x + self.gate * h
 
 
-class TFGridEvidenceSelector(nn.Module):
-    """Lightweight selector that converts (y_main, y_aux) into a speech-biased Y_hint.
-
-    Version A: Y_hint = M * y_aux
-    Version B: Y_hint = (M * C) * y_aux where C is an extra confidence branch.
-    """
-    def __init__(self, in_channels: int = 6, hidden_channels: int = 32, num_blocks: int = 2, version: str = "a"):
+class SelectorContextAggregator(nn.Module):
+    """Aggregate a few low-resolution backbone features into one compact selector context."""
+    def __init__(self, num_inputs: int = 4, out_channels: int = 8):
         super().__init__()
-        self.version = version.lower()
-        self.stem = nn.Sequential(
-            nn.Conv2d(in_channels, hidden_channels, kernel_size=3, padding=1),
+        self.num_inputs = int(num_inputs)
+        self.fuse = nn.Sequential(
+            nn.Conv2d(self.num_inputs, out_channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+            nn.Conv2d(out_channels, out_channels, kernel_size=3, padding=1),
             nn.SiLU(),
         )
-        self.blocks = nn.Sequential(*[TFGridLiteBlock(hidden_channels) for _ in range(num_blocks)])
-        self.mask_head = nn.Conv2d(hidden_channels, 1, kernel_size=1)
-        self.conf_head = nn.Conv2d(hidden_channels, 1, kernel_size=1) if self.version == "b" else None
-        init_layers = [self.stem[0], self.mask_head]
-        if self.conf_head is not None:
-            init_layers.append(self.conf_head)
-        for m in init_layers:
+        for m in [self.fuse[0], self.fuse[2]]:
             m.weight.data = default_initializer()(m.weight.shape)
             nn.init.zeros_(m.bias)
 
-    def forward(self, y_main: torch.Tensor, y_aux: torch.Tensor, return_mask: bool = False):
+    def forward(self, features, target_hw):
+        ctx_maps = []
+        for feat in features[-self.num_inputs:]:
+            if feat.shape[-2:] != target_hw:
+                feat = F.interpolate(feat, size=target_hw, mode="bilinear", align_corners=False)
+            ctx_maps.append(feat.mean(dim=1, keepdim=True))
+        if not ctx_maps:
+            raise ValueError("SelectorContextAggregator received no backbone features.")
+        ref = ctx_maps[-1]
+        while len(ctx_maps) < self.num_inputs:
+            ctx_maps.insert(0, torch.zeros_like(ref))
+        ctx = torch.cat(ctx_maps, dim=1)
+        return self.fuse(ctx)
+
+
+class TFGridEvidenceSelector(nn.Module):
+    """Lightweight selector with timestep injection and residual masking.
+
+    Version A: Y_hint = y_main + M * (y_aux - y_main)
+    Version B: Y_hint = y_main + (M * C) * (y_aux - y_main)
+    where context comes from an aggregated backbone feature map.
+    """
+    def __init__(self, spec_in_channels: int = 6, ctx_channels: int = 8, hidden_channels: int = 32,
+                 num_blocks: int = 2, version: str = "a", temb_dim: int = None):
+        super().__init__()
+        self.version = version.lower()
+        self.ctx_channels = int(ctx_channels)
+        in_channels = int(spec_in_channels) + self.ctx_channels
+        self.stem = nn.Conv2d(in_channels, hidden_channels, kernel_size=3, padding=1)
+        self.stem_act = nn.SiLU()
+        self.temb_proj = nn.Linear(temb_dim, hidden_channels) if temb_dim is not None else None
+        self.blocks = nn.ModuleList([TFGridLiteBlock(hidden_channels, temb_dim=temb_dim) for _ in range(num_blocks)])
+        self.mask_head = nn.Conv2d(hidden_channels, 1, kernel_size=1)
+        self.conf_head = nn.Conv2d(hidden_channels, 1, kernel_size=1) if self.version == "b" else None
+        init_layers = [self.stem, self.mask_head]
+        if self.temb_proj is not None:
+            init_layers.append(self.temb_proj)
+        if self.conf_head is not None:
+            init_layers.append(self.conf_head)
+        for m in init_layers:
+            if hasattr(m, "weight"):
+                m.weight.data = default_initializer()(m.weight.shape)
+            if hasattr(m, "bias") and m.bias is not None:
+                nn.init.zeros_(m.bias)
+
+    def forward(self, y_main: torch.Tensor, y_aux: torch.Tensor, ctx: torch.Tensor = None,
+                temb: torch.Tensor = None, return_mask: bool = False):
         diff = y_aux - y_main
         feat = torch.cat([
             y_main.real, y_main.imag,
             y_aux.real, y_aux.imag,
             diff.real, diff.imag,
         ], dim=1)
-        h = self.blocks(self.stem(feat))
+        if ctx is None:
+            ctx = torch.zeros(
+                feat.shape[0], self.ctx_channels, feat.shape[2], feat.shape[3],
+                device=feat.device, dtype=feat.dtype,
+            )
+        elif ctx.shape[-2:] != feat.shape[-2:]:
+            ctx = F.interpolate(ctx, size=feat.shape[-2:], mode="bilinear", align_corners=False)
+        feat = torch.cat([feat, ctx], dim=1)
+
+        h = self.stem(feat)
+        if temb is not None and self.temb_proj is not None:
+            h = h + self.temb_proj(F.silu(temb))[:, :, None, None]
+        h = self.stem_act(h)
+        for block in self.blocks:
+            h = block(h, temb=temb)
+
         mask = torch.sigmoid(self.mask_head(h))
         if self.conf_head is not None:
             conf = torch.sigmoid(self.conf_head(h))
@@ -212,7 +273,12 @@ class TFGridEvidenceSelector(nn.Module):
         else:
             conf = None
             scale = mask
-        y_hint = torch.complex(y_aux.real * scale, y_aux.imag * scale)
+
+        residual = y_aux - y_main
+        y_hint = torch.complex(
+            y_main.real + residual.real * scale,
+            y_main.imag + residual.imag * scale,
+        )
         if return_mask:
             return y_hint, mask, conf
         return y_hint
@@ -294,18 +360,24 @@ class NCSNpp_v2(nn.Module):
     def add_argparse_args(parser):
         parser.add_argument("--nf", type=int, default=128)
         parser.add_argument("--ch_mult",type=int, nargs='+', default=[1,1,2,2,2,2,2])
-        parser.add_argument("--num_res_blocks", type=int, default=2)
+        parser.add_argument("--num_res_blocks", type=int, default=2) #decoder每层残差块数量
         parser.add_argument("--attn_resolutions", type=int, nargs='+', default=[16])
-        parser.add_argument("--cross_attn", action='store_true', default=False)
+        parser.add_argument("--cross_attn", action='store_true', default=False) #瓶颈层交叉注意力
+
         parser.add_argument("--film_modulate", action='store_true', default=False)
         parser.add_argument("--film_levels", type=str, default="first",
             help="FiLM applied to which upsample levels: 'all', 'first', 'last', 'none', or comma-separated indices like '0,1,2'")
+        
         parser.add_argument("--selector_type", type=str, default="none", choices=("none", "tfgrid_a", "tfgrid_b"),
             help="Evidence selector type. tfgrid_a: mask only, tfgrid_b: mask * confidence.")
         parser.add_argument("--selector_hidden_ch", type=int, default=32, help="Hidden channels in lightweight TF-grid selector.")
-        parser.add_argument("--selector_num_blocks", type=int, default=2, help="Number of TF-grid-style blocks in selector.")
+        parser.add_argument("--selector_num_blocks", type=int, default=2, help="Number of TF-grid-style blocks in selector.") 
         parser.add_argument("--selector_attn_levels", type=str, default="6,5",
-            help="Decoder low-resolution levels that receive Y_hint via cross-attn, e.g. '6,5'.")
+            help="TF-grid-style：Decoder low-resolution levels that receive Y_hint via cross-attn, e.g. '6,5'.") #控制selector结果注入的层
+        parser.add_argument("--selector_ctx_ch", type=int, default=8,
+            help="Channels of aggregated backbone context fed into the selector.")#聚合后的主干上下文通道数
+        parser.add_argument("--selector_ctx_num_feats", type=int, default=3,
+            help="How many low-resolution encoder features to aggregate, plus the current bottleneck feature.")#selector聚合哪些层的主干特征  =3时 取encoder末端最近保存的 3 个 feature map
         return parser
     def __init__(self,
         nf = 128,
@@ -319,6 +391,8 @@ class NCSNpp_v2(nn.Module):
         selector_hidden_ch=32,
         selector_num_blocks=2,
         selector_attn_levels="6,5",
+        selector_ctx_ch=8,
+        selector_ctx_num_feats=3,
         nonlinearity = 'swish',
         resamp_with_conv = True,
         fir = True,
@@ -348,6 +422,8 @@ class NCSNpp_v2(nn.Module):
         self.selector_type = str(selector_type).lower()
         self.use_selector = self.selector_type != "none"
         self.selector_attn_levels = _parse_level_spec(selector_attn_levels, default="6,5")
+        self.selector_ctx_ch = int(selector_ctx_ch)
+        self.selector_ctx_num_feats = max(1, int(selector_ctx_num_feats))
         self.num_resolutions = num_resolutions = len(ch_mult)
         self.all_resolutions = all_resolutions = [image_size // (2 ** i) for i in range(num_resolutions)]
         self.skip_rescale = skip_rescale = skip_rescale
@@ -421,13 +497,20 @@ class NCSNpp_v2(nn.Module):
 
         if self.use_selector:
             selector_version = "a" if self.selector_type == "tfgrid_a" else "b"
+            self.selector_context_agg = SelectorContextAggregator(
+                num_inputs=self.selector_ctx_num_feats + 1,
+                out_channels=self.selector_ctx_ch,
+            )
             self.evidence_selector = TFGridEvidenceSelector(
-                in_channels=6,
+                spec_in_channels=6,
+                ctx_channels=self.selector_ctx_ch,
                 hidden_channels=int(selector_hidden_ch),
                 num_blocks=int(selector_num_blocks),
                 version=selector_version,
+                temb_dim=nf * 4,
             )
         else:
+            self.selector_context_agg = None
             self.evidence_selector = None
 
         # Downsampling block
@@ -551,7 +634,6 @@ class NCSNpp_v2(nn.Module):
 
     def forward(self, x, y, t, y_cond=None):
         y_cond = y if y_cond is None else y_cond
-        y_hint = self.evidence_selector(y, y_cond) if self.use_selector else y_cond
 
         # timestep/noise_level embedding; only for continuous training
         modules = self.all_modules
@@ -631,11 +713,18 @@ class NCSNpp_v2(nn.Module):
         m_idx += 1
         h = modules[m_idx](h)  # Attention block
         m_idx += 1
+
+        if self.use_selector:
+            context_inputs = list(hs[-self.selector_ctx_num_feats:]) + [h]
+            ctx = self.selector_context_agg(context_inputs, target_hw=h.shape[-2:])
+            y_hint = self.evidence_selector(y, y_cond, ctx=ctx, temb=temb)
+        else:
+            y_hint = y_cond
+
         if self.cross_attn:
             # NEW: Bottleneck Cross-Attention
-            # 使用原始含噪语音 y 的时频信息对 h 做一次 cross-attention
-            cond_for_bottleneck = y_hint if self.use_selector else y_cond
-            h = self.bottleneck_cross_attn(h, cond_for_bottleneck) #h: (B, C, H, W), cond: (B, 1, H_y, W_y) complex
+            # 使用聚合主干上下文引导的 y_hint 对 h 做一次 cross-attention
+            h = self.bottleneck_cross_attn(h, y_hint) # h: (B, C, H, W), cond: (B, 1, H_y, W_y) complex
 
         h = modules[m_idx](h, temb)  # ResNet block
         m_idx += 1
