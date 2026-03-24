@@ -1,5 +1,5 @@
 input_dim: 0
-n_srcs: 2
+n_srcs: 1
 n_fft: 128
 stride: 64
 window: hann

@@ -38,6 +38,9 @@ python /home/xyf/cwh_project/sgmse-main/joint_train.py \
   --frontend_trainable \
   --frontend_lr_mult 0.1 \
   --frontend_aux_loss time_l1 --frontend_aux_weight 0.1
+
+
+CUDA_VISIBLE_DEVICES=4,5,6,7 python joint_train.py --nf 128 --ch_mult 1 2 2 2 --num_res_blocks 1 --attn_resolutions 0 --num_eval_files 5 --loss_type denoiser --loss_weighting edm --c_in edm --c_out edm --c_skip edm --cross_attn --train_type mode2 --selector_type tfgrid_a --selector_hidden_ch 32 --selector_num_blocks 2 --selector_attn_levels 6,5 --dataset joint_scp --train_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tr_synthetic/wav.scp --valid_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/cv_synthetic/wav.scp --test_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tt_real_recordings/wav.scp --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/clean --batch_size 8 --wandb_id i7k0rhor --frontend semamba --frontend_trainable --frontend_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main --frontend_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml --ckpt joint_train_logs/i7k0rhor-None/last.ckpt
 '''
 
 def get_argparse_groups(parser, args):
@@ -149,7 +152,8 @@ if __name__ == '__main__':
         log_every_n_steps=10,
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
-        callbacks=callbacks
+        callbacks=callbacks,
+        precision="bf16-mixed"
     )
     # 针对两种ckpt，分情况加载
     # ---- optional: initialize weights from an existing checkpoint (no optimizer/loop restore) ----

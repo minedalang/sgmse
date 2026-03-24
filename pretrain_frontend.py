@@ -123,6 +123,7 @@ if __name__ == '__main__':
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
         callbacks=callbacks,
+        precision="bf16-mixed"
     )
 
     if args.init_ckpt is not None:

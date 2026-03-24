@@ -813,6 +813,9 @@ class NCSNpp_v2(nn.Module):
         h = torch.permute(h, (0, 2, 3, 1)).contiguous()
 
         # Convert back to complex number
-        h = torch.view_as_complex(h)[:,None, :, :]
-
+        # h = torch.view_as_complex(h)[:,None, :, :]] 
+        # 适配BF16精度
+        with torch.autocast(device_type="cuda", enabled=False):
+            h = torch.view_as_complex(h.float().contiguous())[:, None, :, :]
+  
         return h

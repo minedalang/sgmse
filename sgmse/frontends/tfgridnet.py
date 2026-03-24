@@ -97,10 +97,6 @@ class TFGridNetFrontend(BaseFrontend):
     def forward_waveform(self, noisy_wav: torch.Tensor) -> torch.Tensor:
         noisy_wav = ensure_mono_waveform(noisy_wav)
         noisy_bt = noisy_wav.squeeze(1)  # [B, T]
-        print(
-            f"[TFGridNetFrontend] noisy_wav={tuple(noisy_wav.shape)} noisy_bt={tuple(noisy_bt.shape)}",
-            flush=True,
-        )
         ilens = torch.full(
             (noisy_bt.size(0),),
             noisy_bt.size(1),
@@ -111,6 +107,4 @@ class TFGridNetFrontend(BaseFrontend):
         if not isinstance(enhanced_list, (list, tuple)) or len(enhanced_list) == 0:
             raise RuntimeError("TFGridNet did not return a non-empty enhanced source list")
         wav = ensure_mono_waveform(enhanced_list[0])
-        print(f"[TFGridNetFrontend] enhanced={tuple(wav.shape)}", flush=True)
-
         return match_length(wav, noisy_wav)
