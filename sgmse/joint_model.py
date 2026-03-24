@@ -1,10 +1,10 @@
 """sgmse.joint_model
 
-联合训练 LightningModule：SEMamba(前端) + ScoreModel/SGMSE(后端)。
+联合训练 LightningModule：Frontend(前端) + ScoreModel/SGMSE(后端)。
 
 核心思想：
 - batch 提供 clean/noisy 波形
-- noisy 波形先过 SEMamba 得到 y_pre (可微)
+- noisy 波形先过 frontend 得到 y_pre (可微)
 - SGMSE 的 score network 接收 (y=noisy, y_cond=y_pre) 或 (y=y_pre, y_cond=noisy)
 - 使用 SGMSE 标准训练目标（score-matching / denoiser loss）
 - loss 反向传播同时更新 SEMamba 与 SGMSE
@@ -144,15 +144,6 @@ class JointFrontendSgmseModel(ScoreModel):
         )
         parser.add_argument("--frontend_aux_weight", type=float, default=0.1)
 
-        # 兼容旧命令行（semamba_* 仍可用，优先级低于 frontend_*）
-        parser.add_argument("--semamba_root", type=str, default=None, help=argparse.SUPPRESS)
-        parser.add_argument("--semamba_config", type=str, default=None, help=argparse.SUPPRESS)
-        parser.add_argument("--semamba_ckpt", type=str, default=None, help=argparse.SUPPRESS)
-        parser.add_argument("--semamba_trainable", action="store_true", help=argparse.SUPPRESS)
-        parser.add_argument("--semamba_lr_mult", type=float, default=None, help=argparse.SUPPRESS)
-        parser.add_argument("--semamba_aux_loss", type=str, default=None, help=argparse.SUPPRESS)
-        parser.add_argument("--semamba_aux_weight", type=float, default=None, help=argparse.SUPPRESS)
-
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -190,13 +181,6 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_lr_mult: float = 0.1,
         frontend_aux_loss: str = "none",
         frontend_aux_weight: float = 0.1,
-        semamba_root: Optional[str] = None,
-        semamba_config: Optional[str] = None,
-        semamba_ckpt: Optional[str] = None,
-        semamba_trainable: bool = False,
-        semamba_lr_mult: Optional[float] = None,
-        semamba_aux_loss: Optional[str] = None,
-        semamba_aux_weight: Optional[float] = None,
 
         # CTM distillation
         ctm_distill: bool = False,
@@ -221,19 +205,6 @@ class JointFrontendSgmseModel(ScoreModel):
             data_module_cls=data_module_cls,
             **kwargs,
         )
-
-        # 兼容旧 semamba_* 参数
-        if frontend == "semamba":
-            frontend_root = frontend_root or semamba_root
-            frontend_config = frontend_config or semamba_config
-            frontend_ckpt = frontend_ckpt or semamba_ckpt
-            frontend_trainable = bool(frontend_trainable or semamba_trainable)
-            if semamba_lr_mult is not None:
-                frontend_lr_mult = semamba_lr_mult
-            if semamba_aux_loss is not None:
-                frontend_aux_loss = semamba_aux_loss
-            if semamba_aux_weight is not None:
-                frontend_aux_weight = semamba_aux_weight
 
         self.frontend_name = str(frontend)
         self.frontend_lr_mult = float(frontend_lr_mult)
@@ -462,6 +433,10 @@ class JointFrontendSgmseModel(ScoreModel):
     def _frontend_forward(self, y_noisy: torch.Tensor) -> torch.Tensor:
         """统一前端前向：输入/输出均为波形 `[B,1,T]`。"""
         return self.frontend(y_noisy)
+
+    def _semamba_forward(self, y_noisy: torch.Tensor) -> torch.Tensor:
+        """Backward-compatible alias for older debug/inference scripts."""
+        return self._frontend_forward(y_noisy)
 
     def _sgmse_stft(self, wav: torch.Tensor) -> torch.Tensor:
         """torch.stft 只接受 1D([T]) 或 2D([B,T])。

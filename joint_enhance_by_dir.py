@@ -11,7 +11,7 @@ from sgmse.joint_model import JointSemambaSgmseModel
 from sgmse.joint_data_module import JointWaveDataModule
 
 '''
-CUDA_VISIBLE_DEVICES=0 python joint_enhance_by_dir.py   --ckpt joint_train_logs/o6xis8vv-sgmse-sbve-edm-crossattn-film-mode3-batchsize4\*8-joint/last.ckpt   --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_testset/noisy/   --out_dir vb_test_enhanced_dir_by_150ksbve_edm_crossattn-film-joint_train_mode3_bs4*8_06xis8w --train_type mode3   --semamba_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main   --semamba_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml   --use_ema   --N 30 --snr 0.5 --sde sbve
+CUDA_VISIBLE_DEVICES=0 python joint_enhance_by_dir.py   --ckpt joint_train_logs/o6xis8vv-sgmse-sbve-edm-crossattn-film-mode3-batchsize4\*8-joint/last.ckpt   --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_testset/noisy/   --out_dir vb_test_enhanced_dir_by_150ksbve_edm_crossattn-film-joint_train_mode3_bs4*8_06xis8w --train_type mode3   --frontend semamba   --frontend_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main   --frontend_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml   --use_ema   --N 30 --snr 0.5 --sde sbve
 '''
 def load_mono(path: str, target_sr: int):
     wav, sr = sf.read(path, always_2d=False)
@@ -49,9 +49,11 @@ def main():
     p.add_argument("--train_type", type=str, choices=["mode2", "mode3"], default="mode3",
                    help="must match training: mode3=SGMSE(noisy | y_pre), mode2=SGMSE(y_pre | noisy)")
 
-    # semamba loader (match your training args)
-    p.add_argument("--semamba_root", type=str, required=True)
-    p.add_argument("--semamba_config", type=str, required=True)
+    # frontend loader (match your training args)
+    p.add_argument("--frontend", type=str, choices=["semamba", "storm", "tfgridnet"], default="semamba")
+    p.add_argument("--frontend_root", type=str, required=True)
+    p.add_argument("--frontend_config", type=str, required=True)
+    p.add_argument("--frontend_ckpt", type=str, default=None)
 
     # sgmse sampling params
     p.add_argument("--sampler_type", type=str, default="pc")
@@ -93,11 +95,12 @@ def main():
     #     sde=args.sde,
     #     train_type=args.train_type,
 
-    #     semamba_root=args.semamba_root,
-    #     semamba_config=args.semamba_config,
-    #     semamba_ckpt=None,            # 联合训练推理：不加载外部 semamba 预训练权重
+    #     frontend=args.frontend,
+    #     frontend_root=args.frontend_root,
+    #     frontend_config=args.frontend_config,
+    #     frontend_ckpt=args.frontend_ckpt,
 
-    #     semamba_trainable=False,      # 推理不训练
+    #     frontend_trainable=False,     # 推理不训练
     #     data_module_cls=JointWaveDataModule,
 
     #     # ---- 以下这些 kwargs 会传给 ScoreModel + datamodule（尽量与训练一致）----
@@ -133,9 +136,10 @@ def main():
         args.ckpt,
         map_location="cpu",
         strict=True,
-        semamba_root=args.semamba_root,
-        semamba_config=args.semamba_config,
-        semamba_ckpt=None,            #  用 joint ckpt 里的 semamba 权重
+        frontend=args.frontend,
+        frontend_root=args.frontend_root,
+        frontend_config=args.frontend_config,
+        frontend_ckpt=args.frontend_ckpt,
         data_module_cls=JointWaveDataModule,
         **data_module_kwargs,         #  把 base_dir 等补进去
     )
@@ -162,7 +166,7 @@ def main():
 
             y = load_mono(wp, args.sample_rate).to(args.device)   # [T]
             y = y.unsqueeze(0).unsqueeze(0)      # [1,1,T]
-            y_pre = model._semamba_forward(y)    # [1,1,T']
+            y_pre = model._frontend_forward(y)   # [1,1,T']
             y_pre = _match_length(y_pre, y)      # 对齐长度（训练里就是这么做的）
             if args.train_type == "mode2":
                 y_in, y_cond = y_pre.squeeze(0), y.squeeze(0)      # [1,T], [1,T]

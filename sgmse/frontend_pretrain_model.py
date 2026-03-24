@@ -28,9 +28,6 @@ class FrontendPretrainModel(pl.LightningModule):
         parser.add_argument("--frontend_class", type=str, default=None)
         parser.add_argument("--frontend_state_dict_key", type=str, default=None)
         parser.add_argument("--pretrain_loss", type=str, choices=("l1", "mse"), default="l1")
-        parser.add_argument("--semamba_root", type=str, default=None, help="兼容旧参数")
-        parser.add_argument("--semamba_config", type=str, default=None, help="兼容旧参数")
-        parser.add_argument("--semamba_ckpt", type=str, default=None, help="兼容旧参数")
         return parser
 
     def __init__(
@@ -44,17 +41,10 @@ class FrontendPretrainModel(pl.LightningModule):
         frontend_class: Optional[str] = None,
         frontend_state_dict_key: Optional[str] = None,
         pretrain_loss: str = "l1",
-        semamba_root: Optional[str] = None,
-        semamba_config: Optional[str] = None,
-        semamba_ckpt: Optional[str] = None,
         data_module_cls=None,
         **kwargs,
     ):
         super().__init__()
-        if frontend == "semamba":
-            frontend_root = frontend_root or semamba_root
-            frontend_config = frontend_config or semamba_config
-            frontend_ckpt = frontend_ckpt or semamba_ckpt
 
         self.lr = float(lr)
         self.pretrain_loss = str(pretrain_loss)

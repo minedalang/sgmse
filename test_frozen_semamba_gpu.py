@@ -31,9 +31,10 @@ model = JointSemambaSgmseModel.load_from_checkpoint(
     CKPT_PATH,
     map_location=device,
     strict=True,
-    semamba_root=SEMAMBA_ROOT,
-    semamba_config=SEMAMBA_CONFIG,
-    semamba_ckpt=SEMAMBA_CKPT,
+    frontend="semamba",
+    frontend_root=SEMAMBA_ROOT,
+    frontend_config=SEMAMBA_CONFIG,
+    frontend_ckpt=SEMAMBA_CKPT,
     data_module_cls=JointWaveDataModule,
     base_dir=".",
     batch_size=1,
@@ -60,7 +61,7 @@ print(f"输入 tensor shape: {y_t.shape}, device: {y_t.device}")
 
 # SEMamba 前向
 with torch.no_grad():
-    y_pre = model._semamba_forward(y_t)
+    y_pre = model._frontend_forward(y_t)
 
 print(f"\nSEMamba 输出: shape={y_pre.shape}")
 print(f"SEMamba 输出 stats: mean={y_pre.mean():.6f}, std={y_pre.std():.6f}, min={y_pre.min():.6f}, max={y_pre.max():.6f}")

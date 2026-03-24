@@ -31,12 +31,13 @@ python /home/xyf/cwh_project/sgmse-main/joint_train.py \
   --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/clean \
   --batch_size 8 \
   --wandb_name sgmse-sbve-edm-crossattn-film-mode3-batchsize4*8-joint \
-  --semamba_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main \                                     
-  --semamba_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml \                                                                                         
-  --semamba_ckpt /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/g_00134000.pth \
-    --semamba_trainable \                                                                                
-  --semamba_lr_mult 0.1 \                                                                              
-  --semamba_aux_loss time_l1 --semamba_aux_weight 0.1
+  --frontend semamba \
+  --frontend_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main \
+  --frontend_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml \
+  --frontend_ckpt /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/g_00134000.pth \
+  --frontend_trainable \
+  --frontend_lr_mult 0.1 \
+  --frontend_aux_loss time_l1 --frontend_aux_weight 0.1
 '''
 
 def get_argparse_groups(parser, args):
@@ -173,7 +174,7 @@ if __name__ == '__main__':
         opt_states = ckpt.get("optimizer_states", None) if isinstance(ckpt, dict) else None
         if opt_states and len(opt_states) > 0 and isinstance(opt_states[0], dict) and "param_groups" in opt_states[0]:
             n_groups_ckpt = len(opt_states[0]["param_groups"])
-            expected = 2 if bool(getattr(model, "semamba_trainable", False)) else 1
+            expected = len(model.configure_optimizers().param_groups)
             if n_groups_ckpt != expected:
                 raise SystemExit(
                     f"ckpt optimizer param_groups mismatch: ckpt has {n_groups_ckpt}, expected {expected}. "
