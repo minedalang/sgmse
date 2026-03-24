@@ -707,7 +707,8 @@ class JointFrontendSgmseModel(ScoreModel):
 
                     # Joint 推理：noisy -> SEMamba -> y_pre -> SGMSE enhance
                     y_t = torch.from_numpy(y).float().unsqueeze(0).unsqueeze(0).to(self.device)  # [1,1,T]
-                    y_pre = self._frontend_forward(y_t)   # [1,1,T']
+                    norm = y_t.abs().amax(dim=-1, keepdim=True).clamp_min(1e-12)
+                    y_pre = self._frontend_forward(y_t / norm) * norm   # [1,1,T']
                     y_pre = _match_length(y_pre, y_t)    # [1,1,T]
                     if self.train_type == "mode2":
                         y_in = y_pre.squeeze(0)   # [1,T]
