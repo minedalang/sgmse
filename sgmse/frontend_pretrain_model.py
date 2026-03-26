@@ -27,6 +27,11 @@ class FrontendPretrainModel(pl.LightningModule):
         parser.add_argument("--frontend_module", type=str, default=None)
         parser.add_argument("--frontend_class", type=str, default=None)
         parser.add_argument("--frontend_state_dict_key", type=str, default=None)
+        parser.add_argument("--storm_nf", type=int, default=128)
+        parser.add_argument("--storm_ch_mult", type=int, nargs='+', default=[1, 2, 2, 2])
+        parser.add_argument("--storm_num_res_blocks", type=int, default=1)
+        parser.add_argument("--storm_attn_resolutions", type=int, nargs='+', default=[0])
+        parser.add_argument("--storm_time_cond", type=float, default=1.0)
         parser.add_argument("--pretrain_loss", type=str, choices=("l1", "mse"), default="l1")
         return parser
 

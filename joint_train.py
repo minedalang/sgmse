@@ -97,6 +97,7 @@ if __name__ == '__main__':
     trainer_parser.add_argument("--devices", default="auto")
     trainer_parser.add_argument("--accumulate_grad_batches", type=int, default=1)
     trainer_parser.add_argument("--max_epochs", type=int, default=-1)
+    trainer_parser.add_argument("--precision", type=str, default="32-true")
 
     # model / sde / backbone args
     JointFrontendSgmseModel.add_argparse_args(parser.add_argument_group("JointModel", description=JointFrontendSgmseModel.__name__))
@@ -153,7 +154,7 @@ if __name__ == '__main__':
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
         callbacks=callbacks,
-        precision="bf16-mixed"
+        precision=args.precision
     )
     # 针对两种ckpt，分情况加载
     # ---- optional: initialize weights from an existing checkpoint (no optimizer/loop restore) ----

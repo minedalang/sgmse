@@ -42,7 +42,7 @@ def main():
     frontend = build_frontend(
         frontend_name="tfgridnet",
         frontend_root=args.frontend_root,
-        frontend_config="TF-GridNet-config/tfgridnet.yaml",
+        frontend_config="TF-GridNet-config/tfgridnet_lighter.yaml",
         frontend_module=args.frontend_module,
         frontend_class=args.frontend_class,
     )

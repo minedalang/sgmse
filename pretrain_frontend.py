@@ -76,6 +76,7 @@ if __name__ == '__main__':
     trainer_parser.add_argument("--devices", default="auto")
     trainer_parser.add_argument("--accumulate_grad_batches", type=int, default=1)
     trainer_parser.add_argument("--max_epochs", type=int, default=-1)
+    trainer_parser.add_argument("--precision", type=str, default="bf16-mixed")
 
     FrontendPretrainModel.add_argparse_args(parser.add_argument_group("FrontendPretrain", description=FrontendPretrainModel.__name__))
 
@@ -116,14 +117,13 @@ if __name__ == '__main__':
 
     trainer = pl.Trainer(
         **vars(arg_groups['Trainer']),
-        strategy="ddp",
+        strategy="ddp_find_unused_parameters_true",
         logger=logger,
         max_steps=1_000_000,
         log_every_n_steps=10,
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
-        callbacks=callbacks,
-        precision="bf16-mixed"
+        callbacks=callbacks
     )
 
     if args.init_ckpt is not None:

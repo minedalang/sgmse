@@ -84,7 +84,7 @@ def strip_state_dict_prefixes(state_dict: Dict[str, Any]) -> Dict[str, Any]:
     out = {}
     for k, v in state_dict.items():
         new_key = k
-        for prefix in ("module.", "model.", "generator.", "net."):
+        for prefix in ("module.", "model.", "generator.", "net.", "frontend."):
             if new_key.startswith(prefix):
                 new_key = new_key[len(prefix):]
         out[new_key] = v
