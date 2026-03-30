@@ -7,7 +7,7 @@ from argparse import ArgumentParser
 from pytorch_lightning.loggers import WandbLogger
 from pytorch_lightning.callbacks import ModelCheckpoint
 from os.path import join
-
+from sgmse.frontends.storm import StormFrontend
 from sgmse.util.other import set_torch_cuda_arch_list
 set_torch_cuda_arch_list()
 torch.set_float32_matmul_precision('high')
@@ -41,6 +41,7 @@ python /home/xyf/cwh_project/sgmse-main/joint_train.py \
 
 
 CUDA_VISIBLE_DEVICES=4,5,6,7 python joint_train.py --nf 128 --ch_mult 1 2 2 2 --num_res_blocks 1 --attn_resolutions 0 --num_eval_files 5 --loss_type denoiser --loss_weighting edm --c_in edm --c_out edm --c_skip edm --cross_attn --train_type mode2 --selector_type tfgrid_a --selector_hidden_ch 32 --selector_num_blocks 2 --selector_attn_levels 6,5 --dataset joint_scp --train_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tr_synthetic/wav.scp --valid_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/cv_synthetic/wav.scp --test_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tt_real_recordings/wav.scp --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/clean --batch_size 8 --wandb_id i7k0rhor --frontend semamba --frontend_trainable --frontend_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main --frontend_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml --ckpt joint_train_logs/i7k0rhor-None/last.ckpt
+CUDA_VISIBLE_DEVICES=4,5,6,7 python joint_train.py --backbone ncsnpp_v2 --sde sbve --loss_type denoiser --num_eval_files 5 --loss_weighting edm --c_in edm --c_out edm --c_skip edm --cross_attn --train_type mode2 --nf 128 --ch_mult 1 2 2 2 --num_res_blocks 1 --attn_resolutions 0 --selector_type tfgrid_a --selector_hidden_ch 32 --selector_num_blocks 2 --selector_attn_levels 3,2 --dataset joint_scp --train_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tr_synthetic/wav.scp --valid_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/cv_synthetic/wav.scp --test_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/scp/tt_real_recordings/wav.scp --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15/clean --batch_size 8 --accelerator gpu --devices 4 --precision 32-true --frontend storm --frontend_ckpt <STAGE1_FRONTEND_LAST_CKPT> --frontend_trainable --storm_nf 128 --storm_ch_mult 1 2 2 2 --storm_num_res_blocks 1 --storm_attn_resolutions 0 --init_ckpt <STAGE2_BACKEND_LAST_CKPT> --wandb_name storm_frontend_plus_selector_joint_stage3
 '''
 
 def get_argparse_groups(parser, args):
@@ -103,7 +104,7 @@ if __name__ == '__main__':
     JointFrontendSgmseModel.add_argparse_args(parser.add_argument_group("JointModel", description=JointFrontendSgmseModel.__name__))
     sde_class.add_argparse_args(parser.add_argument_group("SDE", description=sde_class.__name__))
     backbone_cls.add_argparse_args(parser.add_argument_group("Backbone", description=backbone_cls.__name__))
-
+    StormFrontend.add_argparse_args(parser)
     # data module args
     if temp_args.dataset == "joint_scp":
         from sgmse.joint_data_module import JointWaveScpDataModule as data_module_cls
@@ -154,7 +155,6 @@ if __name__ == '__main__':
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
         callbacks=callbacks,
-        precision=args.precision
     )
     # 针对两种ckpt，分情况加载
     # ---- optional: initialize weights from an existing checkpoint (no optimizer/loop restore) ----
