@@ -71,7 +71,7 @@ if __name__ == '__main__':
      trainer_parser.add_argument("--devices", default="auto", help="How many gpus to use.")
      trainer_parser.add_argument("--accumulate_grad_batches", type=int, default=1, help="Accumulate gradients.")
      trainer_parser.add_argument("--max_epochs", type=int, default=-1, help="Number of epochs to train.")
-
+     trainer_parser.add_argument("--precision", type=str, default="32-true")
      ScoreModel.add_argparse_args(
           parser.add_argument_group("ScoreModel", description=ScoreModel.__name__))
      sde_class.add_argparse_args(
@@ -166,7 +166,6 @@ if __name__ == '__main__':
           log_every_n_steps=10, num_sanity_val_steps=0,
           check_val_every_n_epoch=1,
           callbacks=callbacks,
-          precision=args.precision
      )
      # Train model
      trainer.fit(model, ckpt_path=args.ckpt)
