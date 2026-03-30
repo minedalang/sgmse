@@ -415,5 +415,10 @@ class NCSNpp(nn.Module):
         # Convert back to complex number
         h = self.output_layer(h)
         h = torch.permute(h, (0, 2, 3, 1)).contiguous()
-        h = torch.view_as_complex(h)[:,None, :, :]
+                # Convert back to complex number
+        # h = torch.view_as_complex(h)[:,None, :, :]] 
+        # 适配BF16精度
+        with torch.autocast(device_type="cuda", enabled=False):
+            h = torch.view_as_complex(h.float().contiguous())[:, None, :, :]
+
         return h
