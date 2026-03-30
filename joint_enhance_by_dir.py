@@ -11,7 +11,8 @@ from sgmse.joint_model import JointSemambaSgmseModel
 from sgmse.joint_data_module import JointWaveDataModule
 
 '''
-CUDA_VISIBLE_DEVICES=0 python joint_enhance_by_dir.py   --ckpt joint_train_logs/o6xis8vv-sgmse-sbve-edm-crossattn-film-mode3-batchsize4\*8-joint/last.ckpt   --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_testset/noisy/   --out_dir vb_test_enhanced_dir_by_150ksbve_edm_crossattn-film-joint_train_mode3_bs4*8_06xis8w --train_type mode3   --frontend semamba   --frontend_root /home/xyf/cwh_project/SEMamba-main/SEMamba-main   --frontend_config /home/xyf/cwh_project/SEMamba-main/SEMamba-main/exp/SEMamba_trainedby_dnslowsnr-20_-15/config.yaml   --use_ema   --N 30 --snr 0.5 --sde sbve
+CUDA_VISIBLE_DEVICES=2 python joint_enhance_by_dir.py --ckpt joint_train_logs/dx4g6bi0-jointtrain_storm_frontend_selectortfgrida_sbveedm/last.ckpt --in_dir test_frontend_output --out_dir test_frontend_output/dx4g6bi0_enhanced --train_type mode2 --frontend storm
+
 '''
 def load_mono(path: str, target_sr: int):
     wav, sr = sf.read(path, always_2d=False)
@@ -46,13 +47,13 @@ def main():
     # runtime
     p.add_argument("--device", type=str, default="cuda")
     p.add_argument("--sample_rate", type=int, default=16000)
-    p.add_argument("--train_type", type=str, choices=["mode2", "mode3"], default="mode3",
+    p.add_argument("--train_type", type=str, choices=["mode2", "mode3"], default="mode2",
                    help="must match training: mode3=SGMSE(noisy | y_pre), mode2=SGMSE(y_pre | noisy)")
 
     # frontend loader (match your training args)
     p.add_argument("--frontend", type=str, choices=["semamba", "storm", "tfgridnet"], default="semamba")
-    p.add_argument("--frontend_root", type=str, required=True)
-    p.add_argument("--frontend_config", type=str, required=True)
+    p.add_argument("--frontend_root", type=str, required=None)
+    p.add_argument("--frontend_config", type=str, required=None)
     p.add_argument("--frontend_ckpt", type=str, default=None)
 
     # sgmse sampling params
@@ -166,7 +167,8 @@ def main():
 
             y = load_mono(wp, args.sample_rate).to(args.device)   # [T]
             y = y.unsqueeze(0).unsqueeze(0)      # [1,1,T]
-            y_pre = model._frontend_forward(y)   # [1,1,T']
+            norm = y.abs().amax(dim=-1, keepdim=True).clamp_min(1e-12)   # [1,1,1]
+            y_pre = model._frontend_forward(y/norm)* norm   # [1,1,T']
             y_pre = _match_length(y_pre, y)      # 对齐长度（训练里就是这么做的）
             if args.train_type == "mode2":
                 y_in, y_cond = y_pre.squeeze(0), y.squeeze(0)      # [1,T], [1,T]
