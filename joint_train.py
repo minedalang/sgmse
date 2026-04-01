@@ -148,7 +148,7 @@ if __name__ == '__main__':
 
     trainer = pl.Trainer(
         **vars(arg_groups['Trainer']),
-        strategy="ddp",
+        strategy="ddp_find_unused_parameters_true",
         logger=logger,
         max_steps=1_000_000,
         log_every_n_steps=10,
