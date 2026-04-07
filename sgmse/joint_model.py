@@ -138,12 +138,17 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument(
             "--frontend_aux_loss",
             type=str,
-            choices=("none", "time_l1"),
+            choices=("none", "time_l1","time_mse"),
             default="none",
-            help="Optional frontend auxiliary supervision (stabilizes joint training)",
+            help="Denoiser loss type used in joint training",
         )
-        parser.add_argument("--frontend_aux_weight", type=float, default=0.1)
-
+        # parser.add_argument("--frontend_aux_weight", type=float, default=0.1)
+        parser.add_argument(
+            "--weighting_denoiser_to_score",
+            type=float,
+            default=0.5,
+            help="Total loss = a * denoiser_loss + (1-a) * score_loss",
+        )
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -181,7 +186,7 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_lr_mult: float = 0.1,
         frontend_aux_loss: str = "none",
         frontend_aux_weight: float = 0.1,
-
+        weighting_denoiser_to_score: float = 0.5,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -210,7 +215,7 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_lr_mult = float(frontend_lr_mult)
         self.frontend_aux_loss = str(frontend_aux_loss)
         self.frontend_aux_weight = float(frontend_aux_weight)
-
+        self.weighting_denoiser_to_score = float(weighting_denoiser_to_score)
         # CTM distillation cfg
         self.ctm_distill = bool(ctm_distill)
         self.ctm_teacher_ckpt = ctm_teacher_ckpt
@@ -614,10 +619,23 @@ class JointFrontendSgmseModel(ScoreModel):
 
 
         # 可选：给 SEMamba 一个简单的时间域监督，稳定 joint training
-        if self.frontend_trainable and self.frontend_aux_loss == "time_l1":
-            aux = torch.mean(torch.abs(y_pre - x_wav))
-            self.log("frontend_aux", aux, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-            loss = loss + self.frontend_aux_weight * aux
+        if self.frontend_trainable and self.frontend_aux_loss != "none":
+            if self.frontend_aux_loss == "time_l1":
+                loss_denoiser = torch.mean(torch.abs(y_pre - x_wav))
+            elif self.frontend_aux_loss == "time_mse":
+                loss_denoiser = F.mse_loss(y_pre, x_wav)
+            else:
+                raise ValueError(f"Unsupported frontend_aux_loss: {self.frontend_aux_loss}")
+            a = float(self.weighting_denoiser_to_score)
+            if not (0.0 <= a <= 1.0):
+                raise ValueError(f"frontend_aux_weight should be in [0,1], got {a}")
+
+            loss = a * loss_denoiser + (1.0 - a) * loss_sgmse
+
+            self.log("train_loss_denoiser", loss_denoiser, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            self.log("train_loss_sgmse", loss_sgmse, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        else:
+            self.log("train_loss_sgmse", loss_sgmse, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
         # ======== [DEBUG] 打印梯度范数 ========
         # if batch_idx % 100 == 0:
