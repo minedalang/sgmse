@@ -155,8 +155,8 @@ if __name__ == '__main__':
         if model.sde.__class__.__name__ == 'OUVESDE':
             if args.sampler_type == 'pc':
                 sampler = model.get_pc_sampler(
-                    predictor='reverse_diffusion',
-                    corrector=args.corrector,
+                    predictor_name='reverse_diffusion',
+                    corrector_name=args.corrector,
                     score_fn=score_fn,
                     y=Y_obs.to(args.device),
                     N=args.N,

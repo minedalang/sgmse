@@ -50,10 +50,10 @@ def main():
     p.add_argument("--train_type", type=str, choices=["mode2", "mode3"], default="mode2",
                    help="must match training: mode3=SGMSE(noisy | y_pre), mode2=SGMSE(y_pre | noisy)")
 
-    # frontend loader (match your training args)
-    p.add_argument("--frontend", type=str, choices=["semamba", "storm", "tfgridnet"], default="semamba")
-    p.add_argument("--frontend_root", type=str, required=None)
-    p.add_argument("--frontend_config", type=str, required=None)
+    # frontend loader (match your training args) - 推理时不传，让checkpoint里的值生效
+    p.add_argument("--frontend", type=str, choices=["semamba", "storm", "tfgridnet"], default=None)
+    p.add_argument("--frontend_root", type=str, default=None)
+    p.add_argument("--frontend_config", type=str, default=None)
     p.add_argument("--frontend_ckpt", type=str, default=None)
 
     # sgmse sampling params
@@ -89,60 +89,36 @@ def main():
     os.makedirs(args.out_dir, exist_ok=True)
 
     # Build minimal data_module kwargs (we won't call setup(); only need STFT funcs)
-
-    # Create model (IMPORTANT: JointSemambaSgmseModel expects backbone & sde directly)
-    # model = JointSemambaSgmseModel(
-    #     backbone=args.backbone,
-    #     sde=args.sde,
-    #     train_type=args.train_type,
-
-    #     frontend=args.frontend,
-    #     frontend_root=args.frontend_root,
-    #     frontend_config=args.frontend_config,
-    #     frontend_ckpt=args.frontend_ckpt,
-
-    #     frontend_trainable=False,     # 推理不训练
-    #     data_module_cls=JointWaveDataModule,
-
-    #     # ---- 以下这些 kwargs 会传给 ScoreModel + datamodule（尽量与训练一致）----
-    #     lr=args.lr,
-    #     ema_decay=args.ema_decay,
-    #     t_eps=args.t_eps,
-    #     loss_type=args.loss_type,
-    #     sigma_data=args.sigma_data,
-    #     weighting=args.weighting,
-    #     nonlinear_weighting=args.nonlinear_weighting,
-
-    #     # datamodule 需要的 STFT/transform 参数（你之前的 data_module_kwargs）
-    #     **data_module_kwargs,
-    # )
-
-    # ckpt = torch.load(args.ckpt, map_location="cpu")
-    # state_dict = ckpt["state_dict"] if isinstance(ckpt, dict) and "state_dict" in ckpt else ckpt
-    # missing, unexpected = model.load_state_dict(state_dict, strict=False)
-    # if missing:
-    #     print("[WARN] missing keys:", len(missing))
-    # if unexpected:
-    #     print("[WARN] unexpected keys:", len(unexpected))
-    # 直接从 joint ckpt 重建模型（会自动带上训练时的 sbve k/c 等超参）
     data_module_kwargs = dict(
         base_dir=".",                 # 关键：补上必填 base_dir（推理时用不到，给个占位）
         batch_size=1,
         num_workers=0,
         dummy=True,                   #如果你的 JointWaveDataModule 支持 dummy 模式，强烈建议打开
-
     )
+
+    # 推理时不传 frontend 相关参数，让 checkpoint 里的值生效
+    # checkpoint 会自带 frontend=storm 和 frontend_ckpt 等信息
+    load_kwargs = dict(
+        map_location="cpu",
+        strict=True,
+        data_module_cls=JointWaveDataModule,
+        **data_module_kwargs,
+    )
+    
+    # 只有当用户明确指定了 frontend 参数时才覆盖
+    # 否则使用 checkpoint 中保存的值
+    if args.frontend is not None:
+        load_kwargs["frontend"] = args.frontend
+    if args.frontend_root is not None:
+        load_kwargs["frontend_root"] = args.frontend_root
+    if args.frontend_config is not None:
+        load_kwargs["frontend_config"] = args.frontend_config
+    if args.frontend_ckpt is not None:
+        load_kwargs["frontend_ckpt"] = args.frontend_ckpt
 
     model = JointSemambaSgmseModel.load_from_checkpoint(
         args.ckpt,
-        map_location="cpu",
-        strict=True,
-        frontend=args.frontend,
-        frontend_root=args.frontend_root,
-        frontend_config=args.frontend_config,
-        frontend_ckpt=args.frontend_ckpt,
-        data_module_cls=JointWaveDataModule,
-        **data_module_kwargs,         #  把 base_dir 等补进去
+        **load_kwargs,
     )
 
 
