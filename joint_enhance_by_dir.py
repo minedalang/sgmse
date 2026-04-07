@@ -121,9 +121,8 @@ def main():
         **load_kwargs,
     )
 
-
-
-    model.eval().to(args.device)
+    model.eval(no_ema=not args.use_ema).to(args.device)
+    print(f"[Eval] backend EMA {'enabled' if args.use_ema else 'disabled'}")
 
     wavs = sorted(glob.glob(os.path.join(args.in_dir, "*.wav")))
     print("Found wavs:", len(wavs))
