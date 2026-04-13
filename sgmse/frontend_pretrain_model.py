@@ -64,6 +64,9 @@ class FrontendPretrainModel(pl.LightningModule):
             frontend_state_dict_key=frontend_state_dict_key,
             **kwargs,
         )
+        # frontend 创建完后，重建一次 full-model EMA
+        if hasattr(self, "_ensure_ema_is_compatible"):
+            self._ensure_ema_is_compatible(force_rebuild=True)
         self.data_module = data_module_cls(**kwargs, gpu=kwargs.get("gpus", 0) > 0)
         self.save_hyperparameters(ignore=["data_module_cls"])
 

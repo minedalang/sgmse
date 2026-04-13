@@ -134,7 +134,6 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--frontend_class", type=str, default=None, help="For storm/tfgridnet: class/builder name inside frontend_module")
         parser.add_argument("--frontend_state_dict_key", type=str, default=None, help="Optional checkpoint key for external frontends")
         parser.add_argument("--frontend_trainable", action="store_true", help="Enable joint training for the frontend")
-        parser.add_argument("--frontend_lr_mult", type=float, default=0.1, help="Frontend lr multiplier relative to --lr")
         parser.add_argument(
             "--frontend_aux_loss",
             type=str,
@@ -183,7 +182,6 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_class: Optional[str] = None,
         frontend_state_dict_key: Optional[str] = None,
         frontend_trainable: bool = False,
-        frontend_lr_mult: float = 0.1,
         frontend_aux_loss: str = "none",
         frontend_aux_weight: float = 0.1,
         weighting_denoiser_to_score: float = 0.5,
@@ -212,7 +210,6 @@ class JointFrontendSgmseModel(ScoreModel):
         )
 
         self.frontend_name = str(frontend)
-        self.frontend_lr_mult = float(frontend_lr_mult)
         self.frontend_aux_loss = str(frontend_aux_loss)
         self.frontend_aux_weight = float(frontend_aux_weight)
         self.weighting_denoiser_to_score = float(weighting_denoiser_to_score)
@@ -255,6 +252,9 @@ class JointFrontendSgmseModel(ScoreModel):
                 p.requires_grad = False
             self.frontend.eval()
 
+        # Rebuild EMA after frontend creation so EMA tracks the full trainable model
+        self.rebuild_ema()
+
     # ------------------------- CTM distillation helpers -------------------------
     def _init_teacher_from_ckpt(self, ckpt_path: str) -> None:
         """Create a frozen teacher_dnn from a Lightning checkpoint.
@@ -293,13 +293,14 @@ class JointFrontendSgmseModel(ScoreModel):
 
     @contextmanager
     def _use_target_ema(self):
-        """Temporarily swap student dnn weights to EMA (target network) weights."""
-        self.ema.store(self.dnn.parameters())
-        self.ema.copy_to(self.dnn.parameters())
+        """Temporarily swap student weights to EMA (target network) weights."""
+        ema_params = self._get_ema_parameters()
+        self.ema.store(ema_params)
+        self.ema.copy_to(ema_params)
         try:
             yield
         finally:
-            self.ema.restore(self.dnn.parameters())
+            self.ema.restore(ema_params)
 
     def _forward_with_dnn(self, dnn: torch.nn.Module, x_t, y, t, y_cond=None):
         """Same as ScoreModel.forward but using the provided dnn module.
@@ -319,7 +320,10 @@ class JointFrontendSgmseModel(ScoreModel):
         x_in = (x_t - w_yt * y) / (w_xt + 1e-12)
 
         # network forward
-        Fnet = dnn(self._c_in(t) * x_in, self._c_in(t) * y, t, y_cond=self._c_in(t) * y_cond)
+        y_extra = None
+        if self.train_type == "mode2" and self.mode2_include_noisy_main and y_cond is not None:
+            y_extra = self._c_in(t) * y_cond
+        Fnet = dnn(self._c_in(t) * x_in, self._c_in(t) * y, t, y_cond=self._c_in(t) * y_cond, y_extra=y_extra)
 
         # optional scaling
         if self.network_scaling == "1/sigma":
@@ -407,27 +411,17 @@ class JointFrontendSgmseModel(ScoreModel):
         x0_hat = self._forward_with_dnn(self.dnn, x_prev, y, t_cur, y_cond=y_cond)
         return self._sbve_ode_transition(x_prev, y, t_prev, t_cur, x0_hat, xD=None)
 
-    def configure_optimizers(self):
-        # 给 SEMamba 单独一个 lr（可选）
-        base_params = []
-        sem_params = []
-        for n, p in self.named_parameters():
-            if not p.requires_grad:
+    def _get_ema_parameters(self):
+        params = []
+        for name, p in self.named_parameters():
+            if name.startswith("teacher_dnn."):
                 continue
-            if n.startswith("frontend."):
-                sem_params.append(p)
-            else:
-                base_params.append(p)
+            params.append(p)
+        return params
 
-        if self.frontend_trainable and sem_params:
-            optimizer = torch.optim.Adam(
-                [
-                    {"params": base_params, "lr": self.lr},
-                    {"params": sem_params, "lr": self.lr * float(self.frontend_lr_mult)},
-                ]
-            )
-        else:
-            optimizer = torch.optim.Adam(base_params, lr=self.lr)
+    def configure_optimizers(self):
+        params = [p for p in self.parameters() if p.requires_grad]
+        optimizer = torch.optim.Adam(params, lr=self.lr)
         return optimizer
     def on_fit_start(self):
         # Make sure teacher model is on the same device

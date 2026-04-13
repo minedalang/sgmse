@@ -50,7 +50,6 @@ class ScoreModel(pl.LightningModule):
         parser.add_argument("--max_plm_length", type=int, default=32000,
                             help="Max waveform length (in samples) fed into PLM.")
         return parser
-        return parser
 
     def __init__(
         self, backbone, sde, train_type: str = "default",lr=1e-4, ema_decay=0.999, t_eps=0.03, num_eval_files=20, loss_type='score_matching', 
@@ -60,6 +59,7 @@ class ScoreModel(pl.LightningModule):
         plm_name_or_path="microsoft/unispeech-sat-base-plus-sv",
         contrastive_temperature=0.1,
         max_plm_length=32000,
+        mode2_include_noisy_main=False,
         **kwargs
     ):
         """
@@ -77,15 +77,19 @@ class ScoreModel(pl.LightningModule):
         # Initialize Backbone DNN
         self.train_type = train_type # 保存给 validation_step / enhance 用
         self.backbone = backbone
+        self.mode2_include_noisy_main = bool(mode2_include_noisy_main)
         dnn_cls = BackboneRegistry.get_by_name(backbone)
-        self.dnn = dnn_cls(**kwargs)
+        dnn_kwargs = dict(kwargs)
+        dnn_kwargs["mode2_include_noisy_main"] = self.mode2_include_noisy_main
+        self.dnn = dnn_cls(**dnn_kwargs)
         # Initialize SDE
         sde_cls = SDERegistry.get_by_name(sde)
         self.sde = sde_cls(**kwargs)
         # Store hyperparams and save them
         self.lr = lr
         self.ema_decay = ema_decay
-        self.ema = ExponentialMovingAverage(self.parameters(), decay=self.ema_decay)
+        self.ema = None
+        self._loaded_ema_state = None
         self._error_loading_ema = False
         self.t_eps = t_eps
         self.loss_type = loss_type
@@ -134,6 +138,52 @@ class ScoreModel(pl.LightningModule):
                 )
                 self.use_contrastive = False
                 self.plm_model = None
+    
+    
+    def _get_ema_named_parameters(self):
+        """
+        Full-model EMA, but exclude teacher/frozen helper branches if present.
+        """
+        for name, p in self.named_parameters():
+            if not p.requires_grad:
+                continue
+            # 不把 teacher 分支放进 student EMA
+            if name.startswith("teacher_") or ".teacher_" in name:
+                continue
+            yield name, p
+
+
+    def _get_ema_parameters(self):
+        for _, p in self._get_ema_named_parameters():
+            yield p
+
+
+    def _rebuild_ema(self):
+        params = list(self._get_ema_parameters())
+        self.ema = ExponentialMovingAverage(params, decay=self.ema_decay)
+        self._error_loading_ema = False
+
+
+    def _ensure_ema_is_compatible(self, force_rebuild: bool = False):
+        params = list(self._get_ema_parameters())
+
+        if self.ema is None or force_rebuild:
+            self.ema = ExponentialMovingAverage(params, decay=self.ema_decay)
+            self._error_loading_ema = False
+            return
+
+        shadow_params = getattr(self.ema, "shadow_params", None)
+        shadow_len = len(shadow_params) if shadow_params is not None else -1
+
+        if shadow_len != len(params):
+            warnings.warn(
+                f"EMA shadow param count ({shadow_len}) != current param count ({len(params)}), "
+                "rebuilding EMA from current model parameters."
+            )
+            self.ema = ExponentialMovingAverage(params, decay=self.ema_decay)
+            self._error_loading_ema = False
+   
+
     def configure_optimizers(self):
         optimizer = torch.optim.Adam(self.parameters(), lr=self.lr)
         return optimizer
@@ -141,35 +191,87 @@ class ScoreModel(pl.LightningModule):
     def optimizer_step(self, *args, **kwargs):
         # Method overridden so that the EMA params are updated after each optimizer step
         super().optimizer_step(*args, **kwargs)
-        self.ema.update(self.dnn.parameters())
+        self._ensure_ema_is_compatible(force_rebuild=False)
+        self.ema.update(self._get_ema_parameters())
 
     # on_load_checkpoint / on_save_checkpoint needed for EMA storing/loading
     def on_load_checkpoint(self, checkpoint):
-        ema = checkpoint.get('ema', None)
-        if ema is not None:
-            self.ema.load_state_dict(checkpoint['ema'])
-        else:
+        ema_state = checkpoint.get('ema', None)
+        if ema_state is None:
+            self._loaded_ema_state = None
             self._error_loading_ema = True
             warnings.warn("EMA state_dict not found in checkpoint!")
+        else:
+            # 先缓存，等模型完整构建后再尝试加载
+            self._loaded_ema_state = ema_state
+            self._error_loading_ema = False
+
+    def on_fit_start(self):
+        super().on_fit_start()
+
+        # 先按“当前完整模型参数”确保 EMA 结构正确
+        self._ensure_ema_is_compatible(force_rebuild=False)
+
+        # 再尝试加载旧 checkpoint 里的 EMA
+        if self._loaded_ema_state is not None:
+            try:
+                self.ema.load_state_dict(self._loaded_ema_state)
+
+                current_len = len(list(self._get_ema_parameters()))
+                shadow_len = len(self.ema.shadow_params)
+
+                if shadow_len != current_len:
+                    raise ValueError(
+                        f"EMA shadow param count mismatch after load: "
+                        f"{shadow_len} vs current {current_len}"
+                    )
+
+                print(f"[EMA] loaded successfully, shadow params = {shadow_len}")
+
+            except Exception as e:
+                warnings.warn(
+                    f"EMA state incompatible with current model, reinitializing fresh EMA. "
+                    f"Reason: {e}"
+                )
+                self._rebuild_ema()
+
+            finally:
+                self._loaded_ema_state = None
+        else:
+            # 没有旧 EMA，就保证当前 fresh EMA 正常
+            self._ensure_ema_is_compatible(force_rebuild=False)
+
+        print(f"[EMA] current tracked params = {len(list(self._get_ema_parameters()))}")
+        if self.ema is not None:
+            print(f"[EMA] current shadow params  = {len(self.ema.shadow_params)}")
 
     def on_save_checkpoint(self, checkpoint):
-        checkpoint['ema'] = self.ema.state_dict()
+        if self.ema is None:
+            checkpoint["ema"] = None
+        else:
+            checkpoint["ema"] = self.ema.state_dict()
 
     def train(self, mode, no_ema=False):
-        res = super().train(mode)  # call the standard `train` method with the given mode
-        if not self._error_loading_ema:
-            if mode == False and not no_ema:
-                # eval
-                self.ema.store(self.dnn.parameters())        # store current params in EMA
-                self.ema.copy_to(self.dnn.parameters())      # copy EMA parameters over current params for evaluation
-            else:
-                # train
-                if self.ema.collected_params is not None:
-                    self.ema.restore(self.dnn.parameters())  # restore the EMA weights (if stored)
-        return res
+        if mode and self.ema is not None:
+            try:
+                params = list(self._get_ema_parameters())
+                self.ema.restore(params)
+            except Exception:
+                pass
+
+        return super().train(mode)
 
     def eval(self, no_ema=False):
-        return self.train(False, no_ema=no_ema)
+        super().eval()
+
+        if not no_ema:
+            self._ensure_ema_is_compatible(force_rebuild=False)
+            if self.ema is not None:
+                params = list(self._get_ema_parameters())
+                self.ema.store(params)
+                self.ema.copy_to(params)
+
+        return self
     
     def _sigma_for_precond(self, t):
         # EDM+SBVE/ouve 需要用标准化后的σ_eff
@@ -639,6 +741,9 @@ class ScoreModel(pl.LightningModule):
         """
      
         y_cond = y if y_cond is None else y_cond
+        y_extra = None
+        if self.train_type == "mode2" and self.mode2_include_noisy_main and y_cond is not None:
+            y_extra = y_cond
         # In [3], we use new code with backbone='ncsnpp_v2':
         if self.backbone == "ncsnpp_v2":
             # —— 在前向里转换到 EDM 坐标 —— 得到过程的权重，通过这个权重将x_t从原始坐标对应到edm坐标中
@@ -648,7 +753,8 @@ class ScoreModel(pl.LightningModule):
             else:
                 x_in = x_t
             try:
-                F = self.dnn(self._c_in(t) * x_in,  self._c_in(t) * y, t, y_cond=self._c_in(t) * y_cond)
+                y_extra_in = None if y_extra is None else self._c_in(t) * y_extra
+                F = self.dnn(self._c_in(t) * x_in,  self._c_in(t) * y, t, y_cond=self._c_in(t) * y_cond, y_extra=y_extra_in)
             except TypeError:
                 F = self.dnn(self._c_in(t) * x_in,  self._c_in(t) * y, t)
 

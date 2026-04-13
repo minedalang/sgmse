@@ -378,6 +378,8 @@ class NCSNpp_v2(nn.Module):
             help="Channels of aggregated backbone context fed into the selector.")#聚合后的主干上下文通道数
         parser.add_argument("--selector_ctx_num_feats", type=int, default=3,
             help="How many low-resolution encoder features to aggregate, plus the current bottleneck feature.")#selector聚合哪些层的主干特征  =3时 取encoder末端最近保存的 3 个 feature map
+        parser.add_argument("--mode2_include_noisy_main", action='store_true', default=False,
+            help="When enabled, concatenate an extra noisy spectrogram into the main network input (x, y_main, y_noisy) for StoRM-style 'both' conditioning in mode2.")
         return parser
     def __init__(self,
         nf = 128,
@@ -393,6 +395,7 @@ class NCSNpp_v2(nn.Module):
         selector_attn_levels="6,5",
         selector_ctx_ch=8,
         selector_ctx_num_feats=3,
+        mode2_include_noisy_main=False,
         nonlinearity = 'swish',
         resamp_with_conv = True,
         fir = True,
@@ -424,6 +427,7 @@ class NCSNpp_v2(nn.Module):
         self.selector_attn_levels = _parse_level_spec(selector_attn_levels, default="6,5")
         self.selector_ctx_ch = int(selector_ctx_ch)
         self.selector_ctx_num_feats = max(1, int(selector_ctx_num_feats))
+        self.mode2_include_noisy_main = bool(mode2_include_noisy_main)
         self.num_resolutions = num_resolutions = len(ch_mult)
         self.all_resolutions = all_resolutions = [image_size // (2 ** i) for i in range(num_resolutions)]
         self.skip_rescale = skip_rescale = skip_rescale
@@ -438,7 +442,7 @@ class NCSNpp_v2(nn.Module):
         combine_method = progressive_combine.lower()
         combiner = functools.partial(Combine, method=combine_method)
 
-        in_channels = 4   # x.real, x.imag, y.real, y.imag
+        in_channels = 6 if self.mode2_include_noisy_main else 4   # + optional noisy.real/noisy.imag
         out_channels = 2  # score.real, score.imag
         self.output_layer = nn.Conv2d(in_channels, out_channels, 1)
 
@@ -632,15 +636,22 @@ class NCSNpp_v2(nn.Module):
         self.all_modules = nn.ModuleList(modules)
         
 
-    def forward(self, x, y, t, y_cond=None):
+    def forward(self, x, y, t, y_cond=None, y_extra=None):
         y_cond = y if y_cond is None else y_cond
+        if self.mode2_include_noisy_main:
+            y_extra = y_cond if y_extra is None else y_extra
+            if y_extra is None:
+                raise ValueError("mode2_include_noisy_main=True requires y_extra or y_cond")
 
         # timestep/noise_level embedding; only for continuous training
         modules = self.all_modules
         m_idx = 0
 
-        # Convert real and imaginary parts of (x,y) into four channel dimensions
-        x = torch.cat((x.real, x.imag, y.real, y.imag), dim=1)
+        # Convert real and imaginary parts into channel dimensions
+        input_parts = [x.real, x.imag, y.real, y.imag]
+        if self.mode2_include_noisy_main:
+            input_parts.extend([y_extra.real, y_extra.imag])
+        x = torch.cat(input_parts, dim=1)
 
         if self.embedding_type == 'fourier':
             # Gaussian Fourier features embeddings.
