@@ -73,6 +73,9 @@ if __name__ == '__main__':
         parser_.add_argument("--wandb_id", type=str, default=None)
         parser_.add_argument("--log_dir", type=str, default="joint_train_logs")
         parser_.add_argument("--save_ckpt_interval", type=int, default=50000)
+        parser_.add_argument("--save_init_snapshot", action="store_true",
+                             help="save a full checkpoint immediately after --init_ckpt loading")
+        parser_.add_argument("--init_snapshot_name", type=str, default="init_loaded_snapshot.ckpt")
         parser_.add_argument(
             "--dataset",
             type=str,
@@ -164,6 +167,27 @@ if __name__ == '__main__':
         missing, unexpected = model.load_state_dict(state, strict=False)
         print(f"[Init ckpt] loaded state_dict strict=False: missing={len(missing)} unexpected={len(unexpected)}")
 
+        def _show_keys(title, keys, prefix=None, limit=20):
+            sel = [k for k in keys if prefix is None or k.startswith(prefix)]
+            if not sel:
+                print(f"[Init ckpt] {title}: none")
+                return sel
+            print(f"[Init ckpt] {title}: showing {min(len(sel), limit)} / {len(sel)}")
+            for k in sel[:limit]:
+                print(f"    {k}")
+            return sel
+
+        missing_frontend = _show_keys("missing frontend keys", missing, prefix="frontend.")
+        unexpected_frontend = _show_keys("unexpected frontend keys", unexpected, prefix="frontend.")
+        _show_keys("missing dnn keys", missing, prefix="dnn.")
+        _show_keys("unexpected dnn keys", unexpected, prefix="dnn.")
+
+        if missing_frontend or unexpected_frontend:
+            raise SystemExit(
+                "[Init ckpt] frontend weights did not load cleanly. "
+                f"missing_frontend={len(missing_frontend)} unexpected_frontend={len(unexpected_frontend)}"
+            )
+
         # 如果 ckpt 里有 EMA（你的 ScoreModel 会保存），顺手也恢复掉
         if isinstance(ckpt, dict) and "ema" in ckpt:
             try:
@@ -171,6 +195,23 @@ if __name__ == '__main__':
                 print("[Init ckpt] restored EMA state.")
             except Exception as e:
                 print(f"[Init ckpt] failed to restore EMA state: {e}")
+
+        if args.save_init_snapshot:
+            import os
+            snapshot_dir = run_dir if logger is not None else join(args.log_dir, f"manual-{args.wandb_name or 'run'}")
+            os.makedirs(snapshot_dir, exist_ok=True)
+            snapshot_path = join(snapshot_dir, args.init_snapshot_name)
+            snapshot = {
+                "state_dict": model.state_dict(),
+                "hyper_parameters": dict(model.hparams),
+                "pytorch-lightning_version": pl.__version__,
+            }
+            try:
+                model.on_save_checkpoint(snapshot)
+            except Exception as e:
+                print(f"[Init ckpt] warning: on_save_checkpoint failed while building init snapshot: {e}")
+            torch.save(snapshot, snapshot_path)
+            print(f"[Init ckpt] saved immediate snapshot to: {snapshot_path}")
 
     # ---- resume full training (weights + optimizer/scheduler/loop). ONLY use with a compatible joint checkpoint ----
     if args.ckpt is not None:
