@@ -253,7 +253,7 @@ class JointFrontendSgmseModel(ScoreModel):
             self.frontend.eval()
 
         # Rebuild EMA after frontend creation so EMA tracks the full trainable model
-        self.rebuild_ema()
+        self._ensure_ema_is_compatible(force_rebuild=True)
 
     # ------------------------- CTM distillation helpers -------------------------
     def _init_teacher_from_ckpt(self, ckpt_path: str) -> None:
@@ -411,13 +411,6 @@ class JointFrontendSgmseModel(ScoreModel):
         x0_hat = self._forward_with_dnn(self.dnn, x_prev, y, t_cur, y_cond=y_cond)
         return self._sbve_ode_transition(x_prev, y, t_prev, t_cur, x0_hat, xD=None)
 
-    def _get_ema_parameters(self):
-        params = []
-        for name, p in self.named_parameters():
-            if name.startswith("teacher_dnn."):
-                continue
-            params.append(p)
-        return params
 
     def configure_optimizers(self):
         params = [p for p in self.parameters() if p.requires_grad]

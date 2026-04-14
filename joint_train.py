@@ -188,13 +188,8 @@ if __name__ == '__main__':
                 f"missing_frontend={len(missing_frontend)} unexpected_frontend={len(unexpected_frontend)}"
             )
 
-        # 如果 ckpt 里有 EMA（你的 ScoreModel 会保存），顺手也恢复掉
-        if isinstance(ckpt, dict) and "ema" in ckpt:
-            try:
-                model.on_load_checkpoint(ckpt)
-                print("[Init ckpt] restored EMA state.")
-            except Exception as e:
-                print(f"[Init ckpt] failed to restore EMA state: {e}")
+        model._ensure_ema_is_compatible(force_rebuild=True)
+        print("[Init ckpt] initialized fresh EMA from current model parameters.")
 
         if args.save_init_snapshot:
             import os

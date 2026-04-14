@@ -264,12 +264,19 @@ class ScoreModel(pl.LightningModule):
     def eval(self, no_ema=False):
         super().eval()
 
-        if not no_ema:
+        # 如果请求 no_ema，先恢复原始训练参数
+        if no_ema and self.ema is not None:
+            try:
+                self.ema.restore(list(self._get_ema_parameters()))
+            except Exception:
+                pass
+            return self
+
+        if self.ema is not None:
             self._ensure_ema_is_compatible(force_rebuild=False)
-            if self.ema is not None:
-                params = list(self._get_ema_parameters())
-                self.ema.store(params)
-                self.ema.copy_to(params)
+            params = list(self._get_ema_parameters())
+            self.ema.store(params)
+            self.ema.copy_to(params)
 
         return self
     
