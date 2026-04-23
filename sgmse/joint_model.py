@@ -750,9 +750,12 @@ class JointFrontendSgmseModel(ScoreModel):
             step_out  = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx, return_details=True)
         else:
             step_out  = self._step((X, Y_noisy, Y_pre), batch_idx, return_details=True)
-        loss_sgmse = step_out["loss"]
+        base_loss = step_out["base_loss"]
+        loss_total_backend = step_out["loss"] # 包含旧 contrastive
         x_hat_spec = step_out["x_hat_spec"]
-        loss = loss_sgmse
+        loss = loss_total_backend
+        # 旧 contrastive 单独拆出来
+        loss_old_contrastive = loss_total_backend - base_loss
 
         # frontend 自己的辅助监督：时域 or 谱域
         if self.frontend_trainable and self.frontend_aux_loss != "none":
@@ -765,8 +768,11 @@ class JointFrontendSgmseModel(ScoreModel):
             a = float(self.weighting_denoiser_to_score)
             if not (0.0 <= a <= 1.0):
                 raise ValueError(f"frontend_aux_weight should be in [0,1], got {a}")
-
-            loss = a * loss_denoiser + (1.0 - a) * loss_sgmse
+            
+            # 这里只对 frontend_aux 和 base_loss 做加权
+            loss = a * loss_denoiser + (1.0 - a) * base_loss
+             # 再把旧 contrastive 加回来
+            loss = loss + loss_old_contrastive
 
             self.log("train_loss_denoiser", loss_denoiser, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         else:
@@ -779,13 +785,13 @@ class JointFrontendSgmseModel(ScoreModel):
             loss_content_final = self._content_regression_loss_from_wavs(x_hat_wav, x_wav)
             loss = loss + self.final_content_weight * loss_content_final
 
-            # ===== selector 的单独内容级辅助 loss =====
-            loss_content_selector = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
-            selector_hint_spec = None
-            if hasattr(self.dnn, "_last_selector_y_hint") and self.dnn._last_selector_y_hint is not None:
-                # selector 的 y_hint 处在 c_in(t) 缩放坐标系里，拉回训练谱域
-                t_for_this_step = step_out["t"]
-                selector_hint_spec = self.dnn._last_selector_y_hint / (self._c_in(t_for_this_step)[:, None, None, None] + 1e-12)
+        # ===== selector 的单独内容级辅助 loss =====
+        loss_content_selector = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+        selector_hint_spec = None
+        if hasattr(self.dnn, "_last_selector_y_hint") and self.dnn._last_selector_y_hint is not None:
+            # selector 的 y_hint 处在 c_in(t) 缩放坐标系里，拉回训练谱域
+            t_for_this_step = step_out["t"]
+            selector_hint_spec = self.dnn._last_selector_y_hint / (self._c_in(t_for_this_step)[:, None, None, None] + 1e-12)
 
         if self.selector_content_weight > 0.0 and selector_hint_spec is not None and self.content_model is not None:
             selector_hint_wav = self._spec_to_wave_batch(selector_hint_spec)   # [B, T]
