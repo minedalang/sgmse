@@ -244,6 +244,7 @@ class TFGridEvidenceSelector(nn.Module):
 
     def forward(self, y_main: torch.Tensor, y_aux: torch.Tensor, ctx: torch.Tensor = None,
                 temb: torch.Tensor = None, return_mask: bool = False):
+        # y_aux和noisy的差异
         diff = y_aux - y_main
         feat = torch.cat([
             y_main.real, y_main.imag,
@@ -260,6 +261,7 @@ class TFGridEvidenceSelector(nn.Module):
         feat = torch.cat([feat, ctx], dim=1)
 
         h = self.stem(feat)
+        # 时间步注入
         if temb is not None and self.temb_proj is not None:
             h = h + self.temb_proj(F.silu(temb))[:, :, None, None]
         h = self.stem_act(h)
@@ -424,6 +426,10 @@ class NCSNpp_v2(nn.Module):
         self.film_levels = self._parse_film_levels(film_levels)
         self.selector_type = str(selector_type).lower()
         self.use_selector = self.selector_type != "none"
+        # 缓存selector结构的输出
+        self._last_selector_y_hint = None
+        self._last_selector_mask = None
+        self._last_selector_conf = None
         self.selector_attn_levels = _parse_level_spec(selector_attn_levels, default="6,5")
         self.selector_ctx_ch = int(selector_ctx_ch)
         self.selector_ctx_num_feats = max(1, int(selector_ctx_num_feats))
@@ -725,10 +731,16 @@ class NCSNpp_v2(nn.Module):
         h = modules[m_idx](h)  # Attention block
         m_idx += 1
 
+        self._last_selector_y_hint = None
+        self._last_selector_mask = None
+        self._last_selector_conf = None
         if self.use_selector:
             context_inputs = list(hs[-self.selector_ctx_num_feats:]) + [h]
             ctx = self.selector_context_agg(context_inputs, target_hw=h.shape[-2:])
-            y_hint = self.evidence_selector(y, y_cond, ctx=ctx, temb=temb)
+            y_hint, sel_mask, sel_conf = self.evidence_selector(y, y_cond, ctx=ctx, temb=temb, return_mask=True)
+            self._last_selector_y_hint = y_hint
+            self._last_selector_mask = sel_mask
+            self._last_selector_conf = sel_conf
         else:
             y_hint = y_cond
 

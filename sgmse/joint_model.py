@@ -15,7 +15,9 @@
 """
 
 from __future__ import annotations
-
+import warnings
+import torchaudio.functional as AF
+from transformers import WavLMModel
 import argparse
 import importlib
 import sys
@@ -137,17 +139,31 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument(
             "--frontend_aux_loss",
             type=str,
-            choices=("none", "time_l1","time_mse"),
+            choices=("none", "time_l1","time_mse", "spec_mse", "spec_mae", "spec_cplx_mag"),
             default="none",
             help="Denoiser loss type used in joint training",
         )
-        # parser.add_argument("--frontend_aux_weight", type=float, default=0.1)
         parser.add_argument(
             "--weighting_denoiser_to_score",
             type=float,
             default=0.5,
             help="Total loss = a * denoiser_loss + (1-a) * score_loss",
         )
+
+        # 配置用于内容对齐loss的预训练模型
+        parser.add_argument("--content_model_name", type=str, default="microsoft/wavlm-base-plus",
+                            help="Frozen SSL model for content loss.")
+        parser.add_argument("--content_layer", type=int, default=9,
+                            help="Which hidden layer of WavLM to use for content loss. Middle layers usually work best.")
+        parser.add_argument("--content_loss_type", type=str, default="smooth_l1",
+                            choices=("l1", "mse", "smooth_l1", "cosine"),
+                            help="Regression loss on SSL hidden states.")
+        parser.add_argument("--final_content_weight", type=float, default=0.0,
+                            help="Weight of content loss on final enhanced result.")
+        parser.add_argument("--selector_content_weight", type=float, default=0.0,
+                            help="Weight of content loss on selector y_hint.")
+        
+        
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -183,8 +199,12 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_state_dict_key: Optional[str] = None,
         frontend_trainable: bool = False,
         frontend_aux_loss: str = "none",
-        frontend_aux_weight: float = 0.1,
         weighting_denoiser_to_score: float = 0.5,
+        content_model_name: str = "microsoft/wavlm-base-plus",
+        content_layer: int = 9,
+        content_loss_type: str = "smooth_l1",
+        final_content_weight: float = 0.0,
+        selector_content_weight: float = 0.0,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -211,8 +231,29 @@ class JointFrontendSgmseModel(ScoreModel):
 
         self.frontend_name = str(frontend)
         self.frontend_aux_loss = str(frontend_aux_loss)
-        self.frontend_aux_weight = float(frontend_aux_weight)
         self.weighting_denoiser_to_score = float(weighting_denoiser_to_score)
+        # 内容对齐loss参数
+        self.content_model_name = str(content_model_name)
+        self.content_layer = int(content_layer)
+        self.content_loss_type = str(content_loss_type)
+        self.final_content_weight = float(final_content_weight)
+        self.selector_content_weight = float(selector_content_weight)
+        self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
+        self.content_model = None
+        if self.use_content_loss:
+            try:
+                self.content_model = WavLMModel.from_pretrained(self.content_model_name)
+                self.content_model.eval()
+                for p in self.content_model.parameters():
+                    p.requires_grad = False
+            except Exception as e:
+                warnings.warn(
+                    f"Failed to load content model '{self.content_model_name}': {e}. "
+                    "Content loss will be disabled."
+                )
+                self.content_model = None
+                self.use_content_loss = False
+
         # CTM distillation cfg
         self.ctm_distill = bool(ctm_distill)
         self.ctm_teacher_ckpt = ctm_teacher_ckpt
@@ -469,6 +510,119 @@ class JointFrontendSgmseModel(ScoreModel):
               f"min={x_det.min().item():.6f}, max={x_det.max().item():.6f}, "
               f"nan={torch.isnan(x_det).any().item()}, inf={torch.isinf(x_det).any().item()}")
 
+    def _compute_frontend_aux_loss(
+        self,
+        x_wav: torch.Tensor,
+        y_pre: torch.Tensor,
+        X: torch.Tensor,
+        Y_pre: torch.Tensor,
+    ) -> torch.Tensor:
+        loss_type = str(self.frontend_aux_loss)
+
+        if loss_type == "time_l1":
+            return torch.mean(torch.abs(y_pre - x_wav))
+
+        elif loss_type == "time_mse":
+            return F.mse_loss(y_pre, x_wav)
+
+        elif loss_type == "spec_mae":
+            # 直接在训练域复谱上做 L1（复数用 abs 表示复距离）
+            return torch.mean(torch.abs(Y_pre - X))
+
+        elif loss_type == "spec_mse":
+            # 直接在训练域复谱上做 L2
+            return torch.mean(torch.abs(Y_pre - X) ** 2)
+
+        elif loss_type == "spec_cplx_mag":
+            # 复谱差 + 幅度差，通常比纯 time_mse 更像 storm 那种约束思路
+            loss_cplx = torch.mean(torch.abs(Y_pre - X) ** 2)
+            loss_mag = torch.mean((torch.abs(Y_pre) - torch.abs(X)) ** 2)
+            return loss_cplx + 0.5 * loss_mag
+
+        elif loss_type == "none":
+            return torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+
+        else:
+            raise ValueError(f"Unsupported frontend_aux_loss: {loss_type}")
+    def _prepare_wave_for_content(self, wav: torch.Tensor) -> torch.Tensor:
+        # [B,1,T] / [B,T] / [T] -> [B,T]
+        if wav.dim() == 3 and wav.size(1) == 1:
+            wav = wav[:, 0, :]
+        elif wav.dim() == 1:
+            wav = wav.unsqueeze(0)
+        elif wav.dim() != 2:
+            raise RuntimeError(f"_prepare_wave_for_content expects [T], [B,T] or [B,1,T], got {tuple(wav.shape)}")
+
+        wav = wav.float()
+        wav = wav - wav.mean(dim=-1, keepdim=True)
+        wav = wav / wav.abs().amax(dim=-1, keepdim=True).clamp_min(1e-6)
+
+        if int(self.sr) != 16000:
+            wav = AF.resample(wav, orig_freq=int(self.sr), new_freq=16000)
+
+        return wav
+
+    def _extract_content_hidden(self, wav: torch.Tensor, detach_target: bool = False) -> torch.Tensor:
+        if self.content_model is None:
+            raise RuntimeError("content_model is None but _extract_content_hidden was called.")
+
+        wav = self._prepare_wave_for_content(wav)
+
+        if detach_target:
+            with torch.no_grad():
+                out = self.content_model(
+                    input_values=wav,
+                    output_hidden_states=True,
+                    return_dict=True,
+                )
+        else:
+            out = self.content_model(
+                input_values=wav,
+                output_hidden_states=True,
+                return_dict=True,
+            )
+
+        hs = out.hidden_states
+        if hs is None:
+            feat = out.last_hidden_state
+        else:
+            idx = self.content_layer
+            if idx < 0:
+                idx = len(hs) + idx
+            idx = max(0, min(idx, len(hs) - 1))
+            feat = hs[idx]
+
+        return feat
+
+    def _content_regression_loss_from_wavs(self, pred_wav: torch.Tensor, target_wav: torch.Tensor) -> torch.Tensor:
+        if (not self.use_content_loss) or (self.content_model is None):
+            return torch.zeros((), device=pred_wav.device, dtype=pred_wav.dtype)
+
+        feat_pred = self._extract_content_hidden(pred_wav, detach_target=False)
+        feat_tgt = self._extract_content_hidden(target_wav, detach_target=True)
+
+        if feat_pred.shape[1] != feat_tgt.shape[1]:
+            feat_pred = F.interpolate(
+                feat_pred.transpose(1, 2),
+                size=feat_tgt.shape[1],
+                mode="linear",
+                align_corners=False,
+            ).transpose(1, 2)
+
+        feat_pred = F.layer_norm(feat_pred, (feat_pred.shape[-1],))
+        feat_tgt = F.layer_norm(feat_tgt, (feat_tgt.shape[-1],))
+
+        if self.content_loss_type == "l1":
+            return F.l1_loss(feat_pred, feat_tgt)
+        elif self.content_loss_type == "mse":
+            return F.mse_loss(feat_pred, feat_tgt)
+        elif self.content_loss_type == "smooth_l1":
+            return F.smooth_l1_loss(feat_pred, feat_tgt)
+        elif self.content_loss_type == "cosine":
+            return 1.0 - F.cosine_similarity(feat_pred, feat_tgt, dim=-1).mean()
+        else:
+            raise ValueError(f"Unsupported content_loss_type: {self.content_loss_type}")
+    
     def training_step(self, batch, batch_idx):
         # batch: (x_wav, y_wav, spk_id)
         if len(batch) == 2:
@@ -591,28 +745,23 @@ class JointFrontendSgmseModel(ScoreModel):
                 self.log("td_l1", loss_td, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
             return loss
 
-        # ======== [DEBUG] 打印 STFT 频谱统计 ========
-        # self._print_tensor_stats("X(clean_spec)", X, batch_idx)
-        # self._print_tensor_stats("Y_noisy(noisy_spec)", Y_noisy, batch_idx)
-        # self._print_tensor_stats("Y_pre(semamba_spec)", Y_pre, batch_idx)
-
         # 组 batch 给 ScoreModel._step
         if spk_ids is not None:
-            loss_sgmse = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx)
+            step_out  = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx, return_details=True)
         else:
-            loss_sgmse = self._step((X, Y_noisy, Y_pre), batch_idx)
-
+            step_out  = self._step((X, Y_noisy, Y_pre), batch_idx, return_details=True)
+        loss_sgmse = step_out["loss"]
+        x_hat_spec = step_out["x_hat_spec"]
         loss = loss_sgmse
 
-
-        # 可选：给 SEMamba 一个简单的时间域监督，稳定 joint training
+        # frontend 自己的辅助监督：时域 or 谱域
         if self.frontend_trainable and self.frontend_aux_loss != "none":
-            if self.frontend_aux_loss == "time_l1":
-                loss_denoiser = torch.mean(torch.abs(y_pre - x_wav))
-            elif self.frontend_aux_loss == "time_mse":
-                loss_denoiser = F.mse_loss(y_pre, x_wav)
-            else:
-                raise ValueError(f"Unsupported frontend_aux_loss: {self.frontend_aux_loss}")
+            loss_denoiser = self._compute_frontend_aux_loss(
+                x_wav=x_wav,
+                y_pre=y_pre,
+                X=X,
+                Y_pre=Y_pre,
+            )
             a = float(self.weighting_denoiser_to_score)
             if not (0.0 <= a <= 1.0):
                 raise ValueError(f"frontend_aux_weight should be in [0,1], got {a}")
@@ -620,23 +769,38 @@ class JointFrontendSgmseModel(ScoreModel):
             loss = a * loss_denoiser + (1.0 - a) * loss_sgmse
 
             self.log("train_loss_denoiser", loss_denoiser, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-            self.log("train_loss_sgmse", loss_sgmse, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         else:
-            self.log("train_loss_sgmse", loss_sgmse, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            loss_denoiser = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
 
-        # ======== [DEBUG] 打印梯度范数 ========
-        # if batch_idx % 100 == 0:
-        #     total_grad_norm = 0.0
-        #     for n, p in self.named_parameters():
-        #         if p.grad is not None:
-        #             grad_norm = p.grad.norm().item()
-        #             total_grad_norm += grad_norm ** 2
-        #     total_grad_norm = total_grad_norm ** 0.5
-        #     print(f"[DEBUG:{batch_idx}] total_grad_norm={total_grad_norm:.6f}")
+        # ===== final enhanced 的内容级 loss =====
+        loss_content_final = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+        if self.final_content_weight > 0.0 and x_hat_spec is not None and self.content_model is not None:
+            x_hat_wav = self._spec_to_wave_batch(x_hat_spec)   # [B, T]
+            loss_content_final = self._content_regression_loss_from_wavs(x_hat_wav, x_wav)
+            loss = loss + self.final_content_weight * loss_content_final
 
-        self.log("train_loss", loss, on_step=True, on_epoch=True, sync_dist=True, prog_bar=True)
+            # ===== selector 的单独内容级辅助 loss =====
+            loss_content_selector = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+            selector_hint_spec = None
+            if hasattr(self.dnn, "_last_selector_y_hint") and self.dnn._last_selector_y_hint is not None:
+                # selector 的 y_hint 处在 c_in(t) 缩放坐标系里，拉回训练谱域
+                t_for_this_step = step_out["t"]
+                selector_hint_spec = self.dnn._last_selector_y_hint / (self._c_in(t_for_this_step)[:, None, None, None] + 1e-12)
+
+        if self.selector_content_weight > 0.0 and selector_hint_spec is not None and self.content_model is not None:
+            selector_hint_wav = self._spec_to_wave_batch(selector_hint_spec)   # [B, T]
+            loss_content_selector = self._content_regression_loss_from_wavs(selector_hint_wav, x_wav)
+            loss = loss + self.selector_content_weight * loss_content_selector
+
         self.log("train_loss_sgmse", loss_sgmse, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        if self.final_content_weight > 0.0:
+            self.log("train_loss_content_final", loss_content_final, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        if self.selector_content_weight > 0.0:
+            self.log("train_loss_content_selector", loss_content_selector, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        
+        self.log("train_loss", loss, on_step=True, on_epoch=True, sync_dist=True, prog_bar=True)
         return loss
+    
     def _get_valid_file_lists(self, num_eval: int):
         """兼容 base_dir(WavePairs) 和 wav.scp(WavePairsScp) 两种 valid_set."""
         vs = self.data_module.valid_set

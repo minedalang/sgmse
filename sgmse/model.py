@@ -39,6 +39,11 @@ class ScoreModel(pl.LightningModule):
         parser.add_argument("--l1_weight", type=float, default=0.001, help="The balance between the time-frequency and time-domain losses.")
         parser.add_argument("--pesq_weight", type=float, default=0.0, help="The balance between the time-frequency and time-domain losses.")
         parser.add_argument("--sr", type=int, default=16000, help="The sample rate of the audio files.")
+        parser.add_argument(
+            "--detach",
+            action="store_true",
+            help="Detach y when constructing SDE marginal_prob, e.g. mean,std = sde.marginal_prob(x, y.detach(), t).",
+        )
         # 对比学习参数
         parser.add_argument("--contrastive_weight", type=float, default=0.0,
                             help="Weight of PLM-based contrastive loss (0.0 disables it).")
@@ -54,7 +59,7 @@ class ScoreModel(pl.LightningModule):
     def __init__(
         self, backbone, sde, train_type: str = "default",lr=1e-4, ema_decay=0.999, t_eps=0.03, num_eval_files=20, loss_type='score_matching', 
         loss_weighting='sigma^2', network_scaling=None, c_in='1', c_out='1', c_skip='0', sigma_data=0.1, 
-        l1_weight=0.001, pesq_weight=0.0, sr=16000, data_module_cls=None, 
+        l1_weight=0.001, pesq_weight=0.0, sr=16000, detach=False,data_module_cls=None, 
         contrastive_weight=0.0,
         plm_name_or_path="microsoft/unispeech-sat-base-plus-sv",
         contrastive_temperature=0.1,
@@ -103,6 +108,7 @@ class ScoreModel(pl.LightningModule):
         self.sigma_data = sigma_data
         self.num_eval_files = num_eval_files
         self.sr = sr
+        self.detach_sde_input = bool(detach)
         # Initialize PESQ loss if pesq_weight > 0.0
         if pesq_weight > 0.0:
             self.pesq_loss = PesqLoss(1.0, sample_rate=sr).eval()
@@ -379,7 +385,7 @@ class ScoreModel(pl.LightningModule):
         return loss
     
     # 训练步（采样，前向传播，计算loss）
-    def _step(self, batch, batch_idx):
+    def _step(self, batch, batch_idx, return_details: bool = False):
         """
         支持：
         - (x, y)
@@ -412,23 +418,27 @@ class ScoreModel(pl.LightningModule):
         if self.train_type == "mode2" and y_cond is not None:
             # 让 主输入=enhanced, 条件=noisy
             y, y_cond = y_cond, y
-
+        
         if self.train_type in ("mode2", "mode3"):
             assert y_cond is not None, "mode2/mode3 requires y_cond, but got None"
 
         # 采样一个x_t
         t = torch.rand(x.shape[0], device=x.device) * (self.sde.T - self.t_eps) + self.t_eps
-        mean, std = self.sde.marginal_prob(x, y.detach(), t)  #y=y_pre的情况需要加detach。在传播路径如y -> mean -> x_t -> net -> loss下，当y=y_pre时，y会收到不合适的梯度，semamba的训练目标发生偏移
+        y_for_sde = y.detach() if self.detach_sde_input else y
+        mean, std = self.sde.marginal_prob(x, y_for_sde, t)  #y=y_pre的情况需要加detach。在传播路径如y -> mean -> x_t -> net -> loss下，当y=y_pre时，y会收到不合适的梯度，semamba的训练目标发生偏移
         z = torch.randn_like(x)
         x_t = mean + std[:, None, None, None] * z
 
         forward_out = self(x_t, y, t, y_cond=y_cond)
         base_loss = self._loss(forward_out, x_t, z, t, mean, x, y)
 
+        # 如果后面需要 final-content loss，这里也顺手恢复 x_hat_spec
+        x_hat_spec = None
+        if return_details or (self.use_contrastive and self.plm_model is not None and self.contrastive_weight > 0.0):
+            x_hat_spec = self._get_enhanced_spec(forward_out, x_t, t, mean, x, y)
 
         # 对比学习损失
         if self.use_contrastive and self.plm_model is not None and self.contrastive_weight > 0.0:
-            x_hat_spec = self._get_enhanced_spec(forward_out, x_t, t, mean, x, y)
             if x_hat_spec is not None:
                 contrastive_loss = self._compute_contrastive_loss(x_hat_spec, x, spk_ids, weight_clean=1.0, weight_speaker=0.5)
                 total_loss = base_loss + self.contrastive_weight * contrastive_loss
@@ -438,7 +448,20 @@ class ScoreModel(pl.LightningModule):
                 total_loss = base_loss
         else:
             total_loss = base_loss
-
+        
+        if return_details:
+            return {
+                "loss": total_loss,
+                "base_loss": base_loss,
+                "x_hat_spec": x_hat_spec,
+                "forward_out": forward_out,
+                "x_t": x_t,
+                "t": t,
+                "mean": mean,
+                "x": x,
+                "y": y,
+                "y_cond": y_cond,
+            }
         return total_loss
     
     def _compute_contrastive_loss(self, x_hat, x_clean, spk_ids=None, weight_clean=1.0, weight_speaker=0.5):
@@ -565,14 +588,12 @@ class ScoreModel(pl.LightningModule):
         return torch.cat(negative_embs, dim=0)
     def _get_enhanced_spec(self, forward_out, x_t, t, mean, x, y):
         """
-        为了支持对比学习 从模型输出恢复一个估计的干净频谱 x_hat，用于喂给 PLM 做对比学习。
+        从模型输出恢复一个估计的干净频谱 x_hat
 
         - data_prediction: forward_out 本身就是 x_hat
         - denoiser: 根据是否使用edm分情况处理
         - score_matching: 使用 Tweedie 公式 x_t + sigma^2 * score 做近似
         """
-        if not self.use_contrastive:
-            return None
 
         if self.loss_type == "data_prediction":
             # 直接预测 x0 的情况
