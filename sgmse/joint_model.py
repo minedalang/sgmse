@@ -791,14 +791,21 @@ class JointFrontendSgmseModel(ScoreModel):
         if hasattr(self.dnn, "_last_selector_y_hint") and self.dnn._last_selector_y_hint is not None:
             # selector 的 y_hint 处在 c_in(t) 缩放坐标系里，拉回训练谱域
             t_for_this_step = step_out["t"]
-            selector_hint_spec = self.dnn._last_selector_y_hint / (self._c_in(t_for_this_step)[:, None, None, None] + 1e-12)
+            
+            c_in_val = self._c_in(t_for_this_step)
+            # 兼容 c_in='1' 这类返回 python float 的情况
+            if not torch.is_tensor(c_in_val):
+                c_in_val = torch.full_like(t_for_this_step, float(c_in_val))
+            else:
+                c_in_val = c_in_val.to(t_for_this_step.device, dtype=t_for_this_step.dtype)
+            selector_hint_spec = self.dnn._last_selector_y_hint / (c_in_val[:, None, None, None] + 1e-12)
 
         if self.selector_content_weight > 0.0 and selector_hint_spec is not None and self.content_model is not None:
             selector_hint_wav = self._spec_to_wave_batch(selector_hint_spec)   # [B, T]
             loss_content_selector = self._content_regression_loss_from_wavs(selector_hint_wav, x_wav)
             loss = loss + self.selector_content_weight * loss_content_selector
 
-        self.log("train_loss_sgmse", loss_sgmse, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        self.log("train_loss_backend", loss_total_backend, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         if self.final_content_weight > 0.0:
             self.log("train_loss_content_final", loss_content_final, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         if self.selector_content_weight > 0.0:

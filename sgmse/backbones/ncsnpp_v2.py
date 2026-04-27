@@ -426,7 +426,7 @@ class NCSNpp_v2(nn.Module):
         self.film_levels = self._parse_film_levels(film_levels)
         self.selector_type = str(selector_type).lower()
         self.use_selector = self.selector_type != "none"
-        # 缓存selector结构的输出
+        # 缓存selector结构的输出, 用于计算内容级loss
         self._last_selector_y_hint = None
         self._last_selector_mask = None
         self._last_selector_conf = None

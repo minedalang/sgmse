@@ -387,6 +387,14 @@ class ScoreModel(pl.LightningModule):
     # 训练步（采样，前向传播，计算loss）
     def _step(self, batch, batch_idx, return_details: bool = False):
         """
+        主训练 step。
+
+        默认行为：
+            返回一个标量 loss
+        return_details=True 时：
+            除了总 loss，还会返回若干中间量（如 x_hat_spec / t / x / y / y_cond）。
+            这样 joint_model 就可以在不重写主训练逻辑的前提下，
+            额外叠加 final-content loss / selector-content loss。
         支持：
         - (x, y)
         - (x, y, spk_ids)
@@ -430,9 +438,10 @@ class ScoreModel(pl.LightningModule):
         x_t = mean + std[:, None, None, None] * z
 
         forward_out = self(x_t, y, t, y_cond=y_cond)
+        # 主恢复损失
         base_loss = self._loss(forward_out, x_t, z, t, mean, x, y)
 
-        # 如果后面需要 final-content loss，这里也顺手恢复 x_hat_spec
+        # 如果需要额外 loss，或者contrastive loss，就恢复增强频谱
         x_hat_spec = None
         if return_details or (self.use_contrastive and self.plm_model is not None and self.contrastive_weight > 0.0):
             x_hat_spec = self._get_enhanced_spec(forward_out, x_t, t, mean, x, y)
@@ -588,8 +597,9 @@ class ScoreModel(pl.LightningModule):
         return torch.cat(negative_embs, dim=0)
     def _get_enhanced_spec(self, forward_out, x_t, t, mean, x, y):
         """
-        从模型输出恢复一个估计的干净频谱 x_hat
-
+        负责从 forward_out 恢复增强频谱x_hat
+        被用于计算InfoNCE、final enhanced和selector 的 content loss
+        
         - data_prediction: forward_out 本身就是 x_hat
         - denoiser: 根据是否使用edm分情况处理
         - score_matching: 使用 Tweedie 公式 x_t + sigma^2 * score 做近似
