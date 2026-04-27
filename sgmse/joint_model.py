@@ -520,23 +520,38 @@ class JointFrontendSgmseModel(ScoreModel):
         loss_type = str(self.frontend_aux_loss)
 
         if loss_type == "time_l1":
-            return torch.mean(torch.abs(y_pre - x_wav))
-
+            loss_tmp = torch.mean(torch.abs(y_pre - x_wav))
+            return torch.mean(
+                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
+                )
         elif loss_type == "time_mse":
-            return F.mse_loss(y_pre, x_wav)
-
+            loss_tmp =  F.mse_loss(y_pre, x_wav)
+            return torch.mean(
+                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
+                )
         elif loss_type == "spec_mae":
             # 直接在训练域复谱上做 L1（复数用 abs 表示复距离）
-            return torch.mean(torch.abs(Y_pre - X))
+            loss_tmp = torch.abs(Y_pre - X)
+            return torch.mean(
+                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
+                )
 
-        elif loss_type == "spec_mse":
+        elif loss_type == "spec_mse":  #这个似乎是storm默认loss
             # 直接在训练域复谱上做 L2
-            return torch.mean(torch.abs(Y_pre - X) ** 2)
-
+            loss_tmp = torch.abs(Y_pre - X) ** 2
+            return torch.mean(
+                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
+                )
         elif loss_type == "spec_cplx_mag":
             # 复谱差 + 幅度差，通常比纯 time_mse 更像 storm 那种约束思路
-            loss_cplx = torch.mean(torch.abs(Y_pre - X) ** 2)
-            loss_mag = torch.mean((torch.abs(Y_pre) - torch.abs(X)) ** 2)
+            loss_tmp = torch.abs(Y_pre - X) ** 2
+            loss_cplx = torch.mean(
+                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
+                )
+            loss_tmp = (torch.abs(Y_pre) - torch.abs(X)) ** 2
+            loss_mag = torch.mean(
+                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
+                )
             return loss_cplx + 0.5 * loss_mag
 
         elif loss_type == "none":
@@ -544,6 +559,7 @@ class JointFrontendSgmseModel(ScoreModel):
 
         else:
             raise ValueError(f"Unsupported frontend_aux_loss: {loss_type}")
+        
     def _prepare_wave_for_content(self, wav: torch.Tensor) -> torch.Tensor:
         # [B,1,T] / [B,T] / [T] -> [B,T]
         if wav.dim() == 3 and wav.size(1) == 1:
