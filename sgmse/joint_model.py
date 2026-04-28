@@ -520,12 +520,12 @@ class JointFrontendSgmseModel(ScoreModel):
         loss_type = str(self.frontend_aux_loss)
 
         if loss_type == "time_l1":
-            loss_tmp = torch.mean(torch.abs(y_pre - x_wav))
+            loss_tmp = torch.abs(y_pre - x_wav)
             return torch.mean(
                     0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
                 )
         elif loss_type == "time_mse":
-            loss_tmp =  F.mse_loss(y_pre, x_wav)
+            loss_tmp =  (y_pre, x_wav) **2
             return torch.mean(
                     0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
                 )
@@ -799,7 +799,9 @@ class JointFrontendSgmseModel(ScoreModel):
         if self.final_content_weight > 0.0 and x_hat_spec is not None and self.content_model is not None:
             x_hat_wav = self._spec_to_wave_batch(x_hat_spec)   # [B, T]
             loss_content_final = self._content_regression_loss_from_wavs(x_hat_wav, x_wav)
-            loss = loss + self.final_content_weight * loss_content_final
+            weighted_content_final = self.final_content_weight * loss_content_final
+            loss = loss + weighted_content_final
+            self.log("train_loss_content_final_weighted", weighted_content_final, on_step=True, on_epoch=True, sync_dist=True)
 
         # ===== selector 的单独内容级辅助 loss =====
         loss_content_selector = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
@@ -819,7 +821,9 @@ class JointFrontendSgmseModel(ScoreModel):
         if self.selector_content_weight > 0.0 and selector_hint_spec is not None and self.content_model is not None:
             selector_hint_wav = self._spec_to_wave_batch(selector_hint_spec)   # [B, T]
             loss_content_selector = self._content_regression_loss_from_wavs(selector_hint_wav, x_wav)
-            loss = loss + self.selector_content_weight * loss_content_selector
+            weighted_content_selector = self.selector_content_weight * loss_content_selector
+            loss = loss + weighted_content_selector
+            self.log("train_loss_content_selector_weighted", weighted_content_selector, on_step=True, on_epoch=True, sync_dist=True)
 
         self.log("train_loss_backend", loss_total_backend, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         if self.final_content_weight > 0.0:
