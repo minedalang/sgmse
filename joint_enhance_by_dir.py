@@ -58,7 +58,7 @@ def main():
 
     # sgmse sampling params
     p.add_argument("--sampler_type", type=str, default="pc")
-    p.add_argument("--corrector", type=str, default="ald")
+    p.add_argument("--corrector", type=str, default="none")
     p.add_argument("--N", type=int, default=30, help="diffusion steps (bigger=better+slower)")
     p.add_argument("--snr", type=float, default=0.5)
     p.add_argument("--use_ema", action="store_true", help="use EMA weights for SGMSE (recommended)")

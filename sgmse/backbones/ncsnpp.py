@@ -67,6 +67,9 @@ class NCSNpp(nn.Module):
         fourier_scale = 16,
         image_size = 256,
         embedding_type = 'fourier',
+        input_channels = 4,
+        spatial_channels = 1,
+        discriminative = False,
         dropout = .0,
         centered = True,
         **unused_kwargs
@@ -82,10 +85,19 @@ class NCSNpp(nn.Module):
         resamp_with_conv = resamp_with_conv
         self.num_resolutions = num_resolutions = len(ch_mult)
         self.all_resolutions = all_resolutions = [image_size // (2 ** i) for i in range(num_resolutions)]
+        # 可以作为判别式网络使用，适配storm前端的2通道输入
+        self.FORCE_STFT_OUT = False
+        self.discriminative = bool(discriminative)
+        if self.discriminative:
+            conditional = False
+            scale_by_sigma = False
+            input_channels = 2  # y.real, y.imag
+            print("Running NCSN++ as discriminative backbone")
 
         self.conditional = conditional = conditional  # noise-conditional
         self.centered = centered
         self.scale_by_sigma = scale_by_sigma
+
 
         fir = fir
         fir_kernel = fir_kernel
@@ -101,8 +113,11 @@ class NCSNpp(nn.Module):
         combine_method = progressive_combine.lower()
         combiner = functools.partial(Combine, method=combine_method)
 
-        num_channels = 4  # x.real, x.imag, y.real, y.imag
-        self.output_layer = nn.Conv2d(num_channels, 2, 1)
+        self.input_channels = int(input_channels)
+        self.spatial_channels = int(spatial_channels)
+        num_channels = self.input_channels * self.spatial_channels
+        self.output_layer = nn.Conv2d(num_channels, 2 * self.spatial_channels, 1)
+        
 
         modules = []
         # timestep/noise_level embedding
@@ -258,9 +273,23 @@ class NCSNpp(nn.Module):
         modules = self.all_modules
         m_idx = 0
 
-        # Convert real and imaginary parts of (x,y) into four channel dimensions
-        x = torch.cat((x[:,[0],:,:].real, x[:,[0],:,:].imag,
-                x[:,[1],:,:].real, x[:,[1],:,:].imag), dim=1)
+        # 旧处理模式 Convert real and imaginary parts of (x,y) into four channel dimensions
+        # x = torch.cat((x[:,[0],:,:].real, x[:,[0],:,:].imag,
+        #         x[:,[1],:,:].real, x[:,[1],:,:].imag), dim=1)
+        #普通 SGMSE 输入 [x_t, y] 会变成 4 个 real channel；
+        #StoRM 前端输入 [Y] 会变成 2 个 real channel。
+        expected_complex_ch = (self.input_channels // 2) * self.spatial_channels
+        if x.size(1) != expected_complex_ch:
+            raise RuntimeError(
+                f"NCSNpp expected {expected_complex_ch} complex input channels, "
+                f"but got {x.size(1)}. input_channels={self.input_channels}, "
+                f"spatial_channels={self.spatial_channels}, discriminative={self.discriminative}"
+            )
+        x_chans = []
+        for c in range(expected_complex_ch):
+            x_chans.append(x[:, [c], :, :].real)
+            x_chans.append(x[:, [c], :, :].imag)
+        x = torch.cat(x_chans, dim=1)
 
         if self.embedding_type == 'fourier':
             # Gaussian Fourier features embeddings.
@@ -413,12 +442,14 @@ class NCSNpp(nn.Module):
             h = h / used_sigmas
 
         # Convert back to complex number
-        h = self.output_layer(h)
-        h = torch.permute(h, (0, 2, 3, 1)).contiguous()
-                # Convert back to complex number
-        # h = torch.view_as_complex(h)[:,None, :, :]] 
+        h = self.output_layer(h)  # [B, 2 * D, F, T]
+        B, C, Freq, Time = h.shape
+
+        h = h.reshape(B, 2, self.spatial_channels, Freq, Time)
+        h = h.permute(0, 2, 3, 4, 1).contiguous()  # [B, D, F, T, 2]
         # 适配BF16精度
-        with torch.autocast(device_type="cuda", enabled=False):
-            h = torch.view_as_complex(h.float().contiguous())[:, None, :, :]
+        device_type = "cuda" if h.is_cuda else "cpu"
+        with torch.autocast(device_type=device_type, enabled=False):
+            h = torch.view_as_complex(h.float().contiguous())  # [B, D, F, T]
 
         return h

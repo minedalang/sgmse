@@ -685,7 +685,15 @@ class JointFrontendSgmseModel(ScoreModel):
         # 频谱域：SGMSE 使用自己的 STFT + spec_fwd 得到时频谱
         X = self._sgmse_stft(x_wav)
         Y_noisy = self._sgmse_stft(y_wav)
-        Y_pre = self._sgmse_stft(y_pre)
+        
+        if self.frontend_name == "storm" and hasattr(self.frontend, "forward_spec"):
+            Y_pre = self.frontend.forward_spec(y_wav)
+            y_pre = self.frontend.spec_to_waveform(Y_pre, length=y_wav.size(-1))
+            y_pre = _match_length(y_pre, y_wav)
+        else:
+            y_pre = self._frontend_forward(y_wav)
+            y_pre = _match_length(y_pre, y_wav)
+            Y_pre = self._sgmse_stft(y_pre)
 
         # =============== CTM distillation branch ===============
         if self.ctm_distill:

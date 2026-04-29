@@ -973,7 +973,7 @@ class ScoreModel(pl.LightningModule):
         return self.data_module.istft(spec, length)
 
     def enhance(self, y, y_cond=None, sampler_type="pc", predictor="reverse_diffusion",
-        corrector="ald", N=30, corrector_steps=1, snr=0.5, timeit=False,
+        corrector="none", N=30, corrector_steps=1, snr=0.5, timeit=False,
         **kwargs
     ):
         """

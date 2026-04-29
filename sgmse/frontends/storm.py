@@ -92,10 +92,13 @@ class StormFrontend(BaseFrontend):
 
         self.register_buffer("window", _get_window(window, self.n_fft), persistent=False)
 
-        backbone_cls = BackboneRegistry.get_by_name("ncsnpp")
+        backbone_cls = BackboneRegistry.get_by_name("ncsnpp_for_storm")
         self.backbone = backbone_cls(
             scale_by_sigma=False,
             conditional=False,
+            discriminative=True,
+            input_channels=2,
+            spatial_channels=1,
             nf=int(storm_nf),
             ch_mult=tuple(int(v) for v in storm_ch_mult),
             num_res_blocks=int(storm_num_res_blocks),
@@ -154,7 +157,9 @@ class StormFrontend(BaseFrontend):
         else:
             raise NotImplementedError(f"Unsupported transform_type={self.transform_type}")
         return spec
+    
 
+    
     def _stft(self, sig: torch.Tensor) -> torch.Tensor:
         if sig.dim() == 3 and sig.size(1) == 1:
             sig = sig[:, 0, :]
@@ -182,19 +187,34 @@ class StormFrontend(BaseFrontend):
             center=True,
             length=length,
         )
+    
+    # 推理返回频谱
+    def forward_spec(self, noisy_wav: torch.Tensor) -> torch.Tensor:
+        noisy_wav = ensure_mono_waveform(noisy_wav)
+        spec = self._spec_fwd(self._stft(noisy_wav))
+        orig_frames = spec.size(-1)
+        spec = _pad_spec(spec.unsqueeze(1))
 
+        t = torch.full(
+            (spec.size(0),),
+            self.storm_time_cond,
+            device=spec.device,
+            dtype=spec.real.dtype,
+        )
+
+        pred = self.backbone(spec, t)[:, :, :, :orig_frames]
+        return pred  # 注意：这里返回的是 transformed spec，不是 waveform
+
+
+    def spec_to_waveform(self, pred: torch.Tensor, length: int) -> torch.Tensor:
+        pred_audio = self._spec_back(pred)
+        wav = self._istft(pred_audio, length=length)
+        return ensure_mono_waveform(wav)
+    #推理返回波形
     def forward_waveform(self, noisy_wav: torch.Tensor) -> torch.Tensor:
         noisy_wav = ensure_mono_waveform(noisy_wav)
         target_len = noisy_wav.size(-1)
-        spec = self._spec_fwd(self._stft(noisy_wav))
-        orig_frames = spec.size(-1)
-        spec = _pad_spec(spec.unsqueeze(1))  # [B, 1, F, Tpad]
-
-        # Reuse the original NCSN++ complex-input backbone without modifying its U-Net core.
-        x_pair = torch.cat([spec, spec], dim=1)  # [B, 2, F, Tpad] complex
-        t = torch.full((spec.size(0),), self.storm_time_cond, device=spec.device, dtype=spec.real.dtype)
-        pred = self.backbone(x_pair, t)[:, :, :, :orig_frames]
-        pred = self._spec_back(pred)
-        wav = self._istft(pred, length=target_len)
-        wav = ensure_mono_waveform(wav)
+        
+        pred = self.forward_spec(noisy_wav)
+        wav = self.spec_to_waveform(pred, length=target_len)
         return match_length(wav, noisy_wav)
