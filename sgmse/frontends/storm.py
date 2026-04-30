@@ -92,7 +92,7 @@ class StormFrontend(BaseFrontend):
 
         self.register_buffer("window", _get_window(window, self.n_fft), persistent=False)
 
-        backbone_cls = BackboneRegistry.get_by_name("ncsnpp_for_storm")
+        backbone_cls = BackboneRegistry.get_by_name("ncsnpp")
         self.backbone = backbone_cls(
             scale_by_sigma=False,
             conditional=False,
