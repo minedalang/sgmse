@@ -675,9 +675,6 @@ class JointFrontendSgmseModel(ScoreModel):
         # self._print_tensor_stats("x_wav(clean)", x_wav, batch_idx)
         # self._print_tensor_stats("y_wav(noisy)", y_wav, batch_idx)
 
-        # SEMamba 前向：noisy -> y_pre
-        y_pre = self._frontend_forward(y_wav)
-        y_pre = _match_length(y_pre, y_wav)
         # ======== [DEBUG] 打印 SEMamba 输出 ========
         # self._print_tensor_stats("y_pre(SEMamba)", y_pre, batch_idx)
 
@@ -918,8 +915,13 @@ class JointFrontendSgmseModel(ScoreModel):
                     # Joint 推理：noisy -> SEMamba -> y_pre -> SGMSE enhance
                     y_t = torch.from_numpy(y).float().unsqueeze(0).unsqueeze(0).to(self.device)  # [1,1,T]
                     norm = y_t.abs().amax(dim=-1, keepdim=True).clamp_min(1e-12)
-                    y_pre = self._frontend_forward(y_t / norm) * norm   # [1,1,T']
-                    y_pre = _match_length(y_pre, y_t)    # [1,1,T]
+                    if self.frontend_name == "storm" and hasattr(self.frontend, "forward_spec"):
+                        Y_pre_n = self.frontend.forward_spec(y_t / norm)
+                        y_pre = self.frontend.spec_to_waveform(Y_pre_n, length=y_t.size(-1)) * norm
+                        y_pre = _match_length(y_pre, y_t)
+                    else:
+                        y_pre = self._frontend_forward(y_t / norm) * norm
+                        y_pre = _match_length(y_pre, y_t)
                     if self.train_type == "mode2":
                         y_in = y_pre.squeeze(0)   # [1,T]
                         y_cond = y_t.squeeze(0)   # [1,T]
@@ -1014,12 +1016,15 @@ class JointFrontendSgmseModel(ScoreModel):
 
         # 验证阶段不要重新开 grad，先用纯 no_grad 更稳
         with torch.no_grad():
-            y_pre = self._frontend_forward(y_wav)
-            y_pre = _match_length(y_pre, y_wav)
-
             X = self._sgmse_stft(x_wav)
             Y_noisy = self._sgmse_stft(y_wav)
-            Y_pre = self._sgmse_stft(y_pre)
+
+            if self.frontend_name == "storm" and hasattr(self.frontend, "forward_spec"):
+                Y_pre = self.frontend.forward_spec(y_wav)
+            else:
+                y_pre = self._frontend_forward(y_wav)
+                y_pre = _match_length(y_pre, y_wav)
+                Y_pre = self._sgmse_stft(y_pre)
 
             if spk_ids is not None:
                 loss = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx)
