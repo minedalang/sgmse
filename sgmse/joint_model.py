@@ -521,37 +521,25 @@ class JointFrontendSgmseModel(ScoreModel):
 
         if loss_type == "time_l1":
             loss_tmp = torch.abs(y_pre - x_wav)
-            return torch.mean(
-                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
-                )
+            return 0.5 * torch.sum(loss_tmp)
         elif loss_type == "time_mse":
-            loss_tmp =  (y_pre, x_wav) **2
-            return torch.mean(
-                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
-                )
+            loss_tmp =  (y_pre - x_wav) **2
+            return 0.5 * torch.sum(loss_tmp)
         elif loss_type == "spec_mae":
             # 直接在训练域复谱上做 L1（复数用 abs 表示复距离）
             loss_tmp = torch.abs(Y_pre - X)
-            return torch.mean(
-                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
-                )
+            return 0.5 * torch.sum(loss_tmp)
 
         elif loss_type == "spec_mse":  #这个似乎是storm默认loss
             # 直接在训练域复谱上做 L2
             loss_tmp = torch.abs(Y_pre - X) ** 2
-            return torch.mean(
-                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
-                )
+            return 0.5 * torch.sum(loss_tmp)
         elif loss_type == "spec_cplx_mag":
             # 复谱差 + 幅度差，通常比纯 time_mse 更像 storm 那种约束思路
             loss_tmp = torch.abs(Y_pre - X) ** 2
-            loss_cplx = torch.mean(
-                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
-                )
+            loss_cplx = 0.5 * torch.sum(loss_tmp)
             loss_tmp = (torch.abs(Y_pre) - torch.abs(X)) ** 2
-            loss_mag = torch.mean(
-                    0.5 * torch.sum(loss_tmp.reshape(loss_tmp.shape[0], -1), dim=-1)
-                )
+            loss_mag = 0.5 * torch.sum(loss_tmp)
             return loss_cplx + 0.5 * loss_mag
 
         elif loss_type == "none":

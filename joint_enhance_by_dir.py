@@ -11,8 +11,8 @@ from sgmse.joint_model import JointSemambaSgmseModel
 from sgmse.joint_data_module import JointWaveDataModule
 
 '''
-CUDA_VISIBLE_DEVICES=2 python joint_enhance_by_dir.py --ckpt joint_train_logs/dx4g6bi0-jointtrain_storm_frontend_selectortfgrida_sbveedm/last.ckpt --in_dir test_frontend_output --out_dir test_frontend_output/dx4g6bi0_enhanced --train_type mode2 --frontend storm
 
+CUDA_VISIBLE_DEVICES=2 python joint_enhance_by_dir.py --ckpt /home/xyf/cwh_project/sgmse-main/joint_train_logs/h6fkhwp3-None/epoch=111-step=226800-last.ckpt --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2_testset/noisy --out_dir enhanced/enahnced_holc6jqr_226k_v2_testset  --frontend storm -N 30
 '''
 def load_mono(path: str, target_sr: int):
     wav, sr = sf.read(path, always_2d=False)

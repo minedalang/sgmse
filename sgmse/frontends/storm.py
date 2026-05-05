@@ -103,7 +103,7 @@ class StormFrontend(BaseFrontend):
             ch_mult=tuple(int(v) for v in storm_ch_mult),
             num_res_blocks=int(storm_num_res_blocks),
             attn_resolutions=tuple(int(v) for v in storm_attn_resolutions),
-            centered=True,
+            centered=False,
         )
 
         if frontend_ckpt:

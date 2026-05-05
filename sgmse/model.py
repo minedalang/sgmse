@@ -313,7 +313,7 @@ class ScoreModel(pl.LightningModule):
             else:
                 raise ValueError("Invalid loss weighting for loss_type=score_matching: {}".format(self.loss_weighting))
             # Sum over spatial dimensions and channels and mean over batch
-            loss = torch.mean(0.5*torch.sum(losses.reshape(losses.shape[0], -1), dim=-1))
+            loss = 0.5 * torch.sum(losses)
         elif self.loss_type == "denoiser": 
             if self.loss_weighting =="edm" :
                 # SBVE + EDM：forward_out 就是 x0_hat
@@ -354,27 +354,26 @@ class ScoreModel(pl.LightningModule):
                     raise ValueError("Invalid loss weighting for loss_type=denoiser: {}".format(self.loss_weighting))
             
             # Sum over spatial dimensions and channels and mean over batch
-            loss = torch.mean(0.5*torch.sum(losses.reshape(losses.shape[0], -1), dim=-1))   
-
+            loss = 0.5 * torch.sum(losses)
         elif self.loss_type == "data_prediction":
             x_hat = forward_out
             B, C, F, T = x.shape
 
             # losses in the time-frequency domain (tf)
             losses_tf = (1/(F*T))*torch.square(torch.abs(x_hat - x))
-            losses_tf = torch.mean(0.5*torch.sum(losses_tf.reshape(losses_tf.shape[0], -1), dim=-1))
+            losses_tf = 0.5 * torch.sum(losses_tf)
 
             # losses in the time domain (td)
             target_len = (self.data_module.num_frames - 1) * self.data_module.hop_length
             x_hat_td = self.to_audio(x_hat.squeeze(), target_len)
             x_td = self.to_audio(x.squeeze(), target_len)
             losses_l1 = (1 / target_len) * torch.abs(x_hat_td - x_td)
-            losses_l1 = torch.mean(0.5*torch.sum(losses_l1.reshape(losses_l1.shape[0], -1), dim=-1))
+            losses_l1 = 0.5 * torch.sum(losses_l1)
 
             # losses using PESQ
             if self.pesq_weight > 0.0:
                 losses_pesq = self.pesq_loss(x_td, x_hat_td)
-                losses_pesq = torch.mean(losses_pesq)
+                losses_pesq = torch.sum(losses_pesq)
                 # combine the losses
                 loss = losses_tf + self.l1_weight * losses_l1 + self.pesq_weight * losses_pesq 
             else:
