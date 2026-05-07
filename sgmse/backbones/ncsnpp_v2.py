@@ -654,11 +654,20 @@ class NCSNpp_v2(nn.Module):
         m_idx = 0
 
         # Convert real and imaginary parts into channel dimensions
-        input_parts = [x.real, x.imag, y.real, y.imag]
         if self.mode2_include_noisy_main:
-            input_parts.extend([y_extra.real, y_extra.imag])
+            input_parts = [
+                x.real, x.imag,
+                y_extra.real, y_extra.imag,
+                y.real, y.imag,
+            ]
+        else:
+            input_parts = [
+                x.real, x.imag,
+                y.real, y.imag,
+            ]
+            
         x = torch.cat(input_parts, dim=1)
-
+        x = 2 * x - 1.
         if self.embedding_type == 'fourier':
             # Gaussian Fourier features embeddings.
             used_sigmas = t
