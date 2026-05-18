@@ -162,6 +162,14 @@ class JointFrontendSgmseModel(ScoreModel):
                             help="Weight of content loss on final enhanced result.")
         parser.add_argument("--selector_content_weight", type=float, default=0.0,
                             help="Weight of content loss on selector y_hint.")
+
+        # ===== TF-grid selector oracle mask loss =====
+        parser.add_argument("--selector_oracle_weight", type=float, default=0.0,
+                            help="Weight of projection-oracle mask loss for tfgrid selector. 0 disables it.")
+        parser.add_argument("--selector_oracle_conf_weight", type=float, default=1.0,
+                            help="0 = unweighted mask loss; 1 = fully confidence-weighted mask loss.")
+        parser.add_argument("--selector_oracle_eps", type=float, default=1e-8,
+                            help="Numerical epsilon used in selector projection oracle.")
         
         
         # ===== CTM-style distillation (Scheme-B) =====
@@ -205,6 +213,9 @@ class JointFrontendSgmseModel(ScoreModel):
         content_loss_type: str = "smooth_l1",
         final_content_weight: float = 0.0,
         selector_content_weight: float = 0.0,
+        selector_oracle_weight: float = 0.0,
+        selector_oracle_conf_weight: float = 1.0,
+        selector_oracle_eps: float = 1e-8,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -238,6 +249,9 @@ class JointFrontendSgmseModel(ScoreModel):
         self.content_loss_type = str(content_loss_type)
         self.final_content_weight = float(final_content_weight)
         self.selector_content_weight = float(selector_content_weight)
+        self.selector_oracle_weight = float(selector_oracle_weight)
+        self.selector_oracle_conf_weight = float(selector_oracle_conf_weight)
+        self.selector_oracle_eps = float(selector_oracle_eps)
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
         if self.use_content_loss:
@@ -547,6 +561,93 @@ class JointFrontendSgmseModel(ScoreModel):
 
         else:
             raise ValueError(f"Unsupported frontend_aux_loss: {loss_type}")
+
+    def _compute_selector_projection_oracle_loss(
+        self,
+        X: torch.Tensor,
+        Y_noisy: torch.Tensor,
+        Y_pre: torch.Tensor,
+        selector_mask: torch.Tensor,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Projection-oracle loss for tfgrid_a selector mask.
+
+        tfgrid_a constructs:
+            Y_hint = Y_pre + M * (Y_noisy - Y_pre)
+
+        For each time-frequency bin, compute the closed-form optimal real-valued
+        interpolation coefficient M_star in [0, 1]:
+            M_star = argmin_M |Y_pre + M*(Y_noisy - Y_pre) - X|^2
+
+        Then regress the predicted selector mask M to M_star.  X/Y_noisy/Y_pre
+        are detached, so this auxiliary loss updates the selector mask path only.
+        """
+        eps = max(float(getattr(self, "selector_oracle_eps", 1e-8)), 1e-12)
+        zero = torch.zeros((), device=X.device, dtype=torch.float32)
+        if selector_mask is None:
+            return zero, {}
+
+        # Predicted mask M should remain differentiable.
+        M = selector_mask
+        if torch.is_complex(M):
+            M = M.real
+        M = M.float()
+
+        # If a previous interpolate produced spatial mismatch, align to X.
+        if M.dim() != 4:
+            raise RuntimeError(f"selector_mask must be 4D [B,C,F,T], got {tuple(M.shape)}")
+        if M.shape[-2:] != X.shape[-2:]:
+            M = F.interpolate(M, size=X.shape[-2:], mode="bilinear", align_corners=False)
+        if M.size(1) != 1:
+            M = M.mean(dim=1, keepdim=True)
+
+        # Stop gradients through clean/noisy/frontend spectra; only train selector mask.
+        X_det = X.detach()
+        Y_noisy_det = Y_noisy.detach()
+        Y_pre_det = Y_pre.detach()
+
+        # Projection oracle: min_m |Y_pre + m*(Y_noisy - Y_pre) - X|^2.
+        D = Y_noisy_det - Y_pre_det
+        R = X_det - Y_pre_det
+
+        if torch.is_complex(D):
+            numerator = torch.real(R * torch.conj(D))
+            denominator = torch.abs(D).pow(2).clamp_min(eps)
+        else:
+            numerator = R * D
+            denominator = D.pow(2).clamp_min(eps)
+
+        M_star = (numerator / denominator).clamp(0.0, 1.0).float().detach()
+        if M_star.dim() == 4 and M_star.size(1) != 1:
+            M_star = M_star.mean(dim=1, keepdim=True)
+
+        # Confidence: supervise more where Y_noisy and Y_pre are meaningfully different.
+        # This avoids over-constraining bins where the interpolation direction is tiny.
+        if torch.is_complex(D):
+            diff_energy = torch.abs(D).pow(2)
+            scale_energy = torch.abs(Y_noisy_det).pow(2) + torch.abs(Y_pre_det).pow(2)
+        else:
+            diff_energy = D.pow(2)
+            scale_energy = Y_noisy_det.pow(2) + Y_pre_det.pow(2)
+        conf = (diff_energy / (scale_energy + eps)).detach().float().clamp(0.0, 1.0)
+        if conf.dim() == 4 and conf.size(1) != 1:
+            conf = conf.mean(dim=1, keepdim=True)
+
+        conf_mix = min(max(float(getattr(self, "selector_oracle_conf_weight", 1.0)), 0.0), 1.0)
+        weight_map = (1.0 - conf_mix) + conf_mix * conf
+
+        # SmoothL1 is better than BCE here because M_star is a continuous coefficient.
+        loss_map = F.smooth_l1_loss(M, M_star, reduction="none")
+        loss = (weight_map * loss_map).mean()
+
+        stats = {
+            "selector_oracle_raw": loss.detach(),
+            "selector_mask_mean": M.detach().mean(),
+            "selector_mask_std": M.detach().std(),
+            "selector_target_mean": M_star.detach().mean(),
+            "selector_target_std": M_star.detach().std(),
+            "selector_conf_mean": conf.detach().mean(),
+        }
+        return loss, stats
         
     def _prepare_wave_for_content(self, wav: torch.Tensor) -> torch.Tensor:
         # [B,1,T] / [B,T] / [T] -> [B,T]
@@ -786,6 +887,33 @@ class JointFrontendSgmseModel(ScoreModel):
             self.log("train_loss_denoiser", loss_denoiser, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         else:
             loss_denoiser = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+
+        # ===== selector projection-oracle mask loss =====
+        # This loss is only active for selector backbones that expose _last_selector_mask.
+        # It should be kept small; it directly changes how much noisy evidence enters Y_hint.
+        loss_selector_oracle = torch.zeros((), device=x_wav.device, dtype=torch.float32)
+        if float(getattr(self, "selector_oracle_weight", 0.0)) > 0.0:
+            selector_mask = getattr(self.dnn, "_last_selector_mask", None)
+            if selector_mask is not None:
+                loss_selector_oracle, selector_oracle_stats = self._compute_selector_projection_oracle_loss(
+                    X=X,
+                    Y_noisy=Y_noisy,
+                    Y_pre=Y_pre,
+                    selector_mask=selector_mask,
+                )
+                weighted_selector_oracle = float(self.selector_oracle_weight) * loss_selector_oracle
+                loss = loss + weighted_selector_oracle.to(loss.dtype)
+
+                self.log("train_loss_selector_oracle", loss_selector_oracle,
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+                self.log("train_loss_selector_oracle_weighted", weighted_selector_oracle,
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+                for k, v in selector_oracle_stats.items():
+                    self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            else:
+                # Useful when the command accidentally enables oracle loss without selector.
+                self.log("train_loss_selector_oracle", loss_selector_oracle,
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
         # ===== final enhanced 的内容级 loss =====
         loss_content_final = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)

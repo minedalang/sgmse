@@ -12,7 +12,8 @@ from sgmse.joint_data_module import JointWaveDataModule
 
 '''
 
-CUDA_VISIBLE_DEVICES=2 python joint_enhance_by_dir.py --ckpt /home/xyf/cwh_project/sgmse-main/joint_train_logs/h6fkhwp3-None/epoch=111-step=226800-last.ckpt --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2_testset/noisy --out_dir enhanced/enahnced_holc6jqr_226k_v2_testset  --frontend storm -N 30
+CUDA_VISIBLE_DEVICES=5 python joint_enhance_by_dir.py --ckpt /home/xyf/cwh_project/sgmse-main/joint_train_logs/holc6jqr-None/epoch\=148-step\=300000.ckpt --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2_testset/noisy --out_dir enhanced/enahnced_holc6jq0_300k_v2_testset  --frontend storm --N 30
+
 '''
 def load_mono(path: str, target_sr: int):
     wav, sr = sf.read(path, always_2d=False)
