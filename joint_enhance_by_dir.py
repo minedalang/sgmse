@@ -63,6 +63,12 @@ def main():
     p.add_argument("--N", type=int, default=30, help="diffusion steps (bigger=better+slower)")
     p.add_argument("--snr", type=float, default=0.5)
     p.add_argument("--use_ema", action="store_true", help="use EMA weights for SGMSE (recommended)")
+    p.add_argument(
+        "--regen_strength",
+        type=str,
+        default=None,
+        help="Adaptive regeneration strength. Use 'auto' for learned selector, or a fixed float in [0,1]. None keeps original sampler.",
+    )
 
     # IMPORTANT: these STFT/transform params must match training
     p.add_argument("--n_fft", type=int, default=510)
@@ -160,6 +166,7 @@ def main():
                 corrector=args.corrector,
                 N=args.N,
                 snr=args.snr,
+                regen_strength=args.regen_strength,
             )
             
             enhanced = np.clip(enhanced, -1.0, 1.0)

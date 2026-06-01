@@ -649,6 +649,67 @@ class JointFrontendSgmseModel(ScoreModel):
         }
         return loss, stats
         
+    def _compute_residual_regen_oracle_loss(
+        self,
+        X: torch.Tensor,
+        Y_noisy: torch.Tensor,
+        x_hat_spec: torch.Tensor,
+        residual_gates,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Oracle loss for residual_regen channel gates.
+
+        The residual_regen selector produces channel-wise gates [B,C,1,1]
+        inside decoder levels.  We supervise these gates with a residual speech
+        leakage ratio:
+
+            target = |X - x_hat|^p / (|X - x_hat|^p + |Y_noisy - X|^p + eps)
+
+        If the current estimate x_hat misses speech, X-x_hat is large, target
+        is high, and the gate is encouraged to allow a stronger feature update.
+        If the residual is dominated by true noise, target is low.
+        """
+        eps = max(float(getattr(self, "selector_oracle_eps", 1e-8)), 1e-12)
+        zero = torch.zeros((), device=X.device, dtype=torch.float32)
+        if x_hat_spec is None or residual_gates is None:
+            return zero, {}
+        if torch.is_tensor(residual_gates):
+            gates = [residual_gates]
+        else:
+            gates = list(residual_gates)
+        gates = [g for g in gates if g is not None]
+        if len(gates) == 0:
+            return zero, {}
+
+        X_det = X.detach()
+        Y_noisy_det = Y_noisy.detach()
+        x_hat_det = x_hat_spec.detach()
+
+        speech_leak = torch.abs(X_det - x_hat_det).pow(2)
+        true_noise = torch.abs(Y_noisy_det - X_det).pow(2)
+        target_map = speech_leak / (speech_leak + true_noise + eps)
+        # One target per utterance; expand to each channel-wise gate.
+        target_scalar = target_map.mean(dim=(1, 2, 3), keepdim=True).float().clamp(0.0, 1.0)
+
+        losses = []
+        gate_means = []
+        gate_stds = []
+        for gate in gates:
+            g = gate.float()
+            tgt = target_scalar.to(device=g.device, dtype=g.dtype).expand_as(g)
+            losses.append(F.smooth_l1_loss(g, tgt, reduction="mean"))
+            gate_means.append(g.detach().mean())
+            gate_stds.append(g.detach().std())
+        loss = torch.stack(losses).mean()
+
+        stats = {
+            "residual_regen_oracle_raw": loss.detach(),
+            "residual_gate_mean": torch.stack(gate_means).mean(),
+            "residual_gate_std": torch.stack(gate_stds).mean(),
+            "residual_gate_target_mean": target_scalar.detach().mean(),
+            "residual_gate_target_std": target_scalar.detach().std(),
+        }
+        return loss, stats
+
     def _prepare_wave_for_content(self, wav: torch.Tensor) -> torch.Tensor:
         # [B,1,T] / [B,T] / [T] -> [B,T]
         if wav.dim() == 3 and wav.size(1) == 1:
@@ -894,6 +955,7 @@ class JointFrontendSgmseModel(ScoreModel):
         loss_selector_oracle = torch.zeros((), device=x_wav.device, dtype=torch.float32)
         if float(getattr(self, "selector_oracle_weight", 0.0)) > 0.0:
             selector_mask = getattr(self.dnn, "_last_selector_mask", None)
+            residual_gates = getattr(self.dnn, "_last_residual_gates", None)
             if selector_mask is not None:
                 loss_selector_oracle, selector_oracle_stats = self._compute_selector_projection_oracle_loss(
                     X=X,
@@ -901,6 +963,17 @@ class JointFrontendSgmseModel(ScoreModel):
                     Y_pre=Y_pre,
                     selector_mask=selector_mask,
                 )
+            elif residual_gates is not None and len(residual_gates) > 0:
+                loss_selector_oracle, selector_oracle_stats = self._compute_residual_regen_oracle_loss(
+                    X=X,
+                    Y_noisy=Y_noisy,
+                    x_hat_spec=x_hat_spec,
+                    residual_gates=residual_gates,
+                )
+            else:
+                selector_oracle_stats = {}
+
+            if selector_mask is not None or (residual_gates is not None and len(residual_gates) > 0):
                 weighted_selector_oracle = float(self.selector_oracle_weight) * loss_selector_oracle
                 loss = loss + weighted_selector_oracle.to(loss.dtype)
 

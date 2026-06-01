@@ -23,10 +23,49 @@ def from_flattened_numpy(x, shape):
     return torch.from_numpy(x.reshape(shape))
 
 
+
+
+def _prepare_regen_strength(regeneration_strength, y):
+    """Return a scalar regeneration strength in [0,1] for sampler control.
+
+    The current samplers operate on a shared time grid for the whole mini-batch,
+    so batched strengths are averaged. In normal enhancement scripts B=1, hence
+    this remains per-utterance.
+    """
+    if regeneration_strength is None:
+        return None
+    if not torch.is_tensor(regeneration_strength):
+        regeneration_strength = torch.tensor(float(regeneration_strength), device=y.device, dtype=torch.float32)
+    regeneration_strength = regeneration_strength.to(device=y.device, dtype=torch.float32).detach().flatten()
+    if regeneration_strength.numel() == 0:
+        return None
+    return regeneration_strength.clamp(0.0, 1.0).mean()
+
+
+def _adaptive_prior_sampling(sde, y, t_start):
+    """Sample an initial state at an adaptive diffusion time t_start.
+
+    For OUVESDE this matches the usual conditional prior when t_start=1:
+        x_t = y + std(t) * z.
+    For VE/VP-style SDEs, the initial sample is centered at zero as in their
+    standard prior. Unsupported SDEs fall back to the original prior.
+    """
+    t_vec = torch.ones((y.shape[0],), device=y.device, dtype=torch.float32) * float(t_start)
+    name = sde.__class__.__name__
+    if hasattr(sde, "_std"):
+        std = sde._std(t_vec)
+        noise = torch.randn_like(y)
+        if name == "OUVESDE":
+            return y + noise * std[:, None, None, None]
+        if name in ("VESDE", "VPSDE"):
+            return noise * std[:, None, None, None]
+    return sde.prior_sampling(y.shape, y).to(y.device)
+
+
 def get_pc_sampler(
     predictor_name, corrector_name, sde, score_fn, y,
     denoise=True, eps=3e-2, snr=0.1, corrector_steps=1, probability_flow: bool = False,
-    intermediate=False, **kwargs
+    intermediate=False, regeneration_strength=None, **kwargs
 ):
     """Create a Predictor-Corrector (PC) sampler.
 
@@ -52,8 +91,15 @@ def get_pc_sampler(
     def pc_sampler():
         """The PC sampler function."""
         with torch.no_grad():
-            xt = sde.prior_sampling(y.shape, y).to(y.device)
-            timesteps = torch.linspace(sde.T, eps, sde.N, device=y.device)
+            regen_strength_value = _prepare_regen_strength(regeneration_strength, y)
+            if regen_strength_value is None:
+                xt = sde.prior_sampling(y.shape, y).to(y.device)
+                t_start = float(sde.T)
+            else:
+                # r=1 => original full regeneration from T; r=0 => nearly identity/weak regeneration from eps.
+                t_start = float(eps) + float(regen_strength_value.item()) * (float(sde.T) - float(eps))
+                xt = _adaptive_prior_sampling(sde, y, t_start).to(y.device)
+            timesteps = torch.linspace(t_start, eps, sde.N, device=y.device)
             for i in range(sde.N):
                 t = timesteps[i]
                 if i != len(timesteps) - 1:
@@ -73,7 +119,7 @@ def get_pc_sampler(
 def get_ode_sampler(
     sde, score_fn, y, inverse_scaler=None,
     denoise=True, rtol=1e-5, atol=1e-5,
-    method='RK45', eps=3e-2, device='cuda', **kwargs
+    method='RK45', eps=3e-2, device='cuda', regeneration_strength=None, **kwargs
 ):
     """Probability flow ODE sampler with the black-box ODE solver.
 
@@ -115,8 +161,14 @@ def get_ode_sampler(
             samples, number of function evaluations.
         """
         with torch.no_grad():
-            # If not represent, sample the latent code from the prior distibution of the SDE.
-            x = sde.prior_sampling(y.shape, y).to(device)
+            # If regeneration_strength is provided, start from an adaptive diffusion time.
+            regen_strength_value = _prepare_regen_strength(regeneration_strength, y)
+            if regen_strength_value is None:
+                x = sde.prior_sampling(y.shape, y).to(device)
+                t_start = float(sde.T)
+            else:
+                t_start = float(eps) + float(regen_strength_value.item()) * (float(sde.T) - float(eps))
+                x = _adaptive_prior_sampling(sde, y, t_start).to(device)
 
             def ode_func(t, x):
                 x = from_flattened_numpy(x, y.shape).to(device).type(torch.complex64)
@@ -126,7 +178,7 @@ def get_ode_sampler(
 
             # Black-box ODE solver for the probability flow ODE
             solution = integrate.solve_ivp(
-                ode_func, (sde.T, eps), to_flattened_numpy(x),
+                ode_func, (t_start, eps), to_flattened_numpy(x),
                 rtol=rtol, atol=atol, method=method, **kwargs
             )
             nfe = solution.nfev

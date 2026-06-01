@@ -971,6 +971,26 @@ class ScoreModel(pl.LightningModule):
     def _istft(self, spec, length=None):
         return self.data_module.istft(spec, length)
 
+    def _resolve_regeneration_strength(self, regen_strength, y_spec, y_cond_spec=None):
+        """Resolve regeneration strength for adaptive sampling.
+
+        `regen_strength` can be None, a float in [0,1], or the string "auto".
+        Subclasses such as JointFrontendSgmseModel can implement
+        `predict_regen_strength_from_specs(y_spec, y_cond_spec)` to support auto mode.
+        """
+        if regen_strength is None:
+            return None
+        if isinstance(regen_strength, str):
+            mode = regen_strength.lower().strip()
+            if mode in ("", "none", "off", "false"):
+                return None
+            if mode == "auto":
+                if hasattr(self, "predict_regen_strength_from_specs"):
+                    return self.predict_regen_strength_from_specs(y_spec, y_cond_spec)
+                raise RuntimeError("regen_strength='auto' requires predict_regen_strength_from_specs on the model.")
+            return float(mode)
+        return regen_strength
+
     def enhance(self, y, y_cond=None, sampler_type="pc", predictor="reverse_diffusion",
         corrector="none", N=30, corrector_steps=1, snr=0.5, timeit=False,
         **kwargs
@@ -978,6 +998,8 @@ class ScoreModel(pl.LightningModule):
         """
         One-call speech enhancement of noisy speech `y`, for convenience.
         """
+        regen_strength_arg = kwargs.pop("regen_strength", None)
+
         start = time.time()
 
         # 保证 [1, T]
@@ -1017,21 +1039,26 @@ class ScoreModel(pl.LightningModule):
         Y = pad_spec(Y)
         
         score_fn = None
+        y_cond_spec = None
         if y_cond is not None:
             y_cond_n = y_cond / norm_factor
             y_cond = torch.unsqueeze(self._forward_transform(self._stft(y_cond_n)), 0)
             y_cond = pad_spec(y_cond)
+            y_cond_spec = y_cond
             # 采样器调用网络推理时 附加额外的y_cond参数
             score_fn = partial(self, y_cond=y_cond)
         
+        regeneration_strength = self._resolve_regeneration_strength(regen_strength_arg, Y, y_cond_spec)
+
         # OUVESDE和VESDE选择的采样器，都接受分数
         if self.sde.__class__.__name__ in  ('OUVESDE', 'VESDE','VPSDE'):
             if self.sde.sampler_type == "pc":
                 sampler = self.get_pc_sampler(predictor, corrector, Y.cuda(),score_fn=score_fn, N=N, 
                     corrector_steps=corrector_steps, snr=snr, intermediate=False,
+                    regeneration_strength=regeneration_strength,
                     **kwargs)
             elif self.sde.sampler_type == "ode":
-                sampler = self.get_ode_sampler(Y.cuda(),score_fn=score_fn, N=N, **kwargs)
+                sampler = self.get_ode_sampler(Y.cuda(),score_fn=score_fn, N=N, regeneration_strength=regeneration_strength, **kwargs)
             else:
                 raise ValueError("Invalid sampler type for SGMSE sampling: {}".format(sampler_type))
         # Schrödinger bridge sampling with VE SDE

@@ -286,6 +286,95 @@ class TFGridEvidenceSelector(nn.Module):
         return y_hint
 
 
+class ResidualGatedFeatureUpdate(nn.Module):
+    """Residual-aware channel-wise feature gate.
+
+    This block does not inject a new observation feature directly.  Instead it
+    uses the current backbone feature h plus a residual spectrogram
+    r = y_cond - y_main to predict a channel-wise gate, then gates a residual
+    feature update:
+
+        h' = h + gate_scale * m(h, r, t) * A(h)
+
+    The gate m has shape [B, C, 1, 1], so it is channel-wise and broadcast over
+    the TF grid.  The residual spectrogram is complex [B, 1, F, T].
+    """
+    def __init__(self, channels: int, residual_in_channels: int = 2,
+                 hidden_channels: int = 32, temb_dim: int = None,
+                 init_gate: float = 0.1):
+        super().__init__()
+        self.channels = int(channels)
+        hidden_channels = int(hidden_channels)
+        groups = max(1, min(self.channels // 4, 32))
+
+        self.h_norm = nn.GroupNorm(groups, self.channels, eps=1e-6)
+        self.delta = nn.Sequential(
+            nn.Conv2d(self.channels, self.channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+            nn.Conv2d(self.channels, self.channels, kernel_size=1),
+        )
+
+        self.h_pool_proj = nn.Conv2d(self.channels, hidden_channels, kernel_size=1)
+        self.res_encoder = nn.Sequential(
+            nn.Conv2d(residual_in_channels, hidden_channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+            nn.Conv2d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+        )
+        self.temb_proj = nn.Linear(temb_dim, hidden_channels) if temb_dim is not None else None
+        self.gate_head = nn.Sequential(
+            nn.SiLU(),
+            nn.Conv2d(hidden_channels, self.channels, kernel_size=1),
+        )
+        self.gate_scale = nn.Parameter(torch.tensor(float(init_gate)))
+
+        init_layers = [
+            self.delta[0], self.delta[2], self.h_pool_proj,
+            self.res_encoder[0], self.res_encoder[2], self.gate_head[1],
+        ]
+        if self.temb_proj is not None:
+            init_layers.append(self.temb_proj)
+        for m in init_layers:
+            if hasattr(m, "weight"):
+                m.weight.data = default_initializer()(m.weight.shape)
+            if hasattr(m, "bias") and m.bias is not None:
+                nn.init.zeros_(m.bias)
+
+    @staticmethod
+    def _complex_to_2ch_spec(x: torch.Tensor) -> torch.Tensor:
+        if torch.is_complex(x):
+            return torch.cat([x.real, x.imag], dim=1)
+        if x.size(1) == 2:
+            return x
+        if x.size(1) == 1:
+            return torch.cat([x, torch.zeros_like(x)], dim=1)
+        return x[:, :2]
+
+    def forward(self, h: torch.Tensor, residual_spec: torch.Tensor,
+                temb: torch.Tensor = None, return_gate: bool = False):
+        B, C, H, W = h.shape
+        h_norm = self.h_norm(h)
+        delta = self.delta(h_norm)
+
+        # channel-wise context from backbone feature
+        h_ctx = F.adaptive_avg_pool2d(self.h_pool_proj(h_norm), output_size=1)
+
+        # channel-wise context from residual/noise estimate
+        r = self._complex_to_2ch_spec(residual_spec).to(dtype=h.dtype, device=h.device)
+        if r.shape[-2:] != (H, W):
+            r = F.interpolate(r, size=(H, W), mode="bilinear", align_corners=False)
+        r_ctx = F.adaptive_avg_pool2d(self.res_encoder(r), output_size=1)
+
+        gate_feat = h_ctx + r_ctx
+        if temb is not None and self.temb_proj is not None:
+            gate_feat = gate_feat + self.temb_proj(F.silu(temb))[:, :, None, None]
+        gate = torch.sigmoid(self.gate_head(gate_feat))  # [B, C, 1, 1]
+        out = h + self.gate_scale * gate * delta
+        if return_gate:
+            return out, gate
+        return out
+
+
 class DecoderResBlockWithFiLM(nn.Module):
     """
     在 decoder 的每个 ResBlock 后做一次 FiLM / AdaGN 风格调制，
@@ -370,8 +459,8 @@ class NCSNpp_v2(nn.Module):
         parser.add_argument("--film_levels", type=str, default="first",
             help="FiLM applied to which upsample levels: 'all', 'first', 'last', 'none', or comma-separated indices like '0,1,2'")
         
-        parser.add_argument("--selector_type", type=str, default="none", choices=("none", "tfgrid_a", "tfgrid_b"),
-            help="Evidence selector type. tfgrid_a: mask only, tfgrid_b: mask * confidence.")
+        parser.add_argument("--selector_type", type=str, default="none", choices=("none", "tfgrid_a", "tfgrid_b", "residual_regen"),
+            help="Selector type. tfgrid_a/b build Y_hint; residual_regen gates backbone features using residual y_cond-y.")
         parser.add_argument("--selector_hidden_ch", type=int, default=32, help="Hidden channels in lightweight TF-grid selector.")
         parser.add_argument("--selector_num_blocks", type=int, default=2, help="Number of TF-grid-style blocks in selector.") 
         parser.add_argument("--selector_attn_levels", type=str, default="6,5",
@@ -426,10 +515,14 @@ class NCSNpp_v2(nn.Module):
         self.film_levels = self._parse_film_levels(film_levels)
         self.selector_type = str(selector_type).lower()
         self.use_selector = self.selector_type != "none"
-        # 缓存selector结构的输出, 用于计算内容级loss
+        self.use_tfgrid_selector = self.selector_type in ("tfgrid_a", "tfgrid_b")
+        self.use_residual_regen_selector = self.selector_type == "residual_regen"
+        # 缓存selector结构的输出, 用于计算内容级loss / oracle loss
         self._last_selector_y_hint = None
         self._last_selector_mask = None
         self._last_selector_conf = None
+        self._last_residual_gate = None
+        self._last_residual_gates = []
         self.selector_attn_levels = _parse_level_spec(selector_attn_levels, default="6,5")
         self.selector_ctx_ch = int(selector_ctx_ch)
         self.selector_ctx_num_feats = max(1, int(selector_ctx_num_feats))
@@ -505,7 +598,7 @@ class NCSNpp_v2(nn.Module):
         else:
             raise ValueError(f'resblock type {resblock_type} unrecognized.')
 
-        if self.use_selector:
+        if self.use_tfgrid_selector:
             selector_version = "a" if self.selector_type == "tfgrid_a" else "b"
             self.selector_context_agg = SelectorContextAggregator(
                 num_inputs=self.selector_ctx_num_feats + 1,
@@ -598,9 +691,17 @@ class NCSNpp_v2(nn.Module):
 
             if all_resolutions[i_level] in attn_resolutions:
                 modules.append(AttnBlock(channels=in_ch))
-            # 交叉注意力引入y_cond
-            if self.use_selector and i_level in self.selector_attn_levels:
+            # selector injection / residual-gated feature update
+            if self.use_tfgrid_selector and i_level in self.selector_attn_levels:
                 modules.append(BottleneckCrossAttention(channels=in_ch, cond_in_channels=2))
+            elif self.use_residual_regen_selector and i_level in self.selector_attn_levels:
+                modules.append(ResidualGatedFeatureUpdate(
+                    channels=in_ch,
+                    residual_in_channels=2,
+                    hidden_channels=int(selector_hidden_ch),
+                    temb_dim=nf * 4,
+                    init_gate=0.1,
+                ))
 
             if progressive != 'none':
                 if i_level == num_resolutions - 1:
@@ -743,7 +844,9 @@ class NCSNpp_v2(nn.Module):
         self._last_selector_y_hint = None
         self._last_selector_mask = None
         self._last_selector_conf = None
-        if self.use_selector:
+        self._last_residual_gate = None
+        self._last_residual_gates = []
+        if self.use_tfgrid_selector:
             context_inputs = list(hs[-self.selector_ctx_num_feats:]) + [h]
             ctx = self.selector_context_agg(context_inputs, target_hw=h.shape[-2:])
             y_hint, sel_mask, sel_conf = self.evidence_selector(y, y_cond, ctx=ctx, temb=temb, return_mask=True)
@@ -752,6 +855,9 @@ class NCSNpp_v2(nn.Module):
             self._last_selector_conf = sel_conf
         else:
             y_hint = y_cond
+        # residual estimate used by residual_regen.  In mode2 this is noisy - pre-enhanced.
+        # In default mode y_cond == y, so the residual is zero and the selector becomes inactive-ish.
+        residual_spec = y_cond - y
 
         if self.cross_attn:
             # NEW: Bottleneck Cross-Attention
@@ -780,8 +886,13 @@ class NCSNpp_v2(nn.Module):
                 h = modules[m_idx](h)
                 m_idx += 1
 
-            if self.use_selector and i_level in self.selector_attn_levels:
+            if self.use_tfgrid_selector and i_level in self.selector_attn_levels:
                 h = modules[m_idx](h, y_hint)
+                m_idx += 1
+            elif self.use_residual_regen_selector and i_level in self.selector_attn_levels:
+                h, gate = modules[m_idx](h, residual_spec, temb=temb, return_gate=True)
+                self._last_residual_gate = gate
+                self._last_residual_gates.append(gate)
                 m_idx += 1
 
             # 渐进式的上采样：将上采样过程中的低分辨率特征与高分特征进行结合
