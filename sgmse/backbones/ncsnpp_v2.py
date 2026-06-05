@@ -375,6 +375,102 @@ class ResidualGatedFeatureUpdate(nn.Module):
         return out
 
 
+class NoisePriorGuidanceFiLM(nn.Module):
+    """Noise-prior guided FiLM update for decoder features.
+
+    This block is intentionally different from residual_regen: the residual
+    spectrogram r = y_cond - y is *not* injected as a TF feature.  Instead we
+    first discard its complex phase and encode only a log-magnitude noise-prior
+    map |r|.  The resulting utterance-level prior predicts channel-wise FiLM
+    parameters that modulate the current decoder feature h:
+
+        z_n = Enc(log(1 + |y_cond - y|))
+        gate, gamma, beta = Head(pool(z_n) + pool(h) + e(t))
+        h' = h + scale * Proj(SiLU(GN(h) * (1 + gate * gamma) + gate * beta))
+
+    Because the prior is pooled to [B, hidden, 1, 1], this module can guide
+    suppression/restoration strength without copying noisy TF details back into
+    the enhanced speech.
+    """
+    def __init__(self, channels: int, hidden_channels: int = 32,
+                 temb_dim: int = None, init_scale: float = 0.05):
+        super().__init__()
+        self.channels = int(channels)
+        hidden_channels = int(hidden_channels)
+        groups = max(1, min(self.channels // 4, 32))
+
+        self.h_norm = nn.GroupNorm(groups, self.channels, eps=1e-6)
+        self.h_pool_proj = nn.Conv2d(self.channels, hidden_channels, kernel_size=1)
+
+        # Only one channel: log-magnitude of the estimated removed noise.
+        # This prevents direct raw noisy phase/complex residual injection.
+        self.noise_encoder = nn.Sequential(
+            nn.Conv2d(1, hidden_channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+            nn.Conv2d(hidden_channels, hidden_channels, kernel_size=3, padding=1),
+            nn.SiLU(),
+        )
+        self.temb_proj = nn.Linear(temb_dim, hidden_channels) if temb_dim is not None else None
+
+        self.film_head = nn.Sequential(
+            nn.SiLU(),
+            nn.Conv2d(hidden_channels, 3 * self.channels, kernel_size=1),
+        )
+        self.proj_out = nn.Conv2d(self.channels, self.channels, kernel_size=1)
+        self.guidance_scale = nn.Parameter(torch.tensor(float(init_scale)))
+
+        init_layers = [
+            self.h_pool_proj, self.noise_encoder[0], self.noise_encoder[2],
+            self.film_head[1], self.proj_out,
+        ]
+        if self.temb_proj is not None:
+            init_layers.append(self.temb_proj)
+        for m in init_layers:
+            if hasattr(m, "weight"):
+                m.weight.data = default_initializer()(m.weight.shape)
+            if hasattr(m, "bias") and m.bias is not None:
+                nn.init.zeros_(m.bias)
+
+    @staticmethod
+    def _noise_prior_map(residual_spec: torch.Tensor) -> torch.Tensor:
+        if torch.is_complex(residual_spec):
+            mag = torch.abs(residual_spec)
+        else:
+            if residual_spec.size(1) >= 2:
+                mag = torch.sqrt(residual_spec[:, 0:1].pow(2) + residual_spec[:, 1:2].pow(2) + 1e-12)
+            else:
+                mag = residual_spec.abs()
+        return torch.log1p(mag)
+
+    def forward(self, h: torch.Tensor, residual_spec: torch.Tensor,
+                temb: torch.Tensor = None, return_gate: bool = False):
+        B, C, H, W = h.shape
+        h_norm = self.h_norm(h)
+
+        h_ctx = F.adaptive_avg_pool2d(self.h_pool_proj(h_norm), output_size=1)
+
+        n = self._noise_prior_map(residual_spec).to(dtype=h.dtype, device=h.device)
+        if n.shape[-2:] != (H, W):
+            n = F.interpolate(n, size=(H, W), mode="bilinear", align_corners=False)
+        n_ctx = F.adaptive_avg_pool2d(self.noise_encoder(n), output_size=1)
+
+        ctx = h_ctx + n_ctx
+        if temb is not None and self.temb_proj is not None:
+            ctx = ctx + self.temb_proj(F.silu(temb))[:, :, None, None]
+
+        gate_logits, gamma_raw, beta_raw = torch.chunk(self.film_head(ctx), 3, dim=1)
+        gate = torch.sigmoid(gate_logits)               # [B, C, 1, 1], noise-prior strength
+        gamma = torch.tanh(gamma_raw)                   # bounded modulation
+        beta = torch.tanh(beta_raw)
+
+        guided = h_norm * (1.0 + gate * gamma) + gate * beta
+        delta = self.proj_out(F.silu(guided))
+        out = h + self.guidance_scale * delta
+        if return_gate:
+            return out, gate
+        return out
+
+
 class DecoderResBlockWithFiLM(nn.Module):
     """
     在 decoder 的每个 ResBlock 后做一次 FiLM / AdaGN 风格调制，
@@ -459,8 +555,10 @@ class NCSNpp_v2(nn.Module):
         parser.add_argument("--film_levels", type=str, default="first",
             help="FiLM applied to which upsample levels: 'all', 'first', 'last', 'none', or comma-separated indices like '0,1,2'")
         
-        parser.add_argument("--selector_type", type=str, default="none", choices=("none", "tfgrid_a", "tfgrid_b", "residual_regen"),
-            help="Selector type. tfgrid_a/b build Y_hint; residual_regen gates backbone features using residual y_cond-y.")
+        parser.add_argument("--selector_type", type=str, default="none", choices=("none", "tfgrid_a", "tfgrid_b", "residual_regen", "noise_prior_guidance"),
+            help="Selector type. tfgrid_a/b build Y_hint; residual_regen gates features; noise_prior_guidance uses |y_cond-y| as a noise prior for FiLM guidance.")
+        parser.add_argument("--noise_prior_init_scale", type=float, default=0.05,
+            help="Initial residual scale for noise_prior_guidance blocks. Use 0.0 when fine-tuning from a strong checkpoint.")
         parser.add_argument("--selector_hidden_ch", type=int, default=32, help="Hidden channels in lightweight TF-grid selector.")
         parser.add_argument("--selector_num_blocks", type=int, default=2, help="Number of TF-grid-style blocks in selector.") 
         parser.add_argument("--selector_attn_levels", type=str, default="6,5",
@@ -487,6 +585,7 @@ class NCSNpp_v2(nn.Module):
         selector_ctx_ch=8,
         selector_ctx_num_feats=3,
         mode2_include_noisy_main=False,
+        noise_prior_init_scale=0.05,
         nonlinearity = 'swish',
         resamp_with_conv = True,
         fir = True,
@@ -517,12 +616,16 @@ class NCSNpp_v2(nn.Module):
         self.use_selector = self.selector_type != "none"
         self.use_tfgrid_selector = self.selector_type in ("tfgrid_a", "tfgrid_b")
         self.use_residual_regen_selector = self.selector_type == "residual_regen"
+        self.use_noise_prior_guidance_selector = self.selector_type == "noise_prior_guidance"
         # 缓存selector结构的输出, 用于计算内容级loss / oracle loss
         self._last_selector_y_hint = None
         self._last_selector_mask = None
         self._last_selector_conf = None
         self._last_residual_gate = None
         self._last_residual_gates = []
+        self._last_noise_prior_gate = None
+        self._last_noise_prior_gates = []
+        self.noise_prior_init_scale = float(noise_prior_init_scale)
         self.selector_attn_levels = _parse_level_spec(selector_attn_levels, default="6,5")
         self.selector_ctx_ch = int(selector_ctx_ch)
         self.selector_ctx_num_feats = max(1, int(selector_ctx_num_feats))
@@ -702,6 +805,13 @@ class NCSNpp_v2(nn.Module):
                     temb_dim=nf * 4,
                     init_gate=0.1,
                 ))
+            elif self.use_noise_prior_guidance_selector and i_level in self.selector_attn_levels:
+                modules.append(NoisePriorGuidanceFiLM(
+                    channels=in_ch,
+                    hidden_channels=int(selector_hidden_ch),
+                    temb_dim=nf * 4,
+                    init_scale=self.noise_prior_init_scale,
+                ))
 
             if progressive != 'none':
                 if i_level == num_resolutions - 1:
@@ -846,6 +956,8 @@ class NCSNpp_v2(nn.Module):
         self._last_selector_conf = None
         self._last_residual_gate = None
         self._last_residual_gates = []
+        self._last_noise_prior_gate = None
+        self._last_noise_prior_gates = []
         if self.use_tfgrid_selector:
             context_inputs = list(hs[-self.selector_ctx_num_feats:]) + [h]
             ctx = self.selector_context_agg(context_inputs, target_hw=h.shape[-2:])
@@ -893,6 +1005,11 @@ class NCSNpp_v2(nn.Module):
                 h, gate = modules[m_idx](h, residual_spec, temb=temb, return_gate=True)
                 self._last_residual_gate = gate
                 self._last_residual_gates.append(gate)
+                m_idx += 1
+            elif self.use_noise_prior_guidance_selector and i_level in self.selector_attn_levels:
+                h, gate = modules[m_idx](h, residual_spec, temb=temb, return_gate=True)
+                self._last_noise_prior_gate = gate
+                self._last_noise_prior_gates.append(gate)
                 m_idx += 1
 
             # 渐进式的上采样：将上采样过程中的低分辨率特征与高分特征进行结合

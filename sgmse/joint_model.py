@@ -710,6 +710,72 @@ class JointFrontendSgmseModel(ScoreModel):
         }
         return loss, stats
 
+    def _compute_noise_prior_oracle_loss(
+        self,
+        X: torch.Tensor,
+        Y_noisy: torch.Tensor,
+        Y_pre: torch.Tensor,
+        noise_prior_gates,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Oracle loss for noise_prior_guidance gates.
+
+        noise_prior_guidance uses |Y_noisy - Y_pre| only as a noise prior, not
+        as speech evidence.  Therefore a high gate should mean: the difference
+        between noisy and the predictive estimate is likely dominated by true
+        noise, so noise-aware modulation should be active.
+
+        We use an utterance-level oracle ratio:
+
+            target = |Y_noisy - X|^2 / (|Y_noisy - X|^2 + |X - Y_pre|^2 + eps)
+
+        where |Y_noisy - X| is the true noise energy and |X - Y_pre| is the
+        speech/detail error left by the frontend.  If the residual contains
+        mostly noise, target is high. If the frontend has removed useful speech
+        detail and Y_pre is far from X, target is lower, discouraging the
+        noise-prior gate from treating the whole residual as noise.
+        """
+        eps = max(float(getattr(self, "selector_oracle_eps", 1e-8)), 1e-12)
+        zero = torch.zeros((), device=X.device, dtype=torch.float32)
+        if noise_prior_gates is None:
+            return zero, {}
+        if torch.is_tensor(noise_prior_gates):
+            gates = [noise_prior_gates]
+        else:
+            gates = list(noise_prior_gates)
+        gates = [g for g in gates if g is not None]
+        if len(gates) == 0:
+            return zero, {}
+
+        X_det = X.detach()
+        Y_noisy_det = Y_noisy.detach()
+        Y_pre_det = Y_pre.detach()
+
+        true_noise = torch.abs(Y_noisy_det - X_det).pow(2)
+        frontend_error = torch.abs(X_det - Y_pre_det).pow(2)
+        target_map = true_noise / (true_noise + frontend_error + eps)
+        target_scalar = target_map.mean(dim=(1, 2, 3), keepdim=True).float().clamp(0.0, 1.0)
+
+        losses = []
+        gate_means = []
+        gate_stds = []
+        for gate in gates:
+            g = gate.float()
+            tgt = target_scalar.to(device=g.device, dtype=g.dtype).expand_as(g)
+            losses.append(F.smooth_l1_loss(g, tgt, reduction="mean"))
+            gate_means.append(g.detach().mean())
+            gate_stds.append(g.detach().std())
+        loss = torch.stack(losses).mean()
+
+        stats = {
+            "noise_prior_oracle_raw": loss.detach(),
+            "noise_prior_gate_mean": torch.stack(gate_means).mean(),
+            "noise_prior_gate_std": torch.stack(gate_stds).mean(),
+            "noise_prior_gate_target_mean": target_scalar.detach().mean(),
+            "noise_prior_gate_target_std": target_scalar.detach().std(),
+        }
+        return loss, stats
+
+
     def _prepare_wave_for_content(self, wav: torch.Tensor) -> torch.Tensor:
         # [B,1,T] / [B,T] / [T] -> [B,T]
         if wav.dim() == 3 and wav.size(1) == 1:
@@ -956,6 +1022,9 @@ class JointFrontendSgmseModel(ScoreModel):
         if float(getattr(self, "selector_oracle_weight", 0.0)) > 0.0:
             selector_mask = getattr(self.dnn, "_last_selector_mask", None)
             residual_gates = getattr(self.dnn, "_last_residual_gates", None)
+            noise_prior_gates = getattr(self.dnn, "_last_noise_prior_gates", None)
+            has_residual_gates = residual_gates is not None and len(residual_gates) > 0
+            has_noise_prior_gates = noise_prior_gates is not None and len(noise_prior_gates) > 0
             if selector_mask is not None:
                 loss_selector_oracle, selector_oracle_stats = self._compute_selector_projection_oracle_loss(
                     X=X,
@@ -963,17 +1032,24 @@ class JointFrontendSgmseModel(ScoreModel):
                     Y_pre=Y_pre,
                     selector_mask=selector_mask,
                 )
-            elif residual_gates is not None and len(residual_gates) > 0:
+            elif has_residual_gates:
                 loss_selector_oracle, selector_oracle_stats = self._compute_residual_regen_oracle_loss(
                     X=X,
                     Y_noisy=Y_noisy,
                     x_hat_spec=x_hat_spec,
                     residual_gates=residual_gates,
                 )
+            elif has_noise_prior_gates:
+                loss_selector_oracle, selector_oracle_stats = self._compute_noise_prior_oracle_loss(
+                    X=X,
+                    Y_noisy=Y_noisy,
+                    Y_pre=Y_pre,
+                    noise_prior_gates=noise_prior_gates,
+                )
             else:
                 selector_oracle_stats = {}
 
-            if selector_mask is not None or (residual_gates is not None and len(residual_gates) > 0):
+            if selector_mask is not None or has_residual_gates or has_noise_prior_gates:
                 weighted_selector_oracle = float(self.selector_oracle_weight) * loss_selector_oracle
                 loss = loss + weighted_selector_oracle.to(loss.dtype)
 
