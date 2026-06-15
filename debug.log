@@ -1,0 +1,22 @@
+/home/xyf/.conda/envs/sgmse-joint-semamba/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/xyf/.conda/envs/sgmse-joint-semamba/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+Set TORCH_CUDA_ARCH_LIST to: 8.0;8.0
+Running NCSN++ as discriminative backbone
+wandb: Currently logged in as: chenwh (chenwh-tianjin-university-of-science-and-technology) to https://api.wandb.ai. Use `wandb login --relogin` to force relogin
+wandb: setting up run jniiuug0
+wandb: Tracking run with wandb version 0.22.2
+wandb: Run data is saved locally in joint_train_logs/wandb/run-20260606_084421-jniiuug0
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run trainable_likestorm_noise_prior_guidance
+wandb: ⭐️ View project at https://wandb.ai/chenwh-tianjin-university-of-science-and-technology/sgmse_joint
+wandb: 🚀 View run at https://wandb.ai/chenwh-tianjin-university-of-science-and-technology/sgmse_joint/runs/jniiuug0
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+HPU available: False, using: 0 HPUs
+Initializing distributed: GLOBAL_RANK: 0, MEMBER: 1/2
+/home/xyf/.conda/envs/sgmse-joint-semamba/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'repr' attribute with value False was provided to the `Field()` function, which has no effect in the context it was used. 'repr' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(
+/home/xyf/.conda/envs/sgmse-joint-semamba/lib/python3.11/site-packages/pydantic/_internal/_generate_schema.py:2249: UnsupportedFieldAttributeWarning: The 'frozen' attribute with value True was provided to the `Field()` function, which has no effect in the context it was used. 'frozen' is field-specific metadata, and can only be attached to a model field using `Annotated` metadata or by assignment. This may have happened because an `Annotated` type alias using the `type` statement was used, or if the `Field()` function was attached to a single member of a union type.
+  warnings.warn(

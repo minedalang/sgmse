@@ -1,3 +1,18 @@
+def mark(msg):
+    import os, time, resource
+    rss_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
+    print(
+            f"[MARK] {time.strftime('%H:%M:%S')} "
+            f"pid={os.getpid()} "
+            f"ppid={os.getppid()} "
+            f"RANK={os.environ.get('RANK')} "
+            f"LOCAL_RANK={os.environ.get('LOCAL_RANK')} "
+            f"WORLD_SIZE={os.environ.get('WORLD_SIZE')} "
+            f"rss={rss_mb:.1f}MB :: {msg}",
+            flush=True,
+        )
+mark("after imports")
+
 import torch
 import wandb
 import argparse
@@ -120,6 +135,8 @@ if __name__ == '__main__':
     if args.init_ckpt is not None and args.ckpt is not None: #参数互斥
         raise SystemExit("--ckpt(resume) 和 --init_ckpt(init weights) 不能同时使用")
     arg_groups = get_argparse_groups(parser, args)
+    mark("after argument parsing")
+    mark("before model init")
 
     model = JointFrontendSgmseModel(
         backbone=args.backbone,
@@ -133,13 +150,16 @@ if __name__ == '__main__':
             **vars(arg_groups['DataModule']),
         },
     )
+    mark("after model init")
 
+    mark("before logger init")
     if args.nolog:
         logger = None
     else:
         logger = WandbLogger(project="sgmse_joint", log_model=False, save_dir=args.log_dir, name=args.wandb_name, id=args.wandb_id)
         logger.experiment.log_code(".")
-
+    mark("after logger init")
+    mark("before callbacks init")
     callbacks = None
     if logger is not None:
         run_dir = join(args.log_dir, f"{str(logger.version)}-{args.wandb_name}")
@@ -148,10 +168,14 @@ if __name__ == '__main__':
             ModelCheckpoint(dirpath=run_dir, filename='{epoch}-{step}', save_top_k=-1, every_n_train_steps=args.save_ckpt_interval),
             ModelCheckpoint(dirpath=run_dir, filename='{epoch}-{step}-{valid_loss:.3f}', monitor='valid_loss', mode='min', save_top_k=1, save_on_train_epoch_end=False),
         ]
-
+    mark("after callbacks init")
+    mark("before trainer init")
+    strategy = "auto"
+    if int(args.devices) > 1:
+        strategy = "ddp_find_unused_parameters_true"
     trainer = pl.Trainer(
         **vars(arg_groups['Trainer']),
-        strategy="ddp_find_unused_parameters_true",
+        strategy=strategy,
         logger=logger,
         max_steps=1_000_000,
         log_every_n_steps=10,
@@ -159,6 +183,9 @@ if __name__ == '__main__':
         check_val_every_n_epoch=1,
         callbacks=callbacks,
     )
+    mark("after trainer init")
+    mark("before trainer.fit")
+
     # 针对两种ckpt，分情况加载
     # ---- optional: initialize weights from an existing checkpoint (no optimizer/loop restore) ----
     if args.init_ckpt is not None:
@@ -212,6 +239,8 @@ if __name__ == '__main__':
     if args.ckpt is not None:
         # Quick guard: old SGMSE-only ckpt typically has 1 param group; joint training has 2.
         ckpt = torch_load_ckpt(args.ckpt)
+        mark("after load ckpt")
+
         opt_states = ckpt.get("optimizer_states", None) if isinstance(ckpt, dict) else None
         if opt_states and len(opt_states) > 0 and isinstance(opt_states[0], dict) and "param_groups" in opt_states[0]:
             n_groups_ckpt = len(opt_states[0]["param_groups"])
@@ -223,5 +252,8 @@ if __name__ == '__main__':
                 )
 
         trainer.fit(model, ckpt_path=args.ckpt)
+        mark("after model init")
     else:
         trainer.fit(model, ckpt_path=None)
+        mark("after model init")
+
