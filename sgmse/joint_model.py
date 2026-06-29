@@ -121,54 +121,106 @@ def _match_length(y: torch.Tensor, ref: torch.Tensor) -> torch.Tensor:
     return F.pad(y, (left, right), mode="constant", value=0.0)
 
 
-class RegenerationStrengthSelector(nn.Module):
-    """Lightweight utterance-level reliability selector.
 
-    It predicts r in [0,1], where:
-      r -> 0: weak regeneration, keep the predictive frontend prior mostly unchanged;
-      r -> 1: full regeneration, use the original diffusion start time.
 
-    Inputs are complex STFT tensors from the SGMSE transform domain.  The module
-    intentionally uses global statistics rather than TF-bin gating because the
-    first version controls a global sampler strength and should remain stable.
+class StateAwareAnchorController(nn.Module):
+    """State-aware controller for weak-anchor OUVE mean calibration.
+
+    It predicts two utterance-level scalars from the current sampling state and
+    conditional spectra:
+        c_t: anchor composition coefficient, A_t = c_t Y_pre + (1-c_t) Y_noisy
+        g_t: correction reliability, K_t = K_max * E(t) * g_t
+
+    The controller is intentionally lightweight and uses global statistics of
+    deviation maps.  It does not replace the score network; it only calibrates
+    the reverse transition mean during sampling.
     """
 
-    def __init__(self, hidden_ch: int = 64, eps: float = 1e-8):
+    def __init__(self, hidden_ch: int = 64, k_max: float = 0.08, time_power: float = 1.0):
         super().__init__()
-        self.eps = float(eps)
-        # 12 global features: mean/std/max for |main|, |cond|, |diff|, rel-diff.
+        self.hidden_ch = int(hidden_ch)
+        self.k_max = float(k_max)
+        self.time_power = float(time_power)
+        # Four maps (d_pre, d_noisy, residual, x_to_base), each with mean/std/max, plus t_norm.
+        in_dim = 4 * 3 + 1
         self.net = nn.Sequential(
-            nn.Linear(12, hidden_ch),
+            nn.Linear(in_dim, self.hidden_ch),
             nn.SiLU(),
-            nn.Linear(hidden_ch, hidden_ch),
+            nn.Linear(self.hidden_ch, self.hidden_ch),
             nn.SiLU(),
-            nn.Linear(hidden_ch, 1),
+            nn.Linear(self.hidden_ch, 2),
         )
 
     @staticmethod
-    def _mag(x: torch.Tensor) -> torch.Tensor:
+    def _abs_map(x: torch.Tensor) -> torch.Tensor:
         return torch.abs(x) if torch.is_complex(x) else x.abs()
 
-    @staticmethod
-    def _stats(x: torch.Tensor) -> torch.Tensor:
-        xf = x.reshape(x.shape[0], -1)
-        return torch.stack(
-            [xf.mean(dim=1), xf.std(dim=1, unbiased=False), xf.amax(dim=1)],
-            dim=1,
-        )
+    @classmethod
+    def _stats(cls, x: torch.Tensor) -> torch.Tensor:
+        x = cls._abs_map(x).float().flatten(start_dim=1)
+        return torch.stack([
+            x.mean(dim=1),
+            x.std(dim=1, unbiased=False),
+            x.amax(dim=1),
+        ], dim=1)
 
-    def forward(self, y_main: torch.Tensor, y_cond: Optional[torch.Tensor] = None) -> torch.Tensor:
-        if y_cond is None:
-            y_cond = y_main
-        mag_main = torch.log1p(self._mag(y_main).float())
-        mag_cond = torch.log1p(self._mag(y_cond).float())
-        mag_diff = torch.log1p(self._mag(y_main - y_cond).float())
-        rel_diff = mag_diff / (mag_main + mag_cond + self.eps)
-        feat = torch.cat(
-            [self._stats(mag_main), self._stats(mag_cond), self._stats(mag_diff), self._stats(rel_diff)],
-            dim=1,
-        )
-        return torch.sigmoid(self.net(feat)).squeeze(-1)
+    def _time_envelope(self, t: torch.Tensor, t_max: float = 1.0) -> torch.Tensor:
+        t_norm = (t.float() / max(float(t_max), 1e-8)).clamp(0.0, 1.0)
+        s = t_norm.pow(float(self.time_power))
+        return (4.0 * s * (1.0 - s)).clamp(0.0, 1.0)
+
+    def forward(
+        self,
+        x_t: torch.Tensor,
+        mu_base: torch.Tensor,
+        y_pre: torch.Tensor,
+        y_noisy: torch.Tensor,
+        t: torch.Tensor,
+        t_max: float = 1.0,
+        detach_inputs: bool = True,
+    ) -> Dict[str, torch.Tensor]:
+        if detach_inputs:
+            x_t = x_t.detach()
+            mu_base = mu_base.detach()
+            y_pre = y_pre.detach()
+            y_noisy = y_noisy.detach()
+            t = t.detach()
+
+        if t.dim() == 0:
+            t = torch.ones(x_t.shape[0], device=x_t.device, dtype=torch.float32) * t
+        t = t.to(device=x_t.device, dtype=torch.float32).flatten()
+
+        d_pre = y_pre - mu_base
+        d_noisy = y_noisy - mu_base
+        residual = y_noisy - y_pre
+        x_to_base = x_t - mu_base
+
+        feat = torch.cat([
+            self._stats(d_pre),
+            self._stats(d_noisy),
+            self._stats(residual),
+            self._stats(x_to_base),
+            (t / max(float(t_max), 1e-8)).clamp(0.0, 1.0)[:, None],
+        ], dim=1).to(dtype=torch.float32)
+
+        raw = self.net(feat)
+        c_t = torch.sigmoid(raw[:, 0]).view(-1, 1, 1, 1).to(dtype=mu_base.real.dtype if torch.is_complex(mu_base) else mu_base.dtype)
+        g_t = torch.sigmoid(raw[:, 1]).view(-1, 1, 1, 1).to(dtype=mu_base.real.dtype if torch.is_complex(mu_base) else mu_base.dtype)
+        E_t = self._time_envelope(t, t_max=t_max).view(-1, 1, 1, 1).to(device=x_t.device, dtype=g_t.dtype)
+        K_t = (float(self.k_max) * E_t * g_t).clamp(0.0, float(self.k_max))
+
+        A_t = c_t * y_pre + (1.0 - c_t) * y_noisy
+        delta_mu = K_t * (A_t - mu_base)
+        mu_anchor = mu_base + delta_mu
+        return {
+            "mu_anchor": mu_anchor,
+            "delta_mu": delta_mu,
+            "A_t": A_t,
+            "K_t": K_t,
+            "c_t": c_t,
+            "g_t": g_t,
+            "E_t": E_t,
+        }
 
 
 class JointFrontendSgmseModel(ScoreModel):
@@ -223,23 +275,22 @@ class JointFrontendSgmseModel(ScoreModel):
                             help="Numerical epsilon used in selector projection oracle.")
         
         
-        # ===== Selector-Controlled Regeneration Strength =====
-        parser.add_argument("--regen_selector_type", type=str, choices=("none", "scalar_mlp"), default="none",
-                            help="Enable utterance-level selector that predicts diffusion regeneration strength r in [0,1].")
-        parser.add_argument("--regen_selector_hidden_ch", type=int, default=64,
-                            help="Hidden channels of scalar_mlp regeneration selector.")
-        parser.add_argument("--regen_strength_weight", type=float, default=0.0,
-                            help="Weight for supervised regeneration-strength proxy loss. 0 disables training this selector.")
-        parser.add_argument("--regen_strength_default", type=float, default=1.0,
-                            help="Fallback regeneration strength used when selector is disabled; 1.0 equals original sampler.")
-        parser.add_argument("--regen_strength_min", type=float, default=0.0,
-                            help="Lower clamp for predicted regeneration strength at inference.")
-        parser.add_argument("--regen_strength_max", type=float, default=1.0,
-                            help="Upper clamp for predicted regeneration strength at inference.")
-        parser.add_argument("--regen_strength_eps", type=float, default=1e-8,
-                            help="Numerical epsilon for regeneration strength target.")
-        
-        
+        # ===== State-aware conditional anchor calibration (sampler-side) =====
+        parser.add_argument("--anchor_calib_weight", type=float, default=0.0,
+                            help="Weight of state-aware anchor calibration loss. 0 disables the controller.")
+        parser.add_argument("--anchor_controller_hidden_ch", type=int, default=64,
+                            help="Hidden channels of the state-aware anchor controller.")
+        parser.add_argument("--anchor_k_max", type=float, default=0.08,
+                            help="Maximum pull strength K_max used by sampler mean calibration.")
+        parser.add_argument("--anchor_time_power", type=float, default=1.0,
+                            help="Power p for the time envelope E(t)=4s(1-s), s=(t/T)^p.")
+        parser.add_argument("--anchor_loss_weight_c", type=float, default=1.0,
+                            help="Weight of oracle anchor-composition loss for c_t.")
+        parser.add_argument("--anchor_loss_weight_k", type=float, default=1.0,
+                            help="Weight of oracle pull-strength loss for K_t.")
+        parser.add_argument("--anchor_loss_weight_recon", type=float, default=0.1,
+                            help="Weight of direct mean calibration loss ||mu_anchor-X||.")
+
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -284,13 +335,14 @@ class JointFrontendSgmseModel(ScoreModel):
         selector_oracle_weight: float = 0.0,
         selector_oracle_conf_weight: float = 1.0,
         selector_oracle_eps: float = 1e-8,
-        regen_selector_type: str = "none",
-        regen_selector_hidden_ch: int = 64,
-        regen_strength_weight: float = 0.0,
-        regen_strength_default: float = 1.0,
-        regen_strength_min: float = 0.0,
-        regen_strength_max: float = 1.0,
-        regen_strength_eps: float = 1e-8,
+        # State-aware conditional anchor calibration
+        anchor_calib_weight: float = 0.0,
+        anchor_controller_hidden_ch: int = 64,
+        anchor_k_max: float = 0.08,
+        anchor_time_power: float = 1.0,
+        anchor_loss_weight_c: float = 1.0,
+        anchor_loss_weight_k: float = 1.0,
+        anchor_loss_weight_recon: float = 0.1,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -328,23 +380,21 @@ class JointFrontendSgmseModel(ScoreModel):
         self.selector_oracle_conf_weight = float(selector_oracle_conf_weight)
         self.selector_oracle_eps = float(selector_oracle_eps)
 
-        # Selector-Controlled Regeneration Strength.
-        self.regen_selector_type = str(regen_selector_type)
-        self.regen_strength_weight = float(regen_strength_weight)
-        self.regen_strength_default = float(regen_strength_default)
-        self.regen_strength_min = float(regen_strength_min)
-        self.regen_strength_max = float(regen_strength_max)
-        self.regen_strength_eps = float(regen_strength_eps)
-        if self.regen_strength_min > self.regen_strength_max:
-            raise ValueError("regen_strength_min must be <= regen_strength_max")
-        self.regen_selector = None
-        if self.regen_selector_type == "scalar_mlp":
-            self.regen_selector = RegenerationStrengthSelector(
-                hidden_ch=int(regen_selector_hidden_ch),
-                eps=self.regen_strength_eps,
+        # State-aware conditional anchor calibration.
+        # This branch is sampler-side: it learns how much the OUVE reverse mean
+        # should be shifted toward an adaptive anchor during sampling.
+        self.anchor_calib_weight = float(anchor_calib_weight)
+        self.anchor_loss_weight_c = float(anchor_loss_weight_c)
+        self.anchor_loss_weight_k = float(anchor_loss_weight_k)
+        self.anchor_loss_weight_recon = float(anchor_loss_weight_recon)
+        self.anchor_controller = None
+        if self.anchor_calib_weight > 0.0:
+            self.anchor_controller = StateAwareAnchorController(
+                hidden_ch=int(anchor_controller_hidden_ch),
+                k_max=float(anchor_k_max),
+                time_power=float(anchor_time_power),
             )
-        elif self.regen_selector_type != "none":
-            raise ValueError(f"Unsupported regen_selector_type: {self.regen_selector_type}")
+
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
         if self.use_content_loss:
@@ -869,63 +919,155 @@ class JointFrontendSgmseModel(ScoreModel):
         return loss, stats
 
 
-    def predict_regen_strength_from_specs(
-        self,
-        y_main_spec: torch.Tensor,
-        y_cond_spec: Optional[torch.Tensor] = None,
-    ) -> torch.Tensor:
-        """Predict regeneration strength r in [regen_strength_min, regen_strength_max].
-
-        This method is called by ScoreModel.enhance(..., regen_strength="auto").
-        It deliberately detaches inputs because r controls sampler hyperparameters
-        at inference; training uses a separate proxy supervision loss below.
-        """
-        if self.regen_selector is None:
-            r = torch.full(
-                (y_main_spec.shape[0],),
-                float(self.regen_strength_default),
-                device=y_main_spec.device,
-                dtype=torch.float32,
-            )
+    @staticmethod
+    def _complex_inner_sum(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
+        """Per-sample real inner product for real or complex tensors."""
+        if torch.is_complex(a) or torch.is_complex(b):
+            prod = torch.real(a * torch.conj(b))
         else:
-            r = self.regen_selector(y_main_spec.detach(), None if y_cond_spec is None else y_cond_spec.detach()).float()
-        return r.clamp(float(self.regen_strength_min), float(self.regen_strength_max))
+            prod = a * b
+        return prod.flatten(start_dim=1).sum(dim=1)
 
-    def _compute_regen_strength_proxy_loss(
+    @staticmethod
+    def _energy_sum(a: torch.Tensor) -> torch.Tensor:
+        return torch.abs(a).pow(2).flatten(start_dim=1).sum(dim=1)
+
+    def _main_and_cond_to_pre_noisy(self, y_main: torch.Tensor, y_cond: Optional[torch.Tensor]):
+        """Map sampler/score inputs to (Y_pre, Y_noisy) according to train_type."""
+        if y_cond is None:
+            return y_main, y_main
+        if self.train_type == "mode2":
+            # mode2: SDE center is frontend enhanced spectrum; y_cond is original noisy.
+            return y_main, y_cond
+        else:
+            # mode3: y_main is noisy; y_cond is frontend enhanced.
+            return y_cond, y_main
+
+    def build_anchor_calibrator(self, y_main: torch.Tensor, y_cond: Optional[torch.Tensor] = None):
+        """Return a callable used by the PC sampler to calibrate predictor mean.
+
+        The callable receives (x_t, mu_base, y_main, t_next) and returns a calibrated
+        mean.  If the controller is disabled, returns None.
+        """
+        if self.anchor_controller is None:
+            return None
+        Y_pre, Y_noisy = self._main_and_cond_to_pre_noisy(y_main, y_cond)
+        t_max = float(getattr(self.sde, "T", 1.0))
+
+        def _calibrator(x_t, mu_base, y_unused, t_next):
+            out = self.anchor_controller(
+                x_t=x_t,
+                mu_base=mu_base,
+                y_pre=Y_pre,
+                y_noisy=Y_noisy,
+                t=t_next,
+                t_max=t_max,
+                detach_inputs=True,
+            )
+            return out["mu_anchor"]
+
+        return _calibrator
+
+    def _compute_anchor_calib_loss(
         self,
         X: torch.Tensor,
         Y_noisy: torch.Tensor,
         Y_pre: torch.Tensor,
     ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
-        """Train the regeneration selector with a clean-referenced reliability proxy.
+        """Train the state-aware anchor controller with clean-referenced oracles.
 
-        Target r* is high when the frontend estimate is unreliable:
-            r* = err(Y_pre, X) / [err(Y_pre, X) + err(Y_noisy, X)].
-        Thus r* -> 0 means the frontend is much closer to clean than noisy and
-        diffusion should regenerate weakly; r* -> 0.5 means frontend is no better
-        than noisy; r* can approach 1 if the frontend is worse than noisy.
+        The score network is first used to obtain the base OUVE reverse mean
+        mu_base at a random time t.  The controller then predicts:
+            c_t: A_t = c_t Y_pre + (1-c_t)Y_noisy
+            K_t: final pull strength
+
+        We supervise c_t with the optimal projection coefficient between
+        Y_noisy and Y_pre, and supervise K_t with the optimal projection from
+        mu_base toward the predicted anchor direction.  This trains the
+        controller to answer: "does moving the base transition mean toward this
+        conditional anchor reduce clean-reference error?".
         """
         zero = torch.zeros((), device=X.device, dtype=torch.float32)
-        if self.regen_selector is None:
+        if self.anchor_controller is None or float(getattr(self, "anchor_calib_weight", 0.0)) <= 0.0:
+            return zero, {}
+        if self.sde.__class__.__name__ != "OUVESDE":
             return zero, {}
 
-        eps = max(float(getattr(self, "regen_strength_eps", 1e-8)), 1e-12)
-        pred = self.regen_selector(Y_pre.detach(), Y_noisy.detach()).float()
+        B = X.shape[0]
+        device = X.device
+        eps = max(float(getattr(self, "selector_oracle_eps", 1e-8)), 1e-12)
+        t_eps = float(getattr(self, "t_eps", 0.03))
+        T = float(getattr(self.sde, "T", 1.0))
+        t = torch.rand(B, device=device) * (T - t_eps) + t_eps
 
-        reduce_dims = tuple(range(1, X.dim()))
-        err_pre = torch.mean(torch.abs(Y_pre.detach() - X.detach()).pow(2), dim=reduce_dims)
-        err_noisy = torch.mean(torch.abs(Y_noisy.detach() - X.detach()).pow(2), dim=reduce_dims)
-        target = (err_pre / (err_pre + err_noisy + eps)).clamp(0.0, 1.0).float()
-        target = target.clamp(float(self.regen_strength_min), float(self.regen_strength_max)).detach()
+        if self.train_type == "mode2":
+            y_main = Y_pre
+            y_cond = Y_noisy
+        else:
+            y_main = Y_noisy
+            y_cond = Y_pre
 
-        loss = F.smooth_l1_loss(pred, target)
+        mean, std = self.sde.marginal_prob(X, y_main, t)
+        z = torch.randn_like(X)
+        x_t = mean + std[:, None, None, None] * z
+
+        # Obtain base OUVE reverse mean without updating the score network through this auxiliary loss.
+        with torch.no_grad():
+            def score_fn(xx, yy, tt):
+                return self(xx, yy, tt, y_cond=y_cond)
+            rsde = self.sde.reverse(score_fn, probability_flow=False)
+            stepsize = torch.tensor(1.0 / max(int(getattr(self.sde, "N", 30)), 1), device=device, dtype=t.dtype)
+            f, _ = rsde.discretize(x_t, y_main, t, stepsize)
+            mu_base = (x_t - f).detach()
+
+        # Controller prediction keeps gradients only through controller parameters.
+        pred = self.anchor_controller(
+            x_t=x_t,
+            mu_base=mu_base,
+            y_pre=Y_pre,
+            y_noisy=Y_noisy,
+            t=t,
+            t_max=T,
+            detach_inputs=True,
+        )
+        c_t = pred["c_t"].float()
+        K_t = pred["K_t"].float()
+        A_t = pred["A_t"]
+        mu_anchor = pred["mu_anchor"]
+        E_t = pred["E_t"].float()
+
+        # Oracle c*: closest point on the segment Y_noisy -> Y_pre to clean X.
+        D_cond = (Y_pre.detach() - Y_noisy.detach())
+        R_cond = (X.detach() - Y_noisy.detach())
+        c_star = (self._complex_inner_sum(R_cond, D_cond) / (self._energy_sum(D_cond) + eps)).clamp(0.0, 1.0)
+        c_star = c_star.view(B, 1, 1, 1).float().detach()
+
+        # Oracle K*: closest projection from mu_base toward the predicted anchor A_t.
+        D_anchor = (A_t.detach() - mu_base.detach())
+        R_anchor = (X.detach() - mu_base.detach())
+        K_raw = self._complex_inner_sum(R_anchor, D_anchor) / (self._energy_sum(D_anchor) + eps)
+        K_cap = (float(self.anchor_controller.k_max) * E_t.view(B)).clamp_min(0.0).detach()
+        K_star = torch.minimum(torch.maximum(K_raw, torch.zeros_like(K_raw)), K_cap).view(B, 1, 1, 1).float().detach()
+
+        loss_c = F.smooth_l1_loss(c_t, c_star, reduction="mean")
+        loss_k = F.smooth_l1_loss(K_t, K_star, reduction="mean")
+        loss_recon = F.smooth_l1_loss(torch.view_as_real(mu_anchor) if torch.is_complex(mu_anchor) else mu_anchor,
+                                      torch.view_as_real(X.detach()) if torch.is_complex(X) else X.detach(),
+                                      reduction="mean")
+        loss = (
+            float(getattr(self, "anchor_loss_weight_c", 1.0)) * loss_c
+            + float(getattr(self, "anchor_loss_weight_k", 1.0)) * loss_k
+            + float(getattr(self, "anchor_loss_weight_recon", 0.1)) * loss_recon
+        )
         stats = {
-            "regen_strength_pred_mean": pred.detach().mean(),
-            "regen_strength_pred_std": pred.detach().std(unbiased=False),
-            "regen_strength_target_mean": target.detach().mean(),
-            "regen_strength_target_std": target.detach().std(unbiased=False),
-            "regen_strength_err_pre": err_pre.detach().mean(),
-            "regen_strength_err_noisy": err_noisy.detach().mean(),
+            "anchor_loss_c": loss_c.detach(),
+            "anchor_loss_k": loss_k.detach(),
+            "anchor_loss_recon": loss_recon.detach(),
+            "anchor_c_mean": c_t.detach().mean(),
+            "anchor_c_target_mean": c_star.detach().mean(),
+            "anchor_K_mean": K_t.detach().mean(),
+            "anchor_K_target_mean": K_star.detach().mean(),
+            "anchor_E_mean": E_t.detach().mean(),
         }
         return loss, stats
 
@@ -1218,22 +1360,23 @@ class JointFrontendSgmseModel(ScoreModel):
                 self.log("train_loss_selector_oracle", loss_selector_oracle,
                          on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
-        # ===== regeneration strength selector proxy loss =====
-        loss_regen_strength = torch.zeros((), device=x_wav.device, dtype=torch.float32)
-        if float(getattr(self, "regen_strength_weight", 0.0)) > 0.0 and self.regen_selector is not None:
-            loss_regen_strength, regen_stats = self._compute_regen_strength_proxy_loss(
+        # ===== state-aware anchor calibration loss =====
+        loss_anchor_calib = torch.zeros((), device=x_wav.device, dtype=torch.float32)
+        if float(getattr(self, "anchor_calib_weight", 0.0)) > 0.0:
+            loss_anchor_calib, anchor_stats = self._compute_anchor_calib_loss(
                 X=X,
                 Y_noisy=Y_noisy,
                 Y_pre=Y_pre,
             )
-            weighted_regen_strength = float(self.regen_strength_weight) * loss_regen_strength
-            loss = loss + weighted_regen_strength.to(loss.dtype)
-            self.log("train_loss_regen_strength", loss_regen_strength,
+            weighted_anchor_calib = float(self.anchor_calib_weight) * loss_anchor_calib
+            loss = loss + weighted_anchor_calib.to(loss.dtype)
+            self.log("train_loss_anchor_calib", loss_anchor_calib,
                      on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-            self.log("train_loss_regen_strength_weighted", weighted_regen_strength,
+            self.log("train_loss_anchor_calib_weighted", weighted_anchor_calib,
                      on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-            for k, v in regen_stats.items():
+            for k, v in anchor_stats.items():
                 self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+
 
         # ===== final enhanced 的内容级 loss =====
         loss_content_final = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)

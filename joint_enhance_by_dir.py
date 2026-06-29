@@ -13,7 +13,52 @@ from sgmse.joint_data_module import JointWaveDataModule
 '''
 
 CUDA_VISIBLE_DEVICES=5 python joint_enhance_by_dir.py --ckpt /home/xyf/cwh_project/sgmse-main/joint_train_logs/holc6jqr-None/epoch\=148-step\=300000.ckpt --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2_testset/noisy --out_dir enhanced/enahnced_holc6jq0_300k_v2_testset  --frontend storm --N 30
-
+CUDA_VISIBLE_DEVICES=6,7 python -u joint_train.py \
+  --backbone ncsnpp_v2 \
+  --sde ouve \
+  --loss_type score_matching \
+  --num_eval_files 5 \
+  --loss_weighting sigma^2 \
+  --c_in 1 \
+  --c_out 1 \
+  --c_skip 0 \
+  --network_scaling 1/t \
+  --train_type mode2 \
+  --mode2_include_noisy_main \
+  --nf 128 \
+  --ch_mult 1 2 2 2 \
+  --num_res_blocks 1 \
+  --attn_resolutions 0 \
+  --selector_type noise_prior_guidance \
+  --selector_hidden_ch 32 \
+  --selector_attn_levels 3,2 \
+  --selector_oracle_weight 0.0 \
+  --noise_prior_init_scale 0.05 \
+  --anchor_calib_weight 0.1 \
+  --anchor_controller_hidden_ch 64 \
+  --anchor_k_max 0.08 \
+  --anchor_time_power 1.0 \
+  --anchor_loss_weight_c 1.0 \
+  --anchor_loss_weight_k 1.0 \
+  --anchor_loss_weight_recon 0.1 \
+  --dataset joint_scp \
+  --train_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2/scp/tr_synthetic/wav.scp \
+  --valid_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2/scp/cv_synthetic/wav.scp \
+  --test_wav_scp /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2/scp/tt_real_recordings/wav.scp \
+  --clean_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2/clean \
+  --batch_size 8 \
+  --accelerator gpu \
+  --devices 2 \
+  --precision 32-true \
+  --frontend_trainable \
+  --frontend storm \
+  --frontend_aux_loss spec_mse \
+  --weighting_denoiser_to_score 0.5 \
+  --storm_nf 128 \
+  --storm_ch_mult 1 2 2 2 \
+  --storm_num_res_blocks 1 \
+  --storm_attn_resolutions 0 \
+  --wandb_name trainable_likestorm_noise_prior_guidance_anchorcalib
 '''
 def load_mono(path: str, target_sr: int):
     wav, sr = sf.read(path, always_2d=False)
@@ -68,6 +113,11 @@ def main():
         type=str,
         default=None,
         help="Adaptive regeneration strength. Use 'auto' for learned selector, or a fixed float in [0,1]. None keeps original sampler.",
+    )
+    p.add_argument(
+        "--anchor_calib",
+        action="store_true",
+        help="Enable state-aware conditional anchor calibration during PC sampling. Requires a checkpoint trained with --anchor_calib_weight > 0.",
     )
 
     # IMPORTANT: these STFT/transform params must match training
@@ -167,6 +217,7 @@ def main():
                 N=args.N,
                 snr=args.snr,
                 regen_strength=args.regen_strength,
+                anchor_calib=args.anchor_calib,
             )
             
             enhanced = np.clip(enhanced, -1.0, 1.0)

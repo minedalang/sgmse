@@ -65,7 +65,7 @@ def _adaptive_prior_sampling(sde, y, t_start):
 def get_pc_sampler(
     predictor_name, corrector_name, sde, score_fn, y,
     denoise=True, eps=3e-2, snr=0.1, corrector_steps=1, probability_flow: bool = False,
-    intermediate=False, regeneration_strength=None, **kwargs
+    intermediate=False, regeneration_strength=None, anchor_calibrator=None, **kwargs
 ):
     """Create a Predictor-Corrector (PC) sampler.
 
@@ -108,7 +108,15 @@ def get_pc_sampler(
                     stepsize = timesteps[-1] # from eps to 0
                 vec_t = torch.ones(y.shape[0], device=y.device) * t
                 xt, xt_mean = corrector.update_fn(xt, y, vec_t)
+                xt_before_predictor = xt
                 xt, xt_mean = predictor.update_fn(xt, y, vec_t, stepsize)
+                if anchor_calibrator is not None:
+                    t_next = (vec_t - stepsize).clamp_min(0.0)
+                    xt_mean_anchor = anchor_calibrator(xt_before_predictor, xt_mean, y, t_next)
+                    # Keep the same stochastic part, but shift the transition mean.
+                    mean_shift = xt_mean_anchor - xt_mean
+                    xt = xt + mean_shift
+                    xt_mean = xt_mean_anchor
             x_result = xt_mean if denoise else xt
             ns = sde.N * (corrector.n_steps + 1)
             return x_result, ns

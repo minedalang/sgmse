@@ -999,6 +999,7 @@ class ScoreModel(pl.LightningModule):
         One-call speech enhancement of noisy speech `y`, for convenience.
         """
         regen_strength_arg = kwargs.pop("regen_strength", None)
+        anchor_calib_arg = kwargs.pop("anchor_calib", False)
 
         start = time.time()
 
@@ -1050,12 +1051,22 @@ class ScoreModel(pl.LightningModule):
         
         regeneration_strength = self._resolve_regeneration_strength(regen_strength_arg, Y, y_cond_spec)
 
+        anchor_calibrator = None
+        if bool(anchor_calib_arg):
+            if hasattr(self, "build_anchor_calibrator"):
+                anchor_calibrator = self.build_anchor_calibrator(Y, y_cond_spec)
+                if anchor_calibrator is None:
+                    warnings.warn("anchor_calib=True but anchor controller is disabled in this model; using original sampler.")
+            else:
+                warnings.warn("anchor_calib=True but model has no build_anchor_calibrator(); using original sampler.")
+
         # OUVESDE和VESDE选择的采样器，都接受分数
         if self.sde.__class__.__name__ in  ('OUVESDE', 'VESDE','VPSDE'):
             if self.sde.sampler_type == "pc":
                 sampler = self.get_pc_sampler(predictor, corrector, Y.cuda(),score_fn=score_fn, N=N, 
                     corrector_steps=corrector_steps, snr=snr, intermediate=False,
                     regeneration_strength=regeneration_strength,
+                    anchor_calibrator=anchor_calibrator,
                     **kwargs)
             elif self.sde.sampler_type == "ode":
                 sampler = self.get_ode_sampler(Y.cuda(),score_fn=score_fn, N=N, regeneration_strength=regeneration_strength, **kwargs)
