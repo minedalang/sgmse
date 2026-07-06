@@ -1000,6 +1000,8 @@ class ScoreModel(pl.LightningModule):
         """
         regen_strength_arg = kwargs.pop("regen_strength", None)
         anchor_calib_arg = kwargs.pop("anchor_calib", False)
+        anchor_k_max_arg = kwargs.pop("anchor_k_max", None)
+        anchor_scale_arg = kwargs.pop("anchor_scale", None)
 
         start = time.time()
 
@@ -1054,7 +1056,12 @@ class ScoreModel(pl.LightningModule):
         anchor_calibrator = None
         if bool(anchor_calib_arg):
             if hasattr(self, "build_anchor_calibrator"):
-                anchor_calibrator = self.build_anchor_calibrator(Y, y_cond_spec)
+                anchor_calibrator = self.build_anchor_calibrator(
+                    Y,
+                    y_cond_spec,
+                    k_max_override=anchor_k_max_arg,
+                    k_scale=anchor_scale_arg,
+                )
                 if anchor_calibrator is None:
                     warnings.warn("anchor_calib=True but anchor controller is disabled in this model; using original sampler.")
             else:

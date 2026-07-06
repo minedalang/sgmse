@@ -123,24 +123,33 @@ def _match_length(y: torch.Tensor, ref: torch.Tensor) -> torch.Tensor:
 
 
 
+
 class StateAwareAnchorController(nn.Module):
-    """State-aware controller for weak-anchor OUVE mean calibration.
+    """Global state-aware controller for weak-anchor OUVE mean calibration.
 
     It predicts two utterance-level scalars from the current sampling state and
     conditional spectra:
         c_t: anchor composition coefficient, A_t = c_t Y_pre + (1-c_t) Y_noisy
         g_t: correction reliability, K_t = K_max * E(t) * g_t
 
-    The controller is intentionally lightweight and uses global statistics of
-    deviation maps.  It does not replace the score network; it only calibrates
-    the reverse transition mean during sampling.
+    This is the original/global controller.  It is kept for checkpoint
+    compatibility and for ablation against the new band-wise controller.
     """
 
-    def __init__(self, hidden_ch: int = 64, k_max: float = 0.08, time_power: float = 1.0):
+    controller_type = "global_mlp"
+
+    def __init__(
+        self,
+        hidden_ch: int = 64,
+        k_max: float = 0.08,
+        time_power: float = 1.0,
+        infer_k_scale: float = 1.0,
+    ):
         super().__init__()
         self.hidden_ch = int(hidden_ch)
         self.k_max = float(k_max)
         self.time_power = float(time_power)
+        self.infer_k_scale = float(infer_k_scale)
         # Four maps (d_pre, d_noisy, residual, x_to_base), each with mean/std/max, plus t_norm.
         in_dim = 4 * 3 + 1
         self.net = nn.Sequential(
@@ -178,6 +187,8 @@ class StateAwareAnchorController(nn.Module):
         t: torch.Tensor,
         t_max: float = 1.0,
         detach_inputs: bool = True,
+        k_max_override: Optional[float] = None,
+        k_scale: Optional[float] = None,
     ) -> Dict[str, torch.Tensor]:
         if detach_inputs:
             x_t = x_t.detach()
@@ -204,10 +215,14 @@ class StateAwareAnchorController(nn.Module):
         ], dim=1).to(dtype=torch.float32)
 
         raw = self.net(feat)
-        c_t = torch.sigmoid(raw[:, 0]).view(-1, 1, 1, 1).to(dtype=mu_base.real.dtype if torch.is_complex(mu_base) else mu_base.dtype)
-        g_t = torch.sigmoid(raw[:, 1]).view(-1, 1, 1, 1).to(dtype=mu_base.real.dtype if torch.is_complex(mu_base) else mu_base.dtype)
+        out_dtype = mu_base.real.dtype if torch.is_complex(mu_base) else mu_base.dtype
+        c_t = torch.sigmoid(raw[:, 0]).view(-1, 1, 1, 1).to(dtype=out_dtype)
+        g_t = torch.sigmoid(raw[:, 1]).view(-1, 1, 1, 1).to(dtype=out_dtype)
         E_t = self._time_envelope(t, t_max=t_max).view(-1, 1, 1, 1).to(device=x_t.device, dtype=g_t.dtype)
-        K_t = (float(self.k_max) * E_t * g_t).clamp(0.0, float(self.k_max))
+        k_max_eff = float(self.k_max if k_max_override is None else k_max_override)
+        scale_eff = float(self.infer_k_scale if k_scale is None else k_scale)
+        k_cap = max(k_max_eff * scale_eff, 0.0)
+        K_t = (k_cap * E_t * g_t).clamp(0.0, k_cap)
 
         A_t = c_t * y_pre + (1.0 - c_t) * y_noisy
         delta_mu = K_t * (A_t - mu_base)
@@ -220,6 +235,156 @@ class StateAwareAnchorController(nn.Module):
             "c_t": c_t,
             "g_t": g_t,
             "E_t": E_t,
+        }
+
+
+class StateAwareBandAnchorController(nn.Module):
+    """Lightweight band-wise state-aware controller for OUVE mean calibration.
+
+    It keeps the sampling-side formulation unchanged, but predicts band-wise
+    coefficients instead of one utterance-level scalar:
+        c_t(f): band-wise anchor composition
+        g_t(f): band-wise correction reliability
+
+    The network is still tiny.  For each band it computes statistics of four
+    deviation maps and applies the same shared MLP to every band.
+    """
+
+    controller_type = "band_mlp"
+
+    def __init__(
+        self,
+        hidden_ch: int = 32,
+        k_max: float = 0.08,
+        time_power: float = 1.0,
+        num_bands: int = 32,
+        infer_k_scale: float = 1.0,
+    ):
+        super().__init__()
+        self.hidden_ch = int(hidden_ch)
+        self.k_max = float(k_max)
+        self.time_power = float(time_power)
+        self.num_bands = max(int(num_bands), 1)
+        self.infer_k_scale = float(infer_k_scale)
+        in_dim = 4 * 3 + 1
+        self.net = nn.Sequential(
+            nn.Linear(in_dim, self.hidden_ch),
+            nn.SiLU(),
+            nn.Linear(self.hidden_ch, self.hidden_ch),
+            nn.SiLU(),
+            nn.Linear(self.hidden_ch, 2),
+        )
+
+    @staticmethod
+    def _abs_map(x: torch.Tensor) -> torch.Tensor:
+        return torch.abs(x) if torch.is_complex(x) else x.abs()
+
+    @staticmethod
+    def _band_edges(freq_bins: int, num_bands: int, device=None) -> torch.Tensor:
+        nb = max(1, min(int(num_bands), int(freq_bins)))
+        return torch.linspace(0, int(freq_bins), nb + 1, device=device).round().long()
+
+    @classmethod
+    def _band_stats(cls, x: torch.Tensor, num_bands: int) -> torch.Tensor:
+        """Return [B, num_bands_eff, 3] with mean/std/max per frequency band."""
+        mag = cls._abs_map(x).float()
+        B = mag.shape[0]
+        freq_bins = int(mag.shape[-2])
+        edges = cls._band_edges(freq_bins, num_bands, device=mag.device)
+        stats = []
+        for i in range(edges.numel() - 1):
+            lo = int(edges[i].item())
+            hi = int(edges[i + 1].item())
+            if hi <= lo:
+                hi = min(lo + 1, freq_bins)
+            band = mag[..., lo:hi, :].reshape(B, -1)
+            stats.append(torch.stack([
+                band.mean(dim=1),
+                band.std(dim=1, unbiased=False),
+                band.amax(dim=1),
+            ], dim=1))
+        return torch.stack(stats, dim=1)
+
+    @classmethod
+    def _expand_bands(cls, x_band: torch.Tensor, freq_bins: int) -> torch.Tensor:
+        """Nearest-expand [B,1,N_band,1] to [B,1,F,1]."""
+        if x_band.shape[-2] == int(freq_bins):
+            return x_band
+        return F.interpolate(x_band, size=(int(freq_bins), 1), mode="nearest")
+
+    def _time_envelope(self, t: torch.Tensor, t_max: float = 1.0) -> torch.Tensor:
+        t_norm = (t.float() / max(float(t_max), 1e-8)).clamp(0.0, 1.0)
+        s = t_norm.pow(float(self.time_power))
+        return (4.0 * s * (1.0 - s)).clamp(0.0, 1.0)
+
+    def forward(
+        self,
+        x_t: torch.Tensor,
+        mu_base: torch.Tensor,
+        y_pre: torch.Tensor,
+        y_noisy: torch.Tensor,
+        t: torch.Tensor,
+        t_max: float = 1.0,
+        detach_inputs: bool = True,
+        k_max_override: Optional[float] = None,
+        k_scale: Optional[float] = None,
+    ) -> Dict[str, torch.Tensor]:
+        if detach_inputs:
+            x_t = x_t.detach()
+            mu_base = mu_base.detach()
+            y_pre = y_pre.detach()
+            y_noisy = y_noisy.detach()
+            t = t.detach()
+
+        if t.dim() == 0:
+            t = torch.ones(x_t.shape[0], device=x_t.device, dtype=torch.float32) * t
+        t = t.to(device=x_t.device, dtype=torch.float32).flatten()
+
+        d_pre = y_pre - mu_base
+        d_noisy = y_noisy - mu_base
+        residual = y_noisy - y_pre
+        x_to_base = x_t - mu_base
+        freq_bins = int(mu_base.shape[-2])
+        nb = max(1, min(int(self.num_bands), freq_bins))
+
+        # [B, N_band, 12]
+        feat_maps = torch.cat([
+            self._band_stats(d_pre, nb),
+            self._band_stats(d_noisy, nb),
+            self._band_stats(residual, nb),
+            self._band_stats(x_to_base, nb),
+        ], dim=-1)
+        t_feat = (t / max(float(t_max), 1e-8)).clamp(0.0, 1.0).view(-1, 1, 1).expand(-1, nb, 1)
+        feat = torch.cat([feat_maps, t_feat], dim=-1).to(dtype=torch.float32)
+
+        raw = self.net(feat.reshape(-1, feat.shape[-1])).view(x_t.shape[0], nb, 2)
+        out_dtype = mu_base.real.dtype if torch.is_complex(mu_base) else mu_base.dtype
+        c_band = torch.sigmoid(raw[..., 0]).view(-1, 1, nb, 1).to(dtype=out_dtype)
+        g_band = torch.sigmoid(raw[..., 1]).view(-1, 1, nb, 1).to(dtype=out_dtype)
+        c_t = self._expand_bands(c_band, freq_bins=freq_bins)
+        g_t = self._expand_bands(g_band, freq_bins=freq_bins)
+
+        E_t = self._time_envelope(t, t_max=t_max).view(-1, 1, 1, 1).to(device=x_t.device, dtype=g_t.dtype)
+        k_max_eff = float(self.k_max if k_max_override is None else k_max_override)
+        scale_eff = float(self.infer_k_scale if k_scale is None else k_scale)
+        k_cap = max(k_max_eff * scale_eff, 0.0)
+        K_band = (k_cap * E_t * g_band).clamp(0.0, k_cap)
+        K_t = self._expand_bands(K_band, freq_bins=freq_bins)
+
+        A_t = c_t * y_pre + (1.0 - c_t) * y_noisy
+        delta_mu = K_t * (A_t - mu_base)
+        mu_anchor = mu_base + delta_mu
+        return {
+            "mu_anchor": mu_anchor,
+            "delta_mu": delta_mu,
+            "A_t": A_t,
+            "K_t": K_t,
+            "c_t": c_t,
+            "g_t": g_t,
+            "E_t": E_t,
+            "c_band": c_band,
+            "g_band": g_band,
+            "K_band": K_band,
         }
 
 
@@ -278,12 +443,19 @@ class JointFrontendSgmseModel(ScoreModel):
         # ===== State-aware conditional anchor calibration (sampler-side) =====
         parser.add_argument("--anchor_calib_weight", type=float, default=0.0,
                             help="Weight of state-aware anchor calibration loss. 0 disables the controller.")
+        parser.add_argument("--anchor_controller_type", type=str, default="global_mlp",
+                            choices=("global_mlp", "band_mlp"),
+                            help="Type of anchor controller: global scalar MLP or lightweight band-wise shared MLP.")
         parser.add_argument("--anchor_controller_hidden_ch", type=int, default=64,
-                            help="Hidden channels of the state-aware anchor controller.")
+                            help="Hidden channels of the state-aware anchor controller. For band_mlp, 32 is usually enough.")
+        parser.add_argument("--anchor_num_bands", type=int, default=32,
+                            help="Number of frequency bands for --anchor_controller_type band_mlp.")
         parser.add_argument("--anchor_k_max", type=float, default=0.08,
                             help="Maximum pull strength K_max used by sampler mean calibration.")
         parser.add_argument("--anchor_time_power", type=float, default=1.0,
                             help="Power p for the time envelope E(t)=4s(1-s), s=(t/T)^p.")
+        parser.add_argument("--anchor_band_smooth_weight", type=float, default=0.0,
+                            help="Optional smoothness penalty for neighboring band-wise c/g outputs. Only used by band_mlp.")
         parser.add_argument("--anchor_loss_weight_c", type=float, default=1.0,
                             help="Weight of oracle anchor-composition loss for c_t.")
         parser.add_argument("--anchor_loss_weight_k", type=float, default=1.0,
@@ -337,9 +509,12 @@ class JointFrontendSgmseModel(ScoreModel):
         selector_oracle_eps: float = 1e-8,
         # State-aware conditional anchor calibration
         anchor_calib_weight: float = 0.0,
+        anchor_controller_type: str = "global_mlp",
         anchor_controller_hidden_ch: int = 64,
+        anchor_num_bands: int = 32,
         anchor_k_max: float = 0.08,
         anchor_time_power: float = 1.0,
+        anchor_band_smooth_weight: float = 0.0,
         anchor_loss_weight_c: float = 1.0,
         anchor_loss_weight_k: float = 1.0,
         anchor_loss_weight_recon: float = 0.1,
@@ -384,16 +559,27 @@ class JointFrontendSgmseModel(ScoreModel):
         # This branch is sampler-side: it learns how much the OUVE reverse mean
         # should be shifted toward an adaptive anchor during sampling.
         self.anchor_calib_weight = float(anchor_calib_weight)
+        self.anchor_controller_type = str(anchor_controller_type)
+        self.anchor_num_bands = int(anchor_num_bands)
+        self.anchor_band_smooth_weight = float(anchor_band_smooth_weight)
         self.anchor_loss_weight_c = float(anchor_loss_weight_c)
         self.anchor_loss_weight_k = float(anchor_loss_weight_k)
         self.anchor_loss_weight_recon = float(anchor_loss_weight_recon)
         self.anchor_controller = None
         if self.anchor_calib_weight > 0.0:
-            self.anchor_controller = StateAwareAnchorController(
-                hidden_ch=int(anchor_controller_hidden_ch),
-                k_max=float(anchor_k_max),
-                time_power=float(anchor_time_power),
-            )
+            if self.anchor_controller_type == "band_mlp":
+                self.anchor_controller = StateAwareBandAnchorController(
+                    hidden_ch=int(anchor_controller_hidden_ch),
+                    k_max=float(anchor_k_max),
+                    time_power=float(anchor_time_power),
+                    num_bands=int(anchor_num_bands),
+                )
+            else:
+                self.anchor_controller = StateAwareAnchorController(
+                    hidden_ch=int(anchor_controller_hidden_ch),
+                    k_max=float(anchor_k_max),
+                    time_power=float(anchor_time_power),
+                )
 
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
@@ -932,6 +1118,53 @@ class JointFrontendSgmseModel(ScoreModel):
     def _energy_sum(a: torch.Tensor) -> torch.Tensor:
         return torch.abs(a).pow(2).flatten(start_dim=1).sum(dim=1)
 
+    @staticmethod
+    def _band_edges(freq_bins: int, num_bands: int, device=None) -> torch.Tensor:
+        nb = max(1, min(int(num_bands), int(freq_bins)))
+        return torch.linspace(0, int(freq_bins), nb + 1, device=device).round().long()
+
+    @classmethod
+    def _complex_inner_band_sum(cls, a: torch.Tensor, b: torch.Tensor, num_bands: int) -> torch.Tensor:
+        """Per-sample, per-band real inner product. Return [B,1,N_band,1]."""
+        if torch.is_complex(a) or torch.is_complex(b):
+            prod = torch.real(a * torch.conj(b))
+        else:
+            prod = a * b
+        B = prod.shape[0]
+        freq_bins = int(prod.shape[-2])
+        edges = cls._band_edges(freq_bins, num_bands, device=prod.device)
+        vals = []
+        for i in range(edges.numel() - 1):
+            lo = int(edges[i].item())
+            hi = int(edges[i + 1].item())
+            if hi <= lo:
+                hi = min(lo + 1, freq_bins)
+            vals.append(prod[..., lo:hi, :].reshape(B, -1).sum(dim=1))
+        return torch.stack(vals, dim=1).view(B, 1, -1, 1)
+
+    @classmethod
+    def _energy_band_sum(cls, a: torch.Tensor, num_bands: int) -> torch.Tensor:
+        """Per-sample, per-band energy. Return [B,1,N_band,1]."""
+        mag2 = torch.abs(a).pow(2)
+        B = mag2.shape[0]
+        freq_bins = int(mag2.shape[-2])
+        edges = cls._band_edges(freq_bins, num_bands, device=mag2.device)
+        vals = []
+        for i in range(edges.numel() - 1):
+            lo = int(edges[i].item())
+            hi = int(edges[i + 1].item())
+            if hi <= lo:
+                hi = min(lo + 1, freq_bins)
+            vals.append(mag2[..., lo:hi, :].reshape(B, -1).sum(dim=1))
+        return torch.stack(vals, dim=1).view(B, 1, -1, 1)
+
+    @staticmethod
+    def _expand_band_values(x_band: torch.Tensor, freq_bins: int) -> torch.Tensor:
+        """Nearest-expand [B,1,N_band,1] to [B,1,F,1]."""
+        if int(x_band.shape[-2]) == int(freq_bins):
+            return x_band
+        return F.interpolate(x_band, size=(int(freq_bins), 1), mode="nearest")
+
     def _main_and_cond_to_pre_noisy(self, y_main: torch.Tensor, y_cond: Optional[torch.Tensor]):
         """Map sampler/score inputs to (Y_pre, Y_noisy) according to train_type."""
         if y_cond is None:
@@ -943,11 +1176,22 @@ class JointFrontendSgmseModel(ScoreModel):
             # mode3: y_main is noisy; y_cond is frontend enhanced.
             return y_cond, y_main
 
-    def build_anchor_calibrator(self, y_main: torch.Tensor, y_cond: Optional[torch.Tensor] = None):
+    def build_anchor_calibrator(
+        self,
+        y_main: torch.Tensor,
+        y_cond: Optional[torch.Tensor] = None,
+        k_max_override: Optional[float] = None,
+        k_scale: Optional[float] = None,
+    ):
         """Return a callable used by the PC sampler to calibrate predictor mean.
 
         The callable receives (x_t, mu_base, y_main, t_next) and returns a calibrated
         mean.  If the controller is disabled, returns None.
+
+        k_max_override and k_scale are inference-time controls.  They do not
+        modify checkpoint weights; they only change the pull strength used by
+        the sampler:
+            K_t = (k_max_override or checkpoint K_max) * k_scale * E(t) * g_t.
         """
         if self.anchor_controller is None:
             return None
@@ -963,6 +1207,8 @@ class JointFrontendSgmseModel(ScoreModel):
                 t=t_next,
                 t_max=t_max,
                 detach_inputs=True,
+                k_max_override=k_max_override,
+                k_scale=k_scale,
             )
             return out["mu_anchor"]
 
@@ -1036,21 +1282,59 @@ class JointFrontendSgmseModel(ScoreModel):
         mu_anchor = pred["mu_anchor"]
         E_t = pred["E_t"].float()
 
+        is_band = getattr(self.anchor_controller, "controller_type", "global_mlp") == "band_mlp"
+
         # Oracle c*: closest point on the segment Y_noisy -> Y_pre to clean X.
         D_cond = (Y_pre.detach() - Y_noisy.detach())
         R_cond = (X.detach() - Y_noisy.detach())
-        c_star = (self._complex_inner_sum(R_cond, D_cond) / (self._energy_sum(D_cond) + eps)).clamp(0.0, 1.0)
-        c_star = c_star.view(B, 1, 1, 1).float().detach()
 
         # Oracle K*: closest projection from mu_base toward the predicted anchor A_t.
         D_anchor = (A_t.detach() - mu_base.detach())
         R_anchor = (X.detach() - mu_base.detach())
-        K_raw = self._complex_inner_sum(R_anchor, D_anchor) / (self._energy_sum(D_anchor) + eps)
-        K_cap = (float(self.anchor_controller.k_max) * E_t.view(B)).clamp_min(0.0).detach()
-        K_star = torch.minimum(torch.maximum(K_raw, torch.zeros_like(K_raw)), K_cap).view(B, 1, 1, 1).float().detach()
 
-        loss_c = F.smooth_l1_loss(c_t, c_star, reduction="mean")
-        loss_k = F.smooth_l1_loss(K_t, K_star, reduction="mean")
+        if is_band:
+            num_bands = int(getattr(self.anchor_controller, "num_bands", 32))
+            freq_bins = int(X.shape[-2])
+            # Band-wise oracle targets.  Loss is computed on band outputs to avoid
+            # over-weighting wider expanded bands.
+            c_star_band = (
+                self._complex_inner_band_sum(R_cond, D_cond, num_bands)
+                / (self._energy_band_sum(D_cond, num_bands) + eps)
+            ).clamp(0.0, 1.0).float().detach()
+            c_star = self._expand_band_values(c_star_band, freq_bins=freq_bins).detach()
+
+            K_raw_band = self._complex_inner_band_sum(R_anchor, D_anchor, num_bands) / (self._energy_band_sum(D_anchor, num_bands) + eps)
+            K_cap_band = (float(self.anchor_controller.k_max) * E_t).expand_as(K_raw_band).clamp_min(0.0).detach()
+            K_star_band = torch.minimum(torch.maximum(K_raw_band, torch.zeros_like(K_raw_band)), K_cap_band).float().detach()
+            K_star = self._expand_band_values(K_star_band, freq_bins=freq_bins).detach()
+
+            c_pred_for_loss = pred.get("c_band", c_t).float()
+            K_pred_for_loss = pred.get("K_band", K_t).float()
+            loss_c = F.smooth_l1_loss(c_pred_for_loss, c_star_band, reduction="mean")
+            loss_k = F.smooth_l1_loss(K_pred_for_loss, K_star_band, reduction="mean")
+
+            loss_smooth = torch.zeros((), device=X.device, dtype=torch.float32)
+            smooth_w = float(getattr(self, "anchor_band_smooth_weight", 0.0))
+            if smooth_w > 0.0:
+                c_band = pred.get("c_band", None)
+                g_band = pred.get("g_band", None)
+                if c_band is not None and g_band is not None and c_band.shape[-2] > 1:
+                    loss_smooth = (
+                        c_band.float().diff(dim=-2).abs().mean()
+                        + g_band.float().diff(dim=-2).abs().mean()
+                    )
+        else:
+            c_star = (self._complex_inner_sum(R_cond, D_cond) / (self._energy_sum(D_cond) + eps)).clamp(0.0, 1.0)
+            c_star = c_star.view(B, 1, 1, 1).float().detach()
+
+            K_raw = self._complex_inner_sum(R_anchor, D_anchor) / (self._energy_sum(D_anchor) + eps)
+            K_cap = (float(self.anchor_controller.k_max) * E_t.view(B)).clamp_min(0.0).detach()
+            K_star = torch.minimum(torch.maximum(K_raw, torch.zeros_like(K_raw)), K_cap).view(B, 1, 1, 1).float().detach()
+
+            loss_c = F.smooth_l1_loss(c_t, c_star, reduction="mean")
+            loss_k = F.smooth_l1_loss(K_t, K_star, reduction="mean")
+            loss_smooth = torch.zeros((), device=X.device, dtype=torch.float32)
+
         loss_recon = F.smooth_l1_loss(torch.view_as_real(mu_anchor) if torch.is_complex(mu_anchor) else mu_anchor,
                                       torch.view_as_real(X.detach()) if torch.is_complex(X) else X.detach(),
                                       reduction="mean")
@@ -1058,15 +1342,18 @@ class JointFrontendSgmseModel(ScoreModel):
             float(getattr(self, "anchor_loss_weight_c", 1.0)) * loss_c
             + float(getattr(self, "anchor_loss_weight_k", 1.0)) * loss_k
             + float(getattr(self, "anchor_loss_weight_recon", 0.1)) * loss_recon
+            + float(getattr(self, "anchor_band_smooth_weight", 0.0)) * loss_smooth
         )
         stats = {
             "anchor_loss_c": loss_c.detach(),
             "anchor_loss_k": loss_k.detach(),
             "anchor_loss_recon": loss_recon.detach(),
+            "anchor_loss_smooth": loss_smooth.detach(),
             "anchor_c_mean": c_t.detach().mean(),
             "anchor_c_target_mean": c_star.detach().mean(),
             "anchor_K_mean": K_t.detach().mean(),
             "anchor_K_target_mean": K_star.detach().mean(),
+            "anchor_g_mean": pred["g_t"].detach().mean(),
             "anchor_E_mean": E_t.detach().mean(),
         }
         return loss, stats

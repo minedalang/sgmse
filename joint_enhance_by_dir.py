@@ -119,6 +119,18 @@ def main():
         action="store_true",
         help="Enable state-aware conditional anchor calibration during PC sampling. Requires a checkpoint trained with --anchor_calib_weight > 0.",
     )
+    p.add_argument(
+        "--anchor_k_max",
+        type=float,
+        default=None,
+        help="Inference-time override for anchor K_max. If omitted, use the value saved in the checkpoint.",
+    )
+    p.add_argument(
+        "--anchor_scale",
+        type=float,
+        default=1.0,
+        help="Inference-time multiplier on K_max. Try 0.25/0.5/0.75/1.0 for strength ablation.",
+    )
 
     # IMPORTANT: these STFT/transform params must match training
     p.add_argument("--n_fft", type=int, default=510)
@@ -218,6 +230,8 @@ def main():
                 snr=args.snr,
                 regen_strength=args.regen_strength,
                 anchor_calib=args.anchor_calib,
+                anchor_k_max=args.anchor_k_max,
+                anchor_scale=args.anchor_scale,
             )
             
             enhanced = np.clip(enhanced, -1.0, 1.0)
