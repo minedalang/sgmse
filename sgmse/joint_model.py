@@ -40,6 +40,7 @@ from sgmse.util.other import si_sdr
 from sgmse.model import ScoreModel
 from sgmse.sdes import SBVESDE
 from sgmse.frontends import build_frontend
+from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
 
 from contextlib import contextmanager
 import copy
@@ -463,6 +464,38 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--anchor_loss_weight_recon", type=float, default=0.1,
                             help="Weight of direct mean calibration loss ||mu_anchor-X||.")
 
+        # ===== Anchor V2: fine-grained band-time x0 residual calibration =====
+        parser.add_argument("--anchor_v2_weight", type=float, default=0.0,
+                            help="Weight of Anchor V2 loss. 0 disables the independent V2 controller.")
+        parser.add_argument("--anchor_v2_hidden_ch", type=int, default=48,
+                            help="Hidden channels of the band-time Anchor V2 controller.")
+        parser.add_argument("--anchor_v2_num_bands", type=int, default=32,
+                            help="Number of adaptive frequency bands used by Anchor V2.")
+        parser.add_argument("--anchor_v2_num_time_blocks", type=int, default=16,
+                            help="Number of adaptive time blocks used by Anchor V2.")
+        parser.add_argument("--anchor_v2_a_max", type=float, default=0.25,
+                            help="Maximum signed coefficient for Y_pre-x0_base evidence.")
+        parser.add_argument("--anchor_v2_b_max", type=float, default=0.15,
+                            help="Maximum signed coefficient for Y_noisy-Y_pre evidence.")
+        parser.add_argument("--anchor_v2_time_power", type=float, default=1.0,
+                            help="Power p in the V2 time envelope E(t)=4s(1-s), s=(t/T)^p.")
+        parser.add_argument("--anchor_v2_loss_weight_a", type=float, default=1.0,
+                            help="Weight of the local oracle loss for the Y_pre gate a.")
+        parser.add_argument("--anchor_v2_loss_weight_b", type=float, default=1.0,
+                            help="Weight of the local oracle loss for the noisy-residual gate b.")
+        parser.add_argument("--anchor_v2_loss_weight_recon", type=float, default=0.1,
+                            help="Weight of clean x0 reconstruction loss after V2 calibration.")
+        parser.add_argument("--anchor_v2_loss_weight_gain", type=float, default=0.1,
+                            help="Penalty when V2 increases clean-reference x0 error over the base score estimate.")
+        parser.add_argument("--anchor_v2_smooth_weight", type=float, default=0.01,
+                            help="Total-variation penalty over neighboring band-time gates.")
+        parser.add_argument("--anchor_v2_sparsity_weight", type=float, default=0.001,
+                            help="Small L1 penalty encouraging minimal conditional correction.")
+        parser.add_argument("--anchor_v2_oracle_eps", type=float, default=1e-6,
+                            help="Ridge/epsilon for the local two-direction projection oracle.")
+        parser.add_argument("--anchor_v2_validate", action="store_true",
+                            help="Use Anchor V2 in the periodic file-level validation sampler.")
+
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -518,6 +551,22 @@ class JointFrontendSgmseModel(ScoreModel):
         anchor_loss_weight_c: float = 1.0,
         anchor_loss_weight_k: float = 1.0,
         anchor_loss_weight_recon: float = 0.1,
+        # Anchor V2: fine-grained band-time x0 residual calibration
+        anchor_v2_weight: float = 0.0,
+        anchor_v2_hidden_ch: int = 48,
+        anchor_v2_num_bands: int = 32,
+        anchor_v2_num_time_blocks: int = 16,
+        anchor_v2_a_max: float = 0.25,
+        anchor_v2_b_max: float = 0.15,
+        anchor_v2_time_power: float = 1.0,
+        anchor_v2_loss_weight_a: float = 1.0,
+        anchor_v2_loss_weight_b: float = 1.0,
+        anchor_v2_loss_weight_recon: float = 0.1,
+        anchor_v2_loss_weight_gain: float = 0.1,
+        anchor_v2_smooth_weight: float = 0.01,
+        anchor_v2_sparsity_weight: float = 0.001,
+        anchor_v2_oracle_eps: float = 1e-6,
+        anchor_v2_validate: bool = False,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -580,6 +629,28 @@ class JointFrontendSgmseModel(ScoreModel):
                     k_max=float(anchor_k_max),
                     time_power=float(anchor_time_power),
                 )
+
+        # Anchor V2 is an independent branch.  It leaves the original anchor
+        # controller and all of its checkpoint keys untouched.
+        self.anchor_v2_weight = float(anchor_v2_weight)
+        self.anchor_v2_loss_weight_a = float(anchor_v2_loss_weight_a)
+        self.anchor_v2_loss_weight_b = float(anchor_v2_loss_weight_b)
+        self.anchor_v2_loss_weight_recon = float(anchor_v2_loss_weight_recon)
+        self.anchor_v2_loss_weight_gain = float(anchor_v2_loss_weight_gain)
+        self.anchor_v2_smooth_weight = float(anchor_v2_smooth_weight)
+        self.anchor_v2_sparsity_weight = float(anchor_v2_sparsity_weight)
+        self.anchor_v2_oracle_eps = float(anchor_v2_oracle_eps)
+        self.anchor_v2_validate = bool(anchor_v2_validate)
+        self.anchor_v2_controller = None
+        if self.anchor_v2_weight > 0.0:
+            self.anchor_v2_controller = BandTimeAnchorV2Controller(
+                hidden_ch=int(anchor_v2_hidden_ch),
+                num_bands=int(anchor_v2_num_bands),
+                num_time_blocks=int(anchor_v2_num_time_blocks),
+                a_max=float(anchor_v2_a_max),
+                b_max=float(anchor_v2_b_max),
+                time_power=float(anchor_v2_time_power),
+            )
 
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
@@ -1176,6 +1247,207 @@ class JointFrontendSgmseModel(ScoreModel):
             # mode3: y_main is noisy; y_cond is frontend enhanced.
             return y_cond, y_main
 
+    def _ouve_score_to_x0(
+        self,
+        x_t: torch.Tensor,
+        y_main: torch.Tensor,
+        t: torch.Tensor,
+        score: torch.Tensor,
+    ) -> torch.Tensor:
+        """Convert an OUVE score estimate to the corresponding clean x0 estimate."""
+        if self.sde.__class__.__name__ != "OUVESDE":
+            raise ValueError("Anchor V2 currently supports OUVESDE only.")
+        if t.dim() == 0:
+            t = torch.full((x_t.shape[0],), float(t.item()), device=x_t.device, dtype=torch.float32)
+        else:
+            t = t.to(device=x_t.device, dtype=torch.float32).flatten()
+        alpha = self.sde.alpha(t).view(-1, 1, 1, 1).to(dtype=x_t.real.dtype if torch.is_complex(x_t) else x_t.dtype)
+        sigma = self.sde._std(t).view(-1, 1, 1, 1).to(dtype=alpha.dtype)
+        mean_hat = x_t + sigma.square() * score
+        return (mean_hat - (1.0 - alpha) * y_main) / alpha.clamp_min(1e-5)
+
+    def build_anchor_v2_score_calibrator(
+        self,
+        y_main: torch.Tensor,
+        y_cond: Optional[torch.Tensor] = None,
+        a_max_override: Optional[float] = None,
+        b_max_override: Optional[float] = None,
+        scale: Optional[float] = None,
+    ):
+        """Return a predictor-score calibrator for fine-grained Anchor V2.
+
+        Unlike the original anchor, V2 does not shift the already-discretized
+        transition mean.  It calibrates the score network's x0 estimate inside
+        the two-dimensional conditional evidence subspace and converts that
+        residual back to a score residual before the predictor integrates it.
+        """
+        if self.anchor_v2_controller is None:
+            return None
+        if self.sde.__class__.__name__ != "OUVESDE":
+            warnings.warn("anchor_v2 is currently implemented for OUVESDE only; disabling it.")
+            return None
+
+        Y_pre, Y_noisy = self._main_and_cond_to_pre_noisy(y_main, y_cond)
+        t_max = float(getattr(self.sde, "T", 1.0))
+
+        def _score_calibrator(x_t, y_unused, t, score_base):
+            x0_base = self._ouve_score_to_x0(x_t, y_main, t, score_base)
+            out = self.anchor_v2_controller(
+                x_t=x_t,
+                x0_base=x0_base,
+                y_pre=Y_pre,
+                y_noisy=Y_noisy,
+                t=t,
+                t_max=t_max,
+                detach_inputs=True,
+                a_max_override=a_max_override,
+                b_max_override=b_max_override,
+                scale=scale,
+            )
+            if t.dim() == 0:
+                t_vec = torch.full((x_t.shape[0],), float(t.item()), device=x_t.device, dtype=torch.float32)
+            else:
+                t_vec = t.to(device=x_t.device, dtype=torch.float32).flatten()
+            alpha = self.sde.alpha(t_vec).view(-1, 1, 1, 1)
+            sigma2 = self.sde._std(t_vec).view(-1, 1, 1, 1).square().clamp_min(1e-8)
+            delta_score = alpha.to(dtype=out["delta_x0"].real.dtype if torch.is_complex(out["delta_x0"]) else out["delta_x0"].dtype) \
+                * out["delta_x0"] / sigma2.to(dtype=alpha.dtype)
+            score_calib = score_base + delta_score.to(dtype=score_base.dtype)
+            if torch.is_complex(score_calib):
+                score_calib = torch.complex(
+                    torch.nan_to_num(score_calib.real),
+                    torch.nan_to_num(score_calib.imag),
+                )
+            else:
+                score_calib = torch.nan_to_num(score_calib)
+            return score_calib
+
+        return _score_calibrator
+
+    def _compute_anchor_v2_loss(
+        self,
+        X: torch.Tensor,
+        Y_noisy: torch.Tensor,
+        Y_pre: torch.Tensor,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Train Anchor V2 against the score network's remaining x0 error.
+
+        The clean target is used only in x0 coordinates.  Local oracle gates
+        solve a two-direction projection of ``X-x0_base`` onto
+        ``Y_pre-x0_base`` and ``Y_noisy-Y_pre`` in each frequency-band/time
+        tile.  Gradients are restricted to the V2 controller.
+        """
+        zero = torch.zeros((), device=X.device, dtype=torch.float32)
+        if self.anchor_v2_controller is None or float(getattr(self, "anchor_v2_weight", 0.0)) <= 0.0:
+            return zero, {}
+        if self.sde.__class__.__name__ != "OUVESDE":
+            return zero, {}
+
+        B = X.shape[0]
+        device = X.device
+        t_eps = float(getattr(self, "t_eps", 0.03))
+        T = float(getattr(self.sde, "T", 1.0))
+        t = torch.rand(B, device=device) * (T - t_eps) + t_eps
+
+        if self.train_type == "mode2":
+            y_main, y_cond = Y_pre, Y_noisy
+        else:
+            y_main, y_cond = Y_noisy, Y_pre
+
+        mean, std = self.sde.marginal_prob(X, y_main, t)
+        x_t = mean + std[:, None, None, None] * torch.randn_like(X)
+
+        # Anchor V2 learns a residual on top of a frozen score estimate.
+        with torch.no_grad():
+            score_base = self(x_t, y_main, t, y_cond=y_cond)
+            x0_base = self._ouve_score_to_x0(x_t, y_main, t, score_base).detach()
+
+        pred = self.anchor_v2_controller(
+            x_t=x_t,
+            x0_base=x0_base,
+            y_pre=Y_pre,
+            y_noisy=Y_noisy,
+            t=t,
+            t_max=T,
+            detach_inputs=True,
+        )
+
+        residual = X.detach() - x0_base
+        u_pre = Y_pre.detach() - x0_base
+        u_noisy = Y_noisy.detach() - Y_pre.detach()
+        a_star_raw, b_star_raw, oracle_stats = solve_two_direction_tile_oracle(
+            residual=residual,
+            u_pre=u_pre,
+            u_noisy=u_noisy,
+            num_bands=int(self.anchor_v2_controller.num_bands),
+            num_time_blocks=int(self.anchor_v2_controller.num_time_blocks),
+            eps=float(getattr(self, "anchor_v2_oracle_eps", 1e-6)),
+        )
+
+        a_cap = pred["a_cap"].expand_as(a_star_raw).detach()
+        b_cap = pred["b_cap"].expand_as(b_star_raw).detach()
+        a_star = torch.minimum(torch.maximum(a_star_raw, -a_cap), a_cap).detach()
+        b_star = torch.minimum(torch.maximum(b_star_raw, -b_cap), b_cap).detach()
+
+        # Downweight nearly collinear/silent tiles while retaining a small
+        # learning signal so the controller does not ignore difficult regions.
+        oracle_weight = oracle_stats["conditioning"].detach().clamp_min(0.05)
+        loss_a_map = F.smooth_l1_loss(pred["a_tile"].float(), a_star.float(), reduction="none")
+        loss_b_map = F.smooth_l1_loss(pred["b_tile"].float(), b_star.float(), reduction="none")
+        loss_a = (loss_a_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
+        loss_b = (loss_b_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
+
+        target_real = torch.view_as_real(X.detach()) if torch.is_complex(X) else X.detach()
+        calib_real = torch.view_as_real(pred["x0_calib"]) if torch.is_complex(pred["x0_calib"]) else pred["x0_calib"]
+        loss_recon = F.smooth_l1_loss(calib_real, target_real, reduction="mean")
+
+        reduce_dims = tuple(range(1, X.dim()))
+        base_err = torch.abs(x0_base - X.detach()).float().square().mean(dim=reduce_dims)
+        calib_err = torch.abs(pred["x0_calib"] - X.detach()).float().square().mean(dim=reduce_dims)
+        rel_degradation = (calib_err - base_err) / base_err.detach().clamp_min(1e-8)
+        loss_gain = F.relu(rel_degradation).mean()
+
+        loss_smooth = torch.zeros((), device=device, dtype=torch.float32)
+        for gate in (pred["a_tile"].float(), pred["b_tile"].float()):
+            if gate.shape[-2] > 1:
+                loss_smooth = loss_smooth + gate.diff(dim=-2).abs().mean()
+            if gate.shape[-1] > 1:
+                loss_smooth = loss_smooth + gate.diff(dim=-1).abs().mean()
+        loss_sparse = pred["a_tile"].float().abs().mean() + pred["b_tile"].float().abs().mean()
+
+        loss = (
+            float(getattr(self, "anchor_v2_loss_weight_a", 1.0)) * loss_a
+            + float(getattr(self, "anchor_v2_loss_weight_b", 1.0)) * loss_b
+            + float(getattr(self, "anchor_v2_loss_weight_recon", 0.1)) * loss_recon
+            + float(getattr(self, "anchor_v2_loss_weight_gain", 0.1)) * loss_gain
+            + float(getattr(self, "anchor_v2_smooth_weight", 0.01)) * loss_smooth
+            + float(getattr(self, "anchor_v2_sparsity_weight", 0.001)) * loss_sparse
+        )
+
+        eps = 1e-8
+        delta_ratio = (
+            torch.abs(pred["delta_x0"]).float().square().mean().sqrt()
+            / torch.abs(x0_base).float().square().mean().sqrt().clamp_min(eps)
+        )
+        stats = {
+            "anchor_v2_loss_a": loss_a.detach(),
+            "anchor_v2_loss_b": loss_b.detach(),
+            "anchor_v2_loss_recon": loss_recon.detach(),
+            "anchor_v2_loss_gain": loss_gain.detach(),
+            "anchor_v2_loss_smooth": loss_smooth.detach(),
+            "anchor_v2_loss_sparse": loss_sparse.detach(),
+            "anchor_v2_a_abs_mean": pred["a_tile"].detach().float().abs().mean(),
+            "anchor_v2_b_abs_mean": pred["b_tile"].detach().float().abs().mean(),
+            "anchor_v2_a_target_abs_mean": a_star.detach().float().abs().mean(),
+            "anchor_v2_b_target_abs_mean": b_star.detach().float().abs().mean(),
+            "anchor_v2_oracle_conditioning": oracle_stats["conditioning"].detach().mean(),
+            "anchor_v2_improve_fraction": (calib_err < base_err).detach().float().mean(),
+            "anchor_v2_relative_error_change": rel_degradation.detach().mean(),
+            "anchor_v2_delta_ratio": delta_ratio.detach(),
+            "anchor_v2_E_mean": pred["E_t"].detach().mean(),
+        }
+        return loss, stats
+
     def build_anchor_calibrator(
         self,
         y_main: torch.Tensor,
@@ -1665,6 +1937,23 @@ class JointFrontendSgmseModel(ScoreModel):
                 self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
 
+        # ===== Anchor V2: fine-grained band-time x0 residual calibration =====
+        loss_anchor_v2 = torch.zeros((), device=x_wav.device, dtype=torch.float32)
+        if float(getattr(self, "anchor_v2_weight", 0.0)) > 0.0:
+            loss_anchor_v2, anchor_v2_stats = self._compute_anchor_v2_loss(
+                X=X,
+                Y_noisy=Y_noisy,
+                Y_pre=Y_pre,
+            )
+            weighted_anchor_v2 = float(self.anchor_v2_weight) * loss_anchor_v2
+            loss = loss + weighted_anchor_v2.to(loss.dtype)
+            self.log("train_loss_anchor_v2", loss_anchor_v2,
+                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            self.log("train_loss_anchor_v2_weighted", weighted_anchor_v2,
+                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            for k, v in anchor_v2_stats.items():
+                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+
         # ===== final enhanced 的内容级 loss =====
         loss_content_final = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
         if self.final_content_weight > 0.0 and x_hat_spec is not None and self.content_model is not None:
@@ -1795,7 +2084,12 @@ class JointFrontendSgmseModel(ScoreModel):
                         y_in = y_t.squeeze(0)     # [1,T]
                         y_cond = y_pre.squeeze(0) # [1,T]
 
-                    x_hat = self.enhance(y_in, y_cond=y_cond, N=self.sde.N)
+                    x_hat = self.enhance(
+                        y_in,
+                        y_cond=y_cond,
+                        N=self.sde.N,
+                        anchor_v2=bool(getattr(self, "anchor_v2_validate", False)),
+                    )
                     self._cuda_mem(f"after enhance {idx}")
                     if isinstance(x_hat, torch.Tensor):
                         x_hat = x_hat.detach().float().cpu().numpy()

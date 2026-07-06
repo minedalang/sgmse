@@ -65,7 +65,8 @@ def _adaptive_prior_sampling(sde, y, t_start):
 def get_pc_sampler(
     predictor_name, corrector_name, sde, score_fn, y,
     denoise=True, eps=3e-2, snr=0.1, corrector_steps=1, probability_flow: bool = False,
-    intermediate=False, regeneration_strength=None, anchor_calibrator=None, **kwargs
+    intermediate=False, regeneration_strength=None, anchor_calibrator=None,
+    score_calibrator=None, **kwargs
 ):
     """Create a Predictor-Corrector (PC) sampler.
 
@@ -79,13 +80,26 @@ def get_pc_sampler(
         eps: A `float` number. The reverse-time SDE and ODE are integrated to `epsilon` to avoid numerical issues.
         snr: The SNR to use for the corrector. 0.1 by default, and ignored for `NoneCorrector`.
         N: The number of reverse sampling steps. If `None`, uses the SDE's `N` property by default.
+        score_calibrator: Optional callable used to calibrate the predictor score
+            as ``score_calibrator(x_t, y, t, score_base)``. The corrector is not
+            modified. This is used by fine-grained Anchor V2.
 
     Returns:
         A sampling function that returns samples and the number of function evaluations during sampling.
     """
     predictor_cls = PredictorRegistry.get_by_name(predictor_name)
     corrector_cls = CorrectorRegistry.get_by_name(corrector_name)
-    predictor = predictor_cls(sde, score_fn, probability_flow=probability_flow)
+
+    # Anchor V2 calibrates only the predictor score.  The corrector keeps the
+    # original score function, preventing repeated V2 application when a
+    # multi-step stochastic corrector is enabled.
+    predictor_score_fn = score_fn
+    if score_calibrator is not None:
+        def predictor_score_fn(x, y_cond, t):
+            score_base = score_fn(x, y_cond, t)
+            return score_calibrator(x, y_cond, t, score_base)
+
+    predictor = predictor_cls(sde, predictor_score_fn, probability_flow=probability_flow)
     corrector = corrector_cls(sde, score_fn, snr=snr, n_steps=corrector_steps)
 
     def pc_sampler():

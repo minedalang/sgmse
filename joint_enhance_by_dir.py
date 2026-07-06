@@ -131,6 +131,29 @@ def main():
         default=1.0,
         help="Inference-time multiplier on K_max. Try 0.25/0.5/0.75/1.0 for strength ablation.",
     )
+    p.add_argument(
+        "--anchor_v2",
+        action="store_true",
+        help="Enable fine-grained band-time Anchor V2. Requires a checkpoint trained with --anchor_v2_weight > 0.",
+    )
+    p.add_argument(
+        "--anchor_v2_a_max",
+        type=float,
+        default=None,
+        help="Optional inference override for the Y_pre-x0_base gate cap.",
+    )
+    p.add_argument(
+        "--anchor_v2_b_max",
+        type=float,
+        default=None,
+        help="Optional inference override for the Y_noisy-Y_pre gate cap.",
+    )
+    p.add_argument(
+        "--anchor_v2_scale",
+        type=float,
+        default=1.0,
+        help="Inference multiplier for both Anchor V2 gate caps.",
+    )
 
     # IMPORTANT: these STFT/transform params must match training
     p.add_argument("--n_fft", type=int, default=510)
@@ -232,6 +255,10 @@ def main():
                 anchor_calib=args.anchor_calib,
                 anchor_k_max=args.anchor_k_max,
                 anchor_scale=args.anchor_scale,
+                anchor_v2=args.anchor_v2,
+                anchor_v2_a_max=args.anchor_v2_a_max,
+                anchor_v2_b_max=args.anchor_v2_b_max,
+                anchor_v2_scale=args.anchor_v2_scale,
             )
             
             enhanced = np.clip(enhanced, -1.0, 1.0)
