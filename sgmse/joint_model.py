@@ -1392,11 +1392,25 @@ class JointFrontendSgmseModel(ScoreModel):
         # Downweight nearly collinear/silent tiles while retaining a small
         # learning signal so the controller does not ignore difficult regions.
         oracle_weight = oracle_stats["conditioning"].detach().clamp_min(0.05)
-        loss_a_map = F.smooth_l1_loss(pred["a_tile"].float(), a_star.float(), reduction="none")
-        loss_b_map = F.smooth_l1_loss(pred["b_tile"].float(), b_star.float(), reduction="none")
+
+        a_den = a_cap.detach().clamp_min(1e-3)
+        b_den = b_cap.detach().clamp_min(1e-3)
+
+        loss_a_map = F.smooth_l1_loss(
+            pred["a_tile"].float() / a_den.float(),
+            a_star.float() / a_den.float(),
+            reduction="none",
+        )
+
+        loss_b_map = F.smooth_l1_loss(
+            pred["b_tile"].float() / b_den.float(),
+            b_star.float() / b_den.float(),
+            reduction="none",
+        )
+
         loss_a = (loss_a_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
         loss_b = (loss_b_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
-
+        
         target_real = torch.view_as_real(X.detach()) if torch.is_complex(X) else X.detach()
         calib_real = torch.view_as_real(pred["x0_calib"]) if torch.is_complex(pred["x0_calib"]) else pred["x0_calib"]
         loss_recon = F.smooth_l1_loss(calib_real, target_real, reduction="mean")
