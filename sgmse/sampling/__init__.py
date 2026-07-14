@@ -80,9 +80,11 @@ def get_pc_sampler(
         eps: A `float` number. The reverse-time SDE and ODE are integrated to `epsilon` to avoid numerical issues.
         snr: The SNR to use for the corrector. 0.1 by default, and ignored for `NoneCorrector`.
         N: The number of reverse sampling steps. If `None`, uses the SDE's `N` property by default.
-        score_calibrator: Optional callable used to calibrate the predictor score
-            as ``score_calibrator(x_t, y, t, score_base)``. The corrector is not
-            modified. This is used by fine-grained Anchor V2.
+        score_calibrator: Optional callable used to calibrate the predictor score.
+            It is called as ``score_calibrator(x_t, y, t, score_base,
+            step_index=i, num_steps=N)``. The step metadata enables Single-shot
+            Anchor V2 while remaining optional for ordinary per-step calibration.
+            The corrector is not modified.
 
     Returns:
         A sampling function that returns samples and the number of function evaluations during sampling.
@@ -94,10 +96,18 @@ def get_pc_sampler(
     # original score function, preventing repeated V2 application when a
     # multi-step stochastic corrector is enabled.
     predictor_score_fn = score_fn
+    calibrator_context = {"step_index": None, "num_steps": int(sde.N)}
     if score_calibrator is not None:
         def predictor_score_fn(x, y_cond, t):
             score_base = score_fn(x, y_cond, t)
-            return score_calibrator(x, y_cond, t, score_base)
+            return score_calibrator(
+                x,
+                y_cond,
+                t,
+                score_base,
+                step_index=calibrator_context["step_index"],
+                num_steps=calibrator_context["num_steps"],
+            )
 
     predictor = predictor_cls(sde, predictor_score_fn, probability_flow=probability_flow)
     corrector = corrector_cls(sde, score_fn, snr=snr, n_steps=corrector_steps)
@@ -123,6 +133,7 @@ def get_pc_sampler(
                 vec_t = torch.ones(y.shape[0], device=y.device) * t
                 xt, xt_mean = corrector.update_fn(xt, y, vec_t)
                 xt_before_predictor = xt
+                calibrator_context["step_index"] = int(i)
                 xt, xt_mean = predictor.update_fn(xt, y, vec_t, stepsize)
                 if anchor_calibrator is not None:
                     t_next = (vec_t - stepsize).clamp_min(0.0)

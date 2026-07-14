@@ -495,6 +495,14 @@ class JointFrontendSgmseModel(ScoreModel):
                             help="Ridge/epsilon for the local two-direction projection oracle.")
         parser.add_argument("--anchor_v2_validate", action="store_true",
                             help="Use Anchor V2 in the periodic file-level validation sampler.")
+        parser.add_argument("--anchor_v2_single_shot_train", action="store_true",
+                            help="Train Anchor V2 only near one reverse-process location instead of sampling t uniformly.")
+        parser.add_argument("--anchor_v2_single_shot_ratio", type=float, default=0.5,
+                            help="Single-shot reverse progress in [0,1]: 0 is the first/high-noise predictor step and 1 is the final/low-noise step.")
+        parser.add_argument("--anchor_v2_single_shot_train_width", type=float, default=0.10,
+                            help="Half-width around --anchor_v2_single_shot_ratio used to sample Anchor V2 training times.")
+        parser.add_argument("--anchor_v2_validate_single_shot", action="store_true",
+                            help="When validating Anchor V2, inject it at only the configured single-shot location.")
 
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
@@ -567,6 +575,10 @@ class JointFrontendSgmseModel(ScoreModel):
         anchor_v2_sparsity_weight: float = 0.001,
         anchor_v2_oracle_eps: float = 1e-6,
         anchor_v2_validate: bool = False,
+        anchor_v2_single_shot_train: bool = False,
+        anchor_v2_single_shot_ratio: float = 0.5,
+        anchor_v2_single_shot_train_width: float = 0.10,
+        anchor_v2_validate_single_shot: bool = False,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -641,6 +653,14 @@ class JointFrontendSgmseModel(ScoreModel):
         self.anchor_v2_sparsity_weight = float(anchor_v2_sparsity_weight)
         self.anchor_v2_oracle_eps = float(anchor_v2_oracle_eps)
         self.anchor_v2_validate = bool(anchor_v2_validate)
+        self.anchor_v2_single_shot_train = bool(anchor_v2_single_shot_train)
+        self.anchor_v2_single_shot_ratio = float(anchor_v2_single_shot_ratio)
+        self.anchor_v2_single_shot_train_width = float(anchor_v2_single_shot_train_width)
+        self.anchor_v2_validate_single_shot = bool(anchor_v2_validate_single_shot)
+        if not 0.0 <= self.anchor_v2_single_shot_ratio <= 1.0:
+            raise ValueError("anchor_v2_single_shot_ratio must be in [0,1].")
+        if not 0.0 <= self.anchor_v2_single_shot_train_width <= 1.0:
+            raise ValueError("anchor_v2_single_shot_train_width must be in [0,1].")
         self.anchor_v2_controller = None
         if self.anchor_v2_weight > 0.0:
             self.anchor_v2_controller = BandTimeAnchorV2Controller(
@@ -1273,6 +1293,9 @@ class JointFrontendSgmseModel(ScoreModel):
         a_max_override: Optional[float] = None,
         b_max_override: Optional[float] = None,
         scale: Optional[float] = None,
+        single_shot: bool = False,
+        single_shot_ratio: float = 0.5,
+        single_shot_step: Optional[int] = None,
     ):
         """Return a predictor-score calibrator for fine-grained Anchor V2.
 
@@ -1289,8 +1312,31 @@ class JointFrontendSgmseModel(ScoreModel):
 
         Y_pre, Y_noisy = self._main_and_cond_to_pre_noisy(y_main, y_cond)
         t_max = float(getattr(self.sde, "T", 1.0))
+        single_shot_ratio = float(single_shot_ratio)
+        if not 0.0 <= single_shot_ratio <= 1.0:
+            raise ValueError("anchor_v2_single_shot_ratio must be in [0,1].")
+        if single_shot_step is not None and int(single_shot_step) < 1:
+            raise ValueError("anchor_v2_single_shot_step is 1-based and must be >= 1.")
 
-        def _score_calibrator(x_t, y_unused, t, score_base):
+        def _score_calibrator(
+            x_t,
+            y_unused,
+            t,
+            score_base,
+            step_index=None,
+            num_steps=None,
+        ):
+            if bool(single_shot):
+                if step_index is None or num_steps is None:
+                    raise RuntimeError("Single-shot Anchor V2 requires sampler step metadata.")
+                n = max(int(num_steps), 1)
+                if single_shot_step is not None:
+                    target_step = min(int(single_shot_step) - 1, n - 1)
+                else:
+                    target_step = int(round(single_shot_ratio * max(n - 1, 0)))
+                if int(step_index) != target_step:
+                    return score_base
+
             x0_base = self._ouve_score_to_x0(x_t, y_main, t, score_base)
             out = self.anchor_v2_controller(
                 x_t=x_t,
@@ -1347,7 +1393,16 @@ class JointFrontendSgmseModel(ScoreModel):
         device = X.device
         t_eps = float(getattr(self, "t_eps", 0.03))
         T = float(getattr(self.sde, "T", 1.0))
-        t = torch.rand(B, device=device) * (T - t_eps) + t_eps
+        if bool(getattr(self, "anchor_v2_single_shot_train", False)):
+            center = float(getattr(self, "anchor_v2_single_shot_ratio", 0.5))
+            width = float(getattr(self, "anchor_v2_single_shot_train_width", 0.10))
+            progress_min = max(0.0, center - width)
+            progress_max = min(1.0, center + width)
+            reverse_progress = progress_min + torch.rand(B, device=device) * (progress_max - progress_min)
+            # Reverse progress 0 corresponds to t=T; progress 1 corresponds to t=t_eps.
+            t = T - reverse_progress * (T - t_eps)
+        else:
+            t = torch.rand(B, device=device) * (T - t_eps) + t_eps
 
         if self.train_type == "mode2":
             y_main, y_cond = Y_pre, Y_noisy
@@ -1459,6 +1514,8 @@ class JointFrontendSgmseModel(ScoreModel):
             "anchor_v2_relative_error_change": rel_degradation.detach().mean(),
             "anchor_v2_delta_ratio": delta_ratio.detach(),
             "anchor_v2_E_mean": pred["E_t"].detach().mean(),
+            "anchor_v2_t_mean": t.detach().float().mean(),
+            "anchor_v2_reverse_progress_mean": ((T - t.detach().float()) / max(T - t_eps, 1e-8)).mean(),
         }
         return loss, stats
 
@@ -2103,6 +2160,8 @@ class JointFrontendSgmseModel(ScoreModel):
                         y_cond=y_cond,
                         N=self.sde.N,
                         anchor_v2=bool(getattr(self, "anchor_v2_validate", False)),
+                        anchor_v2_single_shot=bool(getattr(self, "anchor_v2_validate_single_shot", False)),
+                        anchor_v2_single_shot_ratio=float(getattr(self, "anchor_v2_single_shot_ratio", 0.5)),
                     )
                     self._cuda_mem(f"after enhance {idx}")
                     if isinstance(x_hat, torch.Tensor):

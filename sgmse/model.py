@@ -1006,6 +1006,9 @@ class ScoreModel(pl.LightningModule):
         anchor_v2_a_max_arg = kwargs.pop("anchor_v2_a_max", None)
         anchor_v2_b_max_arg = kwargs.pop("anchor_v2_b_max", None)
         anchor_v2_scale_arg = kwargs.pop("anchor_v2_scale", None)
+        anchor_v2_single_shot_arg = kwargs.pop("anchor_v2_single_shot", False)
+        anchor_v2_single_shot_ratio_arg = kwargs.pop("anchor_v2_single_shot_ratio", 0.5)
+        anchor_v2_single_shot_step_arg = kwargs.pop("anchor_v2_single_shot_step", None)
 
         if bool(anchor_calib_arg) and bool(anchor_v2_arg):
             raise ValueError("anchor_calib and anchor_v2 are separate ablations and cannot be enabled together.")
@@ -1083,6 +1086,9 @@ class ScoreModel(pl.LightningModule):
                     a_max_override=anchor_v2_a_max_arg,
                     b_max_override=anchor_v2_b_max_arg,
                     scale=anchor_v2_scale_arg,
+                    single_shot=bool(anchor_v2_single_shot_arg),
+                    single_shot_ratio=float(anchor_v2_single_shot_ratio_arg),
+                    single_shot_step=anchor_v2_single_shot_step_arg,
                 )
                 if score_calibrator is None:
                     warnings.warn("anchor_v2=True but Anchor V2 is disabled in this model; using original sampler.")

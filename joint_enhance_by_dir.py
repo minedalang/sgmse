@@ -154,6 +154,23 @@ def main():
         default=1.0,
         help="Inference multiplier for both Anchor V2 gate caps.",
     )
+    p.add_argument(
+        "--anchor_v2_single_shot",
+        action="store_true",
+        help="Apply Anchor V2 at exactly one predictor step instead of every reverse step.",
+    )
+    p.add_argument(
+        "--anchor_v2_single_shot_ratio",
+        type=float,
+        default=0.5,
+        help="Reverse progress in [0,1] for Single-shot V2: 0=first/high-noise step, 1=last/low-noise step.",
+    )
+    p.add_argument(
+        "--anchor_v2_single_shot_step",
+        type=int,
+        default=None,
+        help="Optional 1-based predictor step for Single-shot V2; overrides --anchor_v2_single_shot_ratio.",
+    )
 
     # IMPORTANT: these STFT/transform params must match training
     p.add_argument("--n_fft", type=int, default=510)
@@ -259,6 +276,9 @@ def main():
                 anchor_v2_a_max=args.anchor_v2_a_max,
                 anchor_v2_b_max=args.anchor_v2_b_max,
                 anchor_v2_scale=args.anchor_v2_scale,
+                anchor_v2_single_shot=args.anchor_v2_single_shot,
+                anchor_v2_single_shot_ratio=args.anchor_v2_single_shot_ratio,
+                anchor_v2_single_shot_step=args.anchor_v2_single_shot_step,
             )
             
             enhanced = np.clip(enhanced, -1.0, 1.0)
