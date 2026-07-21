@@ -294,7 +294,7 @@ class ScoreModel(pl.LightningModule):
             return self.sde._std(t)
         
     # loss计算
-    def _loss(self, forward_out, x_t, z, t, mean, x, y):
+    def _loss(self, forward_out, x_t, z, t, mean, x, y, sigma_override=None):
         """
         Different loss functions can be used to train the score model, see the paper: 
         
@@ -305,6 +305,10 @@ class ScoreModel(pl.LightningModule):
         """
         # 获取时间步噪声等级
         sigma_xt = self.sde._std(t)[:, None, None, None]
+        if sigma_override is not None:
+            sigma_xt = sigma_override.to(device=x_t.device, dtype=x_t.real.dtype)
+            while sigma_xt.ndim < x_t.ndim:
+                sigma_xt = sigma_xt.unsqueeze(-1)
 
         if self.loss_type == "score_matching":
             score = forward_out
@@ -435,15 +439,32 @@ class ScoreModel(pl.LightningModule):
         mean, std = self.sde.marginal_prob(x, y_for_sde, t)  #y=y_pre的情况需要加detach。在传播路径如y -> mean -> x_t -> net -> loss下，当y=y_pre时，y会收到不合适的梯度，semamba的训练目标发生偏移
         z = torch.randn_like(x)
         x_t = mean + std[:, None, None, None] * z
+        sigma_override = None
+        pathsim_stats = {}
+        pathsim_hook = getattr(self, "_maybe_apply_pathsim_va", None)
+        if callable(pathsim_hook):
+            x_t, sigma_override, pathsim_stats = pathsim_hook(
+                x=x,
+                y=y,
+                y_cond=y_cond,
+                t=t,
+                mean=mean,
+                std=std,
+                z=z,
+                x_t_standard=x_t,
+            )
 
         forward_out = self(x_t, y, t, y_cond=y_cond)
         # 主恢复损失
-        base_loss = self._loss(forward_out, x_t, z, t, mean, x, y)
+        base_loss = self._loss(
+            forward_out, x_t, z, t, mean, x, y,
+            sigma_override=sigma_override,
+        )
 
         # 如果需要额外 loss，或者contrastive loss，就恢复增强频谱
         x_hat_spec = None
         if return_details or (self.use_contrastive and self.plm_model is not None and self.contrastive_weight > 0.0):
-            x_hat_spec = self._get_enhanced_spec(forward_out, x_t, t, mean, x, y)
+            x_hat_spec = self._get_enhanced_spec(forward_out, x_t, t, mean, x, y, sigma_override=sigma_override)
 
         # 对比学习损失
         if self.use_contrastive and self.plm_model is not None and self.contrastive_weight > 0.0:
@@ -469,6 +490,8 @@ class ScoreModel(pl.LightningModule):
                 "x": x,
                 "y": y,
                 "y_cond": y_cond,
+                "sigma_override": sigma_override,
+                "pathsim_stats": pathsim_stats,
             }
         return total_loss
     
@@ -594,7 +617,7 @@ class ScoreModel(pl.LightningModule):
             negative_embs.append(negative_samples)
 
         return torch.cat(negative_embs, dim=0)
-    def _get_enhanced_spec(self, forward_out, x_t, t, mean, x, y):
+    def _get_enhanced_spec(self, forward_out, x_t, t, mean, x, y, sigma_override=None):
         """
         负责从 forward_out 恢复增强频谱x_hat
         被用于计算InfoNCE、final enhanced和selector 的 content loss
@@ -609,6 +632,10 @@ class ScoreModel(pl.LightningModule):
             return forward_out
 
         sigma_xt = self.sde._std(t)[:, None, None, None]
+        if sigma_override is not None:
+            sigma_xt = sigma_override.to(device=x_t.device, dtype=x_t.real.dtype)
+            while sigma_xt.ndim < x_t.ndim:
+                sigma_xt = sigma_xt.unsqueeze(-1)
 
         if self.loss_type == "denoiser":
             if self.loss_weighting == "edm":

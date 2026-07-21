@@ -41,6 +41,7 @@ from sgmse.model import ScoreModel
 from sgmse.sdes import SBVESDE
 from sgmse.frontends import build_frontend
 from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
+from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint
 
 from contextlib import contextmanager
 import copy
@@ -504,6 +505,23 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--anchor_v2_validate_single_shot", action="store_true",
                             help="When validating Anchor V2, inject it at only the configured single-shot location.")
 
+        # ===== Path Simulation Version A: learned band-time variance shift =====
+        parser.add_argument("--pathsim_va_enable", action="store_true",
+                            help="Train the score model on a mixture of analytical and PathSim V-A states.")
+        parser.add_argument("--pathsim_va_ckpt", type=str, default=None,
+                            help="Checkpoint of the independently trained variance path estimator.")
+        parser.add_argument("--pathsim_va_prob", type=float, default=0.3,
+                            help="Per-sample probability of replacing a standard marginal state by a simulated state.")
+        parser.add_argument("--pathsim_va_strength", type=float, default=1.0,
+                            help="Multiplier on predicted log variance shift; 0 recovers the standard path.")
+        parser.add_argument("--pathsim_va_hidden_ch", type=int, default=48)
+        parser.add_argument("--pathsim_va_num_bands", type=int, default=32)
+        parser.add_argument("--pathsim_va_num_time_blocks", type=int, default=16)
+        parser.add_argument("--pathsim_va_min_rho", type=float, default=0.5)
+        parser.add_argument("--pathsim_va_max_rho", type=float, default=2.0)
+        parser.add_argument("--pathsim_va_apply_in_validation", action="store_true",
+                            help="Also use simulated states for batch-level valid_loss; file-level sampling stays unchanged.")
+
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -579,6 +597,17 @@ class JointFrontendSgmseModel(ScoreModel):
         anchor_v2_single_shot_ratio: float = 0.5,
         anchor_v2_single_shot_train_width: float = 0.10,
         anchor_v2_validate_single_shot: bool = False,
+        # Path Simulation Version A
+        pathsim_va_enable: bool = False,
+        pathsim_va_ckpt: Optional[str] = None,
+        pathsim_va_prob: float = 0.3,
+        pathsim_va_strength: float = 1.0,
+        pathsim_va_hidden_ch: int = 48,
+        pathsim_va_num_bands: int = 32,
+        pathsim_va_num_time_blocks: int = 16,
+        pathsim_va_min_rho: float = 0.5,
+        pathsim_va_max_rho: float = 2.0,
+        pathsim_va_apply_in_validation: bool = False,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -671,6 +700,40 @@ class JointFrontendSgmseModel(ScoreModel):
                 b_max=float(anchor_v2_b_max),
                 time_power=float(anchor_v2_time_power),
             )
+
+        # PathSim V-A is trained independently and remains frozen here.  It
+        # changes only the training-state variance, never the inference sampler.
+        self.pathsim_va_enable = bool(pathsim_va_enable)
+        self.pathsim_va_prob = float(pathsim_va_prob)
+        self.pathsim_va_strength = float(pathsim_va_strength)
+        self.pathsim_va_apply_in_validation = bool(pathsim_va_apply_in_validation)
+        if not 0.0 <= self.pathsim_va_prob <= 1.0:
+            raise ValueError(f"pathsim_va_prob must be in [0,1], got {self.pathsim_va_prob}")
+        self.pathsim_va_model = None
+        if self.pathsim_va_enable:
+            if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
+                raise ValueError(
+                    "PathSim V-A currently supports --loss_type score_matching "
+                    "--loss_weighting sigma^2 only."
+                )
+            if pathsim_va_ckpt:
+                model_va, _ = load_pathsim_va_checkpoint(pathsim_va_ckpt, map_location="cpu")
+                self.pathsim_va_model = model_va
+            else:
+                warnings.warn(
+                    "--pathsim_va_enable was set without --pathsim_va_ckpt; "
+                    "using a zero-initialized rho=1 estimator until checkpoint weights are loaded."
+                )
+                self.pathsim_va_model = BandTimeVariancePathEstimator(
+                    hidden_ch=int(pathsim_va_hidden_ch),
+                    num_bands=int(pathsim_va_num_bands),
+                    num_time_blocks=int(pathsim_va_num_time_blocks),
+                    min_rho=float(pathsim_va_min_rho),
+                    max_rho=float(pathsim_va_max_rho),
+                )
+            self.pathsim_va_model.eval()
+            for p in self.pathsim_va_model.parameters():
+                p.requires_grad = False
 
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
@@ -886,6 +949,62 @@ class JointFrontendSgmseModel(ScoreModel):
         x0_hat = self._forward_with_dnn(self.dnn, x_prev, y, t_cur, y_cond=y_cond)
         return self._sbve_ode_transition(x_prev, y, t_prev, t_cur, x0_hat, xD=None)
 
+
+    def _maybe_apply_pathsim_va(self, x, y, y_cond, t, mean, std, z, x_t_standard):
+        """Replace selected analytical marginal states by variance-shifted states.
+
+        The frozen estimator predicts rho(f,tau,t).  For selected samples:
+            x_t = mean + std * rho * z
+        and the score target uses the matching local sigma_eff=std*rho.
+        """
+        if (not self.pathsim_va_enable) or self.pathsim_va_model is None:
+            return x_t_standard, None, {}
+        if (not self.training) and (not self.pathsim_va_apply_in_validation):
+            return x_t_standard, None, {}
+
+        if self.train_type == "mode2":
+            y_pre, y_noisy = y, y_cond
+        elif self.train_type == "mode3":
+            y_pre, y_noisy = y_cond, y
+        else:
+            return x_t_standard, None, {}
+        if y_pre is None or y_noisy is None:
+            return x_t_standard, None, {}
+
+        self.pathsim_va_model.eval()
+        with torch.no_grad():
+            pred = self.pathsim_va_model(
+                y_pre.detach(), y_noisy.detach(), t.detach(),
+                t_max=float(self.sde.T), return_full=True,
+                full_size=(int(x.shape[-2]), int(x.shape[-1])),
+            )
+            log_var = pred["log_var_full"].to(device=x.device, dtype=x.real.dtype)
+            log_var = float(self.pathsim_va_strength) * log_var
+            rho = torch.exp(0.5 * log_var)
+
+            B = x.shape[0]
+            if self.pathsim_va_prob >= 1.0:
+                use_sim = torch.ones((B, 1, 1, 1), device=x.device, dtype=torch.bool)
+            elif self.pathsim_va_prob <= 0.0:
+                use_sim = torch.zeros((B, 1, 1, 1), device=x.device, dtype=torch.bool)
+            else:
+                use_sim = (torch.rand((B, 1, 1, 1), device=x.device) < self.pathsim_va_prob)
+            rho_eff = torch.where(use_sim, rho, torch.ones_like(rho))
+
+            std_full = std.to(device=x.device, dtype=x.real.dtype).view(B, 1, 1, 1)
+            sigma_eff = std_full * rho_eff
+            x_t = mean + sigma_eff * z
+
+            stats = {
+                "pathsim_va_use_fraction": use_sim.float().mean(),
+                "pathsim_va_rho_mean": rho_eff.mean(),
+                "pathsim_va_rho_sim_mean": (
+                    (rho * use_sim.float()).sum() / use_sim.float().expand_as(rho).sum().clamp_min(1.0)
+                ),
+                "pathsim_va_log_var_abs_mean": log_var.abs().mean(),
+                "pathsim_va_sigma_ratio_mean": rho_eff.mean(),
+            }
+        return x_t, sigma_eff, stats
 
     def configure_optimizers(self):
         params = [p for p in self.parameters() if p.requires_grad]
@@ -1917,6 +2036,8 @@ class JointFrontendSgmseModel(ScoreModel):
         loss_total_backend = step_out["loss"] # 包含旧 contrastive
         x_hat_spec = step_out["x_hat_spec"]
         loss = loss_total_backend
+        for k, v in step_out.get("pathsim_stats", {}).items():
+            self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         # 旧 contrastive 单独拆出来
         loss_old_contrastive = loss_total_backend - base_loss
 

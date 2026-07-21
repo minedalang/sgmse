@@ -5,6 +5,7 @@ log/
 log3/
 logs/
 nohup.out
+wandb_export_*/
 
 # Test outputs
 vb_test_*/
