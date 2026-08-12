@@ -35,17 +35,20 @@ from torchaudio import load,save
 from librosa import resample
 from pesq import pesq
 from pystoi import stoi
-from sgmse.util.other import si_sdr
+from sgmse.util.other import si_sdr, pad_spec
 
 from sgmse.model import ScoreModel
 from sgmse.sdes import SBVESDE
 from sgmse.frontends import build_frontend
 from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
 from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint
+from sgmse.residual_initializer import ResidualInitPredictor
 
 from contextlib import contextmanager
+from functools import partial
 import copy
 import os
+import time
 
 def _load_yaml(path: str) -> Dict[str, Any]:
     try:
@@ -420,6 +423,42 @@ class JointFrontendSgmseModel(ScoreModel):
             help="Total loss = a * denoiser_loss + (1-a) * score_loss",
         )
 
+        # ===== Frontend-relative no-regret loss (backend-only) =====
+        parser.add_argument(
+            "--frontend_nr_weight",
+            type=float,
+            default=0.0,
+            help=(
+                "Weight of the frontend-relative no-regret loss. The loss is active only "
+                "when the backend x0 estimate is worse than the detached frontend output "
+                "by more than --frontend_nr_margin. 0 disables it."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_margin",
+            type=float,
+            default=0.05,
+            help=(
+                "Relative error margin delta. A penalty is applied only when "
+                "E_diff > (1+delta)*E_front."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_t_max",
+            type=float,
+            default=0.30,
+            help=(
+                "Apply the no-regret loss only for diffusion times t <= this value. "
+                "For the default OUVE T=1, 0.30 protects the low-noise 30%% interval."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_eps",
+            type=float,
+            default=1e-8,
+            help="Numerical epsilon used by frontend-relative no-regret diagnostics.",
+        )
+
         # 配置用于内容对齐loss的预训练模型
         parser.add_argument("--content_model_name", type=str, default="microsoft/wavlm-base-plus",
                             help="Frozen SSL model for content loss.")
@@ -522,6 +561,22 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--pathsim_va_apply_in_validation", action="store_true",
                             help="Also use simulated states for batch-level valid_loss; file-level sampling stays unchanged.")
 
+        # ===== Predictive residual-anchored diffusion refinement =====
+        parser.add_argument("--residual_refine_enable", action="store_true",
+                            help="Model the frontend correction residual with OUVE centered at a learned deterministic residual initializer.")
+        parser.add_argument("--residual_init_hidden_ch", type=int, default=48,
+                            help="Hidden channels of the deterministic residual initializer.")
+        parser.add_argument("--residual_init_num_blocks", type=int, default=4,
+                            help="Number of dilated residual blocks in the residual initializer.")
+        parser.add_argument("--residual_init_max_dilation", type=int, default=8,
+                            help="Maximum dilation used by the residual initializer.")
+        parser.add_argument("--residual_init_weight", type=float, default=0.25,
+                            help="Weight of direct supervision for the deterministic residual initializer.")
+        parser.add_argument("--residual_init_joint_grad", action="store_true",
+                            help="Allow the diffusion loss to update the residual initializer through the OUVE center. Off by default for stability.")
+        parser.add_argument("--residual_refine_start_strength", type=float, default=0.5,
+                            help="Default truncated reverse start in [0,1]. 0 starts near clean; 1 uses the full OUVE prior. Can be overridden by inference --regen_strength.")
+
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
         parser.add_argument("--ctm_teacher_ckpt", type=str, default=None, help="Teacher ckpt path (SGMSE/SBVE checkpoint)")
@@ -558,6 +613,11 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_trainable: bool = False,
         frontend_aux_loss: str = "none",
         weighting_denoiser_to_score: float = 0.5,
+        # Frontend-relative no-regret loss
+        frontend_nr_weight: float = 0.0,
+        frontend_nr_margin: float = 0.05,
+        frontend_nr_t_max: float = 0.30,
+        frontend_nr_eps: float = 1e-8,
         content_model_name: str = "microsoft/wavlm-base-plus",
         content_layer: int = 9,
         content_loss_type: str = "smooth_l1",
@@ -608,6 +668,14 @@ class JointFrontendSgmseModel(ScoreModel):
         pathsim_va_min_rho: float = 0.5,
         pathsim_va_max_rho: float = 2.0,
         pathsim_va_apply_in_validation: bool = False,
+        # Predictive residual-anchored diffusion refinement
+        residual_refine_enable: bool = False,
+        residual_init_hidden_ch: int = 48,
+        residual_init_num_blocks: int = 4,
+        residual_init_max_dilation: int = 8,
+        residual_init_weight: float = 0.25,
+        residual_init_joint_grad: bool = False,
+        residual_refine_start_strength: float = 0.5,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -635,6 +703,33 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_name = str(frontend)
         self.frontend_aux_loss = str(frontend_aux_loss)
         self.weighting_denoiser_to_score = float(weighting_denoiser_to_score)
+
+        # Frontend-relative no-regret loss. Its auxiliary score forward uses
+        # detached diffusion states/conditions, so this objective updates only
+        # the score backend (not the frontend or residual initializer).
+        self.frontend_nr_weight = float(frontend_nr_weight)
+        self.frontend_nr_margin = float(frontend_nr_margin)
+        self.frontend_nr_t_max = float(frontend_nr_t_max)
+        self.frontend_nr_eps = float(frontend_nr_eps)
+        if self.frontend_nr_weight < 0.0:
+            raise ValueError("frontend_nr_weight must be >= 0.")
+        if self.frontend_nr_margin < 0.0:
+            raise ValueError("frontend_nr_margin must be >= 0.")
+        if self.frontend_nr_eps <= 0.0:
+            raise ValueError("frontend_nr_eps must be > 0.")
+        if self.frontend_nr_weight > 0.0:
+            if self.sde.__class__.__name__ != "OUVESDE":
+                raise ValueError("frontend no-regret loss currently supports --sde ouve only.")
+            if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
+                raise ValueError(
+                    "frontend no-regret loss currently supports "
+                    "--loss_type score_matching --loss_weighting sigma^2 only."
+                )
+            if not float(getattr(self, "t_eps", 0.03)) <= self.frontend_nr_t_max <= float(self.sde.T):
+                raise ValueError(
+                    "frontend_nr_t_max must be in [t_eps, sde.T], got "
+                    f"{self.frontend_nr_t_max}."
+                )
         # 内容对齐loss参数
         self.content_model_name = str(content_model_name)
         self.content_layer = int(content_layer)
@@ -735,6 +830,51 @@ class JointFrontendSgmseModel(ScoreModel):
             for p in self.pathsim_va_model.parameters():
                 p.requires_grad = False
 
+        # Predictive residual initializer. It estimates R*=X-Y_pre from
+        # inference-available inputs and becomes the OUVE center in residual
+        # coordinates. By default the score loss does not backpropagate into H.
+        self.residual_refine_enable = bool(residual_refine_enable)
+        self.residual_init_weight = float(residual_init_weight)
+        self.residual_init_joint_grad = bool(residual_init_joint_grad)
+        self.residual_refine_start_strength = float(residual_refine_start_strength)
+        if self.residual_init_weight < 0.0:
+            raise ValueError("residual_init_weight must be >= 0.")
+        if not 0.0 <= self.residual_refine_start_strength <= 1.0:
+            raise ValueError("residual_refine_start_strength must be in [0,1].")
+        self.residual_initializer = None
+        if self.residual_refine_enable:
+            if self.train_type != "mode2":
+                raise ValueError("--residual_refine_enable currently requires --train_type mode2")
+            if self.sde.__class__.__name__ != "OUVESDE":
+                raise ValueError("--residual_refine_enable currently requires --sde ouve")
+            if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
+                raise ValueError(
+                    "--residual_refine_enable currently requires "
+                    "--loss_type score_matching --loss_weighting sigma^2"
+                )
+            if self.anchor_calib_weight > 0.0 or self.anchor_v2_weight > 0.0:
+                raise ValueError("Disable Anchor V1/V2 for the first residual-refinement experiment.")
+            if self.pathsim_va_enable:
+                raise ValueError(
+                    "Predictive residual refinement and PathSim V-A use different state semantics; "
+                    "disable --pathsim_va_enable when --residual_refine_enable is active."
+                )
+            self.residual_initializer = ResidualInitPredictor(
+                hidden_ch=int(residual_init_hidden_ch),
+                num_blocks=int(residual_init_num_blocks),
+                max_dilation=int(residual_init_max_dilation),
+            )
+
+        # ScoreModel.save_hyperparameters() runs in the base constructor before
+        # these subclass-only options are normalized, so explicitly persist them.
+        self.hparams["residual_refine_enable"] = self.residual_refine_enable
+        self.hparams["residual_init_hidden_ch"] = int(residual_init_hidden_ch)
+        self.hparams["residual_init_num_blocks"] = int(residual_init_num_blocks)
+        self.hparams["residual_init_max_dilation"] = int(residual_init_max_dilation)
+        self.hparams["residual_init_weight"] = self.residual_init_weight
+        self.hparams["residual_init_joint_grad"] = self.residual_init_joint_grad
+        self.hparams["residual_refine_start_strength"] = self.residual_refine_start_strength
+
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
         if self.use_content_loss:
@@ -764,6 +904,8 @@ class JointFrontendSgmseModel(ScoreModel):
         self.ctm_lambda0 = float(ctm_lambda0)
         self.ctm_lambda_pow = float(ctm_lambda_pow)
         self.ctm_time_l1 = float(ctm_time_l1)
+        if self.residual_refine_enable and self.ctm_distill:
+            raise ValueError("Residual refinement and CTM distillation cannot be enabled together.")
 
         # Teacher backbone (frozen) for CTM distillation
         self.teacher_dnn = None
@@ -1900,6 +2042,275 @@ class JointFrontendSgmseModel(ScoreModel):
         else:
             raise ValueError(f"Unsupported content_loss_type: {self.content_loss_type}")
     
+    def _build_predictive_residual_state(
+        self,
+        X: torch.Tensor,
+        Y_noisy: torch.Tensor,
+        Y_pre: torch.Tensor,
+    ):
+        """Build clean, observed and predicted residuals for training/validation.
+
+        R_target = X - Y_pre is the correction that turns the frontend output
+        into clean speech. R_obs = Y_noisy - Y_pre is observable at inference.
+        H(Y_pre,Y_noisy) predicts R_det, which is used as the OUVE center.
+        """
+        if not self.residual_refine_enable or self.residual_initializer is None:
+            raise RuntimeError("Predictive residual refinement is not enabled.")
+        y_pre_det = Y_pre.detach()
+        y_noisy_det = Y_noisy.detach()
+        r_target = X.detach() - y_pre_det
+        r_obs = y_noisy_det - y_pre_det
+        r_det = self.residual_initializer(y_pre_det, y_noisy_det)
+        r_center = r_det if self.residual_init_joint_grad else r_det.detach()
+        return r_target, r_obs, r_det, r_center
+
+    @staticmethod
+    def _residual_snr_db(target: torch.Tensor, estimate: torch.Tensor, eps: float = 1e-8):
+        target_energy = torch.abs(target).pow(2).flatten(start_dim=1).sum(dim=1)
+        error_energy = torch.abs(estimate - target).pow(2).flatten(start_dim=1).sum(dim=1)
+        return 10.0 * torch.log10((target_energy + eps) / (error_energy + eps))
+
+    def _compute_residual_initializer_loss(
+        self,
+        r_target: torch.Tensor,
+        r_obs: torch.Tensor,
+        r_det: torch.Tensor,
+    ):
+        # Match the scale convention of the existing complex spectral losses.
+        loss = 0.5 * torch.sum(torch.abs(r_det - r_target).pow(2))
+        with torch.no_grad():
+            snr_obs = self._residual_snr_db(r_target, r_obs)
+            snr_pred = self._residual_snr_db(r_target, r_det)
+            target_energy = torch.abs(r_target).pow(2).flatten(start_dim=1).sum(dim=1)
+            pred_error = torch.abs(r_det - r_target).pow(2).flatten(start_dim=1).sum(dim=1)
+            obs_error = torch.abs(r_obs - r_target).pow(2).flatten(start_dim=1).sum(dim=1)
+            stats = {
+                "residual_init_snr_db": snr_pred.mean(),
+                "residual_observed_snr_db": snr_obs.mean(),
+                "residual_init_snr_gain_db": (snr_pred - snr_obs).mean(),
+                "residual_init_nmse": (pred_error / (target_energy + 1e-8)).mean(),
+                "residual_observed_nmse": (obs_error / (target_energy + 1e-8)).mean(),
+                "residual_target_rms": torch.sqrt(
+                    target_energy.mean() / max(r_target[0].numel(), 1)
+                ),
+                "residual_init_rms": torch.sqrt(
+                    torch.abs(r_det).pow(2).flatten(start_dim=1).sum(dim=1).mean()
+                    / max(r_det[0].numel(), 1)
+                ),
+            }
+        return loss, stats
+
+    def enhance(
+        self,
+        y,
+        y_cond=None,
+        sampler_type="pc",
+        predictor="reverse_diffusion",
+        corrector="none",
+        N=30,
+        corrector_steps=1,
+        snr=0.5,
+        timeit=False,
+        **kwargs,
+    ):
+        """Use residual-anchored OUVE when enabled, otherwise base enhancement.
+
+        In mode2 the public API stays unchanged: y is the frontend waveform and
+        y_cond is the original noisy waveform. Internally the reverse process
+        estimates a correction residual and returns Y_pre + R_hat.
+        """
+        if not self.residual_refine_enable:
+            return super().enhance(
+                y,
+                y_cond=y_cond,
+                sampler_type=sampler_type,
+                predictor=predictor,
+                corrector=corrector,
+                N=N,
+                corrector_steps=corrector_steps,
+                snr=snr,
+                timeit=timeit,
+                **kwargs,
+            )
+
+        if y_cond is None:
+            raise ValueError("Residual refinement requires both frontend and noisy waveforms.")
+        if self.train_type != "mode2":
+            raise ValueError("Residual refinement inference currently supports mode2 only.")
+
+        # Standard inference entry points may always forward Anchor options.
+        # Consume all of them here: residual refinement is an independent
+        # ablation and must not leak unknown kwargs into the ODE solver.
+        anchor_calib_arg = bool(kwargs.pop("anchor_calib", False))
+        anchor_v2_arg = bool(kwargs.pop("anchor_v2", False))
+        for key in (
+            "anchor_k_max",
+            "anchor_scale",
+            "anchor_v2_a_max",
+            "anchor_v2_b_max",
+            "anchor_v2_scale",
+            "anchor_v2_single_shot",
+            "anchor_v2_single_shot_ratio",
+            "anchor_v2_single_shot_step",
+            "anchor_v2_branch",
+        ):
+            kwargs.pop(key, None)
+        if anchor_calib_arg or anchor_v2_arg:
+            raise ValueError("Anchor V1/V2 must be disabled for residual-refinement inference.")
+
+        regen_strength_arg = kwargs.pop("regen_strength", None)
+        if regen_strength_arg is None:
+            regen_strength_arg = self.residual_refine_start_strength
+
+        start = time.time()
+        if y.dim() == 1:
+            y = y[None, :]
+        if y_cond.dim() == 1:
+            y_cond = y_cond[None, :]
+        y = y.to(self.device)
+        y_cond = y_cond.to(self.device)
+        T_orig = int(y_cond.size(-1))
+
+        if y.size(-1) != T_orig:
+            if y.size(-1) > T_orig:
+                offset = (y.size(-1) - T_orig) // 2
+                y = y[..., offset:offset + T_orig]
+            else:
+                pad = T_orig - y.size(-1)
+                y = F.pad(y, (pad // 2, pad - pad // 2))
+
+        # mode2 public convention: y=Y_pre waveform, y_cond=Y_noisy waveform.
+        norm_factor = y_cond.abs().max().clamp_min(1e-12).item()
+        y_pre_n = y / norm_factor
+        y_noisy_n = y_cond / norm_factor
+        Y_pre = torch.unsqueeze(self._forward_transform(self._stft(y_pre_n)), 0)
+        Y_noisy = torch.unsqueeze(self._forward_transform(self._stft(y_noisy_n)), 0)
+        Y_pre = pad_spec(Y_pre)
+        Y_noisy = pad_spec(Y_noisy)
+
+        r_obs = Y_noisy - Y_pre
+        r_det = self.residual_initializer(Y_pre, Y_noisy)
+        score_fn = partial(self, y_cond=r_obs)
+        regeneration_strength = self._resolve_regeneration_strength(
+            regen_strength_arg, r_det, r_obs
+        )
+
+        if self.sde.__class__.__name__ != "OUVESDE":
+            raise ValueError("Residual refinement inference currently requires OUVESDE.")
+        if self.sde.sampler_type == "pc":
+            sampler = self.get_pc_sampler(
+                predictor,
+                corrector,
+                r_det,
+                score_fn=score_fn,
+                N=N,
+                corrector_steps=corrector_steps,
+                snr=snr,
+                intermediate=False,
+                regeneration_strength=regeneration_strength,
+                **kwargs,
+            )
+        elif self.sde.sampler_type == "ode":
+            sampler = self.get_ode_sampler(
+                r_det,
+                score_fn=score_fn,
+                N=N,
+                regeneration_strength=regeneration_strength,
+                **kwargs,
+            )
+        else:
+            raise ValueError(f"Unsupported sampler type: {self.sde.sampler_type}")
+
+        r_hat, nfe = sampler()
+        x_hat_spec = Y_pre + r_hat
+        x_hat = self.to_audio(x_hat_spec.squeeze(), T_orig) * norm_factor
+        x_hat = x_hat.squeeze().detach().cpu().numpy()
+        if timeit:
+            elapsed = time.time() - start
+            rtf = elapsed / max(len(x_hat) / float(self.sr), 1e-8)
+            return x_hat, nfe, rtf
+        return x_hat
+
+    def _compute_frontend_no_regret_loss(
+        self,
+        target: torch.Tensor,
+        frontend_reference: torch.Tensor,
+        step_out: Dict[str, Any],
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """One-sided frontend-relative safety loss for the score backend.
+
+        Inputs use the same coordinates as the current diffusion task:
+          * normal task: target=X and frontend_reference=Y_pre;
+          * residual task: target=X-Y_pre and frontend_reference=0.
+        The residual form is exactly equivalent after adding Y_pre to both
+        estimates. Detached states keep this auxiliary objective backend-only.
+        """
+        zero = torch.zeros((), device=target.device, dtype=torch.float32)
+        if float(getattr(self, "frontend_nr_weight", 0.0)) <= 0.0:
+            return zero, {}
+
+        t_all = step_out["t"].detach().to(device=target.device, dtype=torch.float32).flatten()
+        time_active_all = t_all <= float(self.frontend_nr_t_max)
+        time_active_fraction = time_active_all.float().mean()
+        if not bool(time_active_all.any()):
+            return zero, {
+                "frontend_nr_time_active_fraction": time_active_fraction.detach(),
+                "frontend_nr_active_fraction": zero.detach(),
+                "frontend_nr_diff_front_ratio": zero.detach(),
+                "frontend_nr_diff_rel_error": zero.detach(),
+                "frontend_nr_front_rel_error": zero.detach(),
+            }
+
+        x_t = step_out["x_t"][time_active_all].detach()
+        t = t_all[time_active_all]
+        y_main = step_out["y"][time_active_all].detach()
+        y_cond_all = step_out.get("y_cond", None)
+        y_cond = None if y_cond_all is None else y_cond_all[time_active_all].detach()
+
+        score = self(x_t, y_main, t, y_cond=y_cond)
+
+        # PathSim V-A can override the perturbation sigma for the standard
+        # speech task. Use that same sigma when reconstructing x0 for NR;
+        # residual refinement itself is explicitly incompatible with PathSim.
+        sigma_override_all = step_out.get("sigma_override", None)
+        if sigma_override_all is None:
+            x0_backend = self._ouve_score_to_x0(x_t, y_main, t, score)
+        else:
+            sigma_eff = sigma_override_all[time_active_all].detach().to(
+                device=x_t.device, dtype=x_t.real.dtype if torch.is_complex(x_t) else x_t.dtype
+            )
+            while sigma_eff.ndim < x_t.ndim:
+                sigma_eff = sigma_eff.unsqueeze(-1)
+            alpha = self.sde.alpha(t).view(-1, 1, 1, 1).to(dtype=sigma_eff.dtype)
+            mean_hat = x_t + sigma_eff.square() * score
+            x0_backend = (mean_hat - (1.0 - alpha) * y_main) / alpha.clamp_min(1e-5)
+
+        target_active = target[time_active_all].detach()
+        reference_active = frontend_reference[time_active_all].detach()
+        reduce_dims = tuple(range(1, target_active.ndim))
+
+        backend_error = 0.5 * torch.abs(x0_backend - target_active).float().square().sum(dim=reduce_dims)
+        front_error = 0.5 * torch.abs(reference_active - target_active).float().square().sum(dim=reduce_dims)
+        threshold = (1.0 + float(self.frontend_nr_margin)) * front_error
+        violation = F.relu(backend_error - threshold)
+        loss_nr = violation.sum()
+
+        eps = float(self.frontend_nr_eps)
+        target_energy = 0.5 * torch.abs(target_active).float().square().sum(dim=reduce_dims).clamp_min(eps)
+        backend_rel = backend_error / target_energy
+        front_rel = front_error / target_energy
+        ratio = backend_error / front_error.clamp_min(eps)
+
+        stats = {
+            "frontend_nr_time_active_fraction": time_active_fraction.detach(),
+            "frontend_nr_active_fraction": (violation > 0.0).detach().float().mean(),
+            "frontend_nr_diff_front_ratio": ratio.detach().mean(),
+            "frontend_nr_diff_rel_error": backend_rel.detach().mean(),
+            "frontend_nr_front_rel_error": front_rel.detach().mean(),
+            "frontend_nr_t_mean": t.detach().mean(),
+        }
+        return loss_nr.float(), stats
+
     def training_step(self, batch, batch_idx):
         # batch: (x_wav, y_wav, spk_id)
         if len(batch) == 2:
@@ -2027,14 +2438,43 @@ class JointFrontendSgmseModel(ScoreModel):
                 self.log("td_l1", loss_td, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
             return loss
 
-        # 组 batch 给 ScoreModel._step
-        if spk_ids is not None:
-            step_out  = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx, return_details=True)
+        # Build either the original full-speech diffusion task or the
+        # predictive residual-anchored task. ScoreModel._step(mode2) swaps its
+        # second/third tensors, so (R_target,R_obs,R_center) becomes
+        # y_main=R_center and y_cond=R_obs as required by residual OUVE.
+        loss_residual_init = torch.zeros((), device=X.device, dtype=torch.float32)
+        residual_init_stats = {}
+        r_target = None
+        if self.residual_refine_enable:
+            if self.use_contrastive and self.contrastive_weight > 0.0:
+                raise ValueError("Disable contrastive loss for the first residual-refinement experiment.")
+            r_target, r_obs, r_det, r_center = self._build_predictive_residual_state(
+                X=X, Y_noisy=Y_noisy, Y_pre=Y_pre
+            )
+            if spk_ids is not None:
+                step_out = self._step(
+                    (r_target, r_obs, r_center, spk_ids), batch_idx, return_details=True
+                )
+            else:
+                step_out = self._step(
+                    (r_target, r_obs, r_center), batch_idx, return_details=True
+                )
+            loss_residual_init, residual_init_stats = self._compute_residual_initializer_loss(
+                r_target=r_target, r_obs=r_obs, r_det=r_det
+            )
         else:
-            step_out  = self._step((X, Y_noisy, Y_pre), batch_idx, return_details=True)
+            if spk_ids is not None:
+                step_out = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx, return_details=True)
+            else:
+                step_out = self._step((X, Y_noisy, Y_pre), batch_idx, return_details=True)
+
         base_loss = step_out["base_loss"]
-        loss_total_backend = step_out["loss"] # 包含旧 contrastive
+        loss_total_backend = step_out["loss"]  # includes legacy contrastive if enabled
         x_hat_spec = step_out["x_hat_spec"]
+        if self.residual_refine_enable and x_hat_spec is not None:
+            # _step estimates in residual coordinates; downstream optional
+            # clean-spectrum losses expect an enhanced clean-spectrum estimate.
+            x_hat_spec = Y_pre.detach() + x_hat_spec
         loss = loss_total_backend
         for k, v in step_out.get("pathsim_stats", {}).items():
             self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
@@ -2061,6 +2501,23 @@ class JointFrontendSgmseModel(ScoreModel):
             self.log("train_loss_denoiser", loss_denoiser, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         else:
             loss_denoiser = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+
+        # Direct supervision for the inference-time residual initializer H.
+        # Y_pre/Y_noisy were detached before H, so this branch updates H only.
+        if self.residual_refine_enable:
+            weighted_residual_init = self.residual_init_weight * loss_residual_init
+            loss = loss + weighted_residual_init.to(loss.dtype)
+            self.log("train_loss_residual_init", loss_residual_init,
+                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            self.log("train_loss_residual_init_weighted", weighted_residual_init,
+                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            self.log(
+                "residual_init_weighted_to_backend_ratio",
+                weighted_residual_init.detach() / (base_loss.detach().abs() + 1e-8),
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            for k, v in residual_init_stats.items():
+                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
         # ===== selector projection-oracle mask loss =====
         # This loss is only active for selector backbones that expose _last_selector_mask.
@@ -2176,6 +2633,42 @@ class JointFrontendSgmseModel(ScoreModel):
             weighted_content_selector = self.selector_content_weight * loss_content_selector
             loss = loss + weighted_content_selector
             self.log("train_loss_content_selector_weighted", weighted_content_selector, on_step=True, on_epoch=True, sync_dist=True)
+
+        # ===== Frontend-relative no-regret loss (backend-only) =====
+        loss_frontend_nr = torch.zeros((), device=x_wav.device, dtype=torch.float32)
+        if float(getattr(self, "frontend_nr_weight", 0.0)) > 0.0:
+            if self.residual_refine_enable:
+                # Frontend-only output means zero correction in residual space.
+                nr_target = r_target
+                nr_frontend_reference = torch.zeros_like(r_target)
+            else:
+                nr_target = X
+                nr_frontend_reference = Y_pre
+
+            loss_frontend_nr, frontend_nr_stats = self._compute_frontend_no_regret_loss(
+                target=nr_target,
+                frontend_reference=nr_frontend_reference,
+                step_out=step_out,
+            )
+            weighted_frontend_nr = float(self.frontend_nr_weight) * loss_frontend_nr
+            loss = loss + weighted_frontend_nr.to(loss.dtype)
+            self.log(
+                "train_loss_frontend_nr", loss_frontend_nr,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            self.log(
+                "train_loss_frontend_nr_weighted", weighted_frontend_nr,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            nr_to_backend = weighted_frontend_nr.detach() / loss_total_backend.detach().abs().clamp_min(
+                float(self.frontend_nr_eps)
+            )
+            self.log(
+                "frontend_nr_weighted_to_backend_ratio", nr_to_backend,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            for k, v in frontend_nr_stats.items():
+                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
         self.log("train_loss_backend", loss_total_backend, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         if self.final_content_weight > 0.0:
@@ -2380,10 +2873,30 @@ class JointFrontendSgmseModel(ScoreModel):
                 y_pre = _match_length(y_pre, y_wav)
                 Y_pre = self._sgmse_stft(y_pre)
 
-            if spk_ids is not None:
-                loss = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx)
+            if self.residual_refine_enable:
+                r_target, r_obs, r_det, r_center = self._build_predictive_residual_state(
+                    X=X, Y_noisy=Y_noisy, Y_pre=Y_pre
+                )
+                if spk_ids is not None:
+                    loss_score = self._step((r_target, r_obs, r_center, spk_ids), batch_idx)
+                else:
+                    loss_score = self._step((r_target, r_obs, r_center), batch_idx)
+                loss_init, init_stats = self._compute_residual_initializer_loss(
+                    r_target=r_target, r_obs=r_obs, r_det=r_det
+                )
+                loss = loss_score + self.residual_init_weight * loss_init
+                self.log("valid_loss_residual_score", loss_score,
+                         on_step=False, on_epoch=True, sync_dist=True, prog_bar=False)
+                self.log("valid_loss_residual_init", loss_init,
+                         on_step=False, on_epoch=True, sync_dist=True, prog_bar=False)
+                for k, v in init_stats.items():
+                    self.log("valid_" + k, v, on_step=False, on_epoch=True,
+                             sync_dist=True, prog_bar=False)
             else:
-                loss = self._step((X, Y_noisy, Y_pre), batch_idx)
+                if spk_ids is not None:
+                    loss = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx)
+                else:
+                    loss = self._step((X, Y_noisy, Y_pre), batch_idx)
         self.log("valid_loss", loss, on_step=False, on_epoch=True, sync_dist=True, prog_bar=True)
 
         return loss
