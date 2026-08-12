@@ -458,6 +458,47 @@ class JointFrontendSgmseModel(ScoreModel):
             default=1e-8,
             help="Numerical epsilon used by frontend-relative no-regret diagnostics.",
         )
+        parser.add_argument(
+            "--frontend_nr_mode",
+            type=str,
+            choices=("global", "patch"),
+            default="global",
+            help=(
+                "No-regret granularity. 'global' reproduces the original utterance/sample-level "
+                "constraint; 'patch' uses local time-frequency relative degradation with hard-region mining."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_patch_freq",
+            type=int,
+            default=5,
+            help="Odd frequency-axis pooling size for patch no-regret (e.g. 5).",
+        )
+        parser.add_argument(
+            "--frontend_nr_patch_time",
+            type=int,
+            default=3,
+            help="Odd time-axis pooling size for patch no-regret (e.g. 3).",
+        )
+        parser.add_argument(
+            "--frontend_nr_topk",
+            type=float,
+            default=0.20,
+            help=(
+                "Fraction of the most severely degraded local patches kept by patch no-regret. "
+                "Must be in (0, 1]; 1 keeps all patches."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_floor_ratio",
+            type=float,
+            default=0.01,
+            help=(
+                "Floor used only when computing the local backend/frontend error ratio: "
+                "denom=max(E_front_patch, floor_ratio*mean(E_front_patch)). "
+                "This prevents near-silent bins from producing huge ratios."
+            ),
+        )
 
         # 配置用于内容对齐loss的预训练模型
         parser.add_argument("--content_model_name", type=str, default="microsoft/wavlm-base-plus",
@@ -618,6 +659,11 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_nr_margin: float = 0.05,
         frontend_nr_t_max: float = 0.30,
         frontend_nr_eps: float = 1e-8,
+        frontend_nr_mode: str = "global",
+        frontend_nr_patch_freq: int = 5,
+        frontend_nr_patch_time: int = 3,
+        frontend_nr_topk: float = 0.20,
+        frontend_nr_floor_ratio: float = 0.01,
         content_model_name: str = "microsoft/wavlm-base-plus",
         content_layer: int = 9,
         content_loss_type: str = "smooth_l1",
@@ -711,12 +757,27 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_nr_margin = float(frontend_nr_margin)
         self.frontend_nr_t_max = float(frontend_nr_t_max)
         self.frontend_nr_eps = float(frontend_nr_eps)
+        self.frontend_nr_mode = str(frontend_nr_mode).lower()
+        self.frontend_nr_patch_freq = int(frontend_nr_patch_freq)
+        self.frontend_nr_patch_time = int(frontend_nr_patch_time)
+        self.frontend_nr_topk = float(frontend_nr_topk)
+        self.frontend_nr_floor_ratio = float(frontend_nr_floor_ratio)
         if self.frontend_nr_weight < 0.0:
             raise ValueError("frontend_nr_weight must be >= 0.")
         if self.frontend_nr_margin < 0.0:
             raise ValueError("frontend_nr_margin must be >= 0.")
         if self.frontend_nr_eps <= 0.0:
             raise ValueError("frontend_nr_eps must be > 0.")
+        if self.frontend_nr_mode not in {"global", "patch"}:
+            raise ValueError("frontend_nr_mode must be one of {'global', 'patch'}.")
+        if self.frontend_nr_patch_freq <= 0 or self.frontend_nr_patch_freq % 2 == 0:
+            raise ValueError("frontend_nr_patch_freq must be a positive odd integer.")
+        if self.frontend_nr_patch_time <= 0 or self.frontend_nr_patch_time % 2 == 0:
+            raise ValueError("frontend_nr_patch_time must be a positive odd integer.")
+        if not (0.0 < self.frontend_nr_topk <= 1.0):
+            raise ValueError("frontend_nr_topk must be in (0, 1].")
+        if self.frontend_nr_floor_ratio < 0.0:
+            raise ValueError("frontend_nr_floor_ratio must be >= 0.")
         if self.frontend_nr_weight > 0.0:
             if self.sde.__class__.__name__ != "OUVESDE":
                 raise ValueError("frontend no-regret loss currently supports --sde ouve only.")
@@ -2237,13 +2298,37 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_reference: torch.Tensor,
         step_out: Dict[str, Any],
     ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
-        """One-sided frontend-relative safety loss for the score backend.
+        """Frontend-relative no-regret loss for the score backend.
+
+        Two granularities are supported:
+
+        ``global`` (legacy):
+            Compare one reconstruction error per sample and penalize only when
+            the backend is globally worse than the frontend by the margin.
+
+        ``patch`` (recommended):
+            1) Build backend/frontend squared-error maps in the STFT domain.
+            2) Smooth them with a local F x T average-pooling window.
+            3) Detect local degradation with the *relative* error ratio
+                   E_backend_patch / max(E_front_patch, local_floor).
+            4) Keep only the top-k most severe local regions.
+            5) Apply the actual no-regret penalty in absolute error units:
+                   ReLU(E_backend_patch - (1+margin) E_front_patch).
+
+        The relative ratio is used only for robust region selection/diagnostics;
+        the optimized penalty remains the original one-sided no-regret excess.
+        This avoids exploding gradients in near-silent bins while making sparse
+        local degradation visible even when global MSE is already better.
+
+        DDP safety:
+        ``t`` is sampled independently on every rank. Every rank therefore runs
+        the same auxiliary score forward and returns the same metric keys. A rank
+        with no t <= frontend_nr_t_max runs one dummy sample with zero weight.
 
         Inputs use the same coordinates as the current diffusion task:
           * normal task: target=X and frontend_reference=Y_pre;
           * residual task: target=X-Y_pre and frontend_reference=0.
-        The residual form is exactly equivalent after adding Y_pre to both
-        estimates. Detached states keep this auxiliary objective backend-only.
+        Detached states keep this auxiliary objective backend-only.
         """
         zero = torch.zeros((), device=target.device, dtype=torch.float32)
         if float(getattr(self, "frontend_nr_weight", 0.0)) <= 0.0:
@@ -2252,32 +2337,34 @@ class JointFrontendSgmseModel(ScoreModel):
         t_all = step_out["t"].detach().to(device=target.device, dtype=torch.float32).flatten()
         time_active_all = t_all <= float(self.frontend_nr_t_max)
         time_active_fraction = time_active_all.float().mean()
-        if not bool(time_active_all.any()):
-            return zero, {
-                "frontend_nr_time_active_fraction": time_active_fraction.detach(),
-                "frontend_nr_active_fraction": zero.detach(),
-                "frontend_nr_diff_front_ratio": zero.detach(),
-                "frontend_nr_diff_rel_error": zero.detach(),
-                "frontend_nr_front_rel_error": zero.detach(),
-            }
+        active_count = time_active_all.float().sum()
+        stats_denom = active_count.clamp_min(1.0)
 
-        x_t = step_out["x_t"][time_active_all].detach()
-        t = t_all[time_active_all]
-        y_main = step_out["y"][time_active_all].detach()
+        # IMPORTANT FOR DDP: every rank executes one NR score forward.
+        active_idx = torch.nonzero(time_active_all, as_tuple=False).flatten()
+        if active_idx.numel() == 0:
+            active_idx = torch.zeros(1, device=t_all.device, dtype=torch.long)
+            sample_weight = torch.zeros(1, device=target.device, dtype=torch.float32)
+        else:
+            sample_weight = torch.ones(active_idx.numel(), device=target.device, dtype=torch.float32)
+
+        x_t = step_out["x_t"].index_select(0, active_idx).detach()
+        t = t_all.index_select(0, active_idx)
+        y_main = step_out["y"].index_select(0, active_idx).detach()
         y_cond_all = step_out.get("y_cond", None)
-        y_cond = None if y_cond_all is None else y_cond_all[time_active_all].detach()
+        y_cond = None if y_cond_all is None else y_cond_all.index_select(0, active_idx).detach()
 
+        # Detached conditions => NR gradients update score backend only.
         score = self(x_t, y_main, t, y_cond=y_cond)
 
-        # PathSim V-A can override the perturbation sigma for the standard
-        # speech task. Use that same sigma when reconstructing x0 for NR;
-        # residual refinement itself is explicitly incompatible with PathSim.
+        # PathSim V-A may override perturbation sigma for the standard task.
         sigma_override_all = step_out.get("sigma_override", None)
         if sigma_override_all is None:
             x0_backend = self._ouve_score_to_x0(x_t, y_main, t, score)
         else:
-            sigma_eff = sigma_override_all[time_active_all].detach().to(
-                device=x_t.device, dtype=x_t.real.dtype if torch.is_complex(x_t) else x_t.dtype
+            sigma_eff = sigma_override_all.index_select(0, active_idx).detach().to(
+                device=x_t.device,
+                dtype=x_t.real.dtype if torch.is_complex(x_t) else x_t.dtype,
             )
             while sigma_eff.ndim < x_t.ndim:
                 sigma_eff = sigma_eff.unsqueeze(-1)
@@ -2285,29 +2372,129 @@ class JointFrontendSgmseModel(ScoreModel):
             mean_hat = x_t + sigma_eff.square() * score
             x0_backend = (mean_hat - (1.0 - alpha) * y_main) / alpha.clamp_min(1e-5)
 
-        target_active = target[time_active_all].detach()
-        reference_active = frontend_reference[time_active_all].detach()
+        target_active = target.index_select(0, active_idx).detach()
+        reference_active = frontend_reference.index_select(0, active_idx).detach()
         reduce_dims = tuple(range(1, target_active.ndim))
+        eps = float(self.frontend_nr_eps)
 
+        # Global errors are retained for diagnostics in both modes.
         backend_error = 0.5 * torch.abs(x0_backend - target_active).float().square().sum(dim=reduce_dims)
         front_error = 0.5 * torch.abs(reference_active - target_active).float().square().sum(dim=reduce_dims)
-        threshold = (1.0 + float(self.frontend_nr_margin)) * front_error
-        violation = F.relu(backend_error - threshold)
-        loss_nr = violation.sum()
-
-        eps = float(self.frontend_nr_eps)
         target_energy = 0.5 * torch.abs(target_active).float().square().sum(dim=reduce_dims).clamp_min(eps)
         backend_rel = backend_error / target_energy
         front_rel = front_error / target_energy
-        ratio = backend_error / front_error.clamp_min(eps)
+        global_ratio = backend_error / front_error.clamp_min(eps)
+
+        nr_mode = str(getattr(self, "frontend_nr_mode", "global")).lower()
+        if nr_mode == "global":
+            threshold = (1.0 + float(self.frontend_nr_margin)) * front_error
+            violation = F.relu(backend_error - threshold)
+            loss_nr = (violation * sample_weight).sum()
+
+            stats = {
+                "frontend_nr_time_active_fraction": time_active_fraction.detach(),
+                "frontend_nr_active_fraction": (
+                    ((violation > 0.0).float() * sample_weight).sum() / stats_denom
+                ).detach(),
+                "frontend_nr_diff_front_ratio": (
+                    (global_ratio * sample_weight).sum() / stats_denom
+                ).detach(),
+                "frontend_nr_diff_rel_error": (
+                    (backend_rel * sample_weight).sum() / stats_denom
+                ).detach(),
+                "frontend_nr_front_rel_error": (
+                    (front_rel * sample_weight).sum() / stats_denom
+                ).detach(),
+                "frontend_nr_t_mean": ((t * sample_weight).sum() / stats_denom).detach(),
+            }
+            return loss_nr.float(), stats
+
+        if nr_mode != "patch":
+            raise RuntimeError(f"Unsupported frontend_nr_mode={nr_mode!r}")
+        if target_active.ndim != 4:
+            raise RuntimeError(
+                "frontend_nr_mode=patch expects STFT tensors shaped [B,C,F,T], "
+                f"got target shape={tuple(target_active.shape)}"
+            )
+
+        # ------------------------------------------------------------------
+        # Fine-grained local no-regret
+        # ------------------------------------------------------------------
+        # Sum over complex/STFT channels but keep frequency and time.
+        # Shape: [B, 1, F, T].
+        backend_tf = 0.5 * torch.abs(x0_backend - target_active).float().square().sum(dim=1, keepdim=True)
+        front_tf = 0.5 * torch.abs(reference_active - target_active).float().square().sum(dim=1, keepdim=True)
+
+        kf = int(self.frontend_nr_patch_freq)
+        kt = int(self.frontend_nr_patch_time)
+        pool_kwargs = dict(
+            kernel_size=(kf, kt),
+            stride=1,
+            padding=(kf // 2, kt // 2),
+            count_include_pad=False,
+        )
+        backend_patch = F.avg_pool2d(backend_tf, **pool_kwargs)
+        front_patch = F.avg_pool2d(front_tf, **pool_kwargs)
+
+        # Relative detector used only to decide WHICH patches are severe.
+        # A per-sample floor prevents silent/easy bins from creating huge ratios.
+        front_mean = front_patch.mean(dim=(2, 3), keepdim=True)
+        ratio_floor = (
+            float(self.frontend_nr_floor_ratio) * front_mean
+        ).clamp_min(eps)
+        ratio_denom = torch.maximum(front_patch, ratio_floor)
+        local_ratio = backend_patch / ratio_denom
+
+        margin_factor = 1.0 + float(self.frontend_nr_margin)
+        relative_severity = F.relu(local_ratio - margin_factor)
+
+        # The optimized penalty keeps the original no-regret units/meaning.
+        # The ratio above only supplies a robust local detector / hard miner.
+        absolute_excess = F.relu(backend_patch - margin_factor * front_patch)
+
+        severity_flat = relative_severity.flatten(1)
+        excess_flat = absolute_excess.flatten(1)
+        ratio_flat = local_ratio.flatten(1)
+        n_local = severity_flat.shape[1]
+        topk_n = max(1, min(n_local, int(math.ceil(float(self.frontend_nr_topk) * n_local))))
+
+        # Hard-region mining is intentionally non-differentiable in selection;
+        # gradients flow through the selected absolute excess values only.
+        topk_idx = torch.topk(severity_flat.detach(), k=topk_n, dim=1, largest=True).indices
+        selected_excess = torch.gather(excess_flat, 1, topk_idx)
+        selected_severity = torch.gather(severity_flat, 1, topk_idx)
+        selected_ratio = torch.gather(ratio_flat, 1, topk_idx)
+
+        # Sum selected local excesses per sample. This preserves a scale closer
+        # to the old summed global MSE than a dimensionless ratio-only loss.
+        per_sample_loss = selected_excess.sum(dim=1)
+        loss_nr = (per_sample_loss * sample_weight).sum()
+
+        local_violation_mask = relative_severity > 0.0
+        sample_has_violation = local_violation_mask.flatten(1).any(dim=1).float()
+        local_active_fraction = local_violation_mask.float().mean(dim=(1, 2, 3))
+        local_ratio_mean = local_ratio.mean(dim=(1, 2, 3))
+        local_ratio_max = local_ratio.flatten(1).max(dim=1).values
+        local_topk_ratio = selected_ratio.mean(dim=1)
+        local_topk_active_fraction = (selected_severity > 0.0).float().mean(dim=1)
+
+        def _active_mean(v: torch.Tensor) -> torch.Tensor:
+            return (v.float() * sample_weight).sum() / stats_denom
 
         stats = {
+            # Existing keys retained so old W&B dashboards still work.
+            # In patch mode, active_fraction means "sample has >=1 local violation".
             "frontend_nr_time_active_fraction": time_active_fraction.detach(),
-            "frontend_nr_active_fraction": (violation > 0.0).detach().float().mean(),
-            "frontend_nr_diff_front_ratio": ratio.detach().mean(),
-            "frontend_nr_diff_rel_error": backend_rel.detach().mean(),
-            "frontend_nr_front_rel_error": front_rel.detach().mean(),
-            "frontend_nr_t_mean": t.detach().mean(),
+            "frontend_nr_active_fraction": _active_mean(sample_has_violation).detach(),
+            "frontend_nr_diff_front_ratio": _active_mean(local_ratio_mean).detach(),
+            "frontend_nr_diff_rel_error": _active_mean(backend_rel).detach(),
+            "frontend_nr_front_rel_error": _active_mean(front_rel).detach(),
+            "frontend_nr_t_mean": _active_mean(t).detach(),
+            # New local diagnostics.
+            "frontend_nr_local_active_fraction": _active_mean(local_active_fraction).detach(),
+            "frontend_nr_local_max_ratio": _active_mean(local_ratio_max).detach(),
+            "frontend_nr_local_topk_ratio": _active_mean(local_topk_ratio).detach(),
+            "frontend_nr_local_topk_active_fraction": _active_mean(local_topk_active_fraction).detach(),
         }
         return loss_nr.float(), stats
 
