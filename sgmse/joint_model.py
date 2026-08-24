@@ -42,7 +42,10 @@ from sgmse.sdes import SBVESDE
 from sgmse.frontends import build_frontend
 from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
 from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint
-from sgmse.residual_initializer import ResidualInitPredictor
+from sgmse.residual_initializer import (
+    ConfidenceGatedResidualPriorPredictor,
+    build_residual_prior_predictor,
+)
 
 from contextlib import contextmanager
 from functools import partial
@@ -423,15 +426,40 @@ class JointFrontendSgmseModel(ScoreModel):
             help="Total loss = a * denoiser_loss + (1-a) * score_loss",
         )
 
-        # ===== Frontend-relative no-regret loss (backend-only) =====
+        # ===== Frontend-relative no-regret / regret-aware score reweighting =====
+        parser.add_argument(
+            "--frontend_nr_strategy",
+            type=str,
+            choices=("auxiliary", "score_reweight"),
+            default="auxiliary",
+            help=(
+                "How local frontend-relative regret affects optimization. "
+                "'auxiliary' keeps the legacy extra NR loss; 'score_reweight' uses the "
+                "detached local degradation map to reweight the main score-matching TF loss."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_reweight_strength",
+            type=float,
+            default=1.0,
+            help=(
+                "Average extra score-loss weight assigned to detected hard TF patches in "
+                "score_reweight mode. 1.0 makes a typical violated patch about 2x weighted."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_reweight_max",
+            type=float,
+            default=4.0,
+            help="Maximum per-TF score-loss multiplier in score_reweight mode.",
+        )
         parser.add_argument(
             "--frontend_nr_weight",
             type=float,
             default=0.0,
             help=(
-                "Weight of the frontend-relative no-regret loss. The loss is active only "
-                "when the backend x0 estimate is worse than the detached frontend output "
-                "by more than --frontend_nr_margin. 0 disables it."
+                "Weight of the LEGACY auxiliary frontend-relative no-regret loss. Used only "
+                "when --frontend_nr_strategy auxiliary. Set 0 in score_reweight mode."
             ),
         )
         parser.add_argument(
@@ -604,19 +632,32 @@ class JointFrontendSgmseModel(ScoreModel):
 
         # ===== Predictive residual-anchored diffusion refinement =====
         parser.add_argument("--residual_refine_enable", action="store_true",
-                            help="Model the frontend correction residual with OUVE centered at a learned deterministic residual initializer.")
+                            help="Model the frontend correction residual with OUVE centered at a learned residual prior.")
+        parser.add_argument("--residual_prior_type", type=str, default="direct",
+                            choices=("direct", "confidence_gate"),
+                            help="Residual prior: legacy direct complex prediction, or confidence-gated R_obs (recommended).")
         parser.add_argument("--residual_init_hidden_ch", type=int, default=48,
-                            help="Hidden channels of the deterministic residual initializer.")
+                            help="Hidden channels of the residual prior network.")
         parser.add_argument("--residual_init_num_blocks", type=int, default=4,
-                            help="Number of dilated residual blocks in the residual initializer.")
+                            help="Number of dilated residual blocks in the residual prior network.")
         parser.add_argument("--residual_init_max_dilation", type=int, default=8,
-                            help="Maximum dilation used by the residual initializer.")
+                            help="Maximum dilation used by the residual prior network.")
         parser.add_argument("--residual_init_weight", type=float, default=0.25,
-                            help="Weight of direct supervision for the deterministic residual initializer.")
+                            help="Outer weight of residual-prior supervision.")
+        parser.add_argument("--residual_gate_init", type=float, default=0.10,
+                            help="Initial confidence gate in (0,1) for confidence_gate prior.")
+        parser.add_argument("--residual_gate_patch_freq", type=int, default=5,
+                            help="Odd frequency-window size for the training oracle confidence map.")
+        parser.add_argument("--residual_gate_patch_time", type=int, default=3,
+                            help="Odd time-window size for the training oracle confidence map.")
+        parser.add_argument("--residual_gate_floor_ratio", type=float, default=1e-4,
+                            help="Relative R_obs-energy floor below which oracle gate is set to zero.")
+        parser.add_argument("--residual_gate_oracle_weight", type=float, default=0.25,
+                            help="Weight of energy-scaled oracle-gate supervision inside residual-prior loss.")
         parser.add_argument("--residual_init_joint_grad", action="store_true",
-                            help="Allow the diffusion loss to update the residual initializer through the OUVE center. Off by default for stability.")
-        parser.add_argument("--residual_refine_start_strength", type=float, default=0.5,
-                            help="Default truncated reverse start in [0,1]. 0 starts near clean; 1 uses the full OUVE prior. Can be overridden by inference --regen_strength.")
+                            help="Allow the diffusion loss to update the residual prior network through the OUVE center. Off by default for stability.")
+        parser.add_argument("--residual_refine_start_strength", type=float, default=1.0,
+                            help="Default reverse start in [0,1]. For the new prior, 1.0 is recommended initially; can be overridden by inference --regen_strength.")
 
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
@@ -654,7 +695,10 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_trainable: bool = False,
         frontend_aux_loss: str = "none",
         weighting_denoiser_to_score: float = 0.5,
-        # Frontend-relative no-regret loss
+        # Frontend-relative no-regret / regret-aware score reweighting
+        frontend_nr_strategy: str = "auxiliary",
+        frontend_nr_reweight_strength: float = 1.0,
+        frontend_nr_reweight_max: float = 4.0,
         frontend_nr_weight: float = 0.0,
         frontend_nr_margin: float = 0.05,
         frontend_nr_t_max: float = 0.30,
@@ -716,12 +760,18 @@ class JointFrontendSgmseModel(ScoreModel):
         pathsim_va_apply_in_validation: bool = False,
         # Predictive residual-anchored diffusion refinement
         residual_refine_enable: bool = False,
+        residual_prior_type: str = "direct",
         residual_init_hidden_ch: int = 48,
         residual_init_num_blocks: int = 4,
         residual_init_max_dilation: int = 8,
         residual_init_weight: float = 0.25,
+        residual_gate_init: float = 0.10,
+        residual_gate_patch_freq: int = 5,
+        residual_gate_patch_time: int = 3,
+        residual_gate_floor_ratio: float = 1e-4,
+        residual_gate_oracle_weight: float = 0.25,
         residual_init_joint_grad: bool = False,
-        residual_refine_start_strength: float = 0.5,
+        residual_refine_start_strength: float = 1.0,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -750,9 +800,12 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_aux_loss = str(frontend_aux_loss)
         self.weighting_denoiser_to_score = float(weighting_denoiser_to_score)
 
-        # Frontend-relative no-regret loss. Its auxiliary score forward uses
-        # detached diffusion states/conditions, so this objective updates only
-        # the score backend (not the frontend or residual initializer).
+        # Frontend-relative no-regret. In score_reweight mode the detector is
+        # detached and only redistributes the MAIN score-matching gradient across
+        # TF regions; no extra score forward is needed.
+        self.frontend_nr_strategy = str(frontend_nr_strategy).lower()
+        self.frontend_nr_reweight_strength = float(frontend_nr_reweight_strength)
+        self.frontend_nr_reweight_max = float(frontend_nr_reweight_max)
         self.frontend_nr_weight = float(frontend_nr_weight)
         self.frontend_nr_margin = float(frontend_nr_margin)
         self.frontend_nr_t_max = float(frontend_nr_t_max)
@@ -762,6 +815,12 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_nr_patch_time = int(frontend_nr_patch_time)
         self.frontend_nr_topk = float(frontend_nr_topk)
         self.frontend_nr_floor_ratio = float(frontend_nr_floor_ratio)
+        if self.frontend_nr_strategy not in {"auxiliary", "score_reweight"}:
+            raise ValueError("frontend_nr_strategy must be one of {'auxiliary', 'score_reweight'}.")
+        if self.frontend_nr_reweight_strength < 0.0:
+            raise ValueError("frontend_nr_reweight_strength must be >= 0.")
+        if self.frontend_nr_reweight_max < 1.0:
+            raise ValueError("frontend_nr_reweight_max must be >= 1.")
         if self.frontend_nr_weight < 0.0:
             raise ValueError("frontend_nr_weight must be >= 0.")
         if self.frontend_nr_margin < 0.0:
@@ -770,6 +829,8 @@ class JointFrontendSgmseModel(ScoreModel):
             raise ValueError("frontend_nr_eps must be > 0.")
         if self.frontend_nr_mode not in {"global", "patch"}:
             raise ValueError("frontend_nr_mode must be one of {'global', 'patch'}.")
+        if self.frontend_nr_strategy == "score_reweight" and self.frontend_nr_mode != "patch":
+            raise ValueError("frontend_nr_strategy=score_reweight requires --frontend_nr_mode patch.")
         if self.frontend_nr_patch_freq <= 0 or self.frontend_nr_patch_freq % 2 == 0:
             raise ValueError("frontend_nr_patch_freq must be a positive odd integer.")
         if self.frontend_nr_patch_time <= 0 or self.frontend_nr_patch_time % 2 == 0:
@@ -778,7 +839,11 @@ class JointFrontendSgmseModel(ScoreModel):
             raise ValueError("frontend_nr_topk must be in (0, 1].")
         if self.frontend_nr_floor_ratio < 0.0:
             raise ValueError("frontend_nr_floor_ratio must be >= 0.")
-        if self.frontend_nr_weight > 0.0:
+        nr_enabled = (
+            (self.frontend_nr_strategy == "auxiliary" and self.frontend_nr_weight > 0.0)
+            or (self.frontend_nr_strategy == "score_reweight" and self.frontend_nr_reweight_strength > 0.0)
+        )
+        if nr_enabled:
             if self.sde.__class__.__name__ != "OUVESDE":
                 raise ValueError("frontend no-regret loss currently supports --sde ouve only.")
             if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
@@ -891,15 +956,34 @@ class JointFrontendSgmseModel(ScoreModel):
             for p in self.pathsim_va_model.parameters():
                 p.requires_grad = False
 
-        # Predictive residual initializer. It estimates R*=X-Y_pre from
-        # inference-available inputs and becomes the OUVE center in residual
-        # coordinates. By default the score loss does not backpropagate into H.
+        # Residual prior network. The recommended confidence-gated variant
+        # predicts only G(f,t) and forms R_prior = G * (Y_noisy - Y_pre), rather
+        # than synthesizing a complex residual from scratch. By default the
+        # score loss does not backpropagate into the prior network.
         self.residual_refine_enable = bool(residual_refine_enable)
+        self.residual_prior_type = str(residual_prior_type).strip().lower()
         self.residual_init_weight = float(residual_init_weight)
+        self.residual_gate_init = float(residual_gate_init)
+        self.residual_gate_patch_freq = int(residual_gate_patch_freq)
+        self.residual_gate_patch_time = int(residual_gate_patch_time)
+        self.residual_gate_floor_ratio = float(residual_gate_floor_ratio)
+        self.residual_gate_oracle_weight = float(residual_gate_oracle_weight)
         self.residual_init_joint_grad = bool(residual_init_joint_grad)
         self.residual_refine_start_strength = float(residual_refine_start_strength)
+        if self.residual_prior_type not in {"direct", "confidence_gate"}:
+            raise ValueError("residual_prior_type must be 'direct' or 'confidence_gate'.")
         if self.residual_init_weight < 0.0:
             raise ValueError("residual_init_weight must be >= 0.")
+        if not 0.0 < self.residual_gate_init < 1.0:
+            raise ValueError("residual_gate_init must be in (0,1).")
+        if self.residual_gate_patch_freq < 1 or self.residual_gate_patch_freq % 2 == 0:
+            raise ValueError("residual_gate_patch_freq must be a positive odd integer.")
+        if self.residual_gate_patch_time < 1 or self.residual_gate_patch_time % 2 == 0:
+            raise ValueError("residual_gate_patch_time must be a positive odd integer.")
+        if self.residual_gate_floor_ratio < 0.0:
+            raise ValueError("residual_gate_floor_ratio must be >= 0.")
+        if self.residual_gate_oracle_weight < 0.0:
+            raise ValueError("residual_gate_oracle_weight must be >= 0.")
         if not 0.0 <= self.residual_refine_start_strength <= 1.0:
             raise ValueError("residual_refine_start_strength must be in [0,1].")
         self.residual_initializer = None
@@ -920,19 +1004,38 @@ class JointFrontendSgmseModel(ScoreModel):
                     "Predictive residual refinement and PathSim V-A use different state semantics; "
                     "disable --pathsim_va_enable when --residual_refine_enable is active."
                 )
-            self.residual_initializer = ResidualInitPredictor(
+            self.residual_initializer = build_residual_prior_predictor(
+                prior_type=self.residual_prior_type,
                 hidden_ch=int(residual_init_hidden_ch),
                 num_blocks=int(residual_init_num_blocks),
                 max_dilation=int(residual_init_max_dilation),
+                initial_gate=self.residual_gate_init,
             )
 
         # ScoreModel.save_hyperparameters() runs in the base constructor before
         # these subclass-only options are normalized, so explicitly persist them.
+        self.hparams["frontend_nr_strategy"] = self.frontend_nr_strategy
+        self.hparams["frontend_nr_reweight_strength"] = self.frontend_nr_reweight_strength
+        self.hparams["frontend_nr_reweight_max"] = self.frontend_nr_reweight_max
+        self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
+        self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
+        self.hparams["frontend_nr_t_max"] = self.frontend_nr_t_max
+        self.hparams["frontend_nr_mode"] = self.frontend_nr_mode
+        self.hparams["frontend_nr_patch_freq"] = self.frontend_nr_patch_freq
+        self.hparams["frontend_nr_patch_time"] = self.frontend_nr_patch_time
+        self.hparams["frontend_nr_topk"] = self.frontend_nr_topk
+        self.hparams["frontend_nr_floor_ratio"] = self.frontend_nr_floor_ratio
         self.hparams["residual_refine_enable"] = self.residual_refine_enable
+        self.hparams["residual_prior_type"] = self.residual_prior_type
         self.hparams["residual_init_hidden_ch"] = int(residual_init_hidden_ch)
         self.hparams["residual_init_num_blocks"] = int(residual_init_num_blocks)
         self.hparams["residual_init_max_dilation"] = int(residual_init_max_dilation)
         self.hparams["residual_init_weight"] = self.residual_init_weight
+        self.hparams["residual_gate_init"] = self.residual_gate_init
+        self.hparams["residual_gate_patch_freq"] = self.residual_gate_patch_freq
+        self.hparams["residual_gate_patch_time"] = self.residual_gate_patch_time
+        self.hparams["residual_gate_floor_ratio"] = self.residual_gate_floor_ratio
+        self.hparams["residual_gate_oracle_weight"] = self.residual_gate_oracle_weight
         self.hparams["residual_init_joint_grad"] = self.residual_init_joint_grad
         self.hparams["residual_refine_start_strength"] = self.residual_refine_start_strength
 
@@ -2109,11 +2212,12 @@ class JointFrontendSgmseModel(ScoreModel):
         Y_noisy: torch.Tensor,
         Y_pre: torch.Tensor,
     ):
-        """Build clean, observed and predicted residuals for training/validation.
+        """Build residual-coordinate state for training/validation.
 
-        R_target = X - Y_pre is the correction that turns the frontend output
-        into clean speech. R_obs = Y_noisy - Y_pre is observable at inference.
-        H(Y_pre,Y_noisy) predicts R_det, which is used as the OUVE center.
+        R_target = X - Y_pre is the clean correction that the backend should
+        recover. R_obs = Y_noisy - Y_pre = R_target + N is available at
+        inference. The configured residual-prior network returns either a
+        directly predicted residual (legacy) or G * R_obs (confidence gate).
         """
         if not self.residual_refine_enable or self.residual_initializer is None:
             raise RuntimeError("Predictive residual refinement is not enabled.")
@@ -2121,9 +2225,9 @@ class JointFrontendSgmseModel(ScoreModel):
         y_noisy_det = Y_noisy.detach()
         r_target = X.detach() - y_pre_det
         r_obs = y_noisy_det - y_pre_det
-        r_det = self.residual_initializer(y_pre_det, y_noisy_det)
-        r_center = r_det if self.residual_init_joint_grad else r_det.detach()
-        return r_target, r_obs, r_det, r_center
+        r_prior = self.residual_initializer(y_pre_det, y_noisy_det)
+        r_center = r_prior if self.residual_init_joint_grad else r_prior.detach()
+        return r_target, r_obs, r_prior, r_center
 
     @staticmethod
     def _residual_snr_db(target: torch.Tensor, estimate: torch.Tensor, eps: float = 1e-8):
@@ -2137,28 +2241,84 @@ class JointFrontendSgmseModel(ScoreModel):
         r_obs: torch.Tensor,
         r_det: torch.Tensor,
     ):
-        # Match the scale convention of the existing complex spectral losses.
-        loss = 0.5 * torch.sum(torch.abs(r_det - r_target).pow(2))
+        """Supervise the residual prior and report collapse-sensitive metrics.
+
+        For confidence_gate, ``r_det`` is actually R_prior = G * R_obs.  The
+        main reconstruction term is supplemented by an energy-scaled oracle
+        gate target.  The oracle is the local least-squares real gain and is
+        used only during training/validation; inference needs no clean target.
+        """
+        r_prior = r_det
+        loss_recon = 0.5 * torch.sum(torch.abs(r_prior - r_target).pow(2))
+        loss_gate = torch.zeros((), device=r_target.device, dtype=torch.float32)
+        oracle_gate = None
+        gate = getattr(self.residual_initializer, "last_gate", None)
+
+        if self.residual_prior_type == "confidence_gate":
+            if gate is None:
+                raise RuntimeError("confidence_gate prior did not expose last_gate")
+            with torch.no_grad():
+                oracle_gate = ConfidenceGatedResidualPriorPredictor.oracle_gate(
+                    r_target=r_target,
+                    r_obs=r_obs,
+                    patch_freq=self.residual_gate_patch_freq,
+                    patch_time=self.residual_gate_patch_time,
+                    floor_ratio=self.residual_gate_floor_ratio,
+                )
+            # Weight gate mistakes by observable-residual energy. This gives the
+            # auxiliary term the same physical units/scale as spectral MSE and
+            # deemphasizes meaningless gates in near-silent bins.
+            obs_power = torch.abs(r_obs).pow(2).float().sum(dim=1, keepdim=True).detach()
+            loss_gate = 0.5 * torch.sum(obs_power * (gate.float() - oracle_gate).pow(2))
+
+        loss = loss_recon + self.residual_gate_oracle_weight * loss_gate
+
         with torch.no_grad():
             snr_obs = self._residual_snr_db(r_target, r_obs)
-            snr_pred = self._residual_snr_db(r_target, r_det)
+            snr_prior = self._residual_snr_db(r_target, r_prior)
             target_energy = torch.abs(r_target).pow(2).flatten(start_dim=1).sum(dim=1)
-            pred_error = torch.abs(r_det - r_target).pow(2).flatten(start_dim=1).sum(dim=1)
+            prior_error = torch.abs(r_prior - r_target).pow(2).flatten(start_dim=1).sum(dim=1)
             obs_error = torch.abs(r_obs - r_target).pow(2).flatten(start_dim=1).sum(dim=1)
+            prior_energy = torch.abs(r_prior).pow(2).flatten(start_dim=1).sum(dim=1)
+            target_rms = torch.sqrt(target_energy.mean() / max(r_target[0].numel(), 1))
+            prior_rms = torch.sqrt(prior_energy.mean() / max(r_prior[0].numel(), 1))
             stats = {
-                "residual_init_snr_db": snr_pred.mean(),
+                # New names.
+                "residual_prior_snr_db": snr_prior.mean(),
+                "residual_prior_snr_gain_over_obs_db": (snr_prior - snr_obs).mean(),
+                "residual_prior_nmse": (prior_error / (target_energy + 1e-8)).mean(),
+                "residual_prior_rms": prior_rms,
+                "residual_prior_to_target_rms_ratio": prior_rms / (target_rms + 1e-8),
                 "residual_observed_snr_db": snr_obs.mean(),
-                "residual_init_snr_gain_db": (snr_pred - snr_obs).mean(),
-                "residual_init_nmse": (pred_error / (target_energy + 1e-8)).mean(),
                 "residual_observed_nmse": (obs_error / (target_energy + 1e-8)).mean(),
-                "residual_target_rms": torch.sqrt(
-                    target_energy.mean() / max(r_target[0].numel(), 1)
-                ),
-                "residual_init_rms": torch.sqrt(
-                    torch.abs(r_det).pow(2).flatten(start_dim=1).sum(dim=1).mean()
-                    / max(r_det[0].numel(), 1)
-                ),
+                "residual_target_rms": target_rms,
+                "residual_prior_recon_loss": loss_recon.detach(),
+                "residual_gate_oracle_loss": loss_gate.detach(),
+                # Backward-compatible dashboard aliases.
+                "residual_init_snr_db": snr_prior.mean(),
+                "residual_init_snr_gain_db": (snr_prior - snr_obs).mean(),
+                "residual_init_nmse": (prior_error / (target_energy + 1e-8)).mean(),
+                "residual_init_rms": prior_rms,
             }
+            if gate is not None and oracle_gate is not None:
+                oracle_prior = r_obs * oracle_gate.to(
+                    dtype=r_obs.real.dtype if torch.is_complex(r_obs) else r_obs.dtype
+                )
+                snr_oracle = self._residual_snr_db(r_target, oracle_prior)
+                oracle_error = torch.abs(oracle_prior - r_target).pow(2).flatten(start_dim=1).sum(dim=1)
+                gate_f = gate.float()
+                stats.update({
+                    "residual_gate_mean": gate_f.mean(),
+                    "residual_gate_std": gate_f.std(unbiased=False),
+                    "residual_gate_active_fraction": (gate_f > 0.10).float().mean(),
+                    "residual_gate_oracle_mean": oracle_gate.mean(),
+                    "residual_gate_oracle_std": oracle_gate.std(unbiased=False),
+                    "residual_gate_mae": torch.abs(gate_f - oracle_gate).mean(),
+                    "residual_gate_mse": torch.square(gate_f - oracle_gate).mean(),
+                    "residual_oracle_prior_snr_db": snr_oracle.mean(),
+                    "residual_oracle_prior_nmse": (oracle_error / (target_energy + 1e-8)).mean(),
+                    "residual_prior_oracle_snr_gap_db": (snr_oracle - snr_prior).mean(),
+                })
         return loss, stats
 
     def enhance(
@@ -2250,7 +2410,7 @@ class JointFrontendSgmseModel(ScoreModel):
         Y_noisy = pad_spec(Y_noisy)
 
         r_obs = Y_noisy - Y_pre
-        r_det = self.residual_initializer(Y_pre, Y_noisy)
+        r_det = self.residual_initializer(Y_pre, Y_noisy)  # R_prior; kept as r_det for ckpt/code compatibility
         score_fn = partial(self, y_cond=r_obs)
         regeneration_strength = self._resolve_regeneration_strength(
             regen_strength_arg, r_det, r_obs
@@ -2291,6 +2451,166 @@ class JointFrontendSgmseModel(ScoreModel):
             rtf = elapsed / max(len(x_hat) / float(self.sr), 1e-8)
             return x_hat, nfe, rtf
         return x_hat
+
+    def _compute_frontend_regret_score_reweighted_loss(
+        self,
+        *,
+        target: torch.Tensor,
+        frontend_reference: torch.Tensor,
+        step_out: dict,
+    ):
+        """Reweight the MAIN score-matching TF loss using local frontend regret.
+
+        The detector is target-derived and detached:
+            E_b(f,t) = local error of the current backend x0 estimate
+            E_f(f,t) = local error of the frontend reference
+            severity = relu(E_b / stabilized(E_f) - (1 + margin))
+
+        Only t <= frontend_nr_t_max is eligible.  We optionally keep the top-k
+        severe patches, normalize severity over positive patches per sample, and
+        form a bounded multiplier
+
+            w(f,t) = 1 + strength * normalized_severity,
+
+        clipped by frontend_nr_reweight_max.  The original score-matching loss
+        |score*sigma + z|^2 is then multiplied by w at the same TF locations.
+
+        Crucially, ``w`` is detached.  Gradients therefore flow only through the
+        ordinary score loss; the degradation detector does not create a second
+        optimization path or an extra score forward.
+        """
+        if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
+            raise RuntimeError("score_reweight requires score_matching with sigma^2 weighting.")
+        if str(getattr(self, "frontend_nr_mode", "patch")).lower() != "patch":
+            raise RuntimeError("score_reweight currently requires --frontend_nr_mode patch.")
+        if target.ndim != 4:
+            raise RuntimeError(f"score_reweight expects [B,C,F,T], got {tuple(target.shape)}")
+
+        eps = float(self.frontend_nr_eps)
+        t = step_out["t"].detach().to(device=target.device, dtype=torch.float32).flatten()
+        time_active = t <= float(self.frontend_nr_t_max)
+        time_mask = time_active[:, None, None, None]
+
+        # x_hat_spec is produced by the SAME main score forward used by base_loss.
+        x0_backend = step_out.get("x_hat_spec", None)
+        if x0_backend is None:
+            raise RuntimeError("score_reweight requires return_details=True so x_hat_spec is available.")
+
+        with torch.no_grad():
+            x0_det = x0_backend.detach()
+            target_det = target.detach()
+            ref_det = frontend_reference.detach()
+
+            backend_tf = 0.5 * torch.abs(x0_det - target_det).float().square().sum(dim=1, keepdim=True)
+            front_tf = 0.5 * torch.abs(ref_det - target_det).float().square().sum(dim=1, keepdim=True)
+
+            kf = int(self.frontend_nr_patch_freq)
+            kt = int(self.frontend_nr_patch_time)
+            pool_kwargs = dict(
+                kernel_size=(kf, kt),
+                stride=1,
+                padding=(kf // 2, kt // 2),
+                count_include_pad=False,
+            )
+            backend_patch = F.avg_pool2d(backend_tf, **pool_kwargs)
+            front_patch = F.avg_pool2d(front_tf, **pool_kwargs)
+
+            front_mean = front_patch.mean(dim=(2, 3), keepdim=True)
+            ratio_floor = (float(self.frontend_nr_floor_ratio) * front_mean).clamp_min(eps)
+            ratio_denom = torch.maximum(front_patch, ratio_floor)
+            local_ratio = backend_patch / ratio_denom
+            margin_factor = 1.0 + float(self.frontend_nr_margin)
+            severity = F.relu(local_ratio - margin_factor)
+            severity = severity * time_mask
+            raw_positive = severity > 0.0
+
+            # Keep only the most severe fraction. Zeros stay zeros, so when the
+            # true violation rate is below top-k no false-positive patch is boosted.
+            sev_flat = severity.flatten(1)
+            n_local = sev_flat.shape[1]
+            topk_n = max(1, min(n_local, int(math.ceil(float(self.frontend_nr_topk) * n_local))))
+            if topk_n < n_local:
+                topk_idx = torch.topk(sev_flat, k=topk_n, dim=1, largest=True).indices
+                keep = torch.zeros_like(sev_flat)
+                keep.scatter_(1, topk_idx, 1.0)
+                sev_flat = sev_flat * keep
+            else:
+                keep = torch.ones_like(sev_flat)
+            severity = sev_flat.view_as(severity)
+
+            positive = severity > 0.0
+            positive_count = positive.float().sum(dim=(1, 2, 3), keepdim=True)
+            positive_mean = severity.sum(dim=(1, 2, 3), keepdim=True) / positive_count.clamp_min(1.0)
+            # Samples with no violation keep severity_norm=0 and thus weight=1.
+            severity_norm = torch.where(
+                positive,
+                severity / positive_mean.clamp_min(eps),
+                torch.zeros_like(severity),
+            )
+
+            weight_map = 1.0 + float(self.frontend_nr_reweight_strength) * severity_norm
+            weight_map = weight_map.clamp(max=float(self.frontend_nr_reweight_max))
+            weight_map = weight_map.detach()
+
+        score = step_out["forward_out"]
+        z = step_out.get("z", None)
+        if z is None:
+            raise RuntimeError(
+                "score_reweight requires step_out['z']; update sgmse/model.py so _step(return_details=True) returns z."
+            )
+        z = z.to(device=score.device, dtype=score.dtype)
+
+        sigma_override = step_out.get("sigma_override", None)
+        if sigma_override is None:
+            sigma_xt = self.sde._std(t).to(device=score.device, dtype=score.real.dtype)
+            sigma_xt = sigma_xt[:, None, None, None]
+        else:
+            sigma_xt = sigma_override.detach().to(device=score.device, dtype=score.real.dtype)
+            while sigma_xt.ndim < score.ndim:
+                sigma_xt = sigma_xt.unsqueeze(-1)
+
+        # Same per-bin objective as ScoreModel._loss(..., score_matching, sigma^2).
+        score_loss_tf = 0.5 * torch.abs(score * sigma_xt + z).float().square().sum(dim=1, keepdim=True)
+        raw_reconstructed = score_loss_tf.sum()
+        reweighted_loss = (score_loss_tf * weight_map.to(score_loss_tf.dtype)).sum()
+
+        with torch.no_grad():
+            active_denom = time_active.float().sum().clamp_min(1.0)
+            local_violation = raw_positive.float()
+            selected_violation = (severity > 0.0).float()
+            sample_has_violation = local_violation.flatten(1).any(dim=1).float()
+            local_active_per_sample = local_violation.mean(dim=(1, 2, 3))
+            local_ratio_mean = local_ratio.mean(dim=(1, 2, 3))
+            local_ratio_max = local_ratio.flatten(1).max(dim=1).values
+            ratio_flat = local_ratio.flatten(1)
+            keep_count = keep.sum(dim=1).clamp_min(1.0)
+            local_topk_ratio = (ratio_flat * keep).sum(dim=1) / keep_count
+            local_topk_active_fraction = (local_violation.flatten(1) * keep).sum(dim=1) / keep_count
+
+            def _active_mean(v: torch.Tensor) -> torch.Tensor:
+                if v.ndim == 0:
+                    return v
+                return (v.float() * time_active.float()).sum() / active_denom
+
+            hard_score = (score_loss_tf.detach() * selected_violation).sum()
+            total_score = score_loss_tf.detach().sum().clamp_min(eps)
+            stats = {
+                "frontend_nr_time_active_fraction": time_active.float().mean(),
+                "frontend_nr_active_fraction": _active_mean(sample_has_violation),
+                "frontend_nr_local_active_fraction": _active_mean(local_active_per_sample),
+                "frontend_nr_diff_front_ratio": _active_mean(local_ratio_mean),
+                "frontend_nr_local_max_ratio": _active_mean(local_ratio_max),
+                "frontend_nr_local_topk_ratio": _active_mean(local_topk_ratio),
+                "frontend_nr_local_topk_active_fraction": _active_mean(local_topk_active_fraction),
+                "frontend_nr_reweight_mean": weight_map.mean(),
+                "frontend_nr_reweight_max": weight_map.max(),
+                "frontend_nr_reweight_boosted_fraction": (weight_map > 1.0).float().mean(),
+                "frontend_nr_hard_score_loss_fraction": hard_score / total_score,
+                "frontend_nr_reweighted_to_raw_ratio": reweighted_loss.detach() / raw_reconstructed.detach().clamp_min(eps),
+                "frontend_nr_raw_reconstruction_ratio": raw_reconstructed.detach() / step_out["base_loss"].detach().abs().clamp_min(eps),
+            }
+
+        return reweighted_loss.float(), stats
 
     def _compute_frontend_no_regret_loss(
         self,
@@ -2655,8 +2975,43 @@ class JointFrontendSgmseModel(ScoreModel):
             else:
                 step_out = self._step((X, Y_noisy, Y_pre), batch_idx, return_details=True)
 
-        base_loss = step_out["base_loss"]
-        loss_total_backend = step_out["loss"]  # includes legacy contrastive if enabled
+        raw_base_loss = step_out["base_loss"]
+        raw_loss_total_backend = step_out["loss"]  # includes legacy contrastive if enabled
+        # Legacy contrastive is orthogonal to regret-aware score reweighting.
+        loss_old_contrastive = raw_loss_total_backend - raw_base_loss
+
+        # Default: preserve the exact original score objective.
+        base_loss = raw_base_loss
+        regret_reweight_stats = {}
+        if (
+            self.frontend_nr_strategy == "score_reweight"
+            and float(self.frontend_nr_reweight_strength) > 0.0
+        ):
+            if self.residual_refine_enable:
+                # Frontend-only output is zero correction in residual coordinates.
+                nr_target = r_target
+                nr_frontend_reference = torch.zeros_like(r_target)
+            else:
+                nr_target = X
+                nr_frontend_reference = Y_pre
+
+            base_loss, regret_reweight_stats = self._compute_frontend_regret_score_reweighted_loss(
+                target=nr_target,
+                frontend_reference=nr_frontend_reference,
+                step_out=step_out,
+            )
+            self.log(
+                "train_loss_backend_raw", raw_base_loss,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            self.log(
+                "train_loss_backend_reweighted", base_loss,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            for k, v in regret_reweight_stats.items():
+                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+
+        loss_total_backend = base_loss + loss_old_contrastive
         x_hat_spec = step_out["x_hat_spec"]
         if self.residual_refine_enable and x_hat_spec is not None:
             # _step estimates in residual coordinates; downstream optional
@@ -2665,8 +3020,6 @@ class JointFrontendSgmseModel(ScoreModel):
         loss = loss_total_backend
         for k, v in step_out.get("pathsim_stats", {}).items():
             self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-        # 旧 contrastive 单独拆出来
-        loss_old_contrastive = loss_total_backend - base_loss
 
         # frontend 自己的辅助监督：时域 or 谱域
         if self.frontend_trainable and self.frontend_aux_loss != "none":
@@ -2821,9 +3174,14 @@ class JointFrontendSgmseModel(ScoreModel):
             loss = loss + weighted_content_selector
             self.log("train_loss_content_selector_weighted", weighted_content_selector, on_step=True, on_epoch=True, sync_dist=True)
 
-        # ===== Frontend-relative no-regret loss (backend-only) =====
+        # ===== Legacy auxiliary frontend-relative no-regret loss (backend-only) =====
+        # score_reweight mode already modified the MAIN score loss above and must
+        # not add this tiny auxiliary penalty or run a second score forward.
         loss_frontend_nr = torch.zeros((), device=x_wav.device, dtype=torch.float32)
-        if float(getattr(self, "frontend_nr_weight", 0.0)) > 0.0:
+        if (
+            self.frontend_nr_strategy == "auxiliary"
+            and float(getattr(self, "frontend_nr_weight", 0.0)) > 0.0
+        ):
             if self.residual_refine_enable:
                 # Frontend-only output means zero correction in residual space.
                 nr_target = r_target

@@ -487,6 +487,7 @@ class ScoreModel(pl.LightningModule):
                 "x_t": x_t,
                 "t": t,
                 "mean": mean,
+                "z": z,
                 "x": x,
                 "y": y,
                 "y_cond": y_cond,
