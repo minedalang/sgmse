@@ -158,11 +158,14 @@ class OUVESDE(SDE):
         Note that the "steady-state mean" `y` is not provided at construction, but must rather be given as an argument
         to the methods which require it (e.g., `sde` or `marginal_prob`).
 
-        dx = -theta (y-x) dt + sigma(t) dw
+        Standard OUVE uses
+            dx = theta * (y - x) dt + sigma(t) dw.
 
-        with
-
-        sigma(t) = sigma_min (sigma_max/sigma_min)^t * sqrt(2 log(sigma_max/sigma_min))
+        For learned residual-anchored refinement we optionally replace the
+        constant anchor by a time-dependent anchor ``lambda(t) * y``.  The
+        implementation keeps the perturbation kernel and reverse sampler
+        mathematically consistent by adding the derivative correction implied
+        by the requested mean trajectory (see ``configure_residual_anchor``).
 
         Args:
             theta: stiffness parameter.
@@ -178,15 +181,126 @@ class OUVESDE(SDE):
         self.N = N
         self.sampler_type = sampler_type
 
+        # Disabled by default: this preserves legacy OUVE exactly.  Joint
+        # residual refinement enables it explicitly from joint_model.py.
+        self.residual_anchor_enabled = False
+        self.residual_anchor_schedule = "constant"
+        self.residual_anchor_strength = 1.0
+        self.residual_anchor_power = 1.0
+
+    def configure_residual_anchor(
+        self,
+        enabled: bool = True,
+        schedule: str = "constant",
+        strength: float = 1.0,
+        power: float = 1.0,
+    ):
+        """Configure a time-dependent learned residual anchor.
+
+        The residual prior network predicts ``R_theta``.  In residual
+        coordinates we define the anchor trajectory
+
+            a(t) = lambda(t) * R_theta,
+
+        which corresponds in clean-spectrum coordinates to
+
+            A(t) = Y_pre + lambda(t) * R_theta.
+
+        ``constant`` with strength=1 exactly recovers the legacy direct-prior
+        OUVE.  ``power`` and ``smoothstep`` start from zero at t=0 and reach
+        ``strength`` at t=T, so the learned prior anchors high-noise states
+        strongly while its direct pull vanishes near the clean endpoint.
+        """
+        schedule = str(schedule).strip().lower()
+        if schedule not in {"constant", "power", "smoothstep"}:
+            raise ValueError(
+                "residual anchor schedule must be one of "
+                "{'constant', 'power', 'smoothstep'}"
+            )
+        strength = float(strength)
+        power = float(power)
+        if strength < 0.0:
+            raise ValueError("residual anchor strength must be >= 0")
+        if power < 1.0:
+            raise ValueError("residual anchor power must be >= 1 for a stable derivative at t=0")
+        self.residual_anchor_enabled = bool(enabled)
+        self.residual_anchor_schedule = schedule
+        self.residual_anchor_strength = strength
+        self.residual_anchor_power = power
+        return self
+
+    def _anchor_lambda_and_derivative(self, t):
+        """Return lambda(t) and d lambda(t) / dt for the residual anchor."""
+        if not self.residual_anchor_enabled:
+            one = torch.ones_like(t)
+            zero = torch.zeros_like(t)
+            return one, zero
+
+        T = float(self.T)
+        u = (t / T).clamp(0.0, 1.0)
+        strength = float(self.residual_anchor_strength)
+        schedule = self.residual_anchor_schedule
+
+        if schedule == "constant":
+            lam = torch.full_like(t, strength)
+            dlam = torch.zeros_like(t)
+        elif schedule == "power":
+            p = float(self.residual_anchor_power)
+            lam = strength * torch.pow(u, p)
+            # p >= 1, therefore the derivative is finite at u=0.
+            if p == 1.0:
+                dlam = torch.full_like(t, strength / T)
+            else:
+                dlam = strength * p * torch.pow(u, p - 1.0) / T
+        elif schedule == "smoothstep":
+            # C1 schedule: lambda(0)=0, lambda(T)=strength and zero slope at
+            # both endpoints. ``power`` optionally sharpens/softens its rise.
+            base = u * u * (3.0 - 2.0 * u)
+            dbase = 6.0 * u * (1.0 - u) / T
+            p = float(self.residual_anchor_power)
+            if p == 1.0:
+                lam = strength * base
+                dlam = strength * dbase
+            else:
+                lam = strength * torch.pow(base, p)
+                dlam = strength * p * torch.pow(base.clamp_min(1e-12), p - 1.0) * dbase
+        else:  # pragma: no cover - guarded by configure_residual_anchor
+            raise RuntimeError(f"Unknown residual anchor schedule: {schedule}")
+        return lam, dlam
+
+    def residual_anchor_lambda(self, t):
+        """Public helper used by logging/tests."""
+        return self._anchor_lambda_and_derivative(t)[0]
+
     def copy(self):
-        return OUVESDE(self.theta, self.sigma_min, self.sigma_max, N=self.N, sampler_type=self.sampler_type)
+        out = OUVESDE(self.theta, self.sigma_min, self.sigma_max, N=self.N, sampler_type=self.sampler_type)
+        out.configure_residual_anchor(
+            enabled=self.residual_anchor_enabled,
+            schedule=self.residual_anchor_schedule,
+            strength=self.residual_anchor_strength,
+            power=self.residual_anchor_power,
+        )
+        return out
 
     @property
     def T(self):
         return 1
 
     def sde(self, x, y, t):
-        drift = self.theta * (y - x)
+        if self.residual_anchor_enabled:
+            # Requested marginal mean:
+            #   m(t) = alpha(t) x0 + beta(t) y
+            #   alpha(t) = exp(-theta t)
+            #   beta(t)  = (1-alpha(t)) lambda(t)
+            # A linear SDE f=-theta*x+a(t)*y reproduces this mean when
+            #   a(t) = beta'(t) + theta*beta(t)
+            #        = theta*lambda(t) + (1-alpha(t))*lambda'(t).
+            lam, dlam = self._anchor_lambda_and_derivative(t)
+            alpha = torch.exp(-self.theta * t)
+            anchor_coeff = self.theta * lam + (1.0 - alpha) * dlam
+            drift = -self.theta * x + anchor_coeff[:, None, None, None] * y
+        else:
+            drift = self.theta * (y - x)
         # the sqrt(2*logsig) factor is required here so that logsig does not in the end affect the perturbation kernel
         # standard deviation. this can be understood from solving the integral of [exp(2s) * g(s)^2] from s=0 to t
         # with g(t) = sigma(t) as defined here, and seeing that `logsig` remains in the integral solution
@@ -198,12 +312,19 @@ class OUVESDE(SDE):
     def _mean(self, x0, y, t):
         theta = self.theta
         exp_interp = torch.exp(-theta * t)[:, None, None, None]
+        if self.residual_anchor_enabled:
+            lam, _ = self._anchor_lambda_and_derivative(t)
+            anchor_weight = (1.0 - exp_interp) * lam[:, None, None, None]
+            return exp_interp * x0 + anchor_weight * y
         return exp_interp * x0 + (1 - exp_interp) * y
     
     # x_t重采样公式的 x和y的系数
     def weights(self,t):
         theta = self.theta
         exp_interp = torch.exp(-theta * t)[:, None, None, None]
+        if self.residual_anchor_enabled:
+            lam, _ = self._anchor_lambda_and_derivative(t)
+            return exp_interp, (1.0 - exp_interp) * lam[:, None, None, None]
         return exp_interp, (1 - exp_interp)
     # 适配edm的标准差
     def _sigma_eff_for_edm(self, t):
@@ -238,8 +359,14 @@ class OUVESDE(SDE):
     def prior_sampling(self, shape, y):
         if shape != y.shape:
             warnings.warn(f"Target shape {shape} does not match shape of y {y.shape}! Ignoring target shape.")
-        std = self._std(torch.ones((y.shape[0],), device=y.device))
-        x_T = y + torch.randn_like(y) * std[:, None, None, None]
+        tT = torch.ones((y.shape[0],), device=y.device, dtype=torch.float32) * float(self.T)
+        std = self._std(tT)
+        if self.residual_anchor_enabled:
+            lam_T = self.residual_anchor_lambda(tT)
+            center = lam_T[:, None, None, None] * y
+        else:
+            center = y
+        x_T = center + torch.randn_like(y) * std[:, None, None, None]
         return x_T
 
     def prior_logp(self, z):

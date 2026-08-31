@@ -9,8 +9,8 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 
 
-RUN_PATH = "chenwh-tianjin-university-of-science-and-technology/sgmse_joint/se130yrv"
-OUT_DIR = Path("wandb_export_se130yrv")
+RUN_PATH = "chenwh-tianjin-university-of-science-and-technology/sgmse_joint/bl0pegi4"
+OUT_DIR = Path("wandb_export_bl0pegi4")
 
 
 def safe_filename(name: str) -> str:

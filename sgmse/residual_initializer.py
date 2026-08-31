@@ -2,8 +2,8 @@
 
 Two variants are provided for clean ablations:
 
-1) ``direct``: predict the clean correction residual directly,
-      R_target = X_clean - Y_pre.
+1) ``predictive`` / ``direct``: predict the clean correction residual directly,
+      R_theta = H_theta(Y_pre, Y_noisy) ≈ R_target = X_clean - Y_pre.
 2) ``confidence_gate``: predict only a real-valued confidence map G in [0,1]
    and form the prior from the observable residual
       R_obs   = Y_noisy - Y_pre,
@@ -83,7 +83,12 @@ class _ResidualFeatureMixin:
 
 
 class DirectResidualInitPredictor(nn.Module, _ResidualFeatureMixin):
-    """Legacy direct predictor: H(Y_pre,Y_noisy) -> complex R_target estimate."""
+    """Predictive residual prior: H_theta(Y_pre,Y_noisy) -> complex R_target estimate.
+
+    ``DirectResidualInitPredictor`` is kept as the class name for checkpoint
+    compatibility.  In the paper/CLI the same module may be referred to as the
+    predictive residual prior.
+    """
 
     def __init__(
         self,
@@ -253,7 +258,7 @@ def build_residual_prior_predictor(
     initial_gate: float = 0.10,
 ) -> nn.Module:
     mode = str(prior_type).strip().lower()
-    if mode == "direct":
+    if mode in {"direct", "predictive"}:
         return DirectResidualInitPredictor(
             hidden_ch=hidden_ch,
             num_blocks=num_blocks,

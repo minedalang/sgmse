@@ -56,7 +56,12 @@ def _adaptive_prior_sampling(sde, y, t_start):
         std = sde._std(t_vec)
         noise = torch.randn_like(y)
         if name == "OUVESDE":
-            return y + noise * std[:, None, None, None]
+            if bool(getattr(sde, "residual_anchor_enabled", False)) and hasattr(sde, "residual_anchor_lambda"):
+                lam = sde.residual_anchor_lambda(t_vec)
+                center = lam[:, None, None, None] * y
+            else:
+                center = y
+            return center + noise * std[:, None, None, None]
         if name in ("VESDE", "VPSDE"):
             return noise * std[:, None, None, None]
     return sde.prior_sampling(y.shape, y).to(y.device)

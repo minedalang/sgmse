@@ -634,8 +634,8 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--residual_refine_enable", action="store_true",
                             help="Model the frontend correction residual with OUVE centered at a learned residual prior.")
         parser.add_argument("--residual_prior_type", type=str, default="direct",
-                            choices=("direct", "confidence_gate"),
-                            help="Residual prior: legacy direct complex prediction, or confidence-gated R_obs (recommended).")
+                            choices=("direct", "predictive", "confidence_gate"),
+                            help="Residual prior. 'predictive' is an alias of the direct complex predictor H_theta(Y_pre,Y_noisy); 'direct' is kept for checkpoint compatibility.")
         parser.add_argument("--residual_init_hidden_ch", type=int, default=48,
                             help="Hidden channels of the residual prior network.")
         parser.add_argument("--residual_init_num_blocks", type=int, default=4,
@@ -658,6 +658,13 @@ class JointFrontendSgmseModel(ScoreModel):
                             help="Allow the diffusion loss to update the residual prior network through the OUVE center. Off by default for stability.")
         parser.add_argument("--residual_refine_start_strength", type=float, default=1.0,
                             help="Default reverse start in [0,1]. For the new prior, 1.0 is recommended initially; can be overridden by inference --regen_strength.")
+        parser.add_argument("--residual_anchor_schedule", type=str, default="constant",
+                            choices=("constant", "power", "smoothstep"),
+                            help="Time schedule lambda(t) for the learned residual anchor. constant reproduces the old Direct prior exactly; power/smoothstep fade the anchor toward zero near t=0.")
+        parser.add_argument("--residual_anchor_strength", type=float, default=1.0,
+                            help="Maximum learned-residual anchor strength lambda(T). 1.0 is the recommended first test.")
+        parser.add_argument("--residual_anchor_power", type=float, default=1.0,
+                            help="Shape exponent for power/smoothstep residual anchor schedules. Must be >= 1.")
 
         # ===== CTM-style distillation (Scheme-B) =====
         parser.add_argument("--ctm_distill", action="store_true", help="Enable CTM-style distillation training")
@@ -772,6 +779,9 @@ class JointFrontendSgmseModel(ScoreModel):
         residual_gate_oracle_weight: float = 0.25,
         residual_init_joint_grad: bool = False,
         residual_refine_start_strength: float = 1.0,
+        residual_anchor_schedule: str = "constant",
+        residual_anchor_strength: float = 1.0,
+        residual_anchor_power: float = 1.0,
         # CTM distillation
         ctm_distill: bool = False,
         ctm_teacher_ckpt: Optional[str] = None,
@@ -956,12 +966,17 @@ class JointFrontendSgmseModel(ScoreModel):
             for p in self.pathsim_va_model.parameters():
                 p.requires_grad = False
 
-        # Residual prior network. The recommended confidence-gated variant
-        # predicts only G(f,t) and forms R_prior = G * (Y_noisy - Y_pre), rather
-        # than synthesizing a complex residual from scratch. By default the
-        # score loss does not backpropagate into the prior network.
+        # Learned residual-anchored diffusion refinement.  The predictive
+        # prior estimates R_theta = H_theta(Y_pre, Y_noisy).  OUVE can then use
+        # a time-dependent anchor A(t)=lambda(t) R_theta in residual coordinates
+        # (equivalently Y_pre + lambda(t) R_theta in clean-spectrum coordinates).
+        # By default the score loss does not backpropagate into the prior network.
         self.residual_refine_enable = bool(residual_refine_enable)
         self.residual_prior_type = str(residual_prior_type).strip().lower()
+        # 'predictive' is a paper/CLI alias; the module/checkpoint layout is
+        # intentionally identical to the historical 'direct' predictor.
+        if self.residual_prior_type == "predictive":
+            self.residual_prior_type = "direct"
         self.residual_init_weight = float(residual_init_weight)
         self.residual_gate_init = float(residual_gate_init)
         self.residual_gate_patch_freq = int(residual_gate_patch_freq)
@@ -970,6 +985,9 @@ class JointFrontendSgmseModel(ScoreModel):
         self.residual_gate_oracle_weight = float(residual_gate_oracle_weight)
         self.residual_init_joint_grad = bool(residual_init_joint_grad)
         self.residual_refine_start_strength = float(residual_refine_start_strength)
+        self.residual_anchor_schedule = str(residual_anchor_schedule).strip().lower()
+        self.residual_anchor_strength = float(residual_anchor_strength)
+        self.residual_anchor_power = float(residual_anchor_power)
         if self.residual_prior_type not in {"direct", "confidence_gate"}:
             raise ValueError("residual_prior_type must be 'direct' or 'confidence_gate'.")
         if self.residual_init_weight < 0.0:
@@ -986,6 +1004,12 @@ class JointFrontendSgmseModel(ScoreModel):
             raise ValueError("residual_gate_oracle_weight must be >= 0.")
         if not 0.0 <= self.residual_refine_start_strength <= 1.0:
             raise ValueError("residual_refine_start_strength must be in [0,1].")
+        if self.residual_anchor_schedule not in {"constant", "power", "smoothstep"}:
+            raise ValueError("residual_anchor_schedule must be one of {'constant','power','smoothstep'}.")
+        if self.residual_anchor_strength < 0.0:
+            raise ValueError("residual_anchor_strength must be >= 0.")
+        if self.residual_anchor_power < 1.0:
+            raise ValueError("residual_anchor_power must be >= 1.")
         self.residual_initializer = None
         if self.residual_refine_enable:
             if self.train_type != "mode2":
@@ -1010,6 +1034,14 @@ class JointFrontendSgmseModel(ScoreModel):
                 num_blocks=int(residual_init_num_blocks),
                 max_dilation=int(residual_init_max_dilation),
                 initial_gate=self.residual_gate_init,
+            )
+            if not hasattr(self.sde, "configure_residual_anchor"):
+                raise ValueError("The selected OUVE implementation does not support residual anchor schedules.")
+            self.sde.configure_residual_anchor(
+                enabled=True,
+                schedule=self.residual_anchor_schedule,
+                strength=self.residual_anchor_strength,
+                power=self.residual_anchor_power,
             )
 
         # ScoreModel.save_hyperparameters() runs in the base constructor before
@@ -1038,6 +1070,9 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["residual_gate_oracle_weight"] = self.residual_gate_oracle_weight
         self.hparams["residual_init_joint_grad"] = self.residual_init_joint_grad
         self.hparams["residual_refine_start_strength"] = self.residual_refine_start_strength
+        self.hparams["residual_anchor_schedule"] = self.residual_anchor_schedule
+        self.hparams["residual_anchor_strength"] = self.residual_anchor_strength
+        self.hparams["residual_anchor_power"] = self.residual_anchor_power
 
         self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
         self.content_model = None
@@ -2216,8 +2251,10 @@ class JointFrontendSgmseModel(ScoreModel):
 
         R_target = X - Y_pre is the clean correction that the backend should
         recover. R_obs = Y_noisy - Y_pre = R_target + N is available at
-        inference. The configured residual-prior network returns either a
-        directly predicted residual (legacy) or G * R_obs (confidence gate).
+        inference. The configured residual-prior network returns either the
+        predictive complex residual R_theta or G * R_obs (confidence gate).
+        OUVE applies lambda(t) to this prior internally, so r_center itself
+        remains the unscaled prediction and can be shared by training/sampling.
         """
         if not self.residual_refine_enable or self.residual_initializer is None:
             raise RuntimeError("Predictive residual refinement is not enabled.")
@@ -2410,7 +2447,7 @@ class JointFrontendSgmseModel(ScoreModel):
         Y_noisy = pad_spec(Y_noisy)
 
         r_obs = Y_noisy - Y_pre
-        r_det = self.residual_initializer(Y_pre, Y_noisy)  # R_prior; kept as r_det for ckpt/code compatibility
+        r_det = self.residual_initializer(Y_pre, Y_noisy)  # R_theta; OUVE applies lambda(t) internally
         score_fn = partial(self, y_cond=r_obs)
         regeneration_strength = self._resolve_regeneration_strength(
             regen_strength_arg, r_det, r_obs
@@ -2969,6 +3006,23 @@ class JointFrontendSgmseModel(ScoreModel):
             loss_residual_init, residual_init_stats = self._compute_residual_initializer_loss(
                 r_target=r_target, r_obs=r_obs, r_det=r_det
             )
+            # Diagnostics for the learned residual anchor trajectory.  beta(t)
+            # is the actual R_theta coefficient in the OUVE perturbation mean:
+            #   m(t) = alpha(t) R_target + beta(t) R_theta.
+            if hasattr(self.sde, "residual_anchor_lambda"):
+                with torch.no_grad():
+                    t_anchor = step_out["t"].detach()
+                    lam = self.sde.residual_anchor_lambda(t_anchor).float()
+                    alpha = torch.exp(-float(self.sde.theta) * t_anchor.float())
+                    beta = (1.0 - alpha) * lam
+                self.log("residual_anchor_lambda_mean", lam.mean(),
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+                self.log("residual_anchor_lambda_min", lam.min(),
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+                self.log("residual_anchor_lambda_max", lam.max(),
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+                self.log("residual_anchor_beta_mean", beta.mean(),
+                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
         else:
             if spk_ids is not None:
                 step_out = self._step((X, Y_noisy, Y_pre, spk_ids), batch_idx, return_details=True)
@@ -3423,12 +3477,26 @@ class JointFrontendSgmseModel(ScoreModel):
                     X=X, Y_noisy=Y_noisy, Y_pre=Y_pre
                 )
                 if spk_ids is not None:
-                    loss_score = self._step((r_target, r_obs, r_center, spk_ids), batch_idx)
+                    residual_step_out = self._step(
+                        (r_target, r_obs, r_center, spk_ids), batch_idx, return_details=True
+                    )
                 else:
-                    loss_score = self._step((r_target, r_obs, r_center), batch_idx)
+                    residual_step_out = self._step(
+                        (r_target, r_obs, r_center), batch_idx, return_details=True
+                    )
+                loss_score = residual_step_out["loss"]
                 loss_init, init_stats = self._compute_residual_initializer_loss(
                     r_target=r_target, r_obs=r_obs, r_det=r_det
                 )
+                if hasattr(self.sde, "residual_anchor_lambda"):
+                    t_anchor = residual_step_out["t"].detach()
+                    lam = self.sde.residual_anchor_lambda(t_anchor).float()
+                    alpha = torch.exp(-float(self.sde.theta) * t_anchor.float())
+                    beta = (1.0 - alpha) * lam
+                    self.log("valid_residual_anchor_lambda_mean", lam.mean(),
+                             on_step=False, on_epoch=True, sync_dist=True, prog_bar=False)
+                    self.log("valid_residual_anchor_beta_mean", beta.mean(),
+                             on_step=False, on_epoch=True, sync_dist=True, prog_bar=False)
                 loss = loss_score + self.residual_init_weight * loss_init
                 self.log("valid_loss_residual_score", loss_score,
                          on_step=False, on_epoch=True, sync_dist=True, prog_bar=False)
