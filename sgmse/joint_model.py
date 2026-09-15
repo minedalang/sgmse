@@ -430,12 +430,14 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument(
             "--frontend_nr_strategy",
             type=str,
-            choices=("auxiliary", "score_reweight"),
+            choices=("auxiliary", "score_reweight", "adaptive_score_guidance"),
             default="auxiliary",
             help=(
                 "How local frontend-relative regret affects optimization. "
                 "'auxiliary' keeps the legacy extra NR loss; 'score_reweight' uses the "
-                "detached local degradation map to reweight the main score-matching TF loss."
+                "detached local degradation map to reweight the main score-matching TF loss; "
+                "'adaptive_score_guidance' keeps DSM unchanged and adds a reliability-gated "
+                "frontend-derived target directly in score space."
             ),
         )
         parser.add_argument(
@@ -452,6 +454,34 @@ class JointFrontendSgmseModel(ScoreModel):
             type=float,
             default=4.0,
             help="Maximum per-TF score-loss multiplier in score_reweight mode.",
+        )
+        parser.add_argument(
+            "--frontend_nr_guidance_strength",
+            type=float,
+            default=0.25,
+            help=(
+                "Lambda for adaptive_score_guidance. The added score-space alignment loss is "
+                "lambda * gate * ||sigma*(s_theta-s_front)||^2 / 2. A conservative first sweep "
+                "is 0.1/0.25/0.5."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_guidance_temperature",
+            type=float,
+            default=0.25,
+            help=(
+                "Temperature of the smooth reliability gate in log error-ratio space. Smaller "
+                "values make the fallback toward the frontend more switch-like."
+            ),
+        )
+        parser.add_argument(
+            "--frontend_nr_guidance_tail_fraction",
+            type=float,
+            default=1.0,
+            help=(
+                "Fraction of locally degraded TF patches eligible for adaptive score guidance. "
+                "1.0 uses all violated patches; values <1 keep only the worst tail for ablation."
+            ),
         )
         parser.add_argument(
             "--frontend_nr_weight",
@@ -706,6 +736,9 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_nr_strategy: str = "auxiliary",
         frontend_nr_reweight_strength: float = 1.0,
         frontend_nr_reweight_max: float = 4.0,
+        frontend_nr_guidance_strength: float = 0.25,
+        frontend_nr_guidance_temperature: float = 0.25,
+        frontend_nr_guidance_tail_fraction: float = 1.0,
         frontend_nr_weight: float = 0.0,
         frontend_nr_margin: float = 0.05,
         frontend_nr_t_max: float = 0.30,
@@ -816,6 +849,9 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_nr_strategy = str(frontend_nr_strategy).lower()
         self.frontend_nr_reweight_strength = float(frontend_nr_reweight_strength)
         self.frontend_nr_reweight_max = float(frontend_nr_reweight_max)
+        self.frontend_nr_guidance_strength = float(frontend_nr_guidance_strength)
+        self.frontend_nr_guidance_temperature = float(frontend_nr_guidance_temperature)
+        self.frontend_nr_guidance_tail_fraction = float(frontend_nr_guidance_tail_fraction)
         self.frontend_nr_weight = float(frontend_nr_weight)
         self.frontend_nr_margin = float(frontend_nr_margin)
         self.frontend_nr_t_max = float(frontend_nr_t_max)
@@ -825,12 +861,21 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_nr_patch_time = int(frontend_nr_patch_time)
         self.frontend_nr_topk = float(frontend_nr_topk)
         self.frontend_nr_floor_ratio = float(frontend_nr_floor_ratio)
-        if self.frontend_nr_strategy not in {"auxiliary", "score_reweight"}:
-            raise ValueError("frontend_nr_strategy must be one of {'auxiliary', 'score_reweight'}.")
+        if self.frontend_nr_strategy not in {"auxiliary", "score_reweight", "adaptive_score_guidance"}:
+            raise ValueError(
+                "frontend_nr_strategy must be one of "
+                "{'auxiliary', 'score_reweight', 'adaptive_score_guidance'}."
+            )
         if self.frontend_nr_reweight_strength < 0.0:
             raise ValueError("frontend_nr_reweight_strength must be >= 0.")
         if self.frontend_nr_reweight_max < 1.0:
             raise ValueError("frontend_nr_reweight_max must be >= 1.")
+        if self.frontend_nr_guidance_strength < 0.0:
+            raise ValueError("frontend_nr_guidance_strength must be >= 0.")
+        if self.frontend_nr_guidance_temperature <= 0.0:
+            raise ValueError("frontend_nr_guidance_temperature must be > 0.")
+        if not (0.0 < self.frontend_nr_guidance_tail_fraction <= 1.0):
+            raise ValueError("frontend_nr_guidance_tail_fraction must be in (0, 1].")
         if self.frontend_nr_weight < 0.0:
             raise ValueError("frontend_nr_weight must be >= 0.")
         if self.frontend_nr_margin < 0.0:
@@ -839,8 +884,11 @@ class JointFrontendSgmseModel(ScoreModel):
             raise ValueError("frontend_nr_eps must be > 0.")
         if self.frontend_nr_mode not in {"global", "patch"}:
             raise ValueError("frontend_nr_mode must be one of {'global', 'patch'}.")
-        if self.frontend_nr_strategy == "score_reweight" and self.frontend_nr_mode != "patch":
-            raise ValueError("frontend_nr_strategy=score_reweight requires --frontend_nr_mode patch.")
+        if self.frontend_nr_strategy in {"score_reweight", "adaptive_score_guidance"} and self.frontend_nr_mode != "patch":
+            raise ValueError(
+                "frontend_nr_strategy in {'score_reweight', 'adaptive_score_guidance'} "
+                "requires --frontend_nr_mode patch."
+            )
         if self.frontend_nr_patch_freq <= 0 or self.frontend_nr_patch_freq % 2 == 0:
             raise ValueError("frontend_nr_patch_freq must be a positive odd integer.")
         if self.frontend_nr_patch_time <= 0 or self.frontend_nr_patch_time % 2 == 0:
@@ -852,6 +900,10 @@ class JointFrontendSgmseModel(ScoreModel):
         nr_enabled = (
             (self.frontend_nr_strategy == "auxiliary" and self.frontend_nr_weight > 0.0)
             or (self.frontend_nr_strategy == "score_reweight" and self.frontend_nr_reweight_strength > 0.0)
+            or (
+                self.frontend_nr_strategy == "adaptive_score_guidance"
+                and self.frontend_nr_guidance_strength > 0.0
+            )
         )
         if nr_enabled:
             if self.sde.__class__.__name__ != "OUVESDE":
@@ -1049,6 +1101,9 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["frontend_nr_strategy"] = self.frontend_nr_strategy
         self.hparams["frontend_nr_reweight_strength"] = self.frontend_nr_reweight_strength
         self.hparams["frontend_nr_reweight_max"] = self.frontend_nr_reweight_max
+        self.hparams["frontend_nr_guidance_strength"] = self.frontend_nr_guidance_strength
+        self.hparams["frontend_nr_guidance_temperature"] = self.frontend_nr_guidance_temperature
+        self.hparams["frontend_nr_guidance_tail_fraction"] = self.frontend_nr_guidance_tail_fraction
         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
         self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
         self.hparams["frontend_nr_t_max"] = self.frontend_nr_t_max
@@ -2489,6 +2544,202 @@ class JointFrontendSgmseModel(ScoreModel):
             return x_hat, nfe, rtf
         return x_hat
 
+    def _score_step_geometry(self, step_out: dict):
+        """Return OUVE score geometry shared by regret-aware objectives.
+
+        For conditional OUVE, the perturbation mean is
+
+            mu_t(x0, y) = w_x(t) * x0 + w_y(t) * y,
+
+        and a score estimate implies ``mu_hat = x_t + sigma_t^2 * score``.
+        Therefore the corresponding x0 estimate is obtained by inverting the
+        OUVE mean, rather than by treating ``mu_hat`` itself as clean speech.
+
+        ``sde.weights(t)`` is used instead of hard-coding ``exp(-theta*t)`` so
+        the same code also remains correct for the residual-anchor schedule.
+        """
+        if self.sde.__class__.__name__ != "OUVESDE":
+            raise RuntimeError("frontend-relative score geometry currently supports OUVESDE only.")
+
+        score = step_out["forward_out"]
+        x_t = step_out["x_t"]
+        y_main = step_out["y"]
+        t = step_out["t"].detach().to(device=score.device, dtype=torch.float32).flatten()
+
+        sigma_override = step_out.get("sigma_override", None)
+        if sigma_override is None:
+            sigma = self.sde._std(t).to(device=score.device, dtype=score.real.dtype)
+            sigma = sigma[:, None, None, None]
+        else:
+            sigma = sigma_override.detach().to(device=score.device, dtype=score.real.dtype)
+            while sigma.ndim < score.ndim:
+                sigma = sigma.unsqueeze(-1)
+
+        w_x, w_y = self.sde.weights(t)
+        if not torch.is_tensor(w_x):
+            w_x = torch.full_like(t, float(w_x))
+        if not torch.is_tensor(w_y):
+            w_y = torch.full_like(t, float(w_y))
+        w_x = w_x.to(device=score.device, dtype=score.real.dtype)
+        w_y = w_y.to(device=score.device, dtype=score.real.dtype)
+        while w_x.ndim < score.ndim:
+            w_x = w_x.unsqueeze(-1)
+        while w_y.ndim < score.ndim:
+            w_y = w_y.unsqueeze(-1)
+
+        mean_hat = x_t + sigma.square() * score
+        x0_hat = (mean_hat - w_y * y_main) / w_x.clamp_min(1e-5)
+        return score, x_t, y_main, t, sigma, w_x, w_y, x0_hat
+
+    def _compute_frontend_adaptive_score_guidance_loss(
+        self,
+        *,
+        target: torch.Tensor,
+        frontend_reference: torch.Tensor,
+        step_out: dict,
+    ):
+        """Frontend-relative adaptive guidance directly in score space.
+
+        This is the proposed Scheme-A extension of the existing regret-aware
+        score-matching objective.  The original DSM loss is kept unchanged.
+        A *detached* local reliability gate is computed from the relative clean
+        reconstruction risk of the diffusion backend and the predictive frontend.
+        Only where the backend is worse than the frontend by the configured
+        margin do we add a score-space alignment term.
+
+        Let F be the frontend reference and y the OUVE center.  The score that
+        would make the current state ``x_t`` point exactly to F is
+
+            s_F = (w_x F + w_y y - x_t) / sigma_t^2.
+
+        The additional objective is
+
+            L_guide = sum g * 0.5 * |sigma_t (s_theta - s_F)|^2,
+
+        where g in [0,1] is a smooth function of positive *log regret*:
+
+            r = [log(E_b/E_f) - log(1+margin)]_+,
+            g = 1 - exp(-r / temperature).
+
+        Thus the frontend is not a permanent teacher.  When the diffusion
+        backend is already at least as good as the frontend, g=0 and training is
+        exactly the original score-matching objective.  All gate quantities and
+        the frontend target are detached, so gradients update the score backend
+        only and cannot game the reliability detector.
+        """
+        if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
+            raise RuntimeError("adaptive_score_guidance requires score_matching with sigma^2 weighting.")
+        if str(getattr(self, "frontend_nr_mode", "patch")).lower() != "patch":
+            raise RuntimeError("adaptive_score_guidance requires --frontend_nr_mode patch.")
+        if target.ndim != 4:
+            raise RuntimeError(
+                f"adaptive_score_guidance expects [B,C,F,T], got {tuple(target.shape)}"
+            )
+
+        eps = float(self.frontend_nr_eps)
+        score, x_t, y_main, t, sigma, w_x, w_y, x0_backend = self._score_step_geometry(step_out)
+        time_active = t <= float(self.frontend_nr_t_max)
+        time_mask = time_active[:, None, None, None]
+
+        # ------------------------------------------------------------------
+        # 1) Detached frontend-relative reliability gate in x0 space.
+        # ------------------------------------------------------------------
+        with torch.no_grad():
+            target_det = target.detach()
+            front_det = frontend_reference.detach()
+            x0_det = x0_backend.detach()
+
+            backend_tf = 0.5 * torch.abs(x0_det - target_det).float().square().sum(dim=1, keepdim=True)
+            front_tf = 0.5 * torch.abs(front_det - target_det).float().square().sum(dim=1, keepdim=True)
+
+            kf = int(self.frontend_nr_patch_freq)
+            kt = int(self.frontend_nr_patch_time)
+            pool_kwargs = dict(
+                kernel_size=(kf, kt),
+                stride=1,
+                padding=(kf // 2, kt // 2),
+                count_include_pad=False,
+            )
+            backend_patch = F.avg_pool2d(backend_tf, **pool_kwargs)
+            front_patch = F.avg_pool2d(front_tf, **pool_kwargs)
+
+            # Robust denominator: preserve the existing near-silence protection.
+            front_mean = front_patch.mean(dim=(2, 3), keepdim=True)
+            ratio_floor = (float(self.frontend_nr_floor_ratio) * front_mean).clamp_min(eps)
+            ratio_denom = torch.maximum(front_patch, ratio_floor)
+
+            # Log ratio is better behaved than a raw ratio when E_f is tiny.
+            log_ratio = torch.log(backend_patch + eps) - torch.log(ratio_denom + eps)
+            log_margin = math.log1p(float(self.frontend_nr_margin))
+            positive_log_regret = F.relu(log_ratio - log_margin)
+            positive_log_regret = positive_log_regret * time_mask
+
+            temperature = float(self.frontend_nr_guidance_temperature)
+            gate = 1.0 - torch.exp(-positive_log_regret / temperature)
+
+            # Optional tail focusing for an apples-to-apples comparison with the
+            # original hard top-k regret mining.  Default=1.0 is fully soft.
+            tail_fraction = float(self.frontend_nr_guidance_tail_fraction)
+            regret_flat = positive_log_regret.flatten(1)
+            n_local = regret_flat.shape[1]
+            tail_n = max(1, min(n_local, int(math.ceil(tail_fraction * n_local))))
+            if tail_n < n_local:
+                top_idx = torch.topk(regret_flat, k=tail_n, dim=1, largest=True).indices
+                keep = torch.zeros_like(regret_flat)
+                keep.scatter_(1, top_idx, 1.0)
+                gate = gate * keep.view_as(gate)
+            else:
+                keep = torch.ones_like(regret_flat)
+
+            gate = gate.detach()
+            local_ratio = torch.exp(log_ratio).clamp_max(1e6)
+            local_violation = positive_log_regret > 0.0
+
+        # ------------------------------------------------------------------
+        # 2) Convert the frontend x0 reference into a *score target* at the
+        #    exact same x_t and t.  This is the key difference from output KD.
+        # ------------------------------------------------------------------
+        front_ref = frontend_reference.detach().to(device=score.device, dtype=score.dtype)
+        y_det = y_main.detach()
+        x_t_det = x_t.detach()
+        mean_front = w_x.to(score.dtype) * front_ref + w_y.to(score.dtype) * y_det
+        score_front = (mean_front - x_t_det) / sigma.square().clamp_min(eps)
+        score_front = score_front.detach()
+
+        guidance_tf = 0.5 * torch.abs(
+            sigma * (score - score_front)
+        ).float().square().sum(dim=1, keepdim=True)
+        guidance_loss = (guidance_tf * gate.to(guidance_tf.dtype)).sum()
+
+        with torch.no_grad():
+            score_loss_tf = 0.5 * torch.abs(
+                score * sigma + step_out["z"].to(score.dtype)
+            ).float().square().sum(dim=1, keepdim=True)
+            raw_score_loss = score_loss_tf.sum().clamp_min(eps)
+            active_denom = time_active.float().sum().clamp_min(1.0)
+            sample_has_violation = local_violation.flatten(1).any(dim=1).float()
+            local_active = local_violation.float().mean(dim=(1, 2, 3))
+            local_ratio_mean = local_ratio.mean(dim=(1, 2, 3))
+            local_ratio_max = local_ratio.flatten(1).max(dim=1).values
+
+            def _active_mean(v: torch.Tensor) -> torch.Tensor:
+                return (v.float() * time_active.float()).sum() / active_denom
+
+            stats = {
+                "frontend_nr_time_active_fraction": time_active.float().mean(),
+                "frontend_nr_active_fraction": _active_mean(sample_has_violation),
+                "frontend_nr_local_active_fraction": _active_mean(local_active),
+                "frontend_nr_diff_front_ratio": _active_mean(local_ratio_mean),
+                "frontend_nr_local_max_ratio": _active_mean(local_ratio_max),
+                "frontend_guidance_gate_mean": gate.mean(),
+                "frontend_guidance_gate_max": gate.max(),
+                "frontend_guidance_gate_active_fraction": (gate > 0.0).float().mean(),
+                "frontend_guidance_loss_to_raw_score_ratio": guidance_loss.detach() / raw_score_loss,
+                "frontend_guidance_score_distance_mean": guidance_tf.mean(),
+            }
+
+        return guidance_loss.float(), stats
+
     def _compute_frontend_regret_score_reweighted_loss(
         self,
         *,
@@ -3065,6 +3316,47 @@ class JointFrontendSgmseModel(ScoreModel):
             for k, v in regret_reweight_stats.items():
                 self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
+        # Scheme A: keep the original DSM objective, but add a score-space
+        # frontend anchor only where the current diffusion backend is locally
+        # worse than the frontend. This is not output-level distillation.
+        adaptive_guidance_stats = {}
+        if (
+            self.frontend_nr_strategy == "adaptive_score_guidance"
+            and float(self.frontend_nr_guidance_strength) > 0.0
+        ):
+            if self.residual_refine_enable:
+                nr_target = r_target
+                nr_frontend_reference = torch.zeros_like(r_target)
+            else:
+                nr_target = X
+                nr_frontend_reference = Y_pre
+
+            guidance_loss, adaptive_guidance_stats = self._compute_frontend_adaptive_score_guidance_loss(
+                target=nr_target,
+                frontend_reference=nr_frontend_reference,
+                step_out=step_out,
+            )
+            weighted_guidance = float(self.frontend_nr_guidance_strength) * guidance_loss
+            base_loss = raw_base_loss + weighted_guidance.to(raw_base_loss.dtype)
+            self.log(
+                "train_loss_backend_raw", raw_base_loss,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            self.log(
+                "train_loss_frontend_score_guidance", guidance_loss,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            self.log(
+                "train_loss_frontend_score_guidance_weighted", weighted_guidance,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            self.log(
+                "train_loss_backend_guided", base_loss,
+                on_step=True, on_epoch=True, sync_dist=True, prog_bar=False,
+            )
+            for k, v in adaptive_guidance_stats.items():
+                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+
         loss_total_backend = base_loss + loss_old_contrastive
         x_hat_spec = step_out["x_hat_spec"]
         if self.residual_refine_enable and x_hat_spec is not None:
@@ -3229,8 +3521,8 @@ class JointFrontendSgmseModel(ScoreModel):
             self.log("train_loss_content_selector_weighted", weighted_content_selector, on_step=True, on_epoch=True, sync_dist=True)
 
         # ===== Legacy auxiliary frontend-relative no-regret loss (backend-only) =====
-        # score_reweight mode already modified the MAIN score loss above and must
-        # not add this tiny auxiliary penalty or run a second score forward.
+        # score_reweight/adaptive_score_guidance already modify the backend score
+        # objective above and must not add this legacy auxiliary penalty.
         loss_frontend_nr = torch.zeros((), device=x_wav.device, dtype=torch.float32)
         if (
             self.frontend_nr_strategy == "auxiliary"
