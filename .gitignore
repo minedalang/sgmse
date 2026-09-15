@@ -48,3 +48,5 @@ Thumbs.db
 train.log
 echo
 joint_enhance_zhz7x8vt.log
+
+onnx_*/

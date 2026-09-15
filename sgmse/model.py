@@ -96,6 +96,7 @@ class ScoreModel(pl.LightningModule):
         self.ema = None
         self._loaded_ema_state = None
         self._error_loading_ema = False
+        self._ema_applied = False
         self.t_eps = t_eps
         self.loss_type = loss_type
         self.loss_weighting = loss_weighting
@@ -168,6 +169,7 @@ class ScoreModel(pl.LightningModule):
         params = list(self._get_ema_parameters())
         self.ema = ExponentialMovingAverage(params, decay=self.ema_decay)
         self._error_loading_ema = False
+        self._ema_applied = False
 
 
     def _ensure_ema_is_compatible(self, force_rebuild: bool = False):
@@ -206,46 +208,73 @@ class ScoreModel(pl.LightningModule):
         if ema_state is None:
             self._loaded_ema_state = None
             self._error_loading_ema = True
+            self._ema_applied = False
             warnings.warn("EMA state_dict not found in checkpoint!")
         else:
             # 先缓存，等模型完整构建后再尝试加载
             self._loaded_ema_state = ema_state
             self._error_loading_ema = False
+            self._ema_applied = False
+
+    def _load_pending_ema_state(self, strict: bool = False):
+        """Load checkpoint EMA after the complete model has been constructed.
+
+        Lightning training reaches on_fit_start(), but load_from_checkpoint(...).eval()
+        does not.  Therefore eval() must also consume the pending checkpoint EMA
+        before copy_to() is allowed to overwrite model parameters.
+        """
+        if self._loaded_ema_state is None:
+            if strict and self._error_loading_ema:
+                raise RuntimeError(
+                    "EMA inference was requested, but this checkpoint has no valid EMA state."
+                )
+            self._ensure_ema_is_compatible(force_rebuild=False)
+            return
+
+        state = self._loaded_ema_state
+        self._loaded_ema_state = None
+        self._ensure_ema_is_compatible(force_rebuild=False)
+
+        try:
+            self.ema.load_state_dict(state)
+
+            named_params = list(self._get_ema_named_parameters())
+            shadow_params = list(self.ema.shadow_params)
+            if len(shadow_params) != len(named_params):
+                raise ValueError(
+                    f"EMA shadow param count mismatch after load: "
+                    f"{len(shadow_params)} vs current {len(named_params)}"
+                )
+
+            # Count alone is not enough: catch shifted/misaligned shadow tensors too.
+            for idx, ((name, param), shadow) in enumerate(zip(named_params, shadow_params)):
+                if tuple(param.shape) != tuple(shadow.shape):
+                    raise ValueError(
+                        f"EMA shape mismatch at index {idx} ({name}): "
+                        f"model={tuple(param.shape)} ema={tuple(shadow.shape)}"
+                    )
+
+            self._error_loading_ema = False
+            self._ema_applied = False
+            print(f"[EMA] checkpoint EMA loaded successfully, shadow params = {len(shadow_params)}")
+
+        except Exception as e:
+            self._error_loading_ema = True
+            self._ema_applied = False
+            if strict:
+                raise RuntimeError(
+                    "Checkpoint EMA is incompatible with the current model; "
+                    "refusing to silently use a fresh EMA for inference."
+                ) from e
+            warnings.warn(
+                f"EMA state incompatible with current model, reinitializing fresh EMA. "
+                f"Reason: {e}"
+            )
+            self._rebuild_ema()
 
     def on_fit_start(self):
         super().on_fit_start()
-
-        # 先按“当前完整模型参数”确保 EMA 结构正确
-        self._ensure_ema_is_compatible(force_rebuild=False)
-
-        # 再尝试加载旧 checkpoint 里的 EMA
-        if self._loaded_ema_state is not None:
-            try:
-                self.ema.load_state_dict(self._loaded_ema_state)
-
-                current_len = len(list(self._get_ema_parameters()))
-                shadow_len = len(self.ema.shadow_params)
-
-                if shadow_len != current_len:
-                    raise ValueError(
-                        f"EMA shadow param count mismatch after load: "
-                        f"{shadow_len} vs current {current_len}"
-                    )
-
-                print(f"[EMA] loaded successfully, shadow params = {shadow_len}")
-
-            except Exception as e:
-                warnings.warn(
-                    f"EMA state incompatible with current model, reinitializing fresh EMA. "
-                    f"Reason: {e}"
-                )
-                self._rebuild_ema()
-
-            finally:
-                self._loaded_ema_state = None
-        else:
-            # 没有旧 EMA，就保证当前 fresh EMA 正常
-            self._ensure_ema_is_compatible(force_rebuild=False)
+        self._load_pending_ema_state(strict=False)
 
         print(f"[EMA] current tracked params = {len(list(self._get_ema_parameters()))}")
         if self.ema is not None:
@@ -258,31 +287,38 @@ class ScoreModel(pl.LightningModule):
             checkpoint["ema"] = self.ema.state_dict()
 
     def train(self, mode, no_ema=False):
-        if mode and self.ema is not None:
-            try:
-                params = list(self._get_ema_parameters())
-                self.ema.restore(params)
-            except Exception:
-                pass
+        # If eval() swapped EMA weights into the live model, restore the raw
+        # checkpoint/training weights before entering train mode.
+        if mode and self.ema is not None and self._ema_applied:
+            params = list(self._get_ema_parameters())
+            self.ema.restore(params)
+            self._ema_applied = False
 
         return super().train(mode)
 
     def eval(self, no_ema=False):
         super().eval()
+        params = list(self._get_ema_parameters()) if self.ema is not None else []
 
-        # 如果请求 no_ema，先恢复原始训练参数
-        if no_ema and self.ema is not None:
-            try:
-                self.ema.restore(list(self._get_ema_parameters()))
-            except Exception:
-                pass
+        if no_ema:
+            # Restore raw weights only if this instance previously applied EMA.
+            if self.ema is not None and self._ema_applied:
+                self.ema.restore(params)
+                self._ema_applied = False
             return self
 
         if self.ema is not None:
-            self._ensure_ema_is_compatible(force_rebuild=False)
-            params = list(self._get_ema_parameters())
-            self.ema.store(params)
-            self.ema.copy_to(params)
+            # Critical fix for load_from_checkpoint(...).eval(): consume the
+            # checkpoint EMA here because inference never reaches on_fit_start().
+            self._load_pending_ema_state(strict=True)
+
+            # Do not call store() twice; otherwise a second eval() would overwrite
+            # the saved raw parameters with already-EMA parameters.
+            if not self._ema_applied:
+                params = list(self._get_ema_parameters())
+                self.ema.store(params)
+                self.ema.copy_to(params)
+                self._ema_applied = True
 
         return self
     
