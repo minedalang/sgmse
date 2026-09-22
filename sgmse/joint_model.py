@@ -41,6 +41,7 @@ from sgmse.model import ScoreModel
 from sgmse.sdes import SBVESDE
 from sgmse.frontends import build_frontend
 from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
+from sgmse.reliability_router import BandTimeReliabilityRouter, solve_frontend_projection_oracle
 from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint
 from sgmse.residual_initializer import (
     ConfidenceGatedResidualPriorPredictor,
@@ -493,6 +494,26 @@ class JointFrontendSgmseModel(ScoreModel):
                 "0.05 compensate for sparse gate activation; the scale is capped internally."
             ),
         )
+
+        # ===== RRSD: Oracle-distilled reliability-routed diffusion =====
+        parser.add_argument("--rrsd_weight", type=float, default=0.0,
+                            help="Training weight for the RRSD reliability-router distillation loss. 0 disables RRSD training.")
+        parser.add_argument("--rrsd_hidden_ch", type=int, default=48)
+        parser.add_argument("--rrsd_num_bands", type=int, default=32)
+        parser.add_argument("--rrsd_num_time_blocks", type=int, default=16)
+        parser.add_argument("--rrsd_init_alpha", type=float, default=0.05,
+                            help="Initial routing coefficient. Small values make a newly-added router close to a no-op.")
+        parser.add_argument("--rrsd_benefit_weight", type=float, default=4.0,
+                            help="Extra oracle-distillation weight on tiles with large clean-referenced routing benefit.")
+        parser.add_argument("--rrsd_recon_weight", type=float, default=0.10,
+                            help="Weight of normalized x0 reconstruction loss for routed estimates.")
+        parser.add_argument("--rrsd_smooth_weight", type=float, default=0.01,
+                            help="Spatial smoothness weight on the low-resolution alpha routing grid.")
+        parser.add_argument("--rrsd_oracle_eps", type=float, default=1e-6)
+        parser.add_argument("--rrsd_validate", action="store_true",
+                            help="Use RRSD during the periodic file-level validation sampler.")
+        parser.add_argument("--rrsd_freeze_base", action="store_true",
+                            help="Freeze the frontend and score network; train only the RRSD router. Recommended for the first diagnostic experiment.")
         parser.add_argument(
             "--frontend_nr_weight",
             type=float,
@@ -750,6 +771,17 @@ class JointFrontendSgmseModel(ScoreModel):
         frontend_nr_guidance_temperature: float = 0.25,
         frontend_nr_guidance_tail_fraction: float = 1.0,
         frontend_nr_guidance_coverage_target: float = 0.0,
+        rrsd_weight: float = 0.0,
+        rrsd_hidden_ch: int = 48,
+        rrsd_num_bands: int = 32,
+        rrsd_num_time_blocks: int = 16,
+        rrsd_init_alpha: float = 0.05,
+        rrsd_benefit_weight: float = 4.0,
+        rrsd_recon_weight: float = 0.10,
+        rrsd_smooth_weight: float = 0.01,
+        rrsd_oracle_eps: float = 1e-6,
+        rrsd_validate: bool = False,
+        rrsd_freeze_base: bool = False,
         frontend_nr_weight: float = 0.0,
         frontend_nr_margin: float = 0.05,
         frontend_nr_t_max: float = 0.30,
@@ -864,6 +896,35 @@ class JointFrontendSgmseModel(ScoreModel):
         self.frontend_nr_guidance_temperature = float(frontend_nr_guidance_temperature)
         self.frontend_nr_guidance_tail_fraction = float(frontend_nr_guidance_tail_fraction)
         self.frontend_nr_guidance_coverage_target = float(frontend_nr_guidance_coverage_target)
+
+        # RRSD learns a deployable local routing coefficient alpha(t,f,tau) from
+        # a clean-referenced projection oracle, while leaving the DSM target unchanged.
+        self.rrsd_weight = float(rrsd_weight)
+        self.rrsd_benefit_weight = float(rrsd_benefit_weight)
+        self.rrsd_recon_weight = float(rrsd_recon_weight)
+        self.rrsd_smooth_weight = float(rrsd_smooth_weight)
+        self.rrsd_oracle_eps = float(rrsd_oracle_eps)
+        self.rrsd_validate = bool(rrsd_validate)
+        self.rrsd_freeze_base = bool(rrsd_freeze_base)
+        if self.rrsd_weight < 0.0:
+            raise ValueError("rrsd_weight must be >= 0.")
+        if self.rrsd_benefit_weight < 0.0 or self.rrsd_recon_weight < 0.0 or self.rrsd_smooth_weight < 0.0:
+            raise ValueError("RRSD loss weights must be >= 0.")
+        if self.rrsd_oracle_eps <= 0.0:
+            raise ValueError("rrsd_oracle_eps must be > 0.")
+        self.rrsd_router = None
+        if self.rrsd_weight > 0.0:
+            if self.sde.__class__.__name__ != "OUVESDE":
+                raise ValueError("RRSD V1 currently supports OUVESDE only.")
+            if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
+                raise ValueError("RRSD V1 currently requires score_matching with sigma^2 weighting.")
+            self.rrsd_router = BandTimeReliabilityRouter(
+                hidden_ch=int(rrsd_hidden_ch),
+                num_bands=int(rrsd_num_bands),
+                num_time_blocks=int(rrsd_num_time_blocks),
+                init_alpha=float(rrsd_init_alpha),
+            )
+
         self.frontend_nr_weight = float(frontend_nr_weight)
         self.frontend_nr_margin = float(frontend_nr_margin)
         self.frontend_nr_t_max = float(frontend_nr_t_max)
@@ -1038,6 +1099,11 @@ class JointFrontendSgmseModel(ScoreModel):
         # (equivalently Y_pre + lambda(t) R_theta in clean-spectrum coordinates).
         # By default the score loss does not backpropagate into the prior network.
         self.residual_refine_enable = bool(residual_refine_enable)
+        if self.rrsd_weight > 0.0 and self.residual_refine_enable:
+            raise ValueError(
+                "RRSD V1-clean is defined for the full-speech frontend/diffusion path only; "
+                "disable --residual_refine_enable for this experiment."
+            )
         self.residual_prior_type = str(residual_prior_type).strip().lower()
         # 'predictive' is a paper/CLI alias; the module/checkpoint layout is
         # intentionally identical to the historical 'direct' predictor.
@@ -1119,6 +1185,17 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["frontend_nr_guidance_temperature"] = self.frontend_nr_guidance_temperature
         self.hparams["frontend_nr_guidance_tail_fraction"] = self.frontend_nr_guidance_tail_fraction
         self.hparams["frontend_nr_guidance_coverage_target"] = self.frontend_nr_guidance_coverage_target
+        self.hparams["rrsd_weight"] = self.rrsd_weight
+        self.hparams["rrsd_hidden_ch"] = int(rrsd_hidden_ch)
+        self.hparams["rrsd_num_bands"] = int(rrsd_num_bands)
+        self.hparams["rrsd_num_time_blocks"] = int(rrsd_num_time_blocks)
+        self.hparams["rrsd_init_alpha"] = float(rrsd_init_alpha)
+        self.hparams["rrsd_benefit_weight"] = self.rrsd_benefit_weight
+        self.hparams["rrsd_recon_weight"] = self.rrsd_recon_weight
+        self.hparams["rrsd_smooth_weight"] = self.rrsd_smooth_weight
+        self.hparams["rrsd_oracle_eps"] = self.rrsd_oracle_eps
+        self.hparams["rrsd_validate"] = self.rrsd_validate
+        self.hparams["rrsd_freeze_base"] = self.rrsd_freeze_base
         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
         self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
         self.hparams["frontend_nr_t_max"] = self.frontend_nr_t_max
@@ -1200,6 +1277,12 @@ class JointFrontendSgmseModel(ScoreModel):
             for p in self.frontend.parameters():
                 p.requires_grad = False
             self.frontend.eval()
+
+        if self.rrsd_freeze_base:
+            if self.rrsd_router is None:
+                raise ValueError("--rrsd_freeze_base requires --rrsd_weight > 0 so a router exists.")
+            for name, p in self.named_parameters():
+                p.requires_grad = name.startswith("rrsd_router.")
 
         # Rebuild EMA after frontend creation so EMA tracks the full trainable model
         self._ensure_ema_is_compatible(force_rebuild=True)
@@ -1421,6 +1504,19 @@ class JointFrontendSgmseModel(ScoreModel):
         params = [p for p in self.parameters() if p.requires_grad]
         optimizer = torch.optim.Adam(params, lr=self.lr)
         return optimizer
+    def train(self, mode: bool = True, no_ema: bool = False):
+        out = super().train(mode, no_ema=no_ema)
+        if mode and bool(getattr(self, "rrsd_freeze_base", False)):
+            # Keep the frozen teacher system deterministic while Q_phi learns.
+            if hasattr(self, "dnn") and self.dnn is not None:
+                self.dnn.eval()
+            if hasattr(self, "frontend") and self.frontend is not None:
+                self.frontend.eval()
+            if getattr(self, "residual_initializer", None) is not None:
+                self.residual_initializer.eval()
+            if getattr(self, "rrsd_router", None) is not None:
+                self.rrsd_router.train(True)
+        return out
     def on_fit_start(self):
         # Make sure teacher model is on the same device
         super().on_fit_start()
@@ -2471,6 +2567,8 @@ class JointFrontendSgmseModel(ScoreModel):
         # ablation and must not leak unknown kwargs into the ODE solver.
         anchor_calib_arg = bool(kwargs.pop("anchor_calib", False))
         anchor_v2_arg = bool(kwargs.pop("anchor_v2", False))
+        rrsd_arg = bool(kwargs.pop("rrsd", False))
+        kwargs.pop("rrsd_scale", None)
         for key in (
             "anchor_k_max",
             "anchor_scale",
@@ -2485,6 +2583,11 @@ class JointFrontendSgmseModel(ScoreModel):
             kwargs.pop(key, None)
         if anchor_calib_arg or anchor_v2_arg:
             raise ValueError("Anchor V1/V2 must be disabled for residual-refinement inference.")
+        if rrsd_arg:
+            raise ValueError(
+                "RRSD V1-clean does not support residual-refinement inference. "
+                "Use the full-speech mode2/mode3 path."
+            )
 
         regen_strength_arg = kwargs.pop("regen_strength", None)
         if regen_strength_arg is None:
@@ -2522,7 +2625,6 @@ class JointFrontendSgmseModel(ScoreModel):
         regeneration_strength = self._resolve_regeneration_strength(
             regen_strength_arg, r_det, r_obs
         )
-
         if self.sde.__class__.__name__ != "OUVESDE":
             raise ValueError("Residual refinement inference currently requires OUVESDE.")
         if self.sde.sampler_type == "pc":
@@ -2605,6 +2707,208 @@ class JointFrontendSgmseModel(ScoreModel):
         mean_hat = x_t + sigma.square() * score
         x0_hat = (mean_hat - w_y * y_main) / w_x.clamp_min(1e-5)
         return score, x_t, y_main, t, sigma, w_x, w_y, x0_hat
+
+    def _rrsd_score_to_x0(
+        self,
+        x_t: torch.Tensor,
+        y_main: torch.Tensor,
+        t: torch.Tensor,
+        score: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
+        """Invert the OUVE marginal mean for the full-speech RRSD path.
+
+        Uses the SDE's actual weights so the routing geometry remains consistent
+        with the configured OUVE path. Returns (x0_base, sigma, w_x, w_y).
+        """
+        if self.sde.__class__.__name__ != "OUVESDE":
+            raise ValueError("RRSD V1 currently supports OUVESDE only.")
+        if t.ndim == 0:
+            t_vec = torch.full((x_t.shape[0],), float(t.item()), device=x_t.device, dtype=torch.float32)
+        else:
+            t_vec = t.to(device=x_t.device, dtype=torch.float32).flatten()
+        real_dtype = score.real.dtype if torch.is_complex(score) else score.dtype
+        sigma = self.sde._std(t_vec).to(device=x_t.device, dtype=real_dtype)
+        w_x, w_y = self.sde.weights(t_vec)
+        if not torch.is_tensor(w_x):
+            w_x = torch.full_like(t_vec, float(w_x))
+        if not torch.is_tensor(w_y):
+            w_y = torch.full_like(t_vec, float(w_y))
+        w_x = w_x.to(device=x_t.device, dtype=real_dtype)
+        w_y = w_y.to(device=x_t.device, dtype=real_dtype)
+        while sigma.ndim < score.ndim:
+            sigma = sigma.unsqueeze(-1)
+        while w_x.ndim < score.ndim:
+            w_x = w_x.unsqueeze(-1)
+        while w_y.ndim < score.ndim:
+            w_y = w_y.unsqueeze(-1)
+        mean_hat = x_t + sigma.square() * score
+        x0_base = (mean_hat - w_y * y_main) / w_x.clamp_min(1e-5)
+        return x0_base, sigma, w_x, w_y
+
+    def _compute_rrsd_loss(
+        self,
+        *,
+        target: torch.Tensor,
+        x0_front: torch.Tensor,
+        step_out: dict,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Oracle-distill a deployable local frontend-routing controller.
+
+        DSM itself is untouched.  Clean target is used only to create the local
+        convex projection oracle alpha*.  All inputs to Q_phi are detached and
+        are available again at inference time.
+        """
+        zero = torch.zeros((), device=target.device, dtype=torch.float32)
+        if self.rrsd_router is None or self.rrsd_weight <= 0.0:
+            return zero, {}
+
+        score, x_t, y_main, t, sigma, w_x, w_y, x0_base = self._score_step_geometry(step_out)
+        y_cond = step_out.get("y_cond", None)
+        if y_cond is None:
+            y_cond = y_main
+
+        x0_base = x0_base.detach()
+        x0_front = x0_front.detach().to(dtype=x0_base.dtype)
+        target_det = target.detach()
+        x_t_det = x_t.detach()
+        y_main_det = y_main.detach()
+        y_cond_det = y_cond.detach()
+
+        pred = self.rrsd_router(
+            x_t=x_t_det,
+            x0_base=x0_base,
+            x0_front=x0_front,
+            y_main=y_main_det,
+            y_cond=y_cond_det,
+            t=t.detach(),
+            t_max=float(getattr(self.sde, "T", 1.0)),
+            detach_inputs=True,
+            scale=1.0,
+        )
+
+        alpha_star, oracle_stats = solve_frontend_projection_oracle(
+            target=target_det,
+            x0_base=x0_base,
+            x0_front=x0_front,
+            num_bands=int(self.rrsd_router.num_bands),
+            num_time_blocks=int(self.rrsd_router.num_time_blocks),
+            eps=float(self.rrsd_oracle_eps),
+        )
+
+        # Benefit is a clean-referenced supervision confidence, not an inference
+        # input.  Important oracle regions receive more distillation weight.
+        benefit_ratio = oracle_stats["benefit_ratio"].clamp(0.0, 1.0)
+        oracle_weight = 1.0 + float(self.rrsd_benefit_weight) * benefit_ratio
+        loss_alpha_map = F.smooth_l1_loss(
+            pred["alpha_tile"].float(), alpha_star.float(), reduction="none"
+        )
+        loss_alpha = (loss_alpha_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
+
+        # Normalized x0 reconstruction term: dimensionless and robust to the
+        # large variation of residual energy across utterances/timesteps.
+        reduce_dims = tuple(range(1, target_det.ndim))
+        base_err = torch.abs(x0_base - target_det).float().square().mean(dim=reduce_dims)
+        route_err = torch.abs(pred["x0_route"] - target_det).float().square().mean(dim=reduce_dims)
+        loss_recon = (route_err / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean()
+
+        loss_smooth = torch.zeros((), device=target.device, dtype=torch.float32)
+        a = pred["alpha_tile"].float()
+        if a.shape[-2] > 1:
+            loss_smooth = loss_smooth + a.diff(dim=-2).abs().mean()
+        if a.shape[-1] > 1:
+            loss_smooth = loss_smooth + a.diff(dim=-1).abs().mean()
+
+        loss = (
+            loss_alpha
+            + float(self.rrsd_recon_weight) * loss_recon
+            + float(self.rrsd_smooth_weight) * loss_smooth
+        )
+
+        with torch.no_grad():
+            oracle_active = (alpha_star > 1e-3).float().mean()
+            oracle_front_heavy = (alpha_star > 0.5).float().mean()
+            pred_active = (pred["alpha_tile"] > 1e-3).float().mean()
+            stats = {
+                "rrsd_loss_alpha": loss_alpha.detach(),
+                "rrsd_loss_recon_norm": loss_recon.detach(),
+                "rrsd_loss_smooth": loss_smooth.detach(),
+                "rrsd_alpha_mean": pred["alpha_tile"].detach().float().mean(),
+                "rrsd_alpha_target_mean": alpha_star.float().mean(),
+                "rrsd_alpha_mae": torch.abs(pred["alpha_tile"].detach().float() - alpha_star.float()).mean(),
+                "rrsd_alpha_active_fraction": pred_active,
+                "rrsd_oracle_active_fraction": oracle_active,
+                "rrsd_oracle_front_heavy_fraction": oracle_front_heavy,
+                "rrsd_oracle_benefit_ratio_mean": benefit_ratio.mean(),
+                "rrsd_route_improve_fraction": (route_err < base_err).float().mean(),
+                "rrsd_route_relative_error_change": ((route_err - base_err) / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean(),
+                "rrsd_t_mean": t.detach().float().mean(),
+            }
+        return loss, stats
+
+    def build_rrsd_score_calibrator(
+        self,
+        y_main: torch.Tensor,
+        y_cond: Optional[torch.Tensor] = None,
+        *,
+        scale: float = 1.0,
+    ):
+        """Build the inference-time RRSD routing step used inside the PC sampler.
+
+        Per predictor step:
+          1) base score -> current x0_base
+          2) Q_phi predicts alpha(t,f,tau)
+          3) x0_route = x0_base + alpha * (x0_front-x0_base)
+          4) x0_route is converted back to a routed score
+          5) the ordinary reverse-SDE predictor integrates that routed score
+        """
+        if self.rrsd_router is None:
+            return None
+        if self.sde.__class__.__name__ != "OUVESDE":
+            warnings.warn("RRSD V1 currently supports OUVESDE only; disabling routing.")
+            return None
+        if y_cond is None:
+            y_cond = y_main
+
+        # RRSD V1-clean routes the current diffusion x0 estimate toward the
+        # *full-speech frontend estimate*.  This is exactly the candidate pair
+        # validated by the frontend/backend Oracle Projection experiment.
+        Y_pre, _ = self._main_and_cond_to_pre_noisy(y_main, y_cond)
+        x0_front = Y_pre.detach()
+
+        t_max = float(getattr(self.sde, "T", 1.0))
+        scale = float(scale)
+
+        def _score_calibrator(x_t, y_unused, t, score_base, step_index=None, num_steps=None):
+            x0_base, sigma, w_x, _ = self._rrsd_score_to_x0(x_t, y_main, t, score_base)
+            pred = self.rrsd_router(
+                x_t=x_t,
+                x0_base=x0_base,
+                x0_front=x0_front,
+                y_main=y_main,
+                y_cond=y_cond,
+                t=t,
+                t_max=t_max,
+                detach_inputs=True,
+                scale=scale,
+            )
+            # mu(x0_route)-mu(x0_base) = w_x * delta_x0, hence the exact
+            # corresponding score residual is w_x * delta_x0 / sigma^2.
+            delta_score = w_x * pred["delta_x0"] / sigma.square().clamp_min(1e-8)
+            score_route = score_base + delta_score.to(dtype=score_base.dtype)
+            if torch.is_complex(score_route):
+                score_route = torch.complex(
+                    torch.nan_to_num(score_route.real),
+                    torch.nan_to_num(score_route.imag),
+                )
+            else:
+                score_route = torch.nan_to_num(score_route)
+
+            # Lightweight inference diagnostics for optional debugging.
+            self._last_rrsd_alpha_mean = pred["alpha_map"].detach().float().mean()
+            self._last_rrsd_alpha_max = pred["alpha_map"].detach().float().max()
+            return score_route
+
+        return _score_calibrator
 
     def _compute_frontend_adaptive_score_guidance_loss(
         self,
@@ -3520,6 +3824,27 @@ class JointFrontendSgmseModel(ScoreModel):
             for k, v in anchor_v2_stats.items():
                 self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
 
+        # ===== RRSD: oracle-distilled reliability routing =====
+        # Clean speech supervises only the router target alpha*. The DSM target
+        # and score-network objective remain untouched.
+        loss_rrsd = torch.zeros((), device=x_wav.device, dtype=torch.float32)
+        if self.rrsd_router is not None and float(getattr(self, "rrsd_weight", 0.0)) > 0.0:
+            # Full-speech RRSD: Oracle-distill how far the current diffusion x0
+            # estimate should move toward the frontend enhanced spectrum Y_pre.
+            loss_rrsd, rrsd_stats = self._compute_rrsd_loss(
+                target=X,
+                x0_front=Y_pre,
+                step_out=step_out,
+            )
+            weighted_rrsd = float(self.rrsd_weight) * loss_rrsd
+            loss = loss + weighted_rrsd.to(loss.dtype)
+            self.log("train_loss_rrsd", loss_rrsd,
+                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            self.log("train_loss_rrsd_weighted", weighted_rrsd,
+                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+            for k, v in rrsd_stats.items():
+                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+
         # ===== final enhanced 的内容级 loss =====
         loss_content_final = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
         if self.final_content_weight > 0.0 and x_hat_spec is not None and self.content_model is not None:
@@ -3696,6 +4021,8 @@ class JointFrontendSgmseModel(ScoreModel):
                         y_cond=y_cond,
                         N=self.sde.N,
                         anchor_v2=bool(getattr(self, "anchor_v2_validate", False)),
+                        rrsd=bool(getattr(self, "rrsd_validate", False)),
+                        rrsd_scale=1.0,
                         anchor_v2_single_shot=bool(getattr(self, "anchor_v2_validate_single_shot", False)),
                         anchor_v2_single_shot_ratio=float(getattr(self, "anchor_v2_single_shot_ratio", 0.5)),
                     )

@@ -137,6 +137,17 @@ def main():
         help="Enable fine-grained band-time Anchor V2. Requires a checkpoint trained with --anchor_v2_weight > 0.",
     )
     p.add_argument(
+        "--rrsd",
+        action="store_true",
+        help="Enable Oracle-distilled Reliability-Routed Score Diffusion during PC sampling.",
+    )
+    p.add_argument(
+        "--rrsd_scale",
+        type=float,
+        default=1.0,
+        help="Inference multiplier on predicted alpha routing coefficients; 1.0 uses the trained router as-is.",
+    )
+    p.add_argument(
         "--anchor_v2_a_max",
         type=float,
         default=None,
@@ -273,6 +284,8 @@ def main():
                 anchor_k_max=args.anchor_k_max,
                 anchor_scale=args.anchor_scale,
                 anchor_v2=args.anchor_v2,
+                rrsd=args.rrsd,
+                rrsd_scale=args.rrsd_scale,
                 anchor_v2_a_max=args.anchor_v2_a_max,
                 anchor_v2_b_max=args.anchor_v2_b_max,
                 anchor_v2_scale=args.anchor_v2_scale,

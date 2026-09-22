@@ -1073,9 +1073,12 @@ class ScoreModel(pl.LightningModule):
         anchor_v2_single_shot_arg = kwargs.pop("anchor_v2_single_shot", False)
         anchor_v2_single_shot_ratio_arg = kwargs.pop("anchor_v2_single_shot_ratio", 0.5)
         anchor_v2_single_shot_step_arg = kwargs.pop("anchor_v2_single_shot_step", None)
+        rrsd_arg = kwargs.pop("rrsd", False)
+        rrsd_scale_arg = kwargs.pop("rrsd_scale", 1.0)
 
-        if bool(anchor_calib_arg) and bool(anchor_v2_arg):
-            raise ValueError("anchor_calib and anchor_v2 are separate ablations and cannot be enabled together.")
+        n_route_modes = int(bool(anchor_calib_arg)) + int(bool(anchor_v2_arg)) + int(bool(rrsd_arg))
+        if n_route_modes > 1:
+            raise ValueError("anchor_calib, anchor_v2 and rrsd are separate sampler ablations; enable at most one.")
 
         start = time.time()
 
@@ -1158,6 +1161,15 @@ class ScoreModel(pl.LightningModule):
                     warnings.warn("anchor_v2=True but Anchor V2 is disabled in this model; using original sampler.")
             else:
                 warnings.warn("anchor_v2=True but model has no build_anchor_v2_score_calibrator(); using original sampler.")
+        elif bool(rrsd_arg):
+            if hasattr(self, "build_rrsd_score_calibrator"):
+                score_calibrator = self.build_rrsd_score_calibrator(
+                    Y, y_cond_spec, scale=float(rrsd_scale_arg)
+                )
+                if score_calibrator is None:
+                    warnings.warn("rrsd=True but RRSD router is disabled in this model; using original sampler.")
+            else:
+                warnings.warn("rrsd=True but model has no build_rrsd_score_calibrator(); using original sampler.")
 
         # OUVESDE和VESDE选择的采样器，都接受分数
         if self.sde.__class__.__name__ in  ('OUVESDE', 'VESDE','VPSDE'):
@@ -1169,6 +1181,8 @@ class ScoreModel(pl.LightningModule):
                     score_calibrator=score_calibrator,
                     **kwargs)
             elif self.sde.sampler_type == "ode":
+                if bool(rrsd_arg):
+                    raise ValueError("RRSD V1 is currently implemented for PC sampling only; use sampler_type=pc.")
                 sampler = self.get_ode_sampler(Y.cuda(),score_fn=score_fn, N=N, regeneration_strength=regeneration_strength, **kwargs)
             else:
                 raise ValueError("Invalid sampler type for SGMSE sampling: {}".format(sampler_type))
