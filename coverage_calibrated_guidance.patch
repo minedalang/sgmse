@@ -1,0 +1,84 @@
+--- a/sgmse/joint_model.py
++++ b/sgmse/joint_model.py
+@@ -481,6 +481,16 @@
+             help=(
+                 "Fraction of locally degraded TF patches eligible for adaptive score guidance. "
+                 "1.0 uses all violated patches; values <1 keep only the worst tail for ablation."
++            ),
++        )
++        parser.add_argument(
++            "--frontend_nr_guidance_coverage_target",
++            type=float,
++            default=0.0,
++            help=(
++                "Target effective TF coverage for adaptive score guidance. 0 disables coverage "
++                "calibration and reproduces the original summed guidance loss. Values such as "
++                "0.05 compensate for sparse gate activation; the scale is capped internally."
+             ),
+         )
+         parser.add_argument(
+@@ -739,6 +749,7 @@
+         frontend_nr_guidance_strength: float = 0.25,
+         frontend_nr_guidance_temperature: float = 0.25,
+         frontend_nr_guidance_tail_fraction: float = 1.0,
++        frontend_nr_guidance_coverage_target: float = 0.0,
+         frontend_nr_weight: float = 0.0,
+         frontend_nr_margin: float = 0.05,
+         frontend_nr_t_max: float = 0.30,
+@@ -852,6 +863,7 @@
+         self.frontend_nr_guidance_strength = float(frontend_nr_guidance_strength)
+         self.frontend_nr_guidance_temperature = float(frontend_nr_guidance_temperature)
+         self.frontend_nr_guidance_tail_fraction = float(frontend_nr_guidance_tail_fraction)
++        self.frontend_nr_guidance_coverage_target = float(frontend_nr_guidance_coverage_target)
+         self.frontend_nr_weight = float(frontend_nr_weight)
+         self.frontend_nr_margin = float(frontend_nr_margin)
+         self.frontend_nr_t_max = float(frontend_nr_t_max)
+@@ -876,6 +888,8 @@
+             raise ValueError("frontend_nr_guidance_temperature must be > 0.")
+         if not (0.0 < self.frontend_nr_guidance_tail_fraction <= 1.0):
+             raise ValueError("frontend_nr_guidance_tail_fraction must be in (0, 1].")
++        if self.frontend_nr_guidance_coverage_target < 0.0:
++            raise ValueError("frontend_nr_guidance_coverage_target must be >= 0.")
+         if self.frontend_nr_weight < 0.0:
+             raise ValueError("frontend_nr_weight must be >= 0.")
+         if self.frontend_nr_margin < 0.0:
+@@ -1104,6 +1118,7 @@
+         self.hparams["frontend_nr_guidance_strength"] = self.frontend_nr_guidance_strength
+         self.hparams["frontend_nr_guidance_temperature"] = self.frontend_nr_guidance_temperature
+         self.hparams["frontend_nr_guidance_tail_fraction"] = self.frontend_nr_guidance_tail_fraction
++        self.hparams["frontend_nr_guidance_coverage_target"] = self.frontend_nr_guidance_coverage_target
+         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
+         self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
+         self.hparams["frontend_nr_t_max"] = self.frontend_nr_t_max
+@@ -2709,7 +2724,21 @@
+         guidance_tf = 0.5 * torch.abs(
+             sigma * (score - score_front)
+         ).float().square().sum(dim=1, keepdim=True)
+-        guidance_loss = (guidance_tf * gate.to(guidance_tf.dtype)).sum()
++        gate_f = gate.to(guidance_tf.dtype)
++        weighted_guidance_sum = (guidance_tf * gate_f).sum()
++        coverage = gate_f.mean().detach()
++        coverage_target = float(self.frontend_nr_guidance_coverage_target)
++        if coverage_target > 0.0:
++            # Calibrate the sparse gate toward a fixed effective coverage so the
++            # global loss magnitude does not collapse merely because only a small
++            # fraction of TF bins violate the frontend-relative no-regret condition.
++            coverage_scale = (
++                torch.as_tensor(coverage_target, device=gate_f.device, dtype=gate_f.dtype)
++                / coverage.clamp_min(eps)
++            ).clamp(max=10.0)
++        else:
++            coverage_scale = torch.ones((), device=gate_f.device, dtype=gate_f.dtype)
++        guidance_loss = weighted_guidance_sum * coverage_scale
+ 
+         with torch.no_grad():
+             score_loss_tf = 0.5 * torch.abs(
+@@ -2734,6 +2763,8 @@
+                 "frontend_guidance_gate_mean": gate.mean(),
+                 "frontend_guidance_gate_max": gate.max(),
+                 "frontend_guidance_gate_active_fraction": (gate > 0.0).float().mean(),
++                "frontend_guidance_coverage": coverage,
++                "frontend_guidance_coverage_scale": coverage_scale.detach(),
+                 "frontend_guidance_loss_to_raw_score_ratio": guidance_loss.detach() / raw_score_loss,
+                 "frontend_guidance_score_distance_mean": guidance_tf.mean(),
+             }

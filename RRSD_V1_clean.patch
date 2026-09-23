@@ -1,0 +1,751 @@
+diff -urN a/joint_enhance_by_dir.py b/joint_enhance_by_dir.py
+--- a/joint_enhance_by_dir.py	2026-09-21 05:46:41.116319714 +0000
++++ b/joint_enhance_by_dir.py	2026-09-21 05:46:41.120088990 +0000
+@@ -137,6 +137,17 @@
+         help="Enable fine-grained band-time Anchor V2. Requires a checkpoint trained with --anchor_v2_weight > 0.",
+     )
+     p.add_argument(
++        "--rrsd",
++        action="store_true",
++        help="Enable Oracle-distilled Reliability-Routed Score Diffusion during PC sampling.",
++    )
++    p.add_argument(
++        "--rrsd_scale",
++        type=float,
++        default=1.0,
++        help="Inference multiplier on predicted alpha routing coefficients; 1.0 uses the trained router as-is.",
++    )
++    p.add_argument(
+         "--anchor_v2_a_max",
+         type=float,
+         default=None,
+@@ -273,6 +284,8 @@
+                 anchor_k_max=args.anchor_k_max,
+                 anchor_scale=args.anchor_scale,
+                 anchor_v2=args.anchor_v2,
++                rrsd=args.rrsd,
++                rrsd_scale=args.rrsd_scale,
+                 anchor_v2_a_max=args.anchor_v2_a_max,
+                 anchor_v2_b_max=args.anchor_v2_b_max,
+                 anchor_v2_scale=args.anchor_v2_scale,
+diff -urN a/sgmse/joint_model.py b/sgmse/joint_model.py
+--- a/sgmse/joint_model.py	2026-09-21 05:46:41.113695193 +0000
++++ b/sgmse/joint_model.py	2026-09-21 05:46:41.117828434 +0000
+@@ -41,6 +41,7 @@
+ from sgmse.sdes import SBVESDE
+ from sgmse.frontends import build_frontend
+ from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
++from sgmse.reliability_router import BandTimeReliabilityRouter, solve_frontend_projection_oracle
+ from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint
+ from sgmse.residual_initializer import (
+     ConfidenceGatedResidualPriorPredictor,
+@@ -493,6 +494,26 @@
+                 "0.05 compensate for sparse gate activation; the scale is capped internally."
+             ),
+         )
++
++        # ===== RRSD: Oracle-distilled reliability-routed diffusion =====
++        parser.add_argument("--rrsd_weight", type=float, default=0.0,
++                            help="Training weight for the RRSD reliability-router distillation loss. 0 disables RRSD training.")
++        parser.add_argument("--rrsd_hidden_ch", type=int, default=48)
++        parser.add_argument("--rrsd_num_bands", type=int, default=32)
++        parser.add_argument("--rrsd_num_time_blocks", type=int, default=16)
++        parser.add_argument("--rrsd_init_alpha", type=float, default=0.05,
++                            help="Initial routing coefficient. Small values make a newly-added router close to a no-op.")
++        parser.add_argument("--rrsd_benefit_weight", type=float, default=4.0,
++                            help="Extra oracle-distillation weight on tiles with large clean-referenced routing benefit.")
++        parser.add_argument("--rrsd_recon_weight", type=float, default=0.10,
++                            help="Weight of normalized x0 reconstruction loss for routed estimates.")
++        parser.add_argument("--rrsd_smooth_weight", type=float, default=0.01,
++                            help="Spatial smoothness weight on the low-resolution alpha routing grid.")
++        parser.add_argument("--rrsd_oracle_eps", type=float, default=1e-6)
++        parser.add_argument("--rrsd_validate", action="store_true",
++                            help="Use RRSD during the periodic file-level validation sampler.")
++        parser.add_argument("--rrsd_freeze_base", action="store_true",
++                            help="Freeze the frontend and score network; train only the RRSD router. Recommended for the first diagnostic experiment.")
+         parser.add_argument(
+             "--frontend_nr_weight",
+             type=float,
+@@ -750,6 +771,17 @@
+         frontend_nr_guidance_temperature: float = 0.25,
+         frontend_nr_guidance_tail_fraction: float = 1.0,
+         frontend_nr_guidance_coverage_target: float = 0.0,
++        rrsd_weight: float = 0.0,
++        rrsd_hidden_ch: int = 48,
++        rrsd_num_bands: int = 32,
++        rrsd_num_time_blocks: int = 16,
++        rrsd_init_alpha: float = 0.05,
++        rrsd_benefit_weight: float = 4.0,
++        rrsd_recon_weight: float = 0.10,
++        rrsd_smooth_weight: float = 0.01,
++        rrsd_oracle_eps: float = 1e-6,
++        rrsd_validate: bool = False,
++        rrsd_freeze_base: bool = False,
+         frontend_nr_weight: float = 0.0,
+         frontend_nr_margin: float = 0.05,
+         frontend_nr_t_max: float = 0.30,
+@@ -864,6 +896,35 @@
+         self.frontend_nr_guidance_temperature = float(frontend_nr_guidance_temperature)
+         self.frontend_nr_guidance_tail_fraction = float(frontend_nr_guidance_tail_fraction)
+         self.frontend_nr_guidance_coverage_target = float(frontend_nr_guidance_coverage_target)
++
++        # RRSD learns a deployable local routing coefficient alpha(t,f,tau) from
++        # a clean-referenced projection oracle, while leaving the DSM target unchanged.
++        self.rrsd_weight = float(rrsd_weight)
++        self.rrsd_benefit_weight = float(rrsd_benefit_weight)
++        self.rrsd_recon_weight = float(rrsd_recon_weight)
++        self.rrsd_smooth_weight = float(rrsd_smooth_weight)
++        self.rrsd_oracle_eps = float(rrsd_oracle_eps)
++        self.rrsd_validate = bool(rrsd_validate)
++        self.rrsd_freeze_base = bool(rrsd_freeze_base)
++        if self.rrsd_weight < 0.0:
++            raise ValueError("rrsd_weight must be >= 0.")
++        if self.rrsd_benefit_weight < 0.0 or self.rrsd_recon_weight < 0.0 or self.rrsd_smooth_weight < 0.0:
++            raise ValueError("RRSD loss weights must be >= 0.")
++        if self.rrsd_oracle_eps <= 0.0:
++            raise ValueError("rrsd_oracle_eps must be > 0.")
++        self.rrsd_router = None
++        if self.rrsd_weight > 0.0:
++            if self.sde.__class__.__name__ != "OUVESDE":
++                raise ValueError("RRSD V1 currently supports OUVESDE only.")
++            if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
++                raise ValueError("RRSD V1 currently requires score_matching with sigma^2 weighting.")
++            self.rrsd_router = BandTimeReliabilityRouter(
++                hidden_ch=int(rrsd_hidden_ch),
++                num_bands=int(rrsd_num_bands),
++                num_time_blocks=int(rrsd_num_time_blocks),
++                init_alpha=float(rrsd_init_alpha),
++            )
++
+         self.frontend_nr_weight = float(frontend_nr_weight)
+         self.frontend_nr_margin = float(frontend_nr_margin)
+         self.frontend_nr_t_max = float(frontend_nr_t_max)
+@@ -1038,6 +1099,11 @@
+         # (equivalently Y_pre + lambda(t) R_theta in clean-spectrum coordinates).
+         # By default the score loss does not backpropagate into the prior network.
+         self.residual_refine_enable = bool(residual_refine_enable)
++        if self.rrsd_weight > 0.0 and self.residual_refine_enable:
++            raise ValueError(
++                "RRSD V1-clean is defined for the full-speech frontend/diffusion path only; "
++                "disable --residual_refine_enable for this experiment."
++            )
+         self.residual_prior_type = str(residual_prior_type).strip().lower()
+         # 'predictive' is a paper/CLI alias; the module/checkpoint layout is
+         # intentionally identical to the historical 'direct' predictor.
+@@ -1119,6 +1185,17 @@
+         self.hparams["frontend_nr_guidance_temperature"] = self.frontend_nr_guidance_temperature
+         self.hparams["frontend_nr_guidance_tail_fraction"] = self.frontend_nr_guidance_tail_fraction
+         self.hparams["frontend_nr_guidance_coverage_target"] = self.frontend_nr_guidance_coverage_target
++        self.hparams["rrsd_weight"] = self.rrsd_weight
++        self.hparams["rrsd_hidden_ch"] = int(rrsd_hidden_ch)
++        self.hparams["rrsd_num_bands"] = int(rrsd_num_bands)
++        self.hparams["rrsd_num_time_blocks"] = int(rrsd_num_time_blocks)
++        self.hparams["rrsd_init_alpha"] = float(rrsd_init_alpha)
++        self.hparams["rrsd_benefit_weight"] = self.rrsd_benefit_weight
++        self.hparams["rrsd_recon_weight"] = self.rrsd_recon_weight
++        self.hparams["rrsd_smooth_weight"] = self.rrsd_smooth_weight
++        self.hparams["rrsd_oracle_eps"] = self.rrsd_oracle_eps
++        self.hparams["rrsd_validate"] = self.rrsd_validate
++        self.hparams["rrsd_freeze_base"] = self.rrsd_freeze_base
+         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
+         self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
+         self.hparams["frontend_nr_t_max"] = self.frontend_nr_t_max
+@@ -1201,6 +1278,12 @@
+                 p.requires_grad = False
+             self.frontend.eval()
+ 
++        if self.rrsd_freeze_base:
++            if self.rrsd_router is None:
++                raise ValueError("--rrsd_freeze_base requires --rrsd_weight > 0 so a router exists.")
++            for name, p in self.named_parameters():
++                p.requires_grad = name.startswith("rrsd_router.")
++
+         # Rebuild EMA after frontend creation so EMA tracks the full trainable model
+         self._ensure_ema_is_compatible(force_rebuild=True)
+ 
+@@ -1421,6 +1504,19 @@
+         params = [p for p in self.parameters() if p.requires_grad]
+         optimizer = torch.optim.Adam(params, lr=self.lr)
+         return optimizer
++    def train(self, mode: bool = True, no_ema: bool = False):
++        out = super().train(mode, no_ema=no_ema)
++        if mode and bool(getattr(self, "rrsd_freeze_base", False)):
++            # Keep the frozen teacher system deterministic while Q_phi learns.
++            if hasattr(self, "dnn") and self.dnn is not None:
++                self.dnn.eval()
++            if hasattr(self, "frontend") and self.frontend is not None:
++                self.frontend.eval()
++            if getattr(self, "residual_initializer", None) is not None:
++                self.residual_initializer.eval()
++            if getattr(self, "rrsd_router", None) is not None:
++                self.rrsd_router.train(True)
++        return out
+     def on_fit_start(self):
+         # Make sure teacher model is on the same device
+         super().on_fit_start()
+@@ -2471,6 +2567,8 @@
+         # ablation and must not leak unknown kwargs into the ODE solver.
+         anchor_calib_arg = bool(kwargs.pop("anchor_calib", False))
+         anchor_v2_arg = bool(kwargs.pop("anchor_v2", False))
++        rrsd_arg = bool(kwargs.pop("rrsd", False))
++        kwargs.pop("rrsd_scale", None)
+         for key in (
+             "anchor_k_max",
+             "anchor_scale",
+@@ -2485,6 +2583,11 @@
+             kwargs.pop(key, None)
+         if anchor_calib_arg or anchor_v2_arg:
+             raise ValueError("Anchor V1/V2 must be disabled for residual-refinement inference.")
++        if rrsd_arg:
++            raise ValueError(
++                "RRSD V1-clean does not support residual-refinement inference. "
++                "Use the full-speech mode2/mode3 path."
++            )
+ 
+         regen_strength_arg = kwargs.pop("regen_strength", None)
+         if regen_strength_arg is None:
+@@ -2522,7 +2625,6 @@
+         regeneration_strength = self._resolve_regeneration_strength(
+             regen_strength_arg, r_det, r_obs
+         )
+-
+         if self.sde.__class__.__name__ != "OUVESDE":
+             raise ValueError("Residual refinement inference currently requires OUVESDE.")
+         if self.sde.sampler_type == "pc":
+@@ -2606,6 +2708,208 @@
+         x0_hat = (mean_hat - w_y * y_main) / w_x.clamp_min(1e-5)
+         return score, x_t, y_main, t, sigma, w_x, w_y, x0_hat
+ 
++    def _rrsd_score_to_x0(
++        self,
++        x_t: torch.Tensor,
++        y_main: torch.Tensor,
++        t: torch.Tensor,
++        score: torch.Tensor,
++    ) -> Tuple[torch.Tensor, torch.Tensor, torch.Tensor, torch.Tensor]:
++        """Invert the OUVE marginal mean for the full-speech RRSD path.
++
++        Uses the SDE's actual weights so the routing geometry remains consistent
++        with the configured OUVE path. Returns (x0_base, sigma, w_x, w_y).
++        """
++        if self.sde.__class__.__name__ != "OUVESDE":
++            raise ValueError("RRSD V1 currently supports OUVESDE only.")
++        if t.ndim == 0:
++            t_vec = torch.full((x_t.shape[0],), float(t.item()), device=x_t.device, dtype=torch.float32)
++        else:
++            t_vec = t.to(device=x_t.device, dtype=torch.float32).flatten()
++        real_dtype = score.real.dtype if torch.is_complex(score) else score.dtype
++        sigma = self.sde._std(t_vec).to(device=x_t.device, dtype=real_dtype)
++        w_x, w_y = self.sde.weights(t_vec)
++        if not torch.is_tensor(w_x):
++            w_x = torch.full_like(t_vec, float(w_x))
++        if not torch.is_tensor(w_y):
++            w_y = torch.full_like(t_vec, float(w_y))
++        w_x = w_x.to(device=x_t.device, dtype=real_dtype)
++        w_y = w_y.to(device=x_t.device, dtype=real_dtype)
++        while sigma.ndim < score.ndim:
++            sigma = sigma.unsqueeze(-1)
++        while w_x.ndim < score.ndim:
++            w_x = w_x.unsqueeze(-1)
++        while w_y.ndim < score.ndim:
++            w_y = w_y.unsqueeze(-1)
++        mean_hat = x_t + sigma.square() * score
++        x0_base = (mean_hat - w_y * y_main) / w_x.clamp_min(1e-5)
++        return x0_base, sigma, w_x, w_y
++
++    def _compute_rrsd_loss(
++        self,
++        *,
++        target: torch.Tensor,
++        x0_front: torch.Tensor,
++        step_out: dict,
++    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
++        """Oracle-distill a deployable local frontend-routing controller.
++
++        DSM itself is untouched.  Clean target is used only to create the local
++        convex projection oracle alpha*.  All inputs to Q_phi are detached and
++        are available again at inference time.
++        """
++        zero = torch.zeros((), device=target.device, dtype=torch.float32)
++        if self.rrsd_router is None or self.rrsd_weight <= 0.0:
++            return zero, {}
++
++        score, x_t, y_main, t, sigma, w_x, w_y, x0_base = self._score_step_geometry(step_out)
++        y_cond = step_out.get("y_cond", None)
++        if y_cond is None:
++            y_cond = y_main
++
++        x0_base = x0_base.detach()
++        x0_front = x0_front.detach().to(dtype=x0_base.dtype)
++        target_det = target.detach()
++        x_t_det = x_t.detach()
++        y_main_det = y_main.detach()
++        y_cond_det = y_cond.detach()
++
++        pred = self.rrsd_router(
++            x_t=x_t_det,
++            x0_base=x0_base,
++            x0_front=x0_front,
++            y_main=y_main_det,
++            y_cond=y_cond_det,
++            t=t.detach(),
++            t_max=float(getattr(self.sde, "T", 1.0)),
++            detach_inputs=True,
++            scale=1.0,
++        )
++
++        alpha_star, oracle_stats = solve_frontend_projection_oracle(
++            target=target_det,
++            x0_base=x0_base,
++            x0_front=x0_front,
++            num_bands=int(self.rrsd_router.num_bands),
++            num_time_blocks=int(self.rrsd_router.num_time_blocks),
++            eps=float(self.rrsd_oracle_eps),
++        )
++
++        # Benefit is a clean-referenced supervision confidence, not an inference
++        # input.  Important oracle regions receive more distillation weight.
++        benefit_ratio = oracle_stats["benefit_ratio"].clamp(0.0, 1.0)
++        oracle_weight = 1.0 + float(self.rrsd_benefit_weight) * benefit_ratio
++        loss_alpha_map = F.smooth_l1_loss(
++            pred["alpha_tile"].float(), alpha_star.float(), reduction="none"
++        )
++        loss_alpha = (loss_alpha_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
++
++        # Normalized x0 reconstruction term: dimensionless and robust to the
++        # large variation of residual energy across utterances/timesteps.
++        reduce_dims = tuple(range(1, target_det.ndim))
++        base_err = torch.abs(x0_base - target_det).float().square().mean(dim=reduce_dims)
++        route_err = torch.abs(pred["x0_route"] - target_det).float().square().mean(dim=reduce_dims)
++        loss_recon = (route_err / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean()
++
++        loss_smooth = torch.zeros((), device=target.device, dtype=torch.float32)
++        a = pred["alpha_tile"].float()
++        if a.shape[-2] > 1:
++            loss_smooth = loss_smooth + a.diff(dim=-2).abs().mean()
++        if a.shape[-1] > 1:
++            loss_smooth = loss_smooth + a.diff(dim=-1).abs().mean()
++
++        loss = (
++            loss_alpha
++            + float(self.rrsd_recon_weight) * loss_recon
++            + float(self.rrsd_smooth_weight) * loss_smooth
++        )
++
++        with torch.no_grad():
++            oracle_active = (alpha_star > 1e-3).float().mean()
++            oracle_front_heavy = (alpha_star > 0.5).float().mean()
++            pred_active = (pred["alpha_tile"] > 1e-3).float().mean()
++            stats = {
++                "rrsd_loss_alpha": loss_alpha.detach(),
++                "rrsd_loss_recon_norm": loss_recon.detach(),
++                "rrsd_loss_smooth": loss_smooth.detach(),
++                "rrsd_alpha_mean": pred["alpha_tile"].detach().float().mean(),
++                "rrsd_alpha_target_mean": alpha_star.float().mean(),
++                "rrsd_alpha_mae": torch.abs(pred["alpha_tile"].detach().float() - alpha_star.float()).mean(),
++                "rrsd_alpha_active_fraction": pred_active,
++                "rrsd_oracle_active_fraction": oracle_active,
++                "rrsd_oracle_front_heavy_fraction": oracle_front_heavy,
++                "rrsd_oracle_benefit_ratio_mean": benefit_ratio.mean(),
++                "rrsd_route_improve_fraction": (route_err < base_err).float().mean(),
++                "rrsd_route_relative_error_change": ((route_err - base_err) / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean(),
++                "rrsd_t_mean": t.detach().float().mean(),
++            }
++        return loss, stats
++
++    def build_rrsd_score_calibrator(
++        self,
++        y_main: torch.Tensor,
++        y_cond: Optional[torch.Tensor] = None,
++        *,
++        scale: float = 1.0,
++    ):
++        """Build the inference-time RRSD routing step used inside the PC sampler.
++
++        Per predictor step:
++          1) base score -> current x0_base
++          2) Q_phi predicts alpha(t,f,tau)
++          3) x0_route = x0_base + alpha * (x0_front-x0_base)
++          4) x0_route is converted back to a routed score
++          5) the ordinary reverse-SDE predictor integrates that routed score
++        """
++        if self.rrsd_router is None:
++            return None
++        if self.sde.__class__.__name__ != "OUVESDE":
++            warnings.warn("RRSD V1 currently supports OUVESDE only; disabling routing.")
++            return None
++        if y_cond is None:
++            y_cond = y_main
++
++        # RRSD V1-clean routes the current diffusion x0 estimate toward the
++        # *full-speech frontend estimate*.  This is exactly the candidate pair
++        # validated by the frontend/backend Oracle Projection experiment.
++        Y_pre, _ = self._main_and_cond_to_pre_noisy(y_main, y_cond)
++        x0_front = Y_pre.detach()
++
++        t_max = float(getattr(self.sde, "T", 1.0))
++        scale = float(scale)
++
++        def _score_calibrator(x_t, y_unused, t, score_base, step_index=None, num_steps=None):
++            x0_base, sigma, w_x, _ = self._rrsd_score_to_x0(x_t, y_main, t, score_base)
++            pred = self.rrsd_router(
++                x_t=x_t,
++                x0_base=x0_base,
++                x0_front=x0_front,
++                y_main=y_main,
++                y_cond=y_cond,
++                t=t,
++                t_max=t_max,
++                detach_inputs=True,
++                scale=scale,
++            )
++            # mu(x0_route)-mu(x0_base) = w_x * delta_x0, hence the exact
++            # corresponding score residual is w_x * delta_x0 / sigma^2.
++            delta_score = w_x * pred["delta_x0"] / sigma.square().clamp_min(1e-8)
++            score_route = score_base + delta_score.to(dtype=score_base.dtype)
++            if torch.is_complex(score_route):
++                score_route = torch.complex(
++                    torch.nan_to_num(score_route.real),
++                    torch.nan_to_num(score_route.imag),
++                )
++            else:
++                score_route = torch.nan_to_num(score_route)
++
++            # Lightweight inference diagnostics for optional debugging.
++            self._last_rrsd_alpha_mean = pred["alpha_map"].detach().float().mean()
++            self._last_rrsd_alpha_max = pred["alpha_map"].detach().float().max()
++            return score_route
++
++        return _score_calibrator
++
+     def _compute_frontend_adaptive_score_guidance_loss(
+         self,
+         *,
+@@ -3520,6 +3824,27 @@
+             for k, v in anchor_v2_stats.items():
+                 self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+ 
++        # ===== RRSD: oracle-distilled reliability routing =====
++        # Clean speech supervises only the router target alpha*. The DSM target
++        # and score-network objective remain untouched.
++        loss_rrsd = torch.zeros((), device=x_wav.device, dtype=torch.float32)
++        if self.rrsd_router is not None and float(getattr(self, "rrsd_weight", 0.0)) > 0.0:
++            # Full-speech RRSD: Oracle-distill how far the current diffusion x0
++            # estimate should move toward the frontend enhanced spectrum Y_pre.
++            loss_rrsd, rrsd_stats = self._compute_rrsd_loss(
++                target=X,
++                x0_front=Y_pre,
++                step_out=step_out,
++            )
++            weighted_rrsd = float(self.rrsd_weight) * loss_rrsd
++            loss = loss + weighted_rrsd.to(loss.dtype)
++            self.log("train_loss_rrsd", loss_rrsd,
++                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
++            self.log("train_loss_rrsd_weighted", weighted_rrsd,
++                     on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
++            for k, v in rrsd_stats.items():
++                self.log(k, v, on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
++
+         # ===== final enhanced 的内容级 loss =====
+         loss_content_final = torch.zeros((), device=x_wav.device, dtype=x_wav.dtype)
+         if self.final_content_weight > 0.0 and x_hat_spec is not None and self.content_model is not None:
+@@ -3696,6 +4021,8 @@
+                         y_cond=y_cond,
+                         N=self.sde.N,
+                         anchor_v2=bool(getattr(self, "anchor_v2_validate", False)),
++                        rrsd=bool(getattr(self, "rrsd_validate", False)),
++                        rrsd_scale=1.0,
+                         anchor_v2_single_shot=bool(getattr(self, "anchor_v2_validate_single_shot", False)),
+                         anchor_v2_single_shot_ratio=float(getattr(self, "anchor_v2_single_shot_ratio", 0.5)),
+                     )
+diff -urN a/sgmse/model.py b/sgmse/model.py
+--- a/sgmse/model.py	2026-09-21 05:46:41.115198410 +0000
++++ b/sgmse/model.py	2026-09-21 05:46:41.119063985 +0000
+@@ -1073,9 +1073,12 @@
+         anchor_v2_single_shot_arg = kwargs.pop("anchor_v2_single_shot", False)
+         anchor_v2_single_shot_ratio_arg = kwargs.pop("anchor_v2_single_shot_ratio", 0.5)
+         anchor_v2_single_shot_step_arg = kwargs.pop("anchor_v2_single_shot_step", None)
++        rrsd_arg = kwargs.pop("rrsd", False)
++        rrsd_scale_arg = kwargs.pop("rrsd_scale", 1.0)
+ 
+-        if bool(anchor_calib_arg) and bool(anchor_v2_arg):
+-            raise ValueError("anchor_calib and anchor_v2 are separate ablations and cannot be enabled together.")
++        n_route_modes = int(bool(anchor_calib_arg)) + int(bool(anchor_v2_arg)) + int(bool(rrsd_arg))
++        if n_route_modes > 1:
++            raise ValueError("anchor_calib, anchor_v2 and rrsd are separate sampler ablations; enable at most one.")
+ 
+         start = time.time()
+ 
+@@ -1158,6 +1161,15 @@
+                     warnings.warn("anchor_v2=True but Anchor V2 is disabled in this model; using original sampler.")
+             else:
+                 warnings.warn("anchor_v2=True but model has no build_anchor_v2_score_calibrator(); using original sampler.")
++        elif bool(rrsd_arg):
++            if hasattr(self, "build_rrsd_score_calibrator"):
++                score_calibrator = self.build_rrsd_score_calibrator(
++                    Y, y_cond_spec, scale=float(rrsd_scale_arg)
++                )
++                if score_calibrator is None:
++                    warnings.warn("rrsd=True but RRSD router is disabled in this model; using original sampler.")
++            else:
++                warnings.warn("rrsd=True but model has no build_rrsd_score_calibrator(); using original sampler.")
+ 
+         # OUVESDE和VESDE选择的采样器，都接受分数
+         if self.sde.__class__.__name__ in  ('OUVESDE', 'VESDE','VPSDE'):
+@@ -1169,6 +1181,8 @@
+                     score_calibrator=score_calibrator,
+                     **kwargs)
+             elif self.sde.sampler_type == "ode":
++                if bool(rrsd_arg):
++                    raise ValueError("RRSD V1 is currently implemented for PC sampling only; use sampler_type=pc.")
+                 sampler = self.get_ode_sampler(Y.cuda(),score_fn=score_fn, N=N, regeneration_strength=regeneration_strength, **kwargs)
+             else:
+                 raise ValueError("Invalid sampler type for SGMSE sampling: {}".format(sampler_type))
+diff -urN a/sgmse/reliability_router.py b/sgmse/reliability_router.py
+--- a/sgmse/reliability_router.py	2026-09-21 05:46:41.116319714 +0000
++++ b/sgmse/reliability_router.py	2026-09-21 05:46:41.121201597 +0000
+@@ -0,0 +1,244 @@
++"""Oracle-distilled reliability routing for diffusion speech enhancement.
++
++RRSD learns a local, time-dependent convex routing coefficient alpha in [0, 1]
++that interpolates the diffusion model's current x0 estimate with the predictive
++frontend solution:
++
++    x0_route = x0_base + alpha * (x0_front - x0_base)
++
++The training target alpha* is a clean-referenced local projection oracle.  At
++inference clean speech is not used: a small reliability router Q_phi predicts
++alpha from quantities that are all available during reverse diffusion.
++"""
++
++from __future__ import annotations
++
++from typing import Dict, Tuple
++import math
++
++import torch
++import torch.nn as nn
++import torch.nn.functional as F
++
++
++class BandTimeReliabilityRouter(nn.Module):
++    """Predict alpha(t,f,tau) on a low-resolution band-time grid.
++
++    Unlike Anchor V2, this controller predicts a *convex frontend routing
++    coefficient* rather than small signed residual coefficients.  No manual
++    diffusion-time envelope is imposed: the oracle-distilled controller learns
++    when frontend fallback is useful from data.
++    """
++
++    router_type = "oracle_distilled_band_time_reliability"
++
++    def __init__(
++        self,
++        hidden_ch: int = 48,
++        num_bands: int = 32,
++        num_time_blocks: int = 16,
++        init_alpha: float = 0.05,
++    ) -> None:
++        super().__init__()
++        self.hidden_ch = int(hidden_ch)
++        self.num_bands = max(int(num_bands), 1)
++        self.num_time_blocks = max(int(num_time_blocks), 1)
++        self.init_alpha = float(init_alpha)
++        if not 0.0 < self.init_alpha < 1.0:
++            raise ValueError("init_alpha must be in (0,1).")
++
++        # Five local magnitude-stat maps x (mean/std/max), three local cosine
++        # relations, and one normalized diffusion-time feature.
++        in_ch = 5 * 3 + 3 + 1
++        self.feature_proj = nn.Conv2d(in_ch, self.hidden_ch, kernel_size=1)
++        self.context1 = nn.Conv2d(self.hidden_ch, self.hidden_ch, kernel_size=3, padding=1)
++        self.context2 = nn.Conv2d(self.hidden_ch, self.hidden_ch, kernel_size=3, padding=1)
++        self.output = nn.Conv2d(self.hidden_ch, 1, kernel_size=1)
++
++        # Start close to a no-op instead of alpha=0.5.
++        nn.init.zeros_(self.output.weight)
++        init_logit = math.log(self.init_alpha / (1.0 - self.init_alpha))
++        nn.init.constant_(self.output.bias, init_logit)
++
++    @staticmethod
++    def _real_dtype(x: torch.Tensor) -> torch.dtype:
++        return x.real.dtype if torch.is_complex(x) else x.dtype
++
++    @staticmethod
++    def _pool_size(x: torch.Tensor, num_bands: int, num_time_blocks: int) -> Tuple[int, int]:
++        if x.ndim != 4:
++            raise ValueError(f"RRSD expects [B,C,F,T], got {tuple(x.shape)}")
++        return (
++            max(1, min(int(num_bands), int(x.shape[-2]))),
++            max(1, min(int(num_time_blocks), int(x.shape[-1]))),
++        )
++
++    @classmethod
++    def _tile_stats(cls, x: torch.Tensor, out_size: Tuple[int, int]) -> torch.Tensor:
++        mag = torch.abs(x).float() if torch.is_complex(x) else x.abs().float()
++        mag = mag.mean(dim=1, keepdim=True)
++        mean = F.adaptive_avg_pool2d(mag, out_size)
++        mean_sq = F.adaptive_avg_pool2d(mag.square(), out_size)
++        std = (mean_sq - mean.square()).clamp_min(0.0).sqrt()
++        maxv = F.adaptive_max_pool2d(mag, out_size)
++        return torch.cat([mean, std, maxv], dim=1)
++
++    @staticmethod
++    def _real_inner_map(a: torch.Tensor, b: torch.Tensor) -> torch.Tensor:
++        if torch.is_complex(a) or torch.is_complex(b):
++            v = torch.real(torch.conj(a) * b)
++        else:
++            v = a * b
++        return v.float().sum(dim=1, keepdim=True)
++
++    @staticmethod
++    def _energy_map(x: torch.Tensor) -> torch.Tensor:
++        return torch.abs(x).float().square().sum(dim=1, keepdim=True)
++
++    @classmethod
++    def _tile_cosine(
++        cls,
++        a: torch.Tensor,
++        b: torch.Tensor,
++        out_size: Tuple[int, int],
++        eps: float = 1e-8,
++    ) -> torch.Tensor:
++        inner = F.adaptive_avg_pool2d(cls._real_inner_map(a, b), out_size)
++        ea = F.adaptive_avg_pool2d(cls._energy_map(a), out_size)
++        eb = F.adaptive_avg_pool2d(cls._energy_map(b), out_size)
++        return (inner / (ea.mul(eb).clamp_min(eps).sqrt())).clamp(-1.0, 1.0)
++
++    def forward(
++        self,
++        *,
++        x_t: torch.Tensor,
++        x0_base: torch.Tensor,
++        x0_front: torch.Tensor,
++        y_main: torch.Tensor,
++        y_cond: torch.Tensor,
++        t: torch.Tensor,
++        t_max: float = 1.0,
++        detach_inputs: bool = True,
++        scale: float = 1.0,
++    ) -> Dict[str, torch.Tensor]:
++        if detach_inputs:
++            x_t = x_t.detach()
++            x0_base = x0_base.detach()
++            x0_front = x0_front.detach()
++            y_main = y_main.detach()
++            y_cond = y_cond.detach()
++            t = t.detach()
++
++        if t.ndim == 0:
++            t = torch.full(
++                (x_t.shape[0],), float(t.item()), device=x_t.device, dtype=torch.float32
++            )
++        else:
++            t = t.to(device=x_t.device, dtype=torch.float32).flatten()
++
++        out_size = self._pool_size(x0_base, self.num_bands, self.num_time_blocks)
++
++        # The most important evidence is the predictive-generative disagreement.
++        d_front = x0_front - x0_base
++        d_main = y_main - x0_base
++        d_cond = y_cond - x0_base
++        state_gap = x_t - x0_base
++
++        feat = torch.cat(
++            [
++                self._tile_stats(x0_base, out_size),
++                self._tile_stats(d_front, out_size),
++                self._tile_stats(d_main, out_size),
++                self._tile_stats(d_cond, out_size),
++                self._tile_stats(state_gap, out_size),
++                self._tile_cosine(d_front, d_cond, out_size),
++                self._tile_cosine(d_front, d_main, out_size),
++                self._tile_cosine(d_main, d_cond, out_size),
++            ],
++            dim=1,
++        )
++        t_feat = (t / max(float(t_max), 1e-8)).clamp(0.0, 1.0)
++        t_feat = t_feat.view(-1, 1, 1, 1).expand(-1, 1, out_size[0], out_size[1])
++        feat = torch.cat([feat, t_feat], dim=1)
++
++        h = F.silu(self.feature_proj(feat))
++        h = F.silu(self.context1(h))
++        h = F.silu(self.context2(h))
++        alpha_tile_raw = torch.sigmoid(self.output(h))
++        scale = max(float(scale), 0.0)
++        alpha_tile = (alpha_tile_raw * scale).clamp(0.0, 1.0)
++
++        full_size = (int(x0_base.shape[-2]), int(x0_base.shape[-1]))
++        alpha_map = F.interpolate(alpha_tile, size=full_size, mode="bilinear", align_corners=False)
++        alpha_map = alpha_map.to(dtype=self._real_dtype(x0_base))
++
++        delta_x0 = alpha_map * (x0_front - x0_base)
++        x0_route = x0_base + delta_x0
++        return {
++            "alpha_tile": alpha_tile,
++            "alpha_tile_raw": alpha_tile_raw,
++            "alpha_map": alpha_map,
++            "delta_x0": delta_x0,
++            "x0_route": x0_route,
++        }
++
++
++def _tile_real_inner(a: torch.Tensor, b: torch.Tensor, out_size: Tuple[int, int]) -> torch.Tensor:
++    if torch.is_complex(a) or torch.is_complex(b):
++        prod = torch.real(torch.conj(a) * b)
++    else:
++        prod = a * b
++    return F.adaptive_avg_pool2d(prod.float().sum(dim=1, keepdim=True), out_size)
++
++
++def _tile_energy(x: torch.Tensor, out_size: Tuple[int, int]) -> torch.Tensor:
++    energy = torch.abs(x).float().square().sum(dim=1, keepdim=True)
++    return F.adaptive_avg_pool2d(energy, out_size)
++
++
++def solve_frontend_projection_oracle(
++    *,
++    target: torch.Tensor,
++    x0_base: torch.Tensor,
++    x0_front: torch.Tensor,
++    num_bands: int,
++    num_time_blocks: int,
++    eps: float = 1e-6,
++) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
++    """Local convex projection oracle used only during training.
++
++    Finds alpha* in [0,1] minimizing
++
++        || target - [x0_base + alpha (x0_front-x0_base)] ||^2
++
++    independently on each band-time tile.
++    """
++    out_size = BandTimeReliabilityRouter._pool_size(
++        x0_base, num_bands=num_bands, num_time_blocks=num_time_blocks
++    )
++    d = x0_front - x0_base
++    r = target - x0_base
++
++    numerator = _tile_real_inner(d, r, out_size)
++    denominator = _tile_energy(d, out_size).clamp_min(float(eps))
++    alpha_raw = numerator / denominator
++    alpha_star = alpha_raw.clamp(0.0, 1.0)
++
++    base_error = _tile_energy(r, out_size)
++    oracle_error = (
++        base_error
++        - 2.0 * alpha_star * numerator
++        + alpha_star.square() * denominator
++    ).clamp_min(0.0)
++    benefit = (base_error - oracle_error).clamp_min(0.0)
++    benefit_ratio = benefit / base_error.clamp_min(float(eps))
++
++    stats = {
++        "alpha_raw": alpha_raw,
++        "base_error": base_error,
++        "oracle_error": oracle_error,
++        "benefit": benefit,
++        "benefit_ratio": benefit_ratio,
++        "disagreement_energy": denominator,
++    }
++    return alpha_star.detach(), {k: v.detach() for k, v in stats.items()}

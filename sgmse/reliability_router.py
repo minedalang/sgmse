@@ -1,14 +1,15 @@
-"""Oracle-distilled reliability routing for diffusion speech enhancement.
+"""Reliability routing modules for diffusion speech enhancement.
 
-RRSD learns a local, time-dependent convex routing coefficient alpha in [0, 1]
-that interpolates the diffusion model's current x0 estimate with the predictive
-frontend solution:
+This file supports two RRSD variants:
 
-    x0_route = x0_base + alpha * (x0_front - x0_base)
+1) Single-alpha routing (backward compatible):
+       x0_route = x0_base + alpha * (x0_front - x0_base)
 
-The training target alpha* is a clean-referenced local projection oracle.  At
-inference clean speech is not used: a small reliability router Q_phi predicts
-alpha from quantities that are all available during reverse diffusion.
+2) Explicit gate + strength routing:
+       x0_route = x0_base + g * a * (x0_front - x0_base)
+
+The shared backbone sees only inference-available evidence. Clean speech is used
+only by training-time teacher/oracle code in ``joint_model.py``.
 """
 
 from __future__ import annotations
@@ -22,12 +23,19 @@ import torch.nn.functional as F
 
 
 class BandTimeReliabilityRouter(nn.Module):
-    """Predict alpha(t,f,tau) on a low-resolution band-time grid.
+    """Predict local routing coefficients on a low-resolution band-time grid.
 
-    Unlike Anchor V2, this controller predicts a *convex frontend routing
-    coefficient* rather than small signed residual coefficients.  No manual
-    diffusion-time envelope is imposed: the oracle-distilled controller learns
-    when frontend fallback is useful from data.
+    ``use_gate=False`` reproduces the original RRSD single-alpha controller.
+
+    ``use_gate=True`` keeps the same shared feature extractor and adds a second
+    1x1 head:
+
+        gate      g in [0,1]  : whether routing should be trusted
+        strength  a in [0,1]  : how strongly to route if trusted
+        alpha_eff = g * a
+
+    ``alpha_tile`` and ``alpha_map`` always mean the *effective* coefficient,
+    so inference code does not need a separate branch.
     """
 
     router_type = "oracle_distilled_band_time_reliability"
@@ -38,14 +46,20 @@ class BandTimeReliabilityRouter(nn.Module):
         num_bands: int = 32,
         num_time_blocks: int = 16,
         init_alpha: float = 0.05,
+        use_gate: bool = False,
+        init_gate: float = 0.20,
     ) -> None:
         super().__init__()
         self.hidden_ch = int(hidden_ch)
         self.num_bands = max(int(num_bands), 1)
         self.num_time_blocks = max(int(num_time_blocks), 1)
         self.init_alpha = float(init_alpha)
+        self.use_gate = bool(use_gate)
+        self.init_gate = float(init_gate)
         if not 0.0 < self.init_alpha < 1.0:
             raise ValueError("init_alpha must be in (0,1).")
+        if not 0.0 < self.init_gate < 1.0:
+            raise ValueError("init_gate must be in (0,1).")
 
         # Five local magnitude-stat maps x (mean/std/max), three local cosine
         # relations, and one normalized diffusion-time feature.
@@ -53,12 +67,20 @@ class BandTimeReliabilityRouter(nn.Module):
         self.feature_proj = nn.Conv2d(in_ch, self.hidden_ch, kernel_size=1)
         self.context1 = nn.Conv2d(self.hidden_ch, self.hidden_ch, kernel_size=3, padding=1)
         self.context2 = nn.Conv2d(self.hidden_ch, self.hidden_ch, kernel_size=3, padding=1)
-        self.output = nn.Conv2d(self.hidden_ch, 1, kernel_size=1)
 
-        # Start close to a no-op instead of alpha=0.5.
+        # Keep the legacy name ``output`` for checkpoint/backward compatibility.
+        # In gate mode it predicts the conditional routing strength a.
+        self.output = nn.Conv2d(self.hidden_ch, 1, kernel_size=1)
         nn.init.zeros_(self.output.weight)
         init_logit = math.log(self.init_alpha / (1.0 - self.init_alpha))
         nn.init.constant_(self.output.bias, init_logit)
+
+        self.gate_output = None
+        if self.use_gate:
+            self.gate_output = nn.Conv2d(self.hidden_ch, 1, kernel_size=1)
+            nn.init.zeros_(self.gate_output.weight)
+            gate_logit = math.log(self.init_gate / (1.0 - self.init_gate))
+            nn.init.constant_(self.gate_output.bias, gate_logit)
 
     @staticmethod
     def _real_dtype(x: torch.Tensor) -> torch.dtype:
@@ -164,7 +186,15 @@ class BandTimeReliabilityRouter(nn.Module):
         h = F.silu(self.feature_proj(feat))
         h = F.silu(self.context1(h))
         h = F.silu(self.context2(h))
-        alpha_tile_raw = torch.sigmoid(self.output(h))
+
+        strength_tile_raw = torch.sigmoid(self.output(h))
+        gate_tile_raw = None
+        if self.use_gate:
+            gate_tile_raw = torch.sigmoid(self.gate_output(h))
+            alpha_tile_raw = gate_tile_raw * strength_tile_raw
+        else:
+            alpha_tile_raw = strength_tile_raw
+
         scale = max(float(scale), 0.0)
         alpha_tile = (alpha_tile_raw * scale).clamp(0.0, 1.0)
 
@@ -174,13 +204,18 @@ class BandTimeReliabilityRouter(nn.Module):
 
         delta_x0 = alpha_map * (x0_front - x0_base)
         x0_route = x0_base + delta_x0
-        return {
+
+        out = {
             "alpha_tile": alpha_tile,
             "alpha_tile_raw": alpha_tile_raw,
             "alpha_map": alpha_map,
             "delta_x0": delta_x0,
             "x0_route": x0_route,
+            "strength_tile": strength_tile_raw,
         }
+        if self.use_gate:
+            out["gate_tile"] = gate_tile_raw
+        return out
 
 
 def _tile_real_inner(a: torch.Tensor, b: torch.Tensor, out_size: Tuple[int, int]) -> torch.Tensor:

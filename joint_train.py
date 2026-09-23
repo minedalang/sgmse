@@ -85,6 +85,15 @@ if __name__ == '__main__':
         parser_.add_argument("--wandb_name", type=str, default=None)
         parser_.add_argument("--ckpt", type=str, default=None,help="用于恢复检查点ckpt,与init_ckpt冲突")
         parser_.add_argument("--init_ckpt", type=str, default=None,help="用于加载预训练ckpt")
+        parser_.add_argument(
+            "--init_ckpt_use_ema",
+            action="store_true",
+            help=(
+                "Materialize the EMA weights stored in --init_ckpt into the initialized model "
+                "before training. Recommended when --rrsd_freeze_base is used, so the frozen "
+                "base exactly matches the original EMA inference baseline."
+            ),
+        )
         parser_.add_argument("--wandb_id", type=str, default=None)
         parser_.add_argument("--log_dir", type=str, default="joint_train_logs")
         parser_.add_argument("--save_ckpt_interval", type=int, default=50000)
@@ -134,6 +143,8 @@ if __name__ == '__main__':
     args = parser.parse_args()
     if args.init_ckpt is not None and args.ckpt is not None: #参数互斥
         raise SystemExit("--ckpt(resume) 和 --init_ckpt(init weights) 不能同时使用")
+    if args.init_ckpt_use_ema and args.init_ckpt is None:
+        raise SystemExit("--init_ckpt_use_ema requires --init_ckpt")
     arg_groups = get_argparse_groups(parser, args)
     mark("after argument parsing")
     mark("before model init")
@@ -190,9 +201,37 @@ if __name__ == '__main__':
     # ---- optional: initialize weights from an existing checkpoint (no optimizer/loop restore) ----
     if args.init_ckpt is not None:
         ckpt = torch_load_ckpt(args.init_ckpt)
-        state = ckpt["state_dict"] if isinstance(ckpt, dict) and "state_dict" in ckpt else ckpt
-        missing, unexpected = model.load_state_dict(state, strict=False)
-        print(f"[Init ckpt] loaded state_dict strict=False: missing={len(missing)} unexpected={len(unexpected)}")
+
+        if args.init_ckpt_use_ema:
+            # The RRSD target model may already have --rrsd_freeze_base applied,
+            # in which case its EMA parameter set contains only rrsd_router.*.
+            # Therefore we cannot load the old full-model EMA directly into the
+            # target model.  Instead, reconstruct the source checkpoint model,
+            # let its existing eval(no_ema=False) path materialize its own EMA
+            # shadows into live parameters, then copy those live parameters into
+            # the new RRSD model.
+            print(f"[Init ckpt] loading EMA-materialized base from: {args.init_ckpt}")
+            source_model = JointFrontendSgmseModel.load_from_checkpoint(
+                args.init_ckpt,
+                map_location="cpu",
+                strict=False,
+                data_module_cls=data_module_cls,
+            )
+            source_model.eval(no_ema=False)
+            state = source_model.state_dict()
+            missing, unexpected = model.load_state_dict(state, strict=False)
+            del source_model
+            print(
+                f"[Init ckpt] loaded EMA-materialized state_dict strict=False: "
+                f"missing={len(missing)} unexpected={len(unexpected)}"
+            )
+        else:
+            state = ckpt["state_dict"] if isinstance(ckpt, dict) and "state_dict" in ckpt else ckpt
+            missing, unexpected = model.load_state_dict(state, strict=False)
+            print(
+                f"[Init ckpt] loaded RAW state_dict strict=False: "
+                f"missing={len(missing)} unexpected={len(unexpected)}"
+            )
 
         def _show_keys(title, keys, prefix=None, limit=20):
             sel = [k for k in keys if prefix is None or k.startswith(prefix)]
@@ -215,8 +254,14 @@ if __name__ == '__main__':
                 f"missing_frontend={len(missing_frontend)} unexpected_frontend={len(unexpected_frontend)}"
             )
 
+        # Build the *new run* EMA from the target model's trainable parameters.
+        # With --rrsd_freeze_base this intentionally tracks only rrsd_router.*,
+        # while the frozen base remains fixed at the EMA-materialized 300k values.
         model._ensure_ema_is_compatible(force_rebuild=True)
-        print("[Init ckpt] initialized fresh EMA from current model parameters.")
+        print(
+            f"[Init ckpt] initialized new-run EMA over "
+            f"{len(list(model._get_ema_parameters()))} trainable parameters."
+        )
 
         if args.save_init_snapshot:
             import os

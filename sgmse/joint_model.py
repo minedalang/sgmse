@@ -510,10 +510,43 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--rrsd_smooth_weight", type=float, default=0.01,
                             help="Spatial smoothness weight on the low-resolution alpha routing grid.")
         parser.add_argument("--rrsd_oracle_eps", type=float, default=1e-6)
+        parser.add_argument(
+            "--rrsd_teacher", type=str, default="projection", choices=["projection", "kstep"],
+            help=(
+                "RRSD teacher. 'projection' is the original one-step x0 projection oracle; "
+                "'kstep' rescales that local oracle by a trajectory lookahead teacher."
+            ),
+        )
+        parser.add_argument("--rrsd_lookahead_k", type=int, default=1,
+                            help="Number of deterministic reverse-mean transitions used by the K-step teacher.")
+        parser.add_argument(
+            "--rrsd_lookahead_candidates", type=str, default="0,0.25,0.5,0.75,1.0",
+            help="Comma-separated global scales applied to the local projection alpha map by the K-step teacher.",
+        )
+        parser.add_argument(
+            "--rrsd_lookahead_dt", type=float, default=0.0,
+            help="Lookahead reverse-step size. <=0 uses (T-t_eps)/(sde.N-1), matching the ordinary PC grid spacing.",
+        )
+        parser.add_argument(
+            "--rrsd_use_gate", action="store_true",
+            help="Use a shared-backbone gate+strength router: alpha_eff = g * a.",
+        )
+        parser.add_argument("--rrsd_init_gate", type=float, default=0.20,
+                            help="Initial sigmoid probability of the explicit gate when --rrsd_use_gate is enabled.")
+        parser.add_argument("--rrsd_gate_threshold", type=float, default=0.01,
+                            help="Minimum K-step relative trajectory gain required for a positive gate label.")
+        parser.add_argument("--rrsd_gate_local_threshold", type=float, default=0.005,
+                            help="Minimum local projection benefit ratio required for a positive band-time gate label.")
+        parser.add_argument("--rrsd_gate_weight", type=float, default=1.0,
+                            help="Weight of gate BCE when --rrsd_use_gate is enabled.")
+        parser.add_argument("--rrsd_strength_weight", type=float, default=1.0,
+                            help="Weight of conditional strength distillation when --rrsd_use_gate is enabled.")
+        parser.add_argument("--rrsd_gate_pos_weight", type=float, default=2.0,
+                            help="Extra BCE weight for positive gate tiles.")
         parser.add_argument("--rrsd_validate", action="store_true",
                             help="Use RRSD during the periodic file-level validation sampler.")
         parser.add_argument("--rrsd_freeze_base", action="store_true",
-                            help="Freeze the frontend and score network; train only the RRSD router. Recommended for the first diagnostic experiment.")
+                            help="Freeze the frontend and score network; train only the RRSD router. Required/recommended for K-step teacher experiments.")
         parser.add_argument(
             "--frontend_nr_weight",
             type=float,
@@ -780,6 +813,17 @@ class JointFrontendSgmseModel(ScoreModel):
         rrsd_recon_weight: float = 0.10,
         rrsd_smooth_weight: float = 0.01,
         rrsd_oracle_eps: float = 1e-6,
+        rrsd_teacher: str = "projection",
+        rrsd_lookahead_k: int = 1,
+        rrsd_lookahead_candidates: str = "0,0.25,0.5,0.75,1.0",
+        rrsd_lookahead_dt: float = 0.0,
+        rrsd_use_gate: bool = False,
+        rrsd_init_gate: float = 0.20,
+        rrsd_gate_threshold: float = 0.01,
+        rrsd_gate_local_threshold: float = 0.005,
+        rrsd_gate_weight: float = 1.0,
+        rrsd_strength_weight: float = 1.0,
+        rrsd_gate_pos_weight: float = 2.0,
         rrsd_validate: bool = False,
         rrsd_freeze_base: bool = False,
         frontend_nr_weight: float = 0.0,
@@ -904,25 +948,58 @@ class JointFrontendSgmseModel(ScoreModel):
         self.rrsd_recon_weight = float(rrsd_recon_weight)
         self.rrsd_smooth_weight = float(rrsd_smooth_weight)
         self.rrsd_oracle_eps = float(rrsd_oracle_eps)
+        self.rrsd_teacher = str(rrsd_teacher).strip().lower()
+        self.rrsd_lookahead_k = int(rrsd_lookahead_k)
+        self.rrsd_lookahead_candidates_raw = str(rrsd_lookahead_candidates)
+        try:
+            self.rrsd_lookahead_candidates = tuple(
+                sorted(set(float(v.strip()) for v in self.rrsd_lookahead_candidates_raw.split(",") if v.strip()))
+            )
+        except Exception as e:
+            raise ValueError(f"Invalid --rrsd_lookahead_candidates={rrsd_lookahead_candidates!r}") from e
+        self.rrsd_lookahead_dt = float(rrsd_lookahead_dt)
+        self.rrsd_use_gate = bool(rrsd_use_gate)
+        self.rrsd_init_gate = float(rrsd_init_gate)
+        self.rrsd_gate_threshold = float(rrsd_gate_threshold)
+        self.rrsd_gate_local_threshold = float(rrsd_gate_local_threshold)
+        self.rrsd_gate_weight = float(rrsd_gate_weight)
+        self.rrsd_strength_weight = float(rrsd_strength_weight)
+        self.rrsd_gate_pos_weight = float(rrsd_gate_pos_weight)
         self.rrsd_validate = bool(rrsd_validate)
         self.rrsd_freeze_base = bool(rrsd_freeze_base)
         if self.rrsd_weight < 0.0:
             raise ValueError("rrsd_weight must be >= 0.")
         if self.rrsd_benefit_weight < 0.0 or self.rrsd_recon_weight < 0.0 or self.rrsd_smooth_weight < 0.0:
             raise ValueError("RRSD loss weights must be >= 0.")
+        if self.rrsd_gate_weight < 0.0 or self.rrsd_strength_weight < 0.0 or self.rrsd_gate_pos_weight <= 0.0:
+            raise ValueError("RRSD gate/strength weights must be non-negative and gate_pos_weight > 0.")
         if self.rrsd_oracle_eps <= 0.0:
             raise ValueError("rrsd_oracle_eps must be > 0.")
+        if self.rrsd_teacher not in {"projection", "kstep"}:
+            raise ValueError("rrsd_teacher must be 'projection' or 'kstep'.")
+        if self.rrsd_lookahead_k < 1:
+            raise ValueError("rrsd_lookahead_k must be >= 1.")
+        if len(self.rrsd_lookahead_candidates) < 2 or 0.0 not in self.rrsd_lookahead_candidates:
+            raise ValueError("rrsd_lookahead_candidates must contain 0 and at least one positive candidate.")
+        if any(v < 0.0 or v > 1.0 for v in self.rrsd_lookahead_candidates):
+            raise ValueError("rrsd_lookahead_candidates must lie in [0,1].")
+        if self.rrsd_use_gate and self.rrsd_teacher != "kstep":
+            raise ValueError("--rrsd_use_gate currently requires --rrsd_teacher kstep so g has a trajectory-advantage teacher.")
+        if self.rrsd_teacher == "kstep" and not self.rrsd_freeze_base:
+            raise ValueError("--rrsd_teacher kstep requires --rrsd_freeze_base for a stable frozen trajectory teacher.")
         self.rrsd_router = None
         if self.rrsd_weight > 0.0:
             if self.sde.__class__.__name__ != "OUVESDE":
-                raise ValueError("RRSD V1 currently supports OUVESDE only.")
+                raise ValueError("RRSD currently supports OUVESDE only.")
             if self.loss_type != "score_matching" or self.loss_weighting != "sigma^2":
-                raise ValueError("RRSD V1 currently requires score_matching with sigma^2 weighting.")
+                raise ValueError("RRSD currently requires score_matching with sigma^2 weighting.")
             self.rrsd_router = BandTimeReliabilityRouter(
                 hidden_ch=int(rrsd_hidden_ch),
                 num_bands=int(rrsd_num_bands),
                 num_time_blocks=int(rrsd_num_time_blocks),
                 init_alpha=float(rrsd_init_alpha),
+                use_gate=self.rrsd_use_gate,
+                init_gate=self.rrsd_init_gate,
             )
 
         self.frontend_nr_weight = float(frontend_nr_weight)
@@ -1101,7 +1178,7 @@ class JointFrontendSgmseModel(ScoreModel):
         self.residual_refine_enable = bool(residual_refine_enable)
         if self.rrsd_weight > 0.0 and self.residual_refine_enable:
             raise ValueError(
-                "RRSD V1-clean is defined for the full-speech frontend/diffusion path only; "
+                "RRSD is defined for the full-speech frontend/diffusion path only; "
                 "disable --residual_refine_enable for this experiment."
             )
         self.residual_prior_type = str(residual_prior_type).strip().lower()
@@ -1194,6 +1271,17 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["rrsd_recon_weight"] = self.rrsd_recon_weight
         self.hparams["rrsd_smooth_weight"] = self.rrsd_smooth_weight
         self.hparams["rrsd_oracle_eps"] = self.rrsd_oracle_eps
+        self.hparams["rrsd_teacher"] = self.rrsd_teacher
+        self.hparams["rrsd_lookahead_k"] = self.rrsd_lookahead_k
+        self.hparams["rrsd_lookahead_candidates"] = self.rrsd_lookahead_candidates_raw
+        self.hparams["rrsd_lookahead_dt"] = self.rrsd_lookahead_dt
+        self.hparams["rrsd_use_gate"] = self.rrsd_use_gate
+        self.hparams["rrsd_init_gate"] = self.rrsd_init_gate
+        self.hparams["rrsd_gate_threshold"] = self.rrsd_gate_threshold
+        self.hparams["rrsd_gate_local_threshold"] = self.rrsd_gate_local_threshold
+        self.hparams["rrsd_gate_weight"] = self.rrsd_gate_weight
+        self.hparams["rrsd_strength_weight"] = self.rrsd_strength_weight
+        self.hparams["rrsd_gate_pos_weight"] = self.rrsd_gate_pos_weight
         self.hparams["rrsd_validate"] = self.rrsd_validate
         self.hparams["rrsd_freeze_base"] = self.rrsd_freeze_base
         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
@@ -2745,6 +2833,159 @@ class JointFrontendSgmseModel(ScoreModel):
         x0_base = (mean_hat - w_y * y_main) / w_x.clamp_min(1e-5)
         return x0_base, sigma, w_x, w_y
 
+    def _rrsd_reverse_mean_step(
+        self,
+        *,
+        x: torch.Tensor,
+        y_main: torch.Tensor,
+        t: torch.Tensor,
+        score: torch.Tensor,
+        dt: torch.Tensor,
+    ) -> Tuple[torch.Tensor, torch.Tensor]:
+        """Deterministic reverse-SDE mean step used only by the K-step teacher.
+
+        This matches the mean of ``ReverseDiffusionPredictor`` for OUVESDE:
+
+            x_next_mean = x - f_forward * dt + g(t)^2 * dt * score.
+
+        No stochastic predictor noise and no corrector are used.  The purpose is
+        to obtain a stable counterfactual teacher target, not to reproduce the
+        entire stochastic sampler during training.
+        """
+        if self.sde.__class__.__name__ != "OUVESDE":
+            raise ValueError("RRSD K-step teacher currently supports OUVESDE only.")
+        t = t.to(device=x.device, dtype=torch.float32).flatten()
+        dt = dt.to(device=x.device, dtype=torch.float32).flatten().clamp_min(0.0)
+        drift, diffusion = self.sde.sde(x, y_main, t)
+        dt_map = dt.view(-1, *([1] * (x.ndim - 1))).to(dtype=x.real.dtype if torch.is_complex(x) else x.dtype)
+        g2_map = diffusion.to(device=x.device, dtype=dt_map.dtype).square().view(
+            -1, *([1] * (x.ndim - 1))
+        )
+        x_next = x - drift * dt_map + g2_map * dt_map * score
+        t_next = (t - dt).clamp_min(float(self.t_eps))
+        return x_next, t_next
+
+    def _rrsd_lookahead_teacher(
+        self,
+        *,
+        target: torch.Tensor,
+        x0_front: torch.Tensor,
+        x0_base: torch.Tensor,
+        x_t: torch.Tensor,
+        y_main: torch.Tensor,
+        y_cond: torch.Tensor,
+        t: torch.Tensor,
+        score_base: torch.Tensor,
+        sigma: torch.Tensor,
+        w_x: torch.Tensor,
+        alpha_projection: torch.Tensor,
+    ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
+        """Build a trajectory-aware RRSD teacher by short counterfactual rollout.
+
+        The local *shape* comes from the existing band-time projection oracle.
+        The new teacher asks a different question: how much of that local map
+        should be trusted after an actual reverse-SDE transition followed by
+        re-scoring with the frozen diffusion model?
+
+        For each scalar candidate c in ``rrsd_lookahead_candidates``:
+
+            alpha_c(f,tau) = c * alpha_projection(f,tau)
+
+        we perform one routed deterministic reverse-mean step.  If K>1, the
+        remaining K-1 transitions are ordinary base-only reverse-mean steps.
+        The model is re-evaluated after every state transition.  At the final
+        lookahead state we re-score once more, invert the OUVE geometry to an
+        x0 estimate, and choose the candidate with smallest clean x0 MSE per
+        utterance.
+
+        This deliberately breaks the algebraic equivalence of the old one-step
+        projection target: alpha changes the *future state seen by the network*.
+        """
+        if not bool(getattr(self, "rrsd_freeze_base", False)):
+            raise RuntimeError("RRSD K-step teacher requires a frozen base model.")
+
+        B = int(target.shape[0])
+        reduce_dims = tuple(range(1, target.ndim))
+        candidates = tuple(float(v) for v in self.rrsd_lookahead_candidates)
+        base_dt = float(self.rrsd_lookahead_dt)
+        if base_dt <= 0.0:
+            denom = max(int(getattr(self.sde, "N", 30)) - 1, 1)
+            base_dt = (float(getattr(self.sde, "T", 1.0)) - float(self.t_eps)) / float(denom)
+        base_dt = max(base_dt, 1e-6)
+
+        full_size = (int(x0_base.shape[-2]), int(x0_base.shape[-1]))
+        projection_full = F.interpolate(
+            alpha_projection.float(), size=full_size, mode="bilinear", align_corners=False
+        ).to(dtype=x0_base.real.dtype if torch.is_complex(x0_base) else x0_base.dtype)
+        front_direction = x0_front - x0_base
+
+        errors = []
+        with torch.no_grad():
+            for candidate in candidates:
+                alpha_map = (float(candidate) * projection_full).clamp(0.0, 1.0)
+                delta_x0 = alpha_map * front_direction
+                score_first = score_base + w_x * delta_x0 / sigma.square().clamp_min(1e-8)
+
+                x_cur = x_t
+                t_cur = t.to(device=x_t.device, dtype=torch.float32).flatten()
+
+                # The first transition is the counterfactual intervention.
+                dt_cur = torch.minimum(
+                    torch.full_like(t_cur, base_dt),
+                    (t_cur - float(self.t_eps)).clamp_min(0.0),
+                )
+                x_cur, t_cur = self._rrsd_reverse_mean_step(
+                    x=x_cur, y_main=y_main, t=t_cur, score=score_first, dt=dt_cur
+                )
+
+                # Remaining transitions are base-only.  Re-score after each
+                # changed state so the teacher captures nonlinear trajectory
+                # consequences rather than a linear score-space projection.
+                for _ in range(1, int(self.rrsd_lookahead_k)):
+                    score_cur = self(x_cur, y_main, t_cur, y_cond=y_cond)
+                    dt_cur = torch.minimum(
+                        torch.full_like(t_cur, base_dt),
+                        (t_cur - float(self.t_eps)).clamp_min(0.0),
+                    )
+                    x_cur, t_cur = self._rrsd_reverse_mean_step(
+                        x=x_cur, y_main=y_main, t=t_cur, score=score_cur, dt=dt_cur
+                    )
+
+                # Re-score at the lookahead state and judge the resulting clean
+                # estimate.  This final network evaluation is the key operation
+                # that makes K=1 already different from the old projection oracle.
+                score_final = self(x_cur, y_main, t_cur, y_cond=y_cond)
+                x0_final, _, _, _ = self._rrsd_score_to_x0(
+                    x_cur, y_main, t_cur, score_final
+                )
+                err = torch.abs(x0_final - target).float().square().mean(dim=reduce_dims)
+                errors.append(err)
+
+        error_matrix = torch.stack(errors, dim=1)  # [B, num_candidates]
+        best_index = error_matrix.argmin(dim=1)
+        candidate_tensor = torch.tensor(candidates, device=target.device, dtype=torch.float32)
+        best_scale = candidate_tensor[best_index]
+
+        # candidates are validated/sorted and must contain 0; use its actual index
+        # rather than assuming it is the first element.
+        base_index = candidates.index(0.0)
+        base_error = error_matrix[:, base_index]
+        best_error = error_matrix.gather(1, best_index[:, None]).squeeze(1)
+        advantage = (base_error - best_error).clamp_min(0.0)
+        advantage_ratio = advantage / base_error.clamp_min(float(self.rrsd_oracle_eps))
+
+        alpha_target = alpha_projection * best_scale.view(B, 1, 1, 1)
+        stats = {
+            "best_scale": best_scale.detach(),
+            "best_index": best_index.detach(),
+            "base_future_error": base_error.detach(),
+            "best_future_error": best_error.detach(),
+            "advantage": advantage.detach(),
+            "advantage_ratio": advantage_ratio.detach(),
+            "error_matrix": error_matrix.detach(),
+        }
+        return alpha_target.detach(), stats
+
     def _compute_rrsd_loss(
         self,
         *,
@@ -2752,11 +2993,23 @@ class JointFrontendSgmseModel(ScoreModel):
         x0_front: torch.Tensor,
         step_out: dict,
     ) -> Tuple[torch.Tensor, Dict[str, torch.Tensor]]:
-        """Oracle-distill a deployable local frontend-routing controller.
+        """Train RRSD with either the projection or trajectory-aware teacher.
 
-        DSM itself is untouched.  Clean target is used only to create the local
-        convex projection oracle alpha*.  All inputs to Q_phi are detached and
-        are available again at inference time.
+        Modes
+        -----
+        projection + no gate:
+            Backward-compatible RRSD V1.
+
+        kstep + no gate:
+            Keep one effective alpha output, but replace the target with
+            ``alpha_K = c*_K * alpha_projection`` where ``c*_K`` is selected by
+            K-step deterministic counterfactual rollout and re-scoring.
+
+        kstep + gate:
+            Use the same shared backbone with two heads.  ``g`` predicts whether
+            the trajectory advantage is large enough to justify intervention;
+            ``a`` predicts the conditional routing strength.  Inference uses
+            ``alpha_eff = g * a``.
         """
         zero = torch.zeros((), device=target.device, dtype=torch.float32)
         if self.rrsd_router is None or self.rrsd_weight <= 0.0:
@@ -2767,26 +3020,34 @@ class JointFrontendSgmseModel(ScoreModel):
         if y_cond is None:
             y_cond = y_main
 
+        score_det = score.detach()
         x0_base = x0_base.detach()
         x0_front = x0_front.detach().to(dtype=x0_base.dtype)
         target_det = target.detach()
         x_t_det = x_t.detach()
         y_main_det = y_main.detach()
         y_cond_det = y_cond.detach()
+        t_det = t.detach()
+        sigma_det = sigma.detach()
+        w_x_det = w_x.detach()
 
+        # The deployable router never receives clean speech.
         pred = self.rrsd_router(
             x_t=x_t_det,
             x0_base=x0_base,
             x0_front=x0_front,
             y_main=y_main_det,
             y_cond=y_cond_det,
-            t=t.detach(),
+            t=t_det,
             t_max=float(getattr(self.sde, "T", 1.0)),
             detach_inputs=True,
             scale=1.0,
         )
 
-        alpha_star, oracle_stats = solve_frontend_projection_oracle(
+        # Local projection geometry is retained as the inexpensive band-time
+        # proposal. K-step supervision decides how much of this proposal should
+        # survive after looking at its future trajectory consequence.
+        alpha_projection, projection_stats = solve_frontend_projection_oracle(
             target=target_det,
             x0_base=x0_base,
             x0_front=x0_front,
@@ -2795,34 +3056,108 @@ class JointFrontendSgmseModel(ScoreModel):
             eps=float(self.rrsd_oracle_eps),
         )
 
-        # Benefit is a clean-referenced supervision confidence, not an inference
-        # input.  Important oracle regions receive more distillation weight.
-        benefit_ratio = oracle_stats["benefit_ratio"].clamp(0.0, 1.0)
+        trajectory_stats = None
+        if self.rrsd_teacher == "kstep":
+            alpha_teacher, trajectory_stats = self._rrsd_lookahead_teacher(
+                target=target_det,
+                x0_front=x0_front,
+                x0_base=x0_base,
+                x_t=x_t_det,
+                y_main=y_main_det,
+                y_cond=y_cond_det,
+                t=t_det,
+                score_base=score_det,
+                sigma=sigma_det,
+                w_x=w_x_det,
+                alpha_projection=alpha_projection,
+            )
+        else:
+            alpha_teacher = alpha_projection
+
+        benefit_ratio = projection_stats["benefit_ratio"].clamp(0.0, 1.0)
         oracle_weight = 1.0 + float(self.rrsd_benefit_weight) * benefit_ratio
+
+        loss_gate = zero
+        loss_strength = zero
+        gate_target = None
+
+        if self.rrsd_use_gate:
+            if trajectory_stats is None:
+                raise RuntimeError("--rrsd_use_gate requires the K-step teacher.")
+
+            # g answers WHETHER routing is worth doing.  A positive tile needs
+            # both sample-level future advantage and local projection evidence.
+            future_positive = (
+                trajectory_stats["advantage_ratio"] > float(self.rrsd_gate_threshold)
+            ).float().view(-1, 1, 1, 1)
+            local_positive = (
+                benefit_ratio > float(self.rrsd_gate_local_threshold)
+            ).float() * (alpha_projection > 1e-3).float()
+            gate_target = (future_positive * local_positive).detach()
+
+            # a answers HOW MUCH to route, but only where g* says intervention
+            # is worthwhile. The K-step teacher already contains the selected
+            # future-aware global scale multiplied by local projection alpha.
+            strength_target = alpha_teacher.detach()
+            effective_target = (gate_target * strength_target).detach()
+
+            gate_pred = pred["gate_tile"].float()
+            strength_pred = pred["strength_tile"].float()
+
+            gate_bce = F.binary_cross_entropy(
+                gate_pred, gate_target.float(), reduction="none"
+            )
+            gate_weight_map = 1.0 + (
+                float(self.rrsd_gate_pos_weight) - 1.0
+            ) * gate_target.float()
+            loss_gate = (gate_bce * gate_weight_map).sum() / gate_weight_map.sum().clamp_min(1.0)
+
+            strength_map = F.smooth_l1_loss(
+                strength_pred, strength_target.float(), reduction="none"
+            )
+            strength_weight_map = gate_target.float() * oracle_weight
+            loss_strength = (
+                (strength_map * strength_weight_map).sum()
+                / strength_weight_map.sum().clamp_min(1.0)
+            )
+
+            # Effective-alpha consistency also teaches negative tiles to become
+            # true no-ops, which directly addresses cumulative over-routing.
+            alpha_star = effective_target
+        else:
+            alpha_star = alpha_teacher.detach()
+
         loss_alpha_map = F.smooth_l1_loss(
             pred["alpha_tile"].float(), alpha_star.float(), reduction="none"
         )
         loss_alpha = (loss_alpha_map * oracle_weight).sum() / oracle_weight.sum().clamp_min(1.0)
 
-        # Normalized x0 reconstruction term: dimensionless and robust to the
-        # large variation of residual energy across utterances/timesteps.
+        # Retained as an optional backward-compatible regularizer. It is the old
+        # immediate x0 objective, so set --rrsd_recon_weight 0 for a clean test
+        # of trajectory-aware supervision.
         reduce_dims = tuple(range(1, target_det.ndim))
         base_err = torch.abs(x0_base - target_det).float().square().mean(dim=reduce_dims)
         route_err = torch.abs(pred["x0_route"] - target_det).float().square().mean(dim=reduce_dims)
         loss_recon = (route_err / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean()
 
         loss_smooth = torch.zeros((), device=target.device, dtype=torch.float32)
-        a = pred["alpha_tile"].float()
-        if a.shape[-2] > 1:
-            loss_smooth = loss_smooth + a.diff(dim=-2).abs().mean()
-        if a.shape[-1] > 1:
-            loss_smooth = loss_smooth + a.diff(dim=-1).abs().mean()
+        a_eff = pred["alpha_tile"].float()
+        if a_eff.shape[-2] > 1:
+            loss_smooth = loss_smooth + a_eff.diff(dim=-2).abs().mean()
+        if a_eff.shape[-1] > 1:
+            loss_smooth = loss_smooth + a_eff.diff(dim=-1).abs().mean()
 
         loss = (
             loss_alpha
             + float(self.rrsd_recon_weight) * loss_recon
             + float(self.rrsd_smooth_weight) * loss_smooth
         )
+        if self.rrsd_use_gate:
+            loss = (
+                loss
+                + float(self.rrsd_gate_weight) * loss_gate
+                + float(self.rrsd_strength_weight) * loss_strength
+            )
 
         with torch.no_grad():
             oracle_active = (alpha_star > 1e-3).float().mean()
@@ -2832,17 +3167,58 @@ class JointFrontendSgmseModel(ScoreModel):
                 "rrsd_loss_alpha": loss_alpha.detach(),
                 "rrsd_loss_recon_norm": loss_recon.detach(),
                 "rrsd_loss_smooth": loss_smooth.detach(),
+                "rrsd_loss_gate": loss_gate.detach(),
+                "rrsd_loss_strength": loss_strength.detach(),
                 "rrsd_alpha_mean": pred["alpha_tile"].detach().float().mean(),
                 "rrsd_alpha_target_mean": alpha_star.float().mean(),
-                "rrsd_alpha_mae": torch.abs(pred["alpha_tile"].detach().float() - alpha_star.float()).mean(),
+                "rrsd_alpha_mae": torch.abs(
+                    pred["alpha_tile"].detach().float() - alpha_star.float()
+                ).mean(),
                 "rrsd_alpha_active_fraction": pred_active,
                 "rrsd_oracle_active_fraction": oracle_active,
                 "rrsd_oracle_front_heavy_fraction": oracle_front_heavy,
                 "rrsd_oracle_benefit_ratio_mean": benefit_ratio.mean(),
                 "rrsd_route_improve_fraction": (route_err < base_err).float().mean(),
-                "rrsd_route_relative_error_change": ((route_err - base_err) / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean(),
-                "rrsd_t_mean": t.detach().float().mean(),
+                "rrsd_route_relative_error_change": (
+                    (route_err - base_err) / base_err.clamp_min(float(self.rrsd_oracle_eps))
+                ).mean(),
+                "rrsd_t_mean": t_det.float().mean(),
             }
+
+            if trajectory_stats is not None:
+                adv_ratio = trajectory_stats["advantage_ratio"].float()
+                best_scale = trajectory_stats["best_scale"].float()
+                stats.update({
+                    "rrsd_kstep_best_scale_mean": best_scale.mean(),
+                    "rrsd_kstep_scale_zero_fraction": (best_scale <= 1e-8).float().mean(),
+                    "rrsd_kstep_advantage_ratio_mean": adv_ratio.mean(),
+                    "rrsd_kstep_advantage_positive_fraction": (adv_ratio > 0.0).float().mean(),
+                    "rrsd_kstep_gateworthy_fraction": (
+                        adv_ratio > float(self.rrsd_gate_threshold)
+                    ).float().mean(),
+                    "rrsd_kstep_future_error_ratio": (
+                        trajectory_stats["best_future_error"]
+                        / trajectory_stats["base_future_error"].clamp_min(float(self.rrsd_oracle_eps))
+                    ).mean(),
+                })
+                for candidate_scale in self.rrsd_lookahead_candidates:
+                    tag = str(float(candidate_scale)).replace(".", "p").replace("-", "m")
+                    stats[f"rrsd_kstep_scale_{tag}_fraction"] = (
+                        (best_scale - float(candidate_scale)).abs() < 1e-6
+                    ).float().mean()
+
+            if self.rrsd_use_gate:
+                stats.update({
+                    "rrsd_gate_mean": pred["gate_tile"].detach().float().mean(),
+                    "rrsd_gate_target_mean": gate_target.float().mean(),
+                    "rrsd_gate_active_fraction": (
+                        pred["gate_tile"].detach().float() > 0.5
+                    ).float().mean(),
+                    "rrsd_gate_target_active_fraction": (
+                        gate_target.float() > 0.5
+                    ).float().mean(),
+                    "rrsd_strength_mean": pred["strength_tile"].detach().float().mean(),
+                })
         return loss, stats
 
     def build_rrsd_score_calibrator(
