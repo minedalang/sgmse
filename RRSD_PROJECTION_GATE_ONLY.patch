@@ -1,0 +1,120 @@
+diff --git a/sgmse/joint_model.py b/sgmse/joint_model.py
+index 338f921..cda8468 100644
+--- a/sgmse/joint_model.py
++++ b/sgmse/joint_model.py
+@@ -529,14 +529,18 @@ class JointFrontendSgmseModel(ScoreModel):
+         )
+         parser.add_argument(
+             "--rrsd_use_gate", action="store_true",
+-            help="Use a shared-backbone gate+strength router: alpha_eff = g * a.",
++            help=(
++                "Use a shared-backbone gate+strength router: alpha_eff = g * a. "
++                "With --rrsd_teacher projection, g is supervised only by local projection benefit; "
++                "with --rrsd_teacher kstep, g additionally requires positive future trajectory advantage."
++            ),
+         )
+         parser.add_argument("--rrsd_init_gate", type=float, default=0.20,
+                             help="Initial sigmoid probability of the explicit gate when --rrsd_use_gate is enabled.")
+         parser.add_argument("--rrsd_gate_threshold", type=float, default=0.01,
+-                            help="Minimum K-step relative trajectory gain required for a positive gate label.")
++                            help="Minimum K-step relative trajectory gain required for a positive gate label; used only with --rrsd_teacher kstep.")
+         parser.add_argument("--rrsd_gate_local_threshold", type=float, default=0.005,
+-                            help="Minimum local projection benefit ratio required for a positive band-time gate label.")
++                            help="Minimum local projection benefit ratio required for a positive band-time gate label. This is the gate-only threshold with --rrsd_teacher projection.")
+         parser.add_argument("--rrsd_gate_weight", type=float, default=1.0,
+                             help="Weight of gate BCE when --rrsd_use_gate is enabled.")
+         parser.add_argument("--rrsd_strength_weight", type=float, default=1.0,
+@@ -546,7 +550,7 @@ class JointFrontendSgmseModel(ScoreModel):
+         parser.add_argument("--rrsd_validate", action="store_true",
+                             help="Use RRSD during the periodic file-level validation sampler.")
+         parser.add_argument("--rrsd_freeze_base", action="store_true",
+-                            help="Freeze the frontend and score network; train only the RRSD router. Required/recommended for K-step teacher experiments.")
++                            help="Freeze the frontend and score network; train only the RRSD router. Recommended for projection-gate and required for K-step teacher experiments.")
+         parser.add_argument(
+             "--frontend_nr_weight",
+             type=float,
+@@ -983,8 +987,6 @@ class JointFrontendSgmseModel(ScoreModel):
+             raise ValueError("rrsd_lookahead_candidates must contain 0 and at least one positive candidate.")
+         if any(v < 0.0 or v > 1.0 for v in self.rrsd_lookahead_candidates):
+             raise ValueError("rrsd_lookahead_candidates must lie in [0,1].")
+-        if self.rrsd_use_gate and self.rrsd_teacher != "kstep":
+-            raise ValueError("--rrsd_use_gate currently requires --rrsd_teacher kstep so g has a trajectory-advantage teacher.")
+         if self.rrsd_teacher == "kstep" and not self.rrsd_freeze_base:
+             raise ValueError("--rrsd_teacher kstep requires --rrsd_freeze_base for a stable frozen trajectory teacher.")
+         self.rrsd_router = None
+@@ -3005,11 +3007,15 @@ class JointFrontendSgmseModel(ScoreModel):
+             ``alpha_K = c*_K * alpha_projection`` where ``c*_K`` is selected by
+             K-step deterministic counterfactual rollout and re-scoring.
+ 
++        projection + gate:
++            Use the same shared backbone with two heads. ``g`` predicts whether
++            local projection benefit is large enough to justify intervention;
++            ``a`` predicts the conditional projection strength.
++
+         kstep + gate:
+-            Use the same shared backbone with two heads.  ``g`` predicts whether
+-            the trajectory advantage is large enough to justify intervention;
+-            ``a`` predicts the conditional routing strength.  Inference uses
+-            ``alpha_eff = g * a``.
++            The same two-head router, but ``g`` additionally requires positive
++            K-step trajectory advantage and ``a`` learns the K-step-rescaled
++            projection strength. Inference always uses ``alpha_eff = g * a``.
+         """
+         zero = torch.zeros((), device=target.device, dtype=torch.float32)
+         if self.rrsd_router is None or self.rrsd_weight <= 0.0:
+@@ -3082,22 +3088,31 @@ class JointFrontendSgmseModel(ScoreModel):
+         gate_target = None
+ 
+         if self.rrsd_use_gate:
+-            if trajectory_stats is None:
+-                raise RuntimeError("--rrsd_use_gate requires the K-step teacher.")
+-
+-            # g answers WHETHER routing is worth doing.  A positive tile needs
+-            # both sample-level future advantage and local projection evidence.
+-            future_positive = (
+-                trajectory_stats["advantage_ratio"] > float(self.rrsd_gate_threshold)
+-            ).float().view(-1, 1, 1, 1)
++            # g answers WHETHER routing is worth doing, while a answers HOW MUCH.
++            #
++            # Projection-gate mode (cheap): local projection benefit alone defines
++            # the positive band-time tiles.  This directly tests whether explicitly
++            # separating "whether" from "how much" fixes the almost-always-on
++            # behaviour seen with the original single-alpha RRSD.
++            #
++            # K-step-gate mode (expensive): a tile must additionally belong to a
++            # sample/timestep whose short counterfactual rollout has sufficient
++            # future trajectory advantage.
+             local_positive = (
+                 benefit_ratio > float(self.rrsd_gate_local_threshold)
+             ).float() * (alpha_projection > 1e-3).float()
+-            gate_target = (future_positive * local_positive).detach()
+-
+-            # a answers HOW MUCH to route, but only where g* says intervention
+-            # is worthwhile. The K-step teacher already contains the selected
+-            # future-aware global scale multiplied by local projection alpha.
++            if trajectory_stats is None:
++                gate_target = local_positive.detach()
++            else:
++                future_positive = (
++                    trajectory_stats["advantage_ratio"] > float(self.rrsd_gate_threshold)
++                ).float().view(-1, 1, 1, 1)
++                gate_target = (future_positive * local_positive).detach()
++
++            # The strength teacher is the selected alpha teacher.  Under the
++            # projection teacher this is alpha_projection; under K-step it is the
++            # trajectory-rescaled alpha_K.  Strength is supervised only on tiles
++            # that the gate teacher declares worth routing.
+             strength_target = alpha_teacher.detach()
+             effective_target = (gate_target * strength_target).detach()
+ 
+@@ -3217,6 +3232,10 @@ class JointFrontendSgmseModel(ScoreModel):
+                     "rrsd_gate_target_active_fraction": (
+                         gate_target.float() > 0.5
+                     ).float().mean(),
++                    "rrsd_projection_gateworthy_fraction": (
++                        (benefit_ratio > float(self.rrsd_gate_local_threshold))
++                        * (alpha_projection > 1e-3)
++                    ).float().mean(),
+                     "rrsd_strength_mean": pred["strength_tile"].detach().float().mean(),
+                 })
+         return loss, stats
