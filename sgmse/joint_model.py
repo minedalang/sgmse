@@ -3073,21 +3073,57 @@ class JointFrontendSgmseModel(ScoreModel):
         # pred['delta_x0'] carries gradient to the router. Everything else is a
         # frozen geometric conversion from routed x0 direction to routed score.
         score_route = score_base + w_x_det * pred["delta_x0"] / sigma_det.square().clamp_min(1e-8)
-        x_next, t_next = self._rrsd_reverse_mean_step(
+
+        # Compare routed and no-route actions at the SAME future time t-dt.
+        # The base branch is the counterfactual alpha=0 action.  This removes
+        # the old cross-time normalization E_route(t-dt) / E_base(t), whose
+        # denominator could reweight samples according to an unrelated current-
+        # state reconstruction error.
+        x_next_route, t_next = self._rrsd_reverse_mean_step(
             x=x_t_det, y_main=y_main_det, t=t_det, score=score_route, dt=dt_cur
         )
+        x_next_base, t_next_base = self._rrsd_reverse_mean_step(
+            x=x_t_det, y_main=y_main_det, t=t_det, score=score_base, dt=dt_cur
+        )
+
+        # Both branches share the same frozen evaluator. Stack them along the
+        # batch dimension so the revised objective still needs only ONE extra
+        # score-network forward per training step (at 2B batch size).
+        x_next_both = torch.cat([x_next_route, x_next_base], dim=0)
+        y_main_both = torch.cat([y_main_det, y_main_det], dim=0)
+        y_cond_both = torch.cat([y_cond_det, y_cond_det], dim=0)
+        t_next_both = torch.cat([t_next, t_next_base], dim=0)
 
         # IMPORTANT: no torch.no_grad() here. dnn parameters have requires_grad=False
-        # under --rrsd_freeze_base, yet autograd must retain d score_next / d x_next.
-        score_next = self(x_next, y_main_det, t_next, y_cond=y_cond_det)
-        x0_next, _, _, _ = self._rrsd_score_to_x0(
-            x_next, y_main_det, t_next, score_next
+        # under --rrsd_freeze_base, yet autograd must retain
+        # d score_next_route / d x_next_route so L_future can train Q_phi.
+        score_next_both = self(
+            x_next_both, y_main_both, t_next_both, y_cond=y_cond_both
+        )
+        B = int(target_det.shape[0])
+        score_next_route = score_next_both[:B]
+        score_next_base = score_next_both[B:]
+
+        x0_next_route, _, _, _ = self._rrsd_score_to_x0(
+            x_next_route, y_main_det, t_next, score_next_route
+        )
+        x0_next_base, _, _, _ = self._rrsd_score_to_x0(
+            x_next_base, y_main_det, t_next_base, score_next_base
         )
 
         reduce_dims = tuple(range(1, target_det.ndim))
-        future_err = torch.abs(x0_next - target_det).float().square().mean(dim=reduce_dims)
-        current_base_err = torch.abs(x0_base_det - target_det).float().square().mean(dim=reduce_dims)
-        loss_future = (future_err / current_base_err.clamp_min(float(self.rrsd_oracle_eps))).mean()
+        future_err = torch.abs(x0_next_route - target_det).float().square().mean(dim=reduce_dims)
+        base_future_err = torch.abs(x0_next_base - target_det).float().square().mean(dim=reduce_dims)
+
+        # Same-next-state relative objective:
+        #   < 1 : routing improves the next-state x0 estimate
+        #   = 1 : no benefit over alpha=0
+        #   > 1 : routing hurts the next-state x0 estimate
+        # Detach the denominator explicitly: it is a reference/control branch,
+        # not an optimization target for the router.
+        loss_future = (
+            future_err / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))
+        ).mean()
 
         alpha_tile = pred["alpha_tile"].float()
         loss_smooth = torch.zeros((), device=target.device, dtype=torch.float32)
@@ -3110,7 +3146,13 @@ class JointFrontendSgmseModel(ScoreModel):
             stats = {
                 "rrsd_loss_future": loss_future.detach(),
                 "rrsd_future_x0_error": future_err.mean(),
-                "rrsd_future_error_over_current_base": loss_future.detach(),
+                "rrsd_base_future_x0_error": base_future_err.mean(),
+                "rrsd_future_error_over_base_future": loss_future.detach(),
+                "rrsd_future_improve_fraction": (future_err < base_future_err).float().mean(),
+                "rrsd_future_relative_error_change": (
+                    (future_err - base_future_err)
+                    / base_future_err.clamp_min(float(self.rrsd_oracle_eps))
+                ).mean(),
                 "rrsd_loss_smooth": loss_smooth.detach(),
                 "rrsd_future_gate_cost": loss_gate_cost.detach(),
                 "rrsd_alpha_mean": pred["alpha_tile"].detach().float().mean(),
