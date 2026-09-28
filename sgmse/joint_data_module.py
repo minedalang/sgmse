@@ -26,6 +26,7 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader, Dataset
 from torchaudio import load,save
+from sgmse.sampler import SpeakerBatchSampler
 
 
 def get_window(window_type: str, window_length: int) -> torch.Tensor:
@@ -113,6 +114,13 @@ class WavePairs(Dataset):
                 f"(base_dir={base_dir}, subset={subset})"
             )
 
+        # Needed by SpeakerBatchSampler. Unknown speakers are assigned unique
+        # negative ids so unrelated utterances are never treated as positives.
+        self.spk_ids = []
+        for idx, path in enumerate(self.clean_files):
+            sid = self._parse_spk_id(path)
+            self.spk_ids.append(sid if sid != 0 else -(idx + 1))
+
     def __len__(self):
         return max(1, int(len(self.clean_files) / 200)) if self.dummy else len(self.clean_files)
 
@@ -129,7 +137,7 @@ class WavePairs(Dataset):
         
         x = _load_mono(self.clean_files[i], expected_sr=self.expected_sr)
         y = _load_mono(self.noisy_files[i], expected_sr=self.expected_sr)
-        spk_id = self._parse_spk_id(self.clean_files[i])
+        spk_id = self.spk_ids[i]
 
         # 先对齐长度，避免 clean/noisy 长度略有差异
         min_len = min(x.size(-1), y.size(-1))
@@ -212,6 +220,14 @@ class WavePairsScp(Dataset):
         self.expected_sr = expected_sr
         self.subset = subset
 
+        # Precompute ids for speaker-balanced contrastive batches. If parsing
+        # fails, keep that utterance unique rather than collapsing every unknown
+        # speaker to id 0 (which would create false positives).
+        self.spk_ids = []
+        for idx, (utt, noisy_path) in enumerate(self.wav_items):
+            sid = self._parse_spk_id(utt, noisy_path)
+            self.spk_ids.append(sid if sid != 0 else -(idx + 1))
+
     def __len__(self):
         return max(1, int(len(self.wav_items) / 200)) if self.dummy else len(self.wav_items)
 
@@ -245,7 +261,7 @@ class WavePairsScp(Dataset):
         utt = self.uttids[i]
         noisy_path = self.noisy_files[i]
         clean_path = self._resolve_clean_path(utt, noisy_path)
-        spk_id = self._parse_spk_id(utt, noisy_path)
+        spk_id = self.spk_ids[i]
 
         y = _load_mono(noisy_path, expected_sr=self.expected_sr)
         x = _load_mono(clean_path, expected_sr=self.expected_sr)
@@ -408,9 +424,35 @@ class _BaseJointWaveDataModule(pl.LightningDataModule):
         )
 
     def train_dataloader(self, contrastive_weight: float = 0.0, *args, **kwargs):
-        """兼容 ScoreModel.train_dataloader(self.contrastive_weight) 的调用。
-        这里的 contrastive_weight 在联合训练 datamodule 中不使用，直接忽略。
+        """Build the training loader.
+
+        With contrastive loss enabled, use speaker-balanced batches so every
+        selected speaker contributes at least two utterances and the
+        same-speaker multi-positive objective is actually exercised.
         """
+        if contrastive_weight > 0.0:
+            if not hasattr(self.train_set, "spk_ids"):
+                raise RuntimeError(
+                    "Speaker-aware contrastive training requires train_set.spk_ids."
+                )
+            batch_sampler = SpeakerBatchSampler(
+                spk_ids=self.train_set.spk_ids,
+                batch_size=self.batch_size,
+                min_per_speaker=2,
+                drop_last=True,
+            )
+            if len(batch_sampler) == 0:
+                raise RuntimeError(
+                    "No speaker-balanced batch can be formed. Check speaker-id parsing "
+                    "or use a dataset with at least two utterances per speaker."
+                )
+            return DataLoader(
+                self.train_set,
+                batch_sampler=batch_sampler,
+                num_workers=self.num_workers,
+                pin_memory=self.gpu,
+            )
+
         return DataLoader(
             self.train_set,
             batch_size=self.batch_size,

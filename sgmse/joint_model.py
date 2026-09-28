@@ -1014,6 +1014,19 @@ class JointFrontendSgmseModel(ScoreModel):
             raise ValueError(
                 f"--rrsd_teacher {self.rrsd_teacher} requires --rrsd_freeze_base so the diffusion model is a stable frozen evaluator."
             )
+
+        # In frozen-base future-grad training, legacy ScoreModel contrastive loss
+        # is attached to the *base* x0 estimate and therefore has no trainable path
+        # to Q_phi. Re-purpose --contrastive_weight as a routed-future PLM loss:
+        # it is evaluated on x0_next_route inside _rrsd_future_grad_loss.
+        self.rrsd_route_contrastive = bool(
+            self.rrsd_teacher == "future_grad"
+            and self.rrsd_freeze_base
+            and float(getattr(self, "contrastive_weight", 0.0)) > 0.0
+        )
+        if self.rrsd_route_contrastive:
+            self.use_contrastive = False
+
         self.rrsd_router = None
         if self.rrsd_weight > 0.0:
             if self.sde.__class__.__name__ != "OUVESDE":
@@ -3115,6 +3128,22 @@ class JointFrontendSgmseModel(ScoreModel):
         future_err = torch.abs(x0_next_route - target_det).float().square().mean(dim=reduce_dims)
         base_future_err = torch.abs(x0_next_base - target_det).float().square().mean(dim=reduce_dims)
 
+        # Optional speaker-aware PLM contrastive regularizer on the ROUTED future
+        # x0 estimate. This path remains differentiable:
+        # alpha -> x_next_route -> frozen score net -> x0_next_route -> iSTFT ->
+        # frozen UniSpeech-SAT -> InfoNCE -> router.
+        loss_route_contrastive = torch.zeros(
+            (), device=target.device, dtype=torch.float32
+        )
+        if bool(getattr(self, "rrsd_route_contrastive", False)):
+            loss_route_contrastive = self._compute_contrastive_loss(
+                x0_next_route,
+                target_det,
+                step_out.get("spk_ids", None),
+                weight_clean=self.contrastive_clean_weight,
+                weight_speaker=self.contrastive_speaker_weight,
+            ).float()
+
         # Same-next-state relative objective:
         #   < 1 : routing improves the next-state x0 estimate
         #   = 1 : no benefit over alpha=0
@@ -3140,6 +3169,7 @@ class JointFrontendSgmseModel(ScoreModel):
             float(self.rrsd_future_weight) * loss_future
             + float(self.rrsd_smooth_weight) * loss_smooth
             + float(self.rrsd_future_gate_cost) * loss_gate_cost
+            + float(self.contrastive_weight) * loss_route_contrastive
         )
 
         with torch.no_grad():
@@ -3148,6 +3178,10 @@ class JointFrontendSgmseModel(ScoreModel):
                 "rrsd_future_x0_error": future_err.mean(),
                 "rrsd_base_future_x0_error": base_future_err.mean(),
                 "rrsd_future_error_over_base_future": loss_future.detach(),
+                "rrsd_route_contrastive_loss": loss_route_contrastive.detach(),
+                "rrsd_route_contrastive_weighted": (
+                    float(self.contrastive_weight) * loss_route_contrastive.detach()
+                ),
                 "rrsd_future_improve_fraction": (future_err < base_future_err).float().mean(),
                 "rrsd_future_relative_error_change": (
                     (future_err - base_future_err)

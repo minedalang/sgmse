@@ -187,6 +187,10 @@ if __name__ == '__main__':
     trainer = pl.Trainer(
         **vars(arg_groups['Trainer']),
         strategy=strategy,
+        # SpeakerBatchSampler performs its own rank sharding when contrastive
+        # training is enabled. Prevent Lightning from replacing/wrapping it with
+        # another distributed sampler.
+        use_distributed_sampler=not (float(getattr(args, "contrastive_weight", 0.0)) > 0.0),
         logger=logger,
         max_steps=1_000_000,
         log_every_n_steps=10,

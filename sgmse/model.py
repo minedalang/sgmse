@@ -52,6 +52,10 @@ class ScoreModel(pl.LightningModule):
                             help="Hugging Face model name/path for UniSpeech-SAT.")
         parser.add_argument("--contrastive_temperature", type=float, default=0.1,
                             help="Temperature for InfoNCE contrastive loss.")
+        parser.add_argument("--contrastive_clean_weight", type=float, default=1.0,
+                            help="Positive weight for the exact enhanced-clean pair.")
+        parser.add_argument("--contrastive_speaker_weight", type=float, default=0.5,
+                            help="Positive weight for other utterances from the same speaker. Set 0 for paired-only InfoNCE ablation.")
         parser.add_argument("--max_plm_length", type=int, default=32000,
                             help="Max waveform length (in samples) fed into PLM.")
         return parser
@@ -63,6 +67,8 @@ class ScoreModel(pl.LightningModule):
         contrastive_weight=0.0,
         plm_name_or_path="microsoft/unispeech-sat-base-plus-sv",
         contrastive_temperature=0.1,
+        contrastive_clean_weight=1.0,
+        contrastive_speaker_weight=0.5,
         max_plm_length=32000,
         mode2_include_noisy_main=False,
         **kwargs
@@ -121,7 +127,11 @@ class ScoreModel(pl.LightningModule):
         self.contrastive_weight = contrastive_weight
         self.plm_name_or_path = plm_name_or_path
         self.contrastive_temperature = contrastive_temperature
+        self.contrastive_clean_weight = float(contrastive_clean_weight)
+        self.contrastive_speaker_weight = float(contrastive_speaker_weight)
         self.max_plm_length = max_plm_length
+        if self.contrastive_clean_weight <= 0.0 or self.contrastive_speaker_weight < 0.0:
+            raise ValueError("contrastive_clean_weight must be > 0 and contrastive_speaker_weight must be >= 0.")
 
         # 是否启用对比学习
         self.use_contrastive = self.contrastive_weight > 0.0
@@ -294,7 +304,13 @@ class ScoreModel(pl.LightningModule):
             self.ema.restore(params)
             self._ema_applied = False
 
-        return super().train(mode)
+        out = super().train(mode)
+        # The PLM is a frozen perceptual/speaker encoder. Keep it in eval mode
+        # even while the enhancement model is training so dropout does not make
+        # the contrastive target stochastic.
+        if getattr(self, "plm_model", None) is not None:
+            self.plm_model.eval()
+        return out
 
     def eval(self, no_ema=False):
         super().eval()
@@ -505,7 +521,11 @@ class ScoreModel(pl.LightningModule):
         # 对比学习损失
         if self.use_contrastive and self.plm_model is not None and self.contrastive_weight > 0.0:
             if x_hat_spec is not None:
-                contrastive_loss = self._compute_contrastive_loss(x_hat_spec, x, spk_ids, weight_clean=1.0, weight_speaker=0.5)
+                contrastive_loss = self._compute_contrastive_loss(
+                    x_hat_spec, x, spk_ids,
+                    weight_clean=self.contrastive_clean_weight,
+                    weight_speaker=self.contrastive_speaker_weight,
+                )
                 total_loss = base_loss + self.contrastive_weight * contrastive_loss
                 self.log('contrastive_loss', contrastive_loss,
                          on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
@@ -529,6 +549,7 @@ class ScoreModel(pl.LightningModule):
                 "y_cond": y_cond,
                 "sigma_override": sigma_override,
                 "pathsim_stats": pathsim_stats,
+                "spk_ids": spk_ids,
             }
         return total_loss
     
@@ -560,9 +581,11 @@ class ScoreModel(pl.LightningModule):
         enhanced_wav = enhanced_wav / (enhanced_wav.abs().max(dim=1, keepdim=True)[0] + 1e-6)
         clean_wav = clean_wav / (clean_wav.abs().max(dim=1, keepdim=True)[0] + 1e-6)
 
-        # 通过UniSpeech-SAT提取高层表示
+        # 通过 UniSpeech-SAT 提取高层表示。
+        # enhanced_wav 必须保留输入梯度；clean 只是 reference，可 no_grad 节省显存。
         plm_enh = self.plm_model(input_values=enhanced_wav, return_dict=True)
-        plm_clean = self.plm_model(input_values=clean_wav, return_dict=True)
+        with torch.no_grad():
+            plm_clean = self.plm_model(input_values=clean_wav, return_dict=True)
 
         # 使用 last_hidden_state 做时序特征，再做时间平均得到句级 embedding
         emb_enh = plm_enh.last_hidden_state.mean(dim=1)   # [B, D]
@@ -577,62 +600,59 @@ class ScoreModel(pl.LightningModule):
 
         return 0.5 * (loss_q_to_k + loss_k_to_q)
 
-    def _info_nce_multi(self, queries, keys, spk_ids=None,weight_clean=1.0, weight_speaker=0.5):
+    def _info_nce_multi(self, queries, keys, spk_ids=None, weight_clean=1.0, weight_speaker=0.5):
         """
-        多正例 InfoNCE：
-        - queries: [B, D]
-        - keys   : [B, D]
-        - negative_embs是负样本
-        - spk_ids: 可选 [B]，相同说话人视作多正例；
-                   若 None，则默认只有对角线是正例（一一对应）。
+        Weighted multi-positive InfoNCE / supervised-contrastive objective.
+
+        For query i:
+          - paired key i is the exact clean/enhanced counterpart (weight_clean);
+          - other keys from the same speaker are additional positives (weight_speaker);
+          - keys from different speakers remain negatives through the softmax denominator.
+
+        The previous implementation multiplied log-probabilities by weights inside
+        logsumexp and, because every pos_idx already had the same speaker id, it
+        accidentally assigned weight_clean to *all* positives.  Here weights are
+        normalized and used to average the positive log-probabilities directly.
         """
         queries = F.normalize(queries, dim=-1)
         keys = F.normalize(keys, dim=-1)
-        # key value相似度
-        logits = torch.matmul(queries, keys.T) / self.contrastive_temperature 
+        logits = torch.matmul(queries, keys.T) / self.contrastive_temperature
         B = logits.size(0)
 
-        # 没有说话人 ID：退化为标准一正样本 InfoNCE
         if spk_ids is None:
             labels = torch.arange(B, device=logits.device)
             return F.cross_entropy(logits, labels)
 
-        # 有说话人 ID：同说话人多正例，不同说话人负样本
-        if not torch.is_tensor(spk_ids):  
-            spk_ids = torch.tensor(spk_ids, device=logits.device)
+        if not torch.is_tensor(spk_ids):
+            spk_ids = torch.as_tensor(spk_ids, device=logits.device)
         else:
             spk_ids = spk_ids.to(logits.device)
-
         spk_ids = spk_ids.view(-1)
         if spk_ids.numel() != B:
             raise ValueError(
-                "spk_ids长度必须等于batch size"
+                f"spk_ids length ({spk_ids.numel()}) must equal batch size ({B})."
             )
-        
-        # 正样本的掩码：同说话人的样本为正例
-        pos_mask = spk_ids.unsqueeze(0) == spk_ids.unsqueeze(1)  # [B, B] bool
-        log_prob = F.log_softmax(logits, dim=1) #分母
 
-        # 针对每个正样本进行计算
-        losses = []
-        for i in range(B):
-            pos_idx = pos_mask[i].nonzero(as_tuple=False).squeeze(1)
-            if pos_idx.numel() == 0:
-                losses.append(-log_prob[i, i])
-                continue
-            log_pos = log_prob[i, pos_idx]  # 该 query 对所有正例的对数概率
-            
-            # 对正例的加权计算
-            # 干净语音正样本的权重为 weight_clean，同一说话人其他语音正样本的加权为 weight_speaker
-            weights = torch.tensor([weight_clean if spk_ids[idx] == spk_ids[i] else weight_speaker for idx in pos_idx], device=logits.device)
-            log_mean_pos = torch.logsumexp(log_pos * weights, dim=0) - torch.log(
-                torch.tensor(float(pos_idx.numel()), device=logits.device)
-                )  
-            # 对正例加权计算损失
-            losses.append(-log_mean_pos)
-        
+        # [B,B]: exact pair is always positive; same-speaker off-diagonal entries
+        # are additional positives.
+        same_spk = spk_ids[:, None].eq(spk_ids[None, :])
+        eye = torch.eye(B, device=logits.device, dtype=torch.bool)
+        pos_mask = same_spk | eye
 
-        return torch.stack(losses).mean()
+        pos_weights = torch.zeros_like(logits)
+        pos_weights = pos_weights.masked_fill(same_spk & ~eye, float(weight_speaker))
+        pos_weights = pos_weights.masked_fill(eye, float(weight_clean))
+        pos_weights = pos_weights * pos_mask.to(pos_weights.dtype)
+
+        # A conservative fallback for malformed/unknown speaker metadata:
+        # every query still has its exact paired positive on the diagonal.
+        weight_sum = pos_weights.sum(dim=1, keepdim=True).clamp_min(1e-12)
+        pos_weights = pos_weights / weight_sum
+
+        log_prob = F.log_softmax(logits, dim=1)
+        per_query = -(pos_weights * log_prob).sum(dim=1)
+        return per_query.mean()
+
     def _get_negative_samples(self, spk_ids, emb_enh, emb_clean):
         """
         获取同批次的负样本：选择同一批次但不同说话人的样本作为负样本。
@@ -703,10 +723,17 @@ class ScoreModel(pl.LightningModule):
                     return D
 
         elif self.loss_type == "score_matching":
-            # 经典 Tweedie 近似：x0_hat ≈ x_t + σ_t^2 * score
+            # score gives the conditional mean D = x_t + sigma_t^2 * score.
+            # For OUVE-like conditional SDEs, D = w_x(t) * x0 + w_y(t) * y,
+            # so recover the clean x0 in the same way as RRSD/_rrsd_score_to_x0.
             score = forward_out
-            x0_hat = x_t + sigma_xt.pow(2) * score
-            return x0_hat
+            D = x_t + sigma_xt.pow(2) * score
+            if hasattr(self.sde, "weights"):
+                w_xt, w_yt = self.sde.weights(t)
+                w_xt = w_xt[:, None, None, None]
+                w_yt = w_yt[:, None, None, None]
+                return (D - w_yt * y) / (w_xt + 1e-12)
+            return D
 
         # 其它情况暂不支持
         return None
