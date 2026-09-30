@@ -134,27 +134,32 @@ class ScoreModel(pl.LightningModule):
             raise ValueError("contrastive_clean_weight must be > 0 and contrastive_speaker_weight must be >= 0.")
 
         # 是否启用对比学习
-        self.use_contrastive = self.contrastive_weight > 0.0
+        # 只有训练阶段才加载 PLM
+        self.use_contrastive = (
+            self.contrastive_weight > 0.0
+            and self.training
+        )
+
         self.plm_model = None
+
         if self.use_contrastive:
             try:
-                # 预训练 UniSpeech-SAT
-                self.plm_model = UniSpeechSatModel.from_pretrained(self.plm_name_or_path)
+                self.plm_model = UniSpeechSatModel.from_pretrained(
+                    self.plm_name_or_path
+                )
+
                 self.plm_model.eval()
+
                 for p in self.plm_model.parameters():
-                    p.requires_grad = False  # 冻结参数，但仍允许对输入求梯度
-                if self.sr != 16000:
-                    warnings.warn(
-                        f"UniSpeech-SAT expects 16 kHz audio, but sr={self.sr}. "
-                        "You may want to resample before feeding into PLM."
-                    )
+                    p.requires_grad = False
+
             except Exception as e:
                 warnings.warn(
                     f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
                     "Contrastive loss will be disabled."
                 )
                 self.use_contrastive = False
-                self.plm_model = None
+        self.plm_model = None
     
     
     def _get_ema_named_parameters(self):
@@ -704,8 +709,12 @@ class ScoreModel(pl.LightningModule):
                     score = forward_out
                     D = score * sigma_xt.pow(2) + x_t
                     w_xt, w_yt = self.sde.weights(t)
-                    w_xt = w_xt[:, None, None, None]
-                    w_yt = w_yt[:, None, None, None]
+                    w_xt = w_xt.to(device=D.device, dtype=D.real.dtype)
+                    w_yt = w_yt.to(device=D.device, dtype=D.real.dtype)
+                    while w_xt.ndim < D.ndim:
+                        w_xt = w_xt.unsqueeze(-1)
+                    while w_yt.ndim < D.ndim:
+                        w_yt = w_yt.unsqueeze(-1)
                     x0_hat = (D - w_yt * y) / (w_xt + 1e-12)
                     return x0_hat
             else:
@@ -714,8 +723,12 @@ class ScoreModel(pl.LightningModule):
                 D = score * sigma_xt.pow(2) + x_t
                 if hasattr(self.sde, "weights"):
                     w_xt, w_yt = self.sde.weights(t)
-                    w_xt = w_xt[:, None, None, None]
-                    w_yt = w_yt[:, None, None, None]
+                    w_xt = w_xt.to(device=D.device, dtype=D.real.dtype)
+                    w_yt = w_yt.to(device=D.device, dtype=D.real.dtype)
+                    while w_xt.ndim < D.ndim:
+                        w_xt = w_xt.unsqueeze(-1)
+                    while w_yt.ndim < D.ndim:
+                        w_yt = w_yt.unsqueeze(-1)
                     x0_hat = (D - w_yt * y) / (w_xt + 1e-12)
                     return x0_hat
                 else:
@@ -730,8 +743,12 @@ class ScoreModel(pl.LightningModule):
             D = x_t + sigma_xt.pow(2) * score
             if hasattr(self.sde, "weights"):
                 w_xt, w_yt = self.sde.weights(t)
-                w_xt = w_xt[:, None, None, None]
-                w_yt = w_yt[:, None, None, None]
+                w_xt = w_xt.to(device=D.device, dtype=D.real.dtype)
+                w_yt = w_yt.to(device=D.device, dtype=D.real.dtype)
+                while w_xt.ndim < D.ndim:
+                    w_xt = w_xt.unsqueeze(-1)
+                while w_yt.ndim < D.ndim:
+                    w_yt = w_yt.unsqueeze(-1)
                 return (D - w_yt * y) / (w_xt + 1e-12)
             return D
 
