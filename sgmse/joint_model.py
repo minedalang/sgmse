@@ -4103,8 +4103,14 @@ class JointFrontendSgmseModel(ScoreModel):
         
         if self.frontend_name == "storm" and hasattr(self.frontend, "forward_spec"):
             Y_pre = self.frontend.forward_spec(y_wav)
-            y_pre = self.frontend.spec_to_waveform(Y_pre, length=y_wav.size(-1))
-            y_pre = _match_length(y_pre, y_wav)
+            # For spectral frontend supervision, waveform reconstruction is
+            # unused. Avoid an unnecessary differentiable inverse STFT.
+            needs_time_aux = (
+                self.frontend_trainable
+                and self.frontend_aux_loss in ("time_l1", "time_mse")
+            )
+            y_pre = None
+
         else:
             y_pre = self._frontend_forward(y_wav)
             y_pre = _match_length(y_pre, y_wav)

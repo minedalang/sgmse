@@ -6,6 +6,7 @@ log3/
 logs/
 nohup.out
 wandb_export_*/
+env/
 
 # Test outputs
 vb_test_*/
@@ -31,7 +32,7 @@ build/
 .idea/
 *.swp
 *.swo
-
+.*/
 # OS
 .DS_Store
 Thumbs.db

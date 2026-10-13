@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 from typing import Any, Dict, Optional, Sequence
+import os
 
 import torch
 import torch.nn as nn
@@ -202,9 +203,17 @@ class StormFrontend(BaseFrontend):
             dtype=spec.real.dtype,
         )
 
-        pred = self.backbone(spec, t)[:, :, :, :orig_frames]
+        if (
+            os.environ.get("SGMSE_STORM_CHECKPOINT", "0") == "1"
+            and self.training and torch.is_grad_enabled()
+        ):
+            from torch.utils.checkpoint import checkpoint
+            pred = checkpoint(self.backbone, spec, t, use_reentrant=False)
+        else:
+            pred = self.backbone(spec, t)
+        pred = pred[:, :, :, :orig_frames]
         return pred  # 注意：这里返回的是 transformed spec，不是 waveform
-
+    
 
     def spec_to_waveform(self, pred: torch.Tensor, length: int) -> torch.Tensor:
         pred_audio = self._spec_back(pred)

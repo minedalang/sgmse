@@ -1,4 +1,5 @@
 import time
+import os
 from math import ceil
 import warnings
 import torch.nn.functional as F
@@ -588,13 +589,30 @@ class ScoreModel(pl.LightningModule):
 
         # 通过 UniSpeech-SAT 提取高层表示。
         # enhanced_wav 必须保留输入梯度；clean 只是 reference，可 no_grad 节省显存。
-        plm_enh = self.plm_model(input_values=enhanced_wav, return_dict=True)
+        if (
+            os.environ.get("SGMSE_PLM_CHECKPOINT", "0") == "1"
+            and self.training and torch.is_grad_enabled()
+        ):
+            from torch.utils.checkpoint import checkpoint
+            plm_enh_hidden = checkpoint(
+                lambda wav: self.plm_model(
+                    input_values=wav, return_dict=True
+                ).last_hidden_state,
+                enhanced_wav,
+                use_reentrant=False,
+            )
+        else:
+            plm_enh_hidden = self.plm_model(
+                input_values=enhanced_wav, return_dict=True
+            ).last_hidden_state
         with torch.no_grad():
-            plm_clean = self.plm_model(input_values=clean_wav, return_dict=True)
+            # Reduce clean branch to a compact [B,D] tensor immediately.
+            emb_clean = self.plm_model(
+                input_values=clean_wav, return_dict=True
+            ).last_hidden_state.mean(dim=1)
 
         # 使用 last_hidden_state 做时序特征，再做时间平均得到句级 embedding
-        emb_enh = plm_enh.last_hidden_state.mean(dim=1)   # [B, D]
-        emb_clean = plm_clean.last_hidden_state.mean(dim=1)
+        emb_enh = plm_enh_hidden.mean(dim=1)   # [B, D]
 
         # 获取同批次其他说话人的嵌入作为负样本
         # negative_embs = self._get_negative_samples(spk_ids, emb_enh, emb_clean)
@@ -899,7 +917,25 @@ class ScoreModel(pl.LightningModule):
                 x_in = x_t
             try:
                 y_extra_in = None if y_extra is None else self._c_in(t) * y_extra
-                F = self.dnn(self._c_in(t) * x_in,  self._c_in(t) * y, t, y_cond=self._c_in(t) * y_cond, y_extra=y_extra_in)
+                dnn_x = self._c_in(t) * x_in
+                dnn_y = self._c_in(t) * y
+                dnn_cond = self._c_in(t) * y_cond
+                # Memory-only optimization: activation checkpointing preserves
+                # parameter structure and recomputes the score backbone in backward.
+                if (
+                    os.environ.get("SGMSE_SCORE_CHECKPOINT", "0") == "1"
+                    and self.training and torch.is_grad_enabled()
+                ):
+                    from torch.utils.checkpoint import checkpoint
+                    F = checkpoint(
+                        lambda a, b, c, d, e: self.dnn(
+                            a, b, c, y_cond=d, y_extra=e
+                        ),
+                        dnn_x, dnn_y, t, dnn_cond, y_extra_in,
+                        use_reentrant=False,
+                    )
+                else:
+                    F = self.dnn(dnn_x, dnn_y, t, y_cond=dnn_cond, y_extra=y_extra_in)
             except TypeError:
                 F = self.dnn(self._c_in(t) * x_in,  self._c_in(t) * y, t)
 

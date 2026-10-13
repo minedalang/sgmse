@@ -137,7 +137,9 @@ if __name__ == '__main__':
         from sgmse.joint_data_module import JointWaveScpDataModule as data_module_cls
     else:
         from sgmse.joint_data_module import JointWaveDataModule as data_module_cls
-
+    # 允许 PyTorch 安全加载 checkpoint 中的自定义 DataModule 类
+    torch.serialization.add_safe_globals([data_module_cls])
+    
     data_module_cls.add_argparse_args(parser.add_argument_group("DataModule", description=data_module_cls.__name__))
 
     args = parser.parse_args()
