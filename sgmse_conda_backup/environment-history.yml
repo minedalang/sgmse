@@ -1,0 +1,11 @@
+name: /data/coding/sgmse/.conda
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - cuda-nvcc=13
+  - cuda-cudart-dev
+  - libcublas-dev
+  - libcusparse-dev
+  - libcusolver-dev
+prefix: /data/coding/sgmse/.conda
