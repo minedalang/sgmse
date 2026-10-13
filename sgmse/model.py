@@ -159,7 +159,7 @@ class ScoreModel(pl.LightningModule):
                     "Contrastive loss will be disabled."
                 )
                 self.use_contrastive = False
-        self.plm_model = None
+                self.plm_model = None
     
     
     def _get_ema_named_parameters(self):
