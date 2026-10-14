@@ -189,12 +189,17 @@ class StormFrontend(BaseFrontend):
             length=length,
         )
     
-    # 推理返回频谱
-    def forward_spec(self, noisy_wav: torch.Tensor) -> torch.Tensor:
-        noisy_wav = ensure_mono_waveform(noisy_wav)
-        spec = self._spec_fwd(self._stft(noisy_wav))
+    # Reuse the already computed transformed STFT for joint training.
+    # Input: [B,1,F,T] in the *same* compressed complex domain as
+    # JointFrontendSgmseModel._sgmse_stft, not a raw/uncompressed STFT.
+    def forward_transformed_spec(self, spec: torch.Tensor) -> torch.Tensor:
+        if spec.ndim != 4 or spec.shape[1] != 1 or not torch.is_complex(spec):
+            raise ValueError(
+                "Expected transformed complex spectrogram [B,1,F,T], "
+                f"got {tuple(spec.shape)} dtype={spec.dtype}"
+            )
         orig_frames = spec.size(-1)
-        spec = _pad_spec(spec.unsqueeze(1))
+        spec = _pad_spec(spec)
 
         t = torch.full(
             (spec.size(0),),
@@ -212,7 +217,13 @@ class StormFrontend(BaseFrontend):
         else:
             pred = self.backbone(spec, t)
         pred = pred[:, :, :, :orig_frames]
-        return pred  # 注意：这里返回的是 transformed spec，不是 waveform
+        return pred  # Compressed complex spectrogram, not waveform.
+
+    # Compatibility path for callers that provide noisy waveform.
+    def forward_spec(self, noisy_wav: torch.Tensor) -> torch.Tensor:
+        noisy_wav = ensure_mono_waveform(noisy_wav)
+        spec = self._spec_fwd(self._stft(noisy_wav)).unsqueeze(1)
+        return self.forward_transformed_spec(spec)
     
 
     def spec_to_waveform(self, pred: torch.Tensor, length: int) -> torch.Tensor:

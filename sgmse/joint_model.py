@@ -4102,7 +4102,9 @@ class JointFrontendSgmseModel(ScoreModel):
         Y_noisy = self._sgmse_stft(y_wav)
         
         if self.frontend_name == "storm" and hasattr(self.frontend, "forward_spec"):
-            Y_pre = self.frontend.forward_spec(y_wav)
+            # Reuse Y_noisy to avoid second STFT + spectral compression.
+            # Frontend and data-module spectral configs must match.
+            Y_pre = self.frontend.forward_transformed_spec(Y_noisy)
             # For spectral frontend supervision, waveform reconstruction is
             # unused. Avoid an unnecessary differentiable inverse STFT.
             needs_time_aux = (
@@ -4740,7 +4742,9 @@ class JointFrontendSgmseModel(ScoreModel):
             Y_noisy = self._sgmse_stft(y_wav)
 
             if self.frontend_name == "storm" and hasattr(self.frontend, "forward_spec"):
-                Y_pre = self.frontend.forward_spec(y_wav)
+                # Reuse Y_noisy to avoid second STFT + spectral compression.
+                # Frontend and data-module spectral configs must match.
+                Y_pre = self.frontend.forward_transformed_spec(Y_noisy)
             else:
                 y_pre = self._frontend_forward(y_wav)
                 y_pre = _match_length(y_pre, y_wav)
