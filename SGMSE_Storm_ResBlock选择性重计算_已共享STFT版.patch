@@ -1,0 +1,136 @@
+--- a/sgmse/frontends/storm.py
++++ b/sgmse/frontends/storm.py
+@@ -208,14 +208,36 @@
+             dtype=spec.real.dtype,
+         )
+ 
+-        if (
++        ckpt_enabled = (
+             os.environ.get("SGMSE_STORM_CHECKPOINT", "0") == "1"
+             and self.training and torch.is_grad_enabled()
+-        ):
++        )
++        mode = os.environ.get("SGMSE_STORM_CHECKPOINT_MODE", "full").lower()
++        if not ckpt_enabled:
++            pred = self.backbone(spec, t)
++        elif mode == "full":
++            # Previous behavior, kept as the safest low-memory baseline.
+             from torch.utils.checkpoint import checkpoint
+             pred = checkpoint(self.backbone, spec, t, use_reentrant=False)
+         else:
+-            pred = self.backbone(spec, t)
++            # Partial recomputation leaves U-Net skips/pyramids live and may
++            # consume MORE memory than full checkpointing. Benchmark first.
++            min_side_by_mode = {
++                "blocks_all": 0,
++                "blocks_mid": 64,
++                "blocks_high": 128,
++            }
++            if mode not in min_side_by_mode:
++                raise ValueError(
++                    f"Unknown SGMSE_STORM_CHECKPOINT_MODE={mode!r}; "
++                    "expected full, blocks_all, blocks_mid or blocks_high"
++                )
++            original_min_side = self.backbone.resblock_ckpt_min_side
++            try:
++                self.backbone.resblock_ckpt_min_side = min_side_by_mode[mode]
++                pred = self.backbone(spec, t)
++            finally:
++                self.backbone.resblock_ckpt_min_side = original_min_side
+         pred = pred[:, :, :, :orig_frames]
+         return pred  # Compressed complex spectrogram, not waveform.
+ 
+--- a/sgmse/backbones/ncsnpp.py
++++ b/sgmse/backbones/ncsnpp.py
+@@ -20,6 +20,7 @@
+ import functools
+ import torch
+ import numpy as np
++from torch.utils.checkpoint import checkpoint
+ 
+ from .shared import BackboneRegistry
+ 
+@@ -97,6 +98,10 @@
+         self.conditional = conditional = conditional  # noise-conditional
+         self.centered = centered
+         self.scale_by_sigma = scale_by_sigma
++        # Opt-in block-level activation checkpointing for the StoRM frontend.
++        # -1 disables it. This is not a parameter/buffer, so old checkpoints
++        # load without changes and the model's numerical architecture is intact.
++        self.resblock_ckpt_min_side = -1
+ 
+ 
+         fir = fir
+@@ -267,6 +272,22 @@
+ 
+         self.all_modules = nn.ModuleList(modules)
+         
++
++    def _run_resblock(self, block, x, temb):
++        """Run an existing ResBlock with optional activation recomputation.
++
++        Only the block's internal saved tensors are checkpointed. U-Net skip
++        tensors and pyramid tensors remain live, unlike whole-net checkpointing.
++        """
++        min_side = self.resblock_ckpt_min_side
++        if (
++            min_side >= 0
++            and self.training
++            and torch.is_grad_enabled()
++            and min(x.shape[-2:]) >= min_side
++        ):
++            return checkpoint(block, x, temb, use_reentrant=False)
++        return block(x, temb)
+ 
+     def forward(self, x, time_cond):
+         # timestep/noise_level embedding; only for continuous training
+@@ -331,7 +352,7 @@
+         for i_level in range(self.num_resolutions):
+             # Residual blocks for this resolution
+             for i_block in range(self.num_res_blocks):
+-                h = modules[m_idx](hs[-1], temb)
++                h = self._run_resblock(modules[m_idx], hs[-1], temb)
+                 m_idx += 1
+                 # Attention layer (optional)
+                 if h.shape[-2] in self.attn_resolutions: # edit: check H dim (-2) not W dim (-1)
+@@ -345,7 +366,7 @@
+                     h = modules[m_idx](hs[-1])
+                     m_idx += 1
+                 else:
+-                    h = modules[m_idx](hs[-1], temb)
++                    h = self._run_resblock(modules[m_idx], hs[-1], temb)
+                     m_idx += 1
+ 
+                 if self.progressive_input == 'input_skip':   # Combine h with x
+@@ -364,11 +385,11 @@
+                 hs.append(h)
+ 
+         h = hs[-1] # actualy equal to: h = h
+-        h = modules[m_idx](h, temb)  # ResNet block
++        h = self._run_resblock(modules[m_idx], h, temb)  # ResNet block
+         m_idx += 1
+         h = modules[m_idx](h)  # Attention block
+         m_idx += 1
+-        h = modules[m_idx](h, temb)  # ResNet block
++        h = self._run_resblock(modules[m_idx], h, temb)  # ResNet block
+         m_idx += 1
+ 
+         pyramid = None
+@@ -376,7 +397,7 @@
+         # Upsampling block
+         for i_level in reversed(range(self.num_resolutions)):
+             for i_block in range(self.num_res_blocks + 1):
+-                h = modules[m_idx](torch.cat([h, hs.pop()], dim=1), temb)
++                h = self._run_resblock(modules[m_idx], torch.cat([h, hs.pop()], dim=1), temb)
+                 m_idx += 1
+ 
+             # edit: from -1 to -2
+@@ -423,7 +444,7 @@
+                     h = modules[m_idx](h)
+                     m_idx += 1
+                 else:
+-                    h = modules[m_idx](h, temb)  # Upspampling
++                    h = self._run_resblock(modules[m_idx], h, temb)  # Upsampling
+                     m_idx += 1
+ 
+         assert not hs

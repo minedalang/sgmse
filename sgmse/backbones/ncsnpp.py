@@ -20,6 +20,7 @@ import torch.nn as nn
 import functools
 import torch
 import numpy as np
+from torch.utils.checkpoint import checkpoint
 
 from .shared import BackboneRegistry
 
@@ -97,6 +98,10 @@ class NCSNpp(nn.Module):
         self.conditional = conditional = conditional  # noise-conditional
         self.centered = centered
         self.scale_by_sigma = scale_by_sigma
+        # Opt-in block-level activation checkpointing for the StoRM frontend.
+        # -1 disables it. This is not a parameter/buffer, so old checkpoints
+        # load without changes and the model's numerical architecture is intact.
+        self.resblock_ckpt_min_side = -1
 
 
         fir = fir
@@ -268,6 +273,22 @@ class NCSNpp(nn.Module):
         self.all_modules = nn.ModuleList(modules)
         
 
+    def _run_resblock(self, block, x, temb):
+        """Run an existing ResBlock with optional activation recomputation.
+
+        Only the block's internal saved tensors are checkpointed. U-Net skip
+        tensors and pyramid tensors remain live, unlike whole-net checkpointing.
+        """
+        min_side = self.resblock_ckpt_min_side
+        if (
+            min_side >= 0
+            and self.training
+            and torch.is_grad_enabled()
+            and min(x.shape[-2:]) >= min_side
+        ):
+            return checkpoint(block, x, temb, use_reentrant=False)
+        return block(x, temb)
+
     def forward(self, x, time_cond):
         # timestep/noise_level embedding; only for continuous training
         modules = self.all_modules
@@ -331,7 +352,7 @@ class NCSNpp(nn.Module):
         for i_level in range(self.num_resolutions):
             # Residual blocks for this resolution
             for i_block in range(self.num_res_blocks):
-                h = modules[m_idx](hs[-1], temb)
+                h = self._run_resblock(modules[m_idx], hs[-1], temb)
                 m_idx += 1
                 # Attention layer (optional)
                 if h.shape[-2] in self.attn_resolutions: # edit: check H dim (-2) not W dim (-1)
@@ -345,7 +366,7 @@ class NCSNpp(nn.Module):
                     h = modules[m_idx](hs[-1])
                     m_idx += 1
                 else:
-                    h = modules[m_idx](hs[-1], temb)
+                    h = self._run_resblock(modules[m_idx], hs[-1], temb)
                     m_idx += 1
 
                 if self.progressive_input == 'input_skip':   # Combine h with x
@@ -364,11 +385,11 @@ class NCSNpp(nn.Module):
                 hs.append(h)
 
         h = hs[-1] # actualy equal to: h = h
-        h = modules[m_idx](h, temb)  # ResNet block
+        h = self._run_resblock(modules[m_idx], h, temb)  # ResNet block
         m_idx += 1
         h = modules[m_idx](h)  # Attention block
         m_idx += 1
-        h = modules[m_idx](h, temb)  # ResNet block
+        h = self._run_resblock(modules[m_idx], h, temb)  # ResNet block
         m_idx += 1
 
         pyramid = None
@@ -376,7 +397,7 @@ class NCSNpp(nn.Module):
         # Upsampling block
         for i_level in reversed(range(self.num_resolutions)):
             for i_block in range(self.num_res_blocks + 1):
-                h = modules[m_idx](torch.cat([h, hs.pop()], dim=1), temb)
+                h = self._run_resblock(modules[m_idx], torch.cat([h, hs.pop()], dim=1), temb)
                 m_idx += 1
 
             # edit: from -1 to -2
@@ -423,7 +444,7 @@ class NCSNpp(nn.Module):
                     h = modules[m_idx](h)
                     m_idx += 1
                 else:
-                    h = modules[m_idx](h, temb)  # Upspampling
+                    h = self._run_resblock(modules[m_idx], h, temb)  # Upsampling
                     m_idx += 1
 
         assert not hs

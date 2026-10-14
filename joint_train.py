@@ -1,5 +1,5 @@
+import os, time, resource
 def mark(msg):
-    import os, time, resource
     rss_mb = resource.getrusage(resource.RUSAGE_SELF).ru_maxrss / 1024
     print(
             f"[MARK] {time.strftime('%H:%M:%S')} "
@@ -12,6 +12,28 @@ def mark(msg):
             flush=True,
         )
 mark("after imports")
+print("\n========== Checkpoint Configuration ==========", flush=True)
+print(
+    "STORM_CHECKPOINT:",
+    os.environ.get("SGMSE_STORM_CHECKPOINT", "0"),
+    flush=True,
+)
+print(
+    "STORM_CHECKPOINT_MODE:",
+    os.environ.get("SGMSE_STORM_CHECKPOINT_MODE", "full"),
+    flush=True,
+)
+print(
+    "SCORE_CHECKPOINT:",
+    os.environ.get("SGMSE_SCORE_CHECKPOINT", "0"),
+    flush=True,
+)
+print(
+    "PLM_CHECKPOINT:",
+    os.environ.get("SGMSE_PLM_CHECKPOINT", "0"),
+    flush=True,
+)
+print("==============================================\n", flush=True)
 
 import torch
 import wandb

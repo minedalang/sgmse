@@ -208,14 +208,36 @@ class StormFrontend(BaseFrontend):
             dtype=spec.real.dtype,
         )
 
-        if (
+        ckpt_enabled = (
             os.environ.get("SGMSE_STORM_CHECKPOINT", "0") == "1"
             and self.training and torch.is_grad_enabled()
-        ):
+        )
+        mode = os.environ.get("SGMSE_STORM_CHECKPOINT_MODE", "full").lower()
+        if not ckpt_enabled:
+            pred = self.backbone(spec, t)
+        elif mode == "full":
+            # Previous behavior, kept as the safest low-memory baseline.
             from torch.utils.checkpoint import checkpoint
             pred = checkpoint(self.backbone, spec, t, use_reentrant=False)
         else:
-            pred = self.backbone(spec, t)
+            # Partial recomputation leaves U-Net skips/pyramids live and may
+            # consume MORE memory than full checkpointing. Benchmark first.
+            min_side_by_mode = {
+                "blocks_all": 0,
+                "blocks_mid": 64,
+                "blocks_high": 128,
+            }
+            if mode not in min_side_by_mode:
+                raise ValueError(
+                    f"Unknown SGMSE_STORM_CHECKPOINT_MODE={mode!r}; "
+                    "expected full, blocks_all, blocks_mid or blocks_high"
+                )
+            original_min_side = self.backbone.resblock_ckpt_min_side
+            try:
+                self.backbone.resblock_ckpt_min_side = min_side_by_mode[mode]
+                pred = self.backbone(spec, t)
+            finally:
+                self.backbone.resblock_ckpt_min_side = original_min_side
         pred = pred[:, :, :, :orig_frames]
         return pred  # Compressed complex spectrogram, not waveform.
 

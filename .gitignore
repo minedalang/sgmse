@@ -7,7 +7,7 @@ logs/
 nohup.out
 wandb_export_*/
 env/
-
+pre_models/
 # Test outputs
 vb_test_*/
 debug_*/
