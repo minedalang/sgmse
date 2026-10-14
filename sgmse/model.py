@@ -46,6 +46,9 @@ class ScoreModel(pl.LightningModule):
             help="Detach y when constructing SDE marginal_prob, e.g. mean,std = sde.marginal_prob(x, y.detach(), t).",
         )
         # 对比学习参数
+        parser.add_argument("--plm_type", type=str, default="unispeech_sat",
+                            choices=["unispeech_sat", "campplus", "xvector"],
+                            help="Frozen contrastive encoder: UniSpeech-SAT, CAM++, or SpeechBrain X-Vector.")
         parser.add_argument("--contrastive_weight", type=float, default=0.0,
                             help="Weight of PLM-based contrastive loss (0.0 disables it).")
         parser.add_argument("--plm_name_or_path", type=str,
@@ -66,6 +69,7 @@ class ScoreModel(pl.LightningModule):
         loss_weighting='sigma^2', network_scaling=None, c_in='1', c_out='1', c_skip='0', sigma_data=0.1, 
         l1_weight=0.001, pesq_weight=0.0, sr=16000, detach=False,data_module_cls=None, 
         contrastive_weight=0.0,
+        plm_type="unispeech_sat",
         plm_name_or_path="microsoft/unispeech-sat-base-plus-sv",
         contrastive_temperature=0.1,
         contrastive_clean_weight=1.0,
@@ -126,6 +130,9 @@ class ScoreModel(pl.LightningModule):
         self.data_module = data_module_cls(**kwargs, gpu=kwargs.get('gpus', 0) > 0)
         # 初始化对比学习
         self.contrastive_weight = contrastive_weight
+        self.plm_type = str(plm_type).lower()
+        if self.plm_type not in ("unispeech_sat", "campplus", "xvector"):
+            raise ValueError(f"Unsupported PLM type: {plm_type!r}")
         self.plm_name_or_path = plm_name_or_path
         self.contrastive_temperature = contrastive_temperature
         self.contrastive_clean_weight = float(contrastive_clean_weight)
@@ -144,23 +151,42 @@ class ScoreModel(pl.LightningModule):
         self.plm_model = None
 
         if self.use_contrastive:
-            try:
-                self.plm_model = UniSpeechSatModel.from_pretrained(
-                    self.plm_name_or_path
+            if self.plm_type == "campplus":
+                # Do not silently disable CAM++ after a failed load: its loss
+                # is an explicit experimental variable and must be present.
+                from sgmse.speaker_encoders import WeSpeakerCAMPPlusEncoder
+                self.plm_model = WeSpeakerCAMPPlusEncoder(
+                    model_name_or_path=self.plm_name_or_path,
+                    sample_rate=self.sr,
                 )
+            elif self.plm_type == "xvector":
+                from sgmse.xvector_encoder import SpeechBrainXVectorEncoder
+                if self.plm_name_or_path == "microsoft/unispeech-sat-base-plus-sv":
+                    raise ValueError(
+                        "For --plm_type xvector, pass --plm_name_or_path "
+                        "speechbrain/spkrec-xvect-voxceleb (or its local directory)."
+                    )
+                self.plm_model = SpeechBrainXVectorEncoder(
+                    model_name_or_path=self.plm_name_or_path,
+                    sample_rate=self.sr,
+                )
+            else:
+                try:
+                    self.plm_model = UniSpeechSatModel.from_pretrained(
+                        self.plm_name_or_path
+                    )
+                except Exception as e:
+                    warnings.warn(
+                        f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
+                        "Contrastive loss will be disabled."
+                    )
+                    self.use_contrastive = False
+                    self.plm_model = None
 
+            if self.plm_model is not None:
                 self.plm_model.eval()
-
                 for p in self.plm_model.parameters():
-                    p.requires_grad = False
-
-            except Exception as e:
-                warnings.warn(
-                    f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
-                    "Contrastive loss will be disabled."
-                )
-                self.use_contrastive = False
-                self.plm_model = None
+                    p.requires_grad_(False)
     
     
     def _get_ema_named_parameters(self):
@@ -587,32 +613,40 @@ class ScoreModel(pl.LightningModule):
         enhanced_wav = enhanced_wav / (enhanced_wav.abs().max(dim=1, keepdim=True)[0] + 1e-6)
         clean_wav = clean_wav / (clean_wav.abs().max(dim=1, keepdim=True)[0] + 1e-6)
 
-        # 通过 UniSpeech-SAT 提取高层表示。
-        # enhanced_wav 必须保留输入梯度；clean 只是 reference，可 no_grad 节省显存。
-        if (
+        # Enhanced branch must keep waveform-input autograd; clean branch
+        # serves only as a frozen reference. Keep legacy UniSpeech-SAT gradient
+        # checkpointing behaviour unchanged.
+        checkpoint_plm = (
             os.environ.get("SGMSE_PLM_CHECKPOINT", "0") == "1"
             and self.training and torch.is_grad_enabled()
-        ):
-            from torch.utils.checkpoint import checkpoint
-            plm_enh_hidden = checkpoint(
-                lambda wav: self.plm_model(
-                    input_values=wav, return_dict=True
-                ).last_hidden_state,
-                enhanced_wav,
-                use_reentrant=False,
-            )
+        )
+        if self.plm_type in ("campplus", "xvector"):
+            if checkpoint_plm:
+                from torch.utils.checkpoint import checkpoint
+                emb_enh = checkpoint(self.plm_model, enhanced_wav, use_reentrant=False)
+            else:
+                emb_enh = self.plm_model(enhanced_wav)
+            with torch.no_grad():
+                emb_clean = self.plm_model(clean_wav)
         else:
-            plm_enh_hidden = self.plm_model(
-                input_values=enhanced_wav, return_dict=True
-            ).last_hidden_state
-        with torch.no_grad():
-            # Reduce clean branch to a compact [B,D] tensor immediately.
-            emb_clean = self.plm_model(
-                input_values=clean_wav, return_dict=True
-            ).last_hidden_state.mean(dim=1)
-
-        # 使用 last_hidden_state 做时序特征，再做时间平均得到句级 embedding
-        emb_enh = plm_enh_hidden.mean(dim=1)   # [B, D]
+            if checkpoint_plm:
+                from torch.utils.checkpoint import checkpoint
+                plm_enh_hidden = checkpoint(
+                    lambda wav: self.plm_model(
+                        input_values=wav, return_dict=True
+                    ).last_hidden_state,
+                    enhanced_wav,
+                    use_reentrant=False,
+                )
+            else:
+                plm_enh_hidden = self.plm_model(
+                    input_values=enhanced_wav, return_dict=True
+                ).last_hidden_state
+            with torch.no_grad():
+                emb_clean = self.plm_model(
+                    input_values=clean_wav, return_dict=True
+                ).last_hidden_state.mean(dim=1)
+            emb_enh = plm_enh_hidden.mean(dim=1)
 
         # 获取同批次其他说话人的嵌入作为负样本
         # negative_embs = self._get_negative_samples(spk_ids, emb_enh, emb_clean)

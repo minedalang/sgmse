@@ -239,6 +239,7 @@ def main():
     model = JointSemambaSgmseModel.load_from_checkpoint(
         args.ckpt,
         **load_kwargs,
+         weights_only=False,
     )
 
     model.eval(no_ema=not args.use_ema).to(args.device)

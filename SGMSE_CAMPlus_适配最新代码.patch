@@ -1,0 +1,491 @@
+diff --git a/CAMPLUS_README.md b/CAMPLUS_README.md
+new file mode 100644
+index 0000000..5db547d
+--- /dev/null
++++ b/CAMPLUS_README.md
+@@ -0,0 +1,92 @@
++# CAM++ encoder option for SGMSE joint contrastive training
++
++This extension adds **`--plm_type campplus`** while preserving the original
++`--plm_type unispeech_sat` default. The InfoNCE loss, positive/negative
++sampling logic, and `--contrastive_speaker_weight` are unchanged.
++This patch is rebased against the latest user-uploaded SGMSE code and retains
++`SGMSE_PLM_CHECKPOINT` support for UniSpeech-SAT and CAM++.
++
++## 1. Install in your SGMSE training environment
++
++```bash
++python -m pip install wespeaker huggingface_hub
++```
++
++`wespeaker` must expose `wespeaker.models.campplus.CAMPPlus`. If your package
++release does not expose this class, install the current official source:
++
++```bash
++python -m pip install 'git+https://github.com/wenet-e2e/wespeaker.git'
++```
++
++The CAM++ checkpoint can be downloaded on any machine with internet access.
++For offline training servers, copy `avg_model.pt` into a local directory, e.g.
++`/data/models/wespeaker-voxceleb-campplus/`:
++
++```bash
++huggingface-cli download Wespeaker/wespeaker-voxceleb-campplus avg_model.pt --local-dir /data/models/wespeaker-voxceleb-campplus
++```
++
++Alternatively, `--plm_name_or_path Wespeaker/wespeaker-voxceleb-campplus`
++will try to fetch the weights from Hugging Face on demand.
++
++The official WeSpeaker CAM++ model is fed **80-dimensional Kaldi FBank**
++(25-ms windows, 10-ms hop, 16 kHz) and produces a **512-dimensional**
++speaker embedding. We use `dither=0`, waveform-wise CMN, and a PyTorch
++feature pipeline so gradients propagate to enhanced waveforms. This is a
++training-time adapter, not a byte-identical reproduction of the offline
++WeSpeaker embedding extraction pipeline (which may use different waveform
++normalization and dither settings).
++
++## 2. Minimal change to your existing command
++
++Keep your other arguments unchanged. In the existing contrastive command,
++replace/add:
++
++```bash
++--plm_type campplus \
++--plm_name_or_path /data/models/wespeaker-voxceleb-campplus \
++--contrastive_weight 10 \
++--contrastive_temperature 0.1 \
++--contrastive_clean_weight 1.0 \
++--contrastive_speaker_weight 0.5 \
++--max_plm_length 32000
++```
++
++To run paired-only InfoNCE instead: `--contrastive_speaker_weight 0`.
++For the original large encoder: `--plm_type unispeech_sat --plm_name_or_path microsoft/unispeech-sat-base-plus-sv`.
++
++For a controlled comparison, initialize both experiments from the same
++`5ul7u03z` 300k checkpoint, with **the same optimizer/training config**.
++Do not use `--ckpt` to resume an optimizer checkpoint from a different
++encoder architecture; use `--init_ckpt` to start a fresh comparison.
++
++## 3. Verify before a long training run
++
++```bash
++python scripts/check_campplus_grad.py /data/models/wespeaker-voxceleb-campplus
++python -m unittest discover -s tests -p 'test_campplus_adapter.py'
++```
++
++The first script loads the actual weights and confirms enhanced-audio
++input gradients; the unit test uses tiny synthetic weights and does not
++require downloading CAM++.
++
++During training, check `contrastive_loss_step` is nonzero and that the
++enhancement model has nonzero gradients. The frozen CAM++ parameters should
++have `requires_grad=False` and no parameter gradients.
++
++## 4. Important implementation notes
++
++- The CAM++ adapter is deliberately imported **only** when enabled; the
++  original UniSpeech-SAT path is still available.
++- A missing CAM++ package, incompatible checkpoint or download failure
++  raises an error instead of silently disabling the contrastive loss.
++- In this latest ZIP, `self.plm_model = None` is already correctly indented
++  inside the exception handler; this patch preserves that fixed behavior.
++- CAM++ is used only to calculate the **training loss**; it is not needed
++  for the normal enhancement forward path. Some inference checkpoints may
++  still construct the encoder at model initialization, depending on the
++  saved hyperparameters and inference script; test deployment independently.
++- Speaker-weighted contrastive learning only uses additional positives if
++  same-speaker examples and valid speaker IDs occur in a mini-batch.
+diff --git a/scripts/check_campplus_grad.py b/scripts/check_campplus_grad.py
+new file mode 100644
+index 0000000..7889090
+--- /dev/null
++++ b/scripts/check_campplus_grad.py
+@@ -0,0 +1,34 @@
++"""Sanity-check real CAM++ gradient flow before a full training run.
++
++Usage: python scripts/check_campplus_grad.py /absolute/path/to/model_dir
++The model directory must contain avg_model.pt. (16 kHz input.)
++"""
++import sys
++import torch
++
++from sgmse.speaker_encoders import WeSpeakerCAMPPlusEncoder
++
++
++def main():
++    if len(sys.argv) != 2:
++        raise SystemExit('Usage: python scripts/check_campplus_grad.py /path/to/campplus_model')
++    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
++    model = WeSpeakerCAMPPlusEncoder(sys.argv[1]).to(device)
++    wav = torch.randn(2, 16000, device=device, requires_grad=True)
++    clean = torch.randn(2, 16000, device=device)
++    enh_emb = model(wav)
++    with torch.no_grad():
++        clean_emb = model(clean)
++    loss = torch.nn.functional.mse_loss(enh_emb, clean_emb)
++    loss.backward()
++    print('encoder:', model.__class__.__name__, 'device:', device)
++    print('embeddings:', tuple(enh_emb.shape))
++    print('enhanced waveform grad norm:', wav.grad.norm().item())
++    print('pretrained encoder has trainable parameters:', any(p.requires_grad for p in model.parameters()))
++    assert wav.grad is not None and wav.grad.norm() > 0
++    assert all(p.grad is None for p in model.parameters())
++    print('PASS: gradient reaches enhanced waveform while pretrained CAM++ stays frozen')
++
++
++if __name__ == '__main__':
++    main()
+diff --git a/sgmse/model.py b/sgmse/model.py
+index 8a3b518..dc40955 100644
+--- a/sgmse/model.py
++++ b/sgmse/model.py
+@@ -46,6 +46,9 @@ class ScoreModel(pl.LightningModule):
+             help="Detach y when constructing SDE marginal_prob, e.g. mean,std = sde.marginal_prob(x, y.detach(), t).",
+         )
+         # 对比学习参数
++        parser.add_argument("--plm_type", type=str, default="unispeech_sat",
++                            choices=["unispeech_sat", "campplus"],
++                            help="Frozen contrastive encoder: UniSpeech-SAT or WeSpeaker CAM++.")
+         parser.add_argument("--contrastive_weight", type=float, default=0.0,
+                             help="Weight of PLM-based contrastive loss (0.0 disables it).")
+         parser.add_argument("--plm_name_or_path", type=str,
+@@ -66,6 +69,7 @@ class ScoreModel(pl.LightningModule):
+         loss_weighting='sigma^2', network_scaling=None, c_in='1', c_out='1', c_skip='0', sigma_data=0.1, 
+         l1_weight=0.001, pesq_weight=0.0, sr=16000, detach=False,data_module_cls=None, 
+         contrastive_weight=0.0,
++        plm_type="unispeech_sat",
+         plm_name_or_path="microsoft/unispeech-sat-base-plus-sv",
+         contrastive_temperature=0.1,
+         contrastive_clean_weight=1.0,
+@@ -126,6 +130,9 @@ class ScoreModel(pl.LightningModule):
+         self.data_module = data_module_cls(**kwargs, gpu=kwargs.get('gpus', 0) > 0)
+         # 初始化对比学习
+         self.contrastive_weight = contrastive_weight
++        self.plm_type = str(plm_type).lower()
++        if self.plm_type not in ("unispeech_sat", "campplus"):
++            raise ValueError(f"Unsupported PLM type: {plm_type!r}")
+         self.plm_name_or_path = plm_name_or_path
+         self.contrastive_temperature = contrastive_temperature
+         self.contrastive_clean_weight = float(contrastive_clean_weight)
+@@ -144,23 +151,31 @@ class ScoreModel(pl.LightningModule):
+         self.plm_model = None
+ 
+         if self.use_contrastive:
+-            try:
+-                self.plm_model = UniSpeechSatModel.from_pretrained(
+-                    self.plm_name_or_path
++            if self.plm_type == "campplus":
++                # Do not silently disable CAM++ after a failed load: its loss
++                # is an explicit experimental variable and must be present.
++                from sgmse.speaker_encoders import WeSpeakerCAMPPlusEncoder
++                self.plm_model = WeSpeakerCAMPPlusEncoder(
++                    model_name_or_path=self.plm_name_or_path,
++                    sample_rate=self.sr,
+                 )
++            else:
++                try:
++                    self.plm_model = UniSpeechSatModel.from_pretrained(
++                        self.plm_name_or_path
++                    )
++                except Exception as e:
++                    warnings.warn(
++                        f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
++                        "Contrastive loss will be disabled."
++                    )
++                    self.use_contrastive = False
++                    self.plm_model = None
+ 
++            if self.plm_model is not None:
+                 self.plm_model.eval()
+-
+                 for p in self.plm_model.parameters():
+-                    p.requires_grad = False
+-
+-            except Exception as e:
+-                warnings.warn(
+-                    f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
+-                    "Contrastive loss will be disabled."
+-                )
+-                self.use_contrastive = False
+-                self.plm_model = None
++                    p.requires_grad_(False)
+     
+     
+     def _get_ema_named_parameters(self):
+@@ -587,32 +602,40 @@ class ScoreModel(pl.LightningModule):
+         enhanced_wav = enhanced_wav / (enhanced_wav.abs().max(dim=1, keepdim=True)[0] + 1e-6)
+         clean_wav = clean_wav / (clean_wav.abs().max(dim=1, keepdim=True)[0] + 1e-6)
+ 
+-        # 通过 UniSpeech-SAT 提取高层表示。
+-        # enhanced_wav 必须保留输入梯度；clean 只是 reference，可 no_grad 节省显存。
+-        if (
++        # Enhanced branch must keep waveform-input autograd; clean branch
++        # serves only as a frozen reference. Keep legacy UniSpeech-SAT gradient
++        # checkpointing behaviour unchanged.
++        checkpoint_plm = (
+             os.environ.get("SGMSE_PLM_CHECKPOINT", "0") == "1"
+             and self.training and torch.is_grad_enabled()
+-        ):
+-            from torch.utils.checkpoint import checkpoint
+-            plm_enh_hidden = checkpoint(
+-                lambda wav: self.plm_model(
+-                    input_values=wav, return_dict=True
+-                ).last_hidden_state,
+-                enhanced_wav,
+-                use_reentrant=False,
+-            )
++        )
++        if self.plm_type == "campplus":
++            if checkpoint_plm:
++                from torch.utils.checkpoint import checkpoint
++                emb_enh = checkpoint(self.plm_model, enhanced_wav, use_reentrant=False)
++            else:
++                emb_enh = self.plm_model(enhanced_wav)
++            with torch.no_grad():
++                emb_clean = self.plm_model(clean_wav)
+         else:
+-            plm_enh_hidden = self.plm_model(
+-                input_values=enhanced_wav, return_dict=True
+-            ).last_hidden_state
+-        with torch.no_grad():
+-            # Reduce clean branch to a compact [B,D] tensor immediately.
+-            emb_clean = self.plm_model(
+-                input_values=clean_wav, return_dict=True
+-            ).last_hidden_state.mean(dim=1)
+-
+-        # 使用 last_hidden_state 做时序特征，再做时间平均得到句级 embedding
+-        emb_enh = plm_enh_hidden.mean(dim=1)   # [B, D]
++            if checkpoint_plm:
++                from torch.utils.checkpoint import checkpoint
++                plm_enh_hidden = checkpoint(
++                    lambda wav: self.plm_model(
++                        input_values=wav, return_dict=True
++                    ).last_hidden_state,
++                    enhanced_wav,
++                    use_reentrant=False,
++                )
++            else:
++                plm_enh_hidden = self.plm_model(
++                    input_values=enhanced_wav, return_dict=True
++                ).last_hidden_state
++            with torch.no_grad():
++                emb_clean = self.plm_model(
++                    input_values=clean_wav, return_dict=True
++                ).last_hidden_state.mean(dim=1)
++            emb_enh = plm_enh_hidden.mean(dim=1)
+ 
+         # 获取同批次其他说话人的嵌入作为负样本
+         # negative_embs = self._get_negative_samples(spk_ids, emb_enh, emb_clean)
+diff --git a/sgmse/speaker_encoders.py b/sgmse/speaker_encoders.py
+new file mode 100644
+index 0000000..6c6523b
+--- /dev/null
++++ b/sgmse/speaker_encoders.py
+@@ -0,0 +1,135 @@
++"""Frozen speaker encoders for differentiable enhancement-training losses.
++
++WeSpeaker CAM++ uses 80-bin Kaldi FBanks and produces a 512-D speaker
++embedding.  Crucially, this wrapper does NOT use wespeaker's CLI
++extract_embedding() method: that inference helper detaches tensors and would
++prevent contrastive gradients from reaching the speech enhancement network.
++"""
++from pathlib import Path
++
++import torch
++from torch import nn
++from torchaudio.compliance import kaldi
++
++
++CAMPLUS_REPO = "Wespeaker/wespeaker-voxceleb-campplus"
++
++
++def _resolve_campplus_weights(model_name_or_path: str) -> Path:
++    candidate = Path(model_name_or_path).expanduser()
++    if candidate.is_dir():
++        checkpoint = candidate / "avg_model.pt"
++        if not checkpoint.is_file():
++            raise FileNotFoundError(f"CAM++ requires avg_model.pt under {candidate}")
++        return checkpoint
++    if candidate.is_file():
++        return candidate
++    try:
++        from huggingface_hub import hf_hub_download
++    except ImportError as exc:
++        raise ImportError("Install huggingface_hub or pass a local CAM++ checkpoint path") from exc
++    try:
++        return Path(hf_hub_download(repo_id=model_name_or_path, filename="avg_model.pt"))
++    except Exception as exc:
++        raise RuntimeError(
++            f"Could not download CAM++ checkpoint from {model_name_or_path!r}. "
++            "On an offline training machine, pre-download avg_model.pt and "
++            "pass its directory or file via --plm_name_or_path."
++        ) from exc
++
++
++class WeSpeakerCAMPPlusEncoder(nn.Module):
++    """Differentiable 16-kHz waveform -> CAM++ speaker embedding adapter.
++
++    Args:
++      model_name_or_path: Hugging Face repo, local directory containing
++        avg_model.pt, or a direct path to avg_model.pt.
++      sample_rate: must be 16000 Hz (the published VoxCeleb model setting).
++
++    A gradient is tracked through the *enhanced* waveform; the pretrained
++    CAM++ weights are frozen.  Kaldi FBanks have deterministic dither=0 and
++    utterance cepstral mean normalization (CMN), matching the WeSpeaker
++    evaluation pipeline's 80-mel/25-ms/10-ms feature conventions.
++    """
++
++    def __init__(self, model_name_or_path=CAMPLUS_REPO, sample_rate=16000):
++        super().__init__()
++        if int(sample_rate) != 16000:
++            raise ValueError("WeSpeaker CAM++ pretrained speaker model requires 16 kHz input")
++        try:
++            from wespeaker.models.campplus import CAMPPlus
++        except ImportError as exc:
++            raise ImportError(
++                "CAM++ requires WeSpeaker. Install: python -m pip install wespeaker "
++                "(or install from https://github.com/wenet-e2e/wespeaker)."
++            ) from exc
++
++        self.model = CAMPPlus(feat_dim=80, embed_dim=512, pooling_func="TSTP")
++        weight_path = _resolve_campplus_weights(model_name_or_path)
++        # The official avg_model.pt is a tensor state dictionary; weights_only
++        # avoids unpickling non-tensor objects from untrusted files.
++        checkpoint = torch.load(str(weight_path), map_location="cpu", weights_only=True)
++        if isinstance(checkpoint, dict) and "state_dict" in checkpoint:
++            checkpoint = checkpoint["state_dict"]
++        if not isinstance(checkpoint, dict):
++            raise TypeError(f"CAM++ checkpoint at {weight_path} is not a state dictionary")
++        missing, unexpected = self.model.load_state_dict(checkpoint, strict=False)
++        # A classification projection head is allowed in training checkpoints;
++        # missing CAM++ backbone tensors must NOT silently become random weights.
++        backbone_missing = [k for k in missing if not k.endswith("num_batches_tracked")]
++        if backbone_missing:
++            raise RuntimeError(
++                f"CAM++ backbone has {len(backbone_missing)} missing tensors. "
++                f"First missing keys: {backbone_missing[:8]}"
++            )
++        bad_unexpected = [k for k in unexpected if not k.startswith("projection.")]
++        if bad_unexpected:
++            raise RuntimeError(f"Unexpected CAM++ checkpoint keys: {bad_unexpected[:8]}")
++
++        for param in self.model.parameters():
++            param.requires_grad_(False)
++        self.eval()
++        self.sample_rate = 16000
++        self.embedding_dim = 512
++        print(f"[CAM++] Loaded frozen WeSpeaker weights: {weight_path}")
++
++    def train(self, mode=True):
++        super().train(False)
++        return self
++
++    @staticmethod
++    def _differentiable_fbank(waveform: torch.Tensor) -> torch.Tensor:
++        """Waveform [B,L] -> fbank [B,T,80], with input autograd preserved."""
++        if waveform.ndim != 2:
++            raise ValueError(f"Expected [B, L] waveform, got {tuple(waveform.shape)}")
++        if waveform.size(-1) < 400:
++            raise ValueError("CAM++ needs audio longer than 25 ms at 16 kHz")
++        # torchaudio.compliance.kaldi.fbank expects [channels, samples] per
++        # utterance. Operations are PyTorch tensors, NOT NumPy or no_grad.
++        # Disable mixed precision for feature extraction to avoid FP16/BF16 FFT
++        # accuracy issues; a cast to float32 still retains input gradients.
++        with torch.autocast(device_type=waveform.device.type, enabled=False):
++            waveform = waveform.float()
++            fbanks = []
++            for wav in waveform:
++                mel = kaldi.fbank(
++                    wav.unsqueeze(0),
++                    sample_frequency=16000,
++                    num_mel_bins=80,
++                    frame_length=25.0,
++                    frame_shift=10.0,
++                    window_type="povey",
++                    dither=0.0,
++                    use_energy=False,
++                )
++                fbanks.append(mel - mel.mean(dim=0, keepdim=True))
++            return torch.stack(fbanks, dim=0)
++
++    def forward(self, waveform: torch.Tensor) -> torch.Tensor:
++        feat = self._differentiable_fbank(waveform)
++        embeddings = self.model(feat)
++        if isinstance(embeddings, (tuple, list)):
++            embeddings = embeddings[-1]
++        if embeddings.ndim != 2 or embeddings.shape[0] != waveform.shape[0]:
++            raise RuntimeError(f"Unexpected CAM++ embedding shape: {tuple(embeddings.shape)}")
++        return embeddings
+diff --git a/tests/test_campplus_adapter.py b/tests/test_campplus_adapter.py
+new file mode 100644
+index 0000000..32e084c
+--- /dev/null
++++ b/tests/test_campplus_adapter.py
+@@ -0,0 +1,65 @@
++"""No-download gradient regression test for the CAM++ adapter.
++
++Run from the repo root: python -m unittest tests.test_campplus_adapter
++This stubs the WeSpeaker model to check integration/autograd independently
++of a real pretrained CAM++ checkpoint.
++"""
++import importlib.util
++import sys
++import tempfile
++import types
++import unittest
++from unittest import mock
++from pathlib import Path
++
++import torch
++from torch import nn
++
++ROOT = Path(__file__).resolve().parents[1]
++ENCODER_PATH = ROOT / 'sgmse' / 'speaker_encoders.py'
++
++
++class TinyFakeCAMPPlus(nn.Module):
++    def __init__(self, feat_dim=80, embed_dim=512, pooling_func='TSTP'):
++        super().__init__()
++        self.projection = nn.Linear(feat_dim, embed_dim)
++
++    def forward(self, x):
++        return self.projection(x.mean(dim=1))
++
++
++class AdapterTest(unittest.TestCase):
++    def test_embedding_and_waveform_input_grad(self):
++        fake_camp_module = types.ModuleType('wespeaker.models.campplus')
++        fake_camp_module.CAMPPlus = TinyFakeCAMPPlus
++        with mock.patch.dict(sys.modules, {
++            'wespeaker': types.ModuleType('wespeaker'),
++            'wespeaker.models': types.ModuleType('wespeaker.models'),
++            'wespeaker.models.campplus': fake_camp_module,
++        }):
++            spec = importlib.util.spec_from_file_location('test_speaker_encoders', ENCODER_PATH)
++            mod = importlib.util.module_from_spec(spec)
++            spec.loader.exec_module(mod)
++            with tempfile.TemporaryDirectory() as path:
++                model = TinyFakeCAMPPlus()
++                torch.save(model.state_dict(), Path(path) / 'avg_model.pt')
++                enc = mod.WeSpeakerCAMPPlusEncoder(path)
++                enh = torch.randn(2, 8000, requires_grad=True)
++                clean = torch.randn(2, 8000)
++                z_enh = enc(enh)
++                with torch.no_grad():
++                    z_clean = enc(clean)
++                self.assertEqual(z_enh.shape, (2, 512))
++                sim = torch.nn.functional.cosine_similarity(z_enh, z_clean).mean()
++                sim.backward()
++                self.assertIsNotNone(enh.grad)
++                self.assertTrue(torch.isfinite(enh.grad).all())
++                self.assertGreater(float(enh.grad.abs().sum()), 0)
++                self.assertTrue(all(not p.requires_grad for p in enc.parameters()))
++                self.assertTrue(all(p.grad is None for p in enc.parameters()))
++                enc.train()
++                self.assertFalse(enc.training)
++
++
++if __name__ == '__main__':
++    unittest.main()

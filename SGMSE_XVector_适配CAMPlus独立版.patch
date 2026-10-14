@@ -1,0 +1,512 @@
+diff --git a/XVECTOR_README.md b/XVECTOR_README.md
+new file mode 100644
+index 0000000..973a2bc
+--- /dev/null
++++ b/XVECTOR_README.md
+@@ -0,0 +1,101 @@
++# SGMSE SpeechBrain X-Vector 接入（不修改 site-packages）
++
++本包基于 `SGMSE_CAMPlus_完全独立整合版.zip` 添加 X-Vector，保留原 UniSpeech-SAT 和 CAM++ 的对比学习路径、双向 InfoNCE、`contrastive_speaker_weight`、RRSD/Future-grad，不新增对比学习计算间隔参数。
++
++## 1. 安装 SpeechBrain
++
++先检查是否已安装：
++
++```bash
++python -c "from speechbrain.inference.speaker import EncoderClassifier; print('SpeechBrain OK')"
++```
++
++如果没有：
++
++```bash
++python -m pip install --dry-run speechbrain==1.1.0
++# 确认不会换掉现有 torch / torchaudio 后再执行：
++python -m pip install speechbrain==1.1.0
++```
++
++不要为了安装本插件直接升级/降级已有的 PyTorch。如果当前环境与 SpeechBrain 仍存在兼容性错误，先贴具体 traceback 排查。
++
++## 2. 准备官方预训练权重
++
++官方预训练模型：https://huggingface.co/speechbrain/spkrec-xvect-voxceleb
++
++服务器能联网时：
++
++```bash
++hf download speechbrain/spkrec-xvect-voxceleb \
++  --local-dir /data/coding/sgmse/pre_models/speechbrain-xvector
++```
++
++服务器不能联网时，手工下载模型仓库中的全部文件（包括 `hyperparams.yaml`, `embedding_model.ckpt`, `classifier.ckpt`, `mean_var_norm_emb.ckpt`, `label_encoder.txt`）并上传同一目录。不要把 CAM++ 的 `avg_model.pt` 填进 X-Vector 模型路径。
++
++本适配器对于本地目录会覆盖 SpeechBrain 超参数中的 `pretrained_path`，以便真正从本地离线加载。
++
++## 3. 梯度检查（正式训练前必须先通过）
++
++```bash
++cd /data/coding/sgmse
++python -m scripts.check_xvector_grad \
++  /data/coding/sgmse/pre_models/speechbrain-xvector
++```
++
++期待 `embeddings: (2, 512)`、增强波形 grad norm 非零、`PASS`。与之前 CAM++ 一样，只有增强分支保留 autograd，干净分支不需要梯度。
++
++## 4. 训练
++
++在之前的训练命令基础上，将旧的 `--plm_type` 和 `--plm_name_or_path` 参数替换为：
++
++```bash
++--plm_type xvector \
++--plm_name_or_path /data/coding/sgmse/pre_models/speechbrain-xvector \
++--contrastive_weight 10 \
++--contrastive_temperature 0.1 \
++--contrastive_clean_weight 1.0 \
++--contrastive_speaker_weight 0.5 \
++--max_plm_length 32000
++```
++
++普通非说话人感知 InfoNCE：将 `--contrastive_speaker_weight 0`；训练脚本其他参数原样保留。**用 `--init_ckpt` 加载原始 300k 基线，并开一个新实验，不要用 `--ckpt` 直接恢复另一个编码器训练的 optimizer/checkpoint。**
++
++## 5. 单独测 X-Vector 的推理和训练式开销
++
++```bash
++python -m scripts.benchmark_speaker_encoders \
++  --plm_type xvector \
++  --model /data/coding/sgmse/pre_models/speechbrain-xvector \
++  --device cuda:0 --batch-size 16 --length 32000 \
++  --warmup 3 --steps 12 --amp off
++```
++
++脚本输出：
++- `INFERENCE 1 forward`: **X-Vector 特征提取器单次前向推理**，不计算梯度。
++- `Enhance forward` + `Clean forward` + `Backward`: **一次 InfoNCE 对比学习中两次编码、一次输入反向传播**的近似计算开销（采用 MSE 代替 InfoNCE 本身，小型矩阵 loss 的时间不计）。
++- `TRAIN 2fw+1bw`: 以上三项之和；此脚本 **不包含 STORM/NCSN++、STFT/iSTFT、DataLoader、分布式同步**。
++
++对照组（保持完全相同的 GPU / batch / 长度 / 精度 / 预热 / 步数）：
++
++```bash
++python -m scripts.benchmark_speaker_encoders \
++  --plm_type campplus \
++  --model /data/coding/sgmse/pre_models/wespeaker-voxceleb-campplus \
++  --device cuda:0 --batch-size 16 --length 32000 --amp off
++
++python -m scripts.benchmark_speaker_encoders \
++  --plm_type unispeech_sat \
++  --model microsoft/unispeech-sat-base-plus-sv \
++  --device cuda:0 --batch-size 16 --length 32000 --amp off
++```
++
++如果正式训练使用 BF16，可将三条命令都替换为 `--amp bf16` 进行第二轮测试。请空闲 GPU 上依次运行，避免同时运行训练进程干扰测量。
++
++**注意**：这里的推理是*说话人嵌入提取推理*，不是 SGMSE 语音增强推理。CAM++ / UniSpeech-SAT / X-Vector 仅用于训练损失时，部署增强模型的前向推理速度基本不受影响。
++
++## 6. 验证范围和依赖
++
++源码参考 SpeechBrain 官方模型定义（24-bin FBank + 5 TDNN blocks + 512-D embedding）；不复制或修改 SpeechBrain 源码。预训练权重由 `speechbrain` 加载，仅选用 `.mods.compute_features`、`.mods.mean_var_norm`、`.mods.embedding_model`，避免其高层 classify_file 的不必要开销。引入 SpeechBrain (Apache-2.0) 外部 Python 包。
++
++已使用安装的 SpeechBrain 1.1.0 以**合成网络权重**验证编码、梯度回传与冻结。尚未在用户 GPU / 真实 VoxCeleb 预训练权重上跑通；请以第 3 节实测为准。测速脚本只提供实测方法，**不承诺一定比 UniSpeech-SAT 快**。
+diff --git a/scripts/benchmark_speaker_encoders.py b/scripts/benchmark_speaker_encoders.py
+new file mode 100644
+index 0000000..d9e4ecf
+--- /dev/null
++++ b/scripts/benchmark_speaker_encoders.py
+@@ -0,0 +1,131 @@
++"""Fair speaker-encoder speed comparison; excludes SGMSE diffusion network.
++
++Example:
++python -m scripts.benchmark_speaker_encoders --plm_type xvector \
++  --model speechbrain/spkrec-xvect-voxceleb --batch-size 16 --length 32000
++"""
++import argparse
++import statistics
++import time
++import torch
++import torch.nn.functional as F
++
++
++def make_model(kind, name):
++    if kind == "xvector":
++        from sgmse.xvector_encoder import SpeechBrainXVectorEncoder
++        return SpeechBrainXVectorEncoder(name)
++    if kind == "campplus":
++        from sgmse.speaker_encoders import WeSpeakerCAMPPlusEncoder
++        return WeSpeakerCAMPPlusEncoder(name)
++    from transformers import UniSpeechSatModel
++    model = UniSpeechSatModel.from_pretrained(name)
++    class MeanHidden(torch.nn.Module):
++        def __init__(self, backbone):
++            super().__init__()
++            self.backbone = backbone
++        def forward(self, wav):
++            return self.backbone(input_values=wav, return_dict=True).last_hidden_state.mean(1)
++    return MeanHidden(model)
++
++
++def main():
++    parser = argparse.ArgumentParser(description="Benchmark 16kHz speaker encoders (not enhancement inference)")
++    parser.add_argument("--plm_type", choices=["xvector", "campplus", "unispeech_sat"], default="xvector")
++    parser.add_argument("--model", default=None, help="Pretrained Hub ID or local folder")
++    parser.add_argument("--batch-size", type=int, default=16)
++    parser.add_argument("--length", type=int, default=32000, help="Samples per utterance, at 16 kHz")
++    parser.add_argument("--warmup", type=int, default=3)
++    parser.add_argument("--steps", type=int, default=12)
++    parser.add_argument("--device", default="cuda:0" if torch.cuda.is_available() else "cpu")
++    parser.add_argument("--amp", choices=["off", "bf16"], default="off")
++    args = parser.parse_args()
++    if args.batch_size < 1 or args.steps < 1 or args.warmup < 0:
++        parser.error("batch-size and steps must be positive; warmup must be nonnegative")
++    if args.device.startswith("cpu") and args.amp == "bf16":
++        parser.error("For a reproducible comparison, use --amp off on CPU")
++
++    names = {
++        "xvector": "speechbrain/spkrec-xvect-voxceleb",
++        "campplus": "Wespeaker/wespeaker-voxceleb-campplus",
++        "unispeech_sat": "microsoft/unispeech-sat-base-plus-sv",
++    }
++    source = args.model or names[args.plm_type]
++    print("Loading:", args.plm_type, source, flush=True)
++    model = make_model(args.plm_type, source).to(args.device).eval()
++    for p in model.parameters():
++        p.requires_grad_(False)
++
++    device = torch.device(args.device)
++    use_cuda = device.type == "cuda"
++    if use_cuda:
++        torch.cuda.synchronize(device)
++        torch.cuda.reset_peak_memory_stats(device)
++    wav = torch.randn(args.batch_size, args.length, device=device)
++    clean = torch.randn(args.batch_size, args.length, device=device)
++
++    def sync():
++        if use_cuda:
++            torch.cuda.synchronize(device)
++
++    def measure_one():
++        # Inference-only: one batched forward, no gradients (typical X-Vector inference).
++        sync()
++        t0 = time.perf_counter()
++        with torch.inference_mode(), torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=(args.amp == "bf16")):
++            inference_embedding = model(wav)
++        sync()
++        t1 = time.perf_counter()
++        shape = tuple(inference_embedding.shape)
++        del inference_embedding
++
++        # Training-like: enhanced forward with autograd, clean forward with no
++        # grad, then backward to the enhanced input; pretrained weights frozen.
++        enhanced = wav.detach().requires_grad_(True)
++        sync()
++        t2 = time.perf_counter()
++        with torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=(args.amp == "bf16")):
++            emb_enh = model(enhanced)
++        sync()
++        t3 = time.perf_counter()
++        with torch.no_grad(), torch.autocast(device_type=device.type, dtype=torch.bfloat16, enabled=(args.amp == "bf16")):
++            emb_clean = model(clean)
++        sync()
++        t4 = time.perf_counter()
++        loss = F.mse_loss(emb_enh.float(), emb_clean.float())
++        loss.backward()
++        sync()
++        t5 = time.perf_counter()
++        assert enhanced.grad is not None and torch.isfinite(enhanced.grad).all()
++        del enhanced, emb_enh, emb_clean, loss
++        return ((t1-t0)*1000, (t3-t2)*1000, (t4-t3)*1000, (t5-t4)*1000), shape
++
++    records = []
++    for i in range(args.warmup + args.steps):
++        ms, shape = measure_one()
++        if i >= args.warmup:
++            records.append(ms)
++            print(f"iter {i-args.warmup+1:02d}: infer={ms[0]:.1f}ms, enh_fw={ms[1]:.1f}ms, "
++                  f"clean_fw={ms[2]:.1f}ms, backward={ms[3]:.1f}ms, train_sum={sum(ms[1:]):.1f}ms")
++
++    def avg(index):
++        return statistics.mean(x[index] for x in records)
++
++    inference = [x[0] for x in records]
++    train = [sum(x[1:]) for x in records]
++    print("\n========== SUMMARY ==========")
++    print(f"encoder={args.plm_type}, embedding_shape={shape}")
++    print(f"device={args.device}, B={args.batch_size}, L={args.length}, amp={args.amp}")
++    print(f"INFERENCE 1 forward: mean={statistics.mean(inference):.1f} ms, median={statistics.median(inference):.1f} ms")
++    print(f"Enhance forward:      mean={avg(1):.1f} ms")
++    print(f"Clean forward:        mean={avg(2):.1f} ms")
++    print(f"Backward to waveform: mean={avg(3):.1f} ms")
++    print(f"TRAIN 2fw+1bw:       mean={statistics.mean(train):.1f} ms, median={statistics.median(train):.1f} ms")
++    print(f"INFER throughput:     {args.batch_size * 1000 / statistics.mean(inference):.1f} utterances/s")
++    if use_cuda:
++        print(f"Peak allocated GPU memory: {torch.cuda.max_memory_allocated(device)/(1024**3):.2f} GiB")
++    print("Note: excludes STORM, diffusion, wave reconstruction, DataLoader and InfoNCE.")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/scripts/check_xvector_grad.py b/scripts/check_xvector_grad.py
+new file mode 100644
+index 0000000..3b89a41
+--- /dev/null
++++ b/scripts/check_xvector_grad.py
+@@ -0,0 +1,36 @@
++"""Run: python -m scripts.check_xvector_grad /path/to/speechbrain-xvector-dir
++
++Or supply speechbrain/spkrec-xvect-voxceleb to download the pretrained model.
++"""
++import argparse
++import torch
++from sgmse.xvector_encoder import SpeechBrainXVectorEncoder
++
++
++def main():
++    parser = argparse.ArgumentParser()
++    parser.add_argument("model", help="SpeechBrain Hub ID or local pretrained folder")
++    parser.add_argument("--device", default="cuda:0" if torch.cuda.is_available() else "cpu")
++    args = parser.parse_args()
++
++    net = SpeechBrainXVectorEncoder(args.model).to(args.device).eval()
++    x = torch.randn(2, 16000, device=args.device, requires_grad=True)
++    clean = torch.randn(2, 16000, device=args.device)
++    out = net(x)
++    with torch.no_grad():
++        target = net(clean)
++    loss = torch.nn.functional.mse_loss(out.float(), target.float())
++    loss.backward()
++    grad_norm = x.grad.norm().item() if x.grad is not None else 0.0
++    print("device:", args.device)
++    print("embeddings:", tuple(out.shape))
++    print("enhanced waveform grad norm:", grad_norm)
++    print("pretrained encoder has trainable parameters:", any(p.requires_grad for p in net.parameters()))
++    assert out.shape == (2, 512)
++    assert torch.isfinite(x.grad).all() and grad_norm > 0
++    assert all(p.grad is None for p in net.parameters())
++    print("PASS: gradients reach enhanced audio; pretrained X-Vector remains frozen")
++
++
++if __name__ == "__main__":
++    main()
+diff --git a/sgmse/model.py b/sgmse/model.py
+index dc40955..4c4c2f2 100644
+--- a/sgmse/model.py
++++ b/sgmse/model.py
+@@ -47,8 +47,8 @@ class ScoreModel(pl.LightningModule):
+         )
+         # 对比学习参数
+         parser.add_argument("--plm_type", type=str, default="unispeech_sat",
+-                            choices=["unispeech_sat", "campplus"],
+-                            help="Frozen contrastive encoder: UniSpeech-SAT or WeSpeaker CAM++.")
++                            choices=["unispeech_sat", "campplus", "xvector"],
++                            help="Frozen contrastive encoder: UniSpeech-SAT, CAM++, or SpeechBrain X-Vector.")
+         parser.add_argument("--contrastive_weight", type=float, default=0.0,
+                             help="Weight of PLM-based contrastive loss (0.0 disables it).")
+         parser.add_argument("--plm_name_or_path", type=str,
+@@ -131,7 +131,7 @@ class ScoreModel(pl.LightningModule):
+         # 初始化对比学习
+         self.contrastive_weight = contrastive_weight
+         self.plm_type = str(plm_type).lower()
+-        if self.plm_type not in ("unispeech_sat", "campplus"):
++        if self.plm_type not in ("unispeech_sat", "campplus", "xvector"):
+             raise ValueError(f"Unsupported PLM type: {plm_type!r}")
+         self.plm_name_or_path = plm_name_or_path
+         self.contrastive_temperature = contrastive_temperature
+@@ -159,6 +159,17 @@ class ScoreModel(pl.LightningModule):
+                     model_name_or_path=self.plm_name_or_path,
+                     sample_rate=self.sr,
+                 )
++            elif self.plm_type == "xvector":
++                from sgmse.xvector_encoder import SpeechBrainXVectorEncoder
++                if self.plm_name_or_path == "microsoft/unispeech-sat-base-plus-sv":
++                    raise ValueError(
++                        "For --plm_type xvector, pass --plm_name_or_path "
++                        "speechbrain/spkrec-xvect-voxceleb (or its local directory)."
++                    )
++                self.plm_model = SpeechBrainXVectorEncoder(
++                    model_name_or_path=self.plm_name_or_path,
++                    sample_rate=self.sr,
++                )
+             else:
+                 try:
+                     self.plm_model = UniSpeechSatModel.from_pretrained(
+@@ -609,7 +620,7 @@ class ScoreModel(pl.LightningModule):
+             os.environ.get("SGMSE_PLM_CHECKPOINT", "0") == "1"
+             and self.training and torch.is_grad_enabled()
+         )
+-        if self.plm_type == "campplus":
++        if self.plm_type in ("campplus", "xvector"):
+             if checkpoint_plm:
+                 from torch.utils.checkpoint import checkpoint
+                 emb_enh = checkpoint(self.plm_model, enhanced_wav, use_reentrant=False)
+diff --git a/sgmse/xvector_encoder.py b/sgmse/xvector_encoder.py
+new file mode 100644
+index 0000000..8e8a3ce
+--- /dev/null
++++ b/sgmse/xvector_encoder.py
+@@ -0,0 +1,109 @@
++"""Frozen SpeechBrain VoxCeleb X-Vector encoder for differentiable SGMSE losses.
++
++Unlike SpeechBrain's high-level file classification interface, this adapter
++calls the *batched, differentiable* Fbank -> sentence normalization -> TDNN
++pipeline directly. No detach/no_grad is used for the enhanced-audio branch.
++
++Upstream pretrained model: speechbrain/spkrec-xvect-voxceleb (Apache-2.0).
++"""
++
++from pathlib import Path
++import torch
++from torch import nn
++
++
++XVECTOR_REPO = "speechbrain/spkrec-xvect-voxceleb"
++
++
++class SpeechBrainXVectorEncoder(nn.Module):
++    """16-kHz waveform [B,L] -> pretrained 512-D embedding [B,512].
++
++    `model_name_or_path` may be the Hub repository or a local directory
++    containing the SpeechBrain model's hyperparams.yaml and checkpoint files.
++    Uses the same 24-bin Fbank / sentence-CMN as the official model.
++    """
++
++    def __init__(self, model_name_or_path=XVECTOR_REPO, sample_rate=16000):
++        super().__init__()
++        if int(sample_rate) != 16000:
++            raise ValueError("SpeechBrain VoxCeleb X-Vector requires 16-kHz audio")
++        try:
++            from speechbrain.inference.speaker import EncoderClassifier
++        except ImportError as exc:
++            raise ImportError(
++                "Install SpeechBrain: python -m pip install speechbrain; "
++                "if installation attempts to change PyTorch, use --no-deps "
++                "and ensure SpeechBrain's other dependencies are installed."
++            ) from exc
++
++        source = str(model_name_or_path)
++        if Path(source).expanduser().is_absolute() and not Path(source).expanduser().is_dir():
++            raise FileNotFoundError(
++                f"X-Vector local model directory does not exist: {source}. "
++                "Download 'speechbrain/spkrec-xvect-voxceleb' to it first."
++            )
++        local = Path(source).expanduser().is_dir()
++        if local:
++            source = str(Path(source).expanduser().resolve())
++            if not (Path(source) / "hyperparams.yaml").is_file():
++                raise FileNotFoundError(f"Missing {source}/hyperparams.yaml")
++        try:
++            # Load once on CPU. Lightning/model.to(device) then moves all
++            # registered modules to the trainer device.
++            # The official hyperparams.yaml contains a *remote* pretrained_path.
++            # Override it for fully offline loading from a locally downloaded
++            # repository; otherwise SpeechBrain might still contact the Hub.
++            loader_args = {"source": source, "run_opts": {"device": "cpu"}}
++            if local:
++                loader_args["overrides"] = {"pretrained_path": source}
++            self.classifier = EncoderClassifier.from_hparams(**loader_args)
++        except Exception as exc:
++            raise RuntimeError(
++                f"Could not load SpeechBrain X-Vector from {source!r}. "
++                "For offline use, download all files of "
++                "speechbrain/spkrec-xvect-voxceleb and pass the local directory."
++            ) from exc
++
++        modules = self.classifier.mods
++        for name in ("compute_features", "mean_var_norm", "embedding_model"):
++            if name not in modules:
++                raise RuntimeError(f"SpeechBrain X-Vector checkpoint lacks '{name}'")
++        # Neither the 7205-class verification head nor its output normalizer
++        # is required for 512-D embeddings; discard them after loading.
++        for unused in ("classifier", "mean_var_norm_emb"):
++            if unused in modules:
++                del modules[unused]
++        for param in self.classifier.parameters():
++            param.requires_grad_(False)
++        self.sample_rate = 16000
++        self.embedding_dim = 512
++        self.eval()
++        print(f"[X-Vector] Frozen SpeechBrain weights loaded: {source}")
++
++    def train(self, mode=True):
++        # Never update the pretrained TDNN or normalization statistics.
++        super().train(False)
++        return self
++
++    def forward(self, waveform: torch.Tensor) -> torch.Tensor:
++        if waveform.ndim != 2:
++            raise ValueError(f"Expected waveform [B,L], got {tuple(waveform.shape)}")
++        if waveform.size(1) < 1600:
++            raise ValueError("X-Vector needs at least 0.1 s of 16-kHz audio")
++        modules = self.classifier.mods
++        # SpeechBrain's Fbank is vectorized in the batch dimension, unlike the
++        # one-utterance-at-a-time torchaudio.compliance.kaldi.fbank adapter.
++        # FP32 features match the pretrained network's frontend and preserve
++        # the gradient w.r.t. the enhanced waveform.
++        with torch.autocast(device_type=waveform.device.type, enabled=False):
++            feats = modules.compute_features(waveform.float())
++            lengths = torch.ones(waveform.shape[0], device=feats.device, dtype=feats.dtype)
++            feats = modules.mean_var_norm(feats, lengths)
++        embedding = modules.embedding_model(feats, lengths)
++        if embedding.ndim == 3 and embedding.size(1) == 1:
++            embedding = embedding[:, 0, :]
++        if embedding.ndim != 2 or embedding.size(0) != waveform.size(0):
++            raise RuntimeError(f"Unexpected X-Vector embedding shape: {tuple(embedding.shape)}")
++        if embedding.size(1) != 512:
++            raise RuntimeError(f"Expected 512-dimensional X-Vectors, got {embedding.size(1)}")
++        return embedding
+diff --git a/tests/test_xvector_adapter.py b/tests/test_xvector_adapter.py
+new file mode 100644
+index 0000000..dc06c24
+--- /dev/null
++++ b/tests/test_xvector_adapter.py
+@@ -0,0 +1,54 @@
++"""Unit check with synthetic SpeechBrain modules; real weights checked on server."""
++import unittest
++from unittest import mock
++import torch
++from torch import nn
++
++from sgmse.xvector_encoder import SpeechBrainXVectorEncoder
++
++
++class TestXVectorAdapter(unittest.TestCase):
++    def test_gradient_and_batch_frontend(self):
++        from speechbrain.inference.speaker import EncoderClassifier
++        from speechbrain.lobes.features import Fbank
++        from speechbrain.lobes.models.Xvector import Xvector
++        from speechbrain.processing.features import InputNormalization
++
++        class FakeClassifier(nn.Module):
++            def __init__(self):
++                super().__init__()
++                self.mods = nn.ModuleDict({
++                    "compute_features": Fbank(n_mels=24),
++                    "mean_var_norm": InputNormalization(norm_type="sentence", std_norm=False),
++                    "embedding_model": Xvector(
++                        in_channels=24,
++                        tdnn_blocks=5,
++                        tdnn_channels=[512, 512, 512, 512, 1500],
++                        tdnn_kernel_sizes=[5, 3, 3, 1, 1],
++                        tdnn_dilations=[1, 2, 3, 1, 1],
++                        lin_neurons=512,
++                        activation=nn.LeakyReLU,
++                    ),
++                })
++
++        torch.set_num_threads(2)
++        with mock.patch.object(EncoderClassifier, "from_hparams", return_value=FakeClassifier()):
++            enc = SpeechBrainXVectorEncoder().eval()
++        enh = torch.randn(2, 16000, requires_grad=True)
++        clean = torch.randn(2, 16000)
++        z_enh = enc(enh)
++        with torch.no_grad():
++            z_clean = enc(clean)
++        self.assertEqual(tuple(z_enh.shape), (2, 512))
++        ((z_enh-z_clean)**2).mean().backward()
++        self.assertIsNotNone(enh.grad)
++        self.assertTrue(torch.isfinite(enh.grad).all())
++        self.assertGreater(float(enh.grad.norm()), 0)
++        self.assertFalse(any(p.requires_grad for p in enc.parameters()))
++        self.assertTrue(all(p.grad is None for p in enc.parameters()))
++        enc.train()
++        self.assertFalse(enc.training)
++
++
++if __name__ == "__main__":
++    unittest.main()
