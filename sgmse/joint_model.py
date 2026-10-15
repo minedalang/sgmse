@@ -3216,6 +3216,73 @@ class JointFrontendSgmseModel(ScoreModel):
                     f"repeat_jitter={jitter.item():.3e}",
                     flush=True,
                 )
+                # Sparse vs smooth Oracle: diagnostic ONLY; never train on
+                # reference-derived gradient masks. Both options add the same
+                # total routing mass PER SAMPLE to the original alpha.
+                if os.environ.get("SGMSE_RRSD_SMOOTH_PROBE", "0") == "1":
+                    def _rrsd_diag_tv(a):
+                        val = a.new_zeros(())
+                        if a.shape[-2] > 1:
+                            val = val + a.diff(dim=-2).abs().mean()
+                        if a.shape[-1] > 1:
+                            val = val + a.diff(dim=-1).abs().mean()
+                        return val
+
+                    w_future = float(self.rrsd_future_weight)
+                    w_smooth = float(self.rrsd_smooth_weight)
+                    smooth_router = _rrsd_diag_tv(alpha)
+                    sparse_alpha = oracle_plus_router
+                    sparse_delta = sparse_alpha - alpha
+                    sparse_future_delta = ratio_oracle_plus - ratio_router
+                    sparse_smooth_delta = _rrsd_diag_tv(sparse_alpha) - smooth_router
+                    sparse_total_delta = (
+                        w_future * sparse_future_delta
+                        + w_smooth * sparse_smooth_delta
+                    )
+                    sparse_budget = sparse_delta.flatten(1).sum(dim=1)
+
+                    for kernel in (3, 5):
+                        soft_mask = F.avg_pool2d(
+                            mask, kernel_size=kernel, stride=1,
+                            padding=kernel // 2, count_include_pad=False,
+                        )
+                        # Conserve added alpha mass PER utterance, including
+                        # edge cells where average-pooling has fewer neighbors.
+                        dims = tuple(range(1, soft_mask.ndim))
+                        mass = mask.sum(dim=dims, keepdim=True)
+                        mass_after_pool = soft_mask.sum(dim=dims, keepdim=True)
+                        soft_mask = soft_mask * (
+                            mass / mass_after_pool.clamp_min(1e-12)
+                        )
+                        smooth_alpha = (alpha + eps * soft_mask).clamp(0.0, 1.0)
+                        ratio_smooth = future_ratio_at(smooth_alpha)
+                        smooth_future_delta = ratio_smooth - ratio_router
+                        smooth_smooth_delta = _rrsd_diag_tv(smooth_alpha) - smooth_router
+                        smooth_total_delta = (
+                            w_future * smooth_future_delta
+                            + w_smooth * smooth_smooth_delta
+                        )
+                        smooth_budget = (smooth_alpha - alpha).flatten(1).sum(dim=1)
+                        budget_relative_error = (
+                            (smooth_budget - sparse_budget).abs()
+                            / sparse_budget.abs().clamp_min(1e-12)
+                        ).max()
+                        print(
+                            "[RRSD-SMOOTH] "
+                            f"k={kernel} t_mean={t.detach().float().mean().item():.4f} "
+                            f"selected={mask.mean().item():.3f} "
+                            f"budget_sparse={sparse_budget.mean().item():.7f} "
+                            f"budget_smooth={smooth_budget.mean().item():.7f} "
+                            f"budget_rel_err={budget_relative_error.item():.3e} "
+                            f"delta_future_sparse={sparse_future_delta.item():+.8e} "
+                            f"delta_future_smooth={smooth_future_delta.item():+.8e} "
+                            f"delta_tv_sparse={sparse_smooth_delta.item():+.8e} "
+                            f"delta_tv_smooth={smooth_smooth_delta.item():+.8e} "
+                            f"delta_total_sparse={sparse_total_delta.item():+.8e} "
+                            f"delta_total_smooth={smooth_total_delta.item():+.8e} "
+                            f"gain_smooth_minus_sparse={(smooth_total_delta - sparse_total_delta).item():+.8e}",
+                            flush=True,
+                        )
             return result
 
     def _rrsd_future_grad_loss(
