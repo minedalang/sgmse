@@ -187,7 +187,8 @@ class BandTimeReliabilityRouter(nn.Module):
         h = F.silu(self.context1(h))
         h = F.silu(self.context2(h))
 
-        strength_tile_raw = torch.sigmoid(self.output(h))
+        strength_logit = self.output(h)
+        strength_tile_raw = torch.sigmoid(strength_logit)
         gate_tile_raw = None
         if self.use_gate:
             gate_tile_raw = torch.sigmoid(self.gate_output(h))
@@ -212,6 +213,7 @@ class BandTimeReliabilityRouter(nn.Module):
             "delta_x0": delta_x0,
             "x0_route": x0_route,
             "strength_tile": strength_tile_raw,
+            "strength_logit": strength_logit.detach(),  # diagnostic only
         }
         if self.use_gate:
             out["gate_tile"] = gate_tile_raw

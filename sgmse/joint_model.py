@@ -3035,6 +3035,189 @@ class JointFrontendSgmseModel(ScoreModel):
         }
         return alpha_target.detach(), stats
 
+    def _rrsd_diagnose_alpha_zero(
+        self, *, x_t, y_main, y_cond, t, score_base, sigma, w_x,
+        x0_base, x0_front, dt_cur, base_future_err, pred, target
+    ):
+        """Diagnostic only: gradient at zero, plus optional finite-difference probes.
+
+        Env: SGMSE_RRSD_FD_PROBE=1, SGMSE_RRSD_FD_EPS=0.01.
+        No optimization update; the oracle uses clean reference and is never used
+        for inference or router training. Requires frozen score network.
+        """
+        def future_ratio_at(alpha_tile):
+            alpha_map = F.interpolate(
+                alpha_tile, size=x0_base.shape[-2:],
+                mode="bilinear", align_corners=False,
+            )
+            dtype = x0_base.real.dtype if torch.is_complex(x0_base) else x0_base.dtype
+            delta = alpha_map.to(dtype=dtype) * (
+                x0_front.detach() - x0_base.detach()
+            )
+            score_probe = (
+                score_base.detach()
+                + w_x.detach() * delta / sigma.detach().square().clamp_min(1e-8)
+            )
+            x_next, t_next = self._rrsd_reverse_mean_step(
+                x=x_t.detach(), y_main=y_main.detach(), t=t.detach(),
+                score=score_probe, dt=dt_cur.detach(),
+            )
+            score_next = self(
+                x_next, y_main.detach(), t_next, y_cond=y_cond.detach()
+            )
+            x0_next, _, _, _ = self._rrsd_score_to_x0(
+                x_next, y_main.detach(), t_next, score_next
+            )
+            reduce_dims = tuple(range(1, target.ndim))
+            future_err = (
+                torch.abs(x0_next - target.detach()).float().square()
+                .mean(dim=reduce_dims)
+            )
+            return (
+                future_err
+                / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))
+            ).mean()
+
+        with torch.enable_grad():
+            alpha0 = torch.zeros_like(
+                pred["alpha_tile"].detach(), dtype=torch.float32,
+                requires_grad=True,
+            )
+            ratio = future_ratio_at(alpha0)
+            g0 = torch.autograd.grad(
+                ratio, alpha0, create_graph=False, retain_graph=False
+            )[0].detach().float()
+
+        with torch.no_grad():
+            abs_mean = float(g0.abs().mean().item())
+            tol = max(1e-10, 0.10 * abs_mean)
+            beneficial = g0 < -tol
+            harmful = g0 > tol
+            alpha = pred["alpha_tile"].detach().float()
+            active = alpha > 1e-3
+
+            def fraction(mask, population):
+                return (
+                    (mask & population).float().sum()
+                    / population.float().sum().clamp_min(1)
+                )
+
+            result = {
+                "rrsd_diag_grad_abs_mean": g0.abs().mean(),
+                "rrsd_diag_grad_tolerance": g0.new_tensor(tol),
+                "rrsd_diag_beneficial_fraction": beneficial.float().mean(),
+                "rrsd_diag_harmful_fraction": harmful.float().mean(),
+                "rrsd_diag_weak_fraction": (~(beneficial | harmful)).float().mean(),
+                "rrsd_diag_beneficial_ignored": fraction(~active, beneficial),
+                "rrsd_diag_harmful_used": fraction(active, harmful),
+                "rrsd_diag_alpha_on_beneficial": (
+                    (alpha * beneficial).sum() / beneficial.float().sum().clamp_min(1)
+                ),
+                "rrsd_diag_alpha_on_harmful": (
+                    (alpha * harmful).sum() / harmful.float().sum().clamp_min(1)
+                ),
+                "rrsd_diag_alpha_active": active.float().mean(),
+                "rrsd_diag_probe_loss_at_zero": ratio.detach(),
+            }
+
+            # Examine the PRE-sigmoid logits separately from effective alpha.
+            # In future_grad training, scale=1; with no gate, raw == effective.
+            if "strength_logit" in pred:
+                logits = pred["strength_logit"].detach().float()
+                raw_strength = pred["strength_tile"].detach().float()
+                raw_alpha = pred["alpha_tile_raw"].detach().float()
+                for i in range(int(logits.shape[0])):
+                    li, ai, ri, si = logits[i], alpha[i], raw_alpha[i], raw_strength[i]
+                    print(
+                        "[RRSD-LOGIT] "
+                        f"sample={i} t={float(t.flatten()[i]):.4f} "
+                        f"logit_p50={torch.quantile(li, 0.50).item():.3f} "
+                        f"logit_p90={torch.quantile(li, 0.90).item():.3f} "
+                        f"frac_logit_lt_m20={(li < -20).float().mean().item():.4f} "
+                        f"strength_mean={si.mean().item():.4e} "
+                        f"raw_alpha_mean={ri.mean().item():.4e} "
+                        f"effective_alpha_mean={ai.mean().item():.4e}",
+                        flush=True,
+                    )
+            else:
+                print(
+                    "[RRSD-LOGIT] strength_logit unavailable; apply the "
+                    "paired reliability_router.py modification.", flush=True,
+                )
+
+            if os.environ.get("SGMSE_RRSD_FD_PROBE", "0") == "1":
+                eps = float(os.environ.get("SGMSE_RRSD_FD_EPS", "0.01"))
+                if not 0.0 < eps <= 1.0:
+                    raise ValueError("SGMSE_RRSD_FD_EPS must be in (0, 1].")
+                # The oracle consults ground-truth gradients; it is diagnostic only.
+                ignored_benefit = beneficial & (~active)
+                mask = ignored_benefit.float()
+                oracle_from_zero = eps * mask
+                oracle_plus_router = (alpha + eps * mask).clamp(0.0, 1.0)
+                # Probe all actions from the SAME current x_t/t, score geometry,
+                # clean reference and deterministic reverse-mean update.
+                ratio0 = future_ratio_at(torch.zeros_like(alpha))
+                ratio0_repeat = future_ratio_at(torch.zeros_like(alpha))
+                ratio_router = future_ratio_at(alpha)
+                ratio_oracle_zero = future_ratio_at(oracle_from_zero)
+                ratio_oracle_plus = future_ratio_at(oracle_plus_router)
+                jitter = (ratio0_repeat - ratio0).abs()
+                delta_zero = ratio_oracle_zero - ratio0
+                delta_added = ratio_oracle_plus - ratio_router
+                # 与真实训练一致的时频平滑损失
+                def smooth_loss(a):
+                    s = a.new_zeros(())
+                    if a.shape[-2] > 1:
+                        s = s + a.diff(dim=-2).abs().mean()
+                    if a.shape[-1] > 1:
+                        s = s + a.diff(dim=-1).abs().mean()
+                    return s
+
+                smooth_router = smooth_loss(alpha)
+                smooth_plus = smooth_loss(oracle_plus_router)
+
+                delta_smooth = smooth_plus - smooth_router
+
+                # 没有额外 gate / contrastive 时的完整 RRSD 损失变化
+                delta_total = (
+                    float(self.rrsd_future_weight) * delta_added
+                    + float(self.rrsd_smooth_weight) * delta_smooth
+                )
+
+                print(
+                    "[RRSD-FULL]",
+                    f"t_mean={t.float().mean().item():.4f}",
+                    f"delta_future={delta_added.item():+.8e}",
+                    f"delta_smooth={delta_smooth.item():+.8e}",
+                    f"weighted_smooth="
+                    f"{(self.rrsd_smooth_weight * delta_smooth).item():+.8e}",
+                    f"delta_total={delta_total.item():+.8e}",
+                    flush=True,
+                )
+                result.update({
+                    "rrsd_fd_alpha_zero": ratio0,
+                    "rrsd_fd_alpha_router": ratio_router,
+                    "rrsd_fd_alpha_oracle_zero": ratio_oracle_zero,
+                    "rrsd_fd_alpha_oracle_plus": ratio_oracle_plus,
+                    "rrsd_fd_oracle_delta_from_zero": delta_zero,
+                    "rrsd_fd_oracle_delta_from_router": delta_added,
+                    "rrsd_fd_zero_repeat_jitter": jitter,
+                    "rrsd_fd_ignored_beneficial_fraction": mask.mean(),
+                })
+                print(
+                    "[RRSD-FD] "
+                    f"eps={eps:.4f} selected={mask.mean().item():.3f} "
+                    f"zero={ratio0.item():.9f} "
+                    f"router={ratio_router.item():.9f} "
+                    f"oracle_zero={ratio_oracle_zero.item():.9f} "
+                    f"oracle_plus={ratio_oracle_plus.item():.9f} "
+                    f"delta_zero={delta_zero.item():+.3e} "
+                    f"delta_plus={delta_added.item():+.3e} "
+                    f"repeat_jitter={jitter.item():.3e}",
+                    flush=True,
+                )
+            return result
+
     def _rrsd_future_grad_loss(
         self,
         *,
@@ -3200,6 +3383,71 @@ class JointFrontendSgmseModel(ScoreModel):
                     "rrsd_gate_active_fraction": (pred["gate_tile"].detach().float() > 0.5).float().mean(),
                     "rrsd_strength_mean": pred["strength_tile"].detach().float().mean(),
                 })
+        # Optional post-hoc diagnosis of whether the learned router rejects
+        # beneficial frontend guidance. Disabled by default; no training change.
+        diagnostic_max = int(os.environ.get("SGMSE_RRSD_DIAG_BATCHES", "0"))
+        diagnostic_done = int(getattr(self, "_rrsd_diag_done", 0))
+        if diagnostic_done < diagnostic_max:
+            diag = self._rrsd_diagnose_alpha_zero(
+                x_t=x_t_det, y_main=y_main_det, y_cond=y_cond_det,
+                t=t_det, score_base=score_base, sigma=sigma_det,
+                w_x=w_x_det, x0_base=x0_base_det, x0_front=x0_front,
+                dt_cur=dt_cur, base_future_err=base_future_err,
+                pred=pred, target=target_det,
+            )
+            self._rrsd_diag_done = diagnostic_done + 1
+            stats.update(diag)
+            # 每条语音独立查看时间步及 Router 输出
+            with torch.no_grad():
+                alpha_all = pred["alpha_tile"].detach().float()
+
+                for i in range(alpha_all.shape[0]):
+                    ai = alpha_all[i].flatten()
+                    ti = t_det[i].item()
+
+                    print(
+                        "[RRSD-PER-SAMPLE]",
+                        f"sample={i}",
+                        f"t={ti:.4f}",
+                        f"alpha_mean={ai.mean().item():.8e}",
+                        f"alpha_p95={torch.quantile(ai, 0.95).item():.8e}",
+                        f"alpha_active={(ai > 1e-3).float().mean().item():.4f}",
+                        f"alpha_lt_1e-6={(ai < 1e-6).float().mean().item():.4f}",
+                        flush=True,
+                    )
+            alpha = pred["alpha_tile"].detach().float().flatten()
+            t_values = t_det.detach().float()
+
+            print(
+                "[RRSD-EXTRA]",
+                f"t_min={t_values.min().item():.4f}",
+                f"t_mean={t_values.mean().item():.4f}",
+                f"t_max={t_values.max().item():.4f}",
+                f"alpha_mean={alpha.mean().item():.8f}",
+                f"alpha_p50={torch.quantile(alpha, 0.50).item():.8f}",
+                f"alpha_p90={torch.quantile(alpha, 0.90).item():.8f}",
+                f"alpha_p99={torch.quantile(alpha, 0.99).item():.8f}",
+                f"alpha_lt_1e-6={(alpha < 1e-6).float().mean().item():.4f}",
+                flush=True,
+            )
+            print(
+                "[RRSD-DIAG] batch={}/{} good={:.3f} bad={:.3f} "
+                "good_ignored={:.3f} bad_used={:.3f} "
+                "alpha_good={:.6f} alpha_bad={:.6f} grad_abs={:.3e}".format(
+                    self._rrsd_diag_done, diagnostic_max,
+                    float(diag["rrsd_diag_beneficial_fraction"]),
+                    float(diag["rrsd_diag_harmful_fraction"]),
+                    float(diag["rrsd_diag_beneficial_ignored"]),
+                    float(diag["rrsd_diag_harmful_used"]),
+                    float(diag["rrsd_diag_alpha_on_beneficial"]),
+                    float(diag["rrsd_diag_alpha_on_harmful"]),
+                    float(diag["rrsd_diag_grad_abs_mean"]),
+                ), flush=True
+            )
+            if (self._rrsd_diag_done >= diagnostic_max
+                    and os.environ.get("SGMSE_RRSD_DIAG_EXIT", "0") == "1"):
+                print("[RRSD-DIAG] Completed; exiting diagnostic run without saving.", flush=True)
+                raise SystemExit(0)
         return loss, stats
 
     def _compute_rrsd_loss(
