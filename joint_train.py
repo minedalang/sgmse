@@ -118,6 +118,8 @@ if __name__ == '__main__':
         )
         parser_.add_argument("--wandb_id", type=str, default=None)
         parser_.add_argument("--log_dir", type=str, default="joint_train_logs")
+        parser_.add_argument("--seed", type=int, default=2026,
+                             help="Seed Python, NumPy, PyTorch and dataloader workers for reproducible A/B runs.")
         parser_.add_argument("--save_ckpt_interval", type=int, default=50000)
         parser_.add_argument("--save_init_snapshot", action="store_true",
                              help="save a full checkpoint immediately after --init_ckpt loading")
@@ -147,6 +149,8 @@ if __name__ == '__main__':
     trainer_parser.add_argument("--devices", default="auto")
     trainer_parser.add_argument("--accumulate_grad_batches", type=int, default=1)
     trainer_parser.add_argument("--max_epochs", type=int, default=-1)
+    trainer_parser.add_argument("--max_steps", type=int, default=1_000_000,
+                                help="Exact step limit for controlled RRSD fine-tuning runs.")
     trainer_parser.add_argument("--precision", type=str, default="32-true")
 
     # model / sde / backbone args
@@ -170,6 +174,7 @@ if __name__ == '__main__':
     if args.init_ckpt_use_ema and args.init_ckpt is None:
         raise SystemExit("--init_ckpt_use_ema requires --init_ckpt")
     arg_groups = get_argparse_groups(parser, args)
+    pl.seed_everything(int(args.seed), workers=True)
     mark("after argument parsing")
     mark("before model init")
 
@@ -216,7 +221,6 @@ if __name__ == '__main__':
         # another distributed sampler.
         use_distributed_sampler=not (float(getattr(args, "contrastive_weight", 0.0)) > 0.0),
         logger=logger,
-        max_steps=1_000_000,
         log_every_n_steps=10,
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
