@@ -1,0 +1,42 @@
+--- a/sgmse/model.py
++++ b/sgmse/model.py
+@@ -175,19 +175,28 @@
+                     self.plm_model = UniSpeechSatModel.from_pretrained(
+                         self.plm_name_or_path
+                     )
+                 except Exception as e:
+-                    warnings.warn(
+-                        f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
+-                        "Contrastive loss will be disabled."
+-                    )
+-                    self.use_contrastive = False
+-                    self.plm_model = None
+-
+-            if self.plm_model is not None:
+-                self.plm_model.eval()
+-                for p in self.plm_model.parameters():
+-                    p.requires_grad_(False)
++                    # Fail fast: never continue a requested contrastive run
++                    # without its pretrained speaker encoder.
++                    raise RuntimeError(
++                        f"[Contrastive] Failed to load UniSpeech-SAT model "
++                        f"'{self.plm_name_or_path}'. Training aborted because "
++                        f"--contrastive_weight={self.contrastive_weight} > 0. "
++                        f"Original error: {e}"
++                    ) from e
++
++            # Also guard against an encoder wrapper unexpectedly returning None.
++            # CAM++ / X-Vector constructors already propagate load failures.
++            if self.plm_model is None:
++                raise RuntimeError(
++                    f"[Contrastive] Speaker encoder '{self.plm_type}' was not "
++                    f"initialized although --contrastive_weight="
++                    f"{self.contrastive_weight} > 0. Training aborted."
++                )
++            self.plm_model.eval()
++            for p in self.plm_model.parameters():
++                p.requires_grad_(False)
+     
+     
+     def _get_ema_named_parameters(self):
+         """

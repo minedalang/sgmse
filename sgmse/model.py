@@ -57,9 +57,9 @@ class ScoreModel(pl.LightningModule):
         parser.add_argument("--contrastive_temperature", type=float, default=0.1,
                             help="Temperature for InfoNCE contrastive loss.")
         parser.add_argument("--contrastive_clean_weight", type=float, default=1.0,
-                            help="Positive weight for the exact enhanced-clean pair.")
+                            help="Multiplier for the unchanged bidirectional paired InfoNCE term (default 1.0).")
         parser.add_argument("--contrastive_speaker_weight", type=float, default=0.5,
-                            help="Positive weight for other utterances from the same speaker. Set 0 for paired-only InfoNCE ablation.")
+                            help="Coefficient of an independent same-speaker prototype cosine loss; 0 disables the auxiliary speaker loss.")
         parser.add_argument("--max_plm_length", type=int, default=32000,
                             help="Max waveform length (in samples) fed into PLM.")
         return parser
@@ -176,17 +176,26 @@ class ScoreModel(pl.LightningModule):
                         self.plm_name_or_path
                     )
                 except Exception as e:
-                    warnings.warn(
-                        f"Failed to load UniSpeech-SAT model '{self.plm_name_or_path}': {e}. "
-                        "Contrastive loss will be disabled."
-                    )
-                    self.use_contrastive = False
-                    self.plm_model = None
+                    # Fail fast: never continue a requested contrastive run
+                    # without its pretrained speaker encoder.
+                    raise RuntimeError(
+                        f"[Contrastive] Failed to load UniSpeech-SAT model "
+                        f"'{self.plm_name_or_path}'. Training aborted because "
+                        f"--contrastive_weight={self.contrastive_weight} > 0. "
+                        f"Original error: {e}"
+                    ) from e
 
-            if self.plm_model is not None:
-                self.plm_model.eval()
-                for p in self.plm_model.parameters():
-                    p.requires_grad_(False)
+            # Also guard against an encoder wrapper unexpectedly returning None.
+            # CAM++ / X-Vector constructors already propagate load failures.
+            if self.plm_model is None:
+                raise RuntimeError(
+                    f"[Contrastive] Speaker encoder '{self.plm_type}' was not "
+                    f"initialized although --contrastive_weight="
+                    f"{self.contrastive_weight} > 0. Training aborted."
+                )
+            self.plm_model.eval()
+            for p in self.plm_model.parameters():
+                p.requires_grad_(False)
     
     
     def _get_ema_named_parameters(self):
@@ -589,8 +598,9 @@ class ScoreModel(pl.LightningModule):
         """
         基于 UniSpeech-SAT 的 InfoNCE：
         - query: 增强语音嵌入
-        - positive: 同一语音的干净嵌入（以及同说话人的其他样本可作为额外正例）
-        - negative: 同 batch 中不同说话人的样本
+        - paired positive: 同一句增强语音与干净语音
+        - speaker auxiliary: 同说话人、不同数据集索引的干净语音原型
+        - paired InfoNCE denominator: 与原 spk_weight=0 实现保持完全一致
         """
         B = x_hat.shape[0]
         if B < 2 or self.plm_model is None:
@@ -648,67 +658,79 @@ class ScoreModel(pl.LightningModule):
                 ).last_hidden_state.mean(dim=1)
             emb_enh = plm_enh_hidden.mean(dim=1)
 
-        # 获取同批次其他说话人的嵌入作为负样本
-        # negative_embs = self._get_negative_samples(spk_ids, emb_enh, emb_clean)
-        
-        # 双向 InfoNCE（增强->干净，干净->增强）
-        loss_q_to_k = self._info_nce_multi(emb_enh, emb_clean, spk_ids, weight_clean, weight_speaker)
-        loss_k_to_q = self._info_nce_multi(emb_clean, emb_enh, spk_ids, weight_clean, weight_speaker)
+        # Keep the original paired objective intact. The auxiliary speaker
+        # prototype loss is *added*, not mixed into the normalized positives.
+        loss_pair, loss_speaker, valid_ratio = self._contrastive_pair_speaker_losses(
+            emb_enh, emb_clean, spk_ids,
+        )
+        loss_spk_weighted = float(weight_speaker) * loss_speaker
+        loss_cl = float(weight_clean) * loss_pair + loss_spk_weighted
 
-        return 0.5 * (loss_q_to_k + loss_k_to_q)
+        # These are diagnostics for interpreting speaker-weight ablations.
+        # No encoder parameters are trainable; enhanced waveform retains grad.
+        self.log("train_cl_pair", loss_pair.detach(), on_step=True, on_epoch=True,
+                 sync_dist=True, prog_bar=False)
+        self.log("train_cl_speaker", loss_speaker.detach(), on_step=True, on_epoch=True,
+                 sync_dist=True, prog_bar=False)
+        self.log("train_cl_speaker_weighted", loss_spk_weighted.detach(),
+                 on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        self.log("train_cl_spk_valid_ratio", valid_ratio.detach(),
+                 on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+        return loss_cl
 
-    def _info_nce_multi(self, queries, keys, spk_ids=None, weight_clean=1.0, weight_speaker=0.5):
+    def _contrastive_pair_speaker_losses(self, emb_enh, emb_clean, spk_ids=None):
+        """Paired bi-directional InfoNCE + other-utterance speaker prototype.
+
+        The paired loss is exactly the original speaker_weight=0 objective,
+        including same-speaker off-diagonal entries in the denominator.
+        This version intentionally does NOT mask false negatives: that would
+        be a separate ablation changing a second experimental variable.
+
+        Speaker prototype for anchor i is built from *other batch indices*
+        with the same valid speaker ID; its targets are detached.
         """
-        Weighted multi-positive InfoNCE / supervised-contrastive objective.
+        z_enh = F.normalize(emb_enh.float(), p=2, dim=-1)
+        z_clean = F.normalize(emb_clean.detach().float(), p=2, dim=-1)
+        B = z_enh.size(0)
+        if z_clean.size(0) != B:
+            raise ValueError("Enhanced and clean embedding batches must match")
 
-        For query i:
-          - paired key i is the exact clean/enhanced counterpart (weight_clean);
-          - other keys from the same speaker are additional positives (weight_speaker);
-          - keys from different speakers remain negatives through the softmax denominator.
+        logits = (z_enh @ z_clean.T) / float(self.contrastive_temperature)
+        labels = torch.arange(B, device=logits.device)
+        loss_pair = 0.5 * (
+            F.cross_entropy(logits, labels)
+            + F.cross_entropy(logits.T, labels)
+        )
 
-        The previous implementation multiplied log-probabilities by weights inside
-        logsumexp and, because every pos_idx already had the same speaker id, it
-        accidentally assigned weight_clean to *all* positives.  Here weights are
-        normalized and used to average the positive log-probabilities directly.
-        """
-        queries = F.normalize(queries, dim=-1)
-        keys = F.normalize(keys, dim=-1)
-        logits = torch.matmul(queries, keys.T) / self.contrastive_temperature
-        B = logits.size(0)
-
+        loss_speaker = z_enh.new_zeros(())
+        valid_ratio = z_enh.new_zeros(())
         if spk_ids is None:
-            labels = torch.arange(B, device=logits.device)
-            return F.cross_entropy(logits, labels)
+            return loss_pair, loss_speaker, valid_ratio
 
-        if not torch.is_tensor(spk_ids):
-            spk_ids = torch.as_tensor(spk_ids, device=logits.device)
-        else:
-            spk_ids = spk_ids.to(logits.device)
-        spk_ids = spk_ids.view(-1)
-        if spk_ids.numel() != B:
-            raise ValueError(
-                f"spk_ids length ({spk_ids.numel()}) must equal batch size ({B})."
-            )
+        ids = torch.as_tensor(spk_ids, device=logits.device).reshape(-1)
+        if ids.numel() != B:
+            raise ValueError(f"spk_ids length {ids.numel()} != batch size {B}")
 
-        # [B,B]: exact pair is always positive; same-speaker off-diagonal entries
-        # are additional positives.
-        same_spk = spk_ids[:, None].eq(spk_ids[None, :])
         eye = torch.eye(B, device=logits.device, dtype=torch.bool)
-        pos_mask = same_spk | eye
+        # Negative/unknown IDs must not create artificial same-speaker pairs.
+        valid_id = ids >= 0
+        other_same = (
+            (ids[:, None] == ids[None, :])
+            & valid_id[:, None] & valid_id[None, :] & ~eye
+        )
+        weights = other_same.to(z_clean.dtype)
+        counts = weights.sum(dim=1, keepdim=True)
+        valid = (counts.squeeze(1) > 0)
+        valid_ratio = valid.to(z_clean.dtype).mean()
 
-        pos_weights = torch.zeros_like(logits)
-        pos_weights = pos_weights.masked_fill(same_spk & ~eye, float(weight_speaker))
-        pos_weights = pos_weights.masked_fill(eye, float(weight_clean))
-        pos_weights = pos_weights * pos_mask.to(pos_weights.dtype)
-
-        # A conservative fallback for malformed/unknown speaker metadata:
-        # every query still has its exact paired positive on the diagonal.
-        weight_sum = pos_weights.sum(dim=1, keepdim=True).clamp_min(1e-12)
-        pos_weights = pos_weights / weight_sum
-
-        log_prob = F.log_softmax(logits, dim=1)
-        per_query = -(pos_weights * log_prob).sum(dim=1)
-        return per_query.mean()
+        # No extra PLM passes. For a single same-speaker peer, the prototype
+        # is precisely that peer's clean embedding.  Zero-peer rows are masked.
+        proto = (weights @ z_clean) / counts.clamp_min(1.0)
+        proto = F.normalize(proto, p=2, dim=-1)
+        cosine = (z_enh * proto).sum(dim=-1)
+        per_anchor = (1.0 - cosine) * valid.to(cosine.dtype)
+        loss_speaker = per_anchor.sum() / valid.to(cosine.dtype).sum().clamp_min(1.0)
+        return loss_pair, loss_speaker, valid_ratio
 
     def _get_negative_samples(self, spk_ids, emb_enh, emb_clean):
         """
