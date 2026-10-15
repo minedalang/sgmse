@@ -12,8 +12,8 @@ from sgmse.joint_data_module import JointWaveDataModule
 
 '''
 
-CUDA_VISIBLE_DEVICES=5 python joint_enhance_by_dir.py --ckpt /home/xyf/cwh_project/sgmse-main/joint_train_logs/holc6jqr-None/epoch\=148-step\=300000.ckpt --in_dir /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-15_v2_testset/noisy --out_dir enhanced/enahnced_holc6jq0_300k_v2_testset  --frontend storm --N 30
-CUDA_VISIBLE_DEVICES=6,7 python -u joint_train.py \
+python joint_enhance_by_dir.py --ckpt /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch\=118-step\=80000.ckpt --in_dir /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisy --out_dir en
+hanced/enahnced_sb61i0gj_300k_-5_testset  --frontend storm --N 30 --rrsd --rrsd_scale 0.5CUDA_VISIBLE_DEVICES=6,7 python -u joint_train.py \
   --backbone ncsnpp_v2 \
   --sde ouve \
   --loss_type score_matching \

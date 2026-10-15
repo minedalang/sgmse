@@ -1,0 +1,126 @@
+--- a/sgmse/joint_model.py
++++ b/sgmse/joint_model.py
+@@ -3035,6 +3035,84 @@
+         }
+         return alpha_target.detach(), stats
+ 
++    def _rrsd_diagnose_alpha_zero(
++        self, *, x_t, y_main, y_cond, t, score_base, sigma, w_x,
++        x0_base, x0_front, dt_cur, base_future_err, pred, target
++    ):
++        """DIAGNOSTIC ONLY: local derivative of one-step future loss at alpha=0.
++
++        Does NOT update params and does NOT change the training loss.  Requires
++        frozen score params as in --rrsd_freeze_base. One extra score-network
++        forward and input-gradient backward on the selected batches.
++        """
++        with torch.enable_grad():
++            alpha0 = torch.zeros_like(
++                pred["alpha_tile"].detach(), dtype=torch.float32, requires_grad=True
++            )
++            amap = F.interpolate(
++                alpha0, size=x0_base.shape[-2:],
++                mode="bilinear", align_corners=False
++            )
++            dtype = x0_base.real.dtype if torch.is_complex(x0_base) else x0_base.dtype
++            delta = amap.to(dtype=dtype) * (x0_front.detach() - x0_base.detach())
++            score_probe = (
++                score_base.detach()
++                + w_x.detach() * delta / sigma.detach().square().clamp_min(1e-8)
++            )
++            x_next, t_next = self._rrsd_reverse_mean_step(
++                x=x_t.detach(), y_main=y_main.detach(), t=t.detach(),
++                score=score_probe, dt=dt_cur.detach(),
++            )
++            score_next = self(
++                x_next, y_main.detach(), t_next, y_cond=y_cond.detach()
++            )
++            x0_next, _, _, _ = self._rrsd_score_to_x0(
++                x_next, y_main.detach(), t_next, score_next
++            )
++            reduce_dims = tuple(range(1, target.ndim))
++            future_err = (
++                torch.abs(x0_next - target.detach()).float().square()
++                .mean(dim=reduce_dims)
++            )
++            # Match _rrsd_future_grad_loss's per-sample normalization exactly.
++            ratio = (
++                future_err
++                / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))
++            ).mean()
++            g0 = torch.autograd.grad(
++                ratio, alpha0, create_graph=False, retain_graph=False
++            )[0].detach().float()
++
++        with torch.no_grad():
++            # Relative numerical tolerance: classify near-zero gradients as weak.
++            abs_mean = float(g0.abs().mean().item())
++            tol = max(1e-10, 0.10 * abs_mean)
++            beneficial = g0 < -tol
++            harmful = g0 > tol
++            active = pred["alpha_tile"].detach().float() > 1e-3
++            alpha = pred["alpha_tile"].detach().float()
++
++            def fraction(mask, population):
++                return (mask & population).float().sum() / population.float().sum().clamp_min(1)
++
++            return {
++                "rrsd_diag_grad_abs_mean": g0.abs().mean(),
++                "rrsd_diag_grad_tolerance": g0.new_tensor(tol),
++                "rrsd_diag_beneficial_fraction": beneficial.float().mean(),
++                "rrsd_diag_harmful_fraction": harmful.float().mean(),
++                "rrsd_diag_weak_fraction": (~(beneficial | harmful)).float().mean(),
++                "rrsd_diag_beneficial_ignored": fraction(~active, beneficial),
++                "rrsd_diag_harmful_used": fraction(active, harmful),
++                "rrsd_diag_alpha_on_beneficial": (
++                    (alpha * beneficial).sum() / beneficial.float().sum().clamp_min(1)
++                ),
++                "rrsd_diag_alpha_on_harmful": (
++                    (alpha * harmful).sum() / harmful.float().sum().clamp_min(1)
++                ),
++                "rrsd_diag_alpha_active": active.float().mean(),
++                "rrsd_diag_probe_loss_at_zero": ratio.detach(),
++            }
++
+     def _rrsd_future_grad_loss(
+         self,
+         *,
+@@ -3200,6 +3278,38 @@
+                     "rrsd_gate_active_fraction": (pred["gate_tile"].detach().float() > 0.5).float().mean(),
+                     "rrsd_strength_mean": pred["strength_tile"].detach().float().mean(),
+                 })
++        # Optional post-hoc diagnosis of whether the learned router rejects
++        # beneficial frontend guidance. Disabled by default; no training change.
++        diagnostic_max = int(os.environ.get("SGMSE_RRSD_DIAG_BATCHES", "0"))
++        diagnostic_done = int(getattr(self, "_rrsd_diag_done", 0))
++        if diagnostic_done < diagnostic_max:
++            diag = self._rrsd_diagnose_alpha_zero(
++                x_t=x_t_det, y_main=y_main_det, y_cond=y_cond_det,
++                t=t_det, score_base=score_base, sigma=sigma_det,
++                w_x=w_x_det, x0_base=x0_base_det, x0_front=x0_front,
++                dt_cur=dt_cur, base_future_err=base_future_err,
++                pred=pred, target=target_det,
++            )
++            self._rrsd_diag_done = diagnostic_done + 1
++            stats.update(diag)
++            print(
++                "[RRSD-DIAG] batch={}/{} good={:.3f} bad={:.3f} "
++                "good_ignored={:.3f} bad_used={:.3f} "
++                "alpha_good={:.6f} alpha_bad={:.6f} grad_abs={:.3e}".format(
++                    self._rrsd_diag_done, diagnostic_max,
++                    float(diag["rrsd_diag_beneficial_fraction"]),
++                    float(diag["rrsd_diag_harmful_fraction"]),
++                    float(diag["rrsd_diag_beneficial_ignored"]),
++                    float(diag["rrsd_diag_harmful_used"]),
++                    float(diag["rrsd_diag_alpha_on_beneficial"]),
++                    float(diag["rrsd_diag_alpha_on_harmful"]),
++                    float(diag["rrsd_diag_grad_abs_mean"]),
++                ), flush=True
++            )
++            if (self._rrsd_diag_done >= diagnostic_max
++                    and os.environ.get("SGMSE_RRSD_DIAG_EXIT", "0") == "1"):
++                print("[RRSD-DIAG] Completed; exiting diagnostic run without saving.", flush=True)
++                raise SystemExit(0)
+         return loss, stats
+ 
+     def _compute_rrsd_loss(

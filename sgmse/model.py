@@ -3,7 +3,7 @@ import os
 from math import ceil
 import warnings
 import torch.nn.functional as F
-from transformers import UniSpeechSatModel
+from transformers import UniSpeechSatModel, UniSpeechSatForXVector
 from functools import partial
 
 import torch
@@ -60,6 +60,8 @@ class ScoreModel(pl.LightningModule):
                             help="Multiplier for the unchanged bidirectional paired InfoNCE term (default 1.0).")
         parser.add_argument("--contrastive_speaker_weight", type=float, default=0.5,
                             help="Coefficient of an independent same-speaker prototype cosine loss; 0 disables the auxiliary speaker loss.")
+        parser.add_argument("--unispeech_sv_head", action="store_true",
+                            help="For UniSpeech-SAT, keep hidden-mean paired InfoNCE and use the pretrained X-Vector head for speaker prototype loss.")
         parser.add_argument("--max_plm_length", type=int, default=32000,
                             help="Max waveform length (in samples) fed into PLM.")
         return parser
@@ -75,6 +77,7 @@ class ScoreModel(pl.LightningModule):
         contrastive_clean_weight=1.0,
         contrastive_speaker_weight=0.5,
         max_plm_length=32000,
+        unispeech_sv_head=False,
         mode2_include_noisy_main=False,
         **kwargs
     ):
@@ -134,6 +137,9 @@ class ScoreModel(pl.LightningModule):
         if self.plm_type not in ("unispeech_sat", "campplus", "xvector"):
             raise ValueError(f"Unsupported PLM type: {plm_type!r}")
         self.plm_name_or_path = plm_name_or_path
+        self.unispeech_sv_head = bool(unispeech_sv_head)
+        if self.unispeech_sv_head and self.plm_type != "unispeech_sat":
+            raise ValueError("--unispeech_sv_head requires --plm_type unispeech_sat")
         self.contrastive_temperature = contrastive_temperature
         self.contrastive_clean_weight = float(contrastive_clean_weight)
         self.contrastive_speaker_weight = float(contrastive_speaker_weight)
@@ -172,9 +178,26 @@ class ScoreModel(pl.LightningModule):
                 )
             else:
                 try:
-                    self.plm_model = UniSpeechSatModel.from_pretrained(
-                        self.plm_name_or_path
-                    )
+                    if self.unispeech_sv_head:
+                        self.plm_model, load_info = UniSpeechSatForXVector.from_pretrained(
+                            self.plm_name_or_path,
+                            output_loading_info=True,
+                        )
+                        # A missing X-Vector head would be randomly initialized.
+                        # Fail rather than silently using an untrained identity teacher.
+                        missing = list(load_info.get("missing_keys", []))
+                        head_missing = [k for k in missing if not k.startswith("unispeech_sat.")]
+                        if head_missing:
+                            raise RuntimeError(
+                                "Pretrained UniSpeech-SAT X-Vector head is incomplete; "
+                                f"missing keys: {head_missing[:12]}"
+                            )
+                        print("[Contrastive] UniSpeech-SAT X-Vector head loaded; "
+                              "pair=hidden mean, speaker=SV embeddings", flush=True)
+                    else:
+                        self.plm_model = UniSpeechSatModel.from_pretrained(
+                            self.plm_name_or_path
+                        )
                 except Exception as e:
                     # Fail fast: never continue a requested contrastive run
                     # without its pretrained speaker encoder.
@@ -568,8 +591,10 @@ class ScoreModel(pl.LightningModule):
                     weight_speaker=self.contrastive_speaker_weight,
                 )
                 total_loss = base_loss + self.contrastive_weight * contrastive_loss
-                self.log('contrastive_loss', contrastive_loss,
-                         on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+                stage = "train" if self.training else "val"
+
+                self.log( f"{stage}_contrastive_loss",  contrastive_loss.detach(),
+                         on_step=self.training, on_epoch=True, sync_dist=True, prog_bar=False,batch_size=x.shape[0],)
             else:
                 total_loss = base_loss
         else:
@@ -630,6 +655,9 @@ class ScoreModel(pl.LightningModule):
             os.environ.get("SGMSE_PLM_CHECKPOINT", "0") == "1"
             and self.training and torch.is_grad_enabled()
         )
+        speaker_emb_enh = None
+        speaker_emb_clean = None
+
         if self.plm_type in ("campplus", "xvector"):
             if checkpoint_plm:
                 from torch.utils.checkpoint import checkpoint
@@ -638,7 +666,36 @@ class ScoreModel(pl.LightningModule):
                 emb_enh = self.plm_model(enhanced_wav)
             with torch.no_grad():
                 emb_clean = self.plm_model(clean_wav)
+
+        elif self.unispeech_sv_head:
+            # One UniSpeech-SAT-SV forward provides BOTH representations:
+            # - last hidden layer (mean pooled) for paired InfoNCE
+            # - pretrained speaker-verification X-Vector head for identity.
+            def _both_embeddings(wav):
+                outputs = self.plm_model(
+                    input_values=wav,
+                    output_hidden_states=True,
+                    return_dict=True,
+                )
+                if outputs.hidden_states is None or outputs.embeddings is None:
+                    raise RuntimeError("UniSpeechSatForXVector did not produce both hidden_states and embeddings")
+                pair_embedding = outputs.hidden_states[-1].mean(dim=1)
+                speaker_embedding = outputs.embeddings
+                return pair_embedding, speaker_embedding
+
+            if checkpoint_plm:
+                from torch.utils.checkpoint import checkpoint
+                emb_enh, speaker_emb_enh = checkpoint(
+                    _both_embeddings, enhanced_wav, use_reentrant=False
+                )
+            else:
+                emb_enh, speaker_emb_enh = _both_embeddings(enhanced_wav)
+            with torch.no_grad():
+                emb_clean, speaker_emb_clean = _both_embeddings(clean_wav)
+
         else:
+            # Original UniSpeech-SAT behaviour is unchanged when
+            # --unispeech_sv_head is absent.
             if checkpoint_plm:
                 from torch.utils.checkpoint import checkpoint
                 plm_enh_hidden = checkpoint(
@@ -658,27 +715,68 @@ class ScoreModel(pl.LightningModule):
                 ).last_hidden_state.mean(dim=1)
             emb_enh = plm_enh_hidden.mean(dim=1)
 
-        # Keep the original paired objective intact. The auxiliary speaker
-        # prototype loss is *added*, not mixed into the normalized positives.
         loss_pair, loss_speaker, valid_ratio = self._contrastive_pair_speaker_losses(
             emb_enh, emb_clean, spk_ids,
+            speaker_emb_enh=speaker_emb_enh,
+            speaker_emb_clean=speaker_emb_clean,
         )
         loss_spk_weighted = float(weight_speaker) * loss_speaker
         loss_cl = float(weight_clean) * loss_pair + loss_spk_weighted
 
-        # These are diagnostics for interpreting speaker-weight ablations.
-        # No encoder parameters are trainable; enhanced waveform retains grad.
-        self.log("train_cl_pair", loss_pair.detach(), on_step=True, on_epoch=True,
-                 sync_dist=True, prog_bar=False)
-        self.log("train_cl_speaker", loss_speaker.detach(), on_step=True, on_epoch=True,
-                 sync_dist=True, prog_bar=False)
-        self.log("train_cl_speaker_weighted", loss_spk_weighted.detach(),
-                 on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
-        self.log("train_cl_spk_valid_ratio", valid_ratio.detach(),
-                 on_step=True, on_epoch=True, sync_dist=True, prog_bar=False)
+
+         # 根据当前阶段区分训练和验证日志
+        stage = "train" if self.training else "val"
+
+        # 训练阶段同时记录 step 和 epoch；
+        # 验证阶段只记录 epoch，避免日志互相混淆
+        log_on_step = self.training
+
+        self.log(
+            f"{stage}_cl_pair",
+            loss_pair.detach(),
+            on_step=log_on_step,
+            on_epoch=True,
+            sync_dist=True,
+            prog_bar=False,
+            batch_size=B,
+        )
+
+        self.log(
+            f"{stage}_cl_speaker",
+            loss_speaker.detach(),
+            on_step=log_on_step,
+            on_epoch=True,
+            sync_dist=True,
+            prog_bar=False,
+            batch_size=B,
+        )
+
+        self.log(
+            f"{stage}_cl_speaker_weighted",
+            loss_spk_weighted.detach(),
+            on_step=log_on_step,
+            on_epoch=True,
+            sync_dist=True,
+            prog_bar=False,
+            batch_size=B,
+        )
+
+        self.log(
+            f"{stage}_cl_spk_valid_ratio",
+            valid_ratio.detach(),
+            on_step=log_on_step,
+            on_epoch=True,
+            sync_dist=True,
+            prog_bar=False,
+            batch_size=B,
+        )
+
         return loss_cl
 
-    def _contrastive_pair_speaker_losses(self, emb_enh, emb_clean, spk_ids=None):
+    def _contrastive_pair_speaker_losses(
+        self, emb_enh, emb_clean, spk_ids=None,
+        speaker_emb_enh=None, speaker_emb_clean=None,
+    ):
         """Paired bi-directional InfoNCE + other-utterance speaker prototype.
 
         The paired loss is exactly the original speaker_weight=0 objective,
@@ -691,8 +789,19 @@ class ScoreModel(pl.LightningModule):
         """
         z_enh = F.normalize(emb_enh.float(), p=2, dim=-1)
         z_clean = F.normalize(emb_clean.detach().float(), p=2, dim=-1)
+        # Pair and identity branches can use different representation spaces.
+        # Frozen clean SV features are always detached; enhanced SV features
+        # retain gradient into enhanced waveform and enhancement network.
+        if (speaker_emb_enh is None) != (speaker_emb_clean is None):
+            raise ValueError("Both speaker embeddings must be supplied together")
+        if speaker_emb_enh is None:
+            z_spk_enh, z_spk_clean = z_enh, z_clean
+        else:
+            z_spk_enh = F.normalize(speaker_emb_enh.float(), p=2, dim=-1)
+            z_spk_clean = F.normalize(speaker_emb_clean.detach().float(), p=2, dim=-1)
+
         B = z_enh.size(0)
-        if z_clean.size(0) != B:
+        if z_clean.size(0) != B or z_spk_enh.size(0) != B or z_spk_clean.size(0) != B:
             raise ValueError("Enhanced and clean embedding batches must match")
 
         logits = (z_enh @ z_clean.T) / float(self.contrastive_temperature)
@@ -718,16 +827,16 @@ class ScoreModel(pl.LightningModule):
             (ids[:, None] == ids[None, :])
             & valid_id[:, None] & valid_id[None, :] & ~eye
         )
-        weights = other_same.to(z_clean.dtype)
+        weights = other_same.to(z_spk_clean.dtype)
         counts = weights.sum(dim=1, keepdim=True)
         valid = (counts.squeeze(1) > 0)
-        valid_ratio = valid.to(z_clean.dtype).mean()
+        valid_ratio = valid.to(z_spk_clean.dtype).mean()
 
         # No extra PLM passes. For a single same-speaker peer, the prototype
         # is precisely that peer's clean embedding.  Zero-peer rows are masked.
-        proto = (weights @ z_clean) / counts.clamp_min(1.0)
+        proto = (weights @ z_spk_clean) / counts.clamp_min(1.0)
         proto = F.normalize(proto, p=2, dim=-1)
-        cosine = (z_enh * proto).sum(dim=-1)
+        cosine = (z_spk_enh * proto).sum(dim=-1)
         per_anchor = (1.0 - cosine) * valid.to(cosine.dtype)
         loss_speaker = per_anchor.sum() / valid.to(cosine.dtype).sum().clamp_min(1.0)
         return loss_pair, loss_speaker, valid_ratio
