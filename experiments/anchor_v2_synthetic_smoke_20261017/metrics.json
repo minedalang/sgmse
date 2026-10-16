@@ -1,0 +1,14 @@
+{
+  "experiment_id": "anchor_v2_synthetic_smoke_20261017",
+  "seed": 7,
+  "base_proxy_mse": 0.06541486084461212,
+  "oracle_proxy_mse": 0.000383393227821216,
+  "oracle_reduces_proxy_mse": true,
+  "zero_initialized_controller_noop": true,
+  "controller_output_weight_gradient_l1": 0.2632306218147278,
+  "controller_gradient_nonzero": true,
+  "single_shot_anchor_v2_smoke": "passed",
+  "pathsim_vA_smoke": "passed",
+  "python_compile": "passed",
+  "real_audio_quality_evaluated": false
+}

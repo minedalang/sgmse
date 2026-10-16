@@ -1,0 +1,16 @@
+schema_version: 1
+experiment_id: anchor_v2_synthetic_smoke_20261017
+purpose: synthetic_engineering_and_gradient_smoke
+mutates_dataset: false
+mutates_checkpoint: false
+seed: 7
+shape: {batch: 2, channels: 1, freq: 32, time: 24}
+controller: {hidden_ch: 12, num_bands: 8, num_time_blocks: 6}
+checks:
+  - two_direction_tile_oracle_reduces_proxy_mse
+  - zero_initialized_controller_is_noop
+  - controller_output_gradient_is_nonzero
+commands:
+  - "/data/coding/sgmse/env/bin/python single_shot_anchor_v2_smoke_test.py"
+  - "/data/coding/sgmse/env/bin/python pathsim_vA_smoke_test.py"
+  - "/data/coding/sgmse/env/bin/python -m py_compile sgmse/anchor_v2.py sgmse/reliability_router.py sgmse/joint_model.py"
