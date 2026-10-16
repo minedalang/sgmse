@@ -1,0 +1,8 @@
+experiment_id: rrsd_speaker_svproto_masked_sw05_1000
+purpose: speaker_disjoint_32_eval
+checkpoint: joint_train_logs/kn1hgnni-rrsd_speaker_svproto_masked_sw05_1000/epoch=0-step=1000.ckpt
+training: {steps: 1000, batch_size: 8, seed: 2026, contrastive_weight: 10.0, speaker_weight: 0.5, mask_same_speaker_negatives: true, lr: 3e-5}
+manifest: experiments/rrsd_cv_repeat32/manifest.csv
+inference: {device: cuda, ema: true, rrsd: true, sampler: pc, N: 30, snr: 0.5, seed: 2026}
+metrics: [CAM++_enhanced_clean_cosine, PESQ, STOI, SI-SDR, CAM++_same_speaker]
+bootstrap: {replicates: 20000, seed: 2026}
