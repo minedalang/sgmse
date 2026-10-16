@@ -1,0 +1,90 @@
+{
+  "experiment_id": "rrsd_projection_nogate_1000",
+  "checkpoint": "joint_train_logs/rrhts7mb-rrsd_projection_nogate_1000/epoch=0-step=1000.ckpt",
+  "training": {
+    "steps": 1000,
+    "batch_size": 8,
+    "seed": 2026,
+    "lr": 3e-05,
+    "rrsd_freeze_base": true,
+    "train_loss_epoch": 3075.516,
+    "teacher": "projection",
+    "use_gate": false
+  },
+  "manifest": "experiments/rrsd_cv_repeat32/manifest.csv",
+  "inference": {
+    "device": "cuda",
+    "ema": true,
+    "rrsd": true,
+    "sampler": "pc",
+    "N": 30,
+    "snr": 0.5,
+    "seed": 2026
+  },
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 2026
+  },
+  "outputs": {
+    "enhanced_dir": "/tmp/rrsd_projection_nogate_eval",
+    "inference_log": "/tmp/rrsd_projection_nogate_eval.log"
+  },
+  "means": {
+    "cos": 0.8419984979555011,
+    "pesq": 1.693245742470026,
+    "stoi": 0.7975693895123501,
+    "sisdr": 6.87593381293118,
+    "same": 0.8383240774273872
+  },
+  "speaker_pairs": {
+    "router_same": 0.8423220030963421,
+    "gate_same": 0.8386294580996037,
+    "nogate_same": 0.8383240774273872
+  },
+  "paired_bootstrap": {
+    "cos": {
+      "vs_router": {
+        "delta": 0.0007490813732147217,
+        "ci95": [
+          -0.0005655272398144007,
+          0.0020183553453534827
+        ]
+      }
+    },
+    "pesq": {
+      "vs_router": {
+        "delta": 0.0017229355871677399,
+        "ci95": [
+          -0.0028538637794554233,
+          0.0062623397447168815
+        ]
+      }
+    },
+    "stoi": {
+      "vs_router": {
+        "delta": -0.0005550993185424007,
+        "ci95": [
+          -0.0010506422538054722,
+          -8.8679563187516e-05
+        ]
+      }
+    },
+    "sisdr": {
+      "vs_router": {
+        "delta": -0.09041761234402657,
+        "ci95": [
+          -0.10381847540847958,
+          -0.07759767379611732
+        ]
+      }
+    }
+  },
+  "dnsmos": {
+    "DNSMOS_P808": 3.9182926427040785,
+    "DNSMOS_SIG": 3.425465518184931,
+    "DNSMOS_BAK": 4.123460460697659,
+    "DNSMOS_OVRL": 3.1116701569957916
+  },
+  "dnsmos_csv": "/tmp/rrsd_projection_nogate_dnsmos.csv",
+  "training_failure_note": "last.ckpt save failed with OSError Errno 28 (No space left on device); epoch checkpoint above was independently torch.load-validated (global_step=1000). Partial last checkpoint moved to /tmp/rrsd_failed_checkpoints/rrsd_projection_nogate_1000-last.ckpt.partial."
+}

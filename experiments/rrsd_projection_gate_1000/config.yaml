@@ -1,0 +1,27 @@
+experiment_id: rrsd_projection_gate_1000
+checkpoint: joint_train_logs/d1z5ovza-rrsd_projection_gate_1000/epoch=0-step=1000.ckpt
+training:
+  steps: 1000
+  batch_size: 8
+  seed: 2026
+  lr: 3.0e-05
+  rrsd_freeze_base: true
+  train_loss_epoch: 3131.678
+  teacher: projection
+  use_gate: true
+  gate_local_threshold: 0.005
+  gate_weight: 1.0
+  strength_weight: 1.0
+  gate_pos_weight: 2.0
+manifest: experiments/rrsd_cv_repeat32/manifest.csv
+inference:
+  device: cuda
+  ema: true
+  rrsd: true
+  sampler: pc
+  N: 30
+  snr: 0.5
+  seed: 2026
+outputs:
+  enhanced_dir: /tmp/rrsd_projection_gate_eval
+  inference_log: /tmp/rrsd_projection_gate_eval.log

@@ -1,0 +1,121 @@
+{
+  "experiment_id": "rrsd_projection_gate_1000",
+  "checkpoint": "joint_train_logs/d1z5ovza-rrsd_projection_gate_1000/epoch=0-step=1000.ckpt",
+  "training": {
+    "steps": 1000,
+    "batch_size": 8,
+    "seed": 2026,
+    "lr": 3e-05,
+    "rrsd_freeze_base": true,
+    "train_loss_epoch": 3131.678,
+    "teacher": "projection",
+    "use_gate": true,
+    "gate_local_threshold": 0.005,
+    "gate_weight": 1.0,
+    "strength_weight": 1.0,
+    "gate_pos_weight": 2.0
+  },
+  "manifest": "experiments/rrsd_cv_repeat32/manifest.csv",
+  "inference": {
+    "device": "cuda",
+    "ema": true,
+    "rrsd": true,
+    "sampler": "pc",
+    "N": 30,
+    "snr": 0.5,
+    "seed": 2026
+  },
+  "bootstrap": {
+    "replicates": 20000,
+    "seed": 2026
+  },
+  "outputs": {
+    "enhanced_dir": "/tmp/rrsd_projection_gate_eval",
+    "inference_log": "/tmp/rrsd_projection_gate_eval.log"
+  },
+  "means": {
+    "cos": 0.8447091663256288,
+    "pesq": 1.6779067404568195,
+    "stoi": 0.7969272324993114,
+    "sisdr": 6.493572029285133,
+    "same": 0.8386294580996037
+  },
+  "speaker_pairs": {
+    "router_same": 0.8423220030963421,
+    "gate_same": 0.8386294580996037,
+    "nogate_same": 0.8383240774273872
+  },
+  "paired_bootstrap": {
+    "cos": {
+      "vs_router": {
+        "delta": 0.0034597497433423996,
+        "ci95": [
+          0.0014204600360244513,
+          0.005410411860793829
+        ]
+      },
+      "vs_nogate": {
+        "delta": 0.002710668370127678,
+        "ci95": [
+          0.0007055340334773064,
+          0.004645889392122625
+        ]
+      }
+    },
+    "pesq": {
+      "vs_router": {
+        "delta": -0.013616066426038742,
+        "ci95": [
+          -0.02178525123745203,
+          -0.00594191737473012
+        ]
+      },
+      "vs_nogate": {
+        "delta": -0.015339002013206482,
+        "ci95": [
+          -0.02339346772059798,
+          -0.007941406778991224
+        ]
+      }
+    },
+    "stoi": {
+      "vs_router": {
+        "delta": -0.0011972563315810897,
+        "ci95": [
+          -0.0017972787568995517,
+          -0.0006590694716366245
+        ]
+      },
+      "vs_nogate": {
+        "delta": -0.000642157013038689,
+        "ci95": [
+          -0.0012753306144863675,
+          -7.106543151059365e-05
+        ]
+      }
+    },
+    "sisdr": {
+      "vs_router": {
+        "delta": -0.4727793959900737,
+        "ci95": [
+          -0.5379145855084062,
+          -0.40888749186415235
+        ]
+      },
+      "vs_nogate": {
+        "delta": -0.3823617836460471,
+        "ci95": [
+          -0.4472356991842389,
+          -0.3197841703658924
+        ]
+      }
+    }
+  },
+  "dnsmos": {
+    "DNSMOS_P808": 3.942806590880666,
+    "DNSMOS_SIG": 3.4455003054662647,
+    "DNSMOS_BAK": 4.117769826536412,
+    "DNSMOS_OVRL": 3.1298613903065617
+  },
+  "dnsmos_csv": "/tmp/rrsd_projection_gate_dnsmos.csv"
+}

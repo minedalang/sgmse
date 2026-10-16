@@ -1,0 +1,23 @@
+experiment_id: rrsd_projection_nogate_1000
+checkpoint: joint_train_logs/rrhts7mb-rrsd_projection_nogate_1000/epoch=0-step=1000.ckpt
+training:
+  steps: 1000
+  batch_size: 8
+  seed: 2026
+  lr: 3.0e-05
+  rrsd_freeze_base: true
+  train_loss_epoch: 3075.516
+  teacher: projection
+  use_gate: false
+manifest: experiments/rrsd_cv_repeat32/manifest.csv
+inference:
+  device: cuda
+  ema: true
+  rrsd: true
+  sampler: pc
+  N: 30
+  snr: 0.5
+  seed: 2026
+outputs:
+  enhanced_dir: /tmp/rrsd_projection_nogate_eval
+  inference_log: /tmp/rrsd_projection_nogate_eval.log
