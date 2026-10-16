@@ -12,6 +12,12 @@ CONTRASTIVE_WEIGHT="${CONTRASTIVE_WEIGHT:-10.0}"
 SPEAKER_WEIGHT="${SPEAKER_WEIGHT:-0.0}"
 TAG="${TAG:-rrsd_speaker_cw${CONTRASTIVE_WEIGHT}_sw${SPEAKER_WEIGHT}_s${STEPS}}"
 LR="${LR:-3e-5}"
+MASK_SAME_SPEAKER_NEGATIVES="${MASK_SAME_SPEAKER_NEGATIVES:-0}"
+
+MASK_ARG=()
+if [[ "$MASK_SAME_SPEAKER_NEGATIVES" == "1" ]]; then
+  MASK_ARG+=(--contrastive_mask_same_speaker_negatives)
+fi
 
 export CUDA_VISIBLE_DEVICES="${CUDA_VISIBLE_DEVICES:-0}"
 export SGMSE_STORM_CHECKPOINT=1 SGMSE_STORM_CHECKPOINT_MODE=full
@@ -46,6 +52,7 @@ PATH="$ROOT/env/bin:$PATH" "$ROOT/env/bin/python" -u joint_train.py \
   --plm_type unispeech_sat --plm_name_or_path microsoft/unispeech-sat-base-plus-sv \
   --unispeech_sv_head --contrastive_temperature 0.1 \
   --contrastive_clean_weight 1.0 --max_plm_length 32000 \
+  "${MASK_ARG[@]}" \
   --weighting_denoiser_to_score 0.5 \
   --storm_nf 128 --storm_ch_mult 1 2 2 2 --storm_num_res_blocks 1 --storm_attn_resolutions 0 \
   --init_ckpt "$CKPT" --init_ckpt_use_ema 2>&1 | tee -a "$LOG"

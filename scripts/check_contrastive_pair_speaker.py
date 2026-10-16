@@ -14,6 +14,9 @@ clean = torch.randn(8, 768)
 ids = torch.tensor([101, 101, 202, 202, 303, 303, 404, 404])
 
 pair, speaker, ratio = ScoreModel._contrastive_pair_speaker_losses(s, enh, clean, ids)
+masked_pair, masked_speaker, masked_ratio = ScoreModel._contrastive_pair_speaker_losses(
+    s, enh, clean, ids, mask_same_speaker_negatives=True
+)
 z1 = F.normalize(enh.float(), dim=-1)
 z2 = F.normalize(clean.float(), dim=-1)
 logits = z1 @ z2.T / s.contrastive_temperature
@@ -21,6 +24,8 @@ labels = torch.arange(8)
 reference = (F.cross_entropy(logits, labels) + F.cross_entropy(logits.T, labels)) / 2
 assert torch.allclose(pair, reference, atol=1e-6), (pair, reference)
 assert speaker.item() > 0 and ratio.item() == 1.0
+assert masked_ratio.item() == 1.0
+assert not torch.allclose(pair, masked_pair), (pair, masked_pair)
 loss = pair + 0.1 * speaker
 loss.backward()
 assert enh.grad is not None and torch.isfinite(enh.grad).all() and enh.grad.abs().sum() > 0
@@ -33,6 +38,16 @@ pair2, speaker2, ratio2 = ScoreModel._contrastive_pair_speaker_losses(
 assert speaker2.item() == 0 and ratio2.item() == 0
 assert torch.allclose(pair, pair2)
 
+unknown_ids = torch.full((8,), -1)
+unknown_pair = ScoreModel._contrastive_pair_speaker_losses(
+    s, enh.detach(), clean, unknown_ids,
+)[0]
+unknown_masked_pair = ScoreModel._contrastive_pair_speaker_losses(
+    s, enh.detach(), clean, unknown_ids,
+    mask_same_speaker_negatives=True,
+)[0]
+assert torch.allclose(unknown_pair, unknown_masked_pair)
+
 print("PASS: pair loss matches old spk0; speaker loss active; gradients reach enhanced embedding;")
 print("      clean targets detached; no same-speaker pairs yield zero auxiliary loss.")
-print(f"pair={pair.item():.5f}, speaker={speaker.item():.5f}, valid_ratio={ratio.item():.2f}")
+print(f"pair={pair.item():.5f}, masked_pair={masked_pair.item():.5f}, speaker={speaker.item():.5f}, valid_ratio={ratio.item():.2f}")

@@ -75,6 +75,14 @@ class ScoreModel(pl.LightningModule):
                             help="Multiplier for the unchanged bidirectional paired InfoNCE term (default 1.0).")
         parser.add_argument("--contrastive_speaker_weight", type=float, default=0.5,
                             help="Coefficient of an independent same-speaker prototype cosine loss; 0 disables the auxiliary speaker loss.")
+        parser.add_argument(
+            "--contrastive_mask_same_speaker_negatives",
+            action="store_true",
+            help=(
+                "Mask valid same-speaker off-diagonal samples from paired InfoNCE. "
+                "Disabled by default for backward-compatible ablations."
+            ),
+        )
         parser.add_argument("--unispeech_sv_head", action="store_true",
                             help="For UniSpeech-SAT, keep hidden-mean paired InfoNCE and use the pretrained X-Vector head for speaker prototype loss.")
         parser.add_argument("--max_plm_length", type=int, default=32000,
@@ -93,6 +101,7 @@ class ScoreModel(pl.LightningModule):
         contrastive_margin=0.0,
         contrastive_clean_weight=1.0,
         contrastive_speaker_weight=0.5,
+        contrastive_mask_same_speaker_negatives=False,
         max_plm_length=32000,
         unispeech_sv_head=False,
         mode2_include_noisy_main=False,
@@ -169,6 +178,9 @@ class ScoreModel(pl.LightningModule):
             raise ValueError("contrastive_margin must be >= 0.")
         self.contrastive_clean_weight = float(contrastive_clean_weight)
         self.contrastive_speaker_weight = float(contrastive_speaker_weight)
+        self.contrastive_mask_same_speaker_negatives = bool(
+            contrastive_mask_same_speaker_negatives
+        )
         self.max_plm_length = max_plm_length
         if self.contrastive_clean_weight <= 0.0 or self.contrastive_speaker_weight < 0.0:
             raise ValueError("contrastive_clean_weight must be > 0 and contrastive_speaker_weight must be >= 0.")
@@ -800,6 +812,7 @@ class ScoreModel(pl.LightningModule):
             emb_enh, emb_clean, spk_ids,
             speaker_emb_enh=speaker_emb_enh,
             speaker_emb_clean=speaker_emb_clean,
+            mask_same_speaker_negatives=self.contrastive_mask_same_speaker_negatives,
         )
         loss_spk_weighted = float(weight_speaker) * loss_speaker
         loss_cl = float(weight_clean) * loss_pair + loss_spk_weighted
@@ -857,13 +870,15 @@ class ScoreModel(pl.LightningModule):
     def _contrastive_pair_speaker_losses(
         self, emb_enh, emb_clean, spk_ids=None,
         speaker_emb_enh=None, speaker_emb_clean=None,
+        mask_same_speaker_negatives=False,
     ):
         """Paired bi-directional InfoNCE + other-utterance speaker prototype.
 
-        The paired loss is exactly the original speaker_weight=0 objective,
-        including same-speaker off-diagonal entries in the denominator.
-        This version intentionally does NOT mask false negatives: that would
-        be a separate ablation changing a second experimental variable.
+        By default the paired loss is exactly the original speaker_weight=0
+        objective, including same-speaker off-diagonal entries in the
+        denominator. When ``mask_same_speaker_negatives`` is enabled, valid
+        same-speaker off-diagonal entries are removed from both directional
+        InfoNCE denominators while the paired diagonal remains the positive.
 
         Speaker prototype for anchor i is built from *other batch indices*
         with the same valid speaker ID; its targets are detached.
@@ -887,6 +902,22 @@ class ScoreModel(pl.LightningModule):
 
         logits = (z_enh @ z_clean.T) / float(self.contrastive_temperature)
         labels = torch.arange(B, device=logits.device)
+
+        if mask_same_speaker_negatives and spk_ids is not None:
+            ids = torch.as_tensor(spk_ids, device=logits.device).reshape(-1)
+            if ids.numel() != B:
+                raise ValueError(f"spk_ids length {ids.numel()} != batch size {B}")
+            valid_id = ids >= 0
+            same_offdiag = (
+                (ids[:, None] == ids[None, :])
+                & valid_id[:, None]
+                & valid_id[None, :]
+                & ~torch.eye(B, device=logits.device, dtype=torch.bool)
+            )
+            logits = logits.masked_fill(same_offdiag, torch.finfo(logits.dtype).min)
+
+        # The mask is symmetric, so the transposed direction uses the same
+        # valid negatives. The diagonal positive is never masked.
         loss_pair = 0.5 * (
             F.cross_entropy(logits, labels)
             + F.cross_entropy(logits.T, labels)
