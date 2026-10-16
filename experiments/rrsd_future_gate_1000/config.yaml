@@ -1,0 +1,44 @@
+schema_version: 1
+experiment_id: rrsd_future_gate_1000
+purpose: future_grad_explicit_gate_short_validation
+mutates_dataset: false
+training:
+  initial_checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+  checkpoint: /tmp/rrsd_future_gate_logs/bmez7wvm-rrsd_future_gate_1000/epoch=0-step=1000.ckpt
+  steps: 1000
+  batch_size: 1
+  seed: 2026
+  lr: 3.0e-5
+  rrsd_teacher: future_grad
+  rrsd_freeze_base: true
+  rrsd_use_gate: true
+  rrsd_gate_local_threshold: 0.005
+  rrsd_gate_weight: 1.0
+  rrsd_strength_weight: 1.0
+  rrsd_gate_pos_weight: 2.0
+  rrsd_future_gate_cost: 0.001
+  rrsd_benefit_weight: 4.0
+  rrsd_recon_weight: 0.1
+  train_split: cv_synthetic
+  train_loss_epoch: 403.185
+inference:
+  manifest: /data/coding/sgmse/experiments/rrsd_cv_repeat32/manifest.csv
+  input_dir: /tmp/rrsd_cv_repeat32/noisy
+  output_dir: /dev/shm/rrsd_future_gate_eval_v4
+  device: cuda
+  use_ema: true
+  rrsd: true
+  sampler: pc
+  corrector: none
+  N: 30
+  snr: 0.5
+  seed: 2026
+  rrsd_scale: 1.0
+  rrsd_t_max: 1.0
+command: >-
+  PATH=/data/coding/sgmse/env/bin:/usr/local/bin:/usr/bin:/bin
+  /data/coding/sgmse/env/bin/python -u joint_enhance_by_dir.py
+  --ckpt /tmp/rrsd_future_gate_logs/bmez7wvm-rrsd_future_gate_1000/epoch=0-step=1000.ckpt
+  --in_dir /tmp/rrsd_cv_repeat32/noisy --out_dir /dev/shm/rrsd_future_gate_eval_v4
+  --device cuda --sampler_type pc --corrector none --N 30 --snr 0.5
+  --use_ema --rrsd --rrsd_scale 1.0 --rrsd_t_max 1.0 --seed 2026

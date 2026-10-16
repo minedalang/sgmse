@@ -1,0 +1,279 @@
+{
+  "experiment_id": "rrsd_future_gate_1000",
+  "n": 32,
+  "training": {
+    "initial_checkpoint": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "checkpoint": "/tmp/rrsd_future_gate_logs/bmez7wvm-rrsd_future_gate_1000/epoch=0-step=1000.ckpt",
+    "steps": 1000,
+    "batch_size": 1,
+    "seed": 2026,
+    "lr": 3e-05,
+    "teacher": "future_grad",
+    "freeze_base": true,
+    "use_gate": true,
+    "gate_local_threshold": 0.005,
+    "gate_weight": 1.0,
+    "strength_weight": 1.0,
+    "gate_pos_weight": 2.0,
+    "future_gate_cost": 0.001,
+    "benefit_weight": 4.0,
+    "recon_weight": 0.1,
+    "train_loss_epoch": 403.185,
+    "checkpoint_global_step": 1000,
+    "checkpoint_state_dict_entries": 548,
+    "last_save_error": "OSError: [Errno 28] No space left on device while saving auxiliary last.ckpt"
+  },
+  "inference": {
+    "manifest": "/data/coding/sgmse/experiments/rrsd_cv_repeat32/manifest.csv",
+    "input_dir": "/tmp/rrsd_cv_repeat32/noisy",
+    "output_dir": "/dev/shm/rrsd_future_gate_eval_v4",
+    "device": "cuda",
+    "use_ema": true,
+    "rrsd": true,
+    "sampler": "pc",
+    "corrector": "none",
+    "N": 30,
+    "snr": 0.5,
+    "seed": 2026,
+    "rrsd_scale": 1.0,
+    "rrsd_t_max": 1.0
+  },
+  "paired_metrics": {
+    "pesq": {
+      "means": {
+        "off": 1.6785005927085876,
+        "router": 1.6915228068828583,
+        "selective": 1.6864053383469582
+      },
+      "paired_bootstrap": {
+        "gate_vs_router": {
+          "delta": -0.005117468535900116,
+          "ci95": [
+            -0.011136555299162864,
+            0.0005190046504139873
+          ],
+          "improved": 9
+        },
+        "gate_vs_off": {
+          "delta": 0.007904745638370514,
+          "ci95": [
+            0.003790751378983259,
+            0.012805461604148142
+          ],
+          "improved": 24
+        },
+        "router_vs_off": {
+          "delta": 0.01302221417427063,
+          "ci95": [
+            0.005351808853447437,
+            0.02126911403611302
+          ],
+          "improved": 24
+        }
+      }
+    },
+    "stoi": {
+      "means": {
+        "off": 0.7969008344534644,
+        "router": 0.7981244888308925,
+        "selective": 0.7975333940098255
+      },
+      "paired_bootstrap": {
+        "gate_vs_router": {
+          "delta": -0.0005910948210670203,
+          "ci95": [
+            -0.0010090331154929421,
+            -0.00021988697414177568
+          ],
+          "improved": 11
+        },
+        "gate_vs_off": {
+          "delta": 0.0006325595563610696,
+          "ci95": [
+            0.0004545546298650368,
+            0.0008236296531963015
+          ],
+          "improved": 30
+        },
+        "router_vs_off": {
+          "delta": 0.0012236543774280899,
+          "ci95": [
+            0.0006923570519618013,
+            0.0018297468627149506
+          ],
+          "improved": 25
+        }
+      }
+    },
+    "si_sdr": {
+      "means": {
+        "off": 6.48248789110022,
+        "router": 6.966308773446379,
+        "selective": 6.682435799542166
+      },
+      "paired_bootstrap": {
+        "gate_vs_router": {
+          "delta": -0.28387297390421345,
+          "ci95": [
+            -0.3269610675670919,
+            -0.24226171285713696
+          ],
+          "improved": 0
+        },
+        "gate_vs_off": {
+          "delta": 0.19994790844194463,
+          "ci95": [
+            0.17576887791063636,
+            0.22401352878135197
+          ],
+          "improved": 32
+        },
+        "router_vs_off": {
+          "delta": 0.48382088234615805,
+          "ci95": [
+            0.41698231388980084,
+            0.5509942654075067
+          ],
+          "improved": 32
+        }
+      }
+    }
+  },
+  "paired_metrics_csv": "paired_metrics.csv",
+  "dnsmos": {
+    "n": 32,
+    "means": {
+      "p808": {
+        "off": 3.94307393687112,
+        "router": 3.913319371640682,
+        "future_gate": 3.932297033923013
+      },
+      "sig": {
+        "off": 3.4463189338302653,
+        "router": 3.4187865174988454,
+        "future_gate": 3.4392202343682
+      },
+      "bak": {
+        "off": 4.118653324547701,
+        "router": 4.117038771818406,
+        "future_gate": 4.119339346698068
+      },
+      "ovrl": {
+        "off": 3.1311005671530348,
+        "router": 3.100880873370663,
+        "future_gate": 3.123635516657779
+      }
+    },
+    "paired_bootstrap": {
+      "p808": {
+        "gate_vs_router": {
+          "delta": 0.01897766228233065,
+          "ci95": [
+            0.010697955744607095,
+            0.02850865665823224
+          ],
+          "improved": 25
+        },
+        "gate_vs_off": {
+          "delta": -0.010776902948107042,
+          "ci95": [
+            -0.015878206890608634,
+            -0.006027404697878056
+          ],
+          "improved": 8
+        },
+        "router_vs_off": {
+          "delta": -0.029754565230437693,
+          "ci95": [
+            -0.042330989081944756,
+            -0.018144256355506982
+          ],
+          "improved": 6
+        }
+      },
+      "sig": {
+        "gate_vs_router": {
+          "delta": 0.02043371686935537,
+          "ci95": [
+            0.011978471726807912,
+            0.029644503011387238
+          ],
+          "improved": 25
+        },
+        "gate_vs_off": {
+          "delta": -0.00709869946206465,
+          "ci95": [
+            -0.011032181470462773,
+            -0.0033939097907296715
+          ],
+          "improved": 9
+        },
+        "router_vs_off": {
+          "delta": -0.02753241633142002,
+          "ci95": [
+            -0.03915179013345542,
+            -0.01654507956950727
+          ],
+          "improved": 7
+        }
+      },
+      "bak": {
+        "gate_vs_router": {
+          "delta": 0.002300574879662509,
+          "ci95": [
+            -0.003064672083257214,
+            0.009380606451641333
+          ],
+          "improved": 14
+        },
+        "gate_vs_off": {
+          "delta": 0.0006860221503668384,
+          "ci95": [
+            -0.0012439458141179302,
+            0.0025756102953768466
+          ],
+          "improved": 19
+        },
+        "router_vs_off": {
+          "delta": -0.0016145527292956707,
+          "ci95": [
+            -0.008755483556232072,
+            0.004071953165759136
+          ],
+          "improved": 17
+        }
+      },
+      "ovrl": {
+        "gate_vs_router": {
+          "delta": 0.022754643287116363,
+          "ci95": [
+            0.012255867261923233,
+            0.03407745253090338
+          ],
+          "improved": 23
+        },
+        "gate_vs_off": {
+          "delta": -0.0074650504952558094,
+          "ci95": [
+            -0.012158017572365887,
+            -0.003174668801349742
+          ],
+          "improved": 13
+        },
+        "router_vs_off": {
+          "delta": -0.030219693782372173,
+          "ci95": [
+            -0.044747738817183205,
+            -0.016891414693452865
+          ],
+          "improved": 11
+        }
+      }
+    }
+  },
+  "dnsmos_csv": "dnsmos_metrics.csv",
+  "comparison_files": [
+    "off_dnsmos_metrics.csv",
+    "router_dnsmos_metrics.csv"
+  ]
+}
