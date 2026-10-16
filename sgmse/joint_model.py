@@ -4454,7 +4454,10 @@ class JointFrontendSgmseModel(ScoreModel):
                 y_main=y_main,
                 y_cond=y_cond,
                 t=t,
-                t_max=t_max,
+                # Use the resolved upper bound.  Passing the optional
+                # ``t_max=None`` through to the router makes its time-feature
+                # normalization call ``float(None)`` during default inference.
+                t_max=t_upper,
                 detach_inputs=True,
                 scale=scale,
             )
