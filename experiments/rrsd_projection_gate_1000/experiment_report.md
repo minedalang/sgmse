@@ -9,3 +9,5 @@ Means: CAM++ enhanced-clean cosine=0.844709, PESQ=1.677907, STOI=0.796927, SI-SD
 Paired bootstrap (20,000 resamples) against 80k Router and, for gate, no-gate control is recorded in `metrics.json`.
 
 Explicit gate and strength losses were enabled as requested; the 4-step CUDA smoke passed before this run.
+
+DNSMOS paired CI against Router is unavailable strictly: the available Router DNSMOS CSV has a different fileid manifest/order. Descriptive unpaired mean differences versus Router are P808 -0.079054, SIG -0.032206, BAK -0.025002, OVRL -0.055538; these are not paired estimates.

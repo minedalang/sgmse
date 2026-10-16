@@ -86,5 +86,27 @@
     "DNSMOS_OVRL": 3.1116701569957916
   },
   "dnsmos_csv": "/tmp/rrsd_projection_nogate_dnsmos.csv",
-  "training_failure_note": "last.ckpt save failed with OSError Errno 28 (No space left on device); epoch checkpoint above was independently torch.load-validated (global_step=1000). Partial last checkpoint moved to /tmp/rrsd_failed_checkpoints/rrsd_projection_nogate_1000-last.ckpt.partial."
+  "training_failure_note": "last.ckpt save failed with OSError Errno 28 (No space left on device); epoch checkpoint above was independently torch.load-validated (global_step=1000). Partial last checkpoint moved to /tmp/rrsd_failed_checkpoints/rrsd_projection_nogate_1000-last.ckpt.partial.",
+  "dnsmos_paired_bootstrap": {
+    "status": "unavailable_strict_pairing",
+    "reason": "Router DNSMOS per-utterance CSV uses fileids 2673 etc from a different manifest naming/order; current CV manifest filenames are reader_* and no bijective alignment was available. Only means are comparable descriptively.",
+    "router_mean_reference": {
+      "DNSMOS_P808": 4.02186114766768,
+      "DNSMOS_SIG": 3.477706497297577,
+      "DNSMOS_BAK": 4.142771661327043,
+      "DNSMOS_OVRL": 3.1853995088409484
+    },
+    "gate_minus_router_unpaired_mean": {
+      "DNSMOS_P808": -0.103568504963592,
+      "DNSMOS_SIG": -0.052240979112646,
+      "DNSMOS_BAK": -0.019311200866584,
+      "DNSMOS_OVRL": -0.073729351845157
+    },
+    "gate_minus_nogate_unpaired_mean": {
+      "DNSMOS_P808": 0.024514136738932,
+      "DNSMOS_SIG": 0.02003446208301,
+      "DNSMOS_BAK": -0.005690634161247,
+      "DNSMOS_OVRL": 0.01819123331077
+    }
+  }
 }

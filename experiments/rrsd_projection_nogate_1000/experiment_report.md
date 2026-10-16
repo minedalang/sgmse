@@ -9,3 +9,5 @@ Means: CAM++ enhanced-clean cosine=0.841998, PESQ=1.693246, STOI=0.797569, SI-SD
 Paired bootstrap (20,000 resamples) against 80k Router and, for gate, no-gate control is recorded in `metrics.json`.
 
 The no-gate last.ckpt save failed after training with Errno 28 because the data filesystem was full; the epoch checkpoint is complete and independently load-validated. The partial last checkpoint was moved to `/tmp/rrsd_failed_checkpoints/rrsd_projection_nogate_1000-last.ckpt.partial`.
+
+DNSMOS paired CI against Router is unavailable strictly: the available Router DNSMOS CSV has a different fileid manifest/order. Descriptive unpaired mean differences versus Router are P808 -0.103569, SIG -0.052241, BAK -0.019311, OVRL -0.073729; these are not paired estimates. Descriptive gate-minus-control mean differences are P808 +0.024514, SIG +0.020034, BAK -0.005691, OVRL +0.018191.

@@ -117,5 +117,21 @@
     "DNSMOS_BAK": 4.117769826536412,
     "DNSMOS_OVRL": 3.1298613903065617
   },
-  "dnsmos_csv": "/tmp/rrsd_projection_gate_dnsmos.csv"
+  "dnsmos_csv": "/tmp/rrsd_projection_gate_dnsmos.csv",
+  "dnsmos_paired_bootstrap": {
+    "status": "unavailable_strict_pairing",
+    "reason": "Router DNSMOS per-utterance CSV uses fileids 2673 etc from a different manifest naming/order; current CV manifest filenames are reader_* and no bijective alignment was available. Only means are comparable descriptively.",
+    "router_mean_reference": {
+      "DNSMOS_P808": 4.02186114766768,
+      "DNSMOS_SIG": 3.477706497297577,
+      "DNSMOS_BAK": 4.142771661327043,
+      "DNSMOS_OVRL": 3.1853995088409484
+    },
+    "gate_minus_router_unpaired_mean": {
+      "DNSMOS_P808": -0.079054407823667,
+      "DNSMOS_SIG": -0.032206497297577,
+      "DNSMOS_BAK": -0.025001834790631,
+      "DNSMOS_OVRL": -0.055538117534351
+    }
+  }
 }
