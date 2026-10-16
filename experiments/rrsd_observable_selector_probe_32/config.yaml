@@ -1,0 +1,11 @@
+schema_version: 1
+experiment_id: rrsd_observable_selector_probe_32
+purpose: leave_one_speaker_out_feasibility_of_noisy_feature_policy_selection
+mutates_dataset: false
+n: 32
+features: [log_rms, log_peak, crest_factor, spectral_centroid, spectral_flatness, zcr, log_duration]
+arms: [router, cut005, cut010]
+tolerances_db: [0.05, 0.10]
+models: [decision_tree_depth2, logistic_regression]
+cross_validation: leave_one_speaker_out
+seed: 2026

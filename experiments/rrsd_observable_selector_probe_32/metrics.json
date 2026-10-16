@@ -1,0 +1,120 @@
+{
+  "n": 32,
+  "feature_names": [
+    "log_rms",
+    "log_peak",
+    "crest_factor",
+    "spectral_centroid",
+    "spectral_flatness",
+    "zcr",
+    "log_duration"
+  ],
+  "tolerances": {
+    "0.05": {
+      "fixed": {
+        "router": {
+          "ovrl": 3.1853993894069,
+          "si_sdr": 7.80102663704719
+        },
+        "cut005": {
+          "ovrl": 3.1886602752151076,
+          "si_sdr": 7.743280531111803
+        },
+        "cut010": {
+          "ovrl": 3.1956898640975955,
+          "si_sdr": 7.620500103546615
+        }
+      },
+      "oracle": {
+        "ovrl": 3.1869771658172654,
+        "si_sdr": 7.788727663770379,
+        "choice_counts": {
+          "router": 22,
+          "cut005": 10,
+          "cut010": 0
+        }
+      },
+      "tree_loso": {
+        "ovrl": 3.1857598264150613,
+        "si_sdr": 7.7900930418274905,
+        "choice_counts": {
+          "router": 25,
+          "cut005": 7,
+          "cut010": 0
+        }
+      },
+      "logistic_loso": {
+        "ovrl": 3.185609547493845,
+        "si_sdr": 7.792522513842195,
+        "choice_counts": {
+          "router": 27,
+          "cut005": 5,
+          "cut010": 0
+        }
+      },
+      "label_counts": {
+        "router": 22,
+        "cut005": 10,
+        "cut010": 0
+      },
+      "valid_arm_counts": {
+        "router": 32,
+        "cut005": 16,
+        "cut010": 0
+      }
+    },
+    "0.1": {
+      "fixed": {
+        "router": {
+          "ovrl": 3.1853993894069,
+          "si_sdr": 7.80102663704719
+        },
+        "cut005": {
+          "ovrl": 3.1886602752151076,
+          "si_sdr": 7.743280531111803
+        },
+        "cut010": {
+          "ovrl": 3.1956898640975955,
+          "si_sdr": 7.620500103546615
+        }
+      },
+      "oracle": {
+        "ovrl": 3.1892939528915045,
+        "si_sdr": 7.76143871078142,
+        "choice_counts": {
+          "router": 11,
+          "cut005": 19,
+          "cut010": 2
+        }
+      },
+      "tree_loso": {
+        "ovrl": 3.1887020405662527,
+        "si_sdr": 7.74162548465105,
+        "choice_counts": {
+          "router": 5,
+          "cut005": 24,
+          "cut010": 3
+        }
+      },
+      "logistic_loso": {
+        "ovrl": 3.1873677969012277,
+        "si_sdr": 7.7535615976606005,
+        "choice_counts": {
+          "router": 8,
+          "cut005": 23,
+          "cut010": 1
+        }
+      },
+      "label_counts": {
+        "router": 11,
+        "cut005": 19,
+        "cut010": 2
+      },
+      "valid_arm_counts": {
+        "router": 32,
+        "cut005": 30,
+        "cut010": 2
+      }
+    }
+  }
+}
