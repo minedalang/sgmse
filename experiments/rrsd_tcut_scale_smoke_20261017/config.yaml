@@ -1,0 +1,15 @@
+schema_version: 1
+experiment_id: rrsd_tcut_scale_smoke_20261017
+purpose: verify_partial_cutoff_default_backward_compatibility
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+input: experiment_logs/rrsd_tcut_scale_smoke_input/000_fileid_2673.wav
+N: 3
+snr: 0.5
+seed: 2026
+use_ema: true
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_cut: 0.05
+old_args: t_cut_scale omitted (default 0.0)
+new_args: t_cut_scale=0.0
+mutates_dataset: false

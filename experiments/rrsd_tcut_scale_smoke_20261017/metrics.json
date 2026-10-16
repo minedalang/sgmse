@@ -1,0 +1,9 @@
+{
+  "n": 1,
+  "old_output": "experiment_logs/rrsd_tcut_scale_smoke_old/000_fileid_2673.wav",
+  "new_output": "experiment_logs/rrsd_tcut_scale_smoke_new/000_fileid_2673.wav",
+  "old_sha256": "cf50c1baaedcd88fce2c403cca8f9802ed2b17e37c1de3f2a4443b55b6b49559",
+  "new_sha256": "cf50c1baaedcd88fce2c403cca8f9802ed2b17e37c1de3f2a4443b55b6b49559",
+  "byte_identical": true,
+  "py_compile": true
+}
