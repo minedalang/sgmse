@@ -1,0 +1,16 @@
+schema_version: 1
+experiment_id: rrsd_utterance_oracle_150
+purpose: read_only_utterance_strategy_upper_bound
+mutates_dataset: false
+n: 150
+arms_same_checkpoint:
+  router: experiment_logs/rrsd_router_full_matched_20261017/metrics/metrics.csv
+  tcut005: experiment_logs/rrsd_tcut005_full_20261017/metrics/metrics.csv
+  selective: experiment_logs/rrsd_selective_full_test/metrics/selective_metrics.csv
+expanded_arm_confounded:
+  conflict1000: experiment_logs/rrsd_conflict_weight001_full_test/metrics/metrics.csv
+metrics: [PESQ_e, STOI_e, SI-SDR_e, DNSMOS_SIG_e, DNSMOS_OVRL_e, DNSMOS_P808_e, DNSMOS_BAK_e]
+bootstrap_replicates: 20000
+bootstrap_seed: 2026
+selection: per_file_clean_reference_maximum
+interpretation: clean_reference_upper_bound_not_deployable

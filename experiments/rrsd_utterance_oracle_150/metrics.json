@@ -1,0 +1,338 @@
+{
+  "experiment_id": "rrsd_utterance_oracle_150",
+  "n": 150,
+  "source_csv": {
+    "router": "/data/coding/sgmse/experiment_logs/rrsd_router_full_matched_20261017/metrics/metrics.csv",
+    "tcut005": "/data/coding/sgmse/experiment_logs/rrsd_tcut005_full_20261017/metrics/metrics.csv",
+    "selective": "/data/coding/sgmse/experiment_logs/rrsd_selective_full_test/metrics/selective_metrics.csv",
+    "conflict1000": "/data/coding/sgmse/experiment_logs/rrsd_conflict_weight001_full_test/metrics/metrics.csv"
+  },
+  "sets": {
+    "same_checkpoint": {
+      "arms": [
+        "router",
+        "tcut005",
+        "selective"
+      ],
+      "metrics": {
+        "PESQ_e": {
+          "fixed_means": {
+            "router": 1.6895561504364014,
+            "tcut005": 1.6870212268829345,
+            "selective": 1.673025160630544
+          },
+          "best_fixed": "router",
+          "oracle_mean": 1.6919831625620525,
+          "headroom_vs_best_fixed": 0.002427012125651107,
+          "headroom_bootstrap_ci": [
+            0.0013414872686068216,
+            0.003708720246950785
+          ]
+        },
+        "STOI_e": {
+          "fixed_means": {
+            "router": 0.8127729514018772,
+            "tcut005": 0.8125768795886671,
+            "selective": 0.8117146054154739
+          },
+          "best_fixed": "router",
+          "oracle_mean": 0.8129833744981376,
+          "headroom_vs_best_fixed": 0.00021042309626040367,
+          "headroom_bootstrap_ci": [
+            0.00013012422794167304,
+            0.00030108616009098414
+          ]
+        },
+        "SI-SDR_e": {
+          "fixed_means": {
+            "router": 7.915449863672256,
+            "tcut005": 7.865731060902277,
+            "selective": 7.628322001298269
+          },
+          "best_fixed": "router",
+          "oracle_mean": 7.915449863672256,
+          "headroom_vs_best_fixed": 0.0,
+          "headroom_bootstrap_ci": [
+            0.0,
+            0.0
+          ]
+        },
+        "DNSMOS_SIG_e": {
+          "fixed_means": {
+            "router": 3.492478863767228,
+            "tcut005": 3.4964502154991637,
+            "selective": 3.5123364789716742
+          },
+          "best_fixed": "selective",
+          "oracle_mean": 3.5154314812349496,
+          "headroom_vs_best_fixed": 0.003095002263275415,
+          "headroom_bootstrap_ci": [
+            0.0020937338412514426,
+            0.004181096649630797
+          ]
+        },
+        "DNSMOS_OVRL_e": {
+          "fixed_means": {
+            "router": 3.2127450795012944,
+            "tcut005": 3.2166182604027496,
+            "selective": 3.2316167633840753
+          },
+          "best_fixed": "selective",
+          "oracle_mean": 3.236623282034252,
+          "headroom_vs_best_fixed": 0.005006518650176872,
+          "headroom_bootstrap_ci": [
+            0.0035451463559660053,
+            0.006641155306160409
+          ]
+        },
+        "DNSMOS_P808_e": {
+          "fixed_means": {
+            "router": 3.976103793780009,
+            "tcut005": 3.9812918297449746,
+            "selective": 4.001844182014465
+          },
+          "best_fixed": "selective",
+          "oracle_mean": 4.008180203437806,
+          "headroom_vs_best_fixed": 0.006336021423340554,
+          "headroom_bootstrap_ci": [
+            0.004320486585299174,
+            0.008593072414398188
+          ]
+        },
+        "DNSMOS_BAK_e": {
+          "fixed_means": {
+            "router": 4.147991275912378,
+            "tcut005": 4.147720421438274,
+            "selective": 4.145217966265159
+          },
+          "best_fixed": "router",
+          "oracle_mean": 4.1543883484075925,
+          "headroom_vs_best_fixed": 0.006397072495214928,
+          "headroom_bootstrap_ci": [
+            0.004352992380299193,
+            0.009339021198842685
+          ]
+        }
+      },
+      "per_file_choice_counts": {
+        "PESQ_e": {
+          "router": 115,
+          "tcut005": 15,
+          "selective": 20
+        },
+        "STOI_e": {
+          "router": 115,
+          "tcut005": 5,
+          "selective": 30
+        },
+        "SI-SDR_e": {
+          "router": 150,
+          "tcut005": 0,
+          "selective": 0
+        },
+        "DNSMOS_SIG_e": {
+          "router": 15,
+          "tcut005": 27,
+          "selective": 108
+        },
+        "DNSMOS_OVRL_e": {
+          "router": 23,
+          "tcut005": 32,
+          "selective": 95
+        },
+        "DNSMOS_P808_e": {
+          "router": 30,
+          "tcut005": 21,
+          "selective": 99
+        },
+        "DNSMOS_BAK_e": {
+          "router": 57,
+          "tcut005": 43,
+          "selective": 50
+        }
+      },
+      "ovrl_with_sisdr_tol_0.05db": {
+        "n_valid": 150,
+        "mean_ovrl": 3.216352982747329,
+        "router_mean_ovrl": 3.2127450795012944,
+        "delta_vs_router": 0.0036079032460345495,
+        "choice_counts": {
+          "router": 91,
+          "tcut005": 58,
+          "selective": 1
+        }
+      }
+    },
+    "expanded_with_conflict": {
+      "arms": [
+        "router",
+        "tcut005",
+        "selective",
+        "conflict1000"
+      ],
+      "metrics": {
+        "PESQ_e": {
+          "fixed_means": {
+            "router": 1.6895561504364014,
+            "tcut005": 1.6870212268829345,
+            "selective": 1.673025160630544,
+            "conflict1000": 1.6888056461016336
+          },
+          "best_fixed": "router",
+          "oracle_mean": 1.6930283204714458,
+          "headroom_vs_best_fixed": 0.0034721700350444085,
+          "headroom_bootstrap_ci": [
+            0.001989995042483012,
+            0.005317456364631652
+          ]
+        },
+        "STOI_e": {
+          "fixed_means": {
+            "router": 0.8127729514018772,
+            "tcut005": 0.8125768795886671,
+            "selective": 0.8117146054154739,
+            "conflict1000": 0.8126565289201639
+          },
+          "best_fixed": "router",
+          "oracle_mean": 0.812993099037977,
+          "headroom_vs_best_fixed": 0.00022014763609978782,
+          "headroom_bootstrap_ci": [
+            0.00014020058075870032,
+            0.0003108600444050272
+          ]
+        },
+        "SI-SDR_e": {
+          "fixed_means": {
+            "router": 7.915449863672256,
+            "tcut005": 7.865731060902277,
+            "selective": 7.628322001298269,
+            "conflict1000": 7.868548358182112
+          },
+          "best_fixed": "router",
+          "oracle_mean": 7.91560661594073,
+          "headroom_vs_best_fixed": 0.000156752268473781,
+          "headroom_bootstrap_ci": [
+            0.0,
+            0.00044879913330078127
+          ]
+        },
+        "DNSMOS_SIG_e": {
+          "fixed_means": {
+            "router": 3.492478863767228,
+            "tcut005": 3.4964502154991637,
+            "selective": 3.5123364789716742,
+            "conflict1000": 3.4944714441100304
+          },
+          "best_fixed": "selective",
+          "oracle_mean": 3.5157410664461226,
+          "headroom_vs_best_fixed": 0.003404587474448384,
+          "headroom_bootstrap_ci": [
+            0.002346419271073605,
+            0.00455326014141166
+          ]
+        },
+        "DNSMOS_OVRL_e": {
+          "fixed_means": {
+            "router": 3.2127450795012944,
+            "tcut005": 3.2166182604027496,
+            "selective": 3.2316167633840753,
+            "conflict1000": 3.214615390347755
+          },
+          "best_fixed": "selective",
+          "oracle_mean": 3.237112425438383,
+          "headroom_vs_best_fixed": 0.005495662054307626,
+          "headroom_bootstrap_ci": [
+            0.003975263103862087,
+            0.007097345514583571
+          ]
+        },
+        "DNSMOS_P808_e": {
+          "fixed_means": {
+            "router": 3.976103793780009,
+            "tcut005": 3.9812918297449746,
+            "selective": 4.001844182014465,
+            "conflict1000": 3.979797840118408
+          },
+          "best_fixed": "selective",
+          "oracle_mean": 4.008468732833863,
+          "headroom_vs_best_fixed": 0.006624550819397612,
+          "headroom_bootstrap_ci": [
+            0.004562144041061401,
+            0.00889166152477264
+          ]
+        },
+        "DNSMOS_BAK_e": {
+          "fixed_means": {
+            "router": 4.147991275912378,
+            "tcut005": 4.147720421438274,
+            "selective": 4.145217966265159,
+            "conflict1000": 4.147327395984633
+          },
+          "best_fixed": "router",
+          "oracle_mean": 4.154947288747068,
+          "headroom_vs_best_fixed": 0.006956012834690384,
+          "headroom_bootstrap_ci": [
+            0.004869114271288385,
+            0.009872619989587678
+          ]
+        }
+      },
+      "per_file_choice_counts": {
+        "PESQ_e": {
+          "router": 87,
+          "tcut005": 6,
+          "selective": 15,
+          "conflict1000": 42
+        },
+        "STOI_e": {
+          "router": 100,
+          "tcut005": 3,
+          "selective": 28,
+          "conflict1000": 19
+        },
+        "SI-SDR_e": {
+          "router": 148,
+          "tcut005": 0,
+          "selective": 0,
+          "conflict1000": 2
+        },
+        "DNSMOS_SIG_e": {
+          "router": 12,
+          "tcut005": 20,
+          "selective": 105,
+          "conflict1000": 13
+        },
+        "DNSMOS_OVRL_e": {
+          "router": 19,
+          "tcut005": 24,
+          "selective": 91,
+          "conflict1000": 16
+        },
+        "DNSMOS_P808_e": {
+          "router": 25,
+          "tcut005": 16,
+          "selective": 98,
+          "conflict1000": 11
+        },
+        "DNSMOS_BAK_e": {
+          "router": 44,
+          "tcut005": 34,
+          "selective": 49,
+          "conflict1000": 23
+        }
+      },
+      "ovrl_with_sisdr_tol_0.05db": {
+        "n_valid": 150,
+        "mean_ovrl": 3.217799598266876,
+        "router_mean_ovrl": 3.2127450795012944,
+        "delta_vs_router": 0.005054518765581495,
+        "choice_counts": {
+          "router": 63,
+          "tcut005": 44,
+          "selective": 1,
+          "conflict1000": 42
+        }
+      }
+    }
+  }
+}
