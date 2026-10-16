@@ -1433,6 +1433,7 @@ class ScoreModel(pl.LightningModule):
         rrsd_arg = kwargs.pop("rrsd", False)
         rrsd_scale_arg = kwargs.pop("rrsd_scale", 1.0)
         rrsd_t_cut_arg = float(kwargs.pop("rrsd_t_cut", 0.0))
+        rrsd_t_cut_scale_arg = float(kwargs.pop("rrsd_t_cut_scale", 0.0))
         rrsd_t_min_arg = float(kwargs.pop("rrsd_t_min", 0.0))
         rrsd_t_max_arg = kwargs.pop("rrsd_t_max", None)
         rrsd_t_max_arg = None if rrsd_t_max_arg is None else float(rrsd_t_max_arg)
@@ -1527,6 +1528,7 @@ class ScoreModel(pl.LightningModule):
                 score_calibrator = self.build_rrsd_score_calibrator(
                     Y, y_cond_spec, scale=float(rrsd_scale_arg),
                     t_cut=rrsd_t_cut_arg,
+                    t_cut_scale=rrsd_t_cut_scale_arg,
                     t_min=rrsd_t_min_arg,
                     t_max=rrsd_t_max_arg,
                 )

@@ -4406,6 +4406,7 @@ class JointFrontendSgmseModel(ScoreModel):
         *,
         scale: float = 1.0,
         t_cut: float = 0.0,
+        t_cut_scale: float = 0.0,
         t_min: float = 0.0,
         t_max: Optional[float] = None,
     ):
@@ -4435,8 +4436,11 @@ class JointFrontendSgmseModel(ScoreModel):
         sde_t_max = float(getattr(self.sde, "T", 1.0))
         scale = float(scale)
         t_cut = float(t_cut)
+        t_cut_scale = float(t_cut_scale)
         if not (0.0 <= t_cut <= sde_t_max):
             raise ValueError(f"rrsd_t_cut must be in [0, {sde_t_max}], got {t_cut}")
+        if not (0.0 <= t_cut_scale <= 1.0):
+            raise ValueError(f"rrsd_t_cut_scale must be in [0, 1], got {t_cut_scale}")
         t_min = float(t_min)
         t_upper = sde_t_max if t_max is None else float(t_max)
         if not (0.0 <= t_min <= t_upper <= sde_t_max):
@@ -4471,11 +4475,22 @@ class JointFrontendSgmseModel(ScoreModel):
             # This avoids changing the established Router baseline through an
             # otherwise redundant multiply-by-one operation.
             if t_cut > 0.0 or t_min > 0.0 or t_max is not None:
-                lower = max(t_cut, t_min)
-                keep = ((t >= lower) & (t <= t_upper)).reshape(
+                # ``t_min``/``t_max`` remain hard window bounds.  Within the
+                # optional low-t cutoff, ``t_cut_scale`` permits a partial
+                # final-step correction; its default 0.0 exactly reproduces
+                # the historical hard cutoff behavior.
+                keep = ((t >= t_min) & (t <= t_upper)).reshape(
                     -1, *([1] * (delta_score.ndim - 1))
                 )
-                delta_score = delta_score * keep.to(dtype=delta_score.real.dtype)
+                low_cut = ((t < t_cut) & (t >= t_min)).reshape(
+                    -1, *([1] * (delta_score.ndim - 1))
+                )
+                cut_factor = torch.where(
+                    low_cut,
+                    torch.full_like(delta_score.real, t_cut_scale),
+                    torch.ones_like(delta_score.real),
+                )
+                delta_score = delta_score * keep.to(dtype=delta_score.real.dtype) * cut_factor
             score_route = score_base + delta_score.to(dtype=score_base.dtype)
             if torch.is_complex(score_route):
                 score_route = torch.complex(

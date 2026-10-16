@@ -156,6 +156,12 @@ def main():
         help="Disable only RRSD additional score guidance at diffusion t < this cutoff. 0=off.",
     )
     p.add_argument(
+        "--rrsd_t_cut_scale",
+        type=float,
+        default=0.0,
+        help="Partial RRSD scale for t < rrsd_t_cut; 0 reproduces hard cutoff, 1 keeps guidance.",
+    )
+    p.add_argument(
         "--rrsd_t_min",
         type=float,
         default=0.0,
@@ -274,7 +280,8 @@ def main():
     wavs = sorted(glob.glob(os.path.join(args.in_dir, "*.wav")))
     print("Found wavs:", len(wavs))
 
-    print(f"[RRSD-TCUT] t_cut={args.rrsd_t_cut} scale={args.rrsd_scale} "
+    print(f"[RRSD-TCUT] t_cut={args.rrsd_t_cut} t_cut_scale={args.rrsd_t_cut_scale} "
+          f"scale={args.rrsd_scale} "
           f"enabled={args.rrsd} seed={args.seed} N={args.N}", flush=True)
     with torch.inference_mode():
         for wp in wavs:
@@ -321,6 +328,7 @@ def main():
                 rrsd=args.rrsd,
                 rrsd_scale=args.rrsd_scale,
                 rrsd_t_cut=args.rrsd_t_cut,
+                rrsd_t_cut_scale=args.rrsd_t_cut_scale,
                 rrsd_t_min=args.rrsd_t_min,
                 rrsd_t_max=args.rrsd_t_max,
                 anchor_v2_a_max=args.anchor_v2_a_max,

@@ -1,0 +1,23 @@
+schema_version: 1
+experiment_id: rrsd_tcut005_soft_screen_20261017
+purpose: partial_late_step_rrsd_cutoff_screen
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+input_dir: experiment_logs/rrsd_tcut_screen/noisy
+clean_dir: experiment_logs/rrsd_tcut_screen/clean
+n: 32
+sampler: pc
+corrector: none
+N: 30
+snr: 0.5
+seed: 2026
+use_ema: true
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_cut: 0.05
+t_cut_scales: [0.25, 0.5, 0.75]
+mutates_dataset: false
+reconstruction_evaluator: custom robust scalar conversion using mymetrics speechmetrics/metrics APIs
+reconstruction_metrics: experiment_logs/rrsd_tcut005_scale{025,05,075}_screen_20261017/metrics/metrics.csv
+dnsmos_evaluator: torchmetrics deep_noise_suppression_mean_opinion_score, batched CPU input, cache_session=true
+dnsmos_paired_metrics: experiments/rrsd_tcut005_soft_screen_20261017/dnsmos_paired_metrics.csv
