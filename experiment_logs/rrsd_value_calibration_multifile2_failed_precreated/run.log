@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/rrsd_value_calibration_run.py", line 134, in <module>
+    main()
+  File "/data/coding/sgmse/rrsd_value_calibration_run.py", line 95, in main
+    out = Path(args.out); out.mkdir(parents=True, exist_ok=False)
+  File "/data/coding/sgmse/env/lib/python3.10/pathlib.py", line 1175, in mkdir
+    self._accessor.mkdir(self, mode)
+FileExistsError: [Errno 17] File exists: 'experiment_logs/rrsd_value_calibration_multifile2'

@@ -1,0 +1,12 @@
+{
+  "ckpt": "joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "manifest": "experiment_logs/rrsd_tcut_screen/manifest.csv",
+  "out": "experiment_logs/rrsd_value_calibration_smoke_run3",
+  "max_files": 1,
+  "max_steps": 1,
+  "N": 4,
+  "K": 2,
+  "seed": 2026,
+  "device": "cuda",
+  "use_ema": true
+}

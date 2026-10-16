@@ -1,0 +1,28 @@
+Samples: 32. Paired cosine distance (lower=closer to clean).
+NOTE: 25dB/15dB noise is relative to clean RMS before peak-normalization; comparisons are diagnostic, not PESQ or DNSMOS.
+
+--- hidden_mean: n=32 ---
+Mean d(Off,Clean)=0.08497609 ; d(Router,Clean)=0.08595934
+Delta d=Router-Off: mean=+0.00098324567, median=+0.00038155913, paired bootstrap 95% CI=[-0.00090080844, +0.0029565522], closer=11/32, farther=21/32 (dead-zone=1e-6)
+  Clean + noise25        d_to_clean mean=0.040279 median=0.02629349
+  Clean + noise15        d_to_clean mean=0.08250366 median=0.05777237
+  Clean + lowpass3200    d_to_clean mean=0.007912187 median=0.007340282
+  Clean + dropout50ms    d_to_clean mean=0.008347247 median=0.004290998
+Noise-dose sanity: d(noise15)>d(noise25) for 32/32 samples
+Spearman(Delta feature distance, Delta pesq): rho=+0.1921 (more negative ideally), n=32
+Spearman(Delta feature distance, Delta stoi): rho=+0.2060 (more negative ideally), n=32
+Spearman(Delta feature distance, Delta si_sdr): rho=+0.3189 (more negative ideally), n=32
+Interpretation reminder: speaker verification embeddings may intentionally suppress noise/quality cues.
+
+--- speaker_embedding: n=32 ---
+Mean d(Off,Clean)=0.07395281 ; d(Router,Clean)=0.07293826
+Delta d=Router-Off: mean=-0.0010145549, median=-0.0002989471, paired bootstrap 95% CI=[-0.0036612852, +0.0017612463], closer=18/32, farther=14/32 (dead-zone=1e-6)
+  Clean + noise25        d_to_clean mean=0.03982296 median=0.02114472
+  Clean + noise15        d_to_clean mean=0.06156983 median=0.04268613
+  Clean + lowpass3200    d_to_clean mean=0.03386827 median=0.02460936
+  Clean + dropout50ms    d_to_clean mean=0.004437141 median=0.003716916
+Noise-dose sanity: d(noise15)>d(noise25) for 31/32 samples
+Spearman(Delta feature distance, Delta pesq): rho=+0.3424 (more negative ideally), n=32
+Spearman(Delta feature distance, Delta stoi): rho=+0.1012 (more negative ideally), n=32
+Spearman(Delta feature distance, Delta si_sdr): rho=+0.2500 (more negative ideally), n=32
+Interpretation reminder: speaker verification embeddings may intentionally suppress noise/quality cues.

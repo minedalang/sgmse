@@ -1,0 +1,6 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 32
+[RRSD-TCUT] t_cut=0.05 scale=1.0 enabled=True seed=2026 N=30
+Done. Output: /data/coding/sgmse/experiment_logs/rrsd_tcut_screen/cut005

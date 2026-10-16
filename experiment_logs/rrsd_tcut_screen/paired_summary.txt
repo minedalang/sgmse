@@ -1,0 +1,16 @@
+[EVAL] 8/32
+[EVAL] 16/32
+[EVAL] 24/32
+[EVAL] 32/32
+Paired evaluation: n=32, baseline=router; positive Δ means improvement
+pesq: Router mean=1.749041 (Off=1.729178)
+  cut005: Δ=-0.000287, 95% paired bootstrap CI=[-0.005480, +0.005204], improved=12/32
+  cut010: Δ=-0.005018, 95% paired bootstrap CI=[-0.009998, +0.000004], improved=12/32
+stoi: Router mean=0.831925 (Off=0.830958)
+  cut005: Δ=-0.000121, 95% paired bootstrap CI=[-0.000185, -0.000056], improved=7/32
+  cut010: Δ=-0.000344, 95% paired bootstrap CI=[-0.000515, -0.000166], improved=7/32
+si_sdr: Router mean=7.801027 (Off=7.278470)
+  cut005: Δ=-0.057746, 95% paired bootstrap CI=[-0.064805, -0.050483], improved=0/32
+  cut010: Δ=-0.180527, 95% paired bootstrap CI=[-0.203288, -0.159368], improved=0/32
+CSV: /data/coding/sgmse/experiment_logs/rrsd_tcut_screen/paired_metrics.csv
+NOTE: DNSMOS-SIG/OVRL still require the existing DNSMOS evaluator.

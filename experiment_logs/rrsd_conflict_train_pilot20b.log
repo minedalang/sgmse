@@ -1,0 +1,72 @@
+[CONFLICT-TRAIN] ckpt=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt steps=20 weight=0.0002 seed=2026
+[MARK] 21:45:16 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=7.5MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 21:45:22 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=977.9MB :: after argument parsing
+[MARK] 21:45:22 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=977.9MB :: before model init
+Could not reach the Hub ([Errno 101] Network is unreachable). Using cached commit hash for 'microsoft/wavlm-base-plus'.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 26899.77it/s]
+Running NCSN++ as discriminative backbone
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: after model init
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: before logger init
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: after logger init
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: before callbacks init
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: after callbacks init
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: after trainer init
+[MARK] 21:47:50 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1187.3MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=248 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name          ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn           │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router   │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ content_model │ WavLMModel                │ 94.4 M │ eval  │     0 │
+│ 3 │ frontend      │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴───────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                        
+Non-trainable params: 149 M                                                     
+Total params: 149 M                                                             
+Total estimated model params size (MB): 598.172                                 
+Modules in train mode: 374                                                      
+Modules in eval mode: 233                                                       
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py:538: Found 233 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+[RRSD-PERC-CONFLICT] step=0 loss=7.494854e-03 weighted=1.498971e-06 tiles=0.0039 active_conflict=0.2222
+[RRSD-TRAIN] step=0 future_ratio=1.00009155 alpha_mean=0.0005510 active=0.0215 logit_p50=-66.867 logit_lt_m20=0.932
+[RRSD-PERC-CONFLICT] step=1 loss=0.000000e+00 weighted=0.000000e+00 tiles=0.0000 active_conflict=0.0000
+[RRSD-TRAIN] step=1 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-169.882 logit_lt_m20=1.000
+[RRSD-PERC-CONFLICT] step=2 loss=0.000000e+00 weighted=0.000000e+00 tiles=0.0000 active_conflict=0.0000
+[RRSD-TRAIN] step=2 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-154.431 logit_lt_m20=1.000
+`Trainer.fit` stopped: `max_steps=20` reached.
+Epoch 0/-2 ━━━━━━━━━━━━━━━━━ 20/20 0:00:05 • 0:00:00 4.70it/s v_num: 4.000      
+                                                              train_loss_step:  
+                                                              55.652            
+                                                              train_loss_epoch: 
+                                                              252.775           
+[MARK] 21:48:02 pid=16591 ppid=16585 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=3363.2MB :: after model init

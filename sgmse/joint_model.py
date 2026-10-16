@@ -541,6 +541,32 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--rrsd_future_gate_cost", type=float, default=1e-3,
                             help="Small mean-gate intervention cost used only by future_grad + gate.")
         parser.add_argument(
+            "--rrsd_perceptual_conflict_weight", type=float, default=0.0,
+            help=(
+                "Selective conflict suppression weight for future_grad RRSD. "
+                "Only tiles where Future improves but frozen SSL features worsen "
+                "and alpha is active are penalized. 0 disables it."
+            ),
+        )
+        parser.add_argument("--rrsd_perceptual_conflict_layer", type=int, default=3,
+                            help="Frozen WavLM hidden layer used by selective RRSD conflict supervision.")
+        parser.add_argument("--rrsd_perceptual_conflict_rel_tol", type=float, default=0.10,
+                            help="Relative gradient threshold used to build the detached conflict mask.")
+        parser.add_argument("--rrsd_perceptual_conflict_min_alpha", type=float, default=0.006,
+                            help="Minimum effective alpha for a tile to enter the conflict mask.")
+        parser.add_argument(
+            "--rrsd_desat_weight", type=float, default=0.0,
+            help="Weight of future-gradient-selected anti-saturation logit penalty; 0 leaves original RRSD unchanged.",
+        )
+        parser.add_argument(
+            "--rrsd_desat_logit_floor", type=float, default=-10.0,
+            help="Only beneficial tiles whose raw strength logit is below this value are encouraged upward.",
+        )
+        parser.add_argument(
+            "--rrsd_desat_grad_rel_tol", type=float, default=0.10,
+            help="Relative threshold for negative dL_future/dalpha; avoids treating tiny gradients as useful.",
+        )
+        parser.add_argument(
             "--rrsd_use_gate", action="store_true",
             help=(
                 "Use a shared-backbone gate+strength router: alpha_eff = g * a. "
@@ -837,6 +863,13 @@ class JointFrontendSgmseModel(ScoreModel):
         rrsd_lookahead_chunk: int = 0,
         rrsd_future_weight: float = 1.0,
         rrsd_future_gate_cost: float = 1e-3,
+        rrsd_perceptual_conflict_weight: float = 0.0,
+        rrsd_perceptual_conflict_layer: int = 3,
+        rrsd_perceptual_conflict_rel_tol: float = 0.10,
+        rrsd_perceptual_conflict_min_alpha: float = 0.006,
+        rrsd_desat_weight: float = 0.0,
+        rrsd_desat_logit_floor: float = -10.0,
+        rrsd_desat_grad_rel_tol: float = 0.10,
         rrsd_use_gate: bool = False,
         rrsd_init_gate: float = 0.20,
         rrsd_gate_threshold: float = 0.01,
@@ -981,6 +1014,25 @@ class JointFrontendSgmseModel(ScoreModel):
         self.rrsd_lookahead_chunk = int(rrsd_lookahead_chunk)
         self.rrsd_future_weight = float(rrsd_future_weight)
         self.rrsd_future_gate_cost = float(rrsd_future_gate_cost)
+        self.rrsd_perceptual_conflict_weight = float(rrsd_perceptual_conflict_weight)
+        self.rrsd_perceptual_conflict_layer = int(rrsd_perceptual_conflict_layer)
+        self.rrsd_perceptual_conflict_rel_tol = float(rrsd_perceptual_conflict_rel_tol)
+        self.rrsd_perceptual_conflict_min_alpha = float(rrsd_perceptual_conflict_min_alpha)
+        if self.rrsd_perceptual_conflict_weight < 0.0:
+            raise ValueError("rrsd_perceptual_conflict_weight must be >= 0.")
+        if self.rrsd_perceptual_conflict_rel_tol < 0.0:
+            raise ValueError("rrsd_perceptual_conflict_rel_tol must be >= 0.")
+        if self.rrsd_perceptual_conflict_min_alpha < 0.0:
+            raise ValueError("rrsd_perceptual_conflict_min_alpha must be >= 0.")
+        self.rrsd_desat_weight = float(rrsd_desat_weight)
+        self.rrsd_desat_logit_floor = float(rrsd_desat_logit_floor)
+        self.rrsd_desat_grad_rel_tol = float(rrsd_desat_grad_rel_tol)
+        if self.rrsd_desat_weight < 0.0 or self.rrsd_desat_grad_rel_tol < 0.0:
+            raise ValueError("RRSD desaturation weight and gradient threshold must be >= 0")
+        if self.rrsd_desat_weight > 0.0 and rrsd_teacher != "future_grad":
+            raise ValueError("--rrsd_desat_weight requires --rrsd_teacher future_grad")
+        if self.rrsd_desat_weight > 0.0 and bool(rrsd_use_gate):
+            raise ValueError("Pilot desaturation supports no-gate RRSD only")
         self.rrsd_use_gate = bool(rrsd_use_gate)
         self.rrsd_init_gate = float(rrsd_init_gate)
         self.rrsd_gate_threshold = float(rrsd_gate_threshold)
@@ -1318,6 +1370,13 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["rrsd_lookahead_chunk"] = self.rrsd_lookahead_chunk
         self.hparams["rrsd_future_weight"] = self.rrsd_future_weight
         self.hparams["rrsd_future_gate_cost"] = self.rrsd_future_gate_cost
+        self.hparams["rrsd_perceptual_conflict_weight"] = self.rrsd_perceptual_conflict_weight
+        self.hparams["rrsd_perceptual_conflict_layer"] = self.rrsd_perceptual_conflict_layer
+        self.hparams["rrsd_perceptual_conflict_rel_tol"] = self.rrsd_perceptual_conflict_rel_tol
+        self.hparams["rrsd_perceptual_conflict_min_alpha"] = self.rrsd_perceptual_conflict_min_alpha
+        self.hparams["rrsd_desat_weight"] = self.rrsd_desat_weight
+        self.hparams["rrsd_desat_logit_floor"] = self.rrsd_desat_logit_floor
+        self.hparams["rrsd_desat_grad_rel_tol"] = self.rrsd_desat_grad_rel_tol
         self.hparams["rrsd_use_gate"] = self.rrsd_use_gate
         self.hparams["rrsd_init_gate"] = self.rrsd_init_gate
         self.hparams["rrsd_gate_threshold"] = self.rrsd_gate_threshold
@@ -1327,6 +1386,7 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["rrsd_gate_pos_weight"] = self.rrsd_gate_pos_weight
         self.hparams["rrsd_validate"] = self.rrsd_validate
         self.hparams["rrsd_freeze_base"] = self.rrsd_freeze_base
+        self.hparams["contrastive_margin"] = float(self.contrastive_margin)
         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
         self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
         self.hparams["frontend_nr_t_max"] = self.frontend_nr_t_max
@@ -1352,7 +1412,15 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["residual_anchor_strength"] = self.residual_anchor_strength
         self.hparams["residual_anchor_power"] = self.residual_anchor_power
 
-        self.use_content_loss = (self.final_content_weight > 0.0) or (self.selector_content_weight > 0.0)
+        self.use_content_loss = (
+            (self.final_content_weight > 0.0)
+            or (self.selector_content_weight > 0.0)
+            or (
+                self.rrsd_perceptual_conflict_weight > 0.0
+                and self.rrsd_teacher == "future_grad"
+                and self.rrsd_freeze_base
+            )
+        )
         self.content_model = None
         if self.use_content_loss:
             try:
@@ -1367,6 +1435,15 @@ class JointFrontendSgmseModel(ScoreModel):
                 )
                 self.content_model = None
                 self.use_content_loss = False
+        if (
+            self.rrsd_perceptual_conflict_weight > 0.0
+            and self.rrsd_teacher == "future_grad"
+            and self.rrsd_freeze_base
+            and self.content_model is None
+        ):
+            raise RuntimeError(
+                "Selective RRSD perceptual conflict supervision requires a loaded frozen content model."
+            )
 
         # CTM distillation cfg
         self.ctm_distill = bool(ctm_distill)
@@ -2477,7 +2554,9 @@ class JointFrontendSgmseModel(ScoreModel):
 
         return wav
 
-    def _extract_content_hidden(self, wav: torch.Tensor, detach_target: bool = False) -> torch.Tensor:
+    def _extract_content_hidden(
+        self, wav: torch.Tensor, detach_target: bool = False, layer: Optional[int] = None
+    ) -> torch.Tensor:
         if self.content_model is None:
             raise RuntimeError("content_model is None but _extract_content_hidden was called.")
 
@@ -2501,7 +2580,7 @@ class JointFrontendSgmseModel(ScoreModel):
         if hs is None:
             feat = out.last_hidden_state
         else:
-            idx = self.content_layer
+            idx = self.content_layer if layer is None else int(layer)
             if idx < 0:
                 idx = len(hs) + idx
             idx = max(0, min(idx, len(hs) - 1))
@@ -2908,6 +2987,223 @@ class JointFrontendSgmseModel(ScoreModel):
         t_next = (t - dt).clamp_min(float(self.t_eps))
         return x_next, t_next
 
+    @torch.no_grad()
+    def _rrsd_kstep_trajectory_probe(
+        self, *, target, x0_front, x_t, y_main, y_cond, t,
+        score_base, base_dt,
+    ):
+        """Diagnostic only: compare frozen 1/2/4-step reverse-mean trajectories.
+
+        Three arms start from the SAME x_t and initial score:
+        - base: never use RRSD;
+        - first: RRSD only at the first reverse update;
+        - full: recompute RRSD from the current state at EVERY update.
+
+        The same clean reference, timestep grid and deterministic step rule are
+        shared by all arms. The reference is used only for final error metrics.
+        Inference stochastic predictor/corrector and DNSMOS are NOT evaluated.
+        """
+        if self.rrsd_router is None or not self.rrsd_freeze_base:
+            raise RuntimeError("K-step diagnosis needs frozen base and a loaded RRSD router")
+        t_start = t.detach().float().flatten()
+        target = target.detach()
+        x0_front = x0_front.detach()
+        y_main = y_main.detach()
+        y_cond = y_cond.detach()
+        B = int(t_start.numel())
+        t_eps = float(self.t_eps)
+        base_dt = float(base_dt)
+        if base_dt <= 0.0:
+            raise ValueError("K-step base_dt must be positive")
+
+        # Keep all 1/2/4-step values paired on the SAME utterances.  At small t,
+        # use a shorter fixed interval so four updates do not get stuck at t_eps.
+        # Log the short-interval flag: near-end K1 is not the original full-dt
+        # training teacher and must be interpreted separately.
+        remaining = (t_start - t_eps).clamp_min(0.0)
+        dt = torch.minimum(torch.full_like(t_start, base_dt), remaining / 4.0)
+        short_dt = dt < (base_dt - 1e-7)
+        if (dt <= 0.0).any():
+            raise RuntimeError("K-step probe sampled t<=t_eps; cannot make 4 valid updates")
+
+        x_base = x_t.detach()
+        x_first = x_t.detach()
+        x_full = x_t.detach()
+        score_b = score_base.detach()
+        score_f = score_base.detach()
+        score_r = score_base.detach()
+        t_cur = t_start
+        alpha_first = None
+        records = {}
+        # Stop-last-2 follows FULL during steps 1-2, then skips 3-4.
+        # Stop-last-1 follows FULL during steps 1-3, then skips step 4.
+        # Their states are forked from FULL only after the shared prefix.
+        x_stop2 = score_stop2 = None
+        x_stop1 = score_stop1 = None
+        ratio_stop2 = ratio_stop1 = None
+        alpha_by_step = {}
+        sample_err = lambda x0: torch.abs(x0 - target).float().square().flatten(1).mean(dim=1)
+        for k in range(1, 5):
+            # Recompute both the base x0 estimate and the Router decision from
+            # the evolving FULL-ROUTE branch (not from the base trajectory).
+            x0_b_current, sigma, wx, _ = self._rrsd_score_to_x0(
+                x_full, y_main, t_cur, score_r
+            )
+            pred = self.rrsd_router(
+                x_t=x_full, x0_base=x0_b_current, x0_front=x0_front,
+                y_main=y_main, y_cond=y_cond, t=t_cur,
+                t_max=float(getattr(self.sde, "T", 1.0)),
+                detach_inputs=True, scale=1.0,
+            )
+            routed_score = score_r + (
+                wx * pred["delta_x0"] / sigma.square().clamp_min(1e-8)
+            ).to(dtype=score_r.dtype)
+            alpha_by_step[k] = pred["alpha_tile"].detach().float().flatten(1).mean(dim=1)
+            if k == 1:
+                alpha_first = pred["alpha_tile"].float().flatten(1).mean(dim=1)
+                # First-only and full receive precisely the same first action.
+                first_score = routed_score
+            else:
+                first_score = score_f
+
+            # Counterfactuals stop using guidance after a shared FULL prefix.
+            # From step 3 onward Stop-last-2 evolves on ITS OWN no-Router state;
+            # from step 4 onward Stop-last-1 does likewise.
+            if k >= 3:
+                x_stop2, t_stop2_next = self._rrsd_reverse_mean_step(
+                    x=x_stop2, y_main=y_main, t=t_cur, score=score_stop2, dt=dt
+                )
+            if k == 4:
+                x_stop1, t_stop1_next = self._rrsd_reverse_mean_step(
+                    x=x_stop1, y_main=y_main, t=t_cur, score=score_stop1, dt=dt
+                )
+            x_base, t_base_next = self._rrsd_reverse_mean_step(
+                x=x_base, y_main=y_main, t=t_cur, score=score_b, dt=dt
+            )
+            x_first, t_first_next = self._rrsd_reverse_mean_step(
+                x=x_first, y_main=y_main, t=t_cur, score=first_score, dt=dt
+            )
+            x_full, t_full_next = self._rrsd_reverse_mean_step(
+                x=x_full, y_main=y_main, t=t_cur, score=routed_score, dt=dt
+            )
+            if not torch.allclose(t_base_next, t_full_next, atol=1e-7, rtol=0.0):
+                raise RuntimeError("K-step counterfactual trajectories diverged in timestep")
+            if k >= 3 and not torch.allclose(t_base_next, t_stop2_next, atol=1e-7, rtol=0.0):
+                raise RuntimeError("Stop-last-2 timestep mismatch")
+            if k == 4 and not torch.allclose(t_base_next, t_stop1_next, atol=1e-7, rtol=0.0):
+                raise RuntimeError("Stop-last-1 timestep mismatch")
+
+            # The score network is frozen and in eval mode under --rrsd_freeze_base.
+            # Three arms are scored at the SAME future times. One batched call
+            # makes the comparison faster; no optimizer gradient is computed.
+            s_cat = self(
+                torch.cat((x_base, x_first, x_full), dim=0),
+                torch.cat((y_main, y_main, y_main), dim=0),
+                torch.cat((t_base_next, t_first_next, t_full_next), dim=0),
+                y_cond=torch.cat((y_cond, y_cond, y_cond), dim=0),
+            )
+            score_b, score_f, score_r = s_cat.split(B, dim=0)
+            # Evaluate newly diverged STOP branches at the SAME future time.
+            # Separate small calls limit GPU memory compared with a 5B forward.
+            if k >= 3:
+                score_stop2 = self(x_stop2, y_main, t_stop2_next, y_cond=y_cond)
+            if k == 4:
+                score_stop1 = self(x_stop1, y_main, t_stop1_next, y_cond=y_cond)
+            x0_base, _, _, _ = self._rrsd_score_to_x0(
+                x_base, y_main, t_base_next, score_b
+            )
+            x0_first, _, _, _ = self._rrsd_score_to_x0(
+                x_first, y_main, t_first_next, score_f
+            )
+            x0_full, _, _, _ = self._rrsd_score_to_x0(
+                x_full, y_main, t_full_next, score_r
+            )
+            err_b = sample_err(x0_base)
+            err_first = sample_err(x0_first)
+            err_full = sample_err(x0_full)
+            ratio_first = err_first / err_b.clamp_min(float(self.rrsd_oracle_eps))
+            ratio_full = err_full / err_b.clamp_min(float(self.rrsd_oracle_eps))
+            if not (torch.isfinite(ratio_first).all() and torch.isfinite(ratio_full).all()):
+                raise RuntimeError("Non-finite trajectory ratio; inspect model/state precision")
+            if k in (1, 2, 4):
+                records[k] = (ratio_first.detach(), ratio_full.detach())
+            if k >= 3:
+                x0_stop2, _, _, _ = self._rrsd_score_to_x0(
+                    x_stop2, y_main, t_stop2_next, score_stop2
+                )
+                ratio_stop2 = sample_err(x0_stop2) / err_b.clamp_min(float(self.rrsd_oracle_eps))
+                if not torch.isfinite(ratio_stop2).all():
+                    raise RuntimeError("Non-finite Stop-last-2 ratio")
+            if k == 4:
+                x0_stop1, _, _, _ = self._rrsd_score_to_x0(
+                    x_stop1, y_main, t_stop1_next, score_stop1
+                )
+                ratio_stop1 = sample_err(x0_stop1) / err_b.clamp_min(float(self.rrsd_oracle_eps))
+                if not torch.isfinite(ratio_stop1).all():
+                    raise RuntimeError("Non-finite Stop-last-1 ratio")
+            # The fork is after re-scoring the guided FULL branch, so all
+            # shared-prefix trajectories are identical by construction.
+            if k == 2:
+                x_stop2, score_stop2 = x_full.detach(), score_r.detach()
+            if k == 3:
+                x_stop1, score_stop1 = x_full.detach(), score_r.detach()
+            t_cur = t_base_next
+
+        n = int(getattr(self, "_rrsd_kstep_done", 0)) + 1
+        total = int(os.environ.get("SGMSE_RRSD_KSTEP_BATCHES", "0"))
+        print(
+            "[RRSD-KSTEP] "
+            f"batch={n}/{total} t_mean={t_start.mean().item():.4f} "
+            f"dt_mean={dt.mean().item():.5f} short_dt={short_dt.float().mean().item():.3f} "
+            f"alpha_initial={alpha_first.mean().item():.5f} "
+            + " ".join(
+                f"r{k}_first={records[k][0].mean().item():.9f} "
+                f"r{k}_full={records[k][1].mean().item():.9f} "
+                f"improve{k}_full={(records[k][1]<1).float().mean().item():.3f}"
+                for k in (1, 2, 4)
+            ),
+            flush=True,
+        )
+        for i in range(B):
+            print(
+                "[RRSD-KSAMPLE] "
+                f"batch={n} sample={i} t={t_start[i].item():.5f} "
+                f"dt={dt[i].item():.6f} short_dt={int(short_dt[i].item())} "
+                f"alpha0={alpha_first[i].item():.8f} "
+                + " ".join(
+                    f"r{k}_first={records[k][0][i].item():.9f} "
+                    f"r{k}_full={records[k][1][i].item():.9f}"
+                    for k in (1, 2, 4)
+                ),
+                flush=True,
+            )
+        # Dedicated sample-wise paired records for the stopping experiment.
+        # Lower R4 is better. The fourth step is the end of the LOCAL four-step
+        # diagnostic window; it is NOT necessarily a final inference step.
+        for i in range(B):
+            print(
+                "[RRSD-KSTOP] "
+                f"batch={n} sample={i} t={t_start[i].item():.5f} "
+                f"dt={dt[i].item():.6f} short_dt={int(short_dt[i].item())} "
+                + " ".join(
+                    f"alpha{k}={alpha_by_step[k][i].item():.8e}" for k in (1, 2, 3, 4)
+                )
+                + f" r1_first={records[1][0][i].item():.9f} "
+                + f"r4_first={records[4][0][i].item():.9f} "
+                + f"r4_stop2={ratio_stop2[i].item():.9f} "
+                + f"r4_stop1={ratio_stop1[i].item():.9f} "
+                + f"r4_full={records[4][1][i].item():.9f}",
+                flush=True,
+            )
+        # A correctness check: First-only and full routes must agree at k=1.
+        k1_diff = (records[1][0] - records[1][1]).abs().max().item()
+        if k1_diff > 2e-5:
+            raise RuntimeError(f"K-step first-action mismatch at k=1: {k1_diff:.3e}")
+        self._rrsd_kstep_done = n
+        if n >= total and os.environ.get("SGMSE_RRSD_KSTEP_EXIT", "0") == "1":
+            print("[RRSD-KSTEP] Completed; exiting without optimizer update/saving.", flush=True)
+            raise SystemExit(0)
+
     def _rrsd_lookahead_teacher(
         self,
         *,
@@ -3285,6 +3581,123 @@ class JointFrontendSgmseModel(ScoreModel):
                         )
             return result
 
+    @torch.no_grad()
+    def _rrsd_alpha_sweep_probe(
+        self, *, target, x0_front, x0_base, x_t, y_main, y_cond, t,
+        score_base, sigma, w_x, dt_cur, pred, base_future_err,
+        route_future_err,
+    ):
+        """Diagnostic-only: uniform scalar alpha sweep for ONE future step.
+
+        Every candidate starts from identical (x_t,t), conditions and the same
+        fixed front/base x0 direction; only the scalar coefficient changes.
+        No clean signal is fed to the router. Reference x0 is for evaluation.
+        """
+        if not bool(self.rrsd_freeze_base):
+            raise RuntimeError("Alpha sweep requires --rrsd_freeze_base")
+        B = int(target.shape[0])
+        target = target.detach()
+        x0_front = x0_front.detach()
+        x0_base = x0_base.detach()
+        x_t = x_t.detach()
+        y_main = y_main.detach()
+        y_cond = y_cond.detach()
+        t = t.detach().float().flatten()
+        score_base = score_base.detach()
+        sigma = sigma.detach()
+        w_x = w_x.detach()
+        dt_cur = dt_cur.detach()
+        direction = x0_front - x0_base
+        grid = (0.0, 0.01, 0.03, 0.05, 0.10, 0.20)
+        chunk = int(os.environ.get("SGMSE_RRSD_SWEEP_CHUNK", "2"))
+        if chunk < 1:
+            raise ValueError("SGMSE_RRSD_SWEEP_CHUNK must be >= 1")
+
+        # All branches use the exact original one-step reverse-mean operator.
+        # The router arm uses its ORIGINAL spatially varying output, not a
+        # uniform alpha equal to mean(alpha_tile).
+        error_parts = []
+        for start in range(0, len(grid) + 1, chunk):
+            choices = list(range(start, min(start + chunk, len(grid) + 1)))
+            routed_scores = []
+            for j in choices:
+                if j < len(grid):
+                    delta_x0 = grid[j] * direction
+                else:
+                    delta_x0 = pred["delta_x0"].detach()
+                score_j = score_base + w_x * delta_x0 / sigma.square().clamp_min(1e-8)
+                routed_scores.append(score_j)
+            C = len(choices)
+            score_cat = torch.cat(routed_scores, dim=0)
+            x_cat = x_t.repeat(C, *([1] * (x_t.ndim - 1)))
+            y_cat = y_main.repeat(C, *([1] * (y_main.ndim - 1)))
+            yc_cat = y_cond.repeat(C, *([1] * (y_cond.ndim - 1)))
+            t_cat = t.repeat(C)
+            dt_cat = dt_cur.repeat(C)
+            x_next, t_next = self._rrsd_reverse_mean_step(
+                x=x_cat, y_main=y_cat, t=t_cat,
+                score=score_cat, dt=dt_cat,
+            )
+            score_next = self(x_next, y_cat, t_next, y_cond=yc_cat)
+            x0_next, _, _, _ = self._rrsd_score_to_x0(
+                x_next, y_cat, t_next, score_next
+            )
+            ref = target.repeat(C, *([1] * (target.ndim - 1)))
+            error = torch.abs(x0_next - ref).float().square().flatten(1).mean(dim=1)
+            error_parts.append(error.reshape(C, B).transpose(0, 1))
+        errors = torch.cat(error_parts, dim=1)  # [B, 7], router is LAST
+        base_error = errors[:, 0]
+        ratio = errors / base_error.clamp_min(float(self.rrsd_oracle_eps))[:, None]
+        chosen = errors[:, :len(grid)].argmin(dim=1)
+        best_grid_ratio = ratio[:, :len(grid)].gather(1, chosen[:, None]).squeeze(1)
+        alpha_mean = pred["alpha_tile"].detach().float().flatten(1).mean(dim=1)
+        relative_recheck_base = (
+            (base_error - base_future_err.detach()).abs()
+            / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))
+        )
+        relative_recheck_router = (
+            (errors[:, -1] - route_future_err.detach()).abs()
+            / route_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))
+        )
+        n = int(getattr(self, "_rrsd_alpha_sweep_done", 0)) + 1
+        total = int(os.environ.get("SGMSE_RRSD_SWEEP_BATCHES", "0"))
+        print(
+            "[RRSD-ASWEEP-BATCH] "
+            f"batch={n}/{total} t_mean={t.mean().item():.5f} "
+            f"router_ratio={ratio[:, -1].mean().item():.9f} "
+            f"best_grid_ratio={best_grid_ratio.mean().item():.9f} "
+            f"check_base_rel={relative_recheck_base.max().item():.3e} "
+            f"check_router_rel={relative_recheck_router.max().item():.3e}",
+            flush=True,
+        )
+        for i in range(B):
+            values = " ".join(
+                f"r_{v:.2f}={ratio[i, j].item():.9f}"
+                for j, v in enumerate(grid)
+            )
+            print(
+                "[RRSD-ASWEEP] "
+                f"batch={n} sample={i} t={t[i].item():.6f} "
+                f"dt={dt_cur[i].item():.6f} "
+                f"alpha_router_mean={alpha_mean[i].item():.8e} "
+                f"base_error={base_error[i].item():.8e} "
+                f"{values} "
+                f"r_router={ratio[i, -1].item():.9f} "
+                f"best_alpha={grid[int(chosen[i])]:.2f} "
+                f"r_best={best_grid_ratio[i].item():.9f}",
+                flush=True,
+            )
+        if relative_recheck_base.max().item() > 0.001 or relative_recheck_router.max().item() > 0.001:
+            print(
+                "[RRSD-ASWEEP-WARN] Probe rescoring differs by >0.1% from "
+                "the training-step future evaluator. Check stochastic layers / precision.",
+                flush=True,
+            )
+        self._rrsd_alpha_sweep_done = n
+        if n >= total and os.environ.get("SGMSE_RRSD_SWEEP_EXIT", "0") == "1":
+            print("[RRSD-ASWEEP] Completed; exiting without optimizer update/saving.", flush=True)
+            raise SystemExit(0)
+
     def _rrsd_future_grad_loss(
         self,
         *,
@@ -3378,6 +3791,76 @@ class JointFrontendSgmseModel(ScoreModel):
         future_err = torch.abs(x0_next_route - target_det).float().square().mean(dim=reduce_dims)
         base_future_err = torch.abs(x0_next_base - target_det).float().square().mean(dim=reduce_dims)
 
+        # Selective Future--perceptual conflict supervision.  The frozen SSL
+        # encoder is used only to identify local conflicts; its parameters stay
+        # frozen while gradients through the routed waveform reach alpha.
+        loss_perceptual_conflict = future_err.new_zeros(())
+        conflict_fraction = future_err.new_zeros(())
+        conflict_active_fraction = future_err.new_zeros(())
+        if (
+            self.training
+            and self.rrsd_perceptual_conflict_weight > 0.0
+            and self.content_model is not None
+        ):
+            with torch.no_grad():
+                target_wav = self._spec_to_wave_batch(target_det)
+                feat_clean = self._extract_content_hidden(
+                    target_wav, detach_target=True,
+                    layer=self.rrsd_perceptual_conflict_layer,
+                ).detach()
+            feat_route = self._extract_content_hidden(
+                self._spec_to_wave_batch(x0_next_route),
+                detach_target=False,
+                layer=self.rrsd_perceptual_conflict_layer,
+            )
+            if feat_route.shape[1] != feat_clean.shape[1]:
+                feat_route = F.interpolate(
+                    feat_route.transpose(1, 2), size=feat_clean.shape[1],
+                    mode="linear", align_corners=False,
+                ).transpose(1, 2)
+            feat_route = F.layer_norm(feat_route, (feat_route.shape[-1],))
+            feat_clean = F.layer_norm(feat_clean, (feat_clean.shape[-1],))
+            perc_vec = (feat_route - feat_clean).float().square().mean(dim=(1, 2))
+
+            # Both derivatives are evaluated at the actual router output.
+            grad_future = torch.autograd.grad(
+                future_err.sum(), pred["alpha_tile"], retain_graph=True,
+                create_graph=False,
+            )[0].detach().float()
+            grad_perc = torch.autograd.grad(
+                perc_vec.sum(), pred["alpha_tile"], retain_graph=True,
+                create_graph=False,
+            )[0].detach().float()
+            gf = grad_future.flatten(1)
+            gp = grad_perc.flatten(1)
+            alpha_flat = pred["alpha_tile"].detach().float().flatten(1)
+            tf = torch.maximum(
+                gf.abs().mean(1) * float(self.rrsd_perceptual_conflict_rel_tol),
+                torch.full_like(gf.abs().mean(1), 1e-10),
+            ).unsqueeze(1)
+            tp = torch.maximum(
+                gp.abs().mean(1) * float(self.rrsd_perceptual_conflict_rel_tol),
+                torch.full_like(gp.abs().mean(1), 1e-10),
+            ).unsqueeze(1)
+            conflict = (
+                (gf < -tf)
+                & (gp > tp)
+                & (alpha_flat >= float(self.rrsd_perceptual_conflict_min_alpha))
+            ).float()
+            # Penalize only active conflict tiles.  Normalization by the number
+            # of selected tiles prevents sparse masks from changing loss scale.
+            alpha_live = pred["alpha_tile"].float().flatten(1)
+            selected = conflict.sum(1)
+            per_sample = (alpha_live * conflict).sum(1) / selected.clamp_min(1.0)
+            has_conflict = (selected > 0).float()
+            loss_perceptual_conflict = (
+                per_sample * has_conflict
+            ).sum() / has_conflict.sum().clamp_min(1.0)
+            conflict_fraction = conflict.mean()
+            conflict_active_fraction = (
+                conflict.sum() / alpha_flat.ge(float(self.rrsd_perceptual_conflict_min_alpha)).sum().clamp_min(1.0)
+            )
+
         # Optional speaker-aware PLM contrastive regularizer on the ROUTED future
         # x0 estimate. This path remains differentiable:
         # alpha -> x_next_route -> frozen score net -> x0_next_route -> iSTFT ->
@@ -3385,14 +3868,31 @@ class JointFrontendSgmseModel(ScoreModel):
         loss_route_contrastive = torch.zeros(
             (), device=target.device, dtype=torch.float32
         )
+        route_ssl_raw = torch.zeros_like(loss_route_contrastive)
+        base_ssl_reference = torch.zeros_like(loss_route_contrastive)
         if bool(getattr(self, "rrsd_route_contrastive", False)):
-            loss_route_contrastive = self._compute_contrastive_loss(
+            route_ssl_raw = self._compute_contrastive_loss(
                 x0_next_route,
                 target_det,
                 step_out.get("spk_ids", None),
                 weight_clean=self.contrastive_clean_weight,
                 weight_speaker=self.contrastive_speaker_weight,
             ).float()
+            if self.contrastive_objective == "ssl_mse_relative":
+                # Compare the routed action with the alpha=0 action.  The
+                # reference branch is detached, so this term only suppresses
+                # a local SSL regression introduced by routing.
+                with torch.no_grad():
+                    base_ssl_reference = self._compute_ssl_mse_feature_loss(
+                        x0_next_base, target_det
+                    ).float()
+                loss_route_contrastive = F.relu(
+                    route_ssl_raw
+                    - base_ssl_reference.detach()
+                    + float(self.contrastive_margin)
+                )
+            else:
+                loss_route_contrastive = route_ssl_raw
 
         # Same-next-state relative objective:
         #   < 1 : routing improves the next-state x0 estimate
@@ -3420,7 +3920,61 @@ class JointFrontendSgmseModel(ScoreModel):
             + float(self.rrsd_smooth_weight) * loss_smooth
             + float(self.rrsd_future_gate_cost) * loss_gate_cost
             + float(self.contrastive_weight) * loss_route_contrastive
+            + float(self.rrsd_perceptual_conflict_weight) * loss_perceptual_conflict
         )
+
+        # Experimental, opt-in recovery from sigmoid collapse.  The selected
+        # tiles are determined by dL_future/dalpha, *before* the sigmoid:
+        # unlike dL/dlogit, this signal does not disappear at alpha ~ 0.
+        # Only tiles where MORE frontend guidance locally lowers future error
+        # receive the logit recovery pressure. Harmful tiles are left alone.
+        # No direct x0 supervision or clean signal enters the deployable router.
+        loss_desat_raw = loss_future.new_zeros(())
+        desat_good_frac = loss_future.new_zeros(())
+        desat_stuck_frac = loss_future.new_zeros(())
+        if self.training and float(self.rrsd_desat_weight) > 0.0:
+            if "strength_logit_train" not in pred:
+                raise RuntimeError(
+                    "RRSD desaturation requires strength_logit_train from patched reliability_router.py"
+                )
+            # Extra backward traversal only; no extra score-network forward.
+            grad_alpha = torch.autograd.grad(
+                loss_future, pred["alpha_tile"],
+                retain_graph=True, create_graph=False,
+            )[0].detach().float()
+            # Keep threshold relative to gradient scale in this batch.
+            tol = (
+                grad_alpha.abs().mean().detach()
+                * float(self.rrsd_desat_grad_rel_tol)
+            ).clamp_min(1e-12)
+            beneficial = (grad_alpha < -tol).float()
+            logit = pred["strength_logit_train"].float()
+            # LINEAR hinge: nonzero logit gradient even if z << -100;
+            # unlike squared hinge it does not explode at very negative z.
+            gap = torch.relu(float(self.rrsd_desat_logit_floor) - logit)
+            loss_desat_raw = (gap * beneficial).mean()
+            loss = loss + float(self.rrsd_desat_weight) * loss_desat_raw
+            desat_good_frac = beneficial.detach().mean()
+            desat_stuck_frac = (
+                beneficial * (logit.detach() < float(self.rrsd_desat_logit_floor)).float()
+            ).mean()
+            if int(getattr(self, "global_rank", 0)) == 0 and (
+                int(getattr(self, "global_step", 0)) < 3 or
+                int(getattr(self, "global_step", 0)) % 100 == 0
+            ):
+                print(
+                    "[RRSD-DESAT] "
+                    f"step={int(self.global_step)} "
+                    f"t_mean={t_det.mean().item():.4f} "
+                    f"logit_p50={logit.detach().median().item():.2f} "
+                    f"good={desat_good_frac.item():.3f} "
+                    f"good_and_saturated={desat_stuck_frac.item():.3f} "
+                    f"penalty_raw={loss_desat_raw.detach().item():.5f} "
+                    f"penalty_weighted={(float(self.rrsd_desat_weight)*loss_desat_raw.detach()).item():.3e} "
+                    f"future={loss_future.detach().item():.8f} "
+                    f"alpha_mean={alpha_tile.detach().mean().item():.7f}",
+                    flush=True,
+                )
 
         with torch.no_grad():
             stats = {
@@ -3429,6 +3983,8 @@ class JointFrontendSgmseModel(ScoreModel):
                 "rrsd_base_future_x0_error": base_future_err.mean(),
                 "rrsd_future_error_over_base_future": loss_future.detach(),
                 "rrsd_route_contrastive_loss": loss_route_contrastive.detach(),
+                "rrsd_route_contrastive_raw": route_ssl_raw.detach(),
+                "rrsd_route_contrastive_base": base_ssl_reference.detach(),
                 "rrsd_route_contrastive_weighted": (
                     float(self.contrastive_weight) * loss_route_contrastive.detach()
                 ),
@@ -3438,18 +3994,78 @@ class JointFrontendSgmseModel(ScoreModel):
                     / base_future_err.clamp_min(float(self.rrsd_oracle_eps))
                 ).mean(),
                 "rrsd_loss_smooth": loss_smooth.detach(),
+                "rrsd_desat_loss_raw": loss_desat_raw.detach(),
+                "rrsd_desat_loss_weighted": (
+                    float(self.rrsd_desat_weight) * loss_desat_raw.detach()
+                ),
+                "rrsd_desat_beneficial_fraction": desat_good_frac.detach(),
+                "rrsd_desat_beneficial_saturated_fraction": desat_stuck_frac.detach(),
                 "rrsd_future_gate_cost": loss_gate_cost.detach(),
+                "rrsd_perceptual_conflict_loss": loss_perceptual_conflict.detach(),
+                "rrsd_perceptual_conflict_loss_weighted": (
+                    float(self.rrsd_perceptual_conflict_weight)
+                    * loss_perceptual_conflict.detach()
+                ),
+                "rrsd_perceptual_conflict_fraction": conflict_fraction.detach(),
+                "rrsd_perceptual_conflict_active_fraction": conflict_active_fraction.detach(),
                 "rrsd_alpha_mean": pred["alpha_tile"].detach().float().mean(),
                 "rrsd_alpha_active_fraction": (pred["alpha_tile"].detach().float() > 1e-3).float().mean(),
                 "rrsd_t_mean": t_det.float().mean(),
                 "rrsd_next_t_mean": t_next.detach().float().mean(),
             }
+        if (
+            self.training
+            and self.rrsd_perceptual_conflict_weight > 0.0
+            and int(getattr(self, "global_rank", 0)) == 0
+            and (
+                int(getattr(self, "global_step", 0)) < 3
+                or int(getattr(self, "global_step", 0)) % 100 == 0
+            )
+        ):
+            print(
+                "[RRSD-PERC-CONFLICT] "
+                f"step={int(self.global_step)} "
+                f"loss={loss_perceptual_conflict.detach().item():.6e} "
+                f"weighted={(float(self.rrsd_perceptual_conflict_weight) * loss_perceptual_conflict.detach()).item():.6e} "
+                f"tiles={conflict_fraction.detach().item():.4f} "
+                f"active_conflict={conflict_active_fraction.detach().item():.4f}",
+                flush=True,
+            )
             if self.rrsd_use_gate:
                 stats.update({
                     "rrsd_gate_mean": pred["gate_tile"].detach().float().mean(),
                     "rrsd_gate_active_fraction": (pred["gate_tile"].detach().float() > 0.5).float().mean(),
                     "rrsd_strength_mean": pred["strength_tile"].detach().float().mean(),
                 })
+        # Monitor BOTH experimental arms using the same quantities.
+        if "strength_logit" in pred:
+            logit_obs = pred["strength_logit"].detach().float()
+            stats["rrsd_logit_p50"] = logit_obs.median()
+            stats["rrsd_logit_lt_m20_fraction"] = (logit_obs < -20.0).float().mean()
+        if self.training and int(getattr(self, "global_rank", 0)) == 0 and (
+            int(getattr(self, "global_step", 0)) < 3 or
+            int(getattr(self, "global_step", 0)) % 100 == 0
+        ):
+            print(
+                "[RRSD-TRAIN] "
+                f"step={int(self.global_step)} "
+                f"future_ratio={loss_future.detach().item():.8f} "
+                f"alpha_mean={alpha_tile.detach().mean().item():.7f} "
+                f"active={(alpha_tile.detach() > 1e-3).float().mean().item():.4f} "
+                f"logit_p50={float(stats.get('rrsd_logit_p50', loss_future.new_zeros(()))):.3f} "
+                f"logit_lt_m20={float(stats.get('rrsd_logit_lt_m20_fraction', loss_future.new_zeros(()))):.3f}",
+                flush=True,
+            )
+        # Frozen one-step constant-alpha opportunity scan: opt-in, no training.
+        sweep_total = int(os.environ.get("SGMSE_RRSD_SWEEP_BATCHES", "0"))
+        if int(getattr(self, "_rrsd_alpha_sweep_done", 0)) < sweep_total:
+            self._rrsd_alpha_sweep_probe(
+                target=target_det, x0_front=x0_front, x0_base=x0_base_det,
+                x_t=x_t_det, y_main=y_main_det, y_cond=y_cond_det,
+                t=t_det, score_base=score_base, sigma=sigma_det, w_x=w_x_det,
+                dt_cur=dt_cur, pred=pred,
+                base_future_err=base_future_err, route_future_err=future_err,
+            )
         # Optional post-hoc diagnosis of whether the learned router rejects
         # beneficial frontend guidance. Disabled by default; no training change.
         diagnostic_max = int(os.environ.get("SGMSE_RRSD_DIAG_BATCHES", "0"))
@@ -3515,6 +4131,13 @@ class JointFrontendSgmseModel(ScoreModel):
                     and os.environ.get("SGMSE_RRSD_DIAG_EXIT", "0") == "1"):
                 print("[RRSD-DIAG] Completed; exiting diagnostic run without saving.", flush=True)
                 raise SystemExit(0)
+        kstep_max = int(os.environ.get("SGMSE_RRSD_KSTEP_BATCHES", "0"))
+        if kstep_max > int(getattr(self, "_rrsd_kstep_done", 0)):
+            self._rrsd_kstep_trajectory_probe(
+                target=target_det, x0_front=x0_front,
+                x_t=x_t_det, y_main=y_main_det, y_cond=y_cond_det,
+                t=t_det, score_base=score_base, base_dt=base_dt,
+            )
         return loss, stats
 
     def _compute_rrsd_loss(
@@ -3782,6 +4405,9 @@ class JointFrontendSgmseModel(ScoreModel):
         y_cond: Optional[torch.Tensor] = None,
         *,
         scale: float = 1.0,
+        t_cut: float = 0.0,
+        t_min: float = 0.0,
+        t_max: Optional[float] = None,
     ):
         """Build the inference-time RRSD routing step used inside the PC sampler.
 
@@ -3806,8 +4432,18 @@ class JointFrontendSgmseModel(ScoreModel):
         Y_pre, _ = self._main_and_cond_to_pre_noisy(y_main, y_cond)
         x0_front = Y_pre.detach()
 
-        t_max = float(getattr(self.sde, "T", 1.0))
+        sde_t_max = float(getattr(self.sde, "T", 1.0))
         scale = float(scale)
+        t_cut = float(t_cut)
+        if not (0.0 <= t_cut <= sde_t_max):
+            raise ValueError(f"rrsd_t_cut must be in [0, {sde_t_max}], got {t_cut}")
+        t_min = float(t_min)
+        t_upper = sde_t_max if t_max is None else float(t_max)
+        if not (0.0 <= t_min <= t_upper <= sde_t_max):
+            raise ValueError(
+                f"rrsd t window must satisfy 0 <= t_min <= t_max <= {sde_t_max}, "
+                f"got t_min={t_min}, t_max={t_upper}"
+            )
 
         def _score_calibrator(x_t, y_unused, t, score_base, step_index=None, num_steps=None):
             x0_base, sigma, w_x, _ = self._rrsd_score_to_x0(x_t, y_main, t, score_base)
@@ -3825,6 +4461,18 @@ class JointFrontendSgmseModel(ScoreModel):
             # mu(x0_route)-mu(x0_base) = w_x * delta_x0, hence the exact
             # corresponding score residual is w_x * delta_x0 / sigma^2.
             delta_score = w_x * pred["delta_x0"] / sigma.square().clamp_min(1e-8)
+            # Inference-only: suppress the *additional* RRSD score correction
+            # near the clean end of the reverse process (small diffusion t).
+            # OUVE conditioning and the base score remain untouched.
+            # Preserve the exact legacy path when no time window was requested.
+            # This avoids changing the established Router baseline through an
+            # otherwise redundant multiply-by-one operation.
+            if t_cut > 0.0 or t_min > 0.0 or t_max is not None:
+                lower = max(t_cut, t_min)
+                keep = ((t >= lower) & (t <= t_upper)).reshape(
+                    -1, *([1] * (delta_score.ndim - 1))
+                )
+                delta_score = delta_score * keep.to(dtype=delta_score.real.dtype)
             score_route = score_base + delta_score.to(dtype=score_base.dtype)
             if torch.is_complex(score_route):
                 score_route = torch.complex(
@@ -3837,6 +4485,22 @@ class JointFrontendSgmseModel(ScoreModel):
             # Lightweight inference diagnostics for optional debugging.
             self._last_rrsd_alpha_mean = pred["alpha_map"].detach().float().mean()
             self._last_rrsd_alpha_max = pred["alpha_map"].detach().float().max()
+            # Optional diagnostic payload consumed by sampling.trace_sink.
+            # Keep this on the closure rather than changing the public score
+            # return value; ordinary inference has no observable difference.
+            _score_calibrator.last_trace = {
+                "x_t": x_t.detach(),
+                "score_base": score_base.detach(),
+                "x0_base": x0_base.detach(),
+                "x0_front": x0_front.detach(),
+                "alpha_tile_raw": pred["alpha_tile_raw"].detach(),
+                "alpha_tile": pred["alpha_tile"].detach(),
+                "sigma": sigma.detach(),
+                "w_x": w_x.detach(),
+                "y_main": y_main.detach(),
+                "y_cond": y_cond.detach(),
+                "t": t.detach(),
+            }
             return score_route
 
         return _score_calibrator

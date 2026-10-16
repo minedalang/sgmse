@@ -1,0 +1,36 @@
+Paired utterances=4. Lower D(SSL(X), SSL(Clean)) is closer to Clean.
+Layer id 0=features before transformer, layers 1-12 are transformer blocks.
+MSE=paper-inspired sequence-feature MSE; framecos=extra sensitivity diagnostic; both are independent of DNSMOS.
+[mse] layer=3 n=4: Off=0.0416253 Router=0.0409622 Delta=-0.000663153 CI95=[-0.00108879,-0.00023752] closer=4/4 noise_dose=4/4 noise25=0.024647 noise15=0.041403 lowpass=0.010936 dropout=0.007193
+    Spearman(DeltaDistance, Deltapesq)=+0.4000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.4000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.4000 (negative is expected, not assured)
+[mse] layer=6 n=4: Off=0.0394161 Router=0.0384585 Delta=-0.000957631 CI95=[-0.00147913,-0.000436132] closer=4/4 noise_dose=4/4 noise25=0.018029 noise15=0.029946 lowpass=0.0067261 dropout=0.0093129
+    Spearman(DeltaDistance, Deltapesq)=+0.2000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.2000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.2000 (negative is expected, not assured)
+[mse] layer=9 n=4: Off=0.0427245 Router=0.0406057 Delta=-0.00211873 CI95=[-0.00359476,-0.00071116] closer=4/4 noise_dose=4/4 noise25=0.013895 noise15=0.022253 lowpass=0.0054387 dropout=0.01132
+    Spearman(DeltaDistance, Deltapesq)=+0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.6000 (negative is expected, not assured)
+[mse] layer=12 n=4: Off=0.0181784 Router=0.0172588 Delta=-0.000919631 CI95=[-0.00161755,-0.000286202] closer=4/4 noise_dose=4/4 noise25=0.0063867 noise15=0.0094032 lowpass=0.0022121 dropout=0.0061318
+    Spearman(DeltaDistance, Deltapesq)=+0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.6000 (negative is expected, not assured)
+[framecos] layer=3 n=4: Off=0.347085 Router=0.341489 Delta=-0.00559588 CI95=[-0.00889802,-0.00229374] closer=4/4 noise_dose=4/4 noise25=0.20939 noise15=0.3495 lowpass=0.092954 dropout=0.061146
+    Spearman(DeltaDistance, Deltapesq)=+0.4000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.4000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.4000 (negative is expected, not assured)
+[framecos] layer=6 n=4: Off=0.314899 Router=0.306401 Delta=-0.00849771 CI95=[-0.0115535,-0.00395812] closer=4/4 noise_dose=4/4 noise25=0.14518 noise15=0.24069 lowpass=0.055089 dropout=0.0694
+    Spearman(DeltaDistance, Deltapesq)=+0.4000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.4000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.4000 (negative is expected, not assured)
+[framecos] layer=9 n=4: Off=0.295088 Router=0.281961 Delta=-0.0131264 CI95=[-0.0229474,-0.00413952] closer=4/4 noise_dose=4/4 noise25=0.11001 noise15=0.16915 lowpass=0.051023 dropout=0.08244
+    Spearman(DeltaDistance, Deltapesq)=+0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.6000 (negative is expected, not assured)
+[framecos] layer=12 n=4: Off=0.213525 Router=0.202971 Delta=-0.0105535 CI95=[-0.0191264,-0.00247059] closer=4/4 noise_dose=4/4 noise25=0.081736 noise15=0.11795 lowpass=0.026582 dropout=0.080263
+    Spearman(DeltaDistance, Deltapesq)=+0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.6000 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=-0.6000 (negative is expected, not assured)
+CAUTION: this is a screening experiment; compare within-encoder changes, not absolute MSE between distinct encoders.

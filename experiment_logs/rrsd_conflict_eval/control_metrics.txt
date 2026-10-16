@@ -1,0 +1,26 @@
+Loaded  speechmetrics.relative.sisdr
+
+=== Corpus-level results (mean ± std) ===
+PESQ_e         : 1.749 ± 0.581
+STOI_e         : 0.8319 ± 0.1065
+CSIG_e         : 3.086 ± 0.649
+CBAK_e         : 2.746 ± 0.559
+COVL_e         : 2.381 ± 0.634
+WSS_e          : 36.997 ± 12.302 (lower is better)
+SI-SDR_e       : 7.773 ± 4.898
+segSNR_e       : 8.488 ± 3.690
+PESQ_n         : 1.205 ± 0.465
+STOI_n         : 0.6614 ± 0.1012
+CSIG_n         : 1.990 ± 0.440
+CBAK_n         : 1.682 ± 0.395
+COVL_n         : 1.486 ± 0.399
+WSS_n          : 69.941 ± 22.364 (lower is better)
+SI-SDR_n       : -12.165 ± 4.623
+segSNR_n       : -0.756 ± 4.693
+ΔPESQ          : 0.544 ± 0.775
+ΔSTOI          : 0.1705 ± 0.0677
+ΔSI-SDR        : 19.938 ± 3.351
+ΔWSS           : -32.944 ± 21.781 (lower is better)
+注：论文通常报告全体样本的均值；给出标准差可提升可复现性与可信度。Δ 指标表示相对 noisy 的提升。
+
+Per-utterance metrics saved to: /data/coding/sgmse/experiment_logs/rrsd_conflict_eval/control_metrics.csv

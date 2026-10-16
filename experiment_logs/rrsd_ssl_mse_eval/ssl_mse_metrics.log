@@ -1,0 +1,39 @@
+Loaded  speechmetrics.relative.sisdr
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]Evaluating:   3%|▎         | 1/32 [00:26<13:32, 26.22s/it]Evaluating:   6%|▋         | 2/32 [00:48<11:57, 23.91s/it]Evaluating:   9%|▉         | 3/32 [01:08<10:44, 22.24s/it]Evaluating:  12%|█▎        | 4/32 [01:29<10:07, 21.71s/it]Evaluating:  16%|█▌        | 5/32 [01:50<09:41, 21.53s/it]Evaluating:  19%|█▉        | 6/32 [02:11<09:09, 21.14s/it]Evaluating:  22%|██▏       | 7/32 [02:30<08:34, 20.57s/it]Evaluating:  25%|██▌       | 8/32 [02:52<08:23, 20.98s/it]Evaluating:  28%|██▊       | 9/32 [03:15<08:19, 21.74s/it]Evaluating:  31%|███▏      | 10/32 [03:39<08:08, 22.22s/it]Evaluating:  34%|███▍      | 11/32 [04:02<07:54, 22.60s/it]Evaluating:  38%|███▊      | 12/32 [04:26<07:36, 22.82s/it]Evaluating:  41%|████      | 13/32 [04:48<07:09, 22.59s/it]Evaluating:  44%|████▍     | 14/32 [05:09<06:39, 22.21s/it]Evaluating:  47%|████▋     | 15/32 [05:28<06:03, 21.38s/it]Evaluating:  50%|█████     | 16/32 [05:49<05:36, 21.06s/it]Evaluating:  53%|█████▎    | 17/32 [06:08<05:07, 20.47s/it]Evaluating:  56%|█████▋    | 18/32 [06:26<04:37, 19.85s/it]Evaluating:  59%|█████▉    | 19/32 [06:47<04:22, 20.19s/it]Evaluating:  62%|██████▎   | 20/32 [07:08<04:04, 20.34s/it]Evaluating:  66%|██████▌   | 21/32 [07:29<03:45, 20.54s/it]Evaluating:  69%|██████▉   | 22/32 [07:48<03:21, 20.12s/it]Evaluating:  72%|███████▏  | 23/32 [08:07<02:57, 19.74s/it]Evaluating:  75%|███████▌  | 24/32 [08:27<02:38, 19.85s/it]Evaluating:  78%|███████▊  | 25/32 [08:44<02:13, 19.09s/it]Evaluating:  81%|████████▏ | 26/32 [09:03<01:53, 18.83s/it]Evaluating:  84%|████████▍ | 27/32 [09:24<01:37, 19.50s/it]Evaluating:  88%|████████▊ | 28/32 [09:45<01:19, 19.96s/it]Evaluating:  91%|█████████ | 29/32 [10:07<01:02, 20.73s/it]Evaluating:  94%|█████████▍| 30/32 [10:28<00:41, 20.73s/it]Evaluating:  97%|█████████▋| 31/32 [10:48<00:20, 20.45s/it]Evaluating: 100%|██████████| 32/32 [11:07<00:00, 20.12s/it]Evaluating: 100%|██████████| 32/32 [11:07<00:00, 20.86s/it]
+
+=== Corpus-level results (mean ± std) ===
+DNSMOS_P808_e  : 4.028 ± 0.128
+DNSMOS_SIG_e   : 3.484 ± 0.137
+DNSMOS_BAK_e   : 4.144 ± 0.055
+DNSMOS_OVRL_e  : 3.192 ± 0.170
+PESQ_e         : 1.747 ± 0.581
+STOI_e         : 0.8319 ± 0.1065
+CSIG_e         : 3.091 ± 0.649
+CBAK_e         : 2.741 ± 0.559
+COVL_e         : 2.382 ± 0.634
+WSS_e          : 36.947 ± 12.291 (lower is better)
+SI-SDR_e       : 7.702 ± 4.914
+segSNR_e       : 8.421 ± 3.699
+DNSMOS_P808_n  : 2.769 ± 0.387
+DNSMOS_SIG_n   : 2.190 ± 0.863
+DNSMOS_BAK_n   : 1.877 ± 0.778
+DNSMOS_OVRL_n  : 1.697 ± 0.585
+PESQ_n         : 1.205 ± 0.465
+STOI_n         : 0.6614 ± 0.1012
+CSIG_n         : 1.990 ± 0.440
+CBAK_n         : 1.682 ± 0.395
+COVL_n         : 1.486 ± 0.399
+WSS_n          : 69.941 ± 22.364 (lower is better)
+SI-SDR_n       : -12.165 ± 4.623
+segSNR_n       : -0.756 ± 4.693
+ΔPESQ          : 0.542 ± 0.775
+ΔSTOI          : 0.1705 ± 0.0677
+ΔSI-SDR        : 19.867 ± 3.351
+ΔWSS           : -32.995 ± 21.803 (lower is better)
+ΔDNSMOS_P808   : 1.259 ± 0.336
+ΔDNSMOS_SIG    : 1.294 ± 0.813
+ΔDNSMOS_BAK    : 2.267 ± 0.774
+ΔDNSMOS_OVRL   : 1.496 ± 0.552
+注：论文通常报告全体样本的均值；给出标准差可提升可复现性与可信度。Δ 指标表示相对 noisy 的提升。
+
+Per-utterance metrics saved to: experiment_logs/rrsd_ssl_mse_eval/ssl_mse_metrics.csv

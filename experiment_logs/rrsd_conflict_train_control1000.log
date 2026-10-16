@@ -1,0 +1,81 @@
+[CONFLICT-TRAIN] ckpt=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt steps=1000 weight=0 seed=2026
+[MARK] 21:51:04 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=7.5MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 21:51:11 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=979.2MB :: after argument parsing
+[MARK] 21:51:11 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=979.2MB :: before model init
+Running NCSN++ as discriminative backbone
+[MARK] 21:51:15 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1371.4MB :: after model init
+[MARK] 21:51:15 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1371.4MB :: before logger init
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id acg99gpj.
+wandb: Tracking run with wandb version 0.30.0
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in joint_train_logs/wandb/offline-run-20261015_215115-acg99gpj
+wandb: View this run in the terminal with `wandb leet`
+[MARK] 21:51:26 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1426.9MB :: after logger init
+[MARK] 21:51:26 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1426.9MB :: before callbacks init
+[MARK] 21:51:26 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1426.9MB :: after callbacks init
+[MARK] 21:51:26 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1426.9MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 21:51:26 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1426.9MB :: after trainer init
+[MARK] 21:51:26 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1426.9MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=0 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ frontend    │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                        
+Non-trainable params: 55.1 M                                                    
+Total params: 55.2 M                                                            
+Total estimated model params size (MB): 220.644                                 
+Modules in train mode: 374                                                      
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+[RRSD-TRAIN] step=0 future_ratio=0.99995399 alpha_mean=0.0001921 active=0.0078 logit_p50=-78.466 logit_lt_m20=0.975
+[RRSD-TRAIN] step=1 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-156.134 logit_lt_m20=1.000
+[RRSD-TRAIN] step=2 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-151.152 logit_lt_m20=1.000
+[RRSD-TRAIN] step=100 future_ratio=0.99999571 alpha_mean=0.0000001 active=0.0000 logit_p50=-52.763 logit_lt_m20=0.961
+[RRSD-TRAIN] step=200 future_ratio=0.99985743 alpha_mean=0.0011150 active=0.0352 logit_p50=-63.778 logit_lt_m20=0.934
+[RRSD-TRAIN] step=300 future_ratio=0.99626905 alpha_mean=0.0105539 active=0.2305 logit_p50=-26.004 logit_lt_m20=0.609
+[RRSD-TRAIN] step=400 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-280.155 logit_lt_m20=1.000
+[RRSD-TRAIN] step=500 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-161.536 logit_lt_m20=1.000
+[RRSD-TRAIN] step=600 future_ratio=0.99979335 alpha_mean=0.0017885 active=0.0645 logit_p50=-37.068 logit_lt_m20=0.818
+[RRSD-TRAIN] step=700 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-173.607 logit_lt_m20=1.000
+[RRSD-TRAIN] step=800 future_ratio=0.99992675 alpha_mean=0.0000924 active=0.0059 logit_p50=-57.354 logit_lt_m20=0.938
+[RRSD-TRAIN] step=900 future_ratio=0.99998575 alpha_mean=0.0006375 active=0.0391 logit_p50=-20.122 logit_lt_m20=0.504
+`Trainer.fit` stopped: `max_steps=1000` reached.
+Epoch 0/-2 ━━━━━━━━━━━━━━━━ 1000/1000 0:02:12 •       7.59it/s v_num: 9gpj      
+                                      0:00:00                  train_loss_step: 
+                                                               24.314           
+                                                               train_loss_epoch:
+                                                               405.438          
+[MARK] 21:53:45 pid=17886 ppid=17880 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=3081.1MB :: after model init
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync joint_train_logs/wandb/offline-run-20261015_215115-acg99gpj[0m

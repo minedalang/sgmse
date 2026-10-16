@@ -1,0 +1,18 @@
+experiment_id: rrsd_kstep_k4_1000
+kind: evaluation
+step_count: 1000
+k_step: 4
+router_weight: 0.25
+enhanced_dir: experiment_logs/rrsd_kstep_k4_eval/k4_w0_25_1000
+clean_dir: experiment_logs/rrsd_tcut_screen/clean
+noisy_dir: experiment_logs/rrsd_tcut_screen/noisy
+n_utterances: 32
+evaluator: /data/coding/mymetrics/get_metrics_for_papertable_forDNS.py
+evaluator_python: /data/coding/mymetrics/env/bin/python
+dnsmos: true
+dnsmos_device: cpu
+command: "/data/coding/mymetrics/env/bin/python /data/coding/mymetrics/get_metrics_for_papertable_forDNS.py --clean_dir experiment_logs/rrsd_tcut_screen/clean --noisy_dir experiment_logs/rrsd_tcut_screen/noisy --enhanced_dir experiment_logs/rrsd_kstep_k4_eval/k4_w0_25_1000 --dnsmos --dnsmos_device cpu"
+command_exit_code: 0
+output_metrics_file: metrics_by_utterance.csv
+comparison_reference: experiment_logs/rrsd_tcut_screen/paired_metrics.csv
+comparison_reference_type: router paired evaluation

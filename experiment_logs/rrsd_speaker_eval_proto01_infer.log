@@ -1,0 +1,9 @@
+Could not reach the Hub ([Errno 101] Network is unreachable). Using cached commit hash for 'microsoft/unispeech-sat-base-plus-sv'.
+Loading weights:   0%|          | 0/229 [00:00<?, ?it/s]Loading weights: 100%|██████████| 229/229 [00:00<00:00, 25239.01it/s]
+[Contrastive] UniSpeech-SAT X-Vector head loaded; pair=hidden mean, speaker=SV embeddings
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 32
+[RRSD-TCUT] t_cut=0.0 scale=1.0 enabled=True seed=2026 N=30
+Done. Output: experiment_logs/rrsd_speaker_eval/proto01

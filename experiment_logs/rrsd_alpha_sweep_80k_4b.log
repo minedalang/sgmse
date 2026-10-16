@@ -1,0 +1,73 @@
+[MARK] 14:55:46 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=7.5MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 14:55:53 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=993.9MB :: after argument parsing
+[MARK] 14:55:53 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=993.9MB :: before model init
+Running NCSN++ as discriminative backbone
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: after model init
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: before logger init
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: after logger init
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: before callbacks init
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: after callbacks init
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: after trainer init
+[MARK] 14:55:57 pid=53692 ppid=53689 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1185.9MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=0 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ frontend    │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                        
+Non-trainable params: 55.1 M                                                    
+Total params: 55.2 M                                                            
+Total estimated model params size (MB): 220.644                                 
+Modules in train mode: 374                                                      
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+[RRSD-TRAIN] step=0 future_ratio=0.99985480 alpha_mean=0.0008676 active=0.0205 logit_p50=-81.088 logit_lt_m20=0.940
+[RRSD-ASWEEP-BATCH] batch=1/4 t_mean=0.58109 router_ratio=0.999854803 best_grid_ratio=1.000000000 check_base_rel=1.120e-07 check_router_rel=1.120e-07
+[RRSD-ASWEEP] batch=1 sample=0 t=0.448146 dt=0.033448 alpha_router_mean=1.73518760e-03 base_error=1.38934655e-03 r_0.00=1.000000000 r_0.01=1.000176072 r_0.03=1.000553012 r_0.05=1.000975728 r_0.10=1.002243638 r_0.20=1.005738854 r_router=0.999709606 best_alpha=0.00 r_best=1.000000000
+[RRSD-ASWEEP] batch=1 sample=1 t=0.714039 dt=0.033448 alpha_router_mean=3.99116240e-29 base_error=2.07934319e-03 r_0.00=1.000000000 r_0.01=1.000298858 r_0.03=1.000771165 r_0.05=1.001210213 r_0.10=1.002324939 r_0.20=1.004291177 r_router=1.000000000 best_alpha=0.00 r_best=1.000000000
+[RRSD-TRAIN] step=1 future_ratio=0.99834621 alpha_mean=0.0094124 active=0.1611 logit_p50=-61.151 logit_lt_m20=0.775
+[RRSD-ASWEEP-BATCH] batch=2/4 t_mean=0.42636 router_ratio=0.998346210 best_grid_ratio=0.998818159 check_base_rel=0.000e+00 check_router_rel=0.000e+00
+[RRSD-ASWEEP] batch=2 sample=0 t=0.703354 dt=0.033448 alpha_router_mean=5.41174578e-30 base_error=2.14085635e-03 r_0.00=1.000000000 r_0.01=1.000035286 r_0.03=1.000117660 r_0.05=1.000167370 r_0.10=1.000298381 r_0.20=1.000571728 r_router=1.000000000 best_alpha=0.00 r_best=1.000000000
+[RRSD-ASWEEP] batch=2 sample=1 t=0.149357 dt=0.033448 alpha_router_mean=1.88247636e-02 base_error=1.18822078e-04 r_0.00=1.000000000 r_0.01=0.999250233 r_0.03=0.998217821 r_0.05=0.997636378 r_0.10=0.998185158 r_0.20=1.008639336 r_router=0.996692359 best_alpha=0.05 r_best=0.997636378
+[RRSD-TRAIN] step=2 future_ratio=0.99999100 alpha_mean=0.0000705 active=0.0039 logit_p50=-99.274 logit_lt_m20=0.982
+[RRSD-ASWEEP-BATCH] batch=3/4 t_mean=0.54203 router_ratio=0.999991000 best_grid_ratio=0.999804020 check_base_rel=0.000e+00 check_router_rel=0.000e+00
+[RRSD-ASWEEP] batch=3 sample=0 t=0.648096 dt=0.033448 alpha_router_mean=4.52998484e-23 base_error=1.42264576e-03 r_0.00=1.000000000 r_0.01=0.999984264 r_0.03=0.999939919 r_0.05=0.999926984 r_0.10=0.999823391 r_0.20=0.999608040 r_router=1.000000000 best_alpha=0.20 r_best=0.999608040
+[RRSD-ASWEEP] batch=3 sample=1 t=0.435958 dt=0.033448 alpha_router_mean=1.40967910e-04 base_error=9.19031794e-04 r_0.00=1.000000000 r_0.01=1.000147223 r_0.03=1.000427604 r_0.05=1.000739694 r_0.10=1.001498818 r_0.20=1.003109932 r_router=0.999981999 best_alpha=0.00 r_best=1.000000000
+[RRSD-ASWEEP-BATCH] batch=4/4 t_mean=0.93919 router_ratio=1.000000000 best_grid_ratio=0.999525905 check_base_rel=8.257e-08 check_router_rel=1.085e-07
+[RRSD-ASWEEP] batch=4 sample=0 t=0.991729 dt=0.033448 alpha_router_mean=0.00000000e+00 base_error=5.63945761e-03 r_0.00=1.000000000 r_0.01=0.999938011 r_0.03=0.999856174 r_0.05=0.999720395 r_0.10=0.999497533 r_0.20=0.999051750 r_router=0.999999940 best_alpha=0.20 r_best=0.999051750
+[RRSD-ASWEEP] batch=4 sample=1 t=0.886650 dt=0.033448 alpha_router_mean=2.34117473e-31 base_error=4.29063104e-03 r_0.00=1.000000000 r_0.01=1.000038266 r_0.03=1.000123739 r_0.05=1.000201464 r_0.10=1.000476480 r_0.20=1.000883818 r_router=1.000000119 best_alpha=0.00 r_best=1.000000000
+[RRSD-ASWEEP] Completed; exiting without optimizer update/saving.
+Epoch 0/-2 ━━━━━━╸            3/8 0:00:03 • 0:00:03 2.18it/s v_num: 5.000       
+                                                             train_loss_step:   
+                                                             340.743            

@@ -1,0 +1,20 @@
+schema_version: 1
+purpose: "rrsd_value_calibration_task_manifest"
+source_manifest: "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/manifest.csv"
+source_paired_metrics: "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/paired_metrics.csv"
+task_manifest: "calibration_manifest.csv"
+alpha_candidates:
+  - 0.25
+  - 0.5
+  - 0.75
+k_step_candidates:
+  - 1
+  - 2
+  - 4
+seed_candidates:
+  - 2026
+checkpoint_candidates:
+  - "joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt"
+task_count: 288
+run_inference: false
+run_evaluation: false

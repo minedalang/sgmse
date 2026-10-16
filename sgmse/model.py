@@ -56,6 +56,21 @@ class ScoreModel(pl.LightningModule):
                             help="Hugging Face model name/path for UniSpeech-SAT.")
         parser.add_argument("--contrastive_temperature", type=float, default=0.1,
                             help="Temperature for InfoNCE contrastive loss.")
+        parser.add_argument(
+            "--contrastive_objective", type=str, default="infonce",
+            choices=["infonce", "ssl_mse", "ssl_mse_relative"],
+            help=(
+                "Frozen SSL objective: 'infonce' uses paired bidirectional InfoNCE; "
+                "'ssl_mse' uses the last-layer framewise SSL feature MSE from the "
+                "enhanced waveform to the clean reference; "
+                "'ssl_mse_relative' is used by future-grad routing to penalize "
+                "only SSL degradation relative to the no-route branch."
+            ),
+        )
+        parser.add_argument(
+            "--contrastive_margin", type=float, default=0.0,
+            help="Margin for the routed relative SSL-MSE hinge objective.",
+        )
         parser.add_argument("--contrastive_clean_weight", type=float, default=1.0,
                             help="Multiplier for the unchanged bidirectional paired InfoNCE term (default 1.0).")
         parser.add_argument("--contrastive_speaker_weight", type=float, default=0.5,
@@ -74,6 +89,8 @@ class ScoreModel(pl.LightningModule):
         plm_type="unispeech_sat",
         plm_name_or_path="microsoft/unispeech-sat-base-plus-sv",
         contrastive_temperature=0.1,
+        contrastive_objective="infonce",
+        contrastive_margin=0.0,
         contrastive_clean_weight=1.0,
         contrastive_speaker_weight=0.5,
         max_plm_length=32000,
@@ -141,11 +158,27 @@ class ScoreModel(pl.LightningModule):
         if self.unispeech_sv_head and self.plm_type != "unispeech_sat":
             raise ValueError("--unispeech_sv_head requires --plm_type unispeech_sat")
         self.contrastive_temperature = contrastive_temperature
+        self.contrastive_objective = str(contrastive_objective).lower()
+        if self.contrastive_objective not in ("infonce", "ssl_mse", "ssl_mse_relative"):
+            raise ValueError(
+                f"Unsupported contrastive_objective: {contrastive_objective!r}. "
+                "Use 'infonce', 'ssl_mse', or 'ssl_mse_relative'."
+            )
+        self.contrastive_margin = float(contrastive_margin)
+        if self.contrastive_margin < 0.0:
+            raise ValueError("contrastive_margin must be >= 0.")
         self.contrastive_clean_weight = float(contrastive_clean_weight)
         self.contrastive_speaker_weight = float(contrastive_speaker_weight)
         self.max_plm_length = max_plm_length
         if self.contrastive_clean_weight <= 0.0 or self.contrastive_speaker_weight < 0.0:
             raise ValueError("contrastive_clean_weight must be > 0 and contrastive_speaker_weight must be >= 0.")
+        if self.contrastive_objective in ("ssl_mse", "ssl_mse_relative") and self.contrastive_speaker_weight > 0.0:
+            raise ValueError(
+                "contrastive_speaker_weight must be 0 for an SSL-MSE objective; "
+                "use the separate speaker-aware objective for X-Vector supervision."
+            )
+        if self.contrastive_objective == "ssl_mse_relative" and self.plm_type != "unispeech_sat":
+            raise ValueError("contrastive_objective='ssl_mse_relative' requires --plm_type unispeech_sat.")
 
         # 是否启用对比学习
         # 只有训练阶段才加载 PLM
@@ -619,6 +652,40 @@ class ScoreModel(pl.LightningModule):
             }
         return total_loss
     
+    def _compute_ssl_mse_feature_loss(self, x_hat, x_clean):
+        """Compute final-layer framewise UniSpeech-SAT MSE with route gradients."""
+        enhanced_wav = self._spec_to_wave_batch(x_hat)
+        clean_wav = self._spec_to_wave_batch(x_clean)
+        if self.max_plm_length is not None and enhanced_wav.shape[1] > self.max_plm_length:
+            length = int(self.max_plm_length)
+            enhanced_wav = enhanced_wav[:, :length]
+            clean_wav = clean_wav[:, :length]
+
+        enhanced_wav = enhanced_wav - enhanced_wav.mean(dim=1, keepdim=True)
+        clean_wav = clean_wav - clean_wav.mean(dim=1, keepdim=True)
+        enhanced_wav = enhanced_wav / (enhanced_wav.abs().amax(dim=1, keepdim=True) + 1e-6)
+        clean_wav = clean_wav / (clean_wav.abs().amax(dim=1, keepdim=True) + 1e-6)
+
+        enhanced_hidden = self.plm_model(
+            input_values=enhanced_wav,
+            output_hidden_states=False,
+            return_dict=True,
+        ).last_hidden_state
+        with torch.no_grad():
+            clean_hidden = self.plm_model(
+                input_values=clean_wav,
+                output_hidden_states=False,
+                return_dict=True,
+            ).last_hidden_state
+        if enhanced_hidden.shape[1] != clean_hidden.shape[1]:
+            clean_hidden = F.interpolate(
+                clean_hidden.transpose(1, 2),
+                size=enhanced_hidden.shape[1],
+                mode="linear",
+                align_corners=False,
+            ).transpose(1, 2)
+        return (enhanced_hidden.float() - clean_hidden.float()).square().mean()
+
     def _compute_contrastive_loss(self, x_hat, x_clean, spk_ids=None, weight_clean=1.0, weight_speaker=0.5):
         """
         基于 UniSpeech-SAT 的 InfoNCE：
@@ -657,6 +724,20 @@ class ScoreModel(pl.LightningModule):
         )
         speaker_emb_enh = None
         speaker_emb_clean = None
+
+        # The paper-style SSL-MSE objective uses the final hidden sequence
+        # directly. It deliberately does not load or use the UniSpeech-SAT
+        # X-Vector head, because a speaker embedding loss is a separate
+        # experimental variable.
+        if self.contrastive_objective in ("ssl_mse", "ssl_mse_relative"):
+            loss_ssl_mse = self._compute_ssl_mse_feature_loss(x_hat, x_clean)
+            stage = "train" if self.training else "val"
+            self.log(
+                f"{stage}_cl_ssl_mse", loss_ssl_mse.detach(),
+                on_step=self.training, on_epoch=True, sync_dist=True,
+                prog_bar=False, batch_size=B,
+            )
+            return float(weight_clean) * loss_ssl_mse
 
         if self.plm_type in ("campplus", "xvector"):
             if checkpoint_plm:
@@ -1320,6 +1401,10 @@ class ScoreModel(pl.LightningModule):
         anchor_v2_single_shot_step_arg = kwargs.pop("anchor_v2_single_shot_step", None)
         rrsd_arg = kwargs.pop("rrsd", False)
         rrsd_scale_arg = kwargs.pop("rrsd_scale", 1.0)
+        rrsd_t_cut_arg = float(kwargs.pop("rrsd_t_cut", 0.0))
+        rrsd_t_min_arg = float(kwargs.pop("rrsd_t_min", 0.0))
+        rrsd_t_max_arg = kwargs.pop("rrsd_t_max", None)
+        rrsd_t_max_arg = None if rrsd_t_max_arg is None else float(rrsd_t_max_arg)
 
         n_route_modes = int(bool(anchor_calib_arg)) + int(bool(anchor_v2_arg)) + int(bool(rrsd_arg))
         if n_route_modes > 1:
@@ -1409,7 +1494,10 @@ class ScoreModel(pl.LightningModule):
         elif bool(rrsd_arg):
             if hasattr(self, "build_rrsd_score_calibrator"):
                 score_calibrator = self.build_rrsd_score_calibrator(
-                    Y, y_cond_spec, scale=float(rrsd_scale_arg)
+                    Y, y_cond_spec, scale=float(rrsd_scale_arg),
+                    t_cut=rrsd_t_cut_arg,
+                    t_min=rrsd_t_min_arg,
+                    t_max=rrsd_t_max_arg,
                 )
                 if score_calibrator is None:
                     warnings.warn("rrsd=True but RRSD router is disabled in this model; using original sampler.")

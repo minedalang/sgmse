@@ -1,0 +1,12 @@
+experiment_id: rrsd_value_calibration_pilot1
+script: rrsd_value_calibration_run.py
+ckpt: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+out: experiment_logs/rrsd_value_calibration_pilot1
+max_files: 1
+max_steps: 8
+N: 8
+K: 4
+use_ema: true
+seed: 2026
+device: cuda

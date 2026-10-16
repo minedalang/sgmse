@@ -1,0 +1,128 @@
+[FD-RUN] ckpt=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt wavlm=microsoft/wavlm-base-plus layer=3 batches=64 bs=1 eps=0.005 topk=16 min_alpha=0.006
+[MARK] 21:12:09 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=951.7MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 21:12:11 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=981.7MB :: after argument parsing
+[MARK] 21:12:11 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=981.7MB :: before model init
+Running NCSN++ as discriminative backbone
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: after model init
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: before logger init
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: after logger init
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: before callbacks init
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: after callbacks init
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: after trainer init
+[MARK] 21:12:14 pid=10199 ppid=10192 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1362.7MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=0 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ frontend    │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                        
+Non-trainable params: 55.1 M                                                    
+Total params: 55.2 M                                                            
+Total estimated model params size (MB): 220.644                                 
+Modules in train mode: 374                                                      
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 26483.37it/s]
+[RRSD-PG-INIT] encoder=microsoft/wavlm-base-plus local_only=1 layer=3
+[RRSD-FD] batch=1 sample=0 t=0.44815 conflict_tiles=0 alpha_mean=0.00019208 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-TRAIN] step=0 future_ratio=0.99995399 alpha_mean=0.0001921 active=0.0078 logit_p50=-78.466 logit_lt_m20=0.975
+[RRSD-FD-SKIP] batch=2 t=0.70335
+[RRSD-TRAIN] step=1 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-156.351 logit_lt_m20=1.000
+[RRSD-FD-SKIP] batch=3 t=0.64810
+[RRSD-TRAIN] step=2 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-151.407 logit_lt_m20=1.000
+[RRSD-FD-SKIP] batch=4 t=0.99173
+[RRSD-FD-SKIP] batch=5 t=0.64971
+[RRSD-FD] batch=6 sample=0 t=0.35157 conflict_tiles=0 alpha_mean=0.00011805 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD] batch=7 sample=0 t=0.42253 conflict_tiles=0 alpha_mean=0.00000000 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD-SKIP] batch=8 t=0.80817
+[RRSD-FD] batch=9 sample=0 t=0.27906 conflict_tiles=0 alpha_mean=0.00000408 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD-SKIP] batch=10 t=0.51687
+[RRSD-FD-SKIP] batch=11 t=0.55311
+[RRSD-FD] batch=12 sample=0 t=0.10371 conflict_tiles=16 alpha_mean=0.04250812 fd_eps=0.005000 plus_df=-6.592274e-05 plus_dp=+2.177432e-06 plus_ok=1 minus_df=+6.973743e-05 minus_dp=-3.343448e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=13 t=0.99057
+[RRSD-FD] batch=14 sample=0 t=0.18319 conflict_tiles=16 alpha_mean=0.04181988 fd_eps=0.005000 plus_df=-3.546476e-05 plus_dp=-3.831461e-06 plus_ok=0 minus_df=+3.755093e-05 minus_dp=-1.045689e-05 minus_ok=1
+[RRSD-FD] batch=15 sample=0 t=0.31814 conflict_tiles=1 alpha_mean=0.00003892 fd_eps=0.005000 plus_df=+8.940697e-06 plus_dp=-1.490116e-06 plus_ok=0 minus_df=+1.311302e-06 minus_dp=-2.909452e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=16 t=0.60867
+[RRSD-FD] batch=17 sample=0 t=0.18107 conflict_tiles=16 alpha_mean=0.01926481 fd_eps=0.005000 plus_df=-5.203485e-05 plus_dp=-2.177432e-06 plus_ok=0 minus_df=+7.331371e-05 minus_dp=-1.370907e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=18 t=0.79510
+[RRSD-FD-SKIP] batch=19 t=0.56524
+[RRSD-FD-SKIP] batch=20 t=0.82728
+[RRSD-FD-SKIP] batch=21 t=0.73665
+[RRSD-FD] batch=22 sample=0 t=0.19340 conflict_tiles=16 alpha_mean=0.02153600 fd_eps=0.005000 plus_df=-3.045797e-05 plus_dp=+1.061708e-07 plus_ok=1 minus_df=+2.515316e-05 minus_dp=+1.186505e-06 minus_ok=0
+[RRSD-FD-SKIP] batch=23 t=0.69655
+[RRSD-FD] batch=24 sample=0 t=0.22564 conflict_tiles=16 alpha_mean=0.02382437 fd_eps=0.005000 plus_df=-1.680851e-05 plus_dp=+1.306646e-06 plus_ok=1 minus_df=+2.217293e-05 minus_dp=-3.804453e-06 minus_ok=1
+[RRSD-FD] batch=25 sample=0 t=0.24139 conflict_tiles=16 alpha_mean=0.01097963 fd_eps=0.005000 plus_df=-3.707409e-05 plus_dp=-1.089647e-07 plus_ok=0 minus_df=+1.800060e-05 minus_dp=-1.527369e-06 minus_ok=1
+[RRSD-FD] batch=26 sample=0 t=0.22030 conflict_tiles=16 alpha_mean=0.01506856 fd_eps=0.005000 plus_df=-4.076958e-05 plus_dp=+3.794208e-06 plus_ok=1 minus_df=+8.463860e-06 minus_dp=-3.442168e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=27 t=0.04311
+[RRSD-FD] batch=28 sample=0 t=0.32601 conflict_tiles=16 alpha_mean=0.00769837 fd_eps=0.005000 plus_df=-3.981590e-05 plus_dp=+5.291775e-06 plus_ok=1 minus_df=+2.443790e-05 minus_dp=+1.255423e-06 minus_ok=0
+[RRSD-FD] batch=29 sample=0 t=0.35561 conflict_tiles=4 alpha_mean=0.00132965 fd_eps=0.005000 plus_df=+5.960464e-07 plus_dp=+4.049391e-06 plus_ok=0 minus_df=+1.215935e-05 minus_dp=-7.003546e-07 minus_ok=1
+[RRSD-FD] batch=30 sample=0 t=0.41732 conflict_tiles=3 alpha_mean=0.00028974 fd_eps=0.005000 plus_df=-1.192093e-06 plus_dp=+2.712011e-06 plus_ok=1 minus_df=+6.794930e-06 minus_dp=+3.613532e-07 minus_ok=0
+[RRSD-FD] batch=31 sample=0 t=0.47249 conflict_tiles=0 alpha_mean=0.00028220 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD-SKIP] batch=32 t=0.66562
+[RRSD-FD] batch=33 sample=0 t=0.11605 conflict_tiles=16 alpha_mean=0.03689717 fd_eps=0.005000 plus_df=-1.008511e-04 plus_dp=+4.880130e-06 plus_ok=1 minus_df=+1.050234e-04 minus_dp=-2.741814e-06 minus_ok=1
+[RRSD-FD] batch=34 sample=0 t=0.32736 conflict_tiles=4 alpha_mean=0.00117614 fd_eps=0.005000 plus_df=+1.776218e-05 plus_dp=-5.166978e-06 plus_ok=0 minus_df=+1.835823e-05 minus_dp=+1.002103e-06 minus_ok=0
+[RRSD-FD-SKIP] batch=35 t=0.73809
+[RRSD-FD] batch=36 sample=0 t=0.36379 conflict_tiles=4 alpha_mean=0.00126770 fd_eps=0.005000 plus_df=-2.002716e-05 plus_dp=+1.462176e-07 plus_ok=1 minus_df=+2.288818e-05 minus_dp=-2.519228e-07 minus_ok=1
+[RRSD-FD-SKIP] batch=37 t=0.62341
+[RRSD-FD-SKIP] batch=38 t=0.57487
+[RRSD-FD-SKIP] batch=39 t=0.54951
+[RRSD-FD] batch=40 sample=0 t=0.11328 conflict_tiles=16 alpha_mean=0.05127839 fd_eps=0.005000 plus_df=-3.504753e-05 plus_dp=+2.870336e-06 plus_ok=1 minus_df=+4.041195e-05 minus_dp=-1.681969e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=41 t=0.64681
+[RRSD-FD] batch=42 sample=0 t=0.25632 conflict_tiles=16 alpha_mean=0.02821413 fd_eps=0.005000 plus_df=-5.656481e-05 plus_dp=+3.240071e-06 plus_ok=1 minus_df=+5.137920e-05 minus_dp=-8.977950e-07 minus_ok=1
+[RRSD-FD-SKIP] batch=43 t=0.67905
+[RRSD-FD-SKIP] batch=44 t=0.65166
+[RRSD-FD] batch=45 sample=0 t=0.32145 conflict_tiles=14 alpha_mean=0.00319563 fd_eps=0.005000 plus_df=-4.124641e-05 plus_dp=+1.878478e-06 plus_ok=1 minus_df=+3.874302e-05 minus_dp=-7.925555e-07 minus_ok=1
+[RRSD-FD-SKIP] batch=46 t=0.94201
+[RRSD-FD] batch=47 sample=0 t=0.09540 conflict_tiles=16 alpha_mean=0.05070150 fd_eps=0.005000 plus_df=-7.927418e-05 plus_dp=+1.290813e-06 plus_ok=1 minus_df=+7.510185e-05 minus_dp=-2.784654e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=48 t=0.82058
+[RRSD-FD] batch=49 sample=0 t=0.41286 conflict_tiles=0 alpha_mean=0.00000275 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD] batch=50 sample=0 t=0.10832 conflict_tiles=16 alpha_mean=0.01400514 fd_eps=0.005000 plus_df=-2.807379e-05 plus_dp=+7.455237e-07 plus_ok=1 minus_df=+3.480911e-05 minus_dp=-8.103671e-07 minus_ok=1
+[RRSD-FD] batch=51 sample=0 t=0.34144 conflict_tiles=10 alpha_mean=0.00316860 fd_eps=0.005000 plus_df=-2.139807e-05 plus_dp=-2.101064e-06 plus_ok=0 minus_df=+1.525879e-05 minus_dp=-4.895031e-06 minus_ok=1
+[RRSD-FD] batch=52 sample=0 t=0.26628 conflict_tiles=16 alpha_mean=0.00382050 fd_eps=0.005000 plus_df=-4.315376e-05 plus_dp=+4.954636e-06 plus_ok=1 minus_df=+2.932549e-05 minus_dp=-1.303852e-06 minus_ok=1
+[RRSD-FD] batch=53 sample=0 t=0.35288 conflict_tiles=8 alpha_mean=0.00379543 fd_eps=0.005000 plus_df=-7.033348e-06 plus_dp=+1.564622e-07 plus_ok=1 minus_df=+1.919270e-05 minus_dp=-3.594905e-07 minus_ok=1
+[RRSD-FD] batch=54 sample=0 t=0.06544 conflict_tiles=16 alpha_mean=0.02518539 fd_eps=0.005000 plus_df=-6.425381e-05 plus_dp=+5.723443e-06 plus_ok=1 minus_df=+6.973743e-05 minus_dp=-4.583970e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=55 t=0.77545
+[RRSD-FD] batch=56 sample=0 t=0.41206 conflict_tiles=15 alpha_mean=0.00526173 fd_eps=0.005000 plus_df=-4.827976e-05 plus_dp=+3.147870e-07 plus_ok=1 minus_df=+2.872944e-05 minus_dp=-1.732260e-06 minus_ok=1
+[RRSD-FD-SKIP] batch=57 t=0.71441
+[RRSD-FD] batch=58 sample=0 t=0.06298 conflict_tiles=16 alpha_mean=0.02235870 fd_eps=0.005000 plus_df=-7.075071e-05 plus_dp=-1.693144e-06 plus_ok=0 minus_df=+7.414818e-05 minus_dp=-1.984183e-06 minus_ok=1
+[RRSD-FD] batch=59 sample=0 t=0.36744 conflict_tiles=0 alpha_mean=0.00000001 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD-SKIP] batch=60 t=0.75557
+[RRSD-FD-SKIP] batch=61 t=0.93329
+[RRSD-FD-SKIP] batch=62 t=0.73870
+[RRSD-FD] batch=63 sample=0 t=0.16762 conflict_tiles=16 alpha_mean=0.03394815 fd_eps=0.005000 plus_df=-5.215406e-05 plus_dp=+1.927093e-05 plus_ok=1 minus_df=+6.639957e-05 minus_dp=-7.543713e-06 minus_ok=1
+[RRSD-FD] batch=64 sample=0 t=0.37964 conflict_tiles=0 alpha_mean=0.00000026 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-FD-DONE] finished without optimizer update/checkpoint save
+Epoch 0/-2 ━━━━━━━━━━━━━━━━  63/66 0:00:15 • 0:00:01 4.69it/s v_num: 1.000      
+                                                              train_loss_step:  
+                                                              1012.833          

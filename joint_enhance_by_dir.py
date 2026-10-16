@@ -1,6 +1,7 @@
 import os
 import glob
 import argparse
+import hashlib
 
 import torch
 import torch.nn.functional as F
@@ -149,6 +150,30 @@ def main():
         help="Inference multiplier on predicted alpha routing coefficients; 1.0 uses the trained router as-is.",
     )
     p.add_argument(
+        "--rrsd_t_cut",
+        type=float,
+        default=0.0,
+        help="Disable only RRSD additional score guidance at diffusion t < this cutoff. 0=off.",
+    )
+    p.add_argument(
+        "--rrsd_t_min",
+        type=float,
+        default=0.0,
+        help="Optional lower bound on diffusion t for RRSD guidance. 0 preserves the old behavior.",
+    )
+    p.add_argument(
+        "--rrsd_t_max",
+        type=float,
+        default=None,
+        help="Optional upper bound on diffusion t for RRSD guidance. None preserves the old behavior.",
+    )
+    p.add_argument(
+        "--seed",
+        type=int,
+        default=2026,
+        help="Per-utterance torch RNG seed, deterministic across ablations.",
+    )
+    p.add_argument(
         "--anchor_v2_a_max",
         type=float,
         default=None,
@@ -249,8 +274,15 @@ def main():
     wavs = sorted(glob.glob(os.path.join(args.in_dir, "*.wav")))
     print("Found wavs:", len(wavs))
 
+    print(f"[RRSD-TCUT] t_cut={args.rrsd_t_cut} scale={args.rrsd_scale} "
+          f"enabled={args.rrsd} seed={args.seed} N={args.N}", flush=True)
     with torch.inference_mode():
         for wp in wavs:
+            # Stable per-file RNG across the four variants, independent of the
+            # run order. Do not use Python's process-randomized hash().
+            h = hashlib.blake2b(os.path.basename(wp).encode("utf-8"), digest_size=4).digest()
+            file_seed = (int(args.seed) + int.from_bytes(h, "little")) % (2**32)
+            torch.manual_seed(file_seed)
             # y = load_mono(wp, args.sample_rate).to(args.device)  # [T]
             # y = y.unsqueeze(0)  # [1, T]
 
@@ -288,6 +320,9 @@ def main():
                 anchor_v2=args.anchor_v2,
                 rrsd=args.rrsd,
                 rrsd_scale=args.rrsd_scale,
+                rrsd_t_cut=args.rrsd_t_cut,
+                rrsd_t_min=args.rrsd_t_min,
+                rrsd_t_max=args.rrsd_t_max,
                 anchor_v2_a_max=args.anchor_v2_a_max,
                 anchor_v2_b_max=args.anchor_v2_b_max,
                 anchor_v2_scale=args.anchor_v2_scale,

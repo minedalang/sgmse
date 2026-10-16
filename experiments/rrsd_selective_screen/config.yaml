@@ -1,0 +1,20 @@
+schema_version: 1
+experiment_id: rrsd_selective_screen
+purpose: Test transfer of offline future-value time window to real PC inference
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+use_ema: true
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+input_dir: experiment_logs/rrsd_tcut_screen/noisy
+num_files: 32
+N: 30
+snr: 0.5
+sampler: pc
+corrector: none
+seed: 2026
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_min: 0.15
+rrsd_t_max: 0.75
+control_off_dir: experiment_logs/rrsd_tcut_screen/off
+control_router_dir: experiment_logs/rrsd_tcut_screen/router
+training: false

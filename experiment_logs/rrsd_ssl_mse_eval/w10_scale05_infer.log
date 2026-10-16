@@ -1,0 +1,24 @@
+Could not reach the Hub ([Errno 101] Network is unreachable). Using cached commit hash for 'microsoft/unispeech-sat-base-plus-sv'.
+Loading weights:   0%|          | 0/211 [00:00<?, ?it/s]Loading weights: 100%|██████████| 211/211 [00:00<00:00, 22285.41it/s]
+[transformers] [1mUniSpeechSatModel LOAD REPORT[0m from: microsoft/unispeech-sat-base-plus-sv
+Key                                | Status     |  | 
+-----------------------------------+------------+--+-
+tdnn.{0, 1, 2, 3, 4}.kernel.weight | UNEXPECTED |  | 
+tdnn.{0, 1, 2, 3, 4}.kernel.bias   | UNEXPECTED |  | 
+feature_extractor.weight           | UNEXPECTED |  | 
+feature_extractor.bias             | UNEXPECTED |  | 
+layer_weights                      | UNEXPECTED |  | 
+projector.bias                     | UNEXPECTED |  | 
+classifier.weight                  | UNEXPECTED |  | 
+objective.weight                   | UNEXPECTED |  | 
+classifier.bias                    | UNEXPECTED |  | 
+projector.weight                   | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 32
+[RRSD-TCUT] t_cut=0.0 scale=0.5 enabled=True seed=2026 N=30
+Done. Output: experiment_logs/rrsd_ssl_mse_eval/w10_scale05

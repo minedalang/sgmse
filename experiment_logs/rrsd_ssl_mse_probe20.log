@@ -1,0 +1,294 @@
+[RRSD-SSL-MSE-TRAIN] ckpt=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt steps=20 batch=8 weight=10 seed=2026
+[MARK] 09:51:29 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=7.5MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 09:53:26 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=976.7MB :: after argument parsing
+[MARK] 09:53:26 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=976.7MB :: before model init
+Could not reach the Hub ([Errno 101] Network is unreachable). Using cached commit hash for 'microsoft/unispeech-sat-base-plus-sv'.
+Loading weights:   0%|          | 0/211 [00:00<?, ?it/s]Loading weights: 100%|██████████| 211/211 [00:00<00:00, 26901.27it/s]
+[transformers] [1mUniSpeechSatModel LOAD REPORT[0m from: microsoft/unispeech-sat-base-plus-sv
+Key                                | Status     |  | 
+-----------------------------------+------------+--+-
+tdnn.{0, 1, 2, 3, 4}.kernel.weight | UNEXPECTED |  | 
+classifier.weight                  | UNEXPECTED |  | 
+projector.bias                     | UNEXPECTED |  | 
+tdnn.{0, 1, 2, 3, 4}.kernel.bias   | UNEXPECTED |  | 
+objective.weight                   | UNEXPECTED |  | 
+layer_weights                      | UNEXPECTED |  | 
+classifier.bias                    | UNEXPECTED |  | 
+feature_extractor.bias             | UNEXPECTED |  | 
+projector.weight                   | UNEXPECTED |  | 
+feature_extractor.weight           | UNEXPECTED |  | 
+
+Notes:
+- UNEXPECTED:	can be ignored when loading from different task/architecture; not ok if you expect identical arch.
+Running NCSN++ as discriminative backbone
+[MARK] 09:55:58 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1168.3MB :: after model init
+[MARK] 09:55:58 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1168.3MB :: before logger init
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id dr80y6ld.
+wandb: Tracking run with wandb version 0.30.0
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in joint_train_logs/wandb/offline-run-20261016_095558-dr80y6ld
+wandb: View this run in the terminal with `wandb leet`
+[MARK] 09:56:10 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1238.8MB :: after logger init
+[MARK] 09:56:10 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1238.8MB :: before callbacks init
+[MARK] 09:56:10 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1238.8MB :: after callbacks init
+[MARK] 09:56:10 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1238.8MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 09:56:10 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1238.8MB :: after trainer init
+[MARK] 09:56:10 pid=4692 ppid=4687 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1238.8MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=211 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ plm_model   │ UniSpeechSatModel         │ 94.4 M │ eval  │     0 │
+│ 2 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 3 │ frontend    │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                        
+Non-trainable params: 149 M                                                     
+Total params: 149 M                                                             
+Total estimated model params size (MB): 598.131                                 
+Modules in train mode: 374                                                      
+Modules in eval mode: 220                                                       
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py:538: Found 220 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+[W1016 09:56:18.558927585 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 536870912 bytes (free: 208142336, total: 50897879040).
+[W1016 09:56:18.597992143 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 493355008, total: 50897879040).
+[W1016 09:56:18.598157654 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 493355008, total: 50897879040).
+[W1016 09:56:18.645185178 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.645340938 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.645982829 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.646171109 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.646696169 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.646848439 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 541065216 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.647323080 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1077936128 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.647478090 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1077936128 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.647914060 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1077936128 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.648085650 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1077936128 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.648474951 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1614807040 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.648623011 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 1614807040 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.649047861 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4842323968 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.649217641 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 4842323968 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.649969272 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 536870912 bytes (free: 491257856, total: 50897879040).
+[W1016 09:56:18.650131782 CUDACachingAllocator.cpp:3934] memory allocation failed with OOM on device 0 while trying to allocate 536870912 bytes (free: 491257856, total: 50897879040).
+Epoch 0/-2                                     0/20 0:00:01 • -:--:-- 0.00it/s 
+Traceback (most recent call last):
+  File "/data/coding/sgmse/joint_train.py", line 334, in <module>
+    trainer.fit(model, ckpt_path=None)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1079, in _run
+    results = self._run_stage()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1123, in _run_stage
+    self.fit_loop.run()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 217, in run
+    self.advance()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 469, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 153, in run
+    self.advance(data_fetcher)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 352, in advance
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 192, in run
+    self._optimizer_step(batch_idx, closure)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 270, in _optimizer_step
+    call._call_lightning_module_hook(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/model.py", line 296, in optimizer_step
+    super().optimizer_step(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/module.py", line 1368, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/optimizer.py", line 154, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 239, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/precision.py", line 123, in optimizer_step
+    return optimizer.step(closure=closure, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/optim/optimizer.py", line 549, in wrapper
+    out = func(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/optim/optimizer.py", line 79, in _use_grad
+    ret = func(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/optim/adam.py", line 227, in step
+    loss = closure()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/precision.py", line 109, in _wrap_closure
+    closure_result = closure()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 146, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 131, in closure
+    step_output = self._step_fn()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 319, in _training_step
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 391, in training_step
+    return self.lightning_module.training_step(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/joint_model.py", line 5035, in training_step
+    Y_pre = self.frontend.forward_transformed_spec(Y_noisy)
+  File "/data/coding/sgmse/sgmse/frontends/storm.py", line 221, in forward_transformed_spec
+    pred = checkpoint(self.backbone, spec, t, use_reentrant=False)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/_compile.py", line 54, in inner
+    return disable_fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 1548, in _fn
+    return fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 606, in checkpoint
+    return _checkpoint_impl(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 681, in _checkpoint_impl
+    gen.throw(e)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 1988, in _checkpoint_without_reentrant_generator_impl
+    yield
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 678, in _checkpoint_impl
+    ret = function(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp.py", line 447, in forward
+    h = self._run_resblock(modules[m_idx], h, temb)  # Upsampling
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp.py", line 290, in _run_resblock
+    return block(x, temb)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/layerspp.py", line 264, in forward
+    h = self.act(self.GroupNorm_1(h))
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/activation.py", line 476, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/functional.py", line 2451, in silu
+    return torch._C._nn.silu(input)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 47.40 GiB of which 468.50 MiB is free. Process 3059 has 43.52 GiB memory in use. Including non-PyTorch memory, this process has 3.41 GiB memory in use. Of the allocated memory 2.72 GiB is allocated by PyTorch, and 185.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+Traceback (most recent call last):
+  File "/data/coding/sgmse/joint_train.py", line 334, in <module>
+    trainer.fit(model, ckpt_path=None)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 584, in fit
+    call._call_and_handle_interrupt(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 49, in _call_and_handle_interrupt
+    return trainer_fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 630, in _fit_impl
+    self._run(model, ckpt_path=ckpt_path, weights_only=weights_only)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1079, in _run
+    results = self._run_stage()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/trainer.py", line 1123, in _run_stage
+    self.fit_loop.run()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 217, in run
+    self.advance()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py", line 469, in advance
+    self.epoch_loop.run(self._data_fetcher)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 153, in run
+    self.advance(data_fetcher)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/training_epoch_loop.py", line 352, in advance
+    batch_output = self.automatic_optimization.run(trainer.optimizers[0], batch_idx, kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 192, in run
+    self._optimizer_step(batch_idx, closure)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 270, in _optimizer_step
+    call._call_lightning_module_hook(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 177, in _call_lightning_module_hook
+    output = fn(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/model.py", line 296, in optimizer_step
+    super().optimizer_step(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/module.py", line 1368, in optimizer_step
+    optimizer.step(closure=optimizer_closure)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/optimizer.py", line 154, in step
+    step_output = self._strategy.optimizer_step(self._optimizer, closure, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 239, in optimizer_step
+    return self.precision_plugin.optimizer_step(optimizer, model=model, closure=closure, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/precision.py", line 123, in optimizer_step
+    return optimizer.step(closure=closure, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/optim/optimizer.py", line 549, in wrapper
+    out = func(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/optim/optimizer.py", line 79, in _use_grad
+    ret = func(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/optim/adam.py", line 227, in step
+    loss = closure()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/plugins/precision/precision.py", line 109, in _wrap_closure
+    closure_result = closure()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 146, in __call__
+    self._result = self.closure(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/_contextlib.py", line 124, in decorate_context
+    return func(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 131, in closure
+    step_output = self._step_fn()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/optimization/automatic.py", line 319, in _training_step
+    training_step_output = call._call_strategy_hook(trainer, "training_step", *kwargs.values())
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/call.py", line 329, in _call_strategy_hook
+    output = fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/strategies/strategy.py", line 391, in training_step
+    return self.lightning_module.training_step(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/joint_model.py", line 5035, in training_step
+    Y_pre = self.frontend.forward_transformed_spec(Y_noisy)
+  File "/data/coding/sgmse/sgmse/frontends/storm.py", line 221, in forward_transformed_spec
+    pred = checkpoint(self.backbone, spec, t, use_reentrant=False)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/_compile.py", line 54, in inner
+    return disable_fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/_dynamo/eval_frame.py", line 1548, in _fn
+    return fn(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 606, in checkpoint
+    return _checkpoint_impl(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 681, in _checkpoint_impl
+    gen.throw(e)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 1988, in _checkpoint_without_reentrant_generator_impl
+    yield
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/checkpoint.py", line 678, in _checkpoint_impl
+    ret = function(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp.py", line 447, in forward
+    h = self._run_resblock(modules[m_idx], h, temb)  # Upsampling
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp.py", line 290, in _run_resblock
+    return block(x, temb)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/layerspp.py", line 264, in forward
+    h = self.act(self.GroupNorm_1(h))
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/activation.py", line 476, in forward
+    return F.silu(input, inplace=self.inplace)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/functional.py", line 2451, in silu
+    return torch._C._nn.silu(input)
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 512.00 MiB. GPU 0 has a total capacity of 47.40 GiB of which 468.50 MiB is free. Process 3059 has 43.52 GiB memory in use. Including non-PyTorch memory, this process has 3.41 GiB memory in use. Of the allocated memory 2.72 GiB is allocated by PyTorch, and 185.96 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True to avoid fragmentation.  See documentation for Memory Management  (https://docs.pytorch.org/docs/stable/notes/cuda.html#optimizing-memory-usage-with-pytorch-cuda-alloc-conf)
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync joint_train_logs/wandb/offline-run-20261016_095558-dr80y6ld[0m

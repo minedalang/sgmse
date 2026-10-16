@@ -214,6 +214,7 @@ class BandTimeReliabilityRouter(nn.Module):
             "x0_route": x0_route,
             "strength_tile": strength_tile_raw,
             "strength_logit": strength_logit.detach(),  # diagnostic only
+            "strength_logit_train": strength_logit,  # logit penalty training, opt-in
         }
         if self.use_gate:
             out["gate_tile"] = gate_tile_raw

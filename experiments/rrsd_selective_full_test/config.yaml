@@ -1,0 +1,20 @@
+schema_version: 1
+experiment_id: rrsd_selective_full_test
+purpose: Full 150-file validation of RRSD selective time window
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+use_ema: true
+input_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisy
+clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/clean
+num_files: 150
+N: 30
+snr: 0.5
+sampler: pc
+corrector: none
+seed: 2026
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_min: 0.15
+rrsd_t_max: 0.75
+inference_start_utc: '2026-10-16T11:18:41Z'
+inference_end_utc: '2026-10-16T11:26:42Z'
+controls: unavailable_provenance_unverified

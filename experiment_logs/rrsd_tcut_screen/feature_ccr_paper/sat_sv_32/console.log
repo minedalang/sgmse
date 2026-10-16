@@ -1,0 +1,48 @@
+Loading weights:   0%|          | 0/229 [00:00<?, ?it/s]Loading weights: 100%|██████████| 229/229 [00:00<00:00, 26430.81it/s]
+[RRSD-SSL] model=unispeech_sv path=microsoft/unispeech-sat-base-plus-sv n=32 layers=[3, 6, 9, 12]
+[RRSD-SSL] 4/32 completed (003_fileid_4431.wav)
+[RRSD-SSL] 8/32 completed (007_fileid_10001.wav)
+[RRSD-SSL] 12/32 completed (011_fileid_8207.wav)
+[RRSD-SSL] 16/32 completed (015_fileid_10839.wav)
+[RRSD-SSL] 20/32 completed (019_fileid_273.wav)
+[RRSD-SSL] 24/32 completed (023_fileid_2286.wav)
+[RRSD-SSL] 28/32 completed (027_fileid_6428.wav)
+[RRSD-SSL] 32/32 completed (031_fileid_9984.wav)
+Paired utterances=32. Lower D(SSL(X), SSL(Clean)) is closer to Clean.
+Layer id 0=features before transformer, layers 1-12 are transformer blocks.
+MSE=paper-inspired sequence-feature MSE; framecos=extra sensitivity diagnostic; both are independent of DNSMOS.
+[mse] layer=3 n=32: Off=0.0389617 Router=0.038545 Delta=-0.000416695 CI95=[-0.000581707,-0.000256166] closer=24/32 noise_dose=32/32 noise25=0.021706 noise15=0.037744 lowpass=0.010676 dropout=0.0056316
+    Spearman(DeltaDistance, Deltapesq)=+0.0821 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.3174 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.2401 (negative is expected, not assured)
+[mse] layer=6 n=32: Off=0.0442887 Router=0.0438288 Delta=-0.000459908 CI95=[-0.000739498,-0.000168792] closer=20/32 noise_dose=32/32 noise25=0.018159 noise15=0.032058 lowpass=0.008207 dropout=0.0080312
+    Spearman(DeltaDistance, Deltapesq)=+0.1628 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.1217 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.1976 (negative is expected, not assured)
+[mse] layer=9 n=32: Off=0.0434104 Router=0.0427918 Delta=-0.000618589 CI95=[-0.001131,-0.000167981] closer=22/32 noise_dose=32/32 noise25=0.013097 noise15=0.022456 lowpass=0.0054197 dropout=0.0068114
+    Spearman(DeltaDistance, Deltapesq)=+0.2346 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.0920 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.1012 (negative is expected, not assured)
+[mse] layer=12 n=32: Off=0.104885 Router=0.103624 Delta=-0.0012614 CI95=[-0.00254442,+2.37002e-05] closer=19/32 noise_dose=32/32 noise25=0.03766 noise15=0.057789 lowpass=0.015322 dropout=0.011592
+    Spearman(DeltaDistance, Deltapesq)=+0.3493 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.1305 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.0788 (negative is expected, not assured)
+[framecos] layer=3 n=32: Off=0.290424 Router=0.287588 Delta=-0.00283544 CI95=[-0.00405995,-0.00159166] closer=23/32 noise_dose=32/32 noise25=0.1702 noise15=0.29398 lowpass=0.080533 dropout=0.040048
+    Spearman(DeltaDistance, Deltapesq)=+0.0700 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.2680 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.2075 (negative is expected, not assured)
+[framecos] layer=6 n=32: Off=0.266117 Router=0.263665 Delta=-0.00245234 CI95=[-0.00413811,-0.000706768] closer=19/32 noise_dose=32/32 noise25=0.11338 noise15=0.19853 lowpass=0.050516 dropout=0.045662
+    Spearman(DeltaDistance, Deltapesq)=+0.1107 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.1389 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.1389 (negative is expected, not assured)
+[framecos] layer=9 n=32: Off=0.26671 Router=0.263064 Delta=-0.00364574 CI95=[-0.00688448,-0.000807063] closer=21/32 noise_dose=32/32 noise25=0.086001 noise15=0.14521 lowpass=0.035701 dropout=0.039779
+    Spearman(DeltaDistance, Deltapesq)=+0.2522 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.1653 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.0634 (negative is expected, not assured)
+[framecos] layer=12 n=32: Off=0.250208 Router=0.247943 Delta=-0.00226525 CI95=[-0.00492709,+0.000260958] closer=18/32 noise_dose=32/32 noise25=0.087142 noise15=0.13822 lowpass=0.032243 dropout=0.027235
+    Spearman(DeltaDistance, Deltapesq)=+0.3900 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltastoi)=-0.0535 (negative is expected, not assured)
+    Spearman(DeltaDistance, Deltasi_sdr)=+0.1994 (negative is expected, not assured)
+CAUTION: this is a screening experiment; compare within-encoder changes, not absolute MSE between distinct encoders.
+
+[DONE] /data/coding/sgmse/experiment_logs/rrsd_tcut_screen/feature_ccr_paper/sat_sv_32

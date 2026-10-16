@@ -1,0 +1,40 @@
+Could not reach the Hub ([Errno 104] Connection reset by peer). Using cached commit hash for 'microsoft/wavlm-base-plus'.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 14517.21it/s]
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 32
+[RRSD-TCUT] t_cut=0.0 scale=1.0 enabled=True seed=2026 N=30
+Traceback (most recent call last):
+  File "/data/coding/sgmse/joint_enhance_by_dir.py", line 342, in <module>
+    main()
+  File "/data/coding/sgmse/joint_enhance_by_dir.py", line 308, in main
+    enhanced = model.enhance(
+  File "/data/coding/sgmse/sgmse/joint_model.py", line 2757, in enhance
+    return super().enhance(
+  File "/data/coding/sgmse/sgmse/model.py", line 1529, in enhance
+    sample, nfe = sampler()
+  File "/data/coding/sgmse/sgmse/sampling/__init__.py", line 142, in pc_sampler
+    xt, xt_mean = predictor.update_fn(xt, y, vec_t, stepsize)
+  File "/data/coding/sgmse/sgmse/sampling/predictors.py", line 61, in update_fn
+    f, g = self.rsde.discretize(x, y, t, stepsize)
+  File "/data/coding/sgmse/sgmse/sdes.py", line 133, in discretize
+    rev_f = f - G[:, None, None, None] ** 2 * score_model(x, y, t) * (0.5 if self.probability_flow else 1.)
+  File "/data/coding/sgmse/sgmse/sampling/__init__.py", line 108, in predictor_score_fn
+    return score_calibrator(
+  File "/data/coding/sgmse/sgmse/joint_model.py", line 4450, in _score_calibrator
+    pred = self.rrsd_router(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1783, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/nn/modules/module.py", line 1794, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "/data/coding/sgmse/sgmse/reliability_router.py", line 182, in forward
+    t_feat = (t / max(float(t_max), 1e-8)).clamp(0.0, 1.0)
+TypeError: float() argument must be a string or a real number, not 'NoneType'
+Could not reach the Hub ([Errno 101] Network is unreachable). Using cached commit hash for 'microsoft/wavlm-base-plus'.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 25195.29it/s]
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 32
+[RRSD-TCUT] t_cut=0.0 scale=1.0 enabled=True seed=2026 N=30

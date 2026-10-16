@@ -1,0 +1,12 @@
+pesq: off=1.729178, router=1.749041, selective=1.740414
+  router delta=+0.019863, CI=[+0.008103,+0.037158], improved=23/32
+  selective delta=+0.011236, CI=[-0.002051,+0.032843], improved=17/32
+  selective_vs_router delta=-0.008627, CI=[-0.015585,-0.001346], improved=10/32
+stoi: off=0.830958, router=0.831925, selective=0.831299
+  router delta=+0.000967, CI=[+0.000599,+0.001348], improved=25/32
+  selective delta=+0.000340, CI=[+0.000223,+0.000473], improved=28/32
+  selective_vs_router delta=-0.000627, CI=[-0.000897,-0.000346], improved=6/32
+si_sdr: off=7.278470, router=7.801027, selective=7.468486
+  router delta=+0.522556, CI=[+0.464653,+0.582461], improved=32/32
+  selective delta=+0.190016, CI=[+0.156969,+0.223229], improved=32/32
+  selective_vs_router delta=-0.332540, CI=[-0.374578,-0.294202], improved=0/32

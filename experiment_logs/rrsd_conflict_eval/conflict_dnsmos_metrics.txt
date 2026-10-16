@@ -1,0 +1,38 @@
+Loaded  speechmetrics.relative.sisdr
+
+=== Corpus-level results (mean ± std) ===
+DNSMOS_P808_e  : 4.024 ± 0.128
+DNSMOS_SIG_e   : 3.479 ± 0.139
+DNSMOS_BAK_e   : 4.144 ± 0.056
+DNSMOS_OVRL_e  : 3.187 ± 0.173
+PESQ_e         : 1.750 ± 0.582
+STOI_e         : 0.8319 ± 0.1065
+CSIG_e         : 3.087 ± 0.651
+CBAK_e         : 2.746 ± 0.561
+COVL_e         : 2.381 ± 0.636
+WSS_e          : 37.009 ± 12.305 (lower is better)
+SI-SDR_e       : 7.763 ± 4.901
+segSNR_e       : 8.484 ± 3.691
+DNSMOS_P808_n  : 2.769 ± 0.387
+DNSMOS_SIG_n   : 2.190 ± 0.863
+DNSMOS_BAK_n   : 1.877 ± 0.778
+DNSMOS_OVRL_n  : 1.697 ± 0.585
+PESQ_n         : 1.205 ± 0.465
+STOI_n         : 0.6614 ± 0.1012
+CSIG_n         : 1.990 ± 0.440
+CBAK_n         : 1.682 ± 0.395
+COVL_n         : 1.486 ± 0.399
+WSS_n          : 69.941 ± 22.364 (lower is better)
+SI-SDR_n       : -12.165 ± 4.623
+segSNR_n       : -0.756 ± 4.693
+ΔPESQ          : 0.544 ± 0.777
+ΔSTOI          : 0.1705 ± 0.0677
+ΔSI-SDR        : 19.927 ± 3.353
+ΔWSS           : -32.932 ± 21.779 (lower is better)
+ΔDNSMOS_P808   : 1.255 ± 0.334
+ΔDNSMOS_SIG    : 1.289 ± 0.810
+ΔDNSMOS_BAK    : 2.267 ± 0.773
+ΔDNSMOS_OVRL   : 1.491 ± 0.549
+注：论文通常报告全体样本的均值；给出标准差可提升可复现性与可信度。Δ 指标表示相对 noisy 的提升。
+
+Per-utterance metrics saved to: /data/coding/sgmse/experiment_logs/rrsd_conflict_eval/conflict_dnsmos_metrics.csv

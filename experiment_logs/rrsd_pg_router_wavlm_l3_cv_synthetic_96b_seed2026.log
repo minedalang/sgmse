@@ -1,0 +1,160 @@
+[PG-RUN] ckpt=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt wavlm=microsoft/wavlm-base-plus layer=3 batches=96 bs=1 t=[0.05,0.5) fp32=32-true
+[MARK] 20:07:30 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=946.8MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 20:07:31 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=978.3MB :: after argument parsing
+[MARK] 20:07:31 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=978.3MB :: before model init
+Running NCSN++ as discriminative backbone
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: after model init
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: before logger init
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: after logger init
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: before callbacks init
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: after callbacks init
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: after trainer init
+[MARK] 20:07:35 pid=58987 ppid=58982 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1369.9MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=0 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ frontend    │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                                            
+Non-trainable params: 55.1 M                                                                        
+Total params: 55.2 M                                                                                
+Total estimated model params size (MB): 220.644                                                     
+Modules in train mode: 374                                                                          
+Modules in eval mode: 0                                                                             
+Total FLOPs: 0                                                                                      
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 23246.49it/s]
+[RRSD-PG-INIT] encoder=microsoft/wavlm-base-plus local_only=1 layer=3
+[RRSD-PG] batch=1 sample=0 anchor=router t=0.44815 alpha_mean=0.00019208 active=0.00781 active_tiles=4 gf_abs=5.16732e-05 gp_abs=4.01647e-06 gf_thr=5.1673e-06 gp_thr=4.0165e-07 fgood=0.07227 fbad=0.62109 pgood=0.20508 pbad=0.38867 conflict=0.01172 agree=0.05273 bothbad=0.35742 conflict_on_active=0.00000 alpha_conflict_budget=0.00640 base_ssl_mse=3.261905e-02 base_future_mse=6.151877e-04 fd=0
+[RRSD-TRAIN] step=0 future_ratio=0.99995399 alpha_mean=0.0001921 active=0.0078 logit_p50=-78.466 logit_lt_m20=0.975
+[RRSD-PG-SKIP] batch=2 t=0.70335
+[RRSD-TRAIN] step=1 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-156.351 logit_lt_m20=1.000
+[RRSD-PG-SKIP] batch=3 t=0.64810
+[RRSD-TRAIN] step=2 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-151.407 logit_lt_m20=1.000
+[RRSD-PG-SKIP] batch=4 t=0.99173
+[RRSD-PG-SKIP] batch=5 t=0.64971
+[RRSD-PG] batch=6 sample=0 anchor=router t=0.35157 alpha_mean=0.00011805 active=0.00391 active_tiles=2 gf_abs=5.87934e-05 gp_abs=1.41197e-06 gf_thr=5.8793e-06 gp_thr=1.4120e-07 fgood=0.07227 fbad=0.58984 pgood=0.13086 pbad=0.45898 conflict=0.02344 agree=0.01562 bothbad=0.37695 conflict_on_active=0.50000 alpha_conflict_budget=0.01788 base_ssl_mse=1.134541e-02 base_future_mse=3.244982e-04 fd=0
+[RRSD-PG] batch=7 sample=0 anchor=router t=0.42253 alpha_mean=0.00000000 active=0.00000 active_tiles=0 gf_abs=4.68032e-05 gp_abs=4.29044e-06 gf_thr=4.6803e-06 gp_thr=4.2904e-07 fgood=0.08594 fbad=0.75586 pgood=0.14844 pbad=0.60156 conflict=0.04297 agree=0.03711 bothbad=0.49805 conflict_on_active=0.00000 alpha_conflict_budget=0.00147 base_ssl_mse=2.687686e-02 base_future_mse=8.923059e-04 fd=0
+[RRSD-PG-SKIP] batch=8 t=0.80817
+[RRSD-PG] batch=9 sample=0 anchor=router t=0.27906 alpha_mean=0.00000408 active=0.00195 active_tiles=1 gf_abs=4.34133e-05 gp_abs=1.56068e-06 gf_thr=4.3413e-06 gp_thr=1.5607e-07 fgood=0.12891 fbad=0.66211 pgood=0.28711 pbad=0.41016 conflict=0.03516 agree=0.01562 bothbad=0.33008 conflict_on_active=0.00000 alpha_conflict_budget=0.01875 base_ssl_mse=1.859176e-02 base_future_mse=1.863299e-04 fd=0
+[RRSD-PG-SKIP] batch=10 t=0.51687
+[RRSD-PG-SKIP] batch=11 t=0.55311
+[RRSD-PG] batch=12 sample=0 anchor=router t=0.10371 alpha_mean=0.04250812 active=0.92383 active_tiles=473 gf_abs=3.77793e-04 gp_abs=1.84341e-05 gf_thr=3.7779e-05 gp_thr=1.8434e-06 fgood=0.32812 fbad=0.52734 pgood=0.40430 pbad=0.45703 conflict=0.10938 agree=0.18945 bothbad=0.29297 conflict_on_active=0.11628 alpha_conflict_budget=0.11094 base_ssl_mse=9.335139e-03 base_future_mse=1.796063e-04 fd=0
+[RRSD-PG-SKIP] batch=13 t=0.99057
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[RRSD-PG] batch=14 sample=0 anchor=router t=0.18319 alpha_mean=0.04181988 active=0.59375 active_tiles=304 gf_abs=1.44317e-04 gp_abs=8.42452e-06 gf_thr=1.4432e-05 gp_thr=8.4245e-07 fgood=0.32812 fbad=0.36133 pgood=0.40625 pbad=0.33789 conflict=0.12500 agree=0.17188 bothbad=0.16406 conflict_on_active=0.18750 alpha_conflict_budget=0.20550 base_ssl_mse=2.320207e-02 base_future_mse=2.839882e-04 fd=0
+[RRSD-PG] batch=15 sample=0 anchor=router t=0.31814 alpha_mean=0.00003892 active=0.00586 active_tiles=3 gf_abs=6.52104e-05 gp_abs=6.96387e-06 gf_thr=6.5210e-06 gp_thr=6.9639e-07 fgood=0.21094 fbad=0.51562 pgood=0.21094 pbad=0.48438 conflict=0.06641 agree=0.11133 bothbad=0.35547 conflict_on_active=0.33333 alpha_conflict_budget=0.83082 base_ssl_mse=3.412854e-02 base_future_mse=3.714182e-04 fd=0
+[RRSD-PG-SKIP] batch=16 t=0.60867
+[RRSD-PG] batch=17 sample=0 anchor=router t=0.18107 alpha_mean=0.01926481 active=0.31445 active_tiles=161 gf_abs=1.51282e-04 gp_abs=1.59528e-05 gf_thr=1.5128e-05 gp_thr=1.5953e-06 fgood=0.25000 fbad=0.27930 pgood=0.23047 pbad=0.27539 conflict=0.08594 agree=0.12305 bothbad=0.16016 conflict_on_active=0.24845 alpha_conflict_budget=0.25147 base_ssl_mse=2.566059e-02 base_future_mse=1.846661e-04 fd=0
+[RRSD-PG-SKIP] batch=18 t=0.79510
+[RRSD-PG-SKIP] batch=19 t=0.56524
+[RRSD-PG-SKIP] batch=20 t=0.82728
+[RRSD-PG-SKIP] batch=21 t=0.73665
+[RRSD-PG] batch=22 sample=0 anchor=router t=0.19340 alpha_mean=0.02153600 active=0.48242 active_tiles=247 gf_abs=1.04145e-04 gp_abs=1.02448e-05 gf_thr=1.0415e-05 gp_thr=1.0245e-06 fgood=0.28906 fbad=0.52930 pgood=0.21875 pbad=0.42383 conflict=0.12305 agree=0.11719 bothbad=0.25586 conflict_on_active=0.22672 alpha_conflict_budget=0.25472 base_ssl_mse=1.344088e-02 base_future_mse=3.059017e-04 fd=0
+[RRSD-PG-SKIP] batch=23 t=0.69655
+[RRSD-PG] batch=24 sample=0 anchor=router t=0.22564 alpha_mean=0.02382437 active=0.45703 active_tiles=234 gf_abs=1.23683e-04 gp_abs=9.24692e-06 gf_thr=1.2368e-05 gp_thr=9.2469e-07 fgood=0.28125 fbad=0.44336 pgood=0.29297 pbad=0.42578 conflict=0.11914 agree=0.13086 bothbad=0.24023 conflict_on_active=0.18376 alpha_conflict_budget=0.16226 base_ssl_mse=1.170779e-02 base_future_mse=4.786167e-04 fd=0
+[RRSD-PG] batch=25 sample=0 anchor=router t=0.24139 alpha_mean=0.01097963 active=0.28125 active_tiles=144 gf_abs=1.00338e-04 gp_abs=4.41380e-06 gf_thr=1.0034e-05 gp_thr=4.4138e-07 fgood=0.18945 fbad=0.57617 pgood=0.16992 pbad=0.39453 conflict=0.08008 agree=0.08789 bothbad=0.27930 conflict_on_active=0.21528 alpha_conflict_budget=0.20434 base_ssl_mse=8.850348e-03 base_future_mse=4.395258e-04 fd=0
+[RRSD-PG] batch=26 sample=0 anchor=router t=0.22030 alpha_mean=0.01506856 active=0.27930 active_tiles=143 gf_abs=9.72071e-05 gp_abs=5.77264e-06 gf_thr=9.7207e-06 gp_thr=5.7726e-07 fgood=0.22070 fbad=0.57031 pgood=0.20703 pbad=0.47852 conflict=0.08984 agree=0.10938 bothbad=0.32031 conflict_on_active=0.20979 alpha_conflict_budget=0.21882 base_ssl_mse=1.869767e-02 base_future_mse=2.971125e-04 fd=0
+[RRSD-PG-SKIP] batch=27 t=0.04311
+[RRSD-PG] batch=28 sample=0 anchor=router t=0.32601 alpha_mean=0.00769837 active=0.14648 active_tiles=75 gf_abs=1.21546e-04 gp_abs=8.17457e-06 gf_thr=1.2155e-05 gp_thr=8.1746e-07 fgood=0.18555 fbad=0.46680 pgood=0.17188 pbad=0.48438 conflict=0.09375 agree=0.08008 bothbad=0.35352 conflict_on_active=0.26667 alpha_conflict_budget=0.22233 base_ssl_mse=2.319094e-02 base_future_mse=5.322542e-04 fd=0
+[RRSD-PG] batch=29 sample=0 anchor=router t=0.35561 alpha_mean=0.00132965 active=0.02734 active_tiles=14 gf_abs=7.14184e-05 gp_abs=1.29414e-05 gf_thr=7.1418e-06 gp_thr=1.2941e-06 fgood=0.16016 fbad=0.58398 pgood=0.12109 pbad=0.50586 conflict=0.07227 agree=0.05469 bothbad=0.39062 conflict_on_active=0.35714 alpha_conflict_budget=0.39386 base_ssl_mse=3.678927e-02 base_future_mse=6.060610e-04 fd=0
+[RRSD-PG] batch=30 sample=0 anchor=router t=0.41732 alpha_mean=0.00028974 active=0.03125 active_tiles=16 gf_abs=5.94354e-05 gp_abs=7.35769e-06 gf_thr=5.9435e-06 gp_thr=7.3577e-07 fgood=0.14844 fbad=0.77344 pgood=0.22852 pbad=0.53516 conflict=0.07227 agree=0.06250 bothbad=0.43945 conflict_on_active=0.31250 alpha_conflict_budget=0.48379 base_ssl_mse=3.198712e-02 base_future_mse=1.261729e-03 fd=0
+[RRSD-PG] batch=31 sample=0 anchor=router t=0.47249 alpha_mean=0.00028220 active=0.01758 active_tiles=9 gf_abs=1.05040e-04 gp_abs=1.84315e-05 gf_thr=1.0504e-05 gp_thr=1.8431e-06 fgood=0.04688 fbad=0.90039 pgood=0.11914 pbad=0.28711 conflict=0.02148 agree=0.02539 bothbad=0.25391 conflict_on_active=0.00000 alpha_conflict_budget=0.00001 base_ssl_mse=4.965759e-02 base_future_mse=7.554965e-04 fd=0
+[RRSD-PG-SKIP] batch=32 t=0.66562
+[RRSD-PG] batch=33 sample=0 anchor=router t=0.11605 alpha_mean=0.03689717 active=0.68164 active_tiles=349 gf_abs=3.15867e-04 gp_abs=1.79495e-05 gf_thr=3.1587e-05 gp_thr=1.7949e-06 fgood=0.40820 fbad=0.31055 pgood=0.28516 pbad=0.47070 conflict=0.16016 agree=0.20117 bothbad=0.22070 conflict_on_active=0.20917 alpha_conflict_budget=0.19523 base_ssl_mse=1.587525e-02 base_future_mse=1.717470e-04 fd=0
+[RRSD-PG] batch=34 sample=0 anchor=router t=0.32736 alpha_mean=0.00117614 active=0.06250 active_tiles=32 gf_abs=1.21908e-04 gp_abs=6.55088e-06 gf_thr=1.2191e-05 gp_thr=6.5509e-07 fgood=0.21875 fbad=0.35352 pgood=0.32031 pbad=0.37305 conflict=0.07227 agree=0.13867 bothbad=0.18555 conflict_on_active=0.18750 alpha_conflict_budget=0.18165 base_ssl_mse=3.533782e-02 base_future_mse=3.956531e-04 fd=0
+[RRSD-PG-SKIP] batch=35 t=0.73809
+[RRSD-PG] batch=36 sample=0 anchor=router t=0.36379 alpha_mean=0.00126770 active=0.02734 active_tiles=14 gf_abs=6.19226e-05 gp_abs=8.55909e-07 gf_thr=6.1923e-06 gp_thr=8.5591e-08 fgood=0.07422 fbad=0.87305 pgood=0.26172 pbad=0.38281 conflict=0.03320 agree=0.03711 bothbad=0.32812 conflict_on_active=0.28571 alpha_conflict_budget=0.37183 base_ssl_mse=5.273752e-03 base_future_mse=5.314540e-04 fd=0
+[RRSD-PG-SKIP] batch=37 t=0.62341
+[RRSD-PG-SKIP] batch=38 t=0.57487
+[RRSD-PG-SKIP] batch=39 t=0.54951
+[RRSD-PG] batch=40 sample=0 anchor=router t=0.11328 alpha_mean=0.05127839 active=0.78711 active_tiles=403 gf_abs=2.14643e-04 gp_abs=1.14922e-05 gf_thr=2.1464e-05 gp_thr=1.1492e-06 fgood=0.37695 fbad=0.39844 pgood=0.31641 pbad=0.41211 conflict=0.14258 agree=0.16797 bothbad=0.23633 conflict_on_active=0.17866 alpha_conflict_budget=0.20619 base_ssl_mse=1.085653e-02 base_future_mse=1.553422e-04 fd=0
+[RRSD-PG-SKIP] batch=41 t=0.64681
+[RRSD-PG] batch=42 sample=0 anchor=router t=0.25632 alpha_mean=0.02821413 active=0.57812 active_tiles=296 gf_abs=1.75177e-04 gp_abs=1.10292e-05 gf_thr=1.7518e-05 gp_thr=1.1029e-06 fgood=0.35547 fbad=0.45508 pgood=0.32031 pbad=0.48047 conflict=0.13672 agree=0.17578 bothbad=0.30078 conflict_on_active=0.19257 alpha_conflict_budget=0.18367 base_ssl_mse=1.296415e-02 base_future_mse=5.792657e-04 fd=0
+[RRSD-PG-SKIP] batch=43 t=0.67905
+[RRSD-PG-SKIP] batch=44 t=0.65166
+[RRSD-PG] batch=45 sample=0 anchor=router t=0.32145 alpha_mean=0.00319563 active=0.07422 active_tiles=38 gf_abs=1.12510e-04 gp_abs=5.38058e-06 gf_thr=1.1251e-05 gp_thr=5.3806e-07 fgood=0.10352 fbad=0.24609 pgood=0.07031 pbad=0.19141 conflict=0.04297 agree=0.03516 bothbad=0.14453 conflict_on_active=0.36842 alpha_conflict_budget=0.41507 base_ssl_mse=1.386701e-02 base_future_mse=3.696004e-04 fd=0
+[RRSD-PG-SKIP] batch=46 t=0.94201
+[RRSD-PG] batch=47 sample=0 anchor=router t=0.09540 alpha_mean=0.05070150 active=1.00000 active_tiles=512 gf_abs=3.32853e-04 gp_abs=1.24828e-05 gf_thr=3.3285e-05 gp_thr=1.2483e-06 fgood=0.37109 fbad=0.49609 pgood=0.41602 pbad=0.45703 conflict=0.12305 agree=0.20117 bothbad=0.28516 conflict_on_active=0.12305 alpha_conflict_budget=0.11756 base_ssl_mse=6.509897e-03 base_future_mse=2.153207e-04 fd=0
+[RRSD-PG-SKIP] batch=48 t=0.82058
+[RRSD-PG] batch=49 sample=0 anchor=router t=0.41286 alpha_mean=0.00000275 active=0.00195 active_tiles=1 gf_abs=6.58023e-05 gp_abs=8.35805e-06 gf_thr=6.5802e-06 gp_thr=8.3580e-07 fgood=0.04102 fbad=0.81836 pgood=0.15625 pbad=0.44141 conflict=0.02734 agree=0.01172 bothbad=0.38086 conflict_on_active=1.00000 alpha_conflict_budget=0.74606 base_ssl_mse=4.696365e-02 base_future_mse=6.009772e-04 fd=0
+[RRSD-PG] batch=50 sample=0 anchor=router t=0.10832 alpha_mean=0.01400514 active=0.44336 active_tiles=227 gf_abs=1.38063e-04 gp_abs=1.65057e-06 gf_thr=1.3806e-05 gp_thr=1.6506e-07 fgood=0.16602 fbad=0.60547 pgood=0.15039 pbad=0.47266 conflict=0.08203 agree=0.04688 bothbad=0.33984 conflict_on_active=0.16740 alpha_conflict_budget=0.20345 base_ssl_mse=1.748727e-03 base_future_mse=1.204086e-04 fd=0
+[RRSD-PG] batch=51 sample=0 anchor=router t=0.34144 alpha_mean=0.00316860 active=0.07422 active_tiles=38 gf_abs=1.12324e-04 gp_abs=1.39990e-05 gf_thr=1.1232e-05 gp_thr=1.3999e-06 fgood=0.21289 fbad=0.53711 pgood=0.26562 pbad=0.41797 conflict=0.08984 agree=0.10742 bothbad=0.28906 conflict_on_active=0.28947 alpha_conflict_budget=0.31869 base_ssl_mse=4.713262e-02 base_future_mse=7.185015e-04 fd=0
+[RRSD-PG] batch=52 sample=0 anchor=router t=0.26628 alpha_mean=0.00382050 active=0.17578 active_tiles=90 gf_abs=7.76070e-05 gp_abs=1.09903e-05 gf_thr=7.7607e-06 gp_thr=1.0990e-06 fgood=0.24023 fbad=0.35547 pgood=0.17188 pbad=0.37891 conflict=0.12695 agree=0.08594 bothbad=0.19922 conflict_on_active=0.34444 alpha_conflict_budget=0.30029 base_ssl_mse=2.573569e-02 base_future_mse=2.953282e-04 fd=0
+[RRSD-PG] batch=53 sample=0 anchor=router t=0.35288 alpha_mean=0.00379543 active=0.06250 active_tiles=32 gf_abs=8.30257e-05 gp_abs=4.69110e-06 gf_thr=8.3026e-06 gp_thr=4.6911e-07 fgood=0.17188 fbad=0.68555 pgood=0.25391 pbad=0.47852 conflict=0.06250 agree=0.08984 bothbad=0.39062 conflict_on_active=0.25000 alpha_conflict_budget=0.24830 base_ssl_mse=2.195701e-02 base_future_mse=7.438642e-04 fd=0
+[RRSD-PG] batch=54 sample=0 anchor=router t=0.06544 alpha_mean=0.02518539 active=0.79102 active_tiles=405 gf_abs=4.40272e-04 gp_abs=1.58162e-05 gf_thr=4.4027e-05 gp_thr=1.5816e-06 fgood=0.32031 fbad=0.36133 pgood=0.25000 pbad=0.38281 conflict=0.10938 agree=0.16016 bothbad=0.20898 conflict_on_active=0.13827 alpha_conflict_budget=0.15874 base_ssl_mse=7.245767e-03 base_future_mse=8.223347e-05 fd=0
+[RRSD-PG-SKIP] batch=55 t=0.77545
+[RRSD-PG] batch=56 sample=0 anchor=router t=0.41206 alpha_mean=0.00526173 active=0.12500 active_tiles=64 gf_abs=1.09157e-04 gp_abs=1.19127e-05 gf_thr=1.0916e-05 gp_thr=1.1913e-06 fgood=0.16211 fbad=0.59180 pgood=0.16797 pbad=0.48438 conflict=0.07617 agree=0.07617 bothbad=0.38281 conflict_on_active=0.25000 alpha_conflict_budget=0.19293 base_ssl_mse=3.057211e-02 base_future_mse=1.347946e-03 fd=0
+[RRSD-PG-SKIP] batch=57 t=0.71441
+[RRSD-PG] batch=58 sample=0 anchor=router t=0.06298 alpha_mean=0.02235870 active=0.92578 active_tiles=474 gf_abs=4.53999e-04 gp_abs=1.18939e-05 gf_thr=4.5400e-05 gp_thr=1.1894e-06 fgood=0.28516 fbad=0.59180 pgood=0.20312 pbad=0.52539 conflict=0.10352 agree=0.08398 bothbad=0.36328 conflict_on_active=0.11181 alpha_conflict_budget=0.10539 base_ssl_mse=7.811164e-03 base_future_mse=1.124120e-04 fd=0
+[RRSD-PG] batch=59 sample=0 anchor=router t=0.36744 alpha_mean=0.00000001 active=0.00000 active_tiles=0 gf_abs=4.15447e-05 gp_abs=4.24073e-06 gf_thr=4.1545e-06 gp_thr=4.2407e-07 fgood=0.23633 fbad=0.47266 pgood=0.31641 pbad=0.32617 conflict=0.05469 agree=0.10547 bothbad=0.22852 conflict_on_active=0.00000 alpha_conflict_budget=0.08462 base_ssl_mse=3.583243e-02 base_future_mse=4.392112e-04 fd=0
+[RRSD-PG-SKIP] batch=60 t=0.75557
+[RRSD-PG-SKIP] batch=61 t=0.93329
+[RRSD-PG-SKIP] batch=62 t=0.73870
+[RRSD-PG] batch=63 sample=0 anchor=router t=0.16762 alpha_mean=0.03394815 active=0.55859 active_tiles=286 gf_abs=1.86780e-04 gp_abs=2.50467e-05 gf_thr=1.8678e-05 gp_thr=2.5047e-06 fgood=0.31641 fbad=0.35352 pgood=0.33594 pbad=0.32227 conflict=0.11328 agree=0.16211 bothbad=0.16016 conflict_on_active=0.17832 alpha_conflict_budget=0.16839 base_ssl_mse=2.401318e-02 base_future_mse=2.420088e-04 fd=0
+[RRSD-PG] batch=64 sample=0 anchor=router t=0.37964 alpha_mean=0.00000026 active=0.00000 active_tiles=0 gf_abs=4.04264e-05 gp_abs=8.41836e-07 gf_thr=4.0426e-06 gp_thr=8.4184e-08 fgood=0.09180 fbad=0.42188 pgood=0.16016 pbad=0.14062 conflict=0.00977 agree=0.03906 bothbad=0.09766 conflict_on_active=0.00000 alpha_conflict_budget=0.90464 base_ssl_mse=5.583177e-03 base_future_mse=2.924215e-04 fd=0
+[RRSD-PG] batch=65 sample=0 anchor=router t=0.45128 alpha_mean=0.00020405 active=0.00391 active_tiles=2 gf_abs=4.69111e-05 gp_abs=1.79254e-06 gf_thr=4.6911e-06 gp_thr=1.7925e-07 fgood=0.02734 fbad=0.90625 pgood=0.11523 pbad=0.34961 conflict=0.01367 agree=0.01367 bothbad=0.33398 conflict_on_active=0.00000 alpha_conflict_budget=0.00013 base_ssl_mse=2.040033e-02 base_future_mse=6.969458e-04 fd=0
+[RRSD-PG] batch=66 sample=0 anchor=router t=0.20975 alpha_mean=0.02454271 active=0.43555 active_tiles=223 gf_abs=1.70369e-04 gp_abs=1.69512e-05 gf_thr=1.7037e-05 gp_thr=1.6951e-06 fgood=0.20898 fbad=0.49414 pgood=0.26562 pbad=0.45508 conflict=0.10547 agree=0.08789 bothbad=0.26562 conflict_on_active=0.22422 alpha_conflict_budget=0.23717 base_ssl_mse=2.621205e-02 base_future_mse=3.367991e-04 fd=0
+[RRSD-PG] batch=67 sample=0 anchor=router t=0.09629 alpha_mean=0.03925811 active=0.88281 active_tiles=452 gf_abs=3.06173e-04 gp_abs=1.82324e-05 gf_thr=3.0617e-05 gp_thr=1.8232e-06 fgood=0.40039 fbad=0.41211 pgood=0.37500 pbad=0.39453 conflict=0.09766 agree=0.22266 bothbad=0.23047 conflict_on_active=0.10841 alpha_conflict_budget=0.11280 base_ssl_mse=7.738217e-03 base_future_mse=2.090781e-04 fd=0
+[RRSD-PG] batch=68 sample=0 anchor=router t=0.21256 alpha_mean=0.00064807 active=0.04102 active_tiles=21 gf_abs=6.48378e-05 gp_abs=1.72580e-06 gf_thr=6.4838e-06 gp_thr=1.7258e-07 fgood=0.14453 fbad=0.75781 pgood=0.31836 pbad=0.37109 conflict=0.04102 agree=0.08594 bothbad=0.29492 conflict_on_active=0.19048 alpha_conflict_budget=0.18359 base_ssl_mse=1.482630e-02 base_future_mse=2.167560e-04 fd=0
+[RRSD-PG] batch=69 sample=0 anchor=router t=0.07200 alpha_mean=0.01611388 active=0.55469 active_tiles=284 gf_abs=5.69340e-04 gp_abs=2.08376e-05 gf_thr=5.6934e-05 gp_thr=2.0838e-06 fgood=0.21289 fbad=0.29883 pgood=0.26953 pbad=0.27734 conflict=0.06641 agree=0.12500 bothbad=0.16211 conflict_on_active=0.11972 alpha_conflict_budget=0.12322 base_ssl_mse=8.692706e-03 base_future_mse=8.180903e-05 fd=0
+[RRSD-PG] batch=70 sample=0 anchor=router t=0.40742 alpha_mean=0.00007486 active=0.00391 active_tiles=2 gf_abs=6.74694e-05 gp_abs=4.88750e-06 gf_thr=6.7469e-06 gp_thr=4.8875e-07 fgood=0.34375 fbad=0.37891 pgood=0.08594 pbad=0.37695 conflict=0.06250 agree=0.02344 bothbad=0.27930 conflict_on_active=0.50000 alpha_conflict_budget=0.45272 base_ssl_mse=1.987959e-02 base_future_mse=6.336876e-04 fd=0
+[RRSD-PG-SKIP] batch=71 t=0.75268
+[RRSD-PG] batch=72 sample=0 anchor=router t=0.36126 alpha_mean=0.00362507 active=0.07422 active_tiles=38 gf_abs=9.56285e-05 gp_abs=7.87662e-06 gf_thr=9.5629e-06 gp_thr=7.8766e-07 fgood=0.12500 fbad=0.67383 pgood=0.18750 pbad=0.52930 conflict=0.07617 agree=0.04492 bothbad=0.40625 conflict_on_active=0.21053 alpha_conflict_budget=0.13278 base_ssl_mse=2.653169e-02 base_future_mse=9.660491e-04 fd=0
+[RRSD-PG] batch=73 sample=0 anchor=router t=0.18733 alpha_mean=0.02943343 active=0.59570 active_tiles=305 gf_abs=2.09064e-04 gp_abs=1.45607e-05 gf_thr=2.0906e-05 gp_thr=1.4561e-06 fgood=0.30664 fbad=0.51953 pgood=0.33789 pbad=0.46875 conflict=0.11133 agree=0.16211 bothbad=0.30273 conflict_on_active=0.15082 alpha_conflict_budget=0.18480 base_ssl_mse=2.150605e-02 base_future_mse=2.875602e-04 fd=0
+[RRSD-PG] batch=74 sample=0 anchor=router t=0.40622 alpha_mean=0.00000616 active=0.00195 active_tiles=1 gf_abs=2.09424e-05 gp_abs=7.57425e-07 gf_thr=2.0942e-06 gp_thr=7.5743e-08 fgood=0.38672 fbad=0.41016 pgood=0.26562 pbad=0.40234 conflict=0.11328 agree=0.13672 bothbad=0.22070 conflict_on_active=0.00000 alpha_conflict_budget=0.00000 base_ssl_mse=1.813433e-02 base_future_mse=3.315905e-04 fd=0
+[RRSD-PG-SKIP] batch=75 t=0.63255
+[RRSD-PG] batch=76 sample=0 anchor=router t=0.16797 alpha_mean=0.01582710 active=0.69141 active_tiles=354 gf_abs=7.31687e-05 gp_abs=1.50397e-06 gf_thr=7.3169e-06 gp_thr=1.5040e-07 fgood=0.28516 fbad=0.59180 pgood=0.22656 pbad=0.57812 conflict=0.14062 agree=0.09180 bothbad=0.36523 conflict_on_active=0.16949 alpha_conflict_budget=0.21278 base_ssl_mse=2.145784e-03 base_future_mse=3.043186e-04 fd=0
+[RRSD-PG] batch=77 sample=0 anchor=router t=0.40521 alpha_mean=0.00000030 active=0.00000 active_tiles=0 gf_abs=4.43076e-05 gp_abs=3.01410e-06 gf_thr=4.4308e-06 gp_thr=3.0141e-07 fgood=0.10352 fbad=0.67969 pgood=0.19141 pbad=0.49023 conflict=0.05664 agree=0.02539 bothbad=0.38867 conflict_on_active=0.00000 alpha_conflict_budget=0.61299 base_ssl_mse=2.056023e-02 base_future_mse=6.532068e-04 fd=0
+[RRSD-PG] batch=78 sample=0 anchor=router t=0.06363 alpha_mean=0.01905850 active=0.74805 active_tiles=383 gf_abs=3.73844e-04 gp_abs=1.34006e-05 gf_thr=3.7384e-05 gp_thr=1.3401e-06 fgood=0.35156 fbad=0.33984 pgood=0.24414 pbad=0.34766 conflict=0.13867 agree=0.11914 bothbad=0.16016 conflict_on_active=0.18538 alpha_conflict_budget=0.20271 base_ssl_mse=1.119767e-02 base_future_mse=9.053452e-05 fd=0
+[RRSD-PG-SKIP] batch=79 t=0.56600
+[RRSD-PG-SKIP] batch=80 t=0.65911
+[RRSD-PG-SKIP] batch=81 t=0.69166
+[RRSD-PG-SKIP] batch=82 t=0.94440
+[RRSD-PG-SKIP] batch=83 t=0.69966
+[RRSD-PG-SKIP] batch=84 t=0.58183
+[RRSD-PG] batch=85 sample=0 anchor=router t=0.10377 alpha_mean=0.03017636 active=0.55273 active_tiles=283 gf_abs=2.24728e-04 gp_abs=5.01998e-06 gf_thr=2.2473e-05 gp_thr=5.0200e-07 fgood=0.39258 fbad=0.24805 pgood=0.19727 pbad=0.48047 conflict=0.19922 agree=0.14062 bothbad=0.15625 conflict_on_active=0.32509 alpha_conflict_budget=0.34276 base_ssl_mse=4.225466e-03 base_future_mse=1.247765e-04 fd=0
+[RRSD-PG-SKIP] batch=86 t=0.56756
+[RRSD-PG] batch=87 sample=0 anchor=router t=0.21003 alpha_mean=0.01950166 active=0.38281 active_tiles=196 gf_abs=9.70909e-05 gp_abs=5.53074e-06 gf_thr=9.7091e-06 gp_thr=5.5307e-07 fgood=0.24609 fbad=0.52344 pgood=0.20312 pbad=0.40625 conflict=0.09180 agree=0.10938 bothbad=0.26953 conflict_on_active=0.18367 alpha_conflict_budget=0.19306 base_ssl_mse=1.127517e-02 base_future_mse=2.941538e-04 fd=0
+[RRSD-PG-SKIP] batch=88 t=0.65904
+[RRSD-PG-SKIP] batch=89 t=0.85260
+[RRSD-PG-SKIP] batch=90 t=0.60297
+[RRSD-PG] batch=91 sample=0 anchor=router t=0.33354 alpha_mean=0.00017425 active=0.01758 active_tiles=9 gf_abs=6.05386e-05 gp_abs=3.41378e-06 gf_thr=6.0539e-06 gp_thr=3.4138e-07 fgood=0.07617 fbad=0.83984 pgood=0.15039 pbad=0.18164 conflict=0.02930 agree=0.03320 bothbad=0.13477 conflict_on_active=0.11111 alpha_conflict_budget=0.01440 base_ssl_mse=1.105948e-02 base_future_mse=2.785194e-04 fd=0
+[RRSD-PG] batch=92 sample=0 anchor=router t=0.30769 alpha_mean=0.00090685 active=0.04492 active_tiles=23 gf_abs=1.21370e-04 gp_abs=1.61383e-05 gf_thr=1.2137e-05 gp_thr=1.6138e-06 fgood=0.20508 fbad=0.45312 pgood=0.18750 pbad=0.38867 conflict=0.09570 agree=0.08789 bothbad=0.26953 conflict_on_active=0.13043 alpha_conflict_budget=0.25979 base_ssl_mse=3.581961e-02 base_future_mse=4.438725e-04 fd=0
+[RRSD-PG-SKIP] batch=93 t=0.82989
+[RRSD-PG] batch=94 sample=0 anchor=router t=0.45329 alpha_mean=0.00005624 active=0.00977 active_tiles=5 gf_abs=9.38057e-05 gp_abs=1.03583e-05 gf_thr=9.3806e-06 gp_thr=1.0358e-06 fgood=0.28125 fbad=0.41211 pgood=0.26172 pbad=0.38867 conflict=0.12891 agree=0.12305 bothbad=0.22070 conflict_on_active=0.00000 alpha_conflict_budget=0.00281 base_ssl_mse=4.188022e-02 base_future_mse=1.571923e-03 fd=0
+[RRSD-PG-SKIP] batch=95 t=0.77165
+[RRSD-PG] batch=96 sample=0 anchor=router t=0.49431 alpha_mean=0.00003860 active=0.00586 active_tiles=3 gf_abs=8.15762e-05 gp_abs=1.02962e-05 gf_thr=8.1576e-06 gp_thr=1.0296e-06 fgood=0.06445 fbad=0.46680 pgood=0.06250 pbad=0.40234 conflict=0.04492 agree=0.01953 bothbad=0.32422 conflict_on_active=0.00000 alpha_conflict_budget=0.00277 base_ssl_mse=6.089323e-02 base_future_mse=1.078294e-03 fd=0
+[RRSD-PG-DONE] finished without updating/saving any checkpoint
+Epoch 0/-2 ━━━━━━━━━━━━━━━━━━━━━━━━━━  95/98 0:00:18 • 0:00:01 5.77it/s v_num: 2.000                
+                                                                        train_loss_step: 41.745     

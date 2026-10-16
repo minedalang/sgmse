@@ -1,0 +1,106 @@
+--- a/sgmse/model.py
++++ b/sgmse/model.py
+@@ -1189,6 +1189,7 @@
+         anchor_v2_single_shot_step_arg = kwargs.pop("anchor_v2_single_shot_step", None)
+         rrsd_arg = kwargs.pop("rrsd", False)
+         rrsd_scale_arg = kwargs.pop("rrsd_scale", 1.0)
++        rrsd_t_cut_arg = float(kwargs.pop("rrsd_t_cut", 0.0))
+ 
+         n_route_modes = int(bool(anchor_calib_arg)) + int(bool(anchor_v2_arg)) + int(bool(rrsd_arg))
+         if n_route_modes > 1:
+@@ -1278,7 +1279,8 @@
+         elif bool(rrsd_arg):
+             if hasattr(self, "build_rrsd_score_calibrator"):
+                 score_calibrator = self.build_rrsd_score_calibrator(
+-                    Y, y_cond_spec, scale=float(rrsd_scale_arg)
++                    Y, y_cond_spec, scale=float(rrsd_scale_arg),
++                    t_cut=rrsd_t_cut_arg,
+                 )
+                 if score_calibrator is None:
+                     warnings.warn("rrsd=True but RRSD router is disabled in this model; using original sampler.")
+--- a/sgmse/joint_model.py
++++ b/sgmse/joint_model.py
+@@ -3467,6 +3467,7 @@
+         y_cond: Optional[torch.Tensor] = None,
+         *,
+         scale: float = 1.0,
++        t_cut: float = 0.0,
+     ):
+         """Build the inference-time RRSD routing step used inside the PC sampler.
+ 
+@@ -3493,6 +3494,9 @@
+ 
+         t_max = float(getattr(self.sde, "T", 1.0))
+         scale = float(scale)
++        t_cut = float(t_cut)
++        if not (0.0 <= t_cut <= t_max):
++            raise ValueError(f"rrsd_t_cut must be in [0, {t_max}], got {t_cut}")
+ 
+         def _score_calibrator(x_t, y_unused, t, score_base, step_index=None, num_steps=None):
+             x0_base, sigma, w_x, _ = self._rrsd_score_to_x0(x_t, y_main, t, score_base)
+@@ -3510,6 +3514,12 @@
+             # mu(x0_route)-mu(x0_base) = w_x * delta_x0, hence the exact
+             # corresponding score residual is w_x * delta_x0 / sigma^2.
+             delta_score = w_x * pred["delta_x0"] / sigma.square().clamp_min(1e-8)
++            # Inference-only: suppress the *additional* RRSD score correction
++            # near the clean end of the reverse process (small diffusion t).
++            # OUVE conditioning and the base score remain untouched.
++            if t_cut > 0.0:
++                keep = (t >= t_cut).reshape(-1, *([1] * (delta_score.ndim - 1)))
++                delta_score = delta_score * keep.to(dtype=delta_score.real.dtype)
+             score_route = score_base + delta_score.to(dtype=score_base.dtype)
+             if torch.is_complex(score_route):
+                 score_route = torch.complex(
+--- a/joint_enhance_by_dir.py
++++ b/joint_enhance_by_dir.py
+@@ -1,6 +1,7 @@
+ import os
+ import glob
+ import argparse
++import hashlib
+ 
+ import torch
+ import torch.nn.functional as F
+@@ -148,6 +149,18 @@
+         help="Inference multiplier on predicted alpha routing coefficients; 1.0 uses the trained router as-is.",
+     )
+     p.add_argument(
++        "--rrsd_t_cut",
++        type=float,
++        default=0.0,
++        help="Disable only RRSD additional score guidance at diffusion t < this cutoff. 0=off.",
++    )
++    p.add_argument(
++        "--seed",
++        type=int,
++        default=2026,
++        help="Per-utterance torch RNG seed, deterministic across ablations.",
++    )
++    p.add_argument(
+         "--anchor_v2_a_max",
+         type=float,
+         default=None,
+@@ -247,8 +260,15 @@
+     wavs = sorted(glob.glob(os.path.join(args.in_dir, "*.wav")))
+     print("Found wavs:", len(wavs))
+ 
++    print(f"[RRSD-TCUT] t_cut={args.rrsd_t_cut} scale={args.rrsd_scale} "
++          f"enabled={args.rrsd} seed={args.seed} N={args.N}", flush=True)
+     with torch.inference_mode():
+         for wp in wavs:
++            # Stable per-file RNG across the four variants, independent of the
++            # run order. Do not use Python's process-randomized hash().
++            h = hashlib.blake2b(os.path.basename(wp).encode("utf-8"), digest_size=4).digest()
++            file_seed = (int(args.seed) + int.from_bytes(h, "little")) % (2**32)
++            torch.manual_seed(file_seed)
+             # y = load_mono(wp, args.sample_rate).to(args.device)  # [T]
+             # y = y.unsqueeze(0)  # [1, T]
+ 
+@@ -286,6 +306,7 @@
+                 anchor_v2=args.anchor_v2,
+                 rrsd=args.rrsd,
+                 rrsd_scale=args.rrsd_scale,
++                rrsd_t_cut=args.rrsd_t_cut,
+                 anchor_v2_a_max=args.anchor_v2_a_max,
+                 anchor_v2_b_max=args.anchor_v2_b_max,
+                 anchor_v2_scale=args.anchor_v2_scale,

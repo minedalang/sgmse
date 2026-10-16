@@ -71,7 +71,7 @@ def get_pc_sampler(
     predictor_name, corrector_name, sde, score_fn, y,
     denoise=True, eps=3e-2, snr=0.1, corrector_steps=1, probability_flow: bool = False,
     intermediate=False, regeneration_strength=None, anchor_calibrator=None,
-    score_calibrator=None, **kwargs
+    score_calibrator=None, trace_sink=None, **kwargs
 ):
     """Create a Predictor-Corrector (PC) sampler.
 
@@ -140,6 +140,23 @@ def get_pc_sampler(
                 xt_before_predictor = xt
                 calibrator_context["step_index"] = int(i)
                 xt, xt_mean = predictor.update_fn(xt, y, vec_t, stepsize)
+                # Optional, fully opt-in diagnostic hook.  The hook is called
+                # after the predictor has evaluated the score calibrator so a
+                # calibrator can attach model-specific state (for example
+                # RRSD alpha tiles) to ``last_trace``. Diagnostics must not
+                # alter sampling; the return value is intentionally ignored.
+                if trace_sink is not None:
+                    calibrator_trace = getattr(score_calibrator, "last_trace", None)
+                    trace_sink({
+                        "step_index": int(i),
+                        "t": vec_t.detach(),
+                        "stepsize": stepsize.detach() if torch.is_tensor(stepsize) else stepsize,
+                        "x_t": xt_before_predictor.detach(),
+                        "x_mean": xt_mean.detach(),
+                        "x_next": xt.detach(),
+                        "y": y.detach(),
+                        "calibrator_trace": calibrator_trace,
+                    })
                 if anchor_calibrator is not None:
                     t_next = (vec_t - stepsize).clamp_min(0.0)
                     xt_mean_anchor = anchor_calibrator(xt_before_predictor, xt_mean, y, t_next)

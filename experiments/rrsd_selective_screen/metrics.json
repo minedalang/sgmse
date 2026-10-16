@@ -1,0 +1,61 @@
+{
+  "experiment_id": "rrsd_selective_screen",
+  "n": 32,
+  "arms": ["off", "router", "selective"],
+  "metrics": {
+    "pesq": {
+      "off_mean": 1.729178,
+      "router_mean": 1.749041,
+      "selective_mean": 1.740414,
+      "router_minus_off": 0.019863,
+      "selective_minus_off": 0.011236,
+      "selective_minus_router": -0.008627,
+      "selective_minus_router_bootstrap95": [-0.015585, -0.001346]
+    },
+    "stoi": {
+      "off_mean": 0.830958,
+      "router_mean": 0.831925,
+      "selective_mean": 0.831299,
+      "router_minus_off": 0.000967,
+      "selective_minus_off": 0.000340,
+      "selective_minus_router": -0.000627,
+      "selective_minus_router_bootstrap95": [-0.000897, -0.000346]
+    },
+    "si_sdr": {
+      "off_mean": 7.278470,
+      "router_mean": 7.801027,
+      "selective_mean": 7.468486,
+      "router_minus_off": 0.522556,
+      "selective_minus_off": 0.190016,
+      "selective_minus_router": -0.332540,
+      "selective_minus_router_bootstrap95": [-0.374578, -0.294202]
+    }
+  },
+  "inference_exit_code": 0,
+  "inference_wall_seconds": 321.694,
+    "dnsmos": {
+      "selective_mean": {
+        "SIG": 3.493366,
+        "OVRL": 3.202045,
+        "P808": 4.041344,
+        "BAK": 4.144153
+      },
+      "selective_minus_router": {
+        "SIG": 0.015659,
+        "OVRL": 0.016646,
+        "P808": 0.019483,
+        "BAK": 0.001381
+      },
+      "selective_minus_router_bootstrap95": {
+        "SIG": [0.010260, 0.021606],
+        "OVRL": [0.010890, 0.022912],
+        "P808": [0.012864, 0.026454],
+        "BAK": [-0.000899, 0.003753]
+      }
+    },
+    "limitations": [
+      "This is one deterministic seed per utterance.",
+      "The time window was chosen from offline future-x0 calibration and therefore is a transfer test, not a test-set tuned optimum.",
+      "DNSMOS is an estimator and should be reported together with reference metrics; the result is a Pareto trade-off rather than a uniform improvement."
+    ]
+}

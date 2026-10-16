@@ -1,0 +1,51 @@
+Parsed valid rows: 52; anchors=['router']
+
+ALL selected: n=52, mean t=0.2733
+  Mean initial Router alpha: 0.012863  95% sample bootstrap CI [0.00892265,0.0170772]
+  Fraction of active tiles (alpha>0.001): 0.288274  95% sample bootstrap CI [0.203426,0.380338]
+  Future-beneficial tiles: 0.217548  95% sample bootstrap CI [0.187268,0.245272]
+  SSL-beneficial tiles: 0.22923  95% sample bootstrap CI [0.20568,0.25162]
+  Conflict: future benefits, SSL harms: 0.0836848  95% sample bootstrap CI [0.0720398,0.0945816]
+  Agreement: both benefit: 0.0954404  95% sample bootstrap CI [0.0795523,0.110992]
+  Both consider guidance harmful: 0.280686  95% sample bootstrap CI [0.256344,0.303301]
+  Fraction of alpha budget on conflict tiles: 0.226103  95% sample bootstrap CI [0.173458,0.281992]
+  Mean abs future gradient per tile: 0.000144753  95% sample bootstrap CI [0.000114092,0.000181306]
+  Mean abs SSL gradient per tile: 9.0215e-06  95% sample bootstrap CI [7.38141e-06,1.06857e-05]
+  Samples with active tiles: 48/52
+  Conflict among active tiles, conditional on any active: mean=0.20920, median=0.18750
+  FD f directional sign: 0/0 valid, 0 below numerical floor
+  FD p directional sign: 0/0 valid, 0 below numerical floor
+
+LOW [0.05,0.2): n=17, mean t=0.1224
+  Mean initial Router alpha: 0.029963  95% sample bootstrap CI [0.0243111,0.0356626]
+  Fraction of active tiles (alpha>0.001): 0.678079  95% sample bootstrap CI [0.593735,0.763447]
+  Future-beneficial tiles: 0.31698  95% sample bootstrap CI [0.284927,0.346969]
+  SSL-beneficial tiles: 0.286306  95% sample bootstrap CI [0.248042,0.325377]
+  Conflict: future benefits, SSL harms: 0.119487  95% sample bootstrap CI [0.106158,0.134315]
+  Agreement: both benefit: 0.146255  95% sample bootstrap CI [0.123734,0.16774]
+  Both consider guidance harmful: 0.239085  95% sample bootstrap CI [0.206227,0.273563]
+  Fraction of alpha budget on conflict tiles: 0.185685  95% sample bootstrap CI [0.158764,0.215199]
+  Mean abs future gradient per tile: 0.000271549  95% sample bootstrap CI [0.000209723,0.000337577]
+  Mean abs SSL gradient per tile: 1.31143e-05  95% sample bootstrap CI [1.00587e-05,1.59788e-05]
+  Samples with active tiles: 17/17
+  Conflict among active tiles, conditional on any active: mean=0.17321, median=0.16949
+  FD f directional sign: 0/0 valid, 0 below numerical floor
+  FD p directional sign: 0/0 valid, 0 below numerical floor
+
+MID [0.2,0.5): n=35, mean t=0.3466
+  Mean initial Router alpha: 0.00455735  95% sample bootstrap CI [0.00223249,0.00733174]
+  Fraction of active tiles (alpha>0.001): 0.0989397  95% sample bootstrap CI [0.0534566,0.152343]
+  Future-beneficial tiles: 0.169253  95% sample bootstrap CI [0.13951,0.199779]
+  SSL-beneficial tiles: 0.201507  95% sample bootstrap CI [0.178624,0.225114]
+  Conflict: future benefits, SSL harms: 0.0662951  95% sample bootstrap CI [0.0547992,0.077958]
+  Agreement: both benefit: 0.0707589  95% sample bootstrap CI [0.0561923,0.0849348]
+  Both consider guidance harmful: 0.300892  95% sample bootstrap CI [0.27064,0.330858]
+  Fraction of alpha budget on conflict tiles: 0.245734  95% sample bootstrap CI [0.173228,0.329481]
+  Mean abs future gradient per tile: 8.31661e-05  95% sample bootstrap CI [7.24647e-05,9.55246e-05]
+  Mean abs SSL gradient per tile: 7.03356e-06  95% sample bootstrap CI [5.56398e-06,8.58273e-06]
+  Samples with active tiles: 31/35
+  Conflict among active tiles, conditional on any active: mean=0.22894, median=0.21053
+  FD f directional sign: 0/0 valid, 0 below numerical floor
+  FD p directional sign: 0/0 valid, 0 below numerical floor
+
+Important: normalized local derivatives at the reported anchor (zero or router), NOT DNSMOS gradients. Alpha gradients from frozen WavLM are diagnostic only. Signed finite differences should agree before treating a conflict mask as meaningful.

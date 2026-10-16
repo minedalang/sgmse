@@ -1,0 +1,68 @@
+[FD-RUN] ckpt=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt wavlm=microsoft/wavlm-base-plus layer=3 batches=4 bs=1 eps=0.005 topk=16 min_alpha=0.006
+[MARK] 21:10:02 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=950.8MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 1
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 21:10:04 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=980.8MB :: after argument parsing
+[MARK] 21:10:04 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=980.8MB :: before model init
+Running NCSN++ as discriminative backbone
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: after model init
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: before logger init
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: after logger init
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: before callbacks init
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: after callbacks init
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/trainer/connectors/logger_connector/logger_connector.py:76: Starting from v1.9.0, `tensorboardX` has been removed as a dependency of the `pytorch_lightning` package, due to potential conflicts with other packages in the ML ecosystem. For this reason, `logger=True` will use `CSVLogger` as the default logger, unless the `tensorboard` or `tensorboardX` packages are found. Please `pip install lightning[extra]` or one of them to enable TensorBoard support by default
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: after trainer init
+[MARK] 21:10:07 pid=9370 ppid=9363 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1313.8MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=0 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 8 trainable parameters.
+💡 Tip: For seamless cloud uploads and versioning, try installing [litmodels](https://pypi.org/project/litmodels/) to enable LitModelCheckpoint, which syncs automatically with the Lightning model registry.
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ frontend    │ StormFrontend             │ 27.3 M │ train │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 42.6 K                                                        
+Non-trainable params: 55.1 M                                                    
+Total params: 55.2 M                                                            
+Total estimated model params size (MB): 220.644                                 
+Modules in train mode: 374                                                      
+Modules in eval mode: 0                                                         
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 8
+[EMA] current shadow params  = 8
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 27429.66it/s]
+[RRSD-PG-INIT] encoder=microsoft/wavlm-base-plus local_only=1 layer=3
+[RRSD-FD] batch=1 sample=0 t=0.44815 conflict_tiles=0 alpha_mean=0.00019208 fd_eps=0.005000 plus_df=+0.000000e+00 plus_dp=+0.000000e+00 plus_ok=0 minus_df=+0.000000e+00 minus_dp=+0.000000e+00 minus_ok=0
+[RRSD-TRAIN] step=0 future_ratio=0.99995399 alpha_mean=0.0001921 active=0.0078 logit_p50=-78.466 logit_lt_m20=0.975
+[RRSD-FD-SKIP] batch=2 t=0.70335
+[RRSD-TRAIN] step=1 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-156.351 logit_lt_m20=1.000
+[RRSD-FD-SKIP] batch=3 t=0.64810
+[RRSD-TRAIN] step=2 future_ratio=1.00000000 alpha_mean=0.0000000 active=0.0000 logit_p50=-151.407 logit_lt_m20=1.000
+[RRSD-FD-SKIP] batch=4 t=0.99173
+[RRSD-FD-DONE] finished without optimizer update/checkpoint save
+Epoch 0/-2 ━━━━━━━━━          3/6 0:00:02 • 0:00:01 8.06it/s v_num: 0.000       
+                                                             train_loss_step:   
+                                                             7.560              

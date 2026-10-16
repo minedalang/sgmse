@@ -1,0 +1,55 @@
+Parsed valid rows: 52; anchors=['zero']
+
+ALL selected: n=52, mean t=0.2733
+  Mean initial Router alpha: 0.012863  95% sample bootstrap CI [0.00892265,0.0170772]
+  Fraction of active tiles (alpha>0.001): 0.288274  95% sample bootstrap CI [0.203426,0.380338]
+  Future-beneficial tiles: 0.24985  95% sample bootstrap CI [0.210973,0.286625]
+  SSL-beneficial tiles: 0.232272  95% sample bootstrap CI [0.208458,0.255183]
+  Conflict: future benefits, SSL harms: 0.0987835  95% sample bootstrap CI [0.083568,0.113883]
+  Agreement: both benefit: 0.10975  95% sample bootstrap CI [0.0899938,0.129358]
+  Both consider guidance harmful: 0.260855  95% sample bootstrap CI [0.233024,0.286475]
+  Fraction of alpha budget on conflict tiles: 0.261595  95% sample bootstrap CI [0.208609,0.31726]
+  Mean abs future gradient per tile: 0.000159121  95% sample bootstrap CI [0.000122474,0.000203177]
+  Mean abs SSL gradient per tile: 8.92782e-06  95% sample bootstrap CI [7.32611e-06,1.05555e-05]
+  Samples with active tiles: 48/52
+  Conflict among active tiles, conditional on any active: mean=0.24340, median=0.22938
+  FD f directional sign: 3/3 valid, 0 below numerical floor
+  FD f mean prediction=+1.03724e-04, observation=+1.09235e-04
+  FD p directional sign: 3/3 valid, 0 below numerical floor
+  FD p mean prediction=+9.14613e-06, observation=+7.88116e-06
+
+LOW [0.05,0.2): n=17, mean t=0.1224
+  Mean initial Router alpha: 0.029963  95% sample bootstrap CI [0.0243111,0.0356626]
+  Fraction of active tiles (alpha>0.001): 0.678079  95% sample bootstrap CI [0.593735,0.763447]
+  Future-beneficial tiles: 0.394991  95% sample bootstrap CI [0.351446,0.43658]
+  SSL-beneficial tiles: 0.293774  95% sample bootstrap CI [0.256303,0.332032]
+  Conflict: future benefits, SSL harms: 0.15556  95% sample bootstrap CI [0.137982,0.176014]
+  Agreement: both benefit: 0.179458  95% sample bootstrap CI [0.151768,0.206459]
+  Both consider guidance harmful: 0.190718  95% sample bootstrap CI [0.154865,0.231048]
+  Fraction of alpha budget on conflict tiles: 0.241159  95% sample bootstrap CI [0.212807,0.274912]
+  Mean abs future gradient per tile: 0.00031168  95% sample bootstrap CI [0.000236797,0.000390827]
+  Mean abs SSL gradient per tile: 1.28912e-05  95% sample bootstrap CI [9.9059e-06,1.56953e-05]
+  Samples with active tiles: 17/17
+  Conflict among active tiles, conditional on any active: mean=0.22369, median=0.20930
+  FD f directional sign: 0/0 valid, 0 below numerical floor
+  FD p directional sign: 0/0 valid, 0 below numerical floor
+
+MID [0.2,0.5): n=35, mean t=0.3466
+  Mean initial Router alpha: 0.00455735  95% sample bootstrap CI [0.00223249,0.00733174]
+  Fraction of active tiles (alpha>0.001): 0.0989397  95% sample bootstrap CI [0.0534566,0.152343]
+  Future-beneficial tiles: 0.179353  95% sample bootstrap CI [0.146762,0.212558]
+  SSL-beneficial tiles: 0.202399  95% sample bootstrap CI [0.179346,0.226285]
+  Conflict: future benefits, SSL harms: 0.0712063  95% sample bootstrap CI [0.0581491,0.0850482]
+  Agreement: both benefit: 0.0758923  95% sample bootstrap CI [0.0601538,0.0923014]
+  Both consider guidance harmful: 0.294922  95% sample bootstrap CI [0.264508,0.325223]
+  Fraction of alpha budget on conflict tiles: 0.271521  95% sample bootstrap CI [0.19806,0.354465]
+  Mean abs future gradient per tile: 8.50217e-05  95% sample bootstrap CI [7.34882e-05,9.83901e-05]
+  Mean abs SSL gradient per tile: 7.00273e-06  95% sample bootstrap CI [5.52919e-06,8.54259e-06]
+  Samples with active tiles: 31/35
+  Conflict among active tiles, conditional on any active: mean=0.25422, median=0.26562
+  FD f directional sign: 3/3 valid, 0 below numerical floor
+  FD f mean prediction=+1.03724e-04, observation=+1.09235e-04
+  FD p directional sign: 3/3 valid, 0 below numerical floor
+  FD p mean prediction=+9.14613e-06, observation=+7.88116e-06
+
+Important: normalized local derivatives at the reported anchor (zero or router), NOT DNSMOS gradients. Alpha gradients from frozen WavLM are diagnostic only. Signed finite differences should agree before treating a conflict mask as meaningful.

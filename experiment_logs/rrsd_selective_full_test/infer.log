@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/joint_enhance_by_dir.py", line 11, in <module>
+    from sgmse.joint_model import JointSemambaSgmseModel
+  File "/data/coding/sgmse/sgmse/joint_model.py", line 40, in <module>
+    from sgmse.model import ScoreModel
+  File "/data/coding/sgmse/sgmse/model.py", line 18, in <module>
+    from sgmse.backbones import BackboneRegistry
+  File "/data/coding/sgmse/sgmse/backbones/__init__.py", line 2, in <module>
+    from .ncsnpp import NCSNpp
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp.py", line 18, in <module>
+    from .ncsnpp_utils import layers, layerspp, normalization
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/layerspp.py", line 20, in <module>
+    from . import up_or_down_sampling
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/up_or_down_sampling.py", line 10, in <module>
+    from .op import upfirdn2d
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/__init__.py", line 1, in <module>
+    from .upfirdn2d import upfirdn2d
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/upfirdn2d.py", line 12, in <module>
+    upfirdn2d_op = load(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 1937, in load
+    return _jit_compile(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 2398, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 2508, in _write_ninja_file_and_build_library
+    verify_ninja_availability()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 2574, in verify_ninja_availability
+    raise RuntimeError("Ninja is required to load C++ extensions (pip install ninja to get it)")
+RuntimeError: Ninja is required to load C++ extensions (pip install ninja to get it)
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 150
+[RRSD-TCUT] t_cut=0.0 scale=1.0 enabled=True seed=2026 N=30
+Done. Output: experiment_logs/rrsd_selective_full_test/selective
