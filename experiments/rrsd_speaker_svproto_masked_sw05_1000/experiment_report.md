@@ -14,3 +14,9 @@ The checkpoint was evaluated on the existing 32-utterance, 16-speaker disjoint C
 Independent CAM++ same-speaker cross-utterance cosine: 0.840534 (Router 0.842322; masked sw=0 0.840694).
 
 The requested paired bootstrap used 20,000 resamples with seed 2026. No data or prior checkpoints were modified. An initial evaluator invocation failed due to a missing `PYTHONPATH` when launched from `/tmp`; it was corrected and rerun successfully.
+
+## DNSMOS follow-up
+
+The new 32-file output was evaluated with the mymetrics-compatible TorchMetrics DNSMOS evaluator. Means were P808 **3.921740**, SIG **3.428758**, BAK **4.117883**, and OVRL **3.111421**. Per-utterance values are in `experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/dnsmos_metrics.csv`, with the run log beside it.
+
+A paired DNSMOS delta/CI against Router and masked sw=0 is unavailable: `experiments/rrsd_cv_repeat32/router` and `masked_pair32` contain no DNSMOS outputs, while the existing speaker DNSMOS CSV uses a different manifest and filenames. No additional inference was generated.

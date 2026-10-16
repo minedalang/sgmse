@@ -348,5 +348,17 @@
       "sisdr": 3.0321362018585205,
       "cos": 0.9163962602615356
     }
-  ]
+  ],
+  "dnsmos": {
+    "means": {
+      "DNSMOS_P808": 3.9217402594430104,
+      "DNSMOS_SIG": 3.4287579802679415,
+      "DNSMOS_BAK": 4.117883233794178,
+      "DNSMOS_OVRL": 3.1114205677254976
+    },
+    "per_utterance_csv": "experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/dnsmos_metrics.csv",
+    "log": "experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/dnsmos_eval.log",
+    "paired_comparison": null,
+    "paired_comparison_note": "Unavailable: matching DNSMOS per-utterance outputs are absent for rrsd_cv_repeat32/router and masked_pair32; existing speaker DNSMOS CSV uses a different manifest."
+  }
 }
