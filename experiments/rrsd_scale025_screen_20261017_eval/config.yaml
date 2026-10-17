@@ -1,0 +1,19 @@
+experiment_id: rrsd_scale025_screen_20261017_eval
+date: 2026-10-17
+type: development_screen
+status: completed_archival_record
+purpose: compare_off_router_and_selective_scale025_window_on_existing_32_utterance_split
+data:
+  n_utterances: 32
+  split: existing_rrsd_tcut_screen_development_split
+  independent_test_set: false
+arms: [off, router, selective]
+metrics: [PESQ, STOI, SI-SDR]
+statistics:
+  paired_bootstrap_confidence_intervals: true
+  source_summary: summary.txt
+data_policy: reused_existing_outputs_only
+new_training: false
+new_dataset_write: false
+checkpoint_overwrite: false
+selection_warning: development_screen_not_for_final_test_tuning

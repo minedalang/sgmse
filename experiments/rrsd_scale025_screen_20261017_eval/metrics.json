@@ -1,0 +1,27 @@
+{
+  "experiment_id": "rrsd_scale025_screen_20261017_eval",
+  "n_utterances": 32,
+  "means": {
+    "off": {"PESQ": 1.729178037494421, "STOI": 0.8309583095941373, "SI_SDR": 7.278470446612108},
+    "router": {"PESQ": 1.7490405663847923, "STOI": 0.8319251702280562, "SI_SDR": 7.80102663704719},
+    "selective": {"PESQ": 1.7416364364326, "STOI": 0.8313036198165142, "SI_SDR": 7.431560206809736}
+  },
+  "paired_deltas": {
+    "router_minus_off": {
+      "PESQ": {"delta": 0.019863, "ci95": [0.008103, 0.037158], "improved": 23},
+      "STOI": {"delta": 0.000967, "ci95": [0.000599, 0.001348], "improved": 25},
+      "SI_SDR": {"delta": 0.522556, "ci95": [0.464653, 0.582461], "improved": 32}
+    },
+    "selective_minus_off": {
+      "PESQ": {"delta": 0.012458, "ci95": [0.002103, 0.029679], "improved": 27},
+      "STOI": {"delta": 0.000345, "ci95": [0.000248, 0.000445], "improved": 29},
+      "SI_SDR": {"delta": 0.153090, "ci95": [0.136886, 0.170264], "improved": 32}
+    },
+    "selective_minus_router": {
+      "PESQ": {"delta": -0.007404, "ci95": [-0.015295, -0.000825], "improved": 13},
+      "STOI": {"delta": -0.000622, "ci95": [-0.000902, -0.000340], "improved": 7},
+      "SI_SDR": {"delta": -0.369466, "ci95": [-0.413488, -0.327086], "improved": 0}
+    }
+  },
+  "limitations": ["development split", "no DNSMOS values in this archival artifact", "not a frozen official test evaluation"]
+}
