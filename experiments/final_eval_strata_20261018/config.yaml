@@ -1,0 +1,17 @@
+experiment_id: final_eval_strata_20261018
+purpose: posthoc_descriptive_snr_stratification_of_locked_final_evaluation
+source_experiment: final_eval_full_20261018
+manifest: experiments/final_eval_manifest_20261018/manifest.csv
+manifest_sha256: 4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b
+arms: [router, tcut005]
+reference_arm: off
+snr_bins:
+  snr_le_6: '<=6'
+  snr_7_12: '7-12'
+  snr_ge_13: '>=13'
+bootstrap_replicates: 10000
+bootstrap_seed: 20261018
+bootstrap_unit: utterance
+purpose_constraint: descriptive_only_no_test_set_tuning
+dataset_modified: false
+checkpoint_modified: false
