@@ -35,6 +35,8 @@
 
 对 150 个匹配 file-id 的事后交互分析进一步得到 `(Router-off)_with_reverb - (Router-off)_no_reverb`：PESQ `-0.04110`、STOI `-0.00267`、SI-SDR `-0.15524 dB`、DNSMOS-OVRL `-0.02854`，主要指标的 matched-file bootstrap CI 均排除零。这支持“Router 与混响条件存在稳定交互”，但尚不能区分前端条件失配、幅相重建问题或训练分布差异。SNR 分层也显示该现象不能由单一 SNR 阈值解释，因此暂不设计 reverb/SNR gate。记录见 `experiments/final_eval_full_20261018/`、`experiments/final_eval_reverb_interaction_20261018/` 和 `experiments/final_eval_strata_20261018/`。
 
+80k checkpoint 的保存配置审计显示训练/验证使用单一 `tr_synthetic`/`cv_synthetic` noisy SCP（映射后 10,800/1,200 条），没有记录 with-reverb 配对训练项或混响增强开关。它使训练—测试条件失配成为后续可证伪假设，但不构成因果证明；审计记录见 `experiments/checkpoint_data_condition_audit_20261018/`。
+
 ## 3. 已停止的候选路线
 
 - WavLM Harm Head：真实 Harm Oracle 的 PESQ/STOI/SI-SDR 增益接近零。
