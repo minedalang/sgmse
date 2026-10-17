@@ -1,0 +1,14 @@
+experiment_id: final_eval_reverb_interaction_20261018
+purpose: matched_file_posthoc_reverb_interaction_analysis
+source_experiment: final_eval_full_20261018
+manifest_sha256: 4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b
+matched_units: file_id
+n_units: 150
+arms: [router, tcut005]
+reference_arm: off
+bootstrap_replicates: 10000
+bootstrap_seed: 20261018
+bootstrap_unit: matched_file_id
+dataset_modified: false
+checkpoint_modified: false
+test_set_tuning: false
