@@ -26,6 +26,7 @@ TRAIN_SCP = DATA_ROOT / "scp_new/tr_synthetic/wav.scp"
 VALID_SCP = DATA_ROOT / "scp_new/cv_synthetic/wav.scp"
 CLEAN_DIR = DATA_ROOT / "clean"
 OUT = Path(os.environ.get("TR0_SCREEN_OUT", str(Path(__file__).resolve().parent)))
+EXPERIMENT_ID = os.environ.get("TR0_EXPERIMENT_ID", "tr0_adapter_screen_20261018")
 sys.path.insert(0, str(ROOT))
 
 STEPS = 200
@@ -173,7 +174,7 @@ def main() -> None:
             summaries.append(run_arm(arm, seed))
             print(f"[TR-0] finished arm={arm} seed={seed}", flush=True)
     result = {
-        "experiment_id": "tr0_adapter_screen_20261018",
+        "experiment_id": EXPERIMENT_ID,
         "status": "completed_short_screen_no_inference_evaluation",
         "checkpoint": {"path": str(CKPT), "sha256": sha256(CKPT)},
         "dataset": {"train_scp": str(TRAIN_SCP), "valid_scp": str(VALID_SCP), "modified": False},
