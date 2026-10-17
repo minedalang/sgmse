@@ -1,0 +1,34 @@
+{
+  "experiment_id": "checkpoint_data_condition_audit_20261018",
+  "checkpoint": "joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "checkpoint_epoch": 118,
+  "checkpoint_global_step": 80000,
+  "checkpoint_hparams": {
+    "train_wav_scp_saved": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/tr_synthetic/wav.scp",
+    "valid_wav_scp_saved": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/cv_synthetic/wav.scp",
+    "frontend": "storm",
+    "frontend_trainable": true,
+    "train_type": "mode2",
+    "sde": "ouve",
+    "loss_type": "score_matching",
+    "rrsd_teacher": "future_grad",
+    "rrsd_freeze_base": true,
+    "N": 30,
+    "sampler_type": "pc",
+    "frontend_nr_weight": 0.0,
+    "contrastive_weight": 0.0,
+    "final_content_weight": 0.0,
+    "anchor_v2_weight": 0.0
+  },
+  "mapped_scp_counts": {
+    "train_synthetic": 10800,
+    "valid_cv_synthetic": 1200,
+    "final_no_reverb": 150,
+    "final_with_reverb": 150
+  },
+  "training_condition_observation": "The saved train and validation SCPs point to the single synthetic noisy training/CV split; the checkpoint does not contain a with_reverb training flag or paired reverb SCP.",
+  "ema_present": true,
+  "dataset_modified": false,
+  "checkpoint_modified": false
+}

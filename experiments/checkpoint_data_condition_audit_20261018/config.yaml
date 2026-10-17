@@ -1,0 +1,12 @@
+experiment_id: checkpoint_data_condition_audit_20261018
+purpose: read_only_checkpoint_and_training_condition_audit
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+checkpoint_global_step: 80000
+checkpoint_epoch: 118
+mapped_train_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tr_synthetic/wav.scp
+mapped_valid_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/wav.scp
+mapped_final_no_reverb_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tt_synthetic_no_reverb/wav.scp
+mapped_final_with_reverb_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tt_synthetic_with_reverb/wav.scp
+dataset_modified: false
+checkpoint_modified: false
