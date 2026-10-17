@@ -1,0 +1,25 @@
+{
+  "experiment_id": "paper_claim_audit_20261018",
+  "status": "completed",
+  "audit_scope": "claim classification from existing reproducible reports",
+  "data_modified": false,
+  "checkpoint_modified": false,
+  "new_training": false,
+  "new_inference": false,
+  "claim_counts": {
+    "safe_project_observations": 4,
+    "mechanistic_interpretations_with_limits": 4,
+    "negative_or_stopped_routes": 8,
+    "unsupported_claims_rejected": 9
+  },
+  "frozen_final_router_minus_off": {
+    "pesq": 0.005834,
+    "stoi": -0.000813,
+    "si_sdr_db": 0.241412,
+    "dnsmos_sig": -0.014882,
+    "dnsmos_ovrl": -0.014472
+  },
+  "p7_status": "diagnostic_series_no_intervenable_diffusion_bottleneck_identified",
+  "recommended_paper_position": "Future guidance is a measurable Pareto tradeoff with a reproducible reverb interaction; P7 is mechanism diagnosis and does not itself establish a new diffusion mechanism.",
+  "next_action": "Do not start another training route without an independent mechanism hypothesis, literature boundary, fresh-CV protocol, and explicit stop condition."
+}

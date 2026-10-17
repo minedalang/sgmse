@@ -1,0 +1,22 @@
+experiment_id: paper_claim_audit_20261018
+date: 2026-10-18
+type: paper_level_evidence_audit
+scope:
+  - frozen_final_evaluation
+  - p7_bottleneck_diagnosis
+  - candidate_innovation_screening
+data_policy: read_only_existing_artifacts
+new_training: false
+new_inference: false
+test_set_tuning: false
+primary_sources:
+  - experiments/final_eval_full_20261018/experiment_report.md
+  - experiments/final_eval_reverb_interaction_20261018/experiment_report.md
+  - experiments/storm_error_attribution_p7_20261017/experiment_report.md
+  - experiments/p7c_observable_repair_probe_20261017/experiment_report.md
+  - experiments/anchor_v2_real_oracle_20261017/experiment_report.md
+  - experiments/multitrajectory_consistency_verifier_20261018/experiment_report.md
+  - experiments/speaker_backend_only_matched_500_20261018/experiment_report.md
+  - experiments/content_headroom_asr_smoke_20261018/experiment_report.md
+  - experiments/perceptual_representation_probe_20261017/experiment_report.md
+  - experiments/residual_anchor_equivalence_audit_20261018/experiment_report.md
