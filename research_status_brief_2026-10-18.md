@@ -37,6 +37,8 @@
 
 80k checkpoint 的保存配置审计显示训练/验证使用单一 `tr_synthetic`/`cv_synthetic` noisy SCP（映射后 10,800/1,200 条），没有记录 with-reverb 配对训练项或混响增强开关。它使训练—测试条件失配成为后续可证伪假设，但不构成因果证明；审计记录见 `experiments/checkpoint_data_condition_audit_20261018/`。
 
+在排除既有 manifest 的 4 个 CV speaker 上完成固定 FIR 合成混响 smoke。Router 相对 off 的 SI-SDR interaction 相对 identity 为 short `-0.0448 dB`、medium `-0.0714 dB`，但 PESQ interaction 为正，未复现官方最终集 PESQ 与 SI-SDR 同时变差的模式。该 smoke 仅 4 条且使用人工 FIR，按停止条件不扩大此路线，也不启动 reverb adapter/gate；详见 `experiments/reverb_cv_smoke_20261018/`。
+
 ## 3. 已停止的候选路线
 
 - WavLM Harm Head：真实 Harm Oracle 的 PESQ/STOI/SI-SDR 增益接近零。
