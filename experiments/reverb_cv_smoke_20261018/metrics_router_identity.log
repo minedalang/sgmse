@@ -1,0 +1,27 @@
+Loaded  speechmetrics.relative.sisdr
+Evaluating:   0%|          | 0/4 [00:00<?, ?it/s]Evaluating:  25%|██▌       | 1/4 [00:05<00:17,  5.69s/it]Evaluating:  50%|█████     | 2/4 [00:08<00:08,  4.21s/it]Evaluating:  75%|███████▌  | 3/4 [00:11<00:03,  3.37s/it]Evaluating: 100%|██████████| 4/4 [00:13<00:00,  2.99s/it]Evaluating: 100%|██████████| 4/4 [00:13<00:00,  3.41s/it]
+
+=== Corpus-level results (mean ± std) ===
+PESQ_e         : 1.632 ± 0.518
+STOI_e         : 0.8017 ± 0.1529
+CSIG_e         : 2.914 ± 0.637
+CBAK_e         : 2.690 ± 0.592
+COVL_e         : 2.226 ± 0.602
+WSS_e          : 40.949 ± 11.984 (lower is better)
+SI-SDR_e       : 8.227 ± 5.406
+segSNR_e       : 8.927 ± 4.457
+PESQ_n         : 1.775 ± 1.396
+STOI_n         : 0.6571 ± 0.1561
+CSIG_n         : 2.437 ± 0.592
+CBAK_n         : 2.007 ± 0.395
+COVL_n         : 2.002 ± 0.976
+WSS_n          : 64.148 ± 11.176 (lower is better)
+SI-SDR_n       : -8.317 ± 3.948
+segSNR_n       : -0.417 ± 6.136
+ΔPESQ          : -0.143 ± 1.810
+ΔSTOI          : 0.1446 ± 0.0383
+ΔSI-SDR        : 16.544 ± 3.005
+ΔWSS           : -23.199 ± 11.471 (lower is better)
+注：论文通常报告全体样本的均值；给出标准差可提升可复现性与可信度。Δ 指标表示相对 noisy 的提升。
+
+Per-utterance metrics saved to: experiments/reverb_cv_smoke_20261018/metrics/router/identity.csv

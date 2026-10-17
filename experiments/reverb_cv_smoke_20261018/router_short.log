@@ -1,0 +1,6 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 4
+[RRSD-TCUT] t_cut=0.0 t_cut_scale=0.0 scale=1.0 enabled=True seed=2026 N=30
+Done. Output: experiments/reverb_cv_smoke_20261018/output/router/short

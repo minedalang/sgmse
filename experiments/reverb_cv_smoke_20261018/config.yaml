@@ -1,0 +1,25 @@
+experiment_id: reverb_cv_smoke_20261018
+purpose: low_cost_out_of_test_reverb_interaction_smoke
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+use_ema: true
+sampler: pc
+N: 30
+corrector: none
+snr: 0.5
+seed: 2026
+arms: [off, router]
+rrsd_scales: {off: 0.0, router: 1.0}
+speakers: [reader_10714, reader_10717, reader_10777, reader_10785]
+selection_rule: one_utterance_per_fresh_cv_speaker_excluding_prior_manifests
+conditions: [identity, short, medium]
+rir_definition:
+  identity: [1.0]
+  short: [1.0, 0.55, 0.30, 0.16, 0.08, 0.04, 0.02]
+  medium: [1.0, 0.72, 0.55, 0.42, 0.31, 0.23, 0.17, 0.125, 0.09, 0.065, 0.047, 0.034, 0.024, 0.017, 0.012, 0.0085, 0.006]
+construction: convolve_clean_and_noise_separately_then_rescale_noise_to_original_nominal_snr; common_peak_scale_to_0.95
+metrics: [PESQ, STOI, SI-SDR]
+dnsmos: false
+dataset_modified: false
+checkpoint_modified: false
+official_final_manifest_used: false
