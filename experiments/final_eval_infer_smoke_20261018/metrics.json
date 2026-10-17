@@ -1,0 +1,180 @@
+{
+  "experiment_id": "final_eval_infer_smoke_20261018",
+  "manifest_sha256": "4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b",
+  "selection": [
+    {
+      "split": "no_reverb",
+      "file_id": "fileid_0",
+      "noisy_basename": "clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+      "clean_basename": "clean_fileid_0.wav",
+      "noisy_fileid_match": true,
+      "clean_fileid_match": true,
+      "sample_rate_hz": 16000,
+      "samples": 160000
+    },
+    {
+      "split": "no_reverb",
+      "file_id": "fileid_2",
+      "noisy_basename": "clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+      "clean_basename": "clean_fileid_2.wav",
+      "noisy_fileid_match": true,
+      "clean_fileid_match": true,
+      "sample_rate_hz": 16000,
+      "samples": 160000
+    },
+    {
+      "split": "with_reverb",
+      "file_id": "fileid_0",
+      "noisy_basename": "clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+      "clean_basename": "clean_fileid_0.wav",
+      "noisy_fileid_match": true,
+      "clean_fileid_match": true,
+      "sample_rate_hz": 16000,
+      "samples": 160000
+    },
+    {
+      "split": "with_reverb",
+      "file_id": "fileid_2",
+      "noisy_basename": "clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+      "clean_basename": "clean_fileid_2.wav",
+      "noisy_fileid_match": true,
+      "clean_fileid_match": true,
+      "sample_rate_hz": 16000,
+      "samples": 160000
+    }
+  ],
+  "arms": {
+    "off": {
+      "command_log": "logs/off.log",
+      "return_code": 0,
+      "wall_seconds": 24,
+      "gpu": "CUDA_VISIBLE_DEVICES=0",
+      "files_count": 4,
+      "total_bytes": 1280176,
+      "all_sample_rates_16khz": true,
+      "all_lengths_match_manifest": true,
+      "files": [
+        {
+          "basename": "no_reverb__clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "no_reverb__clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "with_reverb__clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "with_reverb__clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        }
+      ]
+    },
+    "router": {
+      "command_log": "logs/router.log",
+      "return_code": 0,
+      "wall_seconds": 23,
+      "gpu": "CUDA_VISIBLE_DEVICES=0",
+      "files_count": 4,
+      "total_bytes": 1280176,
+      "all_sample_rates_16khz": true,
+      "all_lengths_match_manifest": true,
+      "files": [
+        {
+          "basename": "no_reverb__clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "no_reverb__clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "with_reverb__clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "with_reverb__clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        }
+      ]
+    },
+    "tcut005": {
+      "command_log": "logs/tcut005.log",
+      "return_code": 0,
+      "wall_seconds": 22,
+      "gpu": "CUDA_VISIBLE_DEVICES=0",
+      "files_count": 4,
+      "total_bytes": 1280176,
+      "all_sample_rates_16khz": true,
+      "all_lengths_match_manifest": true,
+      "files": [
+        {
+          "basename": "no_reverb__clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "no_reverb__clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "with_reverb__clnsp126_3Wjw0nadnM4_snr15_tl-22_fileid_0.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        },
+        {
+          "basename": "with_reverb__clnsp241_washer_235366_2_snr17_tl-24_fileid_2.wav",
+          "bytes": 320044,
+          "sample_rate_hz": 16000,
+          "samples": 160000,
+          "duration_seconds": 10.0,
+          "readable": true
+        }
+      ]
+    }
+  }
+}
