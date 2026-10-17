@@ -30,6 +30,10 @@ On the two unseen-speaker holdout utterances, paired deltas were PESQ `+0.00157`
 
 Per-utterance metrics and the train/holdout split summary are in `per_utterance_metrics.json` and `audio_metric_split_summary.json`. DNSMOS emitted an ONNX CUDA-provider warning; provider execution was not verified, so these DNSMOS values may have used CPU fallback.
 
+## Implementation control
+
+The separate production no-op audit loaded the same 80k EMA checkpoint with and without the adapter and measured exact equality (`max_abs_diff=0`, `RMSE=0`). The adapter has 16,512 parameters at module 33; the base checkpoint had no unexpected or missing base parameters. This supports interpreting the pilot baseline as an exact no-op control rather than a changed checkpoint.
+
 ## Decision
 
 The independent replication supports the narrow statement that rollout-state adapter training can reduce the clean-x0 proxy on a small unseen-speaker holdout. It does not yet establish improved perceptual quality, Corrective Forcing, or a paper innovation. The next gate is a larger independent CV/holdout with a predeclared metric rule; do not use the frozen official test set or start long training based on this result alone.
