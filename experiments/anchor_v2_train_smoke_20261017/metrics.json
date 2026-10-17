@@ -1,0 +1,10 @@
+{
+  "exit_code": 0,
+  "train_loss_step": 350.959,
+  "train_loss_epoch": 178.817,
+  "anchor_v2_controller_parameters": 21700,
+  "checkpoint_written": false,
+  "checkpoint_init": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "log": "/tmp/anchor_v2_smoke4.log",
+  "notes": "EMA initialization succeeded; no automatic checkpoint write because --nolog disables logger and enable_checkpointing."
+}
