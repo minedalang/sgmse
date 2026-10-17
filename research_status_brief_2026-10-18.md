@@ -29,6 +29,12 @@
 
 结论是存在局部前后端冲突，但尚未找到可观测、可干预的系统特有扩散瓶颈。
 
+### 官方最终集的新证据
+
+锁定的 300 条 synthetic 测试集已完成 off / Router / `t_cut=0.05` 三臂评测。Router 相对 off 的 pooled 结果为 PESQ `+0.005834`（CI 跨零）、STOI `-0.000813`、SI-SDR `+0.241412 dB`、DNSMOS-SIG `-0.014882`、OVRL `-0.014472`。分 split 后，no-reverb 有 PESQ/STOI/SI-SDR 收益；with-reverb 的 PESQ、STOI、SIG、OVRL 均下降。
+
+对 150 个匹配 file-id 的事后交互分析进一步得到 `(Router-off)_with_reverb - (Router-off)_no_reverb`：PESQ `-0.04110`、STOI `-0.00267`、SI-SDR `-0.15524 dB`、DNSMOS-OVRL `-0.02854`，主要指标的 matched-file bootstrap CI 均排除零。这支持“Router 与混响条件存在稳定交互”，但尚不能区分前端条件失配、幅相重建问题或训练分布差异。SNR 分层也显示该现象不能由单一 SNR 阈值解释，因此暂不设计 reverb/SNR gate。记录见 `experiments/final_eval_full_20261018/`、`experiments/final_eval_reverb_interaction_20261018/` 和 `experiments/final_eval_strata_20261018/`。
+
 ## 3. 已停止的候选路线
 
 - WavLM Harm Head：真实 Harm Oracle 的 PESQ/STOI/SI-SDR 增益接近零。
@@ -49,8 +55,9 @@
 
 ## 5. 下一步
 
-1. 固定一个未参与路线筛选的最终评测 manifest，统一 checkpoint、EMA、采样器、NFE 和指标版本。
-2. 整理 Future Router、Router-off、`t_cut` 的逐句质量、内容和身份指标，形成论文主表及 paired bootstrap CI。
-3. 只有出现新的系统特有失败机制和独立监督证据，才重新启动第二机制的短程验证；当前不启动长训练。
+1. 官方 DNS Ins20 `test_set/synthetic` 两个 split 已锁定为 300 条候选最终评测集；manifest SHA256 为 `4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b`。
+2. 已完成 4 条、三臂（Router-off/Router/`t_cut`）真实推理链路 smoke；统一 checkpoint、EMA、PC、NFE 和 seed 均可执行。完整质量评估仍需在方法协议冻结且复查磁盘后进行。
+3. 整理 Future Router、Router-off、`t_cut` 的逐句质量、内容和身份指标，形成论文主表及 paired bootstrap CI。
+4. 只有出现新的系统特有失败机制和独立监督证据，才重新启动第二机制的短程验证；当前不启动长训练。
 
 详细实验记录见 `/data/RESEARCH_PLAN.md` 及各 `experiments/<id>/experiment_report.md`。
