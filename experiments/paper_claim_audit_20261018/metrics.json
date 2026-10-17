@@ -10,7 +10,7 @@
     "safe_project_observations": 4,
     "mechanistic_interpretations_with_limits": 4,
     "negative_or_stopped_routes": 8,
-    "unsupported_claims_rejected": 9
+    "unsupported_claims_rejected": 10
   },
   "frozen_final_router_minus_off": {
     "pesq": 0.005834,
@@ -21,5 +21,5 @@
   },
   "p7_status": "diagnostic_series_no_intervenable_diffusion_bottleneck_identified",
   "recommended_paper_position": "Future guidance is a measurable Pareto tradeoff with a reproducible reverb interaction; P7 is mechanism diagnosis and does not itself establish a new diffusion mechanism.",
-  "next_action": "Do not start another training route without an independent mechanism hypothesis, literature boundary, fresh-CV protocol, and explicit stop condition."
+  "next_action": "Do not start another training route without an independent mechanism hypothesis, literature boundary, fresh-CV protocol, and explicit stop condition. Corrective Forcing additionally requires a rollout-consistent target or replay control."
 }

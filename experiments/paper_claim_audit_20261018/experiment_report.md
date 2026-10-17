@@ -20,6 +20,7 @@ This is a read-only audit of claims that can be made from the completed StoRM ex
 | ASR content smoke | **Headroom negative/weak** | Router did not show content improvement over off in the 8-utterance smoke (`+0.00516` pseudo-WER) | No basis for phonological anchor or content-loss training | `content_headroom_asr_smoke_20261018` |
 | Perceptual representation probe and listening pilot | **Insufficient supervision** | Simple representations prefer DNSMOS and reconstruction metrics differently; the single listener chose tie in all 24 trials | No human-validated perceptual target and no basis for perceptual/GAN training | `perceptual_representation_probe_20261017`, `p3b_blind_listening_pilot_20261017` |
 | Residual-Anchored OUVE audit | **Novelty boundary** | The implemented transform is equivalent to a standard OUVE under its stated fixed-condition assumptions | Cannot present it as a new stochastic dynamics without a separate non-equivalent formulation and evidence | `residual_anchor_equivalence_audit_20261018` |
+| Corrective-Forcing rollout audit | **Diagnostic method rejected** | Four captured reverse trajectories differ from the clean-conditioned forward marginal, with final-step standardized power around `3.25` (clean-centered) and `2.67` (prior-centered) | This does not identify train–inference mismatch because reverse states are not expected to follow the forward perturbation marginal; no CoF training is justified | `corrective_forcing_rollout_audit4_20261018` |
 
 ## Paper wording recommended by the current evidence
 
