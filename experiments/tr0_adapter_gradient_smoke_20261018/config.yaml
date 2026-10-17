@@ -1,0 +1,9 @@
+experiment_id: tr0_adapter_gradient_smoke_20261018
+purpose: verify_only_adapter_receives_gradient_with_frozen_ncsnpp
+status: completed_gradient_smoke_no_training
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+device: cpu
+seed: 20261018
+module_index: 33
+dataset_modified: false
+checkpoint_modified: false
