@@ -37,3 +37,5 @@ The separate production no-op audit loaded the same 80k EMA checkpoint with and 
 ## Decision
 
 The independent replication supports the narrow statement that rollout-state adapter training can reduce the clean-x0 proxy on a small unseen-speaker holdout. It does not yet establish improved perceptual quality, Corrective Forcing, or a paper innovation. The next gate is a larger independent CV/holdout with a predeclared metric rule; do not use the frozen official test set or start long training based on this result alone.
+
+The integrity audit confirms the checkpoint and locked manifest hashes. The source manifest did not contain pre-run hashes for the 16 input WAV files, so current input hashes are recorded for future reproduction but cannot prove historical dataset immutability.

@@ -17,115 +17,134 @@
       "kind": "noisy",
       "expected": null,
       "actual": "c19b81b044b6ce6a3702fde194b354eef8e50516e4fd3e3f4502a3e276395e49",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2446.wav",
       "kind": "clean",
       "expected": null,
       "actual": "0a962d32152325a22aeb55a27156028ebb51b5fde4701b8c6492a7ff05068d3e",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "d867a056a9fe751b8ec70b53befc364d2f66ae3dfa85fd2d156ae46e7f9d2fe6",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2885.wav",
       "kind": "clean",
       "expected": null,
       "actual": "6ae8fb0dcf0d73f780a4cee085aca03541751f1528f594db631ac8fb62b4b1eb",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "22a4bd4f7faf26bb4ab76de2bd5b95ae364cd004ece531070c4b2aef0e616970",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1167.wav",
       "kind": "clean",
       "expected": null,
       "actual": "04d2bd662fa299d364c5b27a66482d664c4b4d109ab1ff878a7a9a44af9eb72a",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "305443e26524b4c7ef3fe88aa008ad47bca43ea7a1e3b94e978bc50f1dedfec8",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6525.wav",
       "kind": "clean",
       "expected": null,
       "actual": "f5b0f40d6a3da35cc8d630ab2578c85d6b38c75f243c8f38e8af350a67b60074",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "0dadddc0d3ddf90ebdc83b7aaacf6f778f246a07a9d99e154e346a90a7c290cb",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10629.wav",
       "kind": "clean",
       "expected": null,
       "actual": "5c7aea2210ecb079a554262309d387dd587a0ace7c90615b8f82c889cc86a13b",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "9e2633a4fc2cab31adf189da4f18122c33cafbf10fdf6cffd2fcb759e2c0a790",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1566.wav",
       "kind": "clean",
       "expected": null,
       "actual": "c1fa6c7553b3a545341ec0b3ee5d5066d4fa0eba1b01696907caa2e1a870419e",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "67e7c417e1daba2623445cea697f042084dd4caba7570115e885f9b3030a32e8",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10596.wav",
       "kind": "clean",
       "expected": null,
       "actual": "556de5fd0c0d3321b53890f7aaaa971036143e1a33cc73f23fce1f50cd22253b",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav",
       "kind": "noisy",
       "expected": null,
       "actual": "1f9b725f72b75f4cf417533fe774c05340f8df3930f0ea6b13ce6c775c426199",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     },
     {
       "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10711.wav",
       "kind": "clean",
       "expected": null,
       "actual": "e4ca791b4a6ad040d134835ecee1d8e39c4e04172f2f04f1cf74d9ed64bbcd57",
-      "match": false
+      "match": false,
+      "historical_expected_available": false
     }
   ],
-  "all_match": false,
-  "dataset_modified": false,
+  "checkpoint_and_manifest_match": true,
+  "input_hashes_recorded_current_only": true,
+  "historical_input_hashes_available": false,
+  "dataset_modified": null,
+  "dataset_modified_note": "No pre-run input hashes were stored in the locked manifest; current hashes are recorded but cannot prove historical immutability.",
   "checkpoint_overwrite": false
 }
