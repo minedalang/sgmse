@@ -220,7 +220,12 @@ if __name__ == '__main__':
         # training is enabled. Prevent Lightning from replacing/wrapping it with
         # another distributed sampler.
         use_distributed_sampler=not (float(getattr(args, "contrastive_weight", 0.0)) > 0.0),
-        logger=logger,
+        # Lightning treats ``logger=None`` as "use the default logger" in
+        # recent releases.  ``--nolog`` must therefore pass an explicit
+        # ``False`` or it will still create ``lightning_logs`` and checkpoint
+        # callbacks may write to the repository filesystem.
+        logger=(logger if logger is not None else False),
+        enable_checkpointing=(logger is not None),
         log_every_n_steps=10,
         num_sanity_val_steps=0,
         check_val_every_n_epoch=1,
