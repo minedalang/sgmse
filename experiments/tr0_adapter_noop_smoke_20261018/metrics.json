@@ -1,0 +1,55 @@
+{
+  "experiment_id": "tr0_adapter_noop_smoke_20261018",
+  "status": "completed_no_training",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "global_step": 80000
+  },
+  "model": {
+    "backbone": "ncsnpp_v2",
+    "nf": 128,
+    "ch_mult": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "num_res_blocks": 1,
+    "input_shape": [
+      1,
+      1,
+      256,
+      256
+    ]
+  },
+  "adapter": {
+    "type": "zero_init_complex_residual_1x1",
+    "parameters": 6,
+    "trainable_in_smoke": false
+  },
+  "forward": {
+    "base_seconds_cpu": 9.899861583020538,
+    "base_shape": [
+      1,
+      1,
+      256,
+      256
+    ],
+    "base_dtype": "torch.complex64"
+  },
+  "no_op": {
+    "max_abs_diff": 0.0,
+    "rmse": 0.0,
+    "allclose_atol_0": true
+  },
+  "decoder_no_op": {
+    "module_index": 33,
+    "channels": 128,
+    "adapter_parameters": 16512,
+    "max_abs_diff": 0.0,
+    "rmse": 0.0,
+    "allclose_atol_0": true
+  },
+  "data_or_checkpoint_modified": false
+}

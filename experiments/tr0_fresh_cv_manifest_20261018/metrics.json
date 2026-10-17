@@ -1,0 +1,24 @@
+{
+  "experiment_id": "tr0_fresh_cv_manifest_20261018",
+  "status": "completed_read_only",
+  "n_speakers": 32,
+  "n_utterances": 64,
+  "manifest_sha256": "7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c",
+  "overlap_with_previous_speakers": 0,
+  "missing_input_files": 0,
+  "dataset_modified": false,
+  "training": false,
+  "proxy_sanity": {
+    "source": "experiments/speaker_backend_only_matched_500_20261018/control_eval_64/quality_metrics.json",
+    "per_utterance_dnsmos_available": false,
+    "router_minus_off": {
+      "pesq_wb": 0.010924872942268848,
+      "stoi": 0.001145587667272728,
+      "sisdr_db": 0.5114873215604513,
+      "dnsmos_sig": -0.03086852043983088,
+      "dnsmos_ovrl": -0.02983727402127514
+    },
+    "direction_conflict": true,
+    "decision": "retain separate final endpoints; do not tune a single proxy"
+  }
+}

@@ -1,0 +1,12 @@
+experiment_id: tr0_adapter_noop_smoke_20261018
+purpose: exact_no_op_smoke_for_candidate_backend_residual_adapter
+status: completed_no_training
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+device: cpu
+seed: 20261018
+adapter:
+  type: zero_init_complex_residual_1x1
+  location: external_output_wrapper_for_smoke_only
+  parameters: 6
+  note: no checkpoint or production model code changed
+data_modified: false
