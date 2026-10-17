@@ -1,0 +1,167 @@
+{
+  "experiment_id": "storm_noise_power_mismatch_probe_20261020",
+  "status": "completed",
+  "n_utterances": 4,
+  "n_speakers": 4,
+  "M_values": [
+    0.5,
+    0.75,
+    1.0,
+    1.25,
+    1.5
+  ],
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "manifest_sha256": "7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c",
+  "inputs": [
+    {
+      "uttid": "reader_10994_fileid_2446",
+      "speaker": "reader_10994",
+      "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2446.wav",
+      "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav",
+      "clean_sha256": "0a962d32152325a22aeb55a27156028ebb51b5fde4701b8c6492a7ff05068d3e",
+      "noisy_sha256": "c19b81b044b6ce6a3702fde194b354eef8e50516e4fd3e3f4502a3e276395e49"
+    },
+    {
+      "uttid": "reader_11006_fileid_1167",
+      "speaker": "reader_11006",
+      "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1167.wav",
+      "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
+      "clean_sha256": "04d2bd662fa299d364c5b27a66482d664c4b4d109ab1ff878a7a9a44af9eb72a",
+      "noisy_sha256": "22a4bd4f7faf26bb4ab76de2bd5b95ae364cd004ece531070c4b2aef0e616970"
+    },
+    {
+      "uttid": "reader_11037_fileid_10629",
+      "speaker": "reader_11037",
+      "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10629.wav",
+      "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
+      "clean_sha256": "5c7aea2210ecb079a554262309d387dd587a0ace7c90615b8f82c889cc86a13b",
+      "noisy_sha256": "0dadddc0d3ddf90ebdc83b7aaacf6f778f246a07a9d99e154e346a90a7c290cb"
+    },
+    {
+      "uttid": "reader_11046_fileid_10596",
+      "speaker": "reader_11046",
+      "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10596.wav",
+      "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
+      "clean_sha256": "556de5fd0c0d3321b53890f7aaaa971036143e1a33cc73f23fce1f50cd22253b",
+      "noisy_sha256": "67e7c417e1daba2623445cea697f042084dd4caba7570115e885f9b3030a32e8"
+    }
+  ],
+  "device": "cuda",
+  "seed": 2026,
+  "sampler": "PC reverse_diffusion, N=30, snr=0.5, corrector=none",
+  "router": "off (rrsd=False)",
+  "frontend": "checkpoint StoRM, frozen; per-M peak normalization and amplitude restoration",
+  "normalization_note": "M scales only the noisy-clean residual; global peak normalization cannot cancel the changed clean/noise ratio. Measured input SNR is recorded per utterance/M.",
+  "aggregates_by_M": [
+    {
+      "M": 0.5,
+      "mean_input_snr_db": -7.47946252879131,
+      "n": 4,
+      "frontend_only_pesq_wb_mean": 1.8438797295093536,
+      "frontend_only_stoi_mean": 0.8732795958485097,
+      "frontend_only_si_sdr_db_mean": 10.662700361153547,
+      "router_off_pc_pesq_wb_mean": 2.051062822341919,
+      "router_off_pc_stoi_mean": 0.8862717323219833,
+      "router_off_pc_si_sdr_db_mean": 10.144773565462753
+    },
+    {
+      "M": 0.75,
+      "mean_input_snr_db": -11.001287709904934,
+      "n": 4,
+      "frontend_only_pesq_wb_mean": 1.6426351070404053,
+      "frontend_only_stoi_mean": 0.838854772676799,
+      "frontend_only_si_sdr_db_mean": 8.37624809461812,
+      "router_off_pc_pesq_wb_mean": 1.809344321489334,
+      "router_off_pc_stoi_mean": 0.8464410643937758,
+      "router_off_pc_si_sdr_db_mean": 7.817275473007735
+    },
+    {
+      "M": 1.0,
+      "mean_input_snr_db": -13.500062442070934,
+      "n": 4,
+      "frontend_only_pesq_wb_mean": 1.5261593759059906,
+      "frontend_only_stoi_mean": 0.8133925824186403,
+      "frontend_only_si_sdr_db_mean": 7.3122291332337275,
+      "router_off_pc_pesq_wb_mean": 1.6690280139446259,
+      "router_off_pc_stoi_mean": 0.818064765192975,
+      "router_off_pc_si_sdr_db_mean": 6.549958643052118
+    },
+    {
+      "M": 1.25,
+      "mean_input_snr_db": -15.43826270223206,
+      "n": 4,
+      "frontend_only_pesq_wb_mean": 1.4740090668201447,
+      "frontend_only_stoi_mean": 0.7915271805748876,
+      "frontend_only_si_sdr_db_mean": 6.468501513901307,
+      "router_off_pc_pesq_wb_mean": 1.5920116007328033,
+      "router_off_pc_stoi_mean": 0.7961228378335291,
+      "router_off_pc_si_sdr_db_mean": 5.592766251805015
+    },
+    {
+      "M": 1.5,
+      "mean_input_snr_db": -17.02188762318456,
+      "n": 4,
+      "frontend_only_pesq_wb_mean": 1.4161224663257599,
+      "frontend_only_stoi_mean": 0.7723720299270219,
+      "frontend_only_si_sdr_db_mean": 5.837954348464957,
+      "router_off_pc_pesq_wb_mean": 1.5079569220542908,
+      "router_off_pc_stoi_mean": 0.7763303675444687,
+      "router_off_pc_si_sdr_db_mean": 4.8687163893629695
+    }
+  ],
+  "si_sdr_kink_summary": {
+    "frontend_only": {
+      "per_utterance_max_abs_slope_change_db_per_M": [
+        3.1854318478686903,
+        4.143349991870778,
+        6.499057714064492,
+        5.731093328612545
+      ],
+      "mean_max_abs_slope_change_db_per_M": 4.889733220604127,
+      "per_utterance_max_abs_second_difference_db_per_M2": [
+        12.741727391474761,
+        16.573399967483113,
+        25.996230856257966,
+        22.92437331445018
+      ],
+      "mean_max_abs_second_difference_db_per_M2": 19.558932882416507
+    },
+    "router_off_pc": {
+      "per_utterance_max_abs_slope_change_db_per_M": [
+        2.4726122848146943,
+        2.5354223624777887,
+        5.673622501295867,
+        6.281243051402079
+      ],
+      "mean_max_abs_slope_change_db_per_M": 4.240725049997607,
+      "per_utterance_max_abs_second_difference_db_per_M2": [
+        9.890449139258777,
+        10.141689449911155,
+        22.694490005183468,
+        25.124972205608316
+      ],
+      "mean_max_abs_second_difference_db_per_M2": 16.96290019999043
+    }
+  },
+  "runtime_seconds": 216.93849635391962,
+  "wav_files_written": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "initial_attempt": {
+    "status": "failed_before_model_load",
+    "error_type": "execution_environment",
+    "error": "RuntimeError: Ninja is required to load C++ extensions (pip install ninja to get it)",
+    "cause": "/data/coding/sgmse/env/bin was absent from PATH although ninja==1.13.2 was installed",
+    "checkpoint_loaded": false,
+    "inference_ran": false,
+    "wav_files_written": false,
+    "dataset_modified": false,
+    "checkpoint_modified": false
+  },
+  "successful_rerun": {
+    "status": "completed",
+    "path_fix": "PATH=/data/coding/sgmse/env/bin:$PATH",
+    "runtime_seconds": 216.93849635391962,
+    "cuda_smoke": "passed"
+  }
+}

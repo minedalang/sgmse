@@ -1,0 +1,30 @@
+experiment_id: storm_noise_power_mismatch_probe_20261020
+purpose: read_only_test_of_storm_noise_power_mismatch_predictor_kink_hypothesis
+status: completed_after_path_fix
+paper: arXiv:2606.24035
+manifest: experiments/tr0_fresh_cv_manifest_20261018/manifest.csv
+sample_rule: first four distinct speakers in locked fresh-CV manifest
+expected_n_utterances: 4
+expected_n_speakers: 4
+M_values: [0.5, 0.75, 1.0, 1.25, 1.5]
+input_definition: y_M = clean + M * (noisy - clean); generated in memory
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_ema: true
+checkpoint_modified: false
+router: off (rrsd=false); StoRM frontend retained
+sampler: {type: pc, predictor: reverse_diffusion, corrector: none, N: 30, snr: 0.5}
+seed: 2026
+metrics: [PESQ-WB, STOI, SI-SDR, SI-SDR finite-difference curvature]
+frontend_only_predictor_output: true
+wave_files_written: false
+dataset_modified: false
+command: /data/coding/sgmse/env/bin/python experiments/storm_noise_power_mismatch_probe_20261020/run_probe.py
+rerun_command: "export PATH=/data/coding/sgmse/env/bin:$PATH; /data/coding/sgmse/env/bin/python experiments/storm_noise_power_mismatch_probe_20261020/run_probe.py"
+cuda_import_smoke: passed
+runtime_seconds: 216.94
+prior_attempt: "failed before model load because env/bin was absent from PATH; retained in report and metrics"
+stop_conditions:
+  - Stop if clean/noisy sample rates or pair alignment are invalid.
+  - Stop if model input normalization makes M-induced relative noise-power changes disappear.
+  - No inference beyond the four preselected distinct speakers unless the four-file pilot is interpretable and specifically reviewed.
+failure: import failed before checkpoint load because torch cpp_extension could not find a ninja executable on PATH, despite the sgmse environment containing the ninja Python package.
