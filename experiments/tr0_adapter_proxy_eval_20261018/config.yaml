@@ -1,0 +1,15 @@
+experiment_id: tr0_adapter_proxy_eval_20261018
+purpose: fresh_cv_single_step_x0_proxy_evaluation_of_scaled_adapters
+status: completed_fresh_cv_proxy_only
+manifest: experiments/tr0_fresh_cv_manifest_20261018/manifest.csv
+manifest_sha256: 7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c
+arms:
+  - baseline
+  - score_only_seed20261018
+  - trust_region_seed20261018
+  - score_only_seed20261019
+  - trust_region_seed20261019
+crop_samples: 32640
+device: cuda
+dataset_modified: false
+note: proxy only; no DNSMOS, PESQ, STOI, SI-SDR or full PC inference

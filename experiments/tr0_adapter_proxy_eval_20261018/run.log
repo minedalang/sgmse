@@ -1,0 +1,55 @@
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/saving.py:212: Found keys that are in the model state dict but not in the checkpoint: ['dnn.backend_adapter.proj.weight', 'dnn.backend_adapter.proj.bias']
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+{
+  "experiment_id": "tr0_adapter_proxy_eval_20261018",
+  "status": "completed_fresh_cv_proxy_only",
+  "manifest_sha256": "7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c",
+  "n_utterances": 64,
+  "n_speakers": 32,
+  "crop_samples": 32640,
+  "seed": 20261018,
+  "arms": {
+    "baseline": {
+      "mean_mse": 0.0006519972239402705,
+      "mean_delta_vs_baseline": 0.0,
+      "speaker_cluster_ci_delta": [
+        0.0,
+        0.0
+      ]
+    },
+    "score_only_seed20261018": {
+      "mean_mse": 0.0006542125142914301,
+      "mean_delta_vs_baseline": 2.215290351159638e-06,
+      "speaker_cluster_ci_delta": [
+        -8.969833515948263e-08,
+        5.041100016001109e-06
+      ]
+    },
+    "trust_region_seed20261018": {
+      "mean_mse": 0.0006541154272099448,
+      "mean_delta_vs_baseline": 2.118203269674268e-06,
+      "speaker_cluster_ci_delta": [
+        -1.6367678199458168e-07,
+        4.880517968786079e-06
+      ]
+    },
+    "score_only_seed20261019": {
+      "mean_mse": 0.0006562096442621623,
+      "mean_delta_vs_baseline": 4.212420321891841e-06,
+      "speaker_cluster_ci_delta": [
+        2.7140397833136374e-06,
+        5.881273469299227e-06
+      ]
+    },
+    "trust_region_seed20261019": {
+      "mean_mse": 0.0006581754236094639,
+      "mean_delta_vs_baseline": 6.178199669193418e-06,
+      "speaker_cluster_ci_delta": [
+        4.0138515061016735e-06,
+        8.624215365671261e-06
+      ]
+    }
+  },
+  "interpretation": "single-step clean x0 proxy only; no waveform inference or DNSMOS/PESQ/STOI/SI-SDR conclusion"
+}

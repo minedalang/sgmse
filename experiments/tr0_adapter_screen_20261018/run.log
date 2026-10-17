@@ -1,0 +1,193 @@
+[TR-0] starting arm=score_only seed=20261018
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/saving.py:212: Found keys that are in the model state dict but not in the checkpoint: ['dnn.backend_adapter.proj.weight', 'dnn.backend_adapter.proj.bias']
+Running NCSN++ as discriminative backbone
+[TR-0] finished arm=score_only seed=20261018
+[TR-0] starting arm=score_only seed=20261019
+Running NCSN++ as discriminative backbone
+[TR-0] finished arm=score_only seed=20261019
+[TR-0] starting arm=trust_region seed=20261018
+Running NCSN++ as discriminative backbone
+[TR-0] finished arm=trust_region seed=20261018
+[TR-0] starting arm=trust_region seed=20261019
+Running NCSN++ as discriminative backbone
+[TR-0] finished arm=trust_region seed=20261019
+{
+  "experiment_id": "tr0_adapter_screen_20261018",
+  "status": "completed_short_screen_no_inference_evaluation",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9"
+  },
+  "dataset": {
+    "train_scp": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/wav.scp",
+    "valid_scp": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp",
+    "modified": false
+  },
+  "protocol": {
+    "arms": [
+      "score_only",
+      "trust_region"
+    ],
+    "seeds": [
+      20261018,
+      20261019
+    ],
+    "steps": 200,
+    "trust_weight": 1.0,
+    "trust_margin": 0.0,
+    "adapter_module": 33,
+    "batch_size": 1,
+    "device": "cuda"
+  },
+  "summaries": [
+    {
+      "arm": "score_only",
+      "seed": 20261018,
+      "steps": 200,
+      "elapsed_seconds": 16.9012289410457,
+      "steps_per_second": 11.833459016361076,
+      "adapter_parameters": 16512,
+      "initial": {
+        "base_loss": 8.313911437988281,
+        "trust_loss": 0.0,
+        "weighted_trust": 0.0,
+        "total_loss": 8.313911437988281,
+        "base_x0_mse": 0.0004556877538561821,
+        "adapt_x0_mse": 0.0004556877538561821,
+        "adapter_norm": 0.012849600985646248,
+        "step": 1
+      },
+      "final": {
+        "base_loss": 540.0217895507812,
+        "trust_loss": 8.201812306651846e-06,
+        "weighted_trust": 0.0,
+        "total_loss": 540.0217895507812,
+        "base_x0_mse": 0.0007183568668551743,
+        "adapt_x0_mse": 0.0007186393486335874,
+        "adapter_norm": 0.05190387740731239,
+        "step": 200
+      },
+      "mean_last_20": {
+        "base_loss": 653.6599697113037,
+        "trust_loss": 1.3672431236955163e-05,
+        "weighted_trust": 0.0,
+        "total_loss": 653.6599697113037,
+        "base_x0_mse": 0.0005434460585092893,
+        "adapt_x0_mse": 0.0005456640465126839,
+        "adapter_norm": 0.0509564146399498
+      }
+    },
+    {
+      "arm": "score_only",
+      "seed": 20261019,
+      "steps": 200,
+      "elapsed_seconds": 16.29198759503197,
+      "steps_per_second": 12.275973010253667,
+      "adapter_parameters": 16512,
+      "initial": {
+        "base_loss": 3088.42041015625,
+        "trust_loss": 0.0,
+        "weighted_trust": 0.0,
+        "total_loss": 3088.42041015625,
+        "base_x0_mse": 0.00012275810877326876,
+        "adapt_x0_mse": 0.00012275810877326876,
+        "adapter_norm": 0.012849737890064716,
+        "step": 1
+      },
+      "final": {
+        "base_loss": 95.27969360351562,
+        "trust_loss": 9.939200026565231e-06,
+        "weighted_trust": 0.0,
+        "total_loss": 95.27969360351562,
+        "base_x0_mse": 0.00043182080844417214,
+        "adapt_x0_mse": 0.00043347859173081815,
+        "adapter_norm": 0.05412832275032997,
+        "step": 200
+      },
+      "mean_last_20": {
+        "base_loss": 660.701865196228,
+        "trust_loss": 2.2115503000463832e-05,
+        "weighted_trust": 0.0,
+        "total_loss": 660.701865196228,
+        "base_x0_mse": 0.0007362111842667219,
+        "adapt_x0_mse": 0.000739786237681983,
+        "adapter_norm": 0.053646179661154744
+      }
+    },
+    {
+      "arm": "trust_region",
+      "seed": 20261018,
+      "steps": 200,
+      "elapsed_seconds": 15.873682789038867,
+      "steps_per_second": 12.599470624303043,
+      "adapter_parameters": 16512,
+      "initial": {
+        "base_loss": 8.313911437988281,
+        "trust_loss": 0.0,
+        "weighted_trust": 0.0,
+        "total_loss": 8.313911437988281,
+        "base_x0_mse": 0.0004556877538561821,
+        "adapt_x0_mse": 0.0004556877538561821,
+        "adapter_norm": 0.012849600985646248,
+        "step": 1
+      },
+      "final": {
+        "base_loss": 540.0218505859375,
+        "trust_loss": 8.201904165616725e-06,
+        "weighted_trust": 8.201904165616725e-06,
+        "total_loss": 540.0218505859375,
+        "base_x0_mse": 0.0007183568668551743,
+        "adapt_x0_mse": 0.0007186393486335874,
+        "adapter_norm": 0.051903482526540756,
+        "step": 200
+      },
+      "mean_last_20": {
+        "base_loss": 653.6600724220276,
+        "trust_loss": 1.3672864989189293e-05,
+        "weighted_trust": 1.3672864989189293e-05,
+        "total_loss": 653.6600847244263,
+        "base_x0_mse": 0.0005434460585092893,
+        "adapt_x0_mse": 0.0005456642446006299,
+        "adapter_norm": 0.050956090539693834
+      }
+    },
+    {
+      "arm": "trust_region",
+      "seed": 20261019,
+      "steps": 200,
+      "elapsed_seconds": 16.018789206049405,
+      "steps_per_second": 12.485338150555794,
+      "adapter_parameters": 16512,
+      "initial": {
+        "base_loss": 3088.42041015625,
+        "trust_loss": 0.0,
+        "weighted_trust": 0.0,
+        "total_loss": 3088.42041015625,
+        "base_x0_mse": 0.00012275810877326876,
+        "adapt_x0_mse": 0.00012275810877326876,
+        "adapter_norm": 0.012849737890064716,
+        "step": 1
+      },
+      "final": {
+        "base_loss": 95.27957153320312,
+        "trust_loss": 9.9396966106724e-06,
+        "weighted_trust": 9.9396966106724e-06,
+        "total_loss": 95.27957916259766,
+        "base_x0_mse": 0.00043182080844417214,
+        "adapt_x0_mse": 0.000433478009654209,
+        "adapter_norm": 0.05412847921252251,
+        "step": 200
+      },
+      "mean_last_20": {
+        "base_loss": 660.7018340110778,
+        "trust_loss": 2.2116321923704162e-05,
+        "weighted_trust": 2.2116321923704162e-05,
+        "total_loss": 660.7018538475037,
+        "base_x0_mse": 0.0007362111842667219,
+        "adapt_x0_mse": 0.0007397866676910781,
+        "adapter_norm": 0.053646348789334296
+      }
+    }
+  ],
+  "note": "Training proxy only. Fresh-CV waveform inference and DNSMOS/PESQ/STOI/SI-SDR evaluation are required before any scientific conclusion."
+}

@@ -1,0 +1,23 @@
+experiment_id: tr0_adapter_screen_scaled_20261018
+purpose: repeat_tr0_with_train_only_trust_loss_scale_calibration
+status: completed_negative_proxy
+parent_screen: experiments/tr0_adapter_screen_20261018
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+dataset:
+  train_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/wav.scp
+  valid_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp
+  clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean
+  modified: false
+protocol:
+  arms: [score_only, trust_region]
+  seeds: [20261018, 20261019]
+  steps: 200
+  batch_size: 1
+  adapter_module: 33
+  trust_loss: relu(adapter_x0_mse - frozen_baseline_x0_mse)
+  trust_weight: 10000.0
+  scale_reason: first screen measured trust_loss around 1e-5 while score loss was 1e1-1e3; this scale is a train-only dimensional calibration, not validation tuning
+  optimizer: AdamW
+  learning_rate: 0.0001
+  checkpoint_output: adapter_state_only
+  wandb: false
