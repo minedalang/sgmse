@@ -72,6 +72,24 @@ def _complex_to_2ch(y: torch.Tensor) -> torch.Tensor:
     return torch.cat([y.real, y.imag], dim=1)
 
 
+class ZeroInitFeatureResidualAdapter(nn.Module):
+    """Optional zero initialized residual adapter for one decoder feature map.
+
+    The module is deliberately kept outside ``all_modules`` so enabling it does
+    not renumber the original NCSN++ checkpoint parameters.  Its zero
+    initialization makes the enabled path an exact no-op before optimization.
+    """
+
+    def __init__(self, channels: int):
+        super().__init__()
+        self.proj = nn.Conv2d(channels, channels, kernel_size=1, bias=True)
+        nn.init.zeros_(self.proj.weight)
+        nn.init.zeros_(self.proj.bias)
+
+    def forward(self, h: torch.Tensor) -> torch.Tensor:
+        return h + self.proj(h)
+
+
 class BottleneckCrossAttention(nn.Module):
     """
     在 U-Net 瓶颈处，用原始含噪语音 y 对主干特征 h 做一次 cross-attention：
@@ -569,6 +587,10 @@ class NCSNpp_v2(nn.Module):
             help="How many low-resolution encoder features to aggregate, plus the current bottleneck feature.")#selector聚合哪些层的主干特征  =3时 取encoder末端最近保存的 3 个 feature map
         parser.add_argument("--mode2_include_noisy_main", action='store_true', default=False,
             help="When enabled, concatenate an extra noisy spectrogram into the main network input (x, y_main, y_noisy) for StoRM-style 'both' conditioning in mode2.")
+        parser.add_argument("--backend_adapter_enable", action='store_true', default=False,
+            help="Enable the optional zero initialized backend feature residual adapter (default: disabled).")
+        parser.add_argument("--backend_adapter_module", type=int, default=33,
+            help="all_modules index after which the optional backend adapter is applied.")
         return parser
     def __init__(self,
         nf = 128,
@@ -585,6 +607,8 @@ class NCSNpp_v2(nn.Module):
         selector_ctx_ch=8,
         selector_ctx_num_feats=3,
         mode2_include_noisy_main=False,
+        backend_adapter_enable=False,
+        backend_adapter_module=33,
         noise_prior_init_scale=0.05,
         nonlinearity = 'swish',
         resamp_with_conv = True,
@@ -630,6 +654,8 @@ class NCSNpp_v2(nn.Module):
         self.selector_ctx_ch = int(selector_ctx_ch)
         self.selector_ctx_num_feats = max(1, int(selector_ctx_num_feats))
         self.mode2_include_noisy_main = bool(mode2_include_noisy_main)
+        self.backend_adapter_enable = bool(backend_adapter_enable)
+        self.backend_adapter_module = int(backend_adapter_module)
         self.num_resolutions = num_resolutions = len(ch_mult)
         self.all_resolutions = all_resolutions = [image_size // (2 ** i) for i in range(num_resolutions)]
         self.skip_rescale = skip_rescale = skip_rescale
@@ -851,6 +877,20 @@ class NCSNpp_v2(nn.Module):
             modules.append(conv3x3(in_ch, channels, init_scale=init_scale))
 
         self.all_modules = nn.ModuleList(modules)
+        self.backend_adapter = None
+        if self.backend_adapter_enable:
+            if not (0 <= self.backend_adapter_module < len(self.all_modules)):
+                raise ValueError(
+                    f"backend_adapter_module={self.backend_adapter_module} is outside "
+                    f"all_modules length {len(self.all_modules)}"
+                )
+            candidate = self.all_modules[self.backend_adapter_module]
+            channels = getattr(candidate, "out_ch", None)
+            if channels is None:
+                raise ValueError(
+                    f"backend_adapter_module={self.backend_adapter_module} does not expose out_ch"
+                )
+            self.backend_adapter = ZeroInitFeatureResidualAdapter(int(channels))
         
 
     def forward(self, x, y, t, y_cond=None, y_extra=None):
@@ -985,6 +1025,7 @@ class NCSNpp_v2(nn.Module):
         for i_level in reversed(range(self.num_resolutions)):
             for i_block in range(self.num_res_blocks + 1):
                 h_in = torch.cat([h, hs.pop()], dim=1)  #被改动
+                module_idx = m_idx
                 
                 if self.film_modulate and i_level in self.film_levels:
                     h = modules[m_idx](h_in, temb, y_cond=y_cond)
@@ -992,6 +1033,8 @@ class NCSNpp_v2(nn.Module):
                     h = modules[m_idx](h_in, temb)
 
                 m_idx += 1
+                if self.backend_adapter is not None and module_idx == self.backend_adapter_module:
+                    h = self.backend_adapter(h)
 
             # edit: from -1 to -2
             if h.shape[-2] in self.attn_resolutions:

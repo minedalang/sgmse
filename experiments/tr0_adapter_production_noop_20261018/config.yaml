@@ -1,0 +1,14 @@
+experiment_id: tr0_adapter_production_noop_20261018
+purpose: verify_optional_production_decoder_adapter_exact_no_op
+status: completed_no_training
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+device: cpu
+seed: 20261018
+adapter:
+  enabled: true
+  module_index: 33
+  channels: 128
+  parameters: 16512
+  initialization: zero
+dataset_modified: false
+checkpoint_modified: false

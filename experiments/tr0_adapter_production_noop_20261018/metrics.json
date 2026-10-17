@@ -1,0 +1,49 @@
+{
+  "experiment_id": "tr0_adapter_production_noop_20261018",
+  "status": "completed_no_training",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "global_step": 80000
+  },
+  "model": {
+    "backbone": "ncsnpp_v2",
+    "nf": 128,
+    "ch_mult": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "num_res_blocks": 1,
+    "input_shape": [
+      1,
+      1,
+      256,
+      256
+    ]
+  },
+  "adapter": {
+    "enabled": true,
+    "module_index": 33,
+    "channels": 128,
+    "parameters": 16512
+  },
+  "checkpoint_load": {
+    "base_missing": [],
+    "base_unexpected": [],
+    "adapter_missing_expected": [
+      "backend_adapter.proj.weight",
+      "backend_adapter.proj.bias"
+    ],
+    "adapter_unexpected": []
+  },
+  "comparison": {
+    "cpu_elapsed_seconds": 20.42371640203055,
+    "max_abs_diff": 0.0,
+    "rmse": 0.0,
+    "torch_equal": true
+  },
+  "default_path_unchanged": true,
+  "data_or_checkpoint_modified": false
+}
