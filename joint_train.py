@@ -197,7 +197,14 @@ if __name__ == '__main__':
         logger = None
     else:
         logger = WandbLogger(project="sgmse_joint", log_model=False, save_dir=args.log_dir, name=args.wandb_name, id=args.wandb_id)
-        logger.experiment.log_code(".")
+        # Code archiving can copy the whole repository into W&B's artifact
+        # staging directory (often on the small root filesystem).  Keep the
+        # historical behavior by default, but allow disk-constrained runs to
+        # disable this optional upload while retaining metric/checkpoint logs.
+        if os.environ.get("SGMSE_WANDB_LOG_CODE", "1").strip().lower() not in {"0", "false", "no"}:
+            logger.experiment.log_code(".")
+        else:
+            print("[W&B] code archive disabled by SGMSE_WANDB_LOG_CODE", flush=True)
     mark("after logger init")
     mark("before callbacks init")
     callbacks = None
