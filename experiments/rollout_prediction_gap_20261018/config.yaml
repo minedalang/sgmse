@@ -1,0 +1,18 @@
+experiment_id: rollout_prediction_gap_20261018
+date: 2026-10-18
+type: read_only_rollout_vs_forward_prediction_diagnostic
+status: completed_positive_diagnostic
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+split: existing_p7_development_manifest_first_four_plus_fresh_cv_eight
+sampler: pc_reverse_diffusion
+N: 30
+corrector: none
+snr: 0.5
+seeds: 20261018_to_20261021
+target: clean_x0_spectral_nmse
+comparison: reverse_rollout_state_vs_analytic_forward_state_at_matched_t
+new_training: false
+new_audio_outputs: false
+dataset_modified: false
+checkpoint_modified: false
+decision_rule: rollout_x0_error was higher for 8_of_8 fresh_cv utterances; this qualifies a bounded rollout_aware_training_pilot but does not establish final quality gain
