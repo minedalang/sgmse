@@ -1,0 +1,186 @@
+[
+  {
+    "filename": "book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav",
+    "speaker": "reader_10994",
+    "split": "train",
+    "baseline_pesq": 1.128904104232788,
+    "baseline_stoi": 0.6569987633298792,
+    "baseline_sisdr": -1.129495620727539,
+    "baseline_dnsmos": {
+      "p808": 4.122424602508545,
+      "sig": 3.4102062259052164,
+      "bak": 4.152910167478207,
+      "ovrl": 3.1371554535084867
+    },
+    "adapter_pesq": 1.1582794189453125,
+    "adapter_stoi": 0.6598990397184885,
+    "adapter_sisdr": -0.8357725143432617,
+    "adapter_dnsmos": {
+      "p808": 4.139956542423794,
+      "sig": 3.416133700076372,
+      "bak": 4.157263542010314,
+      "ovrl": 3.1416631542577598
+    }
+  },
+  {
+    "filename": "book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav",
+    "speaker": "reader_10994",
+    "split": "train",
+    "baseline_pesq": 1.4943774938583374,
+    "baseline_stoi": 0.7749453532556653,
+    "baseline_sisdr": 6.862695217132568,
+    "baseline_dnsmos": {
+      "p808": 4.2405000414167136,
+      "sig": 3.5949034749957725,
+      "bak": 4.179053029301305,
+      "ovrl": 3.3203775074877098
+    },
+    "adapter_pesq": 1.5066165924072266,
+    "adapter_stoi": 0.7764598637979446,
+    "adapter_sisdr": 6.979991912841797,
+    "adapter_dnsmos": {
+      "p808": 4.243837288447788,
+      "sig": 3.5997860471824277,
+      "bak": 4.179344615474373,
+      "ovrl": 3.3265754471343554
+    }
+  },
+  {
+    "filename": "book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
+    "speaker": "reader_11006",
+    "split": "train",
+    "baseline_pesq": 1.2751424312591553,
+    "baseline_stoi": 0.7355045330020624,
+    "baseline_sisdr": 2.92510724067688,
+    "baseline_dnsmos": {
+      "p808": 3.8064094270978654,
+      "sig": 3.2705767083072823,
+      "bak": 4.107908403363159,
+      "ovrl": 2.9391035876888814
+    },
+    "adapter_pesq": 1.2753602266311646,
+    "adapter_stoi": 0.7309611430529931,
+    "adapter_sisdr": 3.1466612815856934,
+    "adapter_dnsmos": {
+      "p808": 3.819929361343384,
+      "sig": 3.299453471959555,
+      "bak": 4.144631791253585,
+      "ovrl": 2.973604596274004
+    }
+  },
+  {
+    "filename": "book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav",
+    "speaker": "reader_11006",
+    "split": "train",
+    "baseline_pesq": 2.704460859298706,
+    "baseline_stoi": 0.9576612263719285,
+    "baseline_sisdr": 11.40638542175293,
+    "baseline_dnsmos": {
+      "p808": 4.186912536621094,
+      "sig": 3.650019609522428,
+      "bak": 4.18681677207196,
+      "ovrl": 3.3854299001458665
+    },
+    "adapter_pesq": 2.7254140377044678,
+    "adapter_stoi": 0.9587393541275577,
+    "adapter_sisdr": 11.507535934448242,
+    "adapter_dnsmos": {
+      "p808": 4.183222361973354,
+      "sig": 3.649224268956696,
+      "bak": 4.180568278320117,
+      "ovrl": 3.380641692995785
+    }
+  },
+  {
+    "filename": "book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
+    "speaker": "reader_11037",
+    "split": "train",
+    "baseline_pesq": 1.7841140031814575,
+    "baseline_stoi": 0.9449646293282877,
+    "baseline_sisdr": 13.023486137390137,
+    "baseline_dnsmos": {
+      "p808": 4.165182181767055,
+      "sig": 3.6287454336621154,
+      "bak": 4.184928149733689,
+      "ovrl": 3.3692093333726305
+    },
+    "adapter_pesq": 1.8510489463806152,
+    "adapter_stoi": 0.9455295695394363,
+    "adapter_sisdr": 13.106481552124023,
+    "adapter_dnsmos": {
+      "p808": 4.176450797489712,
+      "sig": 3.633619288186573,
+      "bak": 4.191851140875433,
+      "ovrl": 3.378938487346512
+    }
+  },
+  {
+    "filename": "book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav",
+    "speaker": "reader_11037",
+    "split": "train",
+    "baseline_pesq": 1.3838173151016235,
+    "baseline_stoi": 0.7659432279263606,
+    "baseline_sisdr": 2.7452940940856934,
+    "baseline_dnsmos": {
+      "p808": 3.974501746041434,
+      "sig": 3.1631243868811794,
+      "bak": 4.06649058434926,
+      "ovrl": 2.766953061344389
+    },
+    "adapter_pesq": 1.5681040287017822,
+    "adapter_stoi": 0.7619574336790854,
+    "adapter_sisdr": 2.9340596199035645,
+    "adapter_dnsmos": {
+      "p808": 3.9384899139404297,
+      "sig": 3.2160699907495824,
+      "bak": 4.15279765346847,
+      "ovrl": 2.857848357177803
+    }
+  },
+  {
+    "filename": "book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
+    "speaker": "reader_11046",
+    "split": "holdout",
+    "baseline_pesq": 2.355534791946411,
+    "baseline_stoi": 0.951015658645074,
+    "baseline_sisdr": 10.97237777709961,
+    "baseline_dnsmos": {
+      "p808": 4.307606220245361,
+      "sig": 3.5943867193238925,
+      "bak": 4.202597610780562,
+      "ovrl": 3.3532190139289
+    },
+    "adapter_pesq": 2.3554790019989014,
+    "adapter_stoi": 0.9521647407651072,
+    "adapter_sisdr": 11.098644256591797,
+    "adapter_dnsmos": {
+      "p808": 4.316022668566022,
+      "sig": 3.544174543509978,
+      "bak": 4.1997333413684546,
+      "ovrl": 3.302141647222069
+    }
+  },
+  {
+    "filename": "book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav",
+    "speaker": "reader_11046",
+    "split": "holdout",
+    "baseline_pesq": 1.7813901901245117,
+    "baseline_stoi": 0.9315494924583337,
+    "baseline_sisdr": 9.81003189086914,
+    "baseline_dnsmos": {
+      "p808": 4.365921292986188,
+      "sig": 3.6857266530020576,
+      "bak": 4.226370875757644,
+      "ovrl": 3.4671388762473536
+    },
+    "adapter_pesq": 1.784590482711792,
+    "adapter_stoi": 0.9334571540263615,
+    "adapter_sisdr": 10.011289596557617,
+    "adapter_dnsmos": {
+      "p808": 4.372497626713344,
+      "sig": 3.668475958075892,
+      "bak": 4.218455211316241,
+      "ovrl": 3.448915106768518
+    }
+  }
+]

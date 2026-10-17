@@ -1,0 +1,22 @@
+experiment_id: rollout_adapter_replication_20261018
+manifest: experiments/tr0_fresh_cv_manifest_20261018/manifest.csv
+manifest_rows: 8
+speakers: 8
+split: first 6 train, last 2 utterance holdout
+base_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+adapter: module_33_zero_initialized_only
+learning_rate: 1.0e-5
+steps: 100
+gradient_clip: 1.0
+sampler: pc
+reverse_steps: 30
+corrector: none
+snr: 0.5
+selected_trace_steps: [3,5,7,9]
+seed: 2026
+dataset_modified: false
+checkpoint_overwrite: false
+cache: rollout_state_cache.pt
+cache_size_bytes: 990904000
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+manifest_sha256: 7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c
