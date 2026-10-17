@@ -19,7 +19,19 @@
     "dnsmos_sig": -0.014882,
     "dnsmos_ovrl": -0.014472
   },
-  "p7_status": "diagnostic_series_no_intervenable_diffusion_bottleneck_identified",
+  "p7_status": "diagnostic_series_with_rollout_state_proxy_gap_but_no_confirmed_perceptual_intervention",
+  "rollout_adapter_replication": {
+    "proxy_replicated": true,
+    "independent_holdout_x0_nmse_delta": -0.548,
+    "independent_holdout_dnsmos_ovrl_delta": -0.03465,
+    "status": "mixed_evidence_stop"
+  },
+  "harm_oracle_dnsmos": {
+    "n_utterances": 4,
+    "gate_minus_full_ovrl": -0.0009531033063731043,
+    "bootstrap_ci_crosses_zero": true,
+    "status": "stop_harm_head"
+  },
   "recommended_paper_position": "Future guidance is a measurable Pareto tradeoff with a reproducible reverb interaction; P7 is mechanism diagnosis and does not itself establish a new diffusion mechanism.",
-  "next_action": "Do not start another training route without an independent mechanism hypothesis, literature boundary, fresh-CV protocol, and explicit stop condition. Corrective Forcing additionally requires a rollout-consistent target or replay control."
+  "next_action": "Do not expand the rollout adapter or train a Harm Head. Start another route only with an independent mechanism hypothesis, literature boundary, fresh-CV protocol, and explicit stop condition. Corrective Forcing additionally requires a rollout-consistent target or replay control."
 }
