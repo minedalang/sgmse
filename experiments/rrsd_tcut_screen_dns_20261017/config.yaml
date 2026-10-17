@@ -1,0 +1,23 @@
+experiment_id: rrsd_tcut_screen_dns_20261017
+date: 2026-10-17
+type: development_screen
+status: completed_archival_record
+purpose: compare_router_with_late_future_guidance_cutoffs_on_existing_32_utterance_development_split
+data:
+  n_utterances: 32
+  split: existing_rrsd_tcut_screen_development_split
+  independent_test_set: false
+arms:
+  - router
+  - cut005
+  - cut010
+metrics: [PESQ, STOI, SI-SDR, DNSMOS_P808, DNSMOS_SIG, DNSMOS_BAK, DNSMOS_OVRL]
+statistics:
+  bootstrap_replicates: 20000
+  seed: 2026
+  paired_reference: router
+data_policy: reused_existing_outputs_only
+new_training: false
+new_dataset_write: false
+checkpoint_overwrite: false
+selection_warning: development_screen_not_for_final_test_tuning
