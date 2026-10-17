@@ -45,5 +45,13 @@
     "torch_equal": true
   },
   "default_path_unchanged": true,
-  "data_or_checkpoint_modified": false
+  "data_or_checkpoint_modified": false,
+  "full_checkpoint_load": {
+    "class": "sgmse.joint_model.JointFrontendSgmseModel",
+    "weights_only": false,
+    "loaded": true,
+    "backend_adapter_enable_default": false,
+    "adapter_present_default": false,
+    "note": "PyTorch default weights_only=True initially rejected serialized datamodule; trusted local checkpoint loaded with explicit weights_only=False"
+  }
 }

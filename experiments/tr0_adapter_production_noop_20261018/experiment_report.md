@@ -10,6 +10,8 @@ The locked 80k NCSN++ v2 checkpoint is loaded twice with identical model configu
 
 The original state dict loads strictly into the default model. The enabled model loads it with only the two expected missing adapter parameters; these are initialized to zero by construction.
 
+The complete `JointFrontendSgmseModel` also loaded successfully from the same checkpoint with `weights_only=False` (the trusted local checkpoint contains a serialized datamodule object that PyTorch's newer `weights_only=True` default rejects). The loaded default model reports `backend_adapter_enable=False` and has no adapter module.
+
 ## Result
 
 On the same deterministic complex input and timestep, the complete outputs were exactly equal:
