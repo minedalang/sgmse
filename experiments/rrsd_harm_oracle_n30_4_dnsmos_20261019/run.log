@@ -1,0 +1,77 @@
+[0;93m2026-10-18 07:03:48.536281062 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:856 operator()] No registered plugin EP device found for 'CUDAExecutionProvider' with device_id=0[m
+[0;93m2026-10-18 07:03:49.009538205 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:856 operator()] No registered plugin EP device found for 'CUDAExecutionProvider' with device_id=0[m
+{
+  "experiment_id": "rrsd_harm_oracle_n30_4_dnsmos_20261019",
+  "n": 4,
+  "metrics": {
+    "p808": {
+      "full_mean": 4.0584935035024365,
+      "gate_mean": 4.057724033083234,
+      "gate_minus_full_mean": -0.0007694704192028334,
+      "bootstrap_95ci": [
+        -0.0021532263074603986,
+        0.0013653976576665228
+      ],
+      "per_utterance_delta": [
+        -0.002457005637032772,
+        -0.0017992768968859707,
+        0.0024202891758506873,
+        -0.0012418883187432783
+      ]
+    },
+    "sig": {
+      "full_mean": 3.5162470629022686,
+      "gate_mean": 3.515616780698337,
+      "gate_minus_full_mean": -0.0006302822039319089,
+      "bootstrap_95ci": [
+        -0.002001953218947139,
+        0.0004771886920542645
+      ],
+      "per_utterance_delta": [
+        -0.0007332128723369635,
+        0.00021906710670904772,
+        0.0007353102773994813,
+        -0.002742293327499201
+      ]
+    },
+    "bak": {
+      "full_mean": 4.171818644518714,
+      "gate_mean": 4.170919175033577,
+      "gate_minus_full_mean": -0.0008994694851380824,
+      "bootstrap_95ci": [
+        -0.0023621235014841258,
+        1.941432764329676e-06
+      ],
+      "per_utterance_delta": [
+        -7.622629903014655e-05,
+        -0.000477671570445537,
+        8.01091645588059e-05,
+        -0.003124089235635452
+      ]
+    },
+    "ovrl": {
+      "full_mean": 3.2342540004277383,
+      "gate_mean": 3.233300897121365,
+      "gate_minus_full_mean": -0.0009531033063731043,
+      "bootstrap_95ci": [
+        -0.0029053250851472923,
+        0.00031614838941407264
+      ],
+      "per_utterance_delta": [
+        -0.00048523151010737564,
+        0.0002571351420503909,
+        0.0003751616367777544,
+        -0.003959478494213187
+      ]
+    }
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261019,
+    "unit": "utterance (exploratory)"
+  },
+  "runtime_seconds": 4.794172763824463,
+  "device_cache": {
+    "('auto', False)": "cuda:0"
+  }
+}

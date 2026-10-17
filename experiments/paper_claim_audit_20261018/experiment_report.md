@@ -25,7 +25,8 @@ This is a read-only audit of claims that can be made from the completed StoRM ex
 | Corrective-Forcing rollout audit | **Diagnostic method rejected** | Four captured reverse trajectories differ from the clean-conditioned forward marginal, with final-step standardized power around `3.25` (clean-centered) and `2.67` (prior-centered) | This does not identify train–inference mismatch because reverse states are not expected to follow the forward perturbation marginal; no CoF training is justified | `corrective_forcing_rollout_audit4_20261018` |
 | Matched-time rollout x0 gap | **Positive diagnostic candidate** | On 8 fresh-CV utterances, rollout-state x0 NMSE `0.5140` versus analytic-forward `0.1356`, difference `+0.3785`, positive for 8/8 | This is not yet a quality result or proof of CoF benefit; a bounded rollout-aware pilot needs detached replay targets and fresh-CV audio metrics | `rollout_prediction_gap_20261018` |
 | Rollout-aware backend adapter | **Mixed-evidence candidate; replicate independently** | Stable 16.5k-parameter adapter reduced 2-utterance holdout x0 NMSE by 42.4%; on 8 audio utterances (6 adapter-training utterances plus 2 holdouts) aggregate PESQ/STOI/SI-SDR improved slightly, while DNSMOS-OVRL decreased by 0.0055 | Not a confirmed perceptual gain, generalization result, Corrective Forcing method, or paper-level innovation | `rollout_adapter_pilot_20261018` |
-| Independent rollout adapter replication | **Proxy replicated; perceptual generalization unresolved** | On a new 4-speaker CV subset (8 utterances), 2 unseen-speaker holdout x0 NMSE decreased 54.8%; holdout DNSMOS-OVRL decreased 0.03465 despite small SI-SDR/STOI gains | Still too small and mixed for a quality claim, Corrective Forcing claim, or paper innovation | `rollout_adapter_replication_20261018` |
+| Independent rollout adapter replication | **Proxy replicated; perceptual generalization unresolved** | On a new 4-speaker CV subset (8 utterances), 2 unseen-speaker holdout x0 NMSE decreased 54.8%; holdout DNSMOS-OVRL decreased 0.03465 despite small SI-SDR/STOI gains | Still too small and mixed for a quality claim, Corrective Forcing claim, or paper innovation; stop expanding this route without a new supervision hypothesis | `rollout_adapter_replication_20261018` |
+| WavLM harm Oracle DNSMOS read-only check | **Stopped negative/neutral diagnostic** | On four existing `N=30` full/gated WAV pairs, Gate−Full DNSMOS P808/SIG/BAK/OVRL was `−0.000769/−0.000630/−0.000899/−0.000953`; all exploratory utterance-bootstrap intervals crossed zero | No evidence of usable perceptual headroom for a Harm Head; this small sample does not invalidate every possible harm label | `rrsd_harm_oracle_n30_4_dnsmos_20261019` |
 
 ## Paper wording recommended by the current evidence
 
@@ -42,7 +43,7 @@ Do not write that:
 1. P7 validated a new diffusion SDE or backend mechanism.
 2. Router improves overall perceptual quality on the official test set.
 3. DNSMOS-only trajectory selection is a reliable perceptual verifier.
-4. Anchor V2, Harm Head, Speaker loss, GAN, or perceptual loss has an independent positive result; the rollout-aware adapter remains a mixed-evidence candidate requiring independent-CV replication.
+4. Anchor V2, Harm Head, Speaker loss, GAN, or perceptual loss has an independent positive result; the rollout-aware adapter remains mixed evidence despite proxy replication and is not a confirmed perceptual method.
 5. Mixed amplitude/phase Oracle results are deployable gains.
 6. The ODE tolerance ladder proves the default PC sampler is the bottleneck.
 7. The reverb interaction proves a reverb-only causal explanation.
@@ -51,4 +52,4 @@ Do not write that:
 
 ## Decision
 
-P7 core diagnostics are complete as a bounded diagnosis and negative-screening stage. The later rollout-aware adapter result is a mixed-evidence candidate and needs an independent CV/holdout replication with a predeclared stop rule before any larger training. The Router/off/t-cut table remains frozen, as does the official test set.
+P7 core diagnostics are complete as a bounded diagnosis and negative-screening stage. The rollout-aware adapter replication is now complete: its proxy improvement was reproduced, but the unseen-speaker holdout DNSMOS-OVRL decreased, so it remains archived mixed evidence and is not expanded without a new supervision hypothesis. The Harm Oracle DNSMOS check is also complete and does not justify training a Harm Head. The Router/off/t-cut table remains frozen, as does the official test set.

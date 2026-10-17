@@ -1,0 +1,14 @@
+experiment_id: rrsd_harm_oracle_n30_4_dnsmos_20261019
+inputs:
+  full_dir: experiment_logs/rrsd_harm_oracle_n30_4_full
+  gate_dir: experiment_logs/rrsd_harm_oracle_n30_4_gate
+n_files: 4
+metric: DNSMOS P808/SIG/BAK/OVRL
+training: false
+inference: false
+evaluator: /data/coding/mymetrics/get_metrics_for_papertable_forDNS.py::calc_dnsmos
+device_requested: auto
+resolved_device: cuda:0
+bootstrap_replicates: 10000
+bootstrap_seed: 20261019
+bootstrap_unit: utterance (exploratory)
