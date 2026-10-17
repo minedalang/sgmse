@@ -1,0 +1,399 @@
+{
+  "schema_version": 1,
+  "experiment_id": "content_headroom_asr_smoke_20261018",
+  "status": "completed",
+  "interpretation": "Pseudo-WER/ASR stability diagnostic only; clean transcript is a reference for this smoke, not dataset ground-truth WER.",
+  "manifest_path": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv",
+  "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "selection_rule": {
+    "targets_snr_db": [
+      -20,
+      -18,
+      -16,
+      -14,
+      -11,
+      -10,
+      -8,
+      -6
+    ],
+    "rule": "For each target SNR, choose unused P7 manifest row minimizing absolute SNR difference, tie-break by filename; selected rows sorted by actual SNR then filename."
+  },
+  "model": {
+    "name": "tiny.en",
+    "path": "/data/.rootcache/whisper/tiny.en.pt",
+    "sha256": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03",
+    "device": "cuda",
+    "torch": "2.14.1+cu130",
+    "whisper_module": "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/__init__.py"
+  },
+  "seed": 0,
+  "decode": {
+    "language": "en",
+    "task": "transcribe",
+    "temperature": 0,
+    "beam_size": 1,
+    "best_of": 1,
+    "condition_on_previous_text": false,
+    "fp16": true
+  },
+  "n_utterances": 8,
+  "conditions": [
+    "clean",
+    "noisy",
+    "router_off",
+    "router",
+    "cut005"
+  ],
+  "total_runtime_seconds": 25.570321083068848,
+  "rows": [
+    {
+      "filename": "025_fileid_3545.wav",
+      "uttid": "reader_11297_fileid_3545",
+      "snr_db": -20,
+      "transcripts": {
+        "clean": "It want no use to send him, he broke ever-galdurned rule. But Jim was sort of studious. He cared a heap for books. Lazy, I guess. On summer days he'd find the shady nooks and lay and read, while the un-bill got out and done the work, and earned a decent living for this lazy, worthless shook. But Sue, she was a handsome gal. Her cheek was like...",
+        "noisy": "I was to send him he broke ever-galdred rule. One sort of stupels. He cared for me for this.",
+        "router_off": "Oh, no, he held each to send him, he broke ever-galdurned rule. But Tim was sort of studious. He cared heaped for best. Lazy, a hag-bass, and some of the little men find their best. And they, everyone, are happy as the wind can't happen, it's not quite good. Or Mern Bell's not. Oh, quite a bit of a little bird, I cannot miss. Who did you put you in the think of? So, hold sheet plan.",
+        "router": "Oh, no, he held each to send him, he broke ever-galdurned rule. But, Tim was sort of studious. He cared heaped for us. Lazy, a hag-bass, and some were little and five-favs, and re-wank, I have yet been and how bad is not going to go. Or Marn Bell's not. Oh, quite a bit of a little buzz. I cannot miss. Who did you put you in the ink of the sweat of the sun? sheep plant.",
+        "cut005": "Oh, no, he held each to send him, he broke ever-galdurned rule. But, Tim was sort of studious. He cared heaped for us. Lazy, a hag-bass, and some were little and five-favs. And Ray, a re-one, I have yet been, and how bad is not going to go. Or Marn Bell's, not. Oh, quite a bit of a little buzz. I cannot miss. Who did you put you in the ink of the sweat of it, sir? she plan."
+      },
+      "runtime_seconds": {
+        "clean": 1.3503379821777344,
+        "noisy": 0.542750358581543,
+        "router_off": 0.9926369190216064,
+        "router": 0.7130553722381592,
+        "cut005": 0.6845600605010986
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.8028169014084507,
+        "router_off": 0.8873239436619719,
+        "router": 0.9014084507042254,
+        "cut005": 0.9295774647887324
+      },
+      "word_counts": {
+        "clean": 71,
+        "noisy": 20,
+        "router_off": 82,
+        "router": 82,
+        "cut005": 84
+      }
+    },
+    {
+      "filename": "000_fileid_2673.wav",
+      "uttid": "reader_11065_fileid_2673",
+      "snr_db": -18,
+      "transcripts": {
+        "clean": "hands of small men, and there is not very much of it in any branch of industry in modern England, except agriculture and domestic cooking. No doubt many of the most important advances of recent years have been due to the utilizing of what had been a waste product. But this has been generally due to a distinct invention, either chemical or mechanical, use of which has been indeed promoted.",
+        "noisy": "It adds a small bend and it is not very much of it in any branch of industry in modern England except agriculture and domestic culture. But this has been generally due to a distinct invention. either chemical or mechanical the use of the instrument in the upper motor",
+        "router_off": "hands of small method, and there is not very much of it in any branch of industry in modern England, except agriculture and domestic click-em. Goin'. If the audit is that, then get loyish, or if they are the only reason for the property of the wad, if they are the hothic. But this has been generally due to a distinct invention, either chemical or mechanical, the use of which has been indeed promoted.",
+        "router": "hands of small method, and there is not very much of it in any branch of industry in modern England, except agriculture and domestic click-em. Goin'. If the audit is that, then get in the air, I think it's all in the air. It's all in the air. It's all in the air. It's all in the air. It's all in the air. But this has been generally due to a distinct invention, either chemical or mechanical, the use of which has been indeed promoted.",
+        "cut005": "hands of small method, and there is not very much of it in any branch of industry in modern England, except agriculture and domestic click-em. Goin'. If the audit is that, then get in the air, I think it's all in the air. It's all in the air. It's all in the air. It's all in the air. It's all in the air. But this has been generally due to a distinct invention, either chemical or mechanical, the use of which has been indeed promoted."
+      },
+      "runtime_seconds": {
+        "clean": 0.46840977668762207,
+        "noisy": 0.3623197078704834,
+        "router_off": 0.6136524677276611,
+        "router": 0.6167593002319336,
+        "cut005": 0.6087357997894287
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.5285714285714286,
+        "router_off": 0.4142857142857143,
+        "router": 0.6428571428571429,
+        "cut005": 0.6428571428571429
+      },
+      "word_counts": {
+        "clean": 70,
+        "noisy": 49,
+        "router_off": 75,
+        "router": 91,
+        "cut005": 91
+      }
+    },
+    {
+      "filename": "002_fileid_7247.wav",
+      "uttid": "reader_11794_fileid_7247",
+      "snr_db": -16,
+      "transcripts": {
+        "clean": "Dofta spot, which the appearance of a repulsive object had thrown on his retina. Presently the doors were flung wide open. The delegates were beginning to arrive. While the hands and the clock crept forward, the president rewarded the good with friendly nods and pressures of the hand, and punished the evil-doers by turning away his head. He was bound to be just as the most high. The reporter the redcap arrived. an un-pre-possessing individual, not quite sober.",
+        "noisy": "The",
+        "router_off": "The dock that fought with the appearance of the repulsive object had flown on his retina. Trevantly, the doors were flung wide opens. The delegates were beginning to arrive. While the hands and the clock crept forward, the children who ruled the full full of defriendly not, and pressure so the hand, sand punished the evil doors by threatening you lay his hand. He was bound to be just, at the most high. reporter the red cap arrived and unpre-possessing an anton and great like some nice.",
+        "router": "The doctor fought with the appearance of the repulsive object had flown on his retina. Trevantly, the doors were flung wide open, the delegates were beginning to arrive, while the hands and the clock crept forward, the children who ruled the full full of defriendly night, and pressured so the hand, and punished the evil-doers by a friend of U.A. is Henry. He bound to be just, at the most high, who reported the redcap arrived, and unpre-possessing and quick like some eggs.",
+        "cut005": "The doctor fought with the appearance of the repulsive object had flown on his retina. Trevantly, the doors were flung wide open, the delegates were beginning to arrive, while the hands and the clock crept forward, the children who ruled the full full of defriendly night, and pressure to the hand, sandwiched the e-baldours by a friend of U.A.'s hand. You bound to be just, at the most high, where reporter the redcap arrived, and un-pre-possessing and quick like some eggs."
+      },
+      "runtime_seconds": {
+        "clean": 0.5696249008178711,
+        "noisy": 0.10768723487854004,
+        "router_off": 0.6301250457763672,
+        "router": 0.6098248958587646,
+        "cut005": 0.6236729621887207
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.9876543209876543,
+        "router_off": 0.48148148148148145,
+        "router": 0.4444444444444444,
+        "cut005": 0.4567901234567901
+      },
+      "word_counts": {
+        "clean": 81,
+        "noisy": 1,
+        "router_off": 88,
+        "router": 86,
+        "cut005": 86
+      }
+    },
+    {
+      "filename": "022_fileid_9359.wav",
+      "uttid": "reader_11128_fileid_9359",
+      "snr_db": -14,
+      "transcripts": {
+        "clean": "Their lights went out. As will be seen by and by, he had come here to seek me, and to serve the Grand Marquis. More speech like this followed, and amid it all, with the flower of the world beside me at this table, I remembered my mother's words before I bade her goodbye and set sail from Glasgow for Virginia. Keep it in mind, Robert,\" she said, that an honest love is the thing to hold you honest with.",
+        "noisy": "their lights went out, as will be seen by and by. He had come here to seek me and to serve the grant mark keys. Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Moss, Glasgow, for Virginia. Keep it in mind, Robert. She said, that an honest love is the thing to hold you honest with.",
+        "router_off": "their lights were out, as will be seen by and by. He had come here to seek me, and, to serve the Grand Marquis. More speed like this, Vaulay, and emitted off, vialily worried beside here the seagushes, a lien that her no best will, and for thy they'd heard the clock, hence that sail from Glasgow for Virginia. Keep it in mind, Robert. She said, that an honest love is the thing to hold you honest with.",
+        "router": "their lights were out, as will be seen by and by. He had come here to seek me, and, to serve the Grand Marquis. More speed like this, Vaulay, and emitted off, Vail will be worried beside here the St. Hergushes, a lien that are no best whilst the fudge they've heard the thark, and set sail from Glasgow for Virginia. Keep it in mind, Robert. She said, that an honest love is the thing to hold you honest with.",
+        "cut005": "their lights were out, as will be seen by and by. He had come here to seek me, and, to serve the Grand Marquis. More speed like this, Vaulay, and emitted off, Vail will be worried beside here the St. Hergushes, a lien that are no best whilst the fudge they've heard the thark, and set sail from Glasgow for Virginia. Keep it in mind, Robert. She said, that an honest love is the thing to hold you honest with."
+      },
+      "runtime_seconds": {
+        "clean": 0.5392227172851562,
+        "noisy": 1.2252724170684814,
+        "router_off": 0.5691676139831543,
+        "router": 0.6112172603607178,
+        "cut005": 0.5914602279663086
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.4567901234567901,
+        "router_off": 0.35802469135802467,
+        "router": 0.345679012345679,
+        "cut005": 0.345679012345679
+      },
+      "word_counts": {
+        "clean": 81,
+        "noisy": 75,
+        "router_off": 79,
+        "router": 81,
+        "cut005": 81
+      }
+    },
+    {
+      "filename": "011_fileid_8207.wav",
+      "uttid": "reader_11458_fileid_8207",
+      "snr_db": -11,
+      "transcripts": {
+        "clean": "children that they are, into gleeful chuckles at their escape. When the con emerges from the water, the ruling passion within his ever-ricious nature asserts itself with ridiculous promptness. With the water dripping from his dangling feet, he rides hastily to where I am dressing and whispers, \"'Pul nice, off gani dash dah dah, pul nice!' By this he desires me to understand that the men who have been so industrious and ready and helping us across.",
+        "noisy": "When the con emerges from the water, the ruling passion within his ever-wishes nature is its own and ridiculous promise. With the water dripping from his dang-doo-doo, he rides hastily to where I am dressing in a raspberries. Poor and nice. Off gani dashed a dham, poor nice. By this, he desires me to understand that the men who have been so industrious and ready and helping them across.",
+        "router_off": "as a children, oh, into lethal chapels at their us again. When the con emerges from the water, the ruling passion within his ever-ricious nature at such a sense of a ridiculous promptness. With the water dripping from his dangly feet of, he rides hastily to where I am dressing and whispers, \"'Pool nice!' off Gani dashed Adam, \"'Pool nice!' By this he desires me to understand that the men who have been so industrious and ready and helping of the crou-",
+        "router": "of children, awe, into playful chapels at their us again. When the con emerges from the water, the ruling passion within his ever-richest nature it treats itself with ridiculous promptness. With the water dripping from his dangling feet of, he rides hastily to where I am dressing and whispers, \"'Pul nice!' off Gani dashed Adam, \"'Pul nice!' By this he desires me to understand that the men who have been so industrious and ready and helping of the crou-",
+        "cut005": "of children, awe, into playful chapels at their us again. When the con emerges from the water, the ruling passion within his ever-richest nature it treats itself with ridiculous promptness. With the water dripping from his dangling feet of, he rides hastily to where I am dressing and whispers, \"'Pool nice!' off Gani dashed Adam, \"'Pool nice!' By this he desires me to understand that the men who have been so industrious and ready and helping of the crou-"
+      },
+      "runtime_seconds": {
+        "clean": 0.5637414455413818,
+        "noisy": 0.552056074142456,
+        "router_off": 0.5788435935974121,
+        "router": 0.5761053562164307,
+        "cut005": 0.5629124641418457
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.3717948717948718,
+        "router_off": 0.3076923076923077,
+        "router": 0.23076923076923078,
+        "cut005": 0.2564102564102564
+      },
+      "word_counts": {
+        "clean": 78,
+        "noisy": 72,
+        "router_off": 83,
+        "router": 80,
+        "cut005": 80
+      }
+    },
+    {
+      "filename": "001_fileid_2972.wav",
+      "uttid": "reader_11254_fileid_2972",
+      "snr_db": -10,
+      "transcripts": {
+        "clean": "its representatives in the other not. Freedom, to be, must be perfect. The half-free can no more exist, even in idea, than the half-entire. Restrains laid by a people on itself are sacrifices made to liberty, and it never exerts a more beneficent or a greater power than an imposing them. The nation that pays taxes without its own consent is under slavery. Whosoever causes whosoever may",
+        "noisy": "that's representative in the other not freedom to be perfect. The half race and no more exist even in idea. Then the half-inch tire, restraints laid by a people on itself, our sacrifices made to liberty, and it never exerts more beneficent or a greater power than an imposing them. The nation that pays taxes without a film. It's a, it's a, it's a, it's a, it's a, it's a,",
+        "router_off": "its representatives in the other, not. Freedom, chisbee, and the perfect. The half-free can no more exist, even in idea than the half-entire. Restrains laid by a people on itself are sacrifices made to liberty, and it never exerts a more beneficent or a greater power than an imposing them. The nation that pays taxes without its own management is under slavery through so ever It's all yours. Blue, so ever me.",
+        "router": "its representatives in the other, not. Freedom, chisbee, and the perfect. The half-free can no more exist, even in idea than the half-entire. Restrains laid by a people on itself are sacrifices made to liberty, and it never exerts a more beneficent or a greater power than an imposing them. The nation that pays taxes without its own gun funds is under slavery, through so ever It's all yours. Blue, so ever me.",
+        "cut005": "its representatives in the other, not. Freedom, chisbee, and the perfect. The half-free can no more exist, even in idea than the half-entire. Restrains laid by a people on itself are sacrifices made to liberty, and it never exerts a more beneficent or a greater power than an imposing them. The nation that pays taxes without its own vengeance is under slavery, through so ever It's all yours. Blue, so ever me."
+      },
+      "runtime_seconds": {
+        "clean": 0.5757083892822266,
+        "noisy": 0.8238897323608398,
+        "router_off": 0.647498369216919,
+        "router": 0.6453218460083008,
+        "cut005": 0.6253163814544678
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.4782608695652174,
+        "router_off": 0.2318840579710145,
+        "router": 0.2463768115942029,
+        "cut005": 0.2318840579710145
+      },
+      "word_counts": {
+        "clean": 69,
+        "noisy": 78,
+        "router_off": 75,
+        "router": 76,
+        "cut005": 75
+      }
+    },
+    {
+      "filename": "024_fileid_6209.wav",
+      "uttid": "reader_11170_fileid_6209",
+      "snr_db": -8,
+      "transcripts": {
+        "clean": "Though a man has shot himself who was worthy of all compassion and indulgence, we are left at any rate, and so there's no great need to grieve. Yes, of course, from that point of view, oh, but I believe you're joking and very cleverly. I always drink tea at this time, and I'm just going to ask for it. You will join me, perhaps? And he went out with a glance at my trunk and bag. I had wanted to say something rather spiteful to retaliate for his judgment of craft, And I had succeeded in saying it.",
+        "noisy": "The old man in the shot himself was working all compassionate indulgence but we don't have that any need to be. So there's no need to be decreed. Yes, of course, that wouldn't give you. Oh, but I believe you're joking, and very cleverly. I always drink tea at this time, and I'm just going to ask for it. You would join me perhaps? And you went out with the glats that I tried to get back. I wanted to say something about your spiteful, as we're telling you, as judgment is left. That's exciting, it's exciting.",
+        "router_off": "Though a man has shot himself who was worthy of all compassion and indulgence, we are that of that any rate, so there's every need to grieve. Yes, it's of course from that point of view. Oh, but I believe you're joking and very cleverly. I always drink tea at this time, and I'm just going to ask for it. You would join me perhaps. And he went out with a glance at my trunk and bag. I had wanted to say something rather spiteful to retaliate for his judgment of craft, Now, let's exceed it in saying.",
+        "router": "Though a man has shot himself who was worthy of all compassion and indulgence, we are that that any rate, so there's need, need, to grieve. Yes, it's of course from that point of view. Oh, but I believe you're joking and very cleverly. I always drink tea at this time, and I'm just going to ask for it. You would join me perhaps. And he went out with a glance at my trunk and bag. I had wanted to say something rather spiteful to retaliate for his judgment of craft, and I had succeeded in saying.",
+        "cut005": "Though a man has shot himself who was worthy of all compassion and indulgence, we are that that any rate, so there's every need to grieve. Yes, it's of course from that point of view. Oh, but I believe you're joking and very cleverly. I always drink tea at this time, and I'm just going to ask for it. You would join me perhaps. And he went out with a glance at my trunk and bag. I had wanted to say something rather spiteful to retaliate for his judgment of craft, and I had succeeded in saying."
+      },
+      "runtime_seconds": {
+        "clean": 0.6938521862030029,
+        "noisy": 0.7199611663818359,
+        "router_off": 0.7201354503631592,
+        "router": 0.6901183128356934,
+        "cut005": 0.7295010089874268
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.5196078431372549,
+        "router_off": 0.14705882352941177,
+        "router": 0.08823529411764706,
+        "cut005": 0.08823529411764706
+      },
+      "word_counts": {
+        "clean": 102,
+        "noisy": 105,
+        "router_off": 103,
+        "router": 101,
+        "cut005": 101
+      }
+    },
+    {
+      "filename": "003_fileid_4431.wav",
+      "uttid": "reader_11880_fileid_4431",
+      "snr_db": -6,
+      "transcripts": {
+        "clean": "affect climate, temperature and soil. They influence the humidity. They equalise the flow of streams, moderate floods and by preventing the washing down of the rich soil, keep the mountainsides from becoming bare and sterile rocks. So within the last two decades, the people in America have begun to think of forestry. Its purpose is to restore the forests to the condition of permanent rent.",
+        "noisy": "in effect, one of them, temperature and soil. They influence the humidity. They influence the flow of steam, all the right fluids. And by preventing the washing down the whip, soil, keep the melting sponges from becoming bare and scarred. And lost. So within the last two dashing, it will allow the humidity to be closed. It's purpose, it's also caused to wash.",
+        "router_off": "effect, whilities, temperature and soil. The influence that you meditate in. But equalize the flow of screens, never lay a clit, and by preventing the washing down of the witch site, keep the mountainside from becoming bad and stout and lost. So within the last two decades, it people in a malleting head that then to pleat the It's purpose is to assure the artists that they mentioned on a Cret A 1-",
+        "router": "effect, fly these, temperature and soil. The influence that you meditate in. But equalize the flow of screens, never lay a clit and by preventing the washing down of the rich site, keep the mountainside from becoming bad and stout and lost. So within the last two decades, if people in a manner behead the ventrically power-strung, purpose is to assure the ghosts she left the mission to undercut a one",
+        "cut005": "effect, fly these, temperature and soil. The influence that you meditate in. But equalize the flow of screens, never lay a clit and by preventing the washing down of the rich site, keep the mountainside from becoming bad and stout and lost. So within the last two decades, if people in a manner behead the ventrically power-strung, purpose is to assure the ghosts she left the mission to undercut a one"
+      },
+      "runtime_seconds": {
+        "clean": 0.4896395206451416,
+        "noisy": 0.6026468276977539,
+        "router_off": 0.5624663829803467,
+        "router": 0.5372874736785889,
+        "cut005": 0.5888092517852783
+      },
+      "normalized_edit_distance": {
+        "clean": 0.0,
+        "noisy": 0.6,
+        "router_off": 0.6307692307692307,
+        "router": 0.6,
+        "cut005": 0.6
+      },
+      "word_counts": {
+        "clean": 65,
+        "noisy": 65,
+        "router_off": 74,
+        "router": 72,
+        "cut005": 72
+      }
+    }
+  ],
+  "input_sha256": {
+    "025_fileid_3545.wav": {
+      "clean": "3f6244f7f7d6c43ec1833d29f572b288b9c89e5f4295a6b819ebd05a1071d02d",
+      "noisy": "1d0ed53321fa2001e68a230ecf9761f8751e255b71bb2314897a67fb5fe0970f",
+      "router_off": "e1e22ee0823f8732673000711b2013fafb8061eb1f29a1fe3638393ac5b7ca37",
+      "router": "bad1dc1d94d6910954eedced451fc49aa474d56478ea4002d6b0498c3333a15e",
+      "cut005": "5d60df09ffc392c9095c66283257d2fc94d4d7df54bd8535de26994643de3649"
+    },
+    "000_fileid_2673.wav": {
+      "clean": "84a9b26ba5c94f37e3c482bc7e15a1526651737e431c3383c9f5aaed06fda1b7",
+      "noisy": "dd574edbba369208ade9d262e3b985fea9dfa95b53e5a668aec119ca0a8eb5b8",
+      "router_off": "d5de9c5fbf7796d21b657013cc107c676db55d8e2ada2aa7c1d3aed760939a64",
+      "router": "68ed4be123a38348b4488e4b3d944260f0030cbc911b06ce264bc344bfda244e",
+      "cut005": "17a8539f3b39c61c5d34f8a540dcdacbfdcfcd3500d56de1bf54f5ebcebd6ed4"
+    },
+    "002_fileid_7247.wav": {
+      "clean": "c762282b7d59b45245f0a1acf7c8507d20c05c531790e99be6941215165e0d9c",
+      "noisy": "6ea9aa12565269f739fed9b7937c40ef75b6e10da9a2ce350f296347f02eb60b",
+      "router_off": "d5828caf5dfb31fa12f845246b1adfc82f630d04e24b0c91dd26484177a2c07f",
+      "router": "c57ea5134dc70c24a733963fd07c19e6587956771eae03ff12a175a337c346a4",
+      "cut005": "7861764e2a9cc8ff528ff586c05f0f945f31ad91d0979790c0e552374002215f"
+    },
+    "022_fileid_9359.wav": {
+      "clean": "8049933052a65e887e934a0cf2b1c533df05c50b52c69b8f3c18a8bf34705448",
+      "noisy": "a42860e1a39d0c6eb211e8e3d8f205da7f46b98763a1e82ef9e1df7c23adfd3d",
+      "router_off": "da36f561c9a17cd1d16b07ff503ab0116a6d7de9bf9da8b800b34756a723284b",
+      "router": "a80dcde1b4e27f6b564be125c900bb312f813715f4fa8840067ac566e29efb8b",
+      "cut005": "dcf68c7fcd3a4ef2508f33b8ce4f7bdb94be101d618f0b1e44b1b2ec42ef2c69"
+    },
+    "011_fileid_8207.wav": {
+      "clean": "b3cfc26b1cfbffb234fea20d14ff10012a9ddff3f796cb2945617944df5eb6a9",
+      "noisy": "9e36a50bbf243e7824793ce130441694f2d2829c29911cf0c0d8265f070d3bb9",
+      "router_off": "0890de4d5743fa84e2dd8efcfb9650937dec850cfb9b9953d7d0b1b0887a36c6",
+      "router": "8b6b71e8ba686731b67e28fcf495caaad1d84543ee4a8f23518c833ad4c32b1a",
+      "cut005": "49e4d4b20be7d78dce3924893e21fea212f1a0180c42434899355cb86a0d676f"
+    },
+    "001_fileid_2972.wav": {
+      "clean": "208181e817aa305b767c0e213d41d0a984ea713da3f98603678c4a7d7893ec35",
+      "noisy": "cd70a523242c263cbaa0073ab886cce6bf8f7a2fa6fa398a0b4796f73b79837d",
+      "router_off": "43c908efedb83134251e6797d3832105a2e9880a14a56328908fedf883bc8740",
+      "router": "a05c7266472c4fa959502220b91f537edf9bca775124ed12eb0cde86dd64c752",
+      "cut005": "1ca793e13ab406fe6e4c6f934778d849093be132f2fd7b96db3753c53642d895"
+    },
+    "024_fileid_6209.wav": {
+      "clean": "7c38d776694f78d76244bf6c43a5e5bb21b2ba7846288b4ab5ac5ffce2c4f94a",
+      "noisy": "9046113ce439d43d9483cc4e46710232f412a922247c1f0daa097399204d8554",
+      "router_off": "c8970732be84dc25cf1f6d147098690f5726f0f8f046db34b95cddc7a3ffcdc1",
+      "router": "3062289a6ff6b1f8c37d3a070de84a27910d126f0edb7f19e76159ceaa9758ff",
+      "cut005": "a703c1a726f8b4942f6897436055fc4f966a4f7641f908184915c959049c7880"
+    },
+    "003_fileid_4431.wav": {
+      "clean": "a0fa55b029e690a433ec2abe9f1c8bcd3b1dbcebce07f2665d3830a23d9dd463",
+      "noisy": "daa6a24f15fdc631c2449a7ef4c80aaf03e28f5677136ae38a042bf84f96849d",
+      "router_off": "f38750cfcb5d0872234234d76223f57a84fecbf3981030717404400aa1bcad85",
+      "router": "754c42a197fdb01cceca8694f35dec22356279dbad07a9d0842b77a83ce29726",
+      "cut005": "0d98df6a1d0f0e4c6ef312547d6002c3c5b2ef533a859fb15fe87ee109a6295b"
+    }
+  },
+  "paired_comparison": {
+    "quantity": "router_minus_router_off_normalized_edit_distance",
+    "per_utterance_differences": [
+      0.014084507042253502,
+      0.2285714285714286,
+      -0.037037037037037035,
+      -0.012345679012345678,
+      -0.07692307692307693,
+      0.014492753623188415,
+      -0.058823529411764705,
+      -0.03076923076923077
+    ],
+    "mean": 0.005156267010426922,
+    "router_better_count": 5,
+    "tie_count": 0,
+    "router_worse_count": 3,
+    "bootstrap": {
+      "method": "paired utterance bootstrap",
+      "replicates": 200000,
+      "seed": 20261018,
+      "percentile_95_ci": [
+        -0.04343942544715812,
+        0.07570963179220566
+      ]
+    },
+    "interpretation": "exploratory uncertainty only; eight rows from a repeatedly screened development split and pseudo-reference, not true WER inference."
+  }
+}

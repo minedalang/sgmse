@@ -1,0 +1,18 @@
+experiment_id: content_headroom_asr_smoke_20261018
+purpose: fixed 8-utterance pseudo-ASR content-safety/headroom diagnostic
+status: completed
+source_manifest: experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv
+manifest_split: P7 32-utterance development manifest; exploratory, not held-out and not ground-truth WER
+selection:
+  target_snr_db: [-20, -18, -16, -14, -11, -10, -8, -6]
+  rule: For each target SNR choose an unused row minimizing absolute SNR difference, tie-break by filename; sort selected rows by actual SNR then filename.
+conditions: [clean, noisy, router_off, router, cut005]
+model:
+  name: tiny.en
+  cache: /data/.rootcache/whisper
+  device: cuda_if_available
+  language: en
+  decode: greedy temperature=0 beam_size=1 best_of=1 condition_on_previous_text=false
+  seed: 0
+outputs: metrics.json, experiment_report.md
+constraints: no dataset modification; no checkpoint modification; no full evaluation; clean transcript used only as pseudo-reference
