@@ -1,0 +1,29 @@
+experiment_id: reverb_resource_audit_20261018
+status: completed_read_only_audit
+question: >-
+  Are independently sourced room impulse responses available locally for a fresh
+  reverb validation without modifying the DNS Ins20 dataset?
+dataset_root: /data/datasets/dns_ins20
+dataset_modified: false
+checkpoint_modified: false
+source_files:
+  - /data/datasets/dns_ins20/test_set/README.md
+  - /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisyspeech_synthesizer_rir_v3_testset.cfg
+  - /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisyspeech_synthesizer_rir_v3.cfg
+referenced_rir_paths:
+  - path: /home/xyf/cwh_project/DNS-Challenge/datasets_fullband/impulse_responses/SLR28/RIRS_NOISES/real_rirs_isotropic_noises
+    exists: false
+  - path: /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/datasets/impulse_responses
+    exists: false
+counts:
+  no_reverb_clean_wav: 150
+  no_reverb_noisy_wav: 150
+  with_reverb_clean_wav: 150
+  with_reverb_noisy_wav: 150
+decision: >-
+  Do not extend the artificial-FIR smoke or start reverb training. A fresh
+  real-RIR experiment requires an independently supplied RIR resource first.
+hashes:
+  test_readme_sha256: 360d233968fc1f365103e472a0f94126e2c7efad5041c4a0d97c53a5448cf759
+  test_config_sha256: 0e7ad0fafed2a5cf2f3e7cc5739070229009f0e5d554e7ad0d3068a281066224
+  train_config_sha256: 44d6fff0bd598d33e350a7507501d59a79fdcfe54e7f7add2e8248bace42e0cc

@@ -1,0 +1,24 @@
+{
+  "experiment_id": "reverb_resource_audit_20261018",
+  "status": "completed_read_only_audit",
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "referenced_rir_paths": [
+    {
+      "path": "/home/xyf/cwh_project/DNS-Challenge/datasets_fullband/impulse_responses/SLR28/RIRS_NOISES/real_rirs_isotropic_noises",
+      "exists": false
+    },
+    {
+      "path": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/datasets/impulse_responses",
+      "exists": false
+    }
+  ],
+  "wav_counts": {
+    "no_reverb_clean": 150,
+    "no_reverb_noisy": 150,
+    "with_reverb_clean": 150,
+    "with_reverb_noisy": 150
+  },
+  "local_repo_rir_files_excluding_env": 0,
+  "decision": "No fresh real-RIR validation is reproducible from currently local resources; do not expand artificial FIR or start reverb training."
+}

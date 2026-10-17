@@ -39,6 +39,8 @@
 
 在排除既有 manifest 的 4 个 CV speaker 上完成固定 FIR 合成混响 smoke。Router 相对 off 的 SI-SDR interaction 相对 identity 为 short `-0.0448 dB`、medium `-0.0714 dB`，但 PESQ interaction 为正，未复现官方最终集 PESQ 与 SI-SDR 同时变差的模式。该 smoke 仅 4 条且使用人工 FIR，按停止条件不扩大此路线，也不启动 reverb adapter/gate；详见 `experiments/reverb_cv_smoke_20261018/`。
 
+随后完成本地混响资源只读审计：官方 README 说明 `with_reverb` 使用内部录制 RIR，但当前配置引用的原机器 `/home/xyf/...` RIR 目录不存在；`/data/coding/sgmse`（排除环境目录）也没有可用 RIR 文件。因此目前无法把人工 FIR smoke 升级为独立真实 RIR fresh-CV；在获得外部、固定且来源明确的 RIR 前，不扩展人工 FIR、不启动 reverb adapter 或混响训练。记录见 `experiments/reverb_resource_audit_20261018/`。
+
 ## 3. 已停止的候选路线
 
 - WavLM Harm Head：真实 Harm Oracle 的 PESQ/STOI/SI-SDR 增益接近零。
