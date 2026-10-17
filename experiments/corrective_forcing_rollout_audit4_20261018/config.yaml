@@ -1,0 +1,22 @@
+experiment_id: corrective_forcing_rollout_audit4_20261018
+date: 2026-10-18
+type: read_only_rollout_state_audit
+status: completed_negative_diagnostic
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv
+utterances: 4
+sampler: pc_reverse_diffusion
+N: 30
+corrector: none
+snr: 0.5
+seeds: [20261018]
+clean_usage: offline_reference_only
+state_capture: pre_predictor_x_t
+statistic: complex_standardized_abs2_against_clean_conditioned_forward_OUVE_marginal
+control: prior_centered_standardized_abs2
+new_training: false
+new_audio_outputs: false
+dataset_modified: false
+checkpoint_modified: false
+decision: do_not_start_corrective_forcing_training
+reason: reverse_rollout_states_are_not_expected_to_match_forward_clean_conditioned_marginals; this smoke is insufficient to identify train_inference_mismatch
