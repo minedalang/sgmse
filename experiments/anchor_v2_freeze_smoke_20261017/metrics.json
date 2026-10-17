@@ -1,0 +1,13 @@
+{
+  "exit_code": 0,
+  "trainable_parameter_tensors": 6,
+  "trainable_parameter_count": 21700,
+  "non_trainable_parameter_count": 55100000,
+  "ema_tracked_parameter_tensors": 6,
+  "train_loss_step": 350.959,
+  "train_loss_epoch": 178.817,
+  "controller_only": true,
+  "dnn_frontend_frozen": true,
+  "data_modified": false,
+  "checkpoint_written": false
+}

@@ -713,6 +713,12 @@ class JointFrontendSgmseModel(ScoreModel):
         # ===== Anchor V2: fine-grained band-time x0 residual calibration =====
         parser.add_argument("--anchor_v2_weight", type=float, default=0.0,
                             help="Weight of Anchor V2 loss. 0 disables the independent V2 controller.")
+        parser.add_argument("--anchor_v2_freeze_base", action="store_true",
+                            help=(
+                                "Freeze the score network, frontend, and all auxiliary branches while "
+                                "training only the Anchor V2 controller. Requires --anchor_v2_weight > 0; "
+                                "incompatible with --rrsd_freeze_base."
+                            ))
         parser.add_argument("--anchor_v2_hidden_ch", type=int, default=48,
                             help="Hidden channels of the band-time Anchor V2 controller.")
         parser.add_argument("--anchor_v2_num_bands", type=int, default=32,
@@ -909,6 +915,7 @@ class JointFrontendSgmseModel(ScoreModel):
         anchor_loss_weight_recon: float = 0.1,
         # Anchor V2: fine-grained band-time x0 residual calibration
         anchor_v2_weight: float = 0.0,
+        anchor_v2_freeze_base: bool = False,
         anchor_v2_hidden_ch: int = 48,
         anchor_v2_num_bands: int = 32,
         anchor_v2_num_time_blocks: int = 16,
@@ -1201,6 +1208,14 @@ class JointFrontendSgmseModel(ScoreModel):
         # Anchor V2 is an independent branch.  It leaves the original anchor
         # controller and all of its checkpoint keys untouched.
         self.anchor_v2_weight = float(anchor_v2_weight)
+        self.anchor_v2_freeze_base = bool(anchor_v2_freeze_base)
+        if self.anchor_v2_freeze_base and self.anchor_v2_weight <= 0.0:
+            raise ValueError("--anchor_v2_freeze_base requires --anchor_v2_weight > 0.")
+        if self.anchor_v2_freeze_base and self.rrsd_freeze_base:
+            raise ValueError(
+                "--anchor_v2_freeze_base is incompatible with --rrsd_freeze_base; "
+                "choose one trainable controller."
+            )
         self.anchor_v2_loss_weight_a = float(anchor_v2_loss_weight_a)
         self.anchor_v2_loss_weight_b = float(anchor_v2_loss_weight_b)
         self.anchor_v2_loss_weight_recon = float(anchor_v2_loss_weight_recon)
@@ -1386,6 +1401,7 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["rrsd_gate_pos_weight"] = self.rrsd_gate_pos_weight
         self.hparams["rrsd_validate"] = self.rrsd_validate
         self.hparams["rrsd_freeze_base"] = self.rrsd_freeze_base
+        self.hparams["anchor_v2_freeze_base"] = self.anchor_v2_freeze_base
         self.hparams["contrastive_margin"] = float(self.contrastive_margin)
         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
         self.hparams["frontend_nr_margin"] = self.frontend_nr_margin
@@ -1491,6 +1507,16 @@ class JointFrontendSgmseModel(ScoreModel):
                 raise ValueError("--rrsd_freeze_base requires --rrsd_weight > 0 so a router exists.")
             for name, p in self.named_parameters():
                 p.requires_grad = name.startswith("rrsd_router.")
+
+        if self.anchor_v2_freeze_base:
+            # Anchor V2 is trained as a small residual controller on top of a
+            # fixed base model.  Freeze by name after every branch has been
+            # constructed so the optimizer and EMA cannot accidentally track
+            # the frontend, score network, or another auxiliary head.
+            for p in self.parameters():
+                p.requires_grad = False
+            for p in self.anchor_v2_controller.parameters():
+                p.requires_grad = True
 
         # Rebuild EMA after frontend creation so EMA tracks the full trainable model
         self._ensure_ema_is_compatible(force_rebuild=True)
@@ -1714,16 +1740,28 @@ class JointFrontendSgmseModel(ScoreModel):
         return optimizer
     def train(self, mode: bool = True, no_ema: bool = False):
         out = super().train(mode, no_ema=no_ema)
-        if mode and bool(getattr(self, "rrsd_freeze_base", False)):
-            # Keep the frozen teacher system deterministic while Q_phi learns.
+        if mode and (
+            bool(getattr(self, "rrsd_freeze_base", False))
+            or bool(getattr(self, "anchor_v2_freeze_base", False))
+        ):
+            # Keep the frozen teacher system deterministic while a small
+            # controller learns.  Parameters are frozen separately during
+            # construction; eval() here also disables dropout/batch-stat
+            # updates in the fixed score/frontend branches.
             if hasattr(self, "dnn") and self.dnn is not None:
                 self.dnn.eval()
             if hasattr(self, "frontend") and self.frontend is not None:
                 self.frontend.eval()
+            if getattr(self, "content_model", None) is not None:
+                self.content_model.eval()
+            if getattr(self, "pathsim_va_model", None) is not None:
+                self.pathsim_va_model.eval()
             if getattr(self, "residual_initializer", None) is not None:
                 self.residual_initializer.eval()
             if getattr(self, "rrsd_router", None) is not None:
-                self.rrsd_router.train(True)
+                self.rrsd_router.train(bool(getattr(self, "rrsd_freeze_base", False)))
+            if getattr(self, "anchor_v2_controller", None) is not None:
+                self.anchor_v2_controller.train(bool(getattr(self, "anchor_v2_freeze_base", False)))
         return out
     def on_fit_start(self):
         # Make sure teacher model is on the same device
