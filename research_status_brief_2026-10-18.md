@@ -41,6 +41,8 @@
 
 随后完成本地混响资源只读审计：官方 README 说明 `with_reverb` 使用内部录制 RIR，但当前配置引用的原机器 `/home/xyf/...` RIR 目录不存在；`/data/coding/sgmse`（排除环境目录）也没有可用 RIR 文件。因此目前无法把人工 FIR smoke 升级为独立真实 RIR fresh-CV；在获得外部、固定且来源明确的 RIR 前，不扩展人工 FIR、不启动 reverb adapter 或混响训练。记录见 `experiments/reverb_resource_audit_20261018/`。
 
+对冻结的 150 个 matched file-id 进一步做了连续混响严重度事后分析。以 no-reverb/with-reverb clean 的波形、复谱、log-magnitude 和 RMS 变化作代理时，Router 与 DNSMOS-OVRL 交互的 Spearman 相关均接近零且 CI 跨零；只有与 SI-SDR 交互存在有限相关。因此不能把“混响越强导致感知退化”作为已定位机制，也不设计 severity gate；分析记录见 `experiments/reverb_severity_posthoc_20261018/`。
+
 ## 3. 已停止的候选路线
 
 - WavLM Harm Head：真实 Harm Oracle 的 PESQ/STOI/SI-SDR 增益接近零。

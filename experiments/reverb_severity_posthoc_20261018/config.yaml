@@ -1,0 +1,21 @@
+experiment_id: reverb_severity_posthoc_20261018
+status: completed_read_only_analysis
+question: >-
+  Does the Router interaction vary continuously with a clean-reference proxy
+  for reverberation severity within matched official test files?
+source_experiment: experiments/final_eval_full_20261018
+manifest: experiments/final_eval_manifest_20261018/manifest.csv
+manifest_sha256: 4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b
+arms: [off, router, tcut005]
+metrics: [PESQ_e, STOI_e, SI-SDR_e, DNSMOS_SIG_e, DNSMOS_OVRL_e, DNSMOS_P808_e, DNSMOS_BAK_e]
+severity_proxies:
+  - clean_wave_rel_l2
+  - clean_complex_stft_rel_l2
+  - clean_logmag_stft_l1
+bootstrap:
+  unit: matched_file_id
+  replicates: 10000
+  seed: 20261018
+dataset_modified: false
+checkpoint_modified: false
+inference_rerun: false
