@@ -1,0 +1,29 @@
+experiment_id: final_eval_full_20261018
+purpose: first_frozen_official_final_evaluation
+manifest: experiments/final_eval_manifest_20261018/manifest.csv
+manifest_sha256: 4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b
+rows_per_split: 150
+splits: [no_reverb, with_reverb]
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+use_ema: true
+sampler: pc
+N: 30
+corrector: none
+snr: 0.5
+seed: 2026
+inference_device: CUDA_VISIBLE_DEVICES=0
+arms:
+  off: {rrsd: true, rrsd_scale: 0.0}
+  router: {rrsd: true, rrsd_scale: 1.0}
+  tcut005: {rrsd: true, rrsd_t_cut: 0.05, rrsd_t_cut_scale: 0.0}
+input_handling: split_specific_symlinks
+metrics_command: /data/coding/mymetrics/env/bin/python get_metrics_for_papertable_forDNS.py
+metrics: [PESQ, STOI, SI-SDR, DNSMOS_SIG, DNSMOS_OVRL, DNSMOS_P808, DNSMOS_BAK]
+metrics_device_requested: cuda
+metrics_device_actual: cpu
+bootstrap_seed: 20261018
+bootstrap_replicates: 10000
+bootstrap_unit: utterance
+dataset_modified: false
+checkpoint_modified: false
+quality_tuning_done: false
