@@ -1,0 +1,20 @@
+experiment_id: multitrajectory_consistency_verifier_20261018
+status: completed_read_only_posthoc_analysis
+question: >-
+  Does adding a standardized inter-trajectory consistency penalty to a
+  no-reference DNSMOS selector reduce SI-SDR regressions while retaining the
+  held-out perceptual gain?
+source: experiments/multitrajectory_oracle_heldout16/consistency_probe.json
+dev_files: 16
+heldout_files: 16
+seeds: [2026, 2027, 2028, 2029]
+selector: zscore(dnsmos_ovrl) - 0.5 * zscore(consistency)
+lambda: 0.5
+lambda_selection: fixed_before_reading_summary
+bootstrap:
+  unit: utterance
+  replicates: 20000
+  seed: 20261018
+dataset_modified: false
+checkpoint_modified: false
+inference_rerun: false

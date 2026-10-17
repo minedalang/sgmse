@@ -71,3 +71,5 @@
 详细实验记录见 `/data/RESEARCH_PLAN.md` 及各 `experiments/<id>/experiment_report.md`。
 
 代码层面的 Residual-Anchored OUVE 数学审计也已完成：其时间变化锚点满足 `beta(t)=(1-alpha)lambda(t)` 与 `a(t)=beta'(t)+theta*beta(t)`，平移 `U_t=X_t-beta(t)y` 后还原为标准 OUVE；它改变的是条件表示和有限容量 Score 学习问题，不是新的随机动力学。因此不把该分支作为第二个独立 SDE 创新，也不因公式变化启动训练。记录见 `experiments/residual_anchor_equivalence_audit_20261018/`。
+
+复用已保存的四轨迹结果做了固定一致性惩罚选择：`z(DNSMOS-OVRL)-0.5 z(inter-trajectory consistency)`。held-out OVRL 为 `+0.05875`（CI 全正），SI-SDR 为 `+0.02107 dB`（CI 跨零），SI-SDR 负例从纯 OVRL 选择的 6/16 降到 4/16。该结果只证明一致性具有风险排序价值，仍不构成可部署 Pareto verifier；未启动新推理或训练。记录见 `experiments/multitrajectory_consistency_verifier_20261018/`。
