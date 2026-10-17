@@ -32,6 +32,18 @@
     "bootstrap_ci_crosses_zero": true,
     "status": "stop_harm_head"
   },
+  "h4_distortion_diagnostic": {
+    "n_files": 32,
+    "strongest_spearman": {
+      "proxy": "harmonicity",
+      "contrast": "cut_minus_router",
+      "objective": "cut_minus_router_si_sdr",
+      "r": 0.4574780058651026,
+      "p": 0.00847402633993871
+    },
+    "dnsmos_ovrl_spearman_for_same_proxy": -0.16752199413489735,
+    "status": "stop_h4_gan_discriminator"
+  },
   "recommended_paper_position": "Future guidance is a measurable Pareto tradeoff with a reproducible reverb interaction; P7 is mechanism diagnosis and does not itself establish a new diffusion mechanism.",
   "next_action": "Do not expand the rollout adapter or train a Harm Head. Start another route only with an independent mechanism hypothesis, literature boundary, fresh-CV protocol, and explicit stop condition. Corrective Forcing additionally requires a rollout-consistent target or replay control."
 }

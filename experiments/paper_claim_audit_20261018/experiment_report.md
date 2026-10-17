@@ -27,6 +27,7 @@ This is a read-only audit of claims that can be made from the completed StoRM ex
 | Rollout-aware backend adapter | **Mixed-evidence candidate; replication complete** | Stable 16.5k-parameter adapter reduced the original 2-utterance holdout x0 NMSE by 42.4%, and an independent 2-utterance unseen-speaker holdout reduced it by 54.8%; DNSMOS-OVRL decreased on the independent holdout by 0.03465 | Not a confirmed perceptual gain, generalization result, Corrective Forcing method, or paper-level innovation; no further expansion without a new supervision hypothesis | `rollout_adapter_pilot_20261018`, `rollout_adapter_replication_20261018` |
 | Independent rollout adapter replication | **Proxy replicated; perceptual generalization unresolved** | On a new 4-speaker CV subset (8 utterances), 2 unseen-speaker holdout x0 NMSE decreased 54.8%; holdout DNSMOS-OVRL decreased 0.03465 despite small SI-SDR/STOI gains | Still too small and mixed for a quality claim, Corrective Forcing claim, or paper innovation; stop expanding this route without a new supervision hypothesis | `rollout_adapter_replication_20261018` |
 | WavLM harm Oracle DNSMOS read-only check | **Stopped negative/neutral diagnostic** | On four existing `N=30` full/gated WAV pairs, Gate−Full DNSMOS P808/SIG/BAK/OVRL was `−0.000769/−0.000630/−0.000899/−0.000953`; all exploratory utterance-bootstrap intervals crossed zero | No evidence of usable perceptual headroom for a Harm Head; this small sample does not invalidate every possible harm label | `rrsd_harm_oracle_n30_4_dnsmos_20261019` |
+| H4 output-level distortion proxy diagnostic | **Stopped exploratory diagnostic** | On 32 matched `off/router/cut005` outputs, harmonicity had moderate associations with some STOI/SI-SDR contrasts, but no proxy repeated coherently across both contrast families and DNSMOS-OVRL | No validated distortion label, causal artifact, or basis for GAN/conditional-discriminator training | `h4_distortion_diagnostic_20261018` |
 
 ## Paper wording recommended by the current evidence
 
@@ -44,11 +45,12 @@ Do not write that:
 2. Router improves overall perceptual quality on the official test set.
 3. DNSMOS-only trajectory selection is a reliable perceptual verifier.
 4. Anchor V2, Harm Head, Speaker loss, GAN, or perceptual loss has an independent positive result; the rollout-aware adapter remains mixed evidence despite proxy replication and is not a confirmed perceptual method.
-5. Mixed amplitude/phase Oracle results are deployable gains.
-6. The ODE tolerance ladder proves the default PC sampler is the bottleneck.
-7. The reverb interaction proves a reverb-only causal explanation.
-8. A single listener's 24 ties establish perceptual equivalence.
-9. Clean-aware Oracle results are evidence available at inference time.
+5. H4 harmonicity correlations identify a validated audible artifact or justify adversarial training.
+6. Mixed amplitude/phase Oracle results are deployable gains.
+7. The ODE tolerance ladder proves the default PC sampler is the bottleneck.
+8. The reverb interaction proves a reverb-only causal explanation.
+9. A single listener's 24 ties establish perceptual equivalence.
+10. Clean-aware Oracle results are evidence available at inference time.
 
 ## Decision
 

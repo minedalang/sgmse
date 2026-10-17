@@ -1,0 +1,13 @@
+id: "h4_distortion_diagnostic_20261018"
+purpose: "read-only proxy distortion diagnostic using existing aligned 32-file outputs"
+inputs: {"base": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen", "paired_metrics": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/paired_metrics.csv", "audio_arms": ["off", "router", "cut005"]}
+n_files: 32
+no_inference: true
+no_training: true
+no_dataset_modification: true
+no_checkpoint_modification: true
+metrics: ["spectral_flatness", "autocorrelation_harmonicity_80_400Hz", "log_rms_modulation_2_20Hz"]
+confounds: ["32-file development/screen set; no clean/noisy WAV available in directory", "DNSMOS available only for router and cut005, not off", "proxy metrics are output-level and may reflect content/SNR differences", "correlation cannot establish perceptual causality"]
+stop_rule: "stop H4 GAN/discriminator route if no proxy has repeated moderate association (|Spearman r|>=0.4 with p<0.05) in both objective families or if signs conflict across proxies"
+command: "/data/coding/sgmse/env/bin/python experiments/h4_distortion_diagnostic_20261018/run_diagnostic.py"
+reproducibility: "run_diagnostic.py is archived in this directory; rerun requires a new output directory because the script refuses overwrite"
