@@ -1,0 +1,52 @@
+{
+  "experiment_id": "final_eval_manifest_20261018",
+  "status": "locked_candidate_not_yet_evaluated",
+  "purpose": "read-only lock of official DNS Ins20 synthetic test paths not referenced by existing experiment manifests",
+  "source_root": "/data/datasets/dns_ins20/test_set/synthetic",
+  "splits": [
+    "no_reverb",
+    "with_reverb"
+  ],
+  "rows": 300,
+  "rows_per_split": {
+    "no_reverb": 150,
+    "with_reverb": 150
+  },
+  "manifest_sha256": "4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b",
+  "scp": [
+    {
+      "split": "no_reverb",
+      "file": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_synthetic_no_reverb/wav.scp",
+      "sha256": "1e3fdc1bcbedfb4800087994555313c17b2894d76eb4ff99b64b4fb42a73081d",
+      "lines": 150
+    },
+    {
+      "split": "no_reverb",
+      "file": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_synthetic_no_reverb/spk1.scp",
+      "sha256": "5ccac154e79c1b8f24d681779bc2e3477af1324b55ad02e44f573a633516cc79",
+      "lines": 150
+    },
+    {
+      "split": "with_reverb",
+      "file": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_synthetic_with_reverb/wav.scp",
+      "sha256": "0ba23ed06d850fbe97644148d91b6f9876877e29038e08a5a1feb73b16a21397",
+      "lines": 150
+    },
+    {
+      "split": "with_reverb",
+      "file": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_synthetic_with_reverb/spk1.scp",
+      "sha256": "3e646f5e191a3f27dfaf50852327d9aee9e426044ad089b3f45e130b7bda0894",
+      "lines": 150
+    }
+  ],
+  "audio_validation": {
+    "sample_rate_hz": 16000,
+    "all_aligned": true,
+    "all_files_exist": true
+  },
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "outputs_generated": false,
+  "selection_or_tuning_done": false,
+  "note": "Candidate final evaluation lock. Must remain untouched until all method choices and thresholds are frozen."
+}

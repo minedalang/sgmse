@@ -1,0 +1,21 @@
+{
+  "experiment_id": "final_eval_manifest_20261018",
+  "manifest_sha256": "4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b",
+  "rows": 300,
+  "split_counts": {
+    "no_reverb": 150,
+    "with_reverb": 150
+  },
+  "unique_noisy_paths": 300,
+  "unique_clean_paths": 300,
+  "all_files_exist": true,
+  "all_16khz": true,
+  "all_aligned": true,
+  "cross_reference": {
+    "existing_experiment_manifests_checked": 5,
+    "canonical_path_overlap": 0,
+    "note": "Basename/fileid overlap with other directory trees is not treated as reuse; canonical paths were compared."
+  },
+  "dataset_modified": false,
+  "checkpoint_modified": false
+}
