@@ -69,3 +69,5 @@
 4. 只有出现新的系统特有失败机制和独立监督证据，才重新启动第二机制的短程验证；当前不启动长训练。
 
 详细实验记录见 `/data/RESEARCH_PLAN.md` 及各 `experiments/<id>/experiment_report.md`。
+
+代码层面的 Residual-Anchored OUVE 数学审计也已完成：其时间变化锚点满足 `beta(t)=(1-alpha)lambda(t)` 与 `a(t)=beta'(t)+theta*beta(t)`，平移 `U_t=X_t-beta(t)y` 后还原为标准 OUVE；它改变的是条件表示和有限容量 Score 学习问题，不是新的随机动力学。因此不把该分支作为第二个独立 SDE 创新，也不因公式变化启动训练。记录见 `experiments/residual_anchor_equivalence_audit_20261018/`。

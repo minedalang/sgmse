@@ -1,0 +1,13 @@
+experiment_id: residual_anchor_equivalence_audit_20261018
+status: completed_read_only_code_math_audit
+question: >-
+  Does the Residual-Anchored OUVE implementation define a genuinely new
+  stochastic diffusion, or a translated/reparameterized OUVE process?
+source_files:
+  - sgmse/sdes.py
+  - sgmse/joint_model.py
+  - sgmse/sampling/__init__.py
+dataset_modified: false
+checkpoint_modified: false
+training_run: false
+inference_run: false

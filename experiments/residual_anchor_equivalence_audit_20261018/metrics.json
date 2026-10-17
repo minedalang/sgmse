@@ -1,0 +1,17 @@
+{
+  "experiment_id": "residual_anchor_equivalence_audit_20261018",
+  "status": "completed_read_only_code_math_audit",
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "training_run": false,
+  "inference_run": false,
+  "equivalence": {
+    "forward_mean": "alpha(t) * x0 + beta(t) * y",
+    "alpha": "exp(-theta*t)",
+    "beta": "(1-alpha)*lambda(t)",
+    "drift_coefficient_on_y": "theta*lambda(t) + (1-alpha)*lambda'(t)",
+    "translated_state": "U_t = X_t - beta(t)*y",
+    "translated_sde": "dU_t = -theta*U_t dt + g(t) dW_t"
+  },
+  "decision": "The implementation changes the conditional mean/coordinate and score-learning problem, but does not introduce a new stochastic diffusion law. Do not claim a novel SDE or start training this branch as a second innovation without an independent empirical mechanism."
+}
