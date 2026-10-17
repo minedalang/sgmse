@@ -1,0 +1,11 @@
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/saving.py:212: Found keys that are in the model state dict but not in the checkpoint: ['dnn.backend_adapter.proj.weight', 'dnn.backend_adapter.proj.bias']
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+1 book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav
+2 book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav
+3 book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav
+4 book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav
+5 book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav
+6 book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav
+7 book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav
+8 book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav

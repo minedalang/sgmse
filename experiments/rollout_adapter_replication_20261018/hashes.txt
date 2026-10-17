@@ -1,0 +1,2 @@
+ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9  joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c  experiments/tr0_fresh_cv_manifest_20261018/manifest.csv

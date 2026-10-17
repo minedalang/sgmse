@@ -1,0 +1,92 @@
+{
+  "experiment_id": "rollout_adapter_fresh_cv_audio_20261018",
+  "status": "completed",
+  "device": "cuda",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "adapter_sha256": "48852de209548be1be1dc0790c2b8faf29f78f2b60f12da8d921ca5ce4de2621",
+  "n_utterances": 8,
+  "runtime_seconds": 156.6170753330225,
+  "records": [
+    {
+      "filename": "book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav",
+      "uttid": "reader_10994_fileid_2446",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2446.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_06671_chp_0006_reader_10994_36_AKlR-VanLDw-door_Freesound_validated_319337_17-ExIYbL5zGbk_snr-19_fileid_2446.wav",
+      "baseline_sha256": "66ed940271d2524a9bd5ff4a96771398408c86e82dda69239d236960494880ce",
+      "adapter_sha256": "5ea1b388760df375c076f8355bc6c9e41166f0f42a137639f9eb022c95abe56f"
+    },
+    {
+      "filename": "book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav",
+      "uttid": "reader_10994_fileid_2885",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2885.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_06671_chp_0006_reader_10994_41_typing_Freesound_validated_343799_1-MDkidyVNRCc-9A5nRj8kV78_snr-10_fileid_2885.wav",
+      "baseline_sha256": "d89ac3e5bc01ccb9ef3f7480059b6f6d3857505f37a0652a6a9c7c779b9a0fef",
+      "adapter_sha256": "224d30eb299cc01d7de6c2c7686eac3cd1b1b25abbee16e51f942531462b1b31"
+    },
+    {
+      "filename": "book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
+      "uttid": "reader_11006_fileid_1167",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1167.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_04475_chp_0006_reader_11006_15_itJ-4jgL6i0-_KI-66tklcw-1-uo7YWqF3Q_snr-15_fileid_1167.wav",
+      "baseline_sha256": "f07f09891b61d325729e9f2bc395d2360c56dbadaabb7198acbaaf37285f9733",
+      "adapter_sha256": "07e3cfa11dc0e123c5ccad608ab789e5a0484380aadddad881143b05b4c849ac"
+    },
+    {
+      "filename": "book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav",
+      "uttid": "reader_11006_fileid_6525",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6525.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_04475_chp_0006_reader_11006_4_48qlec3i3Ds-pYrNrXdM2ZM-RTkSxmeJh-c-kqAr5t3aUZU_snr-14_fileid_6525.wav",
+      "baseline_sha256": "59a348c68ef5a8b574f4cdec76bacb913a1c0851848de8c6f5309490f65c6cf9",
+      "adapter_sha256": "62210b59aac8cebc0afe30a0f71031af7470ce2aebaa0e109fb4a41cdcdfb991"
+    },
+    {
+      "filename": "book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
+      "uttid": "reader_11037_fileid_10629",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10629.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_04939_chp_0017_reader_11037_28_door_Freesound_validated_441525_1-1QiyjlNWvAg-zIKPJV6W8cg_snr-11_fileid_10629.wav",
+      "baseline_sha256": "70c7e24641dd03f02ca8b83b4969de0aae1c78d50926df186aadbf3181af0a8b",
+      "adapter_sha256": "c34d26776cd434f51724db848a8a5bc129243179202d6cefdc94edf1c8822855"
+    },
+    {
+      "filename": "book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav",
+      "uttid": "reader_11037_fileid_1566",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1566.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_04939_chp_0017_reader_11037_43_qHyRHMJi-5c-DdbEogJp0gI-door_Freesound_validated_184492_1_snr-19_fileid_1566.wav",
+      "baseline_sha256": "74f153c868dee0fe029ee94bad3a8ee1d66d7fe73eb1578834cd07d513b8a30b",
+      "adapter_sha256": "49898664507dada780f54c04b99d17a8ffe77d4e46263e0da9c62ce154abbcf9"
+    },
+    {
+      "filename": "book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
+      "uttid": "reader_11046_fileid_10596",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10596.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_09190_chp_0006_reader_11046_2_door_Freesound_validated_349137_1-CoSqLiXEzZE-OEeUqQin6dk_snr-9_fileid_10596.wav",
+      "baseline_sha256": "9df1c91d868c48ed76c86c5f1dd104aae7b76f7936e8e28d898a8838a5b24597",
+      "adapter_sha256": "80c11c26afcc61ddcec7ee0b57d83fab22150c79e0e5b817b68fe9add3100281"
+    },
+    {
+      "filename": "book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav",
+      "uttid": "reader_11046_fileid_10711",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10711.wav",
+      "baseline_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/baseline/book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav",
+      "adapter_path": "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/audio/adapter/book_09190_chp_0006_reader_11046_24_0U6ebFYFPjk-9fewLloOpjQ-Xq3hwRIVSvk_snr-13_fileid_10711.wav",
+      "baseline_sha256": "bc4cd306a3e0dd86945e3e43810da70eb0ce45589e83188e0dc83448814d802d",
+      "adapter_sha256": "6ae866738c8c2e28f02de20759a91f197e83e4d2371b22fdc970a7fb0420315f"
+    }
+  ],
+  "protocol": "same PC/N30/seed per file, exact zero adapter versus trained stable adapter"
+}

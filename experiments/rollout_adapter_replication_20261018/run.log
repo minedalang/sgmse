@@ -1,0 +1,17 @@
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/saving.py:212: Found keys that are in the model state dict but not in the checkpoint: ['dnn.backend_adapter.proj.weight', 'dnn.backend_adapter.proj.bias']
+/data/coding/sgmse/sgmse/model.py:306: UserWarning: EMA shadow param count (8) != current param count (2), rebuilding EMA from current model parameters.
+  warnings.warn(
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+{
+  "baseline": {
+    "train_nmse": 1.0221707162757714,
+    "holdout_nmse": 0.5950172059237957
+  },
+  "trained": {
+    "train_nmse": 0.44241353900482255,
+    "holdout_nmse": 0.26876978017389774
+  },
+  "holdout_relative_change": -0.5482991458093747,
+  "adapter_parameters": 16512
+}

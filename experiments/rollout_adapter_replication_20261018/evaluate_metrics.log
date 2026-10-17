@@ -1,0 +1,36 @@
+[0;93m2026-10-18 06:48:17.843333326 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:856 operator()] No registered plugin EP device found for 'CUDAExecutionProvider' with device_id=0[m
+[0;93m2026-10-18 06:48:18.322065958 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:856 operator()] No registered plugin EP device found for 'CUDAExecutionProvider' with device_id=0[m
+{
+  "n": 8,
+  "metrics": {
+    "pesq": {
+      "baseline": 1.7384676486253738,
+      "adapter": 1.7781115919351578,
+      "adapter_minus_baseline": 0.039643943309783936
+    },
+    "stoi": {
+      "baseline": 0.8398228605396989,
+      "adapter": 0.8398960373383718,
+      "adapter_minus_baseline": 7.317679867291371e-05
+    },
+    "sisdr": {
+      "baseline": 7.076985269784927,
+      "adapter": 7.243611454963684,
+      "adapter_minus_baseline": 0.1666261851787567
+    }
+  },
+  "dnsmos": {
+    "baseline": {
+      "p808": 4.146182256085532,
+      "sig": 3.499711151449993,
+      "bak": 4.163384449104473,
+      "ovrl": 3.2173233417155274
+    },
+    "adapter": {
+      "p808": 4.148800820112228,
+      "sig": 3.5033671585871344,
+      "bak": 4.1780806967608735,
+      "ovrl": 3.226291061147101
+    }
+  }
+}
