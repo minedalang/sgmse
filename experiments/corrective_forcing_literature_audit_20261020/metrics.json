@@ -1,0 +1,20 @@
+{
+  "experiment_id": "corrective_forcing_literature_audit_20261020",
+  "source": "arXiv:2609.24651v1",
+  "methods_extracted": [
+    "dynamic rollout correction (DRC)",
+    "counterfactual transition consistency (CTC)",
+    "dynamic sampling schedules",
+    "clean-speech prediction parameterization"
+  ],
+  "project_overlap": {
+    "matched_time_rollout_x0_gap": "same train/inference state-mismatch family",
+    "rollout_aware_backend_adapter": "post-training intervention in an already occupied method space",
+    "forward_marginal_comparison": "invalid substitute for recursive rollout supervision"
+  },
+  "novelty_boundary": {
+    "simple_rollout_adapter_is_independent_innovation": false,
+    "future_possible_difference": "front-end reliability-conditioned or StoRM-specific mechanism must add a nontrivial, independently tested component"
+  },
+  "action": "do not expand the current adapter or call it Corrective Forcing; if revisited, implement a faithful low-cost DRC baseline first and compare against a no-loss post-training control"
+}

@@ -1,0 +1,16 @@
+experiment_id: corrective_forcing_literature_audit_20261020
+type: read_only_literature_audit
+source:
+  title: "Corrective Forcing: Unified Post-Training for Diffusions and Flows in Generative Speech Enhancement"
+  arxiv: "https://arxiv.org/abs/2609.24651"
+  version: v1
+  submitted: "2026-09-21"
+  source_sha256: 7fa16f854b0645d21594fee8931d53df8d721b330da0b540bd457d6043692151
+project_scope:
+  checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+  project_sampler: "OUVE PC N=30, corrector=none"
+  data_modified: false
+  checkpoint_modified: false
+  training_run: false
+  inference_run: false
+decision: "CoF/rollout-aware adapter is prior art and not a second innovation by itself"
