@@ -2,7 +2,7 @@
 
 ## Protocol
 
-This is an independent speaker-disjoint development replication using the first 8 rows of the locked `tr0_fresh_cv_manifest_20261018/manifest.csv`, representing 8 speakers not used by the earlier rollout pilot. Six utterances were used to fit the adapter and two utterances from one unseen speaker were held out. The official test set and source dataset were not modified.
+This is an independent speaker-disjoint development replication on 4 speakers using the first 8 rows of the locked `tr0_fresh_cv_manifest_20261018/manifest.csv`, representing 4 speakers not used by the earlier rollout pilot (2 utterances per speaker). Six utterances from 3 speakers were used to fit the adapter; two utterances from the fourth, unseen speaker were held out. The official test set and source dataset were not modified.
 
 The module-33 adapter was zero initialized and was the only trainable component. Training used Adam, `lr=1e-5`, 100 steps, gradient clipping 1.0. Rollout states used PC reverse diffusion (`N=30`, `snr=0.5`, no corrector), with trace steps `[3,5,7,9]`. The cache is approximately 945 MiB.
 

@@ -185,5 +185,9 @@
   },
   "dns_mos_scope": "8 files, both arms; ONNX CUDA warning, provider execution not verified",
   "per_utterance_metrics": "per_utterance_metrics.json",
-  "decision": "proxy replication positive; holdout perceptual metrics mixed (DNSMOS OVRL -0.03465), require larger independent CV"
+  "decision": "proxy replication positive; holdout perceptual metrics mixed (DNSMOS OVRL -0.03465), require larger independent CV",
+  "speakers": 4,
+  "train_speakers": 3,
+  "holdout_speakers": 1,
+  "speaker_disjoint_holdout": true
 }

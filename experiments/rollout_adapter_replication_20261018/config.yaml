@@ -1,8 +1,8 @@
 experiment_id: rollout_adapter_replication_20261018
 manifest: experiments/tr0_fresh_cv_manifest_20261018/manifest.csv
 manifest_rows: 8
-speakers: 8
-split: first 6 train, last 2 utterance holdout
+speakers: 4
+split: first 6 train (3 speakers), last 2 utterances from one unseen holdout speaker
 base_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
 adapter: module_33_zero_initialized_only
 learning_rate: 1.0e-5
