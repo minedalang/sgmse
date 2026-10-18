@@ -1,0 +1,10 @@
+experiment_id: p8_counterexample_listening_pack_20261020
+purpose: optional targeted listening of higher-cue Y_pre suppression windows
+source_experiment: experiments/p8_frontend_backend_audit_20261020
+source_probe: experiments/p8_local_content_probe_20261020
+clip_duration_seconds: 0.5
+selection: Y_pre suppression windows with clean-aware local SNR above -10 dB
+arms: [noisy, clean, y_pre, off, router]
+status: completed_optional_listening_pack
+dataset_modified: false
+checkpoint_modified: false

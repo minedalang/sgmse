@@ -1,0 +1,50 @@
+[
+  {
+    "index": 0,
+    "fileid": "5243",
+    "start_s": 19.5,
+    "end_s": 20.0,
+    "oracle_local_snr_db": -8.028036650648326,
+    "y_pre_rms_db_vs_clean": -18.48877318821529,
+    "off_rms_db_vs_clean": -2.504251774142686,
+    "router_rms_db_vs_clean": -4.3969192490877145,
+    "noisy_clean_wave_corr": 0.3214810155109329,
+    "clean_context": "5243"
+  },
+  {
+    "index": 2,
+    "fileid": "4812",
+    "start_s": 12.5,
+    "end_s": 13.0,
+    "oracle_local_snr_db": -9.209446796228733,
+    "y_pre_rms_db_vs_clean": -10.004558281387737,
+    "off_rms_db_vs_clean": -0.9619442726445782,
+    "router_rms_db_vs_clean": -2.0215508573203125,
+    "noisy_clean_wave_corr": 0.327576259688424,
+    "clean_context": "4812"
+  },
+  {
+    "index": 2,
+    "fileid": "4812",
+    "start_s": 15.0,
+    "end_s": 15.5,
+    "oracle_local_snr_db": -9.29318199109836,
+    "y_pre_rms_db_vs_clean": -10.25094184899026,
+    "off_rms_db_vs_clean": -2.750785702479289,
+    "router_rms_db_vs_clean": -3.8945241170555454,
+    "noisy_clean_wave_corr": 0.28366715471796516,
+    "clean_context": "4812"
+  },
+  {
+    "index": 2,
+    "fileid": "4812",
+    "start_s": 20.5,
+    "end_s": 20.97,
+    "oracle_local_snr_db": -9.768822174362072,
+    "y_pre_rms_db_vs_clean": -21.33902408650376,
+    "off_rms_db_vs_clean": -7.412187801573362,
+    "router_rms_db_vs_clean": -10.387204264137937,
+    "noisy_clean_wave_corr": 0.3318816888127142,
+    "clean_context": "4812"
+  }
+]
