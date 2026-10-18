@@ -13,6 +13,7 @@
 - P8 manifest：8 条 clean/noisy 配对。
 - 本地 SCP `text` 文件存在，但其转写字段为 `dummy`；没有发现包含真实句子的非 dummy SCP 文本。
 - 未发现能按这 8 个 file-id 直接映射到原始书籍文本的本地元数据文件。
+- 数据目录中保留的合成配置只记录了原机器上的 `speech_dir=/home/xyf/.../datasets/clean_train`；该 `/home/xyf` 路径在当前服务器不存在。因此配置不能恢复原始 clean 语料或文本。
 - 已有的 `clean_center12s_beam5_reference.md` 和相关 Whisper 文件只能作为听音提示，不能作为 WER/CER 真值。
 
 ## 结论与影响
