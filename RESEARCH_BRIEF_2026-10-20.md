@@ -85,6 +85,10 @@ MR-STFT log-magnitude 对 DNSMOS-OVRL 的成对排序一致率约 `0.802`，但�
 
 已在 4 个 speaker、8 条 fresh-CV 语音上成功提取 StoRM 前端三个中间 hook，并复用已有 rollout cache 做 speaker-LOSO OOF。随后在 16 个不同 speaker 上在线复核：简单 SNR/RMS/余弦基线 MAE `0.15479`，hook-only `0.16416`，combined `0.15619`。中间表征没有稳定超过简单可观测特征，state-conditioned adapter 不启动。详见 [`frontend_state_representation_probe_20261020`](./experiments/frontend_state_representation_probe_20261020) 和 [`frontend_state_representation_probe_20261020_online16`](./experiments/frontend_state_representation_probe_20261020_online16)。
 
+### 新增：Distill-MOS surrogate 审计
+
+官方 Distill-MOS v7 在既有 32 条开发语音上与 STOI/SI-SDR 高度一致（pair-delta Pearson `0.917/0.945`），但与 DNSMOS-SIG/OVRL/BAK 几乎不相关（`0.030/0.111/0.072`）。因此它不能单独作为后端 perceptual trust-region 的 reward；直接优化很可能重复重建方向，无法解决当前 Router 的感知退化。未启动 adapter 训练。详见 [`distillmos_surrogate_audit_20261020`](./experiments/distillmos_surrogate_audit_20261020)。
+
 ## 目前最建设性的科研结论
 
 1. **Future guidance 的收益是条件性的，不是全局感知提升。** 这本身可以成为论文中的限制性机制分析和严谨实验贡献。
@@ -110,7 +114,7 @@ MR-STFT log-magnitude 对 DNSMOS-OVRL 的成对排序一致率约 `0.802`，但�
 ## 当前运行状态
 
 - 没有正在运行的训练或推理。
-- 最近一次实验提交：`5561511 record noise power mismatch smoke`。
+- 最近一次实验提交：`f0da31e archive frontend state probe`；Distill-MOS 审计产物尚待本地提交。
 - 未修改 `/data/datasets/dns_ins20`，未覆盖 checkpoint，未 push 云端。
 - DNSMOS 的评估请求过 CUDA，但当前 mymetrics 的 ONNX Runtime 未注册 CUDA provider，实际多次回退 CPU；正式推理仍使用 GPU。
 

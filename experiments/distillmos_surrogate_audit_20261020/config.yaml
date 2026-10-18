@@ -1,0 +1,14 @@
+experiment_id: distillmos_surrogate_audit_20261020
+purpose: read_only_surrogate_trust_diagnostic_before_any_perceptual_adapter_training
+checkpoint: none
+source_audio: experiment_logs/rrsd_tcut_screen and experiment_logs/rrsd_selective_screen/selective
+n_utterances: 32
+arms: [noisy, off, router, cut005, selective]
+model: distillmos.ConvTransformerSQAModel variant 7, official pip weights
+sample_rate_hz: 16000
+training: false
+dataset_modified: false
+checkpoint_modified: false
+official_test_access: false
+audio_copied: false
+ranking: within_utterance pair agreement, utterance bootstrap 10000, seed 20261020

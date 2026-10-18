@@ -1,0 +1,91 @@
+{
+  "experiment_id": "distillmos_surrogate_audit_20261020",
+  "status": "completed_read_only",
+  "device": "cuda",
+  "n_utterances": 32,
+  "arms": [
+    "noisy",
+    "off",
+    "router",
+    "cut005",
+    "selective"
+  ],
+  "model": "distillmos.ConvTransformerSQAModel variant 7",
+  "weights_sha256": "b18b3ac60227267cfb91e5d00ce22cc7b73716fd92f269484da1446e27031a40",
+  "runtime_seconds": 5.816954978974536,
+  "ranking_pair_agreement_mean_ci95": {
+    "all_pesq": [
+      0.675,
+      0.5875,
+      0.759375
+    ],
+    "all_stoi": [
+      0.634375,
+      0.56875,
+      0.703125
+    ],
+    "all_si_sdr": [
+      0.58125,
+      0.51875,
+      0.646875
+    ],
+    "dns_dnsmos_sig": [
+      0.65625,
+      0.5208333333333333,
+      0.7812499999999999
+    ],
+    "dns_dnsmos_ovrl": [
+      0.6354166666666666,
+      0.5104166666666666,
+      0.7604166666666666
+    ],
+    "dns_dnsmos_bak": [
+      0.4895833333333333,
+      0.35416666666666663,
+      0.625
+    ]
+  },
+  "pair_delta_correlations": {
+    "pesq": {
+      "n_pairs": 320,
+      "pearson_r": 0.41255455567673427,
+      "spearman_r": 0.558812219845897
+    },
+    "stoi": {
+      "n_pairs": 320,
+      "pearson_r": 0.9174154890587676,
+      "spearman_r": 0.667842337327513
+    },
+    "si_sdr": {
+      "n_pairs": 320,
+      "pearson_r": 0.9451253791983332,
+      "spearman_r": 0.5848954823777576
+    },
+    "dnsmos_sig": {
+      "n_pairs": 96,
+      "pearson_r": 0.029933854182278192,
+      "spearman_r": 0.06650841020075962
+    },
+    "dnsmos_ovrl": {
+      "n_pairs": 96,
+      "pearson_r": 0.11113888003263869,
+      "spearman_r": 0.12493217580032556
+    },
+    "dnsmos_bak": {
+      "n_pairs": 96,
+      "pearson_r": 0.07219613249593393,
+      "spearman_r": 0.0775501899077591
+    }
+  },
+  "source_metric_file": "/data/coding/sgmse/experiments/perceptual_representation_probe_20261017/per_file.csv",
+  "audio_copied": false,
+  "training": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "limitations": [
+    "existing 32-utterance development split reused; not independent validation",
+    "Distill-MOS is a learned quality surrogate, not human MOS ground truth",
+    "DNSMOS and Distill-MOS are both model-based and are not independent human validation",
+    "ranking only tests whether this surrogate is safe enough to screen a future adapter; no adapter was trained"
+  ]
+}
