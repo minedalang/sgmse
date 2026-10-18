@@ -1,0 +1,16 @@
+experiment_id: p8_local_content_probe_20261020
+purpose: read-only acoustic probe of frontend suppression and backend energy filling
+source_experiment: experiments/p8_frontend_backend_audit_20261020
+manifest: experiments/p8_frontend_backend_audit_20261020/manifest.csv
+arms: [noisy, clean, y_pre, off, router]
+center_start_seconds: 9.0
+center_duration_seconds: 12.0
+frame_ms: 32.0
+hop_ms: 10.0
+window_seconds: 0.5
+clean_active_quantile: 0.30
+suppression_threshold_db: -8.0
+energy_fill_threshold_db: 2.0
+status: completed
+dataset_modified: false
+checkpoint_modified: false
