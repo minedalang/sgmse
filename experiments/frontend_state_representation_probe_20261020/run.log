@@ -1,0 +1,25 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+{
+  "experiment_id": "frontend_state_representation_probe_20261020",
+  "status": "representation_smoke_completed",
+  "n": 8,
+  "n_speakers": 4,
+  "device": "cuda",
+  "runtime_seconds": 10.457216262817383,
+  "representation": "StormFrontend backbone hook outputs; 3 leaf modules; noisy and clean passes",
+  "hook_modules": [
+    "act",
+    "output_layer",
+    "pyramid_upsample"
+  ],
+  "metrics": {
+    "mean_snr_db": -13.750025272369385,
+    "mean_noisy_clean_cos": 0.21224644873291254
+  },
+  "limitations": [
+    "first 8 manifest rows contain 4 speakers (2 utterances each), not 8 distinct speakers",
+    "no valid OOF proxy label joined; no training or official test access",
+    "hook embeddings are descriptive; no explanatory-power claim"
+  ]
+}

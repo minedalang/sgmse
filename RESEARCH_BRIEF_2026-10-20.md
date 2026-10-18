@@ -81,6 +81,10 @@ MR-STFT log-magnitude 对 DNSMOS-OVRL 的成对排序一致率约 `0.802`，但�
 - Residual-Anchored OUVE：在审计假设下等价于标准 OUVE，不能作为新 SDE 声称。
 - Corrective Forcing 直接复现：已有近期先例，且当前 rollout adapter 感知泛化未成立。
 
+### 新增：Frontend state representation probe
+
+已在 4 个 speaker、8 条 fresh-CV 语音上成功提取 StoRM 前端三个中间 hook，并复用已有 rollout cache 做 speaker-LOSO OOF。combined hook summary + SNR/RMS/cosine 的 MAE 为 `0.23319`，简单特征基线为 `0.25186`，hook-only 为 `0.27217`。这是低功效可行性信号，尚不能证明跨 speaker 解释力，也不支持训练 adapter；后续若继续，只应做至少 16-speaker 的在线复核。详见 [`frontend_state_representation_probe_20261020`](./experiments/frontend_state_representation_probe_20261020)。
+
 ## 目前最建设性的科研结论
 
 1. **Future guidance 的收益是条件性的，不是全局感知提升。** 这本身可以成为论文中的限制性机制分析和严谨实验贡献。

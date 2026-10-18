@@ -1,0 +1,14 @@
+experiment_id: frontend_state_representation_probe_20261020
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiments/tr0_fresh_cv_manifest_20261018/manifest.csv
+rows: first 8 (4 speakers, 2 utterances each)
+frontend: StormFrontend frozen EMA
+representation: three StormFrontend.backbone leaf forward hooks plus frontend output
+hooks: [act, output_layer, pyramid_upsample]
+training: false
+official_test_access: false
+
+rollout_cache: experiments/rollout_adapter_replication_20261018/rollout_state_cache.pt
+rollout_label: mean clean-x0 NMSE over 4 existing cached states per utterance
+OOF: leave-one-speaker-out Ridge, fixed alpha=1; exploratory only
+comparison_file: oof_comparison.json

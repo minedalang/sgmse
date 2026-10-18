@@ -1,0 +1,135 @@
+{
+  "experiment_id": "frontend_state_representation_probe_20261020",
+  "status": "completed_exploratory_oof",
+  "n": 8,
+  "n_speakers": 4,
+  "device": "cuda",
+  "runtime_seconds": 10.457216262817383,
+  "representation": "StormFrontend backbone hook outputs; 3 leaf modules; noisy and clean passes",
+  "hook_modules": [
+    "act",
+    "output_layer",
+    "pyramid_upsample"
+  ],
+  "metrics": {
+    "mean_snr_db": -13.750025272369385,
+    "mean_noisy_clean_cos": 0.21224644873291254
+  },
+  "limitations": [
+    "first 8 manifest rows contain 4 speakers (2 utterances each), not 8 distinct speakers",
+    "OOF is exploratory low power and not a cross-speaker generalization claim",
+    "no official test access, training, checkpoint writes, or WAV generation",
+    "hook features are pooled summary statistics rather than a learned state representation"
+  ],
+  "oof_proxy": {
+    "oof_n": 8,
+    "speakers": 4,
+    "target": "4-state mean clean-x0 NMSE",
+    "baseline_mean_nmse": 0.9153823386877775,
+    "ridge_loso_oof": {
+      "mae": 0.23319165563423866,
+      "r2": 0.15863604248495455,
+      "spearman": 0.6666666666666669,
+      "baseline_mae": 0.3325177519582212,
+      "predictions": [
+        1.3763345108418228,
+        0.5716438473537637,
+        1.7557917565087082,
+        1.33818649506405,
+        0.7146686170639114,
+        1.2263181444065867,
+        0.6332427017519467,
+        0.7441160183539939
+      ],
+      "targets": [
+        1.5474229454994202,
+        0.5659213960170746,
+        1.199576497077942,
+        0.6360602006316185,
+        0.8548246771097183,
+        1.3292185813188553,
+        0.624235063791275,
+        0.5657993480563164
+      ]
+    },
+    "limitations": [
+      "exploratory low power: 4 speakers and 8 utterances",
+      "features include descriptive hook pooled statistics; no diffusion-time feature",
+      "same cache/manifest alignment verified by utt_index only"
+    ]
+  },
+  "oof_comparison": {
+    "n": 8,
+    "groups": [
+      "reader_10994",
+      "reader_11006",
+      "reader_11037",
+      "reader_11046"
+    ],
+    "target": "4-state mean clean-x0 NMSE",
+    "mean_baseline": {
+      "mae": 0.3325177519582212,
+      "r2": 0.0,
+      "spearman": 0.0
+    },
+    "simple_snr_rms_cos": {
+      "mae": 0.25186151557919756,
+      "r2": 0.317167045969724,
+      "spearman": 0.5000000000000001,
+      "predictions": [
+        1.2089114019943115,
+        0.778277351131809,
+        1.0905033227008418,
+        1.034121070634571,
+        0.5893716731292797,
+        1.393655497267192,
+        0.5598817573150927,
+        1.1284467032850434
+      ]
+    },
+    "hook_only": {
+      "mae": 0.27217231080920157,
+      "r2": -0.18132833341622034,
+      "spearman": 0.7142857142857144,
+      "predictions": [
+        1.286086309042842,
+        0.575377281425156,
+        1.955480992278494,
+        1.3875197058903634,
+        0.8919760197541792,
+        1.2221907478689056,
+        0.8021708578243254,
+        0.6429063420785113
+      ]
+    },
+    "combined": {
+      "mae": 0.23319165563423866,
+      "r2": 0.15863604248495455,
+      "spearman": 0.6666666666666669,
+      "predictions": [
+        1.3763345108418228,
+        0.5716438473537637,
+        1.7557917565087082,
+        1.33818649506405,
+        0.7146686170639114,
+        1.2263181444065867,
+        0.6332427017519467,
+        0.7441160183539939
+      ]
+    },
+    "feature_definitions": {
+      "simple": [
+        "snr_db",
+        "noisy_clean_cos",
+        "frontend_noisy_rms"
+      ],
+      "hook_only": "three hook pooled noisy stats and clean-minus-noisy mean/std",
+      "combined": "simple SNR/cosine plus hook features"
+    },
+    "limitations": [
+      "4 speakers/8 utterances; exploratory only",
+      "fixed alpha=1 with no tuning",
+      "targets from existing rollout cache; no new trajectory or WAV"
+    ]
+  }
+}

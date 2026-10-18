@@ -1,0 +1,37 @@
+{
+  "oof_n": 8,
+  "speakers": 4,
+  "target": "4-state mean clean-x0 NMSE",
+  "baseline_mean_nmse": 0.9153823386877775,
+  "ridge_loso_oof": {
+    "mae": 0.23319165563423866,
+    "r2": 0.15863604248495455,
+    "spearman": 0.6666666666666669,
+    "baseline_mae": 0.3325177519582212,
+    "predictions": [
+      1.3763345108418228,
+      0.5716438473537637,
+      1.7557917565087082,
+      1.33818649506405,
+      0.7146686170639114,
+      1.2263181444065867,
+      0.6332427017519467,
+      0.7441160183539939
+    ],
+    "targets": [
+      1.5474229454994202,
+      0.5659213960170746,
+      1.199576497077942,
+      0.6360602006316185,
+      0.8548246771097183,
+      1.3292185813188553,
+      0.624235063791275,
+      0.5657993480563164
+    ]
+  },
+  "limitations": [
+    "exploratory low power: 4 speakers and 8 utterances",
+    "features include descriptive hook pooled statistics; no diffusion-time feature",
+    "same cache/manifest alignment verified by utt_index only"
+  ]
+}

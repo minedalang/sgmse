@@ -1,0 +1,74 @@
+{
+  "n": 8,
+  "groups": [
+    "reader_10994",
+    "reader_11006",
+    "reader_11037",
+    "reader_11046"
+  ],
+  "target": "4-state mean clean-x0 NMSE",
+  "mean_baseline": {
+    "mae": 0.3325177519582212,
+    "r2": 0.0,
+    "spearman": 0.0
+  },
+  "simple_snr_rms_cos": {
+    "mae": 0.25186151557919756,
+    "r2": 0.317167045969724,
+    "spearman": 0.5000000000000001,
+    "predictions": [
+      1.2089114019943115,
+      0.778277351131809,
+      1.0905033227008418,
+      1.034121070634571,
+      0.5893716731292797,
+      1.393655497267192,
+      0.5598817573150927,
+      1.1284467032850434
+    ]
+  },
+  "hook_only": {
+    "mae": 0.27217231080920157,
+    "r2": -0.18132833341622034,
+    "spearman": 0.7142857142857144,
+    "predictions": [
+      1.286086309042842,
+      0.575377281425156,
+      1.955480992278494,
+      1.3875197058903634,
+      0.8919760197541792,
+      1.2221907478689056,
+      0.8021708578243254,
+      0.6429063420785113
+    ]
+  },
+  "combined": {
+    "mae": 0.23319165563423866,
+    "r2": 0.15863604248495455,
+    "spearman": 0.6666666666666669,
+    "predictions": [
+      1.3763345108418228,
+      0.5716438473537637,
+      1.7557917565087082,
+      1.33818649506405,
+      0.7146686170639114,
+      1.2263181444065867,
+      0.6332427017519467,
+      0.7441160183539939
+    ]
+  },
+  "feature_definitions": {
+    "simple": [
+      "snr_db",
+      "noisy_clean_cos",
+      "frontend_noisy_rms"
+    ],
+    "hook_only": "three hook pooled noisy stats and clean-minus-noisy mean/std",
+    "combined": "simple SNR/cosine plus hook features"
+  },
+  "limitations": [
+    "4 speakers/8 utterances; exploratory only",
+    "fixed alpha=1 with no tuning",
+    "targets from existing rollout cache; no new trajectory or WAV"
+  ]
+}
