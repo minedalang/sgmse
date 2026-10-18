@@ -1,0 +1,188 @@
+{
+  "experiment_id": "p8_frontend_backend_audit_20261020",
+  "purpose": "same-decoder beam-search ASR diagnostic for clean and all listening arms",
+  "interpretation": "Pseudo-distance only; clean is an automatic reference and not ground-truth WER.",
+  "model": {
+    "name": "tiny.en",
+    "device": "cuda",
+    "sha256": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03"
+  },
+  "decode": {
+    "temperature": 0,
+    "beam_size": 5,
+    "best_of": 5,
+    "condition_on_previous_text": true
+  },
+  "n": 8,
+  "runtime_seconds": 17.571072578430176,
+  "rows": [
+    {
+      "index": "00",
+      "clean_asr": "out, in whom she loved with an all-absorbing passion, had caught the war fever, gone to Canada and enlisted. Mrs. McGuire herself was Canadian by birth, and all-",
+      "arms": {
+        "Y_pre": "And whom she loved with an all-absorbing passion had caught the war fever, gone to Canada and enlisted. Mrs. McGuire herself was taken by birth.",
+        "Router-off": "love, in whom she loved with an all-absorbing passion had caught the war fever, gone to Canada, and in this demo. Mrs. Pivoir, for self-esteem made him my birth, I'm",
+        "Router": "and whom she loved with an all-absorbing passion, had caught the war fever, gone to Canada and in this duel. Mrs. Bivoir, for self-estimating my first. I'm..."
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.1724137931034483,
+        "Router-off": 0.4482758620689655,
+        "Router": 0.4482758620689655
+      },
+      "runtime_seconds": {
+        "clean": 1.565511703491211,
+        "Y_pre": 0.6040685176849365,
+        "Router-off": 0.7912759780883789,
+        "Router": 0.5046427249908447
+      }
+    },
+    {
+      "index": "01",
+      "clean_asr": "Then Buster went off, sinking what a kind person old Mr. Crow was. In that very afternoon, long before sunset, he curled himself up in an out-of-the-way corner of the house and went to-",
+      "arms": {
+        "Y_pre": "Fend us to went off. That's what you're saying, Mr. Harwins. And that variant can be long before sunset. You can cross yourself up and have the way for the group to host. And once this...",
+        "Router-off": "Ben Duster went off and said he might find first and would history roles. A very affluent family would bond the brothers hand-hand. Yeah, I would have self-bought to have. Look my hand's owner of the house and my s-",
+        "Router": "Ben Duster went off, and said he went fine, first in old history roles. At Barry F. and Lee were wronged, the brothers had turned. Yeah, it was self-bought to have. Look, Wayne's owner of the house, and once the s-"
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.8108108108108109,
+        "Router-off": 0.972972972972973,
+        "Router": 0.972972972972973
+      },
+      "runtime_seconds": {
+        "clean": 0.5685925483703613,
+        "Y_pre": 0.5479187965393066,
+        "Router-off": 0.5506823062896729,
+        "Router": 0.8723933696746826
+      }
+    },
+    {
+      "index": "02",
+      "clean_asr": "about them? Far from it. Although I was handicapped in my reconstitution of their friendship by lack of the Archbishop's letters, he had nevertheless made a note here and there, upon the communications he received from the Countess. Throughout the letters-",
+      "arms": {
+        "Y_pre": "Far from it, although I was handicapped with my lead marketing team from the world won't yet find lack of your education and studies. He'd never known to you where I've done with communications if you've received from the countess. That's it.",
+        "Router-off": "Far from it. Although I was at Capricale, Montecucian, you love Bensha, by Rachabiraj, for such a bludders. He nevertheless is a no-take where, have public communications he receives from the Countess. Throughout her...",
+        "Router": "Far from it. Although I was at Capricale, Montecucian, you love Bensha, by Rachaburaj, for such a bludders. He nevertheless is a no-take where, of public communications he receives from the Countess. Throughout her..."
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.7857142857142857,
+        "Router-off": 0.6190476190476191,
+        "Router": 0.6190476190476191
+      },
+      "runtime_seconds": {
+        "clean": 0.5117580890655518,
+        "Y_pre": 0.6027121543884277,
+        "Router-off": 0.6069936752319336,
+        "Router": 0.670642614364624
+      }
+    },
+    {
+      "index": "03",
+      "clean_asr": "But there are no sharp lines in nature, from the homicidal lunatic to the same man of violent passions, there is a continuous gradation. Even in the most perfect community, there will-",
+      "arms": {
+        "Y_pre": "But there are no sharp light.",
+        "Router-off": "But there are no shy playing of the match, and in some end of the time, they'll say... Pause those. Oh, look. And I'm waking the hiring. It's from there to pray. It means it's horrible.",
+        "Router": "But there are no shy playing of the box and in a deck some end of the time they'll say Pause those all up and working the hiring From there to pray the minute"
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.84375,
+        "Router-off": 1.03125,
+        "Router": 0.9375
+      },
+      "runtime_seconds": {
+        "clean": 0.42903733253479004,
+        "Y_pre": 0.16741585731506348,
+        "Router-off": 0.5617706775665283,
+        "Router": 0.4118163585662842
+      }
+    },
+    {
+      "index": "04",
+      "clean_asr": "as if other people question them any when as they may indeed certainly will, but anything is better than the present condition of things. God forbid that you should ever have",
+      "arms": {
+        "Y_pre": "You should ever have it.",
+        "Router-off": "of all the stories had evolved the horse many kind of tases and learned the old albrenus. Let's do a call of this. Bistips were born to trace the azure return and not this way that you should ever have",
+        "Router": ""
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.9032258064516129,
+        "Router-off": 1.1290322580645162,
+        "Router": 1.0
+      },
+      "runtime_seconds": {
+        "clean": 0.38374757766723633,
+        "Y_pre": 0.16215252876281738,
+        "Router-off": 0.5102334022521973,
+        "Router": 0.5323073863983154
+      }
+    },
+    {
+      "index": "05",
+      "clean_asr": "The successes for which it strives, the achievements upon which it sets store, are connected with fighting and victory. The presence of this medium incites Belico's exhibitions in a boy, first in games.",
+      "arms": {
+        "Y_pre": "This drives the achievements upon which it sets the line for connectable fighting Presence as media insights Velikos exhibitions avoid first in games",
+        "Router-off": "to assess how gagged it strives, the achievements upon which it sets the light out, a connect-out and fighting to fix the presence of ultimatial, insights, elicose, exhibitions, and a void. First in games.",
+        "Router": "to assess how the added stripes, the achievements upon which it sets the light out, are connected and fighting to fix the presence of ultimatial, insights, elicose, exhibitions, and a void. First in games."
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.6470588235294118,
+        "Router-off": 0.5882352941176471,
+        "Router": 0.5588235294117647
+      },
+      "runtime_seconds": {
+        "clean": 0.6002821922302246,
+        "Y_pre": 0.33193159103393555,
+        "Router-off": 0.5268094539642334,
+        "Router": 0.48285531997680664
+      }
+    },
+    {
+      "index": "06",
+      "clean_asr": "from below saw him slip his hands softly to his side and then place something between his teeth. It was his dagger. Reaching up, he clutched the window seal above him and with a silence.",
+      "arms": {
+        "Y_pre": "from the low saw him slip his hands softly to his side and then face something between his teeth. It was his dagger. Reaching up, he clutched the window",
+        "Router-off": "from below saw him slip his hands softly to his side, and then face something between his teeth. It was his dagger, reaching up he clutched the window sill above him with a shut",
+        "Router": "from the low saw him slip his hands softly to his side and then brace something between his teeth it was his dagger reaching up to clutch the window sill above him with a shut"
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.2857142857142857,
+        "Router-off": 0.11428571428571428,
+        "Router": 0.22857142857142856
+      },
+      "runtime_seconds": {
+        "clean": 0.5573294162750244,
+        "Y_pre": 0.4521021842956543,
+        "Router-off": 0.43346071243286133,
+        "Router": 0.404355525970459
+      }
+    },
+    {
+      "index": "07",
+      "clean_asr": "She had a good deal of affection for ever art, who was unmistakably a clever man, as well as a good looking one. The prospect seemed fair and cloudless. Nothing pressaged the terrible storm that was about to br-",
+      "arms": {
+        "Y_pre": "We had a good deal of affection for everyone who was unmistakably a clever man, as well as a good looking one. The prospect seemed fair and cloudless. Nothing pressaged, a terrible storm that was evacuated.",
+        "Router-off": "Yet it's a jewel of affectionately for F.D.A.S. who was unmistakiny at time and land, as well as a good looking them. The prospectsy, fair, and plumbers. Nothing pressaged and terrible storm that was about to pur-",
+        "Router": "Yet it's a jewel of affectionate reptiles, who was unmistakingly at time of land, as well as a good looking them. The prospectsy, fair, and plybers. Nothing trussaged and terrible storm that was about to put..."
+      },
+      "beam5_pseudo_distance": {
+        "clean": 0.0,
+        "Y_pre": 0.1794871794871795,
+        "Router-off": 0.5384615384615384,
+        "Router": 0.5384615384615384
+      },
+      "runtime_seconds": {
+        "clean": 0.49012041091918945,
+        "Y_pre": 0.49027156829833984,
+        "Router-off": 0.5756328105926514,
+        "Router": 0.5707623958587646
+      }
+    }
+  ]
+}
