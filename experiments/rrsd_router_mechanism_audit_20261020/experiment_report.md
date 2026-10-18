@@ -24,6 +24,17 @@ This read-only audit checks that the mechanism described in the thesis draft mat
 
 The thesis mechanism description is consistent with the audited checkpoint: the reported main result is a future-gradient Router experiment, not a WavLM/UniSpeech contrastive-loss experiment and not an explicit gate experiment.
 
+## Code-path smoke test
+
+The existing `tests/test_joint_training_options.py` was run with:
+
+```bash
+PYTHONPATH=/data/coding/sgmse /data/coding/sgmse/env/bin/python \
+  /data/coding/sgmse/tests/test_joint_training_options.py
+```
+
+All 3 tests passed. The project environment does not provide `pytest`; direct `unittest` execution with the repository root on `PYTHONPATH` was used. The tests cover balanced-batch opt-in behavior, default sampling, and the RRSD auxiliary-loss gate.
+
 Hashes, exact hyperparameters, tensor counts and checks are in `metrics.json`.
 
 ## Execution note
