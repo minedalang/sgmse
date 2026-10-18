@@ -21,3 +21,15 @@ All outputs were readable 16 kHz WAVs with 480000 samples (30 seconds). Per-file
 ## Listening material
 
 `listening_pack/` contains 24 labeled 12-second clips (8 utterances × 3 arms). Each arm uses the same centered crop from its 30-second source. `LISTENING_GUIDE_CN.md` gives Chinese listening instructions; `key.csv` records the arm mapping and clip hashes. This is a qualitative artifact screen only: the dataset's SCP `text` entries are `dummy`, so no human WER/CER or transcript claim is made here. No quality metrics were run. Dataset and checkpoint were not modified.
+
+## Auxiliary objective metrics
+
+After the audio export, PESQ/STOI/SI-SDR and DNSMOS were computed from the same 8 source pairs. These are auxiliary and do not establish content preservation. Means (`n=8`) were:
+
+| arm | PESQ | STOI | SI-SDR (dB) | DNSMOS-OVRL |
+|---|---:|---:|---:|---:|
+| Y_pre | 1.2049 | 0.6811 | 2.1413 | 2.5277 |
+| Router-off | 1.2474 | 0.6804 | 0.9793 | 2.8893 |
+| Router | 1.2469 | 0.6823 | 1.6286 | 2.8398 |
+
+Paired Router minus Router-off: PESQ `-0.0004`, STOI `+0.0019`, SI-SDR `+0.6493 dB`, DNSMOS-OVRL `-0.0495`. The evaluator requested automatic CUDA selection, but ONNX Runtime did not expose `CUDAExecutionProvider`; DNSMOS therefore ran on CPU. Per-file CSVs and `metrics/summary.json` preserve the raw results. No significance claim is made from eight utterances.

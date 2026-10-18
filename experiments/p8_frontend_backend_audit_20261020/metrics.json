@@ -235,7 +235,18 @@
     "human_transcript": false,
     "reason": "DNS Ins20 SCP text entries are dummy"
   },
-  "quality_metrics_run": false,
+  "quality_metrics_run": true,
   "dataset_modified": false,
-  "checkpoint_modified": false
+  "checkpoint_modified": false,
+  "quality_metrics": {
+    "files": [
+      "metrics/y_pre.csv",
+      "metrics/off.csv",
+      "metrics/router.csv",
+      "metrics/summary.json"
+    ],
+    "n": 8,
+    "content_metric": false,
+    "dnsmos_execution": "cpu_fallback_no_CUDAExecutionProvider"
+  }
 }

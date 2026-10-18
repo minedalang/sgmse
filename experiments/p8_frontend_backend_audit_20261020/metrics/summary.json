@@ -1,0 +1,184 @@
+{
+  "n": 8,
+  "fields": [
+    "PESQ_e",
+    "STOI_e",
+    "SI-SDR_e",
+    "DNSMOS_P808_e",
+    "DNSMOS_SIG_e",
+    "DNSMOS_BAK_e",
+    "DNSMOS_OVRL_e"
+  ],
+  "means": {
+    "y_pre": {
+      "PESQ_e": 1.2049310356378555,
+      "STOI_e": 0.6810986736903685,
+      "SI-SDR_e": 2.1413432210683823,
+      "DNSMOS_P808_e": 3.449271832193647,
+      "DNSMOS_SIG_e": 2.8720875427571233,
+      "DNSMOS_BAK_e": 4.051937508550751,
+      "DNSMOS_OVRL_e": 2.527654241312131
+    },
+    "off": {
+      "PESQ_e": 1.2473662197589874,
+      "STOI_e": 0.6804171045729301,
+      "SI-SDR_e": 0.979293167591095,
+      "DNSMOS_P808_e": 3.8955922211919516,
+      "DNSMOS_SIG_e": 3.2392513299785115,
+      "DNSMOS_BAK_e": 4.125997412187243,
+      "DNSMOS_OVRL_e": 2.88925299999099
+    },
+    "router": {
+      "PESQ_e": 1.2469301372766495,
+      "STOI_e": 0.6822797932163438,
+      "SI-SDR_e": 1.6286003179848194,
+      "DNSMOS_P808_e": 3.843658983707428,
+      "DNSMOS_SIG_e": 3.193169580270567,
+      "DNSMOS_BAK_e": 4.119608118652248,
+      "DNSMOS_OVRL_e": 2.8397675671129123
+    }
+  },
+  "paired_mean_deltas": {
+    "router_minus_off": {
+      "PESQ_e": -0.00043608248233795166,
+      "STOI_e": 0.001862688643413657,
+      "SI-SDR_e": 0.6493071503937244,
+      "DNSMOS_P808_e": -0.05193323748452361,
+      "DNSMOS_SIG_e": -0.04608174970794465,
+      "DNSMOS_BAK_e": -0.006389293534994955,
+      "DNSMOS_OVRL_e": -0.049485432878077606
+    },
+    "off_minus_y_pre": {
+      "PESQ_e": 0.0424351841211319,
+      "STOI_e": -0.0006815691174383298,
+      "SI-SDR_e": -1.1620500534772873,
+      "DNSMOS_P808_e": 0.44632038899830473,
+      "DNSMOS_SIG_e": 0.3671637872213882,
+      "DNSMOS_BAK_e": 0.07405990363649195,
+      "DNSMOS_OVRL_e": 0.36159875867885916
+    },
+    "router_minus_y_pre": {
+      "PESQ_e": 0.041999101638793945,
+      "STOI_e": 0.001181119525975327,
+      "SI-SDR_e": -0.5127429030835629,
+      "DNSMOS_P808_e": 0.3943871515137811,
+      "DNSMOS_SIG_e": 0.32108203751344355,
+      "DNSMOS_BAK_e": 0.067670610101497,
+      "DNSMOS_OVRL_e": 0.31211332580078155
+    }
+  },
+  "per_utterance_signs": {
+    "router_minus_off": {
+      "PESQ_e": {
+        "positive": 4,
+        "negative": 4,
+        "zero": 0
+      },
+      "STOI_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "SI-SDR_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_P808_e": {
+        "positive": 0,
+        "negative": 8,
+        "zero": 0
+      },
+      "DNSMOS_SIG_e": {
+        "positive": 0,
+        "negative": 8,
+        "zero": 0
+      },
+      "DNSMOS_BAK_e": {
+        "positive": 3,
+        "negative": 5,
+        "zero": 0
+      },
+      "DNSMOS_OVRL_e": {
+        "positive": 0,
+        "negative": 8,
+        "zero": 0
+      }
+    },
+    "off_minus_y_pre": {
+      "PESQ_e": {
+        "positive": 7,
+        "negative": 1,
+        "zero": 0
+      },
+      "STOI_e": {
+        "positive": 4,
+        "negative": 4,
+        "zero": 0
+      },
+      "SI-SDR_e": {
+        "positive": 0,
+        "negative": 8,
+        "zero": 0
+      },
+      "DNSMOS_P808_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_SIG_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_BAK_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_OVRL_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      }
+    },
+    "router_minus_y_pre": {
+      "PESQ_e": {
+        "positive": 7,
+        "negative": 1,
+        "zero": 0
+      },
+      "STOI_e": {
+        "positive": 5,
+        "negative": 3,
+        "zero": 0
+      },
+      "SI-SDR_e": {
+        "positive": 0,
+        "negative": 8,
+        "zero": 0
+      },
+      "DNSMOS_P808_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_SIG_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_BAK_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      },
+      "DNSMOS_OVRL_e": {
+        "positive": 8,
+        "negative": 0,
+        "zero": 0
+      }
+    }
+  },
+  "dnsmos_provider_note": "Evaluator requested auto/cuda but ONNX Runtime had no CUDAExecutionProvider; DNSMOS ran on CPU."
+}
