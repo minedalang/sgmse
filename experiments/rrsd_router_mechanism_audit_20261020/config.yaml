@@ -1,0 +1,8 @@
+experiment_id: rrsd_router_mechanism_audit_20261020
+purpose: read_only_checkpoint_and_source_mechanism_audit
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_step: 80000
+dataset_modified: false
+checkpoint_modified: false
+audio_regenerated: false
+training_started: false

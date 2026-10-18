@@ -1,0 +1,50 @@
+{
+  "experiment_id": "rrsd_router_mechanism_audit_20261020",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "joint_model_sha256": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+  "git_head": "6e3fb7f6e773cc98fd19ee9693007ab0f59ce3db",
+  "global_step": 80000,
+  "hyper_parameters": {
+    "sde": "ouve",
+    "N": 30,
+    "rrsd_teacher": "future_grad",
+    "rrsd_freeze_base": true,
+    "rrsd_weight": 1.0,
+    "rrsd_future_weight": 1.0,
+    "rrsd_smooth_weight": 0.01,
+    "rrsd_future_gate_cost": 0.001,
+    "rrsd_use_gate": false,
+    "contrastive_weight": 0.0,
+    "rrsd_perceptual_conflict_weight": null
+  },
+  "state_dict": {
+    "total_tensor_keys": 546,
+    "router_tensor_keys": 8,
+    "router_parameter_numel": 42577,
+    "non_router_parameter_numel": 55118388,
+    "router_keys": [
+      "rrsd_router.context1.bias",
+      "rrsd_router.context1.weight",
+      "rrsd_router.context2.bias",
+      "rrsd_router.context2.weight",
+      "rrsd_router.feature_proj.bias",
+      "rrsd_router.feature_proj.weight",
+      "rrsd_router.output.bias",
+      "rrsd_router.output.weight"
+    ]
+  },
+  "source_locations": {
+    "future_grad_function": "sgmse/joint_model.py:_rrsd_future_grad_loss (around lines 3791-4012)",
+    "router_configuration": "sgmse/joint_model.py:parser and initialization (around lines 516-1128)"
+  },
+  "checks": {
+    "future_grad_teacher": true,
+    "frozen_base": true,
+    "contrastive_disabled": true,
+    "explicit_gate_disabled": true,
+    "router_only_state_keys_are_eight": true
+  },
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "training_started": false
+}
