@@ -248,5 +248,12 @@
     "n": 8,
     "content_metric": false,
     "dnsmos_execution": "cpu_fallback_no_CUDAExecutionProvider"
+  },
+  "clean_asr_reference": {
+    "full_file": "clean_asr_reference.json",
+    "center_12s": "clean_center12s_asr_reference.json",
+    "model": "whisper tiny.en",
+    "ground_truth": false,
+    "purpose": "listener context only"
   }
 }

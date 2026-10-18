@@ -1,0 +1,129 @@
+{
+  "experiment_id": "p8_frontend_backend_audit_20261020",
+  "purpose": "clean_audio_asr_reference_for_listening",
+  "interpretation": "Automatic reference only; DNS Ins20 SCP text is dummy and this is not ground-truth transcription or a WER label.",
+  "model": {
+    "name": "tiny.en",
+    "sha256": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03",
+    "path": "/data/.rootcache/whisper/tiny.en.pt",
+    "device": "cuda",
+    "whisper_version": "20250625"
+  },
+  "decode": {
+    "language": "en",
+    "task": "transcribe",
+    "temperature": 0,
+    "beam_size": 1,
+    "best_of": 1,
+    "condition_on_previous_text": false,
+    "fp16": true
+  },
+  "n": 8,
+  "runtime_seconds": 5.827165365219116,
+  "rows": [
+    {
+      "index": "0",
+      "speaker": "reader_10658",
+      "fileid": "5243",
+      "snr_db": "-19",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
+      "clean_sha256": "7a87811cbefd60005be820188eaf918f8a19c00bafb626054205ec6365ef9781",
+      "text": "firing the match that was destined to set the whole world ablaze. Mrs. McGuire's eldest son, John, of whom she boasted in season and out, and whom she loved with an all-absorbing passion, had caught the war fever, gone to Canada and enlisted. Mrs. McGuire herself was Canadian by birth, and all her family still live there. She was boasting now more than ever about John, but proud as she was of her soldier boy, going head plunged.",
+      "language": "en",
+      "avg_logprob": -0.293028412259946,
+      "no_speech_prob_max": 0.15070132911205292,
+      "runtime_seconds": 1.5350854396820068
+    },
+    {
+      "index": "1",
+      "speaker": "reader_10920",
+      "fileid": "6339",
+      "snr_db": "-17",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6339.wav",
+      "clean_sha256": "b3648d8579dfa4965d68425b2fbc56526877cbb19f912fcd29c0f171727f0211",
+      "text": "exactly. Mr. Crow told him hastily, if he want to inform your friends how clever I am, I have no objection, of course. Then Buster went off, thinking what a kind person old Mr. Crow was. In that very afternoon, long before sunset, he curled himself up in and out of the way corner of the house and went to sleep. Everybody was so busy hurrying in and out in order to finish the day's work that nobody noticed or disturbed him, and when the The trumpeter sounded the...",
+      "language": "en",
+      "avg_logprob": -0.3096260627110799,
+      "no_speech_prob_max": 0.2978672385215759,
+      "runtime_seconds": 0.5951521396636963
+    },
+    {
+      "index": "2",
+      "speaker": "reader_10921",
+      "fileid": "4812",
+      "snr_db": "-17",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4812.wav",
+      "clean_sha256": "7772c5c1027cec7437de4e044d1c98eb0920e955f88fd74bf1e99f1e2ae0e4c4",
+      "text": "been completely banished from your thoughts by my premature announcement regarding the three living archbishops. Oh, not at all, not at all. I am still thinking of those two. Have you told me all you know about them? Far from it. Although I was handicapped in my reconstitution of their friendship, by lack of the archbishop slutters, he had nevertheless made a note here and there, upon the communications he received from the Countess. Throughout the letter certain paragraphs are marked with a cross, as if for reparusal, these paragraphs being invariably, most delicately and charmingly written. And now I come to the very last important.",
+      "language": "en",
+      "avg_logprob": -0.24276349673400052,
+      "no_speech_prob_max": 0.11443888396024704,
+      "runtime_seconds": 0.7471990585327148
+    },
+    {
+      "index": "3",
+      "speaker": "reader_10927",
+      "fileid": "11999",
+      "snr_db": "-17",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11999.wav",
+      "clean_sha256": "58c59e63d7dec4d7e75801436cee40ccc0c52143151b4f980ed74339c9e107d1",
+      "text": "and some of these lunatics would no doubt be homicidal. Probably no one would argue that they ought to be left liberty. But there are no sharp lines in nature. From the homicidal lunatic to the sane man of violent passions, there is a continuous gradation. Even in the most perfect community, there will be men and women, otherwise sane, will feel an impulse to commit murder from jealousy. These are now usually restrained by the fear of punishment.",
+      "language": "en",
+      "avg_logprob": -0.19708477207936595,
+      "no_speech_prob_max": 0.16509941220283508,
+      "runtime_seconds": 0.5874927043914795
+    },
+    {
+      "index": "4",
+      "speaker": "reader_10929",
+      "fileid": "10720",
+      "snr_db": "-16",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10720.wav",
+      "clean_sha256": "e2a1d164b64b494c9d99c1d1697360ef5f345c7ad12427d995d9c03b781b6c5e",
+      "text": "private. I've come, George, to explain to you my reasons for taking a step that I'm about to take so that you at least will understand my motives if other people question them any when, as they may, indeed certainly will, but anything is better than the present condition of things. God forbid that you should ever have such an experience as mine. Sit down. You don't mean anything wrong between you and Mrs. Phillips and I do. My wrist.",
+      "language": "en",
+      "avg_logprob": -0.3358693499850412,
+      "no_speech_prob_max": 0.6941133141517639,
+      "runtime_seconds": 0.6135318279266357
+    },
+    {
+      "index": "5",
+      "speaker": "reader_11053",
+      "fileid": "11489",
+      "snr_db": "-17",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11489.wav",
+      "clean_sha256": "374e7098960472c14b942b74e08b9f823037066546dd571266e11e61d3754a12",
+      "text": "but in so acting the same ideas and emotions are aroused in him that animate the others. A tribe, let us say, is warlike. The successes for which it strives, the achievements upon which it sets store, are connected with fighting and victory. The presence of this medium incites Belico's exhibitions in a boy, first in games, then in fact when he is strong enough. As he fights, he wins approval and advancement. As he refrains, he is disliked, ridiculed, shut out from favorable rights. out from favorable rate.",
+      "language": "en",
+      "avg_logprob": -0.3159124528994413,
+      "no_speech_prob_max": 0.40097710490226746,
+      "runtime_seconds": 0.6062140464782715
+    },
+    {
+      "index": "6",
+      "speaker": "reader_11057",
+      "fileid": "3321",
+      "snr_db": "-19",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3321.wav",
+      "clean_sha256": "607c2547a52e994d112a6e359fdd65a6c25525c8667cb29bafeddff353e38048",
+      "text": "just above. Slowly raising himself upon his narrow foothold, he peeped cautiously within. Those watching him from below saw him slip his hands softly to his side, and then place something between his teeth. It was his dagger. Reaching up, he clutched the window sill above him, and with a silent spring seated himself upon it. The next moment he disappeared within. A few seconds of silence followed, then of sudden a shock.",
+      "language": "en",
+      "avg_logprob": -0.2156225431533087,
+      "no_speech_prob_max": 0.5967331528663635,
+      "runtime_seconds": 0.5130667686462402
+    },
+    {
+      "index": "7",
+      "speaker": "reader_11062",
+      "fileid": "3645",
+      "snr_db": "-17",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3645.wav",
+      "clean_sha256": "d389b045da794fca7dd002c6038696d49982a9ba56204d4647832526e06c055c",
+      "text": "Asuuta, in the person of Evaradee Rockstall, ensured her a future of competence, if not of the luxury she had been entitled to expect. She had a good deal of affection for Evaradee, who was unmistakably a clever man, as well as a good looking one. The prospect seemed fair and cloudless. Nothing pressaged the terrible storm that was about to break over these two lives. Nothing had ever, for a moment, come to vex their mutual contentment, to lists Sunday afternoon. October.",
+      "language": "en",
+      "avg_logprob": -0.34261927339765763,
+      "no_speech_prob_max": 0.18917019665241241,
+      "runtime_seconds": 0.6283378601074219
+    }
+  ]
+}

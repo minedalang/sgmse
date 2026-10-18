@@ -33,3 +33,7 @@ After the audio export, PESQ/STOI/SI-SDR and DNSMOS were computed from the same 
 | Router | 1.2469 | 0.6823 | 1.6286 | 2.8398 |
 
 Paired Router minus Router-off: PESQ `-0.0004`, STOI `+0.0019`, SI-SDR `+0.6493 dB`, DNSMOS-OVRL `-0.0495`. The evaluator requested automatic CUDA selection, but ONNX Runtime did not expose `CUDAExecutionProvider`; DNSMOS therefore ran on CPU. Per-file CSVs and `metrics/summary.json` preserve the raw results. No significance claim is made from eight utterances.
+
+## Clean ASR reference
+
+Because the dataset SCP transcripts are `dummy`, Whisper `tiny.en` was run on both the full clean files and the exact centered 12-second clean windows used in the listening pack. The matching reference is `clean_center12s_asr_reference.md` (machine-generated text only); model metadata and hashes are in `clean_center12s_asr_reference.json`. This reference is for helping a listener recognize the passage and is not a ground-truth WER annotation.
