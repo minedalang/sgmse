@@ -1,0 +1,10 @@
+experiment_id: final_metrics_repro_audit_20261020
+purpose: read_only_recompute_of_frozen_final_csv_means
+source_experiment: final_eval_full_20261018
+source_bootstrap: final_eval_full_20261018/metrics/paired_bootstrap.pretty.json
+rows_expected_per_split_arm: 150
+bootstrap_recomputed: false
+audio_regenerated: false
+test_set_tuning: false
+dataset_modified: false
+checkpoint_modified: false

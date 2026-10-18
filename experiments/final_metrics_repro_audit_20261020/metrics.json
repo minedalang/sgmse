@@ -1,0 +1,86 @@
+{
+  "experiment_id": "final_metrics_repro_audit_20261020",
+  "source_csv_sha256": {
+    "off/no_reverb": "80a7cfb6f39d14d819bed02cea55e65b49a89bc2bc4f9cba47f57ebc7799a289",
+    "off/with_reverb": "2e9e27a2bef4431078d8cc38409a336bcde4a9ba0abfad88b90f403ce7600ef4",
+    "router/no_reverb": "344c3d3881e11604513778b28feefec1dc1fc8aa36d3ac70cfce9e1333c000fb",
+    "router/with_reverb": "17885bdc9b749e4a8a4d8661196f372930976a6c6b675a8fec80f1b35fdf866a",
+    "tcut005/no_reverb": "8825faefbdcd6309dcef0cc045e9c9f6c7ea402028aac21ca4d28945878abdc3",
+    "tcut005/with_reverb": "8eddf69185340b52d17ebb78a80e4cbe73bd665ad7189776d284e7bc708a6875"
+  },
+  "recomputed_means": {
+    "no_reverb": {
+      "off": {
+        "PESQ_e": 3.0349700379371645,
+        "STOI_e": 0.9752032680413477,
+        "SI-SDR_e": 18.988544190724692,
+        "DNSMOS_SIG_e": 3.635244235470165,
+        "DNSMOS_OVRL_e": 3.3945893201710797,
+        "DNSMOS_P808_e": 4.095929029782613,
+        "DNSMOS_BAK_e": 4.153584838084518
+      },
+      "router": {
+        "PESQ_e": 3.061353154182434,
+        "STOI_e": 0.9757253204192229,
+        "SI-SDR_e": 19.307577619552614,
+        "DNSMOS_SIG_e": 3.6304393664267733,
+        "DNSMOS_OVRL_e": 3.394385318082458,
+        "DNSMOS_P808_e": 4.098153519630432,
+        "DNSMOS_BAK_e": 4.161007393349682
+      },
+      "tcut005": {
+        "PESQ_e": 3.0567874336242675,
+        "STOI_e": 0.9756623007735652,
+        "SI-SDR_e": 19.262370815277098,
+        "DNSMOS_SIG_e": 3.6313347819672974,
+        "DNSMOS_OVRL_e": 3.3944904388215877,
+        "DNSMOS_P808_e": 4.097604166666667,
+        "DNSMOS_BAK_e": 4.159676165342496
+      }
+    },
+    "with_reverb": {
+      "off": {
+        "PESQ_e": 1.3204847844441732,
+        "STOI_e": 0.35961877048466157,
+        "SI-SDR_e": -12.784902348121006,
+        "DNSMOS_SIG_e": 2.9898344938121415,
+        "DNSMOS_OVRL_e": 2.5492201373225174,
+        "DNSMOS_P808_e": 3.3478673315048217,
+        "DNSMOS_BAK_e": 3.907118186193618
+      },
+      "router": {
+        "PESQ_e": 1.3057704043388367,
+        "STOI_e": 0.35747021826368597,
+        "SI-SDR_e": -12.621111628810565,
+        "DNSMOS_SIG_e": 2.964875199789601,
+        "DNSMOS_OVRL_e": 2.5204791486742684,
+        "DNSMOS_P808_e": 3.3248577721913657,
+        "DNSMOS_BAK_e": 3.9237770016280464
+      },
+      "tcut005": {
+        "PESQ_e": 1.3090020457903544,
+        "STOI_e": 0.35712675181195325,
+        "SI-SDR_e": -12.733429934183757,
+        "DNSMOS_SIG_e": 2.970435912275247,
+        "DNSMOS_OVRL_e": 2.526774212472316,
+        "DNSMOS_P808_e": 3.3361569293340048,
+        "DNSMOS_BAK_e": 3.922898235401474
+      }
+    }
+  },
+  "max_abs_mean_error": 3.9968028886505635e-15,
+  "checks": {
+    "all_rows_150": true,
+    "per_split_paired_utt_ids": true,
+    "pooled_router_deltas_match": true
+  },
+  "pooled_router_deltas": {
+    "PESQ_e": 0.005834368069966634,
+    "STOI_e": -0.0008132499215502657,
+    "SI-SDR_e": 0.24141207406918208,
+    "DNSMOS_SIG_e": -0.014882081532965871,
+    "DNSMOS_OVRL_e": -0.014472495368436394,
+    "DNSMOS_P808_e": -0.010392534732818603,
+    "DNSMOS_BAK_e": 0.012040685349797109
+  }
+}
