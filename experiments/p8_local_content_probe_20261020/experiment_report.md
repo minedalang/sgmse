@@ -101,3 +101,17 @@ The raw waveform correlation is phase-sensitive, so it was separated from a shor
 Router-off and Router therefore change fine waveform/phase structure while their coarse energy envelope is at least as aligned with clean as `Y_pre` (Router has the highest median envelope correlation). This is consistent with audible smoothing and continuity improvement, but does not demonstrate phoneme insertion. The lower raw waveform correlation should not be reported as content deletion without a phase-robust phonetic test.
 
 The decomposition outputs are `waveform_envelope_windows.csv` and `waveform_envelope_summary.json`.
+
+## Frozen WavLM local proxy
+
+To check the phase-robust pattern without relying on raw waveform correlation, the cached frozen WavLM Base+ was evaluated on all 55 suppression windows. Each arm was mean-removed and peak-normalized per window; cosine similarity is a clean-aware diagnostic, not a WER or phoneme label.
+
+| WavLM layer | `Y_pre` cosine median | Router-off | Router | Router-off better than `Y_pre` |
+|---:|---:|---:|---:|---:|
+| 3 | 0.258 | 0.213 | 0.227 | 25/55 |
+| 6 | 0.298 | 0.273 | 0.275 | 21/55 |
+| 12 | 0.319 | 0.293 | 0.297 | 21/55 |
+
+Across all 55 windows, the median Router-off delta is negative at layers 3/6/12 (`−0.013/−0.036/−0.021`). This means the backend does not consistently move the output toward clean in this content proxy. There is a conditional exception: in the four suppression windows with clean-aware local SNR above −10 dB, layer-3 deltas are positive for Router-off and Router (`median +0.060/+0.066`), while layer-12 deltas remain negative (`−0.012/−0.023`). The current pattern is therefore compatible with low-level acoustic refinement when some evidence exists, without evidence of stable high-level phonetic recovery.
+
+This result strengthens the decision to avoid a raw WavLM-MSE training loss or Harm Head. A future content-preservation intervention would need a real text/phoneme endpoint and must show high-level content benefit independently of this proxy. The outputs are `wavlm_local_windows.csv` and `wavlm_local_summary.json`.

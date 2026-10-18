@@ -1,0 +1,343 @@
+{
+  "model": "/root/.cache/huggingface/hub/models--microsoft--wavlm-base-plus/snapshots/4c66d4806a428f2e922ccfa1a962776e232d487b",
+  "device": "cuda",
+  "normalization": "per-clip mean removal and peak normalization",
+  "rows": [
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 3,
+      "arm": "noisy",
+      "cosine_to_clean": 0.15328334271907806,
+      "unit_feature_mse": 0.002204991178587079
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 3,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.2917158305644989,
+      "unit_feature_mse": 0.001844489946961403
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 3,
+      "arm": "off",
+      "cosine_to_clean": 0.3365846574306488,
+      "unit_feature_mse": 0.001727644121274352
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 3,
+      "arm": "router",
+      "cosine_to_clean": 0.3414613902568817,
+      "unit_feature_mse": 0.0017149443738162518
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 3,
+      "arm": "noisy",
+      "cosine_to_clean": 0.15306824445724487,
+      "unit_feature_mse": 0.002205551601946354
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 3,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.30783504247665405,
+      "unit_feature_mse": 0.0018025130266323686
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 3,
+      "arm": "off",
+      "cosine_to_clean": 0.3839355409145355,
+      "unit_feature_mse": 0.0016043345676735044
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 3,
+      "arm": "router",
+      "cosine_to_clean": 0.3892093598842621,
+      "unit_feature_mse": 0.0015906008193269372
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 3,
+      "arm": "noisy",
+      "cosine_to_clean": 0.18127331137657166,
+      "unit_feature_mse": 0.0021321007516235113
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 3,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.4372888207435608,
+      "unit_feature_mse": 0.0014653938123956323
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 3,
+      "arm": "off",
+      "cosine_to_clean": 0.6439508199691772,
+      "unit_feature_mse": 0.000927211542148143
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 3,
+      "arm": "router",
+      "cosine_to_clean": 0.6418318748474121,
+      "unit_feature_mse": 0.0009327295119874179
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 3,
+      "arm": "noisy",
+      "cosine_to_clean": 0.26782605051994324,
+      "unit_feature_mse": 0.001906702877022326
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 3,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.29751497507095337,
+      "unit_feature_mse": 0.0018293882021680474
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 3,
+      "arm": "off",
+      "cosine_to_clean": 0.290933221578598,
+      "unit_feature_mse": 0.0018465279135853052
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 3,
+      "arm": "router",
+      "cosine_to_clean": 0.2848878502845764,
+      "unit_feature_mse": 0.0018622713396325707
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 6,
+      "arm": "noisy",
+      "cosine_to_clean": 0.224443718791008,
+      "unit_feature_mse": 0.0020196777768433094
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 6,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.39782747626304626,
+      "unit_feature_mse": 0.0015681576915085316
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 6,
+      "arm": "off",
+      "cosine_to_clean": 0.33867955207824707,
+      "unit_feature_mse": 0.0017221886664628983
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 6,
+      "arm": "router",
+      "cosine_to_clean": 0.36025160551071167,
+      "unit_feature_mse": 0.0016660115215927362
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 6,
+      "arm": "noisy",
+      "cosine_to_clean": 0.1892114281654358,
+      "unit_feature_mse": 0.002111428650096059
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 6,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.46294745802879333,
+      "unit_feature_mse": 0.0013985743280500174
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 6,
+      "arm": "off",
+      "cosine_to_clean": 0.4725840091705322,
+      "unit_feature_mse": 0.0013734791427850723
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 6,
+      "arm": "router",
+      "cosine_to_clean": 0.4683448076248169,
+      "unit_feature_mse": 0.0013845188077539206
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 6,
+      "arm": "noisy",
+      "cosine_to_clean": 0.21472176909446716,
+      "unit_feature_mse": 0.0020449955482035875
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 6,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.5238146781921387,
+      "unit_feature_mse": 0.001240065903402865
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 6,
+      "arm": "off",
+      "cosine_to_clean": 0.7642979621887207,
+      "unit_feature_mse": 0.0006138072931207716
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 6,
+      "arm": "router",
+      "cosine_to_clean": 0.7569302320480347,
+      "unit_feature_mse": 0.0006329941097646952
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 6,
+      "arm": "noisy",
+      "cosine_to_clean": 0.23474344611167908,
+      "unit_feature_mse": 0.0019928556866943836
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 6,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.30389437079429626,
+      "unit_feature_mse": 0.0018127751536667347
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 6,
+      "arm": "off",
+      "cosine_to_clean": 0.21930459141731262,
+      "unit_feature_mse": 0.002033060882240534
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 6,
+      "arm": "router",
+      "cosine_to_clean": 0.2212490737438202,
+      "unit_feature_mse": 0.0020279972814023495
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 12,
+      "arm": "noisy",
+      "cosine_to_clean": 0.0783420130610466,
+      "unit_feature_mse": 0.002400150988250971
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 12,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.36804866790771484,
+      "unit_feature_mse": 0.001645706593990326
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 12,
+      "arm": "off",
+      "cosine_to_clean": 0.34695109724998474,
+      "unit_feature_mse": 0.0017006482230499387
+    },
+    {
+      "candidate": "00_fileid_5243_19.50-20.00s",
+      "layer": 12,
+      "arm": "router",
+      "cosine_to_clean": 0.36386507749557495,
+      "unit_feature_mse": 0.0016566014382988214
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 12,
+      "arm": "noisy",
+      "cosine_to_clean": 0.12843355536460876,
+      "unit_feature_mse": 0.0022697043605148792
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 12,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.5502992272377014,
+      "unit_feature_mse": 0.0011710957624018192
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 12,
+      "arm": "off",
+      "cosine_to_clean": 0.5351383686065674,
+      "unit_feature_mse": 0.001210577436722815
+    },
+    {
+      "candidate": "01_fileid_4812_12.50-13.00s",
+      "layer": 12,
+      "arm": "router",
+      "cosine_to_clean": 0.5007733702659607,
+      "unit_feature_mse": 0.0013000695034861565
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 12,
+      "arm": "noisy",
+      "cosine_to_clean": 0.19176706671714783,
+      "unit_feature_mse": 0.0021047734189778566
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 12,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.7217200994491577,
+      "unit_feature_mse": 0.0007246873574331403
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 12,
+      "arm": "off",
+      "cosine_to_clean": 0.8478550314903259,
+      "unit_feature_mse": 0.0003962107002735138
+    },
+    {
+      "candidate": "02_fileid_4812_15.00-15.50s",
+      "layer": 12,
+      "arm": "router",
+      "cosine_to_clean": 0.8492649793624878,
+      "unit_feature_mse": 0.00039253910654224455
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 12,
+      "arm": "noisy",
+      "cosine_to_clean": 0.1762964427471161,
+      "unit_feature_mse": 0.0021450615022331476
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 12,
+      "arm": "y_pre",
+      "cosine_to_clean": 0.1868675947189331,
+      "unit_feature_mse": 0.0021175325382500887
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 12,
+      "arm": "off",
+      "cosine_to_clean": 0.178066223859787,
+      "unit_feature_mse": 0.0021404526196420193
+    },
+    {
+      "candidate": "03_fileid_4812_20.50-20.97s",
+      "layer": 12,
+      "arm": "router",
+      "cosine_to_clean": 0.14525598287582397,
+      "unit_feature_mse": 0.0022258958779275417
+    }
+  ]
+}
