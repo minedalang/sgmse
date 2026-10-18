@@ -1,0 +1,18 @@
+{
+  "experiment_id": "paper_figures_claim_matrix_20261020",
+  "source_bootstrap": "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/paired_bootstrap.pretty.json",
+  "source_bootstrap_sha256": "e9ef1350b449ed6502f6ec1778b90923a15075c8c2bd15ecf509ae8f162a6047",
+  "source_interaction": "/data/coding/sgmse/experiments/final_eval_reverb_interaction_20261018_metrics.json",
+  "source_interaction_sha256": "f32d9834ad56e299d1659d781e0fac10bb43a8056945fe257d12c45de44abc8d",
+  "figures": [
+    "metric_delta_by_split.png",
+    "reverb_interaction_ci.png",
+    "router_off_pooled_ci.png",
+    "sisdr_dnsmos_tradeoff.png"
+  ],
+  "source_audio_regenerated": false,
+  "test_set_tuning": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "notes": "Post-hoc visualization of frozen outputs; no bootstrap values recomputed."
+}

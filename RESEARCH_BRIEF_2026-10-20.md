@@ -2,6 +2,10 @@
 
 记录覆盖：2026-10-17 至 2026-10-20（依据当前仓库的最新实验记录）
 
+## 新增：论文图表归档
+
+已基于冻结最终评测的现有 CSV/JSON 完成四张 PNG/PDF 图和 claim matrix，未重新推理、未调参、未修改数据集：[`experiments/paper_figures_claim_matrix_20261020`](./experiments/paper_figures_claim_matrix_20261020)。其中 `with_reverb` 来自 DNS Ins20 官方测试目录 `test_set/synthetic/with_reverb`；4 条语音固定 FIR 实验属于单独探索性 smoke，不能与官方混响结果混用。
+
 ## 一句话结论
 
 目前最可靠的论文结果是：**Future guidance 带来小幅重建收益，但存在稳定的感知—重建权衡，并且与混响条件显著交互。** 目前没有第二个已经通过感知泛化验证的独立算法创新。P7 已完成一轮有界诊断，结果主要用于排除错误机制解释和缩小下一步范围。

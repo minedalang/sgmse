@@ -1,0 +1,19 @@
+experiment_id: paper_figures_claim_matrix_20261020
+purpose: reproducible_posthoc_figures_and_claim_matrix
+source_experiment: final_eval_full_20261018
+source_interaction: final_eval_reverb_interaction_20261018_metrics.json
+source_data: existing_frozen_final_outputs_only
+test_set_tuning: false
+audio_regenerated: false
+dataset_modified: false
+checkpoint_modified: false
+bootstrap_recomputed: false
+figures:
+  - metric_delta_by_split.png
+  - router_off_pooled_ci.png
+  - reverb_interaction_ci.png
+  - sisdr_dnsmos_tradeoff.png
+  - metric_delta_by_split.pdf
+  - router_off_pooled_ci.pdf
+  - reverb_interaction_ci.pdf
+  - sisdr_dnsmos_tradeoff.pdf
