@@ -85,7 +85,12 @@ def main():
     if args.frontend_ckpt is not None:
         load_kwargs["frontend_ckpt"] = args.frontend_ckpt
 
-    model = JointSemambaSgmseModel.load_from_checkpoint(args.ckpt, **load_kwargs)
+    # PyTorch 2.6 defaults to weights_only=True.  Joint checkpoints contain
+    # the DataModule class in their hyperparameters, so use the same explicit
+    # full-checkpoint load mode as joint_enhance_by_dir.py.
+    model = JointSemambaSgmseModel.load_from_checkpoint(
+        args.ckpt, **load_kwargs, weights_only=False
+    )
     model.eval(no_ema=not args.use_ema).to(args.device)
 
     h = model.hparams
