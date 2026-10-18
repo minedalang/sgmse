@@ -17,3 +17,5 @@ figures:
   - router_off_pooled_ci.pdf
   - reverb_interaction_ci.pdf
   - sisdr_dnsmos_tradeoff.pdf
+  - paper_tables.tex
+  - results_section_draft.md

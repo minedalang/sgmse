@@ -19,6 +19,8 @@ The final evaluation uses 150 matched file IDs per split, with the protocol docu
 - `reverb_interaction_ci.{png,pdf}`: matched-file Router interaction intervals.
 - `sisdr_dnsmos_tradeoff.{png,pdf}`: per-utterance SI-SDR versus DNSMOS-OVRL deltas.
 - `claim_matrix.md`: wording supported by the current evidence and explicit boundaries.
+- `paper_tables.tex`: auto-generated pooled, split, and matched-interaction LaTeX tables.
+- `results_section_draft.md`: paper-ready results wording with data-source clarification.
 - `metrics.json`: source hashes and reproducibility metadata.
 
 ## Main interpretation
@@ -29,5 +31,6 @@ The plots support a conditional reconstruction benefit with a perception–recon
 
 ```bash
 /data/coding/sgmse/env/bin/python experiments/paper_figures_claim_matrix_20261020/make_figures.py
+/data/coding/sgmse/env/bin/python experiments/paper_figures_claim_matrix_20261020/make_tables.py
 ```
 
