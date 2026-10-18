@@ -20,7 +20,7 @@ All outputs were readable 16 kHz WAVs with 480000 samples (30 seconds). Per-file
 
 ## Listening material
 
-`listening_pack/` contains 24 labeled 12-second clips (8 utterances × 3 arms). Each arm uses the same centered crop from its 30-second source. `LISTENING_GUIDE_CN.md` gives Chinese listening instructions; `key.csv` records the arm mapping and clip hashes. This is a qualitative artifact screen only: the dataset's SCP `text` entries are `dummy`, so no human WER/CER or transcript claim is made here. No quality metrics were run. Dataset and checkpoint were not modified.
+`listening_pack/` contains 32 labeled 12-second clips (8 utterances × clean reference plus 3 enhancement arms). Each arm uses the same centered crop from its 30-second source. `listening_pack/simple/` provides short names (`00_clean.wav`, `00_Y_pre.wav`, `00_Router-off.wav`, `00_Router.wav`, etc.) for direct playback. `LISTENING_GUIDE_CN.md` gives Chinese listening instructions; `key.csv` records the arm mapping and clip hashes. This is a qualitative artifact screen only: the dataset's SCP `text` entries are `dummy`, so no human WER/CER or transcript claim is made here. No quality metrics were run. Dataset and checkpoint were not modified.
 
 ## Auxiliary objective metrics
 
