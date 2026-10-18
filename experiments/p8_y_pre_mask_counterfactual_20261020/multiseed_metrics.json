@@ -1,0 +1,35 @@
+{
+  "seeds": [
+    2027,
+    2028
+  ],
+  "arms": [
+    {
+      "seed": 2027,
+      "arm": "baseline",
+      "runtime_s": 9.184865236282349,
+      "sha256": "6b18a3889e39ee5d9dcc9ee58c105f945d9ba28b0facb89b647c60257822b855"
+    },
+    {
+      "seed": 2027,
+      "arm": "target_zero_10.0_10.5",
+      "runtime_s": 9.201604843139648,
+      "sha256": "3bfbc83039a5218d9499193e2157bc7b0da834714fb80d42a3573ced94ce7fcd"
+    },
+    {
+      "seed": 2028,
+      "arm": "baseline",
+      "runtime_s": 9.22944688796997,
+      "sha256": "dcbeeb734e2a21f1e6a53faeedd26bd455ee6a642b88a7069d258d42313d1213"
+    },
+    {
+      "seed": 2028,
+      "arm": "target_zero_10.0_10.5",
+      "runtime_s": 9.256737232208252,
+      "sha256": "46658ff124d480f402a6a52c07051e5c96a5762a2a67ab4c8fc582f6931ff6ca"
+    }
+  ],
+  "interpretation": "repeatability only; no WER claim",
+  "dataset_modified": false,
+  "checkpoint_modified": false
+}

@@ -1,0 +1,6 @@
+experiment_id: p8_text_source_audit_20261020
+type: read_only_metadata_audit
+manifest: experiments/p8_frontend_backend_audit_20261020/manifest.csv
+dataset_root: /data/datasets/dns_ins20
+changed_dataset: false
+network_download: false

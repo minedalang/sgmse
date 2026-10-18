@@ -1,0 +1,16 @@
+experiment_id: p8_y_pre_mask_counterfactual_20261020
+purpose: "P8-M OOD counterfactual probe; local Y_pre attenuation only"
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+ema: true
+sampler: pc
+N: 30
+snr: 0.5
+corrector: none
+seed: 2026
+input_fileid: 5243
+target_window_seconds: [10.0, 10.5]
+negative_window_seconds: [16.5, 17.0]
+mask_scales: [0.0, 0.5]
+dataset_modified: false
+checkpoint_modified: false
+interpretation: "diagnostic only; not a natural-content or WER result"

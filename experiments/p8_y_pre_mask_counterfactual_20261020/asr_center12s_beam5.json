@@ -1,0 +1,15 @@
+{
+  "model": "tiny.en",
+  "decode": {
+    "beam_size": 5,
+    "best_of": 5,
+    "condition_on_previous_text": false
+  },
+  "interpretation": "pseudo-ASR only; no WER claim",
+  "transcripts": {
+    "baseline": "And whom she loved, with an all-absorbing passion, had caught the war fever, gone to Canada and it only stood. Mrs. Woodwired herself as sneaking through birth, knew what'd probably be-",
+    "negative_zero_16.5_17.0": "And whom she loved with an all-absorbing passion had caught the war fever, gone to Canada and it was. Mrs. Woodwired herself as sneaking through birth, knew what's proper for me.",
+    "target_half_10.0_10.5": "And whom she loved, with an all-absorbing passion, had caught the war fever, gone to Canada and it only stood. Mrs. Woodwired herself as sneaking through birth, knew what'd probably be-",
+    "target_zero_10.0_10.5": "And I, loved with an all-absorbing passion, had caught the war-pever, gone to Canada, and it only stood. Mrs. Woodwired herself as to making birth, knew what's proper-"
+  }
+}

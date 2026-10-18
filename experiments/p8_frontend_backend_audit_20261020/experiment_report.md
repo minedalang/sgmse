@@ -1,5 +1,11 @@
 # P8 frontend/backend audit audio export
 
+## User listening update (2026-10-20)
+
+After listening to several paired examples with clean-ASR context, the user reported that the backend seems to smooth and unify the residual syllables where `Y_pre` has already swallowed speech, without restoring the missing syllables. This is qualitative evidence from one listener, not blind transcription or a measured rate. It is consistent with the local acoustic probe's envelope-continuity result, but does not prove that noisy contains recoverable phonetic evidence or that the backend hallucinated content.
+
+Interpretation for this exploratory set: test “acoustic naturalization without phonetic correction” (P8 H8-E) separately from “new content damage added by the backend” (H8-A). Keep Router-off and Router separate so common backend behavior is not attributed to Future Router. Do not use DNSMOS or clean-reference proxy metrics as evidence of word recovery. The next gated step is a small, independently text-verified phonetic event and counterfactual probe; no training is justified by this listening report alone.
+
 ## Manifest
 
 Eight CV utterances were selected read-only from `wav.scp`, one per speaker, with `_snr-(\d+)` parsed as negative SNR. All selected SNRs are -16 to -19 dB. Speakers in `rrsd_cv_repeat32` and `tr0_fresh_cv_manifest_20261018` were excluded. Inputs are symlinks only.
