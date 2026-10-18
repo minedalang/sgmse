@@ -8,6 +8,7 @@ from __future__ import annotations
 
 import csv
 import json
+import argparse
 from pathlib import Path
 
 import numpy as np
@@ -45,8 +46,12 @@ def norm_pad(x):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--group", choices=("suppression", "all"), default="suppression")
+    args = parser.parse_args()
     windows = list(csv.DictReader(WINDOWS.open()))
-    windows = [r for r in windows if r["candidate_frontend_suppression"] == "True"]
+    if args.group == "suppression":
+        windows = [r for r in windows if r["candidate_frontend_suppression"] == "True"]
     manifest = list(csv.DictReader((P8 / "manifest.csv").open()))
     cache = {}
     for i, rec in enumerate(manifest):
@@ -131,12 +136,15 @@ def main():
                 "cosine_delta_positive": int(np.sum(a > b)),
                 "cosine_delta_nonpositive": int(np.sum(a <= b)),
             }
-    with OUT_CSV.open("w", newline="") as f:
+    out_csv = OUT_CSV if args.group == "suppression" else ROOT / "wavlm_all_local_windows.csv"
+    out_json = OUT_JSON if args.group == "suppression" else ROOT / "wavlm_all_local_summary.json"
+    summary["protocol"]["group"] = args.group
+    with out_csv.open("w", newline="") as f:
         fields = list(out[0])
         w = csv.DictWriter(f, fieldnames=fields)
         w.writeheader()
         w.writerows(out)
-    OUT_JSON.write_text(json.dumps(summary, indent=2) + "\n")
+    out_json.write_text(json.dumps(summary, indent=2) + "\n")
 
 
 if __name__ == "__main__":

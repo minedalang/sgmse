@@ -115,3 +115,15 @@ To check the phase-robust pattern without relying on raw waveform correlation, t
 Across all 55 windows, the median Router-off delta is negative at layers 3/6/12 (`−0.013/−0.036/−0.021`). This means the backend does not consistently move the output toward clean in this content proxy. There is a conditional exception: in the four suppression windows with clean-aware local SNR above −10 dB, layer-3 deltas are positive for Router-off and Router (`median +0.060/+0.066`), while layer-12 deltas remain negative (`−0.012/−0.023`). The current pattern is therefore compatible with low-level acoustic refinement when some evidence exists, without evidence of stable high-level phonetic recovery.
 
 This result strengthens the decision to avoid a raw WavLM-MSE training loss or Harm Head. A future content-preservation intervention would need a real text/phoneme endpoint and must show high-level content benefit independently of this proxy. The outputs are `wavlm_local_windows.csv` and `wavlm_local_summary.json`.
+
+### All-window control
+
+The same frozen diagnostic was then run on all 181 clean-active windows, using identical preprocessing. This control changes the interpretation of the negative suppression-subset deltas:
+
+| Layer | Router-off − `Y_pre` cosine median | Router − `Y_pre` cosine median | Router-off positive count | Router positive count |
+|---:|---:|---:|---:|---:|
+| 3 | +0.0329 | +0.0307 | 119/181 | 125/181 |
+| 6 | +0.0136 | +0.0173 | 105/181 | 109/181 |
+| 12 | +0.0032 | +0.0031 | 93/181 | 98/181 |
+
+Thus the backend generally improves low/mid-level clean acoustic representation on ordinary windows, while the 55 very-low-SNR suppression windows are a difficult subset where this improvement disappears or reverses. The layer-12 result remains near zero in both cases, so the evidence still does not show stable high-level phonetic recovery. The all-window outputs are `wavlm_all_local_windows.csv` and `wavlm_all_local_summary.json`.

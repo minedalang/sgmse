@@ -1,0 +1,122 @@
+{
+  "protocol": {
+    "model": "/root/.cache/huggingface/hub/models--microsoft--wavlm-base-plus/snapshots/4c66d4806a428f2e922ccfa1a962776e232d487b",
+    "device": "cuda",
+    "windows": 181,
+    "layers": [
+      3,
+      6,
+      12
+    ],
+    "normalization": "per-window mean removal and peak normalization; unit feature cosine/MSE",
+    "warning": "clean-aware proxy, not a phoneme label, WER, or deployment feature",
+    "group": "all"
+  },
+  "layers": {
+    "3": {
+      "y_pre": {
+        "n": 181,
+        "cosine_median": 0.48500779271125793,
+        "cosine_mean": 0.48538744284961766,
+        "mse_median": 0.001341125462204218,
+        "mse_mean": 0.001340136857482557
+      },
+      "off": {
+        "n": 181,
+        "cosine_median": 0.5405865907669067,
+        "cosine_mean": 0.5133759556080919,
+        "mse_median": 0.0011963890865445137,
+        "mse_mean": 0.0012672501169974809
+      },
+      "router": {
+        "n": 181,
+        "cosine_median": 0.542766809463501,
+        "cosine_mean": 0.5165669538250491,
+        "mse_median": 0.0011907113948836923,
+        "mse_mean": 0.0012589402349928822
+      },
+      "off_minus_y_pre": {
+        "cosine_delta_median": 0.03287714719772339,
+        "cosine_delta_mean": 0.027988512758474325,
+        "cosine_delta_positive": 119,
+        "cosine_delta_nonpositive": 62
+      },
+      "router_minus_y_pre": {
+        "cosine_delta_median": 0.03068256378173828,
+        "cosine_delta_mean": 0.031179510975431507,
+        "cosine_delta_positive": 125,
+        "cosine_delta_nonpositive": 56
+      }
+    },
+    "6": {
+      "y_pre": {
+        "n": 181,
+        "cosine_median": 0.54578697681427,
+        "cosine_mean": 0.5444115301522102,
+        "mse_median": 0.0011828463757410645,
+        "mse_mean": 0.001186428322559364
+      },
+      "off": {
+        "n": 181,
+        "cosine_median": 0.5657404065132141,
+        "cosine_mean": 0.5519125577041787,
+        "mse_median": 0.0011308841640129685,
+        "mse_mean": 0.001166894382640246
+      },
+      "router": {
+        "n": 181,
+        "cosine_median": 0.5828843712806702,
+        "cosine_mean": 0.554540298344022,
+        "mse_median": 0.0010862385388463736,
+        "mse_mean": 0.0011600513152394815
+      },
+      "off_minus_y_pre": {
+        "cosine_delta_median": 0.013617336750030518,
+        "cosine_delta_mean": 0.007501027551968453,
+        "cosine_delta_positive": 105,
+        "cosine_delta_nonpositive": 76
+      },
+      "router_minus_y_pre": {
+        "cosine_delta_median": 0.017286062240600586,
+        "cosine_delta_mean": 0.010128768191811788,
+        "cosine_delta_positive": 109,
+        "cosine_delta_nonpositive": 72
+      }
+    },
+    "12": {
+      "y_pre": {
+        "n": 181,
+        "cosine_median": 0.6383441090583801,
+        "cosine_mean": 0.5971716615520624,
+        "mse_median": 0.0009418120607733727,
+        "mse_mean": 0.0010490321339643013
+      },
+      "off": {
+        "n": 181,
+        "cosine_median": 0.6372823715209961,
+        "cosine_mean": 0.59462054781307,
+        "mse_median": 0.0009445773903280497,
+        "mse_mean": 0.0010556756561472163
+      },
+      "router": {
+        "n": 181,
+        "cosine_median": 0.6371690630912781,
+        "cosine_mean": 0.5975161760219615,
+        "mse_median": 0.0009448722703382373,
+        "mse_mean": 0.0010481349694681191
+      },
+      "off_minus_y_pre": {
+        "cosine_delta_median": 0.00318145751953125,
+        "cosine_delta_mean": -0.002551113738992267,
+        "cosine_delta_positive": 93,
+        "cosine_delta_nonpositive": 88
+      },
+      "router_minus_y_pre": {
+        "cosine_delta_median": 0.003103494644165039,
+        "cosine_delta_mean": 0.0003445144698991137,
+        "cosine_delta_positive": 98,
+        "cosine_delta_nonpositive": 83
+      }
+    }
+  }
+}
