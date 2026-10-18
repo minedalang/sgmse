@@ -1,0 +1,11 @@
+experiment_id: multitrajectory_consistency_gain_guard_20261020
+purpose: offline audit of a clean-free multi-trajectory acceptance rule
+source: experiments/multitrajectory_oracle_heldout16/consistency_probe.json
+selection_rule: accept max-OVRL candidate only if candidate OVRL exceeds seed-2026 and consistency is no worse than seed-2026
+clean_reference_used_for_selection: false
+new_inference: false
+new_training: false
+bootstrap_replicates: 20000
+bootstrap_seed: 2026
+dataset_modified: false
+checkpoint_modified: false

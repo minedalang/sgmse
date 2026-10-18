@@ -1,0 +1,2076 @@
+{
+  "experiment_id": "multitrajectory_consistency_gain_guard_20261020",
+  "source": "/data/coding/sgmse/experiments/multitrajectory_oracle_heldout16/consistency_probe.json",
+  "selection_uses_clean": false,
+  "rule": "max OVRL candidate accepted iff OVRL gain >= threshold and consistency <= seed-2026 consistency",
+  "thresholds": {
+    "dev": {
+      "0.0": {
+        "n_files": 16,
+        "accepted": 7,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.04420037043469649,
+          "bootstrap95": [
+            0.0159573098820249,
+            0.07762567359673693
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.050008931662887335,
+          "bootstrap95": [
+            0.0020211379975080494,
+            0.10989707242697477
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.007592976093292236,
+          "bootstrap95": [
+            -0.009731025993824005,
+            0.029325978644192213
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.002008287594492758,
+          "bootstrap95": [
+            -0.0038176024795581673,
+            0.007324659270262429
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.03262751321335863,
+          "bootstrap95": [
+            0.010598083338281494,
+            0.05848569858401964
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.02064818585339373,
+          "bootstrap95": [
+            0.002518002722150081,
+            0.0447330249224247
+          ]
+        },
+        "worst_sisdr_delta": -0.056182146072387695,
+        "rows": [
+          {
+            "filename": "000_reader_10660_fileid_7601.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.06925715370481056,
+            "sisdr_delta": 0.15373802185058594,
+            "pesq_delta": -0.044745802879333496,
+            "stoi_delta": -0.029945660753678438,
+            "sig_delta": 0.058237602564948254,
+            "bak_delta": 0.0025407628937461624,
+            "winner_ovrl_gain": 0.06925715370481056,
+            "winner_consistency_delta": -0.007675155997276278
+          },
+          {
+            "filename": "001_reader_10660_fileid_855.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.014133873388748164,
+            "winner_consistency_delta": 0.003171828885873154
+          },
+          {
+            "filename": "002_reader_10666_fileid_10077.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10481860180078195,
+            "sisdr_delta": -0.022851943969726562,
+            "pesq_delta": 0.13863885402679443,
+            "stoi_delta": 0.005734048649446932,
+            "sig_delta": 0.08891291197550455,
+            "bak_delta": 0.0016212345168780118,
+            "winner_ovrl_gain": 0.10481860180078195,
+            "winner_consistency_delta": -0.0031156589587529315
+          },
+          {
+            "filename": "003_reader_10666_fileid_1450.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.044735468670962675,
+            "sisdr_delta": 0.30611874908208847,
+            "pesq_delta": 0.010621428489685059,
+            "stoi_delta": 0.00038641530501493104,
+            "sig_delta": 0.05420200672291475,
+            "bak_delta": 0.029994263736536908,
+            "winner_ovrl_gain": 0.044735468670962675,
+            "winner_consistency_delta": -0.0023368497689564838
+          },
+          {
+            "filename": "004_reader_10676_fileid_10380.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "005_reader_10676_fileid_10692.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10576288764065378,
+            "sisdr_delta": 0.0326385498046875,
+            "pesq_delta": 0.030569791793823242,
+            "stoi_delta": 0.01181751815768417,
+            "sig_delta": 0.0223657963433066,
+            "bak_delta": 0.1615922519257813,
+            "winner_ovrl_gain": 0.10576288764065378,
+            "winner_consistency_delta": -0.0019031663735707693
+          },
+          {
+            "filename": "006_reader_10686_fileid_10298.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.017980142648490016,
+            "winner_consistency_delta": 0.0010662650068600926
+          },
+          {
+            "filename": "007_reader_10686_fileid_1347.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "008_reader_10687_fileid_11569.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "009_reader_10687_fileid_1879.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.07676245665584647,
+            "winner_consistency_delta": 0.0014176865418752127
+          },
+          {
+            "filename": "010_reader_10715_fileid_10235.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0019518042157491422,
+            "winner_consistency_delta": 0.0009557952483495169
+          },
+          {
+            "filename": "011_reader_10715_fileid_10668.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.17256720174021023,
+            "sisdr_delta": 0.33079254627227783,
+            "pesq_delta": 5.829334259033203e-05,
+            "stoi_delta": 0.022196158273573685,
+            "sig_delta": 0.11250650470160517,
+            "bak_delta": 0.1013891156694644,
+            "winner_ovrl_gain": 0.17256720174021023,
+            "winner_consistency_delta": -0.0019449293613433838
+          },
+          {
+            "filename": "012_reader_10721_fileid_11656.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.05910037691800829,
+            "winner_consistency_delta": 0.0044757823149363385
+          },
+          {
+            "filename": "013_reader_10721_fileid_2682.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "014_reader_10733_fileid_10118.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.18681341438819432,
+            "sisdr_delta": -0.056182146072387695,
+            "pesq_delta": 0.0400390625,
+            "stoi_delta": 0.022732488615137214,
+            "sig_delta": 0.1693816618253976,
+            "bak_delta": 0.029423285839406788,
+            "winner_ovrl_gain": 0.18681341438819432,
+            "winner_consistency_delta": -0.00028394659360247987
+          },
+          {
+            "filename": "015_reader_10733_fileid_11101.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.02325119900953032,
+            "sisdr_delta": 0.055889129638671875,
+            "pesq_delta": -0.05369400978088379,
+            "stoi_delta": -0.0007883667352943657,
+            "sig_delta": 0.016433727280061206,
+            "bak_delta": 0.003810059072486105,
+            "winner_ovrl_gain": 0.02325119900953032,
+            "winner_consistency_delta": -0.001996338367462158
+          }
+        ]
+      },
+      "0.02": {
+        "n_files": 16,
+        "accepted": 7,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.04420037043469649,
+          "bootstrap95": [
+            0.0159573098820249,
+            0.07762567359673693
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.050008931662887335,
+          "bootstrap95": [
+            0.0020211379975080494,
+            0.10989707242697477
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.007592976093292236,
+          "bootstrap95": [
+            -0.009731025993824005,
+            0.029325978644192213
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.002008287594492758,
+          "bootstrap95": [
+            -0.0038176024795581673,
+            0.007324659270262429
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.03262751321335863,
+          "bootstrap95": [
+            0.010598083338281494,
+            0.05848569858401964
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.02064818585339373,
+          "bootstrap95": [
+            0.002518002722150081,
+            0.0447330249224247
+          ]
+        },
+        "worst_sisdr_delta": -0.056182146072387695,
+        "rows": [
+          {
+            "filename": "000_reader_10660_fileid_7601.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.06925715370481056,
+            "sisdr_delta": 0.15373802185058594,
+            "pesq_delta": -0.044745802879333496,
+            "stoi_delta": -0.029945660753678438,
+            "sig_delta": 0.058237602564948254,
+            "bak_delta": 0.0025407628937461624,
+            "winner_ovrl_gain": 0.06925715370481056,
+            "winner_consistency_delta": -0.007675155997276278
+          },
+          {
+            "filename": "001_reader_10660_fileid_855.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.014133873388748164,
+            "winner_consistency_delta": 0.003171828885873154
+          },
+          {
+            "filename": "002_reader_10666_fileid_10077.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10481860180078195,
+            "sisdr_delta": -0.022851943969726562,
+            "pesq_delta": 0.13863885402679443,
+            "stoi_delta": 0.005734048649446932,
+            "sig_delta": 0.08891291197550455,
+            "bak_delta": 0.0016212345168780118,
+            "winner_ovrl_gain": 0.10481860180078195,
+            "winner_consistency_delta": -0.0031156589587529315
+          },
+          {
+            "filename": "003_reader_10666_fileid_1450.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.044735468670962675,
+            "sisdr_delta": 0.30611874908208847,
+            "pesq_delta": 0.010621428489685059,
+            "stoi_delta": 0.00038641530501493104,
+            "sig_delta": 0.05420200672291475,
+            "bak_delta": 0.029994263736536908,
+            "winner_ovrl_gain": 0.044735468670962675,
+            "winner_consistency_delta": -0.0023368497689564838
+          },
+          {
+            "filename": "004_reader_10676_fileid_10380.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "005_reader_10676_fileid_10692.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10576288764065378,
+            "sisdr_delta": 0.0326385498046875,
+            "pesq_delta": 0.030569791793823242,
+            "stoi_delta": 0.01181751815768417,
+            "sig_delta": 0.0223657963433066,
+            "bak_delta": 0.1615922519257813,
+            "winner_ovrl_gain": 0.10576288764065378,
+            "winner_consistency_delta": -0.0019031663735707693
+          },
+          {
+            "filename": "006_reader_10686_fileid_10298.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.017980142648490016,
+            "winner_consistency_delta": 0.0010662650068600926
+          },
+          {
+            "filename": "007_reader_10686_fileid_1347.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "008_reader_10687_fileid_11569.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "009_reader_10687_fileid_1879.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.07676245665584647,
+            "winner_consistency_delta": 0.0014176865418752127
+          },
+          {
+            "filename": "010_reader_10715_fileid_10235.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0019518042157491422,
+            "winner_consistency_delta": 0.0009557952483495169
+          },
+          {
+            "filename": "011_reader_10715_fileid_10668.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.17256720174021023,
+            "sisdr_delta": 0.33079254627227783,
+            "pesq_delta": 5.829334259033203e-05,
+            "stoi_delta": 0.022196158273573685,
+            "sig_delta": 0.11250650470160517,
+            "bak_delta": 0.1013891156694644,
+            "winner_ovrl_gain": 0.17256720174021023,
+            "winner_consistency_delta": -0.0019449293613433838
+          },
+          {
+            "filename": "012_reader_10721_fileid_11656.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.05910037691800829,
+            "winner_consistency_delta": 0.0044757823149363385
+          },
+          {
+            "filename": "013_reader_10721_fileid_2682.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "014_reader_10733_fileid_10118.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.18681341438819432,
+            "sisdr_delta": -0.056182146072387695,
+            "pesq_delta": 0.0400390625,
+            "stoi_delta": 0.022732488615137214,
+            "sig_delta": 0.1693816618253976,
+            "bak_delta": 0.029423285839406788,
+            "winner_ovrl_gain": 0.18681341438819432,
+            "winner_consistency_delta": -0.00028394659360247987
+          },
+          {
+            "filename": "015_reader_10733_fileid_11101.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.02325119900953032,
+            "sisdr_delta": 0.055889129638671875,
+            "pesq_delta": -0.05369400978088379,
+            "stoi_delta": -0.0007883667352943657,
+            "sig_delta": 0.016433727280061206,
+            "bak_delta": 0.003810059072486105,
+            "winner_ovrl_gain": 0.02325119900953032,
+            "winner_consistency_delta": -0.001996338367462158
+          }
+        ]
+      },
+      "0.05": {
+        "n_files": 16,
+        "accepted": 5,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.03995120370466568,
+          "bootstrap95": [
+            0.010938752584091521,
+            0.07424163308728149
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.027383439242839813,
+          "bootstrap95": [
+            -0.007022768259048462,
+            0.07832713164389132
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.010285012423992157,
+          "bootstrap95": [
+            -0.00545097142457962,
+            0.03056919910013674
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.0020334095588852227,
+          "bootstrap95": [
+            -0.0037792435810137526,
+            0.007361718793777651
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.028212779838172636,
+          "bootstrap95": [
+            0.006435574703222591,
+            0.054702916354195774
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.018535415677829792,
+          "bootstrap95": [
+            0.00041892251902314603,
+            0.042972186694767045
+          ]
+        },
+        "worst_sisdr_delta": -0.056182146072387695,
+        "rows": [
+          {
+            "filename": "000_reader_10660_fileid_7601.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.06925715370481056,
+            "sisdr_delta": 0.15373802185058594,
+            "pesq_delta": -0.044745802879333496,
+            "stoi_delta": -0.029945660753678438,
+            "sig_delta": 0.058237602564948254,
+            "bak_delta": 0.0025407628937461624,
+            "winner_ovrl_gain": 0.06925715370481056,
+            "winner_consistency_delta": -0.007675155997276278
+          },
+          {
+            "filename": "001_reader_10660_fileid_855.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.014133873388748164,
+            "winner_consistency_delta": 0.003171828885873154
+          },
+          {
+            "filename": "002_reader_10666_fileid_10077.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10481860180078195,
+            "sisdr_delta": -0.022851943969726562,
+            "pesq_delta": 0.13863885402679443,
+            "stoi_delta": 0.005734048649446932,
+            "sig_delta": 0.08891291197550455,
+            "bak_delta": 0.0016212345168780118,
+            "winner_ovrl_gain": 0.10481860180078195,
+            "winner_consistency_delta": -0.0031156589587529315
+          },
+          {
+            "filename": "003_reader_10666_fileid_1450.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.044735468670962675,
+            "winner_consistency_delta": -0.0023368497689564838
+          },
+          {
+            "filename": "004_reader_10676_fileid_10380.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "005_reader_10676_fileid_10692.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10576288764065378,
+            "sisdr_delta": 0.0326385498046875,
+            "pesq_delta": 0.030569791793823242,
+            "stoi_delta": 0.01181751815768417,
+            "sig_delta": 0.0223657963433066,
+            "bak_delta": 0.1615922519257813,
+            "winner_ovrl_gain": 0.10576288764065378,
+            "winner_consistency_delta": -0.0019031663735707693
+          },
+          {
+            "filename": "006_reader_10686_fileid_10298.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.017980142648490016,
+            "winner_consistency_delta": 0.0010662650068600926
+          },
+          {
+            "filename": "007_reader_10686_fileid_1347.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "008_reader_10687_fileid_11569.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "009_reader_10687_fileid_1879.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.07676245665584647,
+            "winner_consistency_delta": 0.0014176865418752127
+          },
+          {
+            "filename": "010_reader_10715_fileid_10235.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0019518042157491422,
+            "winner_consistency_delta": 0.0009557952483495169
+          },
+          {
+            "filename": "011_reader_10715_fileid_10668.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.17256720174021023,
+            "sisdr_delta": 0.33079254627227783,
+            "pesq_delta": 5.829334259033203e-05,
+            "stoi_delta": 0.022196158273573685,
+            "sig_delta": 0.11250650470160517,
+            "bak_delta": 0.1013891156694644,
+            "winner_ovrl_gain": 0.17256720174021023,
+            "winner_consistency_delta": -0.0019449293613433838
+          },
+          {
+            "filename": "012_reader_10721_fileid_11656.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.05910037691800829,
+            "winner_consistency_delta": 0.0044757823149363385
+          },
+          {
+            "filename": "013_reader_10721_fileid_2682.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "014_reader_10733_fileid_10118.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.18681341438819432,
+            "sisdr_delta": -0.056182146072387695,
+            "pesq_delta": 0.0400390625,
+            "stoi_delta": 0.022732488615137214,
+            "sig_delta": 0.1693816618253976,
+            "bak_delta": 0.029423285839406788,
+            "winner_ovrl_gain": 0.18681341438819432,
+            "winner_consistency_delta": -0.00028394659360247987
+          },
+          {
+            "filename": "015_reader_10733_fileid_11101.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.02325119900953032,
+            "winner_consistency_delta": -0.001996338367462158
+          }
+        ]
+      },
+      "0.08": {
+        "n_files": 16,
+        "accepted": 4,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.03562263159811502,
+          "bootstrap95": [
+            0.006610180477540861,
+            0.07041389277072302
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.017774812877178192,
+          "bootstrap95": [
+            -0.009922489523887634,
+            0.06324692815542221
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.0130816251039505,
+          "bootstrap95": [
+            7.286667823791504e-06,
+            0.03232938051223755
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.003905013355990125,
+          "bootstrap95": [
+            0.0007167560811808665,
+            0.007934023206031949
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.02457292967786337,
+          "bootstrap95": [
+            0.002795724542913325,
+            0.051302694404507104
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.018376617996970657,
+          "bootstrap95": [
+            0.00020265431460975147,
+            0.042905649365255934
+          ]
+        },
+        "worst_sisdr_delta": -0.056182146072387695,
+        "rows": [
+          {
+            "filename": "000_reader_10660_fileid_7601.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.06925715370481056,
+            "winner_consistency_delta": -0.007675155997276278
+          },
+          {
+            "filename": "001_reader_10660_fileid_855.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.014133873388748164,
+            "winner_consistency_delta": 0.003171828885873154
+          },
+          {
+            "filename": "002_reader_10666_fileid_10077.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10481860180078195,
+            "sisdr_delta": -0.022851943969726562,
+            "pesq_delta": 0.13863885402679443,
+            "stoi_delta": 0.005734048649446932,
+            "sig_delta": 0.08891291197550455,
+            "bak_delta": 0.0016212345168780118,
+            "winner_ovrl_gain": 0.10481860180078195,
+            "winner_consistency_delta": -0.0031156589587529315
+          },
+          {
+            "filename": "003_reader_10666_fileid_1450.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.044735468670962675,
+            "winner_consistency_delta": -0.0023368497689564838
+          },
+          {
+            "filename": "004_reader_10676_fileid_10380.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "005_reader_10676_fileid_10692.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.10576288764065378,
+            "sisdr_delta": 0.0326385498046875,
+            "pesq_delta": 0.030569791793823242,
+            "stoi_delta": 0.01181751815768417,
+            "sig_delta": 0.0223657963433066,
+            "bak_delta": 0.1615922519257813,
+            "winner_ovrl_gain": 0.10576288764065378,
+            "winner_consistency_delta": -0.0019031663735707693
+          },
+          {
+            "filename": "006_reader_10686_fileid_10298.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.017980142648490016,
+            "winner_consistency_delta": 0.0010662650068600926
+          },
+          {
+            "filename": "007_reader_10686_fileid_1347.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "008_reader_10687_fileid_11569.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "009_reader_10687_fileid_1879.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.07676245665584647,
+            "winner_consistency_delta": 0.0014176865418752127
+          },
+          {
+            "filename": "010_reader_10715_fileid_10235.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0019518042157491422,
+            "winner_consistency_delta": 0.0009557952483495169
+          },
+          {
+            "filename": "011_reader_10715_fileid_10668.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.17256720174021023,
+            "sisdr_delta": 0.33079254627227783,
+            "pesq_delta": 5.829334259033203e-05,
+            "stoi_delta": 0.022196158273573685,
+            "sig_delta": 0.11250650470160517,
+            "bak_delta": 0.1013891156694644,
+            "winner_ovrl_gain": 0.17256720174021023,
+            "winner_consistency_delta": -0.0019449293613433838
+          },
+          {
+            "filename": "012_reader_10721_fileid_11656.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.05910037691800829,
+            "winner_consistency_delta": 0.0044757823149363385
+          },
+          {
+            "filename": "013_reader_10721_fileid_2682.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "014_reader_10733_fileid_10118.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.18681341438819432,
+            "sisdr_delta": -0.056182146072387695,
+            "pesq_delta": 0.0400390625,
+            "stoi_delta": 0.022732488615137214,
+            "sig_delta": 0.1693816618253976,
+            "bak_delta": 0.029423285839406788,
+            "winner_ovrl_gain": 0.18681341438819432,
+            "winner_consistency_delta": -0.00028394659360247987
+          },
+          {
+            "filename": "015_reader_10733_fileid_11101.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.02325119900953032,
+            "winner_consistency_delta": -0.001996338367462158
+          }
+        ]
+      }
+    },
+    "heldout": {
+      "0.0": {
+        "n_files": 16,
+        "accepted": 7,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.04328244959190444,
+          "bootstrap95": [
+            0.017225740662737216,
+            0.07227127194886529
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.024440202862024307,
+          "bootstrap95": [
+            -0.012146614491939543,
+            0.06184100955724708
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.009992115199565887,
+          "bootstrap95": [
+            -0.005841165781021118,
+            0.0261411953717469
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.0012236153056609314,
+          "bootstrap95": [
+            -0.0017825963483006357,
+            0.004223645431692846
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.02844726278420051,
+          "bootstrap95": [
+            0.0076866977675892345,
+            0.05309468512427112
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.03663563938591255,
+          "bootstrap95": [
+            0.012477454760276563,
+            0.06446902793576531
+          ]
+        },
+        "worst_sisdr_delta": -0.1541423797607422,
+        "rows": [
+          {
+            "filename": "016_reader_10741_fileid_10167.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.11234872965775011,
+            "sisdr_delta": -0.1541423797607422,
+            "pesq_delta": 0.07793951034545898,
+            "stoi_delta": -0.01379117814355757,
+            "sig_delta": 0.054747046866475024,
+            "bak_delta": 0.105249850669769,
+            "winner_ovrl_gain": 0.11234872965775011,
+            "winner_consistency_delta": -0.0031897524992625104
+          },
+          {
+            "filename": "017_reader_10741_fileid_10788.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.06404548658474996,
+            "sisdr_delta": 0.15891456604003906,
+            "pesq_delta": 0.047354936599731445,
+            "stoi_delta": 0.002454611098243409,
+            "sig_delta": 0.04811572681495058,
+            "bak_delta": 0.018843036601983165,
+            "winner_ovrl_gain": 0.06404548658474996,
+            "winner_consistency_delta": -0.0008358756701151715
+          },
+          {
+            "filename": "018_reader_10774_fileid_11915.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.09171737330462904,
+            "winner_consistency_delta": 0.00025721391042074493
+          },
+          {
+            "filename": "019_reader_10774_fileid_3627.wav",
+            "accepted": true,
+            "selected_seed": 2029,
+            "ovrl_delta": 0.06347245018083347,
+            "sisdr_delta": 0.08657217025756836,
+            "pesq_delta": 0.04822707176208496,
+            "stoi_delta": 0.013561832458555245,
+            "sig_delta": -0.0094306556207715,
+            "bak_delta": 0.16303418967737793,
+            "winner_ovrl_gain": 0.06347245018083347,
+            "winner_consistency_delta": -0.00013893842697143555
+          },
+          {
+            "filename": "020_reader_10786_fileid_10314.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.11165340473456986,
+            "sisdr_delta": 0.1677113175392151,
+            "pesq_delta": 0.05409538745880127,
+            "stoi_delta": 0.0132868434145621,
+            "sig_delta": 0.09659727208203472,
+            "bak_delta": 0.026509654208138222,
+            "winner_ovrl_gain": 0.11165340473456986,
+            "winner_consistency_delta": -0.00028975804646808045
+          },
+          {
+            "filename": "021_reader_10786_fileid_2142.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.009843459829983914,
+            "winner_consistency_delta": 0.001341516772906004
+          },
+          {
+            "filename": "022_reader_10811_fileid_1341.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.12097846207347374,
+            "winner_consistency_delta": 0.002287531892458561
+          },
+          {
+            "filename": "023_reader_10811_fileid_2306.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "024_reader_10820_fileid_2971.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.03644050910364216,
+            "sisdr_delta": 0.028350830078125,
+            "pesq_delta": -0.050452470779418945,
+            "stoi_delta": -0.00406176085220411,
+            "sig_delta": 0.012995233947181717,
+            "bak_delta": 0.041787064566903176,
+            "winner_ovrl_gain": 0.03644050910364216,
+            "winner_consistency_delta": -0.00049860527118048
+          },
+          {
+            "filename": "025_reader_10820_fileid_7471.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.01114760027564321,
+            "winner_consistency_delta": 0.000542049606641129
+          },
+          {
+            "filename": "026_reader_10855_fileid_10269.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "027_reader_10855_fileid_11779.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.15532646578616127,
+            "sisdr_delta": -0.024221420288085938,
+            "pesq_delta": -0.0440678596496582,
+            "stoi_delta": 0.004535328705619235,
+            "sig_delta": 0.10498000335721969,
+            "bak_delta": 0.12011031354001034,
+            "winner_ovrl_gain": 0.15532646578616127,
+            "winner_consistency_delta": -0.0025910685459772653
+          },
+          {
+            "filename": "028_reader_10891_fileid_10483.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.005033378882061346,
+            "winner_consistency_delta": 0.0016532540321350098
+          },
+          {
+            "filename": "029_reader_10891_fileid_7534.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.040951831749703516,
+            "winner_consistency_delta": 0.004692221681276948
+          },
+          {
+            "filename": "030_reader_10907_fileid_11974.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.060690802724962634,
+            "winner_consistency_delta": 0.008654753367106083
+          },
+          {
+            "filename": "031_reader_10907_fileid_2839.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.14923214742276425,
+            "sisdr_delta": 0.12785816192626953,
+            "pesq_delta": 0.026777267456054688,
+            "stoi_delta": 0.0035921682093565943,
+            "sig_delta": 0.14715157710011795,
+            "bak_delta": 0.11063612091041897,
+            "winner_ovrl_gain": 0.14923214742276425,
+            "winner_consistency_delta": -0.0018353859583536969
+          }
+        ]
+      },
+      "0.02": {
+        "n_files": 16,
+        "accepted": 7,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.04328244959190444,
+          "bootstrap95": [
+            0.017225740662737216,
+            0.07227127194886529
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.024440202862024307,
+          "bootstrap95": [
+            -0.012146614491939543,
+            0.06184100955724708
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.009992115199565887,
+          "bootstrap95": [
+            -0.005841165781021118,
+            0.0261411953717469
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.0012236153056609314,
+          "bootstrap95": [
+            -0.0017825963483006357,
+            0.004223645431692846
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.02844726278420051,
+          "bootstrap95": [
+            0.0076866977675892345,
+            0.05309468512427112
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.03663563938591255,
+          "bootstrap95": [
+            0.012477454760276563,
+            0.06446902793576531
+          ]
+        },
+        "worst_sisdr_delta": -0.1541423797607422,
+        "rows": [
+          {
+            "filename": "016_reader_10741_fileid_10167.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.11234872965775011,
+            "sisdr_delta": -0.1541423797607422,
+            "pesq_delta": 0.07793951034545898,
+            "stoi_delta": -0.01379117814355757,
+            "sig_delta": 0.054747046866475024,
+            "bak_delta": 0.105249850669769,
+            "winner_ovrl_gain": 0.11234872965775011,
+            "winner_consistency_delta": -0.0031897524992625104
+          },
+          {
+            "filename": "017_reader_10741_fileid_10788.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.06404548658474996,
+            "sisdr_delta": 0.15891456604003906,
+            "pesq_delta": 0.047354936599731445,
+            "stoi_delta": 0.002454611098243409,
+            "sig_delta": 0.04811572681495058,
+            "bak_delta": 0.018843036601983165,
+            "winner_ovrl_gain": 0.06404548658474996,
+            "winner_consistency_delta": -0.0008358756701151715
+          },
+          {
+            "filename": "018_reader_10774_fileid_11915.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.09171737330462904,
+            "winner_consistency_delta": 0.00025721391042074493
+          },
+          {
+            "filename": "019_reader_10774_fileid_3627.wav",
+            "accepted": true,
+            "selected_seed": 2029,
+            "ovrl_delta": 0.06347245018083347,
+            "sisdr_delta": 0.08657217025756836,
+            "pesq_delta": 0.04822707176208496,
+            "stoi_delta": 0.013561832458555245,
+            "sig_delta": -0.0094306556207715,
+            "bak_delta": 0.16303418967737793,
+            "winner_ovrl_gain": 0.06347245018083347,
+            "winner_consistency_delta": -0.00013893842697143555
+          },
+          {
+            "filename": "020_reader_10786_fileid_10314.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.11165340473456986,
+            "sisdr_delta": 0.1677113175392151,
+            "pesq_delta": 0.05409538745880127,
+            "stoi_delta": 0.0132868434145621,
+            "sig_delta": 0.09659727208203472,
+            "bak_delta": 0.026509654208138222,
+            "winner_ovrl_gain": 0.11165340473456986,
+            "winner_consistency_delta": -0.00028975804646808045
+          },
+          {
+            "filename": "021_reader_10786_fileid_2142.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.009843459829983914,
+            "winner_consistency_delta": 0.001341516772906004
+          },
+          {
+            "filename": "022_reader_10811_fileid_1341.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.12097846207347374,
+            "winner_consistency_delta": 0.002287531892458561
+          },
+          {
+            "filename": "023_reader_10811_fileid_2306.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "024_reader_10820_fileid_2971.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.03644050910364216,
+            "sisdr_delta": 0.028350830078125,
+            "pesq_delta": -0.050452470779418945,
+            "stoi_delta": -0.00406176085220411,
+            "sig_delta": 0.012995233947181717,
+            "bak_delta": 0.041787064566903176,
+            "winner_ovrl_gain": 0.03644050910364216,
+            "winner_consistency_delta": -0.00049860527118048
+          },
+          {
+            "filename": "025_reader_10820_fileid_7471.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.01114760027564321,
+            "winner_consistency_delta": 0.000542049606641129
+          },
+          {
+            "filename": "026_reader_10855_fileid_10269.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "027_reader_10855_fileid_11779.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.15532646578616127,
+            "sisdr_delta": -0.024221420288085938,
+            "pesq_delta": -0.0440678596496582,
+            "stoi_delta": 0.004535328705619235,
+            "sig_delta": 0.10498000335721969,
+            "bak_delta": 0.12011031354001034,
+            "winner_ovrl_gain": 0.15532646578616127,
+            "winner_consistency_delta": -0.0025910685459772653
+          },
+          {
+            "filename": "028_reader_10891_fileid_10483.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.005033378882061346,
+            "winner_consistency_delta": 0.0016532540321350098
+          },
+          {
+            "filename": "029_reader_10891_fileid_7534.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.040951831749703516,
+            "winner_consistency_delta": 0.004692221681276948
+          },
+          {
+            "filename": "030_reader_10907_fileid_11974.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.060690802724962634,
+            "winner_consistency_delta": 0.008654753367106083
+          },
+          {
+            "filename": "031_reader_10907_fileid_2839.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.14923214742276425,
+            "sisdr_delta": 0.12785816192626953,
+            "pesq_delta": 0.026777267456054688,
+            "stoi_delta": 0.0035921682093565943,
+            "sig_delta": 0.14715157710011795,
+            "bak_delta": 0.11063612091041897,
+            "winner_ovrl_gain": 0.14923214742276425,
+            "winner_consistency_delta": -0.0018353859583536969
+          }
+        ]
+      },
+      "0.05": {
+        "n_files": 16,
+        "accepted": 6,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.04100491777292681,
+          "bootstrap95": [
+            0.0149123940685148,
+            0.07037463502759997
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.022668275982141495,
+          "bootstrap95": [
+            -0.013857539743185043,
+            0.06061792355030775
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.013145394623279572,
+          "bootstrap95": [
+            -0.00043182075023651123,
+            0.027886777743697137
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.0014774753589236883,
+          "bootstrap95": [
+            -0.0014547733291561393,
+            0.004428209525884158
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.027635060662501654,
+          "bootstrap95": [
+            0.0064289233550891,
+            0.052635668998483126
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.0340239478504811,
+          "bootstrap95": [
+            0.009749300732533772,
+            0.06238972692338612
+          ]
+        },
+        "worst_sisdr_delta": -0.1541423797607422,
+        "rows": [
+          {
+            "filename": "016_reader_10741_fileid_10167.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.11234872965775011,
+            "sisdr_delta": -0.1541423797607422,
+            "pesq_delta": 0.07793951034545898,
+            "stoi_delta": -0.01379117814355757,
+            "sig_delta": 0.054747046866475024,
+            "bak_delta": 0.105249850669769,
+            "winner_ovrl_gain": 0.11234872965775011,
+            "winner_consistency_delta": -0.0031897524992625104
+          },
+          {
+            "filename": "017_reader_10741_fileid_10788.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.06404548658474996,
+            "sisdr_delta": 0.15891456604003906,
+            "pesq_delta": 0.047354936599731445,
+            "stoi_delta": 0.002454611098243409,
+            "sig_delta": 0.04811572681495058,
+            "bak_delta": 0.018843036601983165,
+            "winner_ovrl_gain": 0.06404548658474996,
+            "winner_consistency_delta": -0.0008358756701151715
+          },
+          {
+            "filename": "018_reader_10774_fileid_11915.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.09171737330462904,
+            "winner_consistency_delta": 0.00025721391042074493
+          },
+          {
+            "filename": "019_reader_10774_fileid_3627.wav",
+            "accepted": true,
+            "selected_seed": 2029,
+            "ovrl_delta": 0.06347245018083347,
+            "sisdr_delta": 0.08657217025756836,
+            "pesq_delta": 0.04822707176208496,
+            "stoi_delta": 0.013561832458555245,
+            "sig_delta": -0.0094306556207715,
+            "bak_delta": 0.16303418967737793,
+            "winner_ovrl_gain": 0.06347245018083347,
+            "winner_consistency_delta": -0.00013893842697143555
+          },
+          {
+            "filename": "020_reader_10786_fileid_10314.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.11165340473456986,
+            "sisdr_delta": 0.1677113175392151,
+            "pesq_delta": 0.05409538745880127,
+            "stoi_delta": 0.0132868434145621,
+            "sig_delta": 0.09659727208203472,
+            "bak_delta": 0.026509654208138222,
+            "winner_ovrl_gain": 0.11165340473456986,
+            "winner_consistency_delta": -0.00028975804646808045
+          },
+          {
+            "filename": "021_reader_10786_fileid_2142.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.009843459829983914,
+            "winner_consistency_delta": 0.001341516772906004
+          },
+          {
+            "filename": "022_reader_10811_fileid_1341.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.12097846207347374,
+            "winner_consistency_delta": 0.002287531892458561
+          },
+          {
+            "filename": "023_reader_10811_fileid_2306.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "024_reader_10820_fileid_2971.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.03644050910364216,
+            "winner_consistency_delta": -0.00049860527118048
+          },
+          {
+            "filename": "025_reader_10820_fileid_7471.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.01114760027564321,
+            "winner_consistency_delta": 0.000542049606641129
+          },
+          {
+            "filename": "026_reader_10855_fileid_10269.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "027_reader_10855_fileid_11779.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.15532646578616127,
+            "sisdr_delta": -0.024221420288085938,
+            "pesq_delta": -0.0440678596496582,
+            "stoi_delta": 0.004535328705619235,
+            "sig_delta": 0.10498000335721969,
+            "bak_delta": 0.12011031354001034,
+            "winner_ovrl_gain": 0.15532646578616127,
+            "winner_consistency_delta": -0.0025910685459772653
+          },
+          {
+            "filename": "028_reader_10891_fileid_10483.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.005033378882061346,
+            "winner_consistency_delta": 0.0016532540321350098
+          },
+          {
+            "filename": "029_reader_10891_fileid_7534.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.040951831749703516,
+            "winner_consistency_delta": 0.004692221681276948
+          },
+          {
+            "filename": "030_reader_10907_fileid_11974.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.060690802724962634,
+            "winner_consistency_delta": 0.008654753367106083
+          },
+          {
+            "filename": "031_reader_10907_fileid_2839.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.14923214742276425,
+            "sisdr_delta": 0.12785816192626953,
+            "pesq_delta": 0.026777267456054688,
+            "stoi_delta": 0.0035921682093565943,
+            "sig_delta": 0.14715157710011795,
+            "bak_delta": 0.11063612091041897,
+            "winner_ovrl_gain": 0.14923214742276425,
+            "winner_consistency_delta": -0.0018353859583536969
+          }
+        ]
+      },
+      "0.08": {
+        "n_files": 16,
+        "accepted": 4,
+        "sisdr_negative_files": 2,
+        "ovrl_delta": {
+          "mean": 0.03303504672507784,
+          "bootstrap95": [
+            0.006978337795910616,
+            0.06338398494212999
+          ]
+        },
+        "sisdr_delta": {
+          "mean": 0.007325354963541031,
+          "bootstrap95": [
+            -0.022424399852752686,
+            0.039437007158994675
+          ]
+        },
+        "pesq_delta": {
+          "mean": 0.007171519100666046,
+          "bootstrap95": [
+            -0.004881761968135834,
+            0.02130797505378723
+          ]
+        },
+        "stoi_delta": {
+          "mean": 0.00047644763662377243,
+          "bootstrap95": [
+            -0.002077877344731055,
+            0.0029092819063100445
+          ]
+        },
+        "sig_delta": {
+          "mean": 0.02521724371286546,
+          "bootstrap95": [
+            0.00603732950512717,
+            0.050172441060206435
+          ]
+        },
+        "bak_delta": {
+          "mean": 0.022656621208021033,
+          "bootstrap95": [
+            0.003313706776017278,
+            0.04536869199613418
+          ]
+        },
+        "worst_sisdr_delta": -0.1541423797607422,
+        "rows": [
+          {
+            "filename": "016_reader_10741_fileid_10167.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.11234872965775011,
+            "sisdr_delta": -0.1541423797607422,
+            "pesq_delta": 0.07793951034545898,
+            "stoi_delta": -0.01379117814355757,
+            "sig_delta": 0.054747046866475024,
+            "bak_delta": 0.105249850669769,
+            "winner_ovrl_gain": 0.11234872965775011,
+            "winner_consistency_delta": -0.0031897524992625104
+          },
+          {
+            "filename": "017_reader_10741_fileid_10788.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.06404548658474996,
+            "winner_consistency_delta": -0.0008358756701151715
+          },
+          {
+            "filename": "018_reader_10774_fileid_11915.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.09171737330462904,
+            "winner_consistency_delta": 0.00025721391042074493
+          },
+          {
+            "filename": "019_reader_10774_fileid_3627.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.06347245018083347,
+            "winner_consistency_delta": -0.00013893842697143555
+          },
+          {
+            "filename": "020_reader_10786_fileid_10314.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.11165340473456986,
+            "sisdr_delta": 0.1677113175392151,
+            "pesq_delta": 0.05409538745880127,
+            "stoi_delta": 0.0132868434145621,
+            "sig_delta": 0.09659727208203472,
+            "bak_delta": 0.026509654208138222,
+            "winner_ovrl_gain": 0.11165340473456986,
+            "winner_consistency_delta": -0.00028975804646808045
+          },
+          {
+            "filename": "021_reader_10786_fileid_2142.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.009843459829983914,
+            "winner_consistency_delta": 0.001341516772906004
+          },
+          {
+            "filename": "022_reader_10811_fileid_1341.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.12097846207347374,
+            "winner_consistency_delta": 0.002287531892458561
+          },
+          {
+            "filename": "023_reader_10811_fileid_2306.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "024_reader_10820_fileid_2971.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.03644050910364216,
+            "winner_consistency_delta": -0.00049860527118048
+          },
+          {
+            "filename": "025_reader_10820_fileid_7471.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.01114760027564321,
+            "winner_consistency_delta": 0.000542049606641129
+          },
+          {
+            "filename": "026_reader_10855_fileid_10269.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.0,
+            "winner_consistency_delta": 0.0
+          },
+          {
+            "filename": "027_reader_10855_fileid_11779.wav",
+            "accepted": true,
+            "selected_seed": 2028,
+            "ovrl_delta": 0.15532646578616127,
+            "sisdr_delta": -0.024221420288085938,
+            "pesq_delta": -0.0440678596496582,
+            "stoi_delta": 0.004535328705619235,
+            "sig_delta": 0.10498000335721969,
+            "bak_delta": 0.12011031354001034,
+            "winner_ovrl_gain": 0.15532646578616127,
+            "winner_consistency_delta": -0.0025910685459772653
+          },
+          {
+            "filename": "028_reader_10891_fileid_10483.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.005033378882061346,
+            "winner_consistency_delta": 0.0016532540321350098
+          },
+          {
+            "filename": "029_reader_10891_fileid_7534.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.040951831749703516,
+            "winner_consistency_delta": 0.004692221681276948
+          },
+          {
+            "filename": "030_reader_10907_fileid_11974.wav",
+            "accepted": false,
+            "selected_seed": 2026,
+            "ovrl_delta": 0.0,
+            "sisdr_delta": 0.0,
+            "pesq_delta": 0.0,
+            "stoi_delta": 0.0,
+            "sig_delta": 0.0,
+            "bak_delta": 0.0,
+            "winner_ovrl_gain": 0.060690802724962634,
+            "winner_consistency_delta": 0.008654753367106083
+          },
+          {
+            "filename": "031_reader_10907_fileid_2839.wav",
+            "accepted": true,
+            "selected_seed": 2027,
+            "ovrl_delta": 0.14923214742276425,
+            "sisdr_delta": 0.12785816192626953,
+            "pesq_delta": 0.026777267456054688,
+            "stoi_delta": 0.0035921682093565943,
+            "sig_delta": 0.14715157710011795,
+            "bak_delta": 0.11063612091041897,
+            "winner_ovrl_gain": 0.14923214742276425,
+            "winner_consistency_delta": -0.0018353859583536969
+          }
+        ]
+      }
+    }
+  }
+}
