@@ -1,0 +1,37 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+{
+  "experiment_id": "frontend_state_representation_probe_20261020_online16",
+  "n": 16,
+  "n_speakers": 16,
+  "selected_steps": [
+    3,
+    5,
+    7,
+    9
+  ],
+  "results": {
+    "simple": {
+      "mae": 0.1547864213660876,
+      "r2": 0.7584046188913506,
+      "spearman": 0.8735294117647058
+    },
+    "hook": {
+      "mae": 0.16416053640840092,
+      "r2": 0.6551038244304994,
+      "spearman": 0.8588235294117647
+    },
+    "combined": {
+      "mae": 0.1561931407579625,
+      "r2": 0.7417497700260323,
+      "spearman": 0.9029411764705882
+    }
+  },
+  "target_mean": 0.9412769239861518,
+  "runtime_seconds": 183.66214299201965,
+  "hook_modules": [
+    "act",
+    "output_layer",
+    "pyramid_upsample"
+  ]
+}

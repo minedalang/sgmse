@@ -83,7 +83,7 @@ MR-STFT log-magnitude 对 DNSMOS-OVRL 的成对排序一致率约 `0.802`，但�
 
 ### 新增：Frontend state representation probe
 
-已在 4 个 speaker、8 条 fresh-CV 语音上成功提取 StoRM 前端三个中间 hook，并复用已有 rollout cache 做 speaker-LOSO OOF。combined hook summary + SNR/RMS/cosine 的 MAE 为 `0.23319`，简单特征基线为 `0.25186`，hook-only 为 `0.27217`。这是低功效可行性信号，尚不能证明跨 speaker 解释力，也不支持训练 adapter；后续若继续，只应做至少 16-speaker 的在线复核。详见 [`frontend_state_representation_probe_20261020`](./experiments/frontend_state_representation_probe_20261020)。
+已在 4 个 speaker、8 条 fresh-CV 语音上成功提取 StoRM 前端三个中间 hook，并复用已有 rollout cache 做 speaker-LOSO OOF。随后在 16 个不同 speaker 上在线复核：简单 SNR/RMS/余弦基线 MAE `0.15479`，hook-only `0.16416`，combined `0.15619`。中间表征没有稳定超过简单可观测特征，state-conditioned adapter 不启动。详见 [`frontend_state_representation_probe_20261020`](./experiments/frontend_state_representation_probe_20261020) 和 [`frontend_state_representation_probe_20261020_online16`](./experiments/frontend_state_representation_probe_20261020_online16)。
 
 ## 目前最建设性的科研结论
 

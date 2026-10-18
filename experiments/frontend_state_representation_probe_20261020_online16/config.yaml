@@ -1,0 +1,9 @@
+experiment_id: frontend_state_representation_probe_20261020_online16
+manifest: experiments/tr0_fresh_cv_manifest_20261018/manifest.csv
+selection: first occurrence of 16 unique speakers
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+hooks: [act, output_layer, pyramid_upsample]
+selected_steps: [3,5,7,9]
+sampler: pc N=30 snr=0.5 corrector=none
+training: false
+trajectory_cache: false
