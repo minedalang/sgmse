@@ -1,183 +1,606 @@
 {
+  "schema_version": 1,
   "experiment_id": "p8_text_source_audit_20261020",
-  "timestamp_utc": "2026-10-18T03:24:37.885253Z",
-  "manifest_n": 8,
-  "dataset_root": "/data/datasets/dns_ins20",
-  "text_files": 16,
-  "text_file_stats": {
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tt_real_recordings/text": {
-      "lines": 300,
-      "dummy_lines": 300,
-      "sha256": "ffba9a6e1985e64756d35f70d64d48f536dac559fe266dde794ea0631d5c2d87"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tt_synthetic_no_reverb/text": {
-      "lines": 150,
-      "dummy_lines": 150,
-      "sha256": "ff63de676a108c6202528cab26d54517ec69acf5ae2aed8c32bbf5ad20059657"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/text": {
-      "lines": 1200,
-      "dummy_lines": 1200,
-      "sha256": "af48a4c6f1c6f58b13646ee1bb4bed52d1bba7d982027a4e39174c9382ee924f"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tr_synthetic/text": {
-      "lines": 10800,
-      "dummy_lines": 10800,
-      "sha256": "670179725e186145e28323b7bba51a6907c88d2affc42e8b1f755e1a4f3fd08e"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/tt_synthetic_with_reverb/text": {
-      "lines": 150,
-      "dummy_lines": 150,
-      "sha256": "ff63de676a108c6202528cab26d54517ec69acf5ae2aed8c32bbf5ad20059657"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/text": {
-      "lines": 1200,
-      "dummy_lines": 1200,
-      "sha256": "af48a4c6f1c6f58b13646ee1bb4bed52d1bba7d982027a4e39174c9382ee924f"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/text": {
-      "lines": 10800,
-      "dummy_lines": 10800,
-      "sha256": "670179725e186145e28323b7bba51a6907c88d2affc42e8b1f755e1a4f3fd08e"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_real_recordings/text": {
-      "lines": 300,
-      "dummy_lines": 300,
-      "sha256": "ffba9a6e1985e64756d35f70d64d48f536dac559fe266dde794ea0631d5c2d87"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_synthetic_no_reverb/text": {
-      "lines": 150,
-      "dummy_lines": 150,
-      "sha256": "ff63de676a108c6202528cab26d54517ec69acf5ae2aed8c32bbf5ad20059657"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_synthetic_with_reverb/text": {
-      "lines": 150,
-      "dummy_lines": 150,
-      "sha256": "ff63de676a108c6202528cab26d54517ec69acf5ae2aed8c32bbf5ad20059657"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/scp/tt_real_recordings/text": {
-      "lines": 300,
-      "dummy_lines": 300,
-      "sha256": "ffba9a6e1985e64756d35f70d64d48f536dac559fe266dde794ea0631d5c2d87"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/scp/tt_synthetic_no_reverb/text": {
-      "lines": 150,
-      "dummy_lines": 150,
-      "sha256": "ff63de676a108c6202528cab26d54517ec69acf5ae2aed8c32bbf5ad20059657"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/scp/cv_synthetic/text": {
-      "lines": 3601,
-      "dummy_lines": 3601,
-      "sha256": "f96a9d4b63a06301b9acb49c58e210d9cfa561da3c49743cd2d533cc5c8eb365"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/scp/tr_synthetic/text": {
-      "lines": 32400,
-      "dummy_lines": 32400,
-      "sha256": "678c5adad9b9fa65fd9febc8d60e00f1e9ce251ba81c1df31616d967049535b8"
-    },
-    "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/scp/tt_synthetic_with_reverb/text": {
-      "lines": 150,
-      "dummy_lines": 150,
-      "sha256": "ff63de676a108c6202528cab26d54517ec69acf5ae2aed8c32bbf5ad20059657"
+  "status": "completed",
+  "question": "Whether local DNS metadata provides non-dummy original speech text/books mapping for 8 P8 clean files.",
+  "manifest_path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/manifest.csv",
+  "manifest_sha256": "66686df893d8322e90ea2364233153443c505cf6ad0b0bae8fde32912c46911d",
+  "scope": "Read-only targeted audit of DNS Ins20 synthetic_snr-20_-5 metadata, SCPs and configs; no network and no model inference.",
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "source_files": [
+    {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisyspeech_synthesizer_rir_v3.cfg",
+      "sha256": "44d6fff0bd598d33e350a7507501d59a79fdcfe54e7f7add2e8248bace42e0cc",
+      "bytes": 3727
     }
+  ],
+  "metadata": {
+    "candidate_files_scanned": 75,
+    "text_or_keyed_metadata_matches": [
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/noise1.scp",
+        "sha256": "25d8da9d321370a11aa157ea27131975bdf2e7f515861b6bec1b7ab1658dd071",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_5243.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_5243.wav\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_6339.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_6339.wav\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_4812.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_4812.wav\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_11999.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_11999.wav\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_10720.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_10720.wav\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_11489.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_11489.wav\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_3321.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_3321.wav\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_3645.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noise/noise_fileid_3645.wav\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/spk1.scp",
+        "sha256": "37ac8c2fe7e1103078042cd78abd2c2ff1d8fbee3a94d494f5a5bf92156bef15",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_5243.wav\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_6339.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_6339.wav\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_4812.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_4812.wav\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_11999.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_11999.wav\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_10720.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_10720.wav\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_11489.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_11489.wav\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_3321.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_3321.wav\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_3645.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean/clean_fileid_3645.wav\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/text",
+        "sha256": "af48a4c6f1c6f58b13646ee1bb4bed52d1bba7d982027a4e39174c9382ee924f",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645 dummy",
+            "value": "dummy\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/utt2spk",
+        "sha256": "6296548d6d5be0dcda2ddbe953c3bb72130bcb18d85e43ff89c9dfeed1889a59",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243 reader_10658",
+            "value": "reader_10658\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339 reader_10920",
+            "value": "reader_10920\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812 reader_10921",
+            "value": "reader_10921\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999 reader_10927",
+            "value": "reader_10927\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720 reader_10929",
+            "value": "reader_10929\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489 reader_11053",
+            "value": "reader_11053\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321 reader_11057",
+            "value": "reader_11057\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645 reader_11062",
+            "value": "reader_11062\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp/cv_synthetic/wav.scp",
+        "sha256": "3c65fa9c5faba5f58a1b2d2f40a91a9a3de28b408bf1cdaf6936e2a3b1d30217",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_01454_chp_0004_reader_10920_8_CtrpiV15peQ-jlGyBm4174w-Z4xDb1jWF1M_snr-17_fileid_6339.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_01454_chp_0004_reader_10920_8_CtrpiV15peQ-jlGyBm4174w-Z4xDb1jWF1M_snr-17_fileid_6339.wav\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_17_g7rOo97hYmQ-munching_Freesound_validated_466004__primisteka__masticando-chips01_4-cCX5JJwkZhU_snr-17_fileid_11489.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_17_g7rOo97hYmQ-munching_Freesound_validated_466004__primisteka__masticando-chips01_4-cCX5JJwkZhU_snr-17_fileid_11489.wav\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645\t/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_03787_chp_0011_reader_11062_12_ObzJjOHV1PQ-rciGQFy94cs-Jnz6zX5l77c_snr-17_fileid_3645.wav",
+            "value": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/noisy/book_03787_chp_0011_reader_11062_12_ObzJjOHV1PQ-rciGQFy94cs-Jnz6zX5l77c_snr-17_fileid_3645.wav\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/noise1.scp",
+        "sha256": "6c0548271ee15d8c676febcd5a6e94e4bf161b9431155fbd6c608012bf56c516",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243\t../../noise/noise_fileid_5243.wav",
+            "value": "../../noise/noise_fileid_5243.wav\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339\t../../noise/noise_fileid_6339.wav",
+            "value": "../../noise/noise_fileid_6339.wav\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812\t../../noise/noise_fileid_4812.wav",
+            "value": "../../noise/noise_fileid_4812.wav\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999\t../../noise/noise_fileid_11999.wav",
+            "value": "../../noise/noise_fileid_11999.wav\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720\t../../noise/noise_fileid_10720.wav",
+            "value": "../../noise/noise_fileid_10720.wav\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489\t../../noise/noise_fileid_11489.wav",
+            "value": "../../noise/noise_fileid_11489.wav\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321\t../../noise/noise_fileid_3321.wav",
+            "value": "../../noise/noise_fileid_3321.wav\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645\t../../noise/noise_fileid_3645.wav",
+            "value": "../../noise/noise_fileid_3645.wav\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/spk1.scp",
+        "sha256": "12267aa830bd57742b10d1b45c0fe33cc52a07330808342d82911cac9deec8db",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243\t../../clean/clean_fileid_5243.wav",
+            "value": "../../clean/clean_fileid_5243.wav\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339\t../../clean/clean_fileid_6339.wav",
+            "value": "../../clean/clean_fileid_6339.wav\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812\t../../clean/clean_fileid_4812.wav",
+            "value": "../../clean/clean_fileid_4812.wav\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999\t../../clean/clean_fileid_11999.wav",
+            "value": "../../clean/clean_fileid_11999.wav\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720\t../../clean/clean_fileid_10720.wav",
+            "value": "../../clean/clean_fileid_10720.wav\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489\t../../clean/clean_fileid_11489.wav",
+            "value": "../../clean/clean_fileid_11489.wav\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321\t../../clean/clean_fileid_3321.wav",
+            "value": "../../clean/clean_fileid_3321.wav\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645\t../../clean/clean_fileid_3645.wav",
+            "value": "../../clean/clean_fileid_3645.wav\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/text",
+        "sha256": "af48a4c6f1c6f58b13646ee1bb4bed52d1bba7d982027a4e39174c9382ee924f",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321 dummy",
+            "value": "dummy\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645 dummy",
+            "value": "dummy\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/utt2spk",
+        "sha256": "6296548d6d5be0dcda2ddbe953c3bb72130bcb18d85e43ff89c9dfeed1889a59",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243 reader_10658",
+            "value": "reader_10658\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339 reader_10920",
+            "value": "reader_10920\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812 reader_10921",
+            "value": "reader_10921\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999 reader_10927",
+            "value": "reader_10927\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720 reader_10929",
+            "value": "reader_10929\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489 reader_11053",
+            "value": "reader_11053\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321 reader_11057",
+            "value": "reader_11057\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645 reader_11062",
+            "value": "reader_11062\n"
+          }
+        ]
+      },
+      {
+        "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp",
+        "sha256": "0eab57df64a26c3bcb6d3539754cb3c5a4d7f1c81b29168cd9d6dc56afb08553",
+        "matches": [
+          {
+            "line": 3,
+            "raw": "reader_10658_fileid_5243\t../../noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
+            "value": "../../noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\n"
+          },
+          {
+            "line": 130,
+            "raw": "reader_10920_fileid_6339\t../../noisy/book_01454_chp_0004_reader_10920_8_CtrpiV15peQ-jlGyBm4174w-Z4xDb1jWF1M_snr-17_fileid_6339.wav",
+            "value": "../../noisy/book_01454_chp_0004_reader_10920_8_CtrpiV15peQ-jlGyBm4174w-Z4xDb1jWF1M_snr-17_fileid_6339.wav\n"
+          },
+          {
+            "line": 135,
+            "raw": "reader_10921_fileid_4812\t../../noisy/book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav",
+            "value": "../../noisy/book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav\n"
+          },
+          {
+            "line": 145,
+            "raw": "reader_10927_fileid_11999\t../../noisy/book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav",
+            "value": "../../noisy/book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav\n"
+          },
+          {
+            "line": 164,
+            "raw": "reader_10929_fileid_10720\t../../noisy/book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+            "value": "../../noisy/book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav\n"
+          },
+          {
+            "line": 210,
+            "raw": "reader_11053_fileid_11489\t../../noisy/book_02396_chp_0002_reader_11053_17_g7rOo97hYmQ-munching_Freesound_validated_466004__primisteka__masticando-chips01_4-cCX5JJwkZhU_snr-17_fileid_11489.wav",
+            "value": "../../noisy/book_02396_chp_0002_reader_11053_17_g7rOo97hYmQ-munching_Freesound_validated_466004__primisteka__masticando-chips01_4-cCX5JJwkZhU_snr-17_fileid_11489.wav\n"
+          },
+          {
+            "line": 221,
+            "raw": "reader_11057_fileid_3321\t../../noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+            "value": "../../noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav\n"
+          },
+          {
+            "line": 230,
+            "raw": "reader_11062_fileid_3645\t../../noisy/book_03787_chp_0011_reader_11062_12_ObzJjOHV1PQ-rciGQFy94cs-Jnz6zX5l77c_snr-17_fileid_3645.wav",
+            "value": "../../noisy/book_03787_chp_0011_reader_11062_12_ObzJjOHV1PQ-rciGQFy94cs-Jnz6zX5l77c_snr-17_fileid_3645.wav\n"
+          }
+        ]
+      }
+    ],
+    "all_text_match_values_dummy": true
   },
-  "non_dummy_scp_text_files": [],
-  "fileid_name_hits": {
-    "5243": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_5243.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_5243.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_5243.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_08928_chp_0014_reader_08414_19_HJOXyEEuu7U_snr-19.16_tl-19_fileid_5243.wav"
-    ],
-    "6339": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6339.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_6339.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_01454_chp_0004_reader_10920_8_CtrpiV15peQ-jlGyBm4174w-Z4xDb1jWF1M_snr-17_fileid_6339.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_6339.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_6339.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_03651_chp_0013_reader_00140_22_78ZrHDLvwh0_snr-19.00_tl-34_fileid_6339.wav"
-    ],
-    "4812": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4812.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_4812.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_4812.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_4812.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_10787_chp_0061_reader_06716_22_3ZmxrDv9PEQ_snr-16.44_tl-35_fileid_4812.wav"
-    ],
-    "11999": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11999.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_11999.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_11999.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_11999.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_01415_chp_0018_reader_07776_17_iLnmDDsXLBM_snr-15.34_tl-29_fileid_11999.wav"
-    ],
-    "10720": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10720.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_10720.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_10720.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_10720.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_07343_chp_0030_reader_00054_67_3D12zKLz410_snr-17.25_tl-27_fileid_10720.wav"
-    ],
-    "11489": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11489.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_11489.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_17_g7rOo97hYmQ-munching_Freesound_validated_466004__primisteka__masticando-chips01_4-cCX5JJwkZhU_snr-17_fileid_11489.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_11489.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_11489.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_07909_chp_0026_reader_03636_30_F9JyQs0L7kY_snr-16.15_tl-34_fileid_11489.wav"
-    ],
-    "3321": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3321.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_3321.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33212.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33210.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33216.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33213.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_3321.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33219.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33214.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33211.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33217.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33218.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_33215.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33218.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_3321.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33214.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33216.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33213.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33219.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33215.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33212.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33217.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33210.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_33211.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_03072_chp_0004_reader_01440_8_dn60AwYbB3E_snr-15.62_tl-34_fileid_33216.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_03046_chp_0011_reader_00846_16_l3lllAdROsg_snr-15.82_tl-17_fileid_3321.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_00737_chp_0013_reader_08682_15_Q68Suj0c6UQ_snr-15.78_tl-34_fileid_33215.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_11226_chp_0005_reader_01328_26_oy3JfEt1SLU_snr-18.52_tl-25_fileid_33211.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_01335_chp_0010_reader_02686_7_door_Freesound_validated_380149_11_snr-16.64_tl-35_fileid_33212.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_02628_chp_0009_reader_01248_51_luhS15oPfdg_snr-16.35_tl-20_fileid_33217.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_04724_chp_0005_reader_11080_32_C_589br3HP8_snr-18.83_tl-34_fileid_33214.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_05933_chp_0005_reader_04571_14_DhX8kYb3jc0_snr-18.58_tl-18_fileid_33210.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_05504_chp_0015_reader_10044_54_-A743FXw0VE_snr-17.71_tl-20_fileid_33213.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_00057_chp_0006_reader_07339_28_RhLzNBQyNJw-wbTN4J53tes_snr-15.74_tl-34_fileid_33219.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_03499_chp_0000_reader_07179_7_zQ7IMsT3QVU_snr-19.55_tl-26_fileid_33218.wav"
-    ],
-    "3645": [
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3645.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_3645.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_03787_chp_0011_reader_11062_12_ObzJjOHV1PQ-rciGQFy94cs-Jnz6zX5l77c_snr-17_fileid_3645.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/clean/clean_fileid_3645.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noise/noise_fileid_3645.wav",
-      "/data/datasets/dns_ins20/dns_snr_-20_-15/synthetic_snr-20_-15_v2/noisy/book_09513_chp_0014_reader_10714_3_bmlwemcrXM4_snr-19.53_tl-32_fileid_3645.wav"
-    ]
-  },
-  "conclusion": "No non-dummy transcript/source-text file was found in the local DNS Ins20 tree for the eight P8 clean files. SCP text entries are dummy; clean Whisper text remains an automatic listening reference only.",
-  "dataset_modified": false
+  "utterances": [
+    {
+      "utt_key": "reader_10658_fileid_5243",
+      "speaker": "reader_10658",
+      "fileid": "5243",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "7a87811cbefd60005be820188eaf918f8a19c00bafb626054205ec6365ef9781",
+      "clean_sha256_manifest": "7a87811cbefd60005be820188eaf918f8a19c00bafb626054205ec6365ef9781",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_02324",
+        "chapter": "chp_0015"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_10920_fileid_6339",
+      "speaker": "reader_10920",
+      "fileid": "6339",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6339.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "b3648d8579dfa4965d68425b2fbc56526877cbb19f912fcd29c0f171727f0211",
+      "clean_sha256_manifest": "b3648d8579dfa4965d68425b2fbc56526877cbb19f912fcd29c0f171727f0211",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_01454",
+        "chapter": "chp_0004"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_10921_fileid_4812",
+      "speaker": "reader_10921",
+      "fileid": "4812",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4812.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "7772c5c1027cec7437de4e044d1c98eb0920e955f88fd74bf1e99f1e2ae0e4c4",
+      "clean_sha256_manifest": "7772c5c1027cec7437de4e044d1c98eb0920e955f88fd74bf1e99f1e2ae0e4c4",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_09391",
+        "chapter": "chp_0005"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_10927_fileid_11999",
+      "speaker": "reader_10927",
+      "fileid": "11999",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11999.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "58c59e63d7dec4d7e75801436cee40ccc0c52143151b4f980ed74339c9e107d1",
+      "clean_sha256_manifest": "58c59e63d7dec4d7e75801436cee40ccc0c52143151b4f980ed74339c9e107d1",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_07500",
+        "chapter": "chp_0005"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_10929_fileid_10720",
+      "speaker": "reader_10929",
+      "fileid": "10720",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10720.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "e2a1d164b64b494c9d99c1d1697360ef5f345c7ad12427d995d9c03b781b6c5e",
+      "clean_sha256_manifest": "e2a1d164b64b494c9d99c1d1697360ef5f345c7ad12427d995d9c03b781b6c5e",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_04733",
+        "chapter": "chp_0031"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_11053_fileid_11489",
+      "speaker": "reader_11053",
+      "fileid": "11489",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11489.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "374e7098960472c14b942b74e08b9f823037066546dd571266e11e61d3754a12",
+      "clean_sha256_manifest": "374e7098960472c14b942b74e08b9f823037066546dd571266e11e61d3754a12",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_02396",
+        "chapter": "chp_0002"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_11057_fileid_3321",
+      "speaker": "reader_11057",
+      "fileid": "3321",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3321.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "607c2547a52e994d112a6e359fdd65a6c25525c8667cb29bafeddff353e38048",
+      "clean_sha256_manifest": "607c2547a52e994d112a6e359fdd65a6c25525c8667cb29bafeddff353e38048",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_06813",
+        "chapter": "chp_0007"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    },
+    {
+      "utt_key": "reader_11062_fileid_3645",
+      "speaker": "reader_11062",
+      "fileid": "3645",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3645.wav",
+      "clean_exists": true,
+      "clean_sha256_actual": "d389b045da794fca7dd002c6038696d49982a9ba56204d4647832526e06c055c",
+      "clean_sha256_manifest": "d389b045da794fca7dd002c6038696d49982a9ba56204d4647832526e06c055c",
+      "clean_hash_matches_manifest": true,
+      "book_chapter_filename_tokens": {
+        "book": "book_03787",
+        "chapter": "chp_0011"
+      },
+      "text_source_status": "no_non_dummy_local_transcript_found"
+    }
+  ]
 }
