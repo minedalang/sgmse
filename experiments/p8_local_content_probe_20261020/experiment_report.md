@@ -56,3 +56,19 @@ Do not start WavLM/Harm, GAN, or content-loss training from this probe. The next
 ```
 
 Outputs: `window_metrics.csv` and `summary.json`.
+
+## Noisy-cue follow-up
+
+The same windows were compared directly between noisy and clean using raw-waveform correlation and normalized log-spectrum cosine. These are alignment-sensitive acoustic proxies, not phoneme labels.
+
+| Window group | n | noisy-clean waveform corr (median) | noisy-clean spectrum cosine (median) | Router−off RMS (median) |
+|---|---:|---:|---:|---:|
+| All clean-active windows | 181 | 0.187 | 0.944 | −0.401 dB |
+| `Y_pre` suppression windows | 55 | 0.098 | 0.912 | −1.999 dB |
+| Other windows | 126 | 0.356 | 0.964 | −0.205 dB |
+
+The candidate suppression windows have substantially weaker noisy-clean alignment than the other clean-active windows. This is evidence that the difficult intervals often contain less directly usable acoustic evidence, so the current data do **not** support the stronger claim that the frontend is simply deleting recoverable phonemes. The result is compatible with an information-limited regime, while leaving a smaller frontend-over-suppression possibility open.
+
+Router-off is the arm that supplies most of the energy fill. In the candidate windows, Router is a median 1.999 dB below Router-off, while its spectral-cosine change relative to Router-off is essentially zero. Thus the Future Router increment is not the main source of the observed smoothing and may slightly reduce it on these examples. This is a local diagnostic result, not a global quality claim.
+
+The follow-up output is `noisy_cue_windows.csv` and `noisy_cue_summary.json`.

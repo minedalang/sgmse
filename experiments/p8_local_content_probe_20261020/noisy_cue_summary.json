@@ -1,0 +1,73 @@
+{
+  "protocol": {
+    "source": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/manifest.csv",
+    "same_windows_as": "/data/coding/sgmse/experiments/p8_local_content_probe_20261020/window_metrics.csv",
+    "interpretation": "noisy-clean correlation and spectral cosine are acoustic proxies, not phoneme labels"
+  },
+  "all_windows": {
+    "noisy_clean_wave_corr": {
+      "n": 181,
+      "median": 0.18732470446986668,
+      "mean": 0.3148275976868607
+    },
+    "noisy_clean_spec_cos_window": {
+      "n": 181,
+      "median": 0.9444340068845298,
+      "mean": 0.9411824491525689
+    },
+    "router_minus_off_rms_db": {
+      "n": 181,
+      "median": -0.4014044309558584,
+      "mean": -0.9000946543929433
+    },
+    "router_minus_off_spec_cos": {
+      "n": 181,
+      "median": -6.90244163652487e-05,
+      "mean": 1.2971300892475197e-05
+    }
+  },
+  "frontend_suppression_windows": {
+    "noisy_clean_wave_corr": {
+      "n": 55,
+      "median": 0.09848055960345736,
+      "mean": 0.11694237079691375
+    },
+    "noisy_clean_spec_cos_window": {
+      "n": 55,
+      "median": 0.9116470007267399,
+      "mean": 0.9099562772914794
+    },
+    "router_minus_off_rms_db": {
+      "n": 55,
+      "median": -1.998879924302027,
+      "mean": -2.0611650875796736
+    },
+    "router_minus_off_spec_cos": {
+      "n": 55,
+      "median": 9.068448589832911e-06,
+      "mean": 0.00014630694865326008
+    }
+  },
+  "non_suppression_windows": {
+    "noisy_clean_wave_corr": {
+      "n": 126,
+      "median": 0.3557032573914294,
+      "mean": 0.4012060697419962
+    },
+    "noisy_clean_spec_cos_window": {
+      "n": 126,
+      "median": 0.9641727914496232,
+      "mean": 0.9548129209966952
+    },
+    "router_minus_off_rms_db": {
+      "n": 126,
+      "median": -0.20523741104309762,
+      "mean": -0.3932781954622277
+    },
+    "router_minus_off_spec_cos": {
+      "n": 126,
+      "median": -8.032749561281971e-05,
+      "mean": -4.5230767574534076e-05
+    }
+  }
+}
