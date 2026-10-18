@@ -87,3 +87,17 @@ The local SNR difference is about 12.1 dB, while clean RMS is nearly unchanged. 
 This does not prove that no phonetic cue is recoverable in any individual interval, and it is not a deployable confidence feature because it uses clean. It does, however, lower the priority of a frontend-preservation intervention until a manually identified counterexample with strong noisy evidence is found.
 
 The clean-aware outputs are `oracle_snr_windows.csv` and `oracle_snr_summary.json`.
+
+## Waveform versus envelope decomposition
+
+The raw waveform correlation is phase-sensitive, so it was separated from a short-time RMS-envelope correlation (10 ms hop). In the 55 suppression windows:
+
+| Arm | Waveform corr. to clean (median) | RMS-envelope corr. to clean (median) |
+|---|---:|---:|
+| `Y_pre` | 0.474 | 0.519 |
+| Router-off | 0.350 | 0.575 |
+| Router | 0.393 | 0.598 |
+
+Router-off and Router therefore change fine waveform/phase structure while their coarse energy envelope is at least as aligned with clean as `Y_pre` (Router has the highest median envelope correlation). This is consistent with audible smoothing and continuity improvement, but does not demonstrate phoneme insertion. The lower raw waveform correlation should not be reported as content deletion without a phase-robust phonetic test.
+
+The decomposition outputs are `waveform_envelope_windows.csv` and `waveform_envelope_summary.json`.
