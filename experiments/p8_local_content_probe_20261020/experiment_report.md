@@ -72,3 +72,18 @@ The candidate suppression windows have substantially weaker noisy-clean alignmen
 Router-off is the arm that supplies most of the energy fill. In the candidate windows, Router is a median 1.999 dB below Router-off, while its spectral-cosine change relative to Router-off is essentially zero. Thus the Future Router increment is not the main source of the observed smoothing and may slightly reduce it on these examples. This is a local diagnostic result, not a global quality claim.
 
 The follow-up output is `noisy_cue_windows.csv` and `noisy_cue_summary.json`.
+
+## Clean-aware local SNR diagnosis
+
+For diagnosis only, the aligned synthetic noise (`noisy - clean`) was used to estimate local SNR. This clean-aware quantity was not used for inference or threshold selection.
+
+| Window group | n | Local SNR median | Clean RMS median |
+|---|---:|---:|---:|
+| `Y_pre` suppression windows | 55 | −20.41 dB | −48.19 dBFS |
+| Other clean-active windows | 126 | −8.30 dB | −49.87 dBFS |
+
+The local SNR difference is about 12.1 dB, while clean RMS is nearly unchanged. Across all windows, local SNR correlates with `Y_pre` RMS relative to clean at `r = 0.492`; clean RMS correlates at only `r = −0.022`. This makes local input difficulty a substantially more plausible explanation for the suppression pattern than simple speech loudness.
+
+This does not prove that no phonetic cue is recoverable in any individual interval, and it is not a deployable confidence feature because it uses clean. It does, however, lower the priority of a frontend-preservation intervention until a manually identified counterexample with strong noisy evidence is found.
+
+The clean-aware outputs are `oracle_snr_windows.csv` and `oracle_snr_summary.json`.

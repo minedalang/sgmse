@@ -1,0 +1,60 @@
+{
+  "protocol": {
+    "purpose": "clean-aware diagnosis, not an inference-time feature",
+    "noise_definition": "synthetic noisy waveform minus aligned clean waveform",
+    "source_windows": "/data/coding/sgmse/experiments/p8_local_content_probe_20261020/window_metrics.csv",
+    "warning": "clean is used only to explain existing suppression windows; no threshold was tuned from this output"
+  },
+  "all": {
+    "oracle_local_snr_db": {
+      "n": 181,
+      "median": -14.665515074467816,
+      "mean": -12.392783856335017,
+      "q25": -20.405058521743697,
+      "q75": -5.762894392513949
+    },
+    "clean_rms_dbfs": {
+      "n": 181,
+      "median": -49.2217757571644,
+      "mean": -48.30808486638899,
+      "q25": -53.12748242732317,
+      "q75": -42.08528848154234
+    }
+  },
+  "suppression": {
+    "oracle_local_snr_db": {
+      "n": 55,
+      "median": -20.405058521743697,
+      "mean": -19.841568450018606,
+      "q25": -22.424043191909654,
+      "q75": -16.847415985887302
+    },
+    "clean_rms_dbfs": {
+      "n": 55,
+      "median": -48.1913462707827,
+      "mean": -48.09823874973162,
+      "q25": -52.1110139380104,
+      "q75": -43.35893849071341
+    }
+  },
+  "other": {
+    "oracle_local_snr_db": {
+      "n": 126,
+      "median": -8.300192238036889,
+      "mean": -9.141330263854089,
+      "q25": -17.49117859248797,
+      "q75": -2.063877873256126
+    },
+    "clean_rms_dbfs": {
+      "n": 126,
+      "median": -49.87128086164459,
+      "mean": -48.39968436175531,
+      "q25": -53.62016402208489,
+      "q75": -41.94670632682887
+    }
+  },
+  "correlations": {
+    "oracle_snr_vs_y_pre_rms_db": 0.49235191491456304,
+    "clean_rms_vs_y_pre_rms_db": -0.02189142429887587
+  }
+}
