@@ -1,0 +1,8 @@
+experiment_id: rrsd_future_grad_diagnostic_audit_20261020
+purpose: read_only_audit_of_archived_future_grad_diagnostic_log
+source_log: future_gd_smooth.log
+diagnostic_batches_expected: 16
+audio_regenerated: false
+training_repeated: false
+checkpoint_modified: false
+dataset_modified: false
