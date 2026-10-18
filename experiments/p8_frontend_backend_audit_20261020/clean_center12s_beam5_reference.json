@@ -1,0 +1,60 @@
+{
+  "experiment_id": "p8_frontend_backend_audit_20261020",
+  "purpose": "central 12s clean ASR reference with beam search",
+  "interpretation": "Automatic reference only; not ground-truth transcription.",
+  "model": {
+    "name": "tiny.en",
+    "device": "cuda",
+    "sha256": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03"
+  },
+  "decode": {
+    "temperature": 0,
+    "beam_size": 5,
+    "best_of": 5,
+    "condition_on_previous_text": true
+  },
+  "n": 8,
+  "runtime_seconds": 5.107434034347534,
+  "rows": [
+    {
+      "index": "00",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/00_clean_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243_center12s.wav",
+      "text": "out, in whom she loved with an all-absorbing passion, had caught the war fever, gone to Canada and enlisted. Mrs. McGuire herself was Canadian by birth, and all-"
+    },
+    {
+      "index": "01",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/01_clean_book_01454_chp_0004_reader_10920_8_CtrpiV15peQ-jlGyBm4174w-Z4xDb1jWF1M_snr-17_fileid_6339_center12s.wav",
+      "text": "Then Buster went off, sinking what a kind person old Mr. Crow was. In that very afternoon, long before sunset, he curled himself up in an out-of-the-way corner of the house and went to-"
+    },
+    {
+      "index": "02",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/02_clean_book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812_center12s.wav",
+      "text": "about them? Far from it. Although I was handicapped in my reconstitution of their friendship by lack of the Archbishop's letters, he had nevertheless made a note here and there, upon the communications he received from the Countess. Throughout the letters-"
+    },
+    {
+      "index": "03",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/03_clean_book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999_center12s.wav",
+      "text": "But there are no sharp lines in nature, from the homicidal lunatic to the same man of violent passions, there is a continuous gradation. Even in the most perfect community, there will-"
+    },
+    {
+      "index": "04",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/04_clean_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720_center12s.wav",
+      "text": "as if other people question them any when as they may indeed certainly will, but anything is better than the present condition of things. God forbid that you should ever have"
+    },
+    {
+      "index": "05",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/05_clean_book_02396_chp_0002_reader_11053_17_g7rOo97hYmQ-munching_Freesound_validated_466004__primisteka__masticando-chips01_4-cCX5JJwkZhU_snr-17_fileid_11489_center12s.wav",
+      "text": "The successes for which it strives, the achievements upon which it sets store, are connected with fighting and victory. The presence of this medium incites Belico's exhibitions in a boy, first in games."
+    },
+    {
+      "index": "06",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/06_clean_book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321_center12s.wav",
+      "text": "from below saw him slip his hands softly to his side and then place something between his teeth. It was his dagger. Reaching up, he clutched the window seal above him and with a silence."
+    },
+    {
+      "index": "07",
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/listening_pack/07_clean_book_03787_chp_0011_reader_11062_12_ObzJjOHV1PQ-rciGQFy94cs-Jnz6zX5l77c_snr-17_fileid_3645_center12s.wav",
+      "text": "She had a good deal of affection for ever art, who was unmistakably a clever man, as well as a good looking one. The prospect seemed fair and cloudless. Nothing pressaged the terrible storm that was about to br-"
+    }
+  ]
+}
