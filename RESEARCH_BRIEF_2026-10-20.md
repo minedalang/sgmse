@@ -87,6 +87,9 @@ MR-STFT log-magnitude 对 DNSMOS-OVRL 的成对排序一致率约 `0.802`，但�
 
 ### 新增：Distill-MOS surrogate 审计
 
+独立 64-speaker CV 复核中，Router 的平均 Distill-MOS 下降 `0.0279`，而 SI-SDR 上升 `0.5115 dB`、DNSMOS-OVRL 下降 `0.0298`；逐句相关性不支持把 Distill-MOS 作为可靠单目标。该路线关闭。详见 [`distillmos_surrogate_independent64_20261020`](./experiments/distillmos_surrogate_independent64_20261020)。
+
+
 官方 Distill-MOS v7 在既有 32 条开发语音上与 STOI/SI-SDR 高度一致（pair-delta Pearson `0.917/0.945`），但与 DNSMOS-SIG/OVRL/BAK 几乎不相关（`0.030/0.111/0.072`）。因此它不能单独作为后端 perceptual trust-region 的 reward；直接优化很可能重复重建方向，无法解决当前 Router 的感知退化。未启动 adapter 训练。详见 [`distillmos_surrogate_audit_20261020`](./experiments/distillmos_surrogate_audit_20261020)。
 
 ## 目前最建设性的科研结论

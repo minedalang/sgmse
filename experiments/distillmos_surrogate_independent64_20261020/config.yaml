@@ -1,0 +1,10 @@
+experiment_id: distillmos_surrogate_independent64_20261020
+purpose: independent_read_only_check_of_distillmos_delta_alignment
+source_audio: experiment_logs/speaker_headroom_replication_64_20261017/{off,router}
+source_metrics: experiments/speaker_headroom_replication_64_20261017/quality_per_utterance.csv
+n_utterances: 128
+n_speakers: 64
+model: distillmos.ConvTransformerSQAModel variant 7
+training: false
+new_inference: false
+audio_copied: false

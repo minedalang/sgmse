@@ -1,0 +1,51 @@
+FIRST ATTEMPT INVALID: read inputs/off and inputs/router staging symlinks; constant Distill-MOS delta. Corrected run is in run_corrected.log and metrics.json.
+/data/coding/sgmse/experiments/distillmos_surrogate_independent64_20261020/run_audit.py:33: ConstantInputWarning: An input array is constant; the correlation coefficient is not defined.
+  def corr(a,b): return {'pearson':float(pearsonr(a,b).statistic),'spearman':float(spearmanr(a,b).statistic)}
+DistillMOS variant 7 weights loaded from: /data/coding/sgmse/env/lib/python3.10/site-packages/distillmos/weights/distill_mos_v7.pt
+{
+  "experiment_id": "distillmos_surrogate_independent64_20261020",
+  "status": "completed_read_only",
+  "device": "cuda",
+  "n_utterances": 128,
+  "n_speakers": 64,
+  "runtime_seconds": 9.014693084987812,
+  "delta_correlations": {
+    "si_sdr_delta": {
+      "pearson": NaN,
+      "spearman": NaN
+    },
+    "pesq_delta": {
+      "pearson": NaN,
+      "spearman": NaN
+    },
+    "stoi_delta": {
+      "pearson": NaN,
+      "spearman": NaN
+    },
+    "ovrl_delta": {
+      "pearson": NaN,
+      "spearman": NaN
+    },
+    "sig_delta": {
+      "pearson": NaN,
+      "spearman": NaN
+    }
+  },
+  "means": {
+    "distill_delta": 0.0,
+    "si_sdr_delta": 0.5114873215604513,
+    "pesq_delta": 0.010924872942268848,
+    "stoi_delta": 0.001145587667272728,
+    "ovrl_delta": -0.02983727402127514,
+    "sig_delta": -0.03086852043983088
+  },
+  "source_metrics": "/data/coding/sgmse/experiments/speaker_headroom_replication_64_20261017/quality_per_utterance.csv",
+  "training": false,
+  "new_inference": false,
+  "audio_copied": false,
+  "limitations": [
+    "independent CV relative to prior 32-utterance development split but not an independent human listening set",
+    "DNSMOS and Distill-MOS are both learned metrics",
+    "correlation is descriptive and does not establish causal or human preference alignment"
+  ]
+}

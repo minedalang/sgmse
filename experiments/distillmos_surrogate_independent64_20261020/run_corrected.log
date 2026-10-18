@@ -1,0 +1,48 @@
+DistillMOS variant 7 weights loaded from: /data/coding/sgmse/env/lib/python3.10/site-packages/distillmos/weights/distill_mos_v7.pt
+{
+  "experiment_id": "distillmos_surrogate_independent64_20261020",
+  "status": "completed_read_only",
+  "device": "cuda",
+  "n_utterances": 128,
+  "n_speakers": 64,
+  "runtime_seconds": 9.097722581936978,
+  "delta_correlations": {
+    "si_sdr_delta": {
+      "pearson": -0.3039942516304016,
+      "spearman": -0.38990111701153635
+    },
+    "pesq_delta": {
+      "pearson": 0.04850767956009604,
+      "spearman": -0.02041178355612525
+    },
+    "stoi_delta": {
+      "pearson": 0.02301900168336473,
+      "spearman": -0.07860281999633766
+    },
+    "ovrl_delta": {
+      "pearson": 0.32366152344835186,
+      "spearman": 0.4499633766709394
+    },
+    "sig_delta": {
+      "pearson": 0.3300242833535257,
+      "spearman": 0.45697331074894715
+    }
+  },
+  "means": {
+    "distill_delta": -0.027893099933862686,
+    "si_sdr_delta": 0.5114873215604513,
+    "pesq_delta": 0.010924872942268848,
+    "stoi_delta": 0.001145587667272728,
+    "ovrl_delta": -0.02983727402127514,
+    "sig_delta": -0.03086852043983088
+  },
+  "source_metrics": "/data/coding/sgmse/experiments/speaker_headroom_replication_64_20261017/quality_per_utterance.csv",
+  "training": false,
+  "new_inference": false,
+  "audio_copied": false,
+  "limitations": [
+    "independent CV relative to prior 32-utterance development split but not an independent human listening set",
+    "DNSMOS and Distill-MOS are both learned metrics",
+    "correlation is descriptive and does not establish causal or human preference alignment"
+  ]
+}
