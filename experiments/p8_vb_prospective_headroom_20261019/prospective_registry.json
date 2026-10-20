@@ -1,0 +1,355 @@
+{
+  "phase": "metadata_only",
+  "source_manifest": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl",
+  "source_manifest_sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+  "selected_ids": [
+    "p227_030",
+    "p227_031",
+    "p228_026",
+    "p228_032",
+    "p230_027",
+    "p230_029",
+    "p231_029",
+    "p231_032"
+  ],
+  "records": [
+    {
+      "id": "p227_030",
+      "speaker": "p227",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p227_030.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p227_030.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 52810,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 52810,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p227_030.txt",
+        "raw_text_bytes": 45,
+        "raw_text_SHA256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "Nonetheless, the overall picture is healthy.\n",
+        "normalized_text": "Nonetheless, the overall picture is healthy.",
+        "normalized_text_SHA256": "7fb51bff5129f7c3dee3c06ce79b3368ae2045e1cfb7576eccb9c9c9b355a740",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "1ec37d2b"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 3.300625,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 105664,
+        "mtime_ns": 1760548702000000000,
+        "sha256": "44052c2ff12721252dd217cd6dbafe07ebf22cb55a436267ef914008adfef6f3",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p227_031",
+      "speaker": "p227",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p227_031.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p227_031.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51005,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51005,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p227_031.txt",
+        "raw_text_bytes": 44,
+        "raw_text_SHA256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "The Premier League has been a huge success.\n",
+        "normalized_text": "The Premier League has been a huge success.",
+        "normalized_text_SHA256": "92a0933b45a13f5d4ece014ef008b082ec18cc85b0a494d97a6fc0a670f64d91",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "8f34170d"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 3.1878125,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 102054,
+        "mtime_ns": 1760548702000000000,
+        "sha256": "9b808f75ef4bd6ce7595afd43089845e91cd1da9f98ef5944f4707bcb0153636",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p228_026",
+      "speaker": "p228",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p228_026.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p228_026.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 73760,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 73760,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p228_026.txt",
+        "raw_text_bytes": 63,
+        "raw_text_SHA256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+        "normalized_text": "So if we can take anything from tonight, it will be fantastic.",
+        "normalized_text_SHA256": "5e194cf6a64a3e87e0d9bfa45ad6a0eaa27e8538dd229632b6f62f1ab1b3617a",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "ef42cf8b"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 4.61,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 147564,
+        "mtime_ns": 1760548706000000000,
+        "sha256": "b4ee68c3f748f9f04a23e9cdba212771e156da10b8b4b13b155a1f9fdf18e009",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p228_032",
+      "speaker": "p228",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p228_032.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p228_032.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 67141,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 67141,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p228_032.txt",
+        "raw_text_bytes": 62,
+        "raw_text_SHA256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+        "normalized_text": "We must provide a long-term solution to tackle this attitude.",
+        "normalized_text_SHA256": "c5ee7ad011a109ed90c40343c6d4c3ddb73d2fbdef222aaeb16d24efec2b348f",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "58361b6a"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 4.1963125,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 134326,
+        "mtime_ns": 1760548706000000000,
+        "sha256": "f2e2a4c41ac0832d668fb7eac2ddbd473f4fdbeaaf4bd2dc3694f257a6839567",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p230_027",
+      "speaker": "p230",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p230_027.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p230_027.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51162,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51162,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p230_027.txt",
+        "raw_text_bytes": 35,
+        "raw_text_SHA256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "He has the courage of the unaware.\n",
+        "normalized_text": "He has the courage of the unaware.",
+        "normalized_text_SHA256": "5a8d8d746e81c98030153313ab4f471457bc77844a8b665f2cb2e6e788f49cac",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "46d004ed"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 3.197625,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 102368,
+        "mtime_ns": 1760548708000000000,
+        "sha256": "b30813cf7984fe0a3bdb83229f90a399f352790697800490d5731bcbfac32a5d",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p230_029",
+      "speaker": "p230",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p230_029.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p230_029.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56211,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56211,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p230_029.txt",
+        "raw_text_bytes": 46,
+        "raw_text_SHA256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "It shouldn't come as a surprise, but it does.\n",
+        "normalized_text": "It shouldn't come as a surprise, but it does.",
+        "normalized_text_SHA256": "9015e728b3065bb04cc0375c344a1ab7838b02371e0fb87552b7123f70a77a4d",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "711025a9"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 3.5131875,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 112466,
+        "mtime_ns": 1760548708000000000,
+        "sha256": "54dde5535bd22502cf7b81713e9bb3734554e4c9da4e62a781d4d3d2e0c19799",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p231_029",
+      "speaker": "p231",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p231_029.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p231_029.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 49851,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 49851,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p231_029.txt",
+        "raw_text_bytes": 48,
+        "raw_text_SHA256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "Last night, Mr Robertson said he was delighted.\n",
+        "normalized_text": "Last night, Mr Robertson said he was delighted.",
+        "normalized_text_SHA256": "757c5ccaa456116cc75c268364969e26e81364d4ac3177fe16db8693dc0b9be1",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "d03d08f6"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 3.1156875,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 99746,
+        "mtime_ns": 1760548712000000000,
+        "sha256": "3a7362c574e846d79d0fd38f3c4f11f746e822801763d4621e7c3aa51db6caa8",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    },
+    {
+      "id": "p231_032",
+      "speaker": "p231",
+      "publisher_partition": "trainset_28spk",
+      "local_partition": "train",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p231_032.wav",
+      "noisy_path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p231_032.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 55680,
+        "subtype": "PCM_16"
+      },
+      "noisy_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 55680,
+        "subtype": "PCM_16"
+      },
+      "transcript": {
+        "archive_entry": "trainset_28spk_txt/p231_032.txt",
+        "raw_text_bytes": 55,
+        "raw_text_SHA256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+        "normalized_text": "If we cannot succeed in this endeavour, then so be it.",
+        "normalized_text_SHA256": "72cd0a030049cbf6eb6eab64ab3709635d387d54c1fb5e07096b2371cd61c698",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "0c87fad7"
+      },
+      "reference_status": "independentpublishertext,filenameIDjoinonly;spokenalignmentandlocalconversionunverified",
+      "pretraining_exposure": "unknown",
+      "duration_seconds": 3.48,
+      "local_clean_file": {
+        "exists": true,
+        "bytes": 111404,
+        "mtime_ns": 1760548712000000000,
+        "sha256": "0902ca75becb519409829b2ff547a888d2d7b55931dd3836c2361a0f6c38ae26",
+        "inspection": "stat and raw file bytes only; no audio decode/header reparsing"
+      },
+      "project_exposure_review": "pending explicit classification of current project scan"
+    }
+  ],
+  "model_stage_authorized": false,
+  "claim_limit": "train-split exploratory metadata selection; no spoken-alignment or pretraining-independence claim"
+}

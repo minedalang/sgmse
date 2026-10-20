@@ -1,0 +1,18 @@
+{
+  "experiment_id": "p8_l2_public_annotation_schema_audit_20261019",
+  "kind": "public_annotation_metadata_audit_not_enhancement",
+  "allowed_url": "https://psi.engr.tamu.edu/wp-content/uploads/2018/03/lxc_arctic_a0018.txt",
+  "publisher_page": "https://psi.engr.tamu.edu/l2-arctic-corpus/",
+  "request_limit": 1,
+  "proxy": "http://127.0.0.1:7890",
+  "curl_total_timeout_seconds": 30,
+  "curl_connect_timeout_seconds": 10,
+  "body_limit_bytes": 65536,
+  "artifact_limit_bytes": 2000000,
+  "follow_redirects": false,
+  "retries": 0,
+  "audio": false,
+  "models": false,
+  "training": false,
+  "full_dataset_access": false
+}

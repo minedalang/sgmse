@@ -1,0 +1,69 @@
+{
+  "request": {
+    "key": "p287_054_N1_snr_m18.wav__noisy",
+    "id": "p287_054",
+    "arm": "noisy",
+    "path": "inputs/p287_054_N1_snr_m18.wav",
+    "basename": "p287_054_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "f5fdacb69884a74db2109658881e6a1086dad1a7f227f5bc877434ffed26c00e",
+      "samples": 51089,
+      "array_sha256": "6987009a9704f719ae56940690f90d1d24de2286564cdd460612ec590764da66",
+      "peak": 0.392425537109375,
+      "rms": 0.09671554325432394
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " .",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " .",
+        "tokens": [
+          50363,
+          764,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1616421937942505,
+        "compression_ratio": 0.1111111111111111,
+        "no_speech_prob": 0.9344382286071777
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 42,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

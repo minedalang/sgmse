@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-19T02:25:29.943696+00:00",
+  "elapsed_seconds": 9.634058356983587,
+  "durable_partial_bytes": 6489312,
+  "expected_bytes": 6489312,
+  "curl_pid": 33125,
+  "curl_running": false,
+  "returncode": 0
+}

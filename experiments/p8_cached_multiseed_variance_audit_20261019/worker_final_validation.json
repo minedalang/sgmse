@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "current_PCM_files_preserved": 80,
+  "metadata_code_protected": 9,
+  "git_outside_newdir_unchanged": true,
+  "main_decodes": 80,
+  "validator_decodes": 80,
+  "files": 16,
+  "strata": 9,
+  "max_identity_residual": 6.776263578034403e-20,
+  "historical_WAV_hash_gap": "unresolved; current locks cannot retroactively establish generation identity",
+  "metrics_sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e",
+  "report_sha256": "3e7e6dd6ab6208aaf56f639a72d484e673e0cedbf57736f44aad55319419b592",
+  "no_follow_on": true,
+  "descriptive_fullset_median_variance_fraction": 0.13007335339902754
+}

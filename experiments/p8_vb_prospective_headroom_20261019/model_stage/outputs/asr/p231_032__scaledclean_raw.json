@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p231_032__scaledclean",
+    "id": "p231_032",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+    "input": {
+      "wav_sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb",
+      "samples": 55680,
+      "array_sha256": "58b093083dc5e608f1e5118858e87d9f89b3ca99d46dff708904e7098f482242",
+      "peak": 0.108795166015625,
+      "rms": 0.011596415439394355
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " If we cannot succeed in this endeavor, then so be it.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " If we cannot succeed in this endeavor, then so be it.",
+        "tokens": [
+          50363,
+          1002,
+          356,
+          2314,
+          6758,
+          287,
+          428,
+          28251,
+          11,
+          788,
+          523,
+          307,
+          340,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.3277006149291992,
+        "compression_ratio": 0.8983050847457628,
+        "no_speech_prob": 0.022923234850168228
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 8,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

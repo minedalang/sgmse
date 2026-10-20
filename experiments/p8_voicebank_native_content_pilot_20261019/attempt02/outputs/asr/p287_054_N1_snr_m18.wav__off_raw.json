@@ -1,0 +1,80 @@
+{
+  "request": {
+    "key": "p287_054_N1_snr_m18.wav__off",
+    "id": "p287_054",
+    "arm": "off",
+    "path": "outputs/off/p287_054_N1_snr_m18.wav",
+    "basename": "p287_054_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "3e2a58100b18876107c03dc2306730e6ad7025527f1c6a5eeaff9960226f221d",
+      "samples": 51089,
+      "array_sha256": "415229e17ee6b39b2fa8e57afab2435dc78909c2d2f8aab280831cc459711db9",
+      "peak": 0.084228515625,
+      "rms": 0.007463237758776087
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " the townhouse, motherfawn is a new place.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " the townhouse, motherfawn is a new place.",
+        "tokens": [
+          50363,
+          262,
+          3240,
+          4803,
+          11,
+          2802,
+          69,
+          3832,
+          318,
+          257,
+          649,
+          1295,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0602891286214193,
+        "compression_ratio": 0.8367346938775511,
+        "no_speech_prob": 0.1806705743074417
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 44,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

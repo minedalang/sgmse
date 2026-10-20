@@ -1,0 +1,14 @@
+{
+  "status": "passed_with_explicit_git_delta_disclosure",
+  "old_files_checked": 548,
+  "prepared_locks": 8,
+  "source_record_locks": 20,
+  "metrics_sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6",
+  "independent_validation_sha256": "7abc9c3446d6692e4eb3ba8612ae27889f327356b7146532ec1e7ad7125303ac",
+  "report_sha256": "71ad84fbaed9e9060b232d053dbeedec0db16e383c8a1c8ab26cc0f11eb39621",
+  "external_git_added": [],
+  "external_git_removed": [],
+  "no_final_source_WAV_reads": true,
+  "gates_false": true,
+  "no_follow_on": true
+}

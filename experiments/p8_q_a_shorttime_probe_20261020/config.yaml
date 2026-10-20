@@ -1,0 +1,27 @@
+experiment_id: p8_q_a_shorttime_probe_20261020
+date: 2026-10-20
+type: read_only_clean_aware_short_time_acoustic_probe
+purpose: >-
+  Measure 10 ms and 20 ms local clean-versus-noise energy glimpses inside
+  existing Y_pre suppression windows and matched non-suppression windows.
+  This is a mechanism diagnostic, not a phoneme-label or deployment gate.
+source_manifest: experiments/p8_frontend_backend_audit_20261020/manifest.csv
+source_windows: experiments/p8_local_content_probe_20261020/oracle_snr_windows.csv
+utterances: 8
+windows: 181
+suppression_windows: 55
+matched_other_windows: 126
+frame_ms: [10, 20]
+frame_hop_ms: 10
+local_snr_definition: 20*log10(rms(clean_frame)/rms((noisy-clean)_frame))
+clean_active_definition: >-
+  clean frame RMS >= max(per-utterance 30th percentile, 2 percent of peak)
+glimpse_threshold_db: [-10, -5, 0]
+y_pre_suppression_threshold_db: -8
+spectral_feature: normalized_log_magnitude_cosine
+clean_aware: true
+phoneme_labels: false
+model_inference: false
+training: false
+dataset_modified: false
+checkpoint_modified: false

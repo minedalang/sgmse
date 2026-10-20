@@ -1,0 +1,3795 @@
+{
+  "kind": "operator_only_human_structure_allocation_DESIGN_NO_EXECUTION",
+  "utc": "2026-10-19T09:22:55.814806+00:00",
+  "source_metrics_sha256": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c",
+  "source_registry_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6",
+  "audio_source_reads": 0,
+  "audio_exports": 0,
+  "human_responses": 0,
+  "participants_recruited": 0,
+  "listener_resources_confirmed": false,
+  "technical_design": {
+    "unique_intervals": 47,
+    "target_intervals": 24,
+    "position_control_roles": 24,
+    "shared_control_duplicates_removed": 1,
+    "slot_count": 4,
+    "judgments_if_executed": 188,
+    "ratings_per_observation_arm": 2,
+    "utterance_cross_arm_within_listener": false,
+    "context_ms": 480,
+    "marked_region_ms": 80,
+    "original_amplitude": true
+  },
+  "groups": {
+    "p233_027": "A",
+    "p233_028": "B",
+    "p236_036": "A",
+    "p236_040": "B",
+    "p239_026": "A",
+    "p239_028": "B",
+    "p243_026": "A",
+    "p243_027": "B",
+    "p244_028": "A",
+    "p244_034": "B",
+    "p250_038": "A",
+    "p250_050": "B"
+  },
+  "observations": [
+    {
+      "utterance_id": "p233_027",
+      "speaker": "p233",
+      "group": "A",
+      "target_start": 13760,
+      "target_stop": 15040,
+      "context_start": 10560,
+      "context_stop": 18240,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O001"
+    },
+    {
+      "utterance_id": "p233_027",
+      "speaker": "p233",
+      "group": "A",
+      "target_start": 20160,
+      "target_stop": 21440,
+      "context_start": 16960,
+      "context_stop": 24640,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O002"
+    },
+    {
+      "utterance_id": "p233_027",
+      "speaker": "p233",
+      "group": "A",
+      "target_start": 34720,
+      "target_stop": 36000,
+      "context_start": 31520,
+      "context_stop": 39200,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O003"
+    },
+    {
+      "utterance_id": "p233_027",
+      "speaker": "p233",
+      "group": "A",
+      "target_start": 45920,
+      "target_stop": 47200,
+      "context_start": 42720,
+      "context_stop": 50400,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O004"
+    },
+    {
+      "utterance_id": "p233_028",
+      "speaker": "p233",
+      "group": "B",
+      "target_start": 17600,
+      "target_stop": 18880,
+      "context_start": 14400,
+      "context_stop": 22080,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O005"
+    },
+    {
+      "utterance_id": "p233_028",
+      "speaker": "p233",
+      "group": "B",
+      "target_start": 20640,
+      "target_stop": 21920,
+      "context_start": 17440,
+      "context_stop": 25120,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O006"
+    },
+    {
+      "utterance_id": "p233_028",
+      "speaker": "p233",
+      "group": "B",
+      "target_start": 22560,
+      "target_stop": 23840,
+      "context_start": 19360,
+      "context_stop": 27040,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O007"
+    },
+    {
+      "utterance_id": "p233_028",
+      "speaker": "p233",
+      "group": "B",
+      "target_start": 43360,
+      "target_stop": 44640,
+      "context_start": 40160,
+      "context_stop": 47840,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O008"
+    },
+    {
+      "utterance_id": "p236_036",
+      "speaker": "p236",
+      "group": "A",
+      "target_start": 13920,
+      "target_stop": 15200,
+      "context_start": 10720,
+      "context_stop": 18400,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O009"
+    },
+    {
+      "utterance_id": "p236_036",
+      "speaker": "p236",
+      "group": "A",
+      "target_start": 20800,
+      "target_stop": 22080,
+      "context_start": 17600,
+      "context_stop": 25280,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O010"
+    },
+    {
+      "utterance_id": "p236_036",
+      "speaker": "p236",
+      "group": "A",
+      "target_start": 37600,
+      "target_stop": 38880,
+      "context_start": 34400,
+      "context_stop": 42080,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O011"
+    },
+    {
+      "utterance_id": "p236_036",
+      "speaker": "p236",
+      "group": "A",
+      "target_start": 42240,
+      "target_stop": 43520,
+      "context_start": 39040,
+      "context_stop": 46720,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O012"
+    },
+    {
+      "utterance_id": "p236_040",
+      "speaker": "p236",
+      "group": "B",
+      "target_start": 8800,
+      "target_stop": 10080,
+      "context_start": 5600,
+      "context_stop": 13280,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O013"
+    },
+    {
+      "utterance_id": "p236_040",
+      "speaker": "p236",
+      "group": "B",
+      "target_start": 13920,
+      "target_stop": 15200,
+      "context_start": 10720,
+      "context_stop": 18400,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O014"
+    },
+    {
+      "utterance_id": "p236_040",
+      "speaker": "p236",
+      "group": "B",
+      "target_start": 44000,
+      "target_stop": 45280,
+      "context_start": 40800,
+      "context_stop": 48480,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O015"
+    },
+    {
+      "utterance_id": "p236_040",
+      "speaker": "p236",
+      "group": "B",
+      "target_start": 49600,
+      "target_stop": 50880,
+      "context_start": 46400,
+      "context_stop": 54080,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O016"
+    },
+    {
+      "utterance_id": "p239_026",
+      "speaker": "p239",
+      "group": "A",
+      "target_start": 27200,
+      "target_stop": 28480,
+      "context_start": 24000,
+      "context_stop": 31680,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O017"
+    },
+    {
+      "utterance_id": "p239_026",
+      "speaker": "p239",
+      "group": "A",
+      "target_start": 29600,
+      "target_stop": 30880,
+      "context_start": 26400,
+      "context_stop": 34080,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O018"
+    },
+    {
+      "utterance_id": "p239_026",
+      "speaker": "p239",
+      "group": "A",
+      "target_start": 30560,
+      "target_stop": 31840,
+      "context_start": 27360,
+      "context_stop": 35040,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O019"
+    },
+    {
+      "utterance_id": "p239_026",
+      "speaker": "p239",
+      "group": "A",
+      "target_start": 44640,
+      "target_stop": 45920,
+      "context_start": 41440,
+      "context_stop": 49120,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O020"
+    },
+    {
+      "utterance_id": "p239_028",
+      "speaker": "p239",
+      "group": "B",
+      "target_start": 24960,
+      "target_stop": 26240,
+      "context_start": 21760,
+      "context_stop": 29440,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O021"
+    },
+    {
+      "utterance_id": "p239_028",
+      "speaker": "p239",
+      "group": "B",
+      "target_start": 39040,
+      "target_stop": 40320,
+      "context_start": 35840,
+      "context_stop": 43520,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O022"
+    },
+    {
+      "utterance_id": "p239_028",
+      "speaker": "p239",
+      "group": "B",
+      "target_start": 42080,
+      "target_stop": 43360,
+      "context_start": 38880,
+      "context_stop": 46560,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O023"
+    },
+    {
+      "utterance_id": "p239_028",
+      "speaker": "p239",
+      "group": "B",
+      "target_start": 47360,
+      "target_stop": 48640,
+      "context_start": 44160,
+      "context_stop": 51840,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O024"
+    },
+    {
+      "utterance_id": "p243_026",
+      "speaker": "p243",
+      "group": "A",
+      "target_start": 11360,
+      "target_stop": 12640,
+      "context_start": 8160,
+      "context_stop": 15840,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O025"
+    },
+    {
+      "utterance_id": "p243_026",
+      "speaker": "p243",
+      "group": "A",
+      "target_start": 50400,
+      "target_stop": 51680,
+      "context_start": 47200,
+      "context_stop": 54880,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O026"
+    },
+    {
+      "utterance_id": "p243_026",
+      "speaker": "p243",
+      "group": "A",
+      "target_start": 52480,
+      "target_stop": 53760,
+      "context_start": 49280,
+      "context_stop": 56960,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O027"
+    },
+    {
+      "utterance_id": "p243_026",
+      "speaker": "p243",
+      "group": "A",
+      "target_start": 59840,
+      "target_stop": 61120,
+      "context_start": 56640,
+      "context_stop": 64320,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O028"
+    },
+    {
+      "utterance_id": "p243_027",
+      "speaker": "p243",
+      "group": "B",
+      "target_start": 15520,
+      "target_stop": 16800,
+      "context_start": 12320,
+      "context_stop": 20000,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "c0972ae9cd32e002892881677824dbb306c7774bbe89bcf186a4d5d2931353ac",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "f887f3c7459e108c757129b75c7c3dbb6f3803774e0412de58a2abe248df13fb",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O029"
+    },
+    {
+      "utterance_id": "p243_027",
+      "speaker": "p243",
+      "group": "B",
+      "target_start": 46560,
+      "target_stop": 47840,
+      "context_start": 43360,
+      "context_stop": 51040,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "c0972ae9cd32e002892881677824dbb306c7774bbe89bcf186a4d5d2931353ac",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "f887f3c7459e108c757129b75c7c3dbb6f3803774e0412de58a2abe248df13fb",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O030"
+    },
+    {
+      "utterance_id": "p243_027",
+      "speaker": "p243",
+      "group": "B",
+      "target_start": 53920,
+      "target_stop": 55200,
+      "context_start": 50720,
+      "context_stop": 58400,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        },
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "c0972ae9cd32e002892881677824dbb306c7774bbe89bcf186a4d5d2931353ac",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "f887f3c7459e108c757129b75c7c3dbb6f3803774e0412de58a2abe248df13fb",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O031"
+    },
+    {
+      "utterance_id": "p244_028",
+      "speaker": "p244",
+      "group": "A",
+      "target_start": 16000,
+      "target_stop": 17280,
+      "context_start": 12800,
+      "context_stop": 20480,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O032"
+    },
+    {
+      "utterance_id": "p244_028",
+      "speaker": "p244",
+      "group": "A",
+      "target_start": 18560,
+      "target_stop": 19840,
+      "context_start": 15360,
+      "context_stop": 23040,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O033"
+    },
+    {
+      "utterance_id": "p244_028",
+      "speaker": "p244",
+      "group": "A",
+      "target_start": 32960,
+      "target_stop": 34240,
+      "context_start": 29760,
+      "context_stop": 37440,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O034"
+    },
+    {
+      "utterance_id": "p244_028",
+      "speaker": "p244",
+      "group": "A",
+      "target_start": 33600,
+      "target_stop": 34880,
+      "context_start": 30400,
+      "context_stop": 38080,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O035"
+    },
+    {
+      "utterance_id": "p244_034",
+      "speaker": "p244",
+      "group": "B",
+      "target_start": 11840,
+      "target_stop": 13120,
+      "context_start": 8640,
+      "context_stop": 16320,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O036"
+    },
+    {
+      "utterance_id": "p244_034",
+      "speaker": "p244",
+      "group": "B",
+      "target_start": 35040,
+      "target_stop": 36320,
+      "context_start": 31840,
+      "context_stop": 39520,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O037"
+    },
+    {
+      "utterance_id": "p244_034",
+      "speaker": "p244",
+      "group": "B",
+      "target_start": 35360,
+      "target_stop": 36640,
+      "context_start": 32160,
+      "context_stop": 39840,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O038"
+    },
+    {
+      "utterance_id": "p244_034",
+      "speaker": "p244",
+      "group": "B",
+      "target_start": 45280,
+      "target_stop": 46560,
+      "context_start": 42080,
+      "context_stop": 49760,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O039"
+    },
+    {
+      "utterance_id": "p250_038",
+      "speaker": "p250",
+      "group": "A",
+      "target_start": 15040,
+      "target_stop": 16320,
+      "context_start": 11840,
+      "context_stop": 19520,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O040"
+    },
+    {
+      "utterance_id": "p250_038",
+      "speaker": "p250",
+      "group": "A",
+      "target_start": 38560,
+      "target_stop": 39840,
+      "context_start": 35360,
+      "context_stop": 43040,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O041"
+    },
+    {
+      "utterance_id": "p250_038",
+      "speaker": "p250",
+      "group": "A",
+      "target_start": 44480,
+      "target_stop": 45760,
+      "context_start": 41280,
+      "context_stop": 48960,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O042"
+    },
+    {
+      "utterance_id": "p250_038",
+      "speaker": "p250",
+      "group": "A",
+      "target_start": 51840,
+      "target_stop": 53120,
+      "context_start": 48640,
+      "context_stop": 56320,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O043"
+    },
+    {
+      "utterance_id": "p250_050",
+      "speaker": "p250",
+      "group": "B",
+      "target_start": 21920,
+      "target_stop": 23200,
+      "context_start": 18720,
+      "context_stop": 26400,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O044"
+    },
+    {
+      "utterance_id": "p250_050",
+      "speaker": "p250",
+      "group": "B",
+      "target_start": 40800,
+      "target_stop": 42080,
+      "context_start": 37600,
+      "context_stop": 45280,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "target"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O045"
+    },
+    {
+      "utterance_id": "p250_050",
+      "speaker": "p250",
+      "group": "B",
+      "target_start": 43680,
+      "target_stop": 44960,
+      "context_start": 40480,
+      "context_stop": 48160,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "sustained",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O046"
+    },
+    {
+      "utterance_id": "p250_050",
+      "speaker": "p250",
+      "group": "B",
+      "target_start": 50880,
+      "target_stop": 52160,
+      "context_start": 47680,
+      "context_stop": 55360,
+      "context_length": 7680,
+      "target_relative_start": 3200,
+      "target_relative_stop": 4480,
+      "roles": [
+        {
+          "event": "transient",
+          "site": "position_control"
+        }
+      ],
+      "source_files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "operator_observation_id": "O047"
+    }
+  ],
+  "listener_slots": [
+    {
+      "slot": 1,
+      "status": "unassigned_design_slot_not_person_or_response",
+      "trials": [
+        {
+          "trial_id": "T1-03e0ceef06dd",
+          "observation_id": "O037",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "03e0ceef06dd59d4f31fffeaa91fb8454b1c24d5afdeaa5372e89d0bb3e28be5",
+          "order": 1
+        },
+        {
+          "trial_id": "T1-050e5ad51243",
+          "observation_id": "O004",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "050e5ad51243300c33d2f0617136ef06ac67af2abdb9272728fed7bf6edde406",
+          "order": 2
+        },
+        {
+          "trial_id": "T1-0a42e827bcde",
+          "observation_id": "O010",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "0a42e827bcdedf34670c35ed0fb1c83375b58cb81a69b5c8cf41ef5b8b849328",
+          "order": 3
+        },
+        {
+          "trial_id": "T1-0d284084b494",
+          "observation_id": "O043",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "0d284084b4944f57136422476c9dac84f6c609a7507776a8703f70bb5070a7f8",
+          "order": 4
+        },
+        {
+          "trial_id": "T1-10e227df6379",
+          "observation_id": "O040",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "10e227df637934f5935b825af92746445766b6321025d190de7b81c4e6fc6939",
+          "order": 5
+        },
+        {
+          "trial_id": "T1-12c67cb1f1f8",
+          "observation_id": "O032",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "12c67cb1f1f8d77cfdc96d45646a76015bbc655bf87710259fbe839fc8efe3cb",
+          "order": 6
+        },
+        {
+          "trial_id": "T1-14309e761494",
+          "observation_id": "O033",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "14309e76149480ce003af1ab1c762e2f50a625ddaae10261a7b237dbf4e7a991",
+          "order": 7
+        },
+        {
+          "trial_id": "T1-404b88b126cc",
+          "observation_id": "O044",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "404b88b126cc4ceed7979b4556226adb63d11f71dd8c372684ef47ab3ab5e301",
+          "order": 8
+        },
+        {
+          "trial_id": "T1-406f166bdeac",
+          "observation_id": "O046",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "406f166bdeac0a146110b825b8a1b824800080bf958b3107fd0935d51cfd07ed",
+          "order": 9
+        },
+        {
+          "trial_id": "T1-4d762a168a45",
+          "observation_id": "O014",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "4d762a168a458e71ead7082b853f794ec3b30da7e3e41b3195d975ddccf840f7",
+          "order": 10
+        },
+        {
+          "trial_id": "T1-4ecaf8e9091d",
+          "observation_id": "O038",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "4ecaf8e9091d742523fc5b38325111af2f1d95135b1f772fd6b02c0eece6508c",
+          "order": 11
+        },
+        {
+          "trial_id": "T1-566f7cb27cf6",
+          "observation_id": "O036",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "566f7cb27cf64ce2be148b1b81f3fb412c77c202bdf837ba4454d3caf3720d15",
+          "order": 12
+        },
+        {
+          "trial_id": "T1-58f97667d092",
+          "observation_id": "O016",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "58f97667d092780f2512529a0538f36d839df7a06a08e848b68b6fba9e745843",
+          "order": 13
+        },
+        {
+          "trial_id": "T1-5940d39e616f",
+          "observation_id": "O030",
+          "arm": "noisy",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "5940d39e616f2694e7741d17a16dea0c8c70a11fcb9bc8b356342ed99e9d1ac3",
+          "order": 14
+        },
+        {
+          "trial_id": "T1-61d7f16e8ec3",
+          "observation_id": "O001",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "61d7f16e8ec30282e997204e0033637c9314f258ee0c089a0b113236504d56f8",
+          "order": 15
+        },
+        {
+          "trial_id": "T1-63049283b2b1",
+          "observation_id": "O017",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "63049283b2b119ab01c629812005a1b188995d904e9725f9009273e4281a6281",
+          "order": 16
+        },
+        {
+          "trial_id": "T1-7135327ec0af",
+          "observation_id": "O021",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "7135327ec0af98426dc33a60b516fc1245889d18bb37b9a199879e8d62dfcd18",
+          "order": 17
+        },
+        {
+          "trial_id": "T1-76362f96f99a",
+          "observation_id": "O031",
+          "arm": "noisy",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "76362f96f99a8d4b12acb85ac9001a88c235ebbf21602436429d15a801b8ca22",
+          "order": 18
+        },
+        {
+          "trial_id": "T1-768f2d1bd8dc",
+          "observation_id": "O005",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "768f2d1bd8dcf02a704924024f516ea1b29049e24548fb07920c6fea4e7f9496",
+          "order": 19
+        },
+        {
+          "trial_id": "T1-775f0122e8ba",
+          "observation_id": "O045",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "775f0122e8bae9483d3f984dd0cf1abbe373d88d26b6f4e6454c6cf3175c6d11",
+          "order": 20
+        },
+        {
+          "trial_id": "T1-7dac20ed863c",
+          "observation_id": "O042",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "7dac20ed863cf3fd76f0245bc2f88af2b8831521259bbf0783b1cb4f60a360e0",
+          "order": 21
+        },
+        {
+          "trial_id": "T1-7e326cf44eae",
+          "observation_id": "O020",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "7e326cf44eaef8a4eea3d160cb929562bb6774ded9f40a5b34a90a0905fcd0ca",
+          "order": 22
+        },
+        {
+          "trial_id": "T1-7eb2fe288526",
+          "observation_id": "O009",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "7eb2fe2885267df33ad4f71ce168936ce4435b1de6539b633cc609816f1ef31f",
+          "order": 23
+        },
+        {
+          "trial_id": "T1-8d3a92699952",
+          "observation_id": "O047",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "8d3a92699952b9681971fa216485fabad0c3e1bfad2ea33e364f4c43631440d2",
+          "order": 24
+        },
+        {
+          "trial_id": "T1-8e2bd212cea8",
+          "observation_id": "O034",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "8e2bd212cea8b45ebf5f68cf23a9719b685cf37efa3189e181e6dee26974e092",
+          "order": 25
+        },
+        {
+          "trial_id": "T1-969a89d23c69",
+          "observation_id": "O041",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "969a89d23c690bf7779d6c27d70f40b082253125f878679b1a77a4d5f2e3c7af",
+          "order": 26
+        },
+        {
+          "trial_id": "T1-9bcdea31a8cd",
+          "observation_id": "O035",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "9bcdea31a8cd9d4c0d4c37dfb022e2d2a8381220c65d13ff4b8b557f8f727055",
+          "order": 27
+        },
+        {
+          "trial_id": "T1-a5a9771cde3d",
+          "observation_id": "O002",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "a5a9771cde3d150c6df1c52b686dd9fc86a84d39f6f158ea399647aeb4d7dea3",
+          "order": 28
+        },
+        {
+          "trial_id": "T1-a69f983bc855",
+          "observation_id": "O006",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "a69f983bc855f20aa76a8bcd50064c4ee0f99fc564f43cc3f5525d68e20dbcc0",
+          "order": 29
+        },
+        {
+          "trial_id": "T1-a6c82db6bacd",
+          "observation_id": "O027",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "a6c82db6bacda69570c4181e1f7fb9b0f7d28c97a84fc1e11deb4cbafb943f82",
+          "order": 30
+        },
+        {
+          "trial_id": "T1-b0e735ce4c26",
+          "observation_id": "O003",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "b0e735ce4c2626eec28f800f83d733c27b8fedc330d291e468af5ade2e9727c8",
+          "order": 31
+        },
+        {
+          "trial_id": "T1-b21aef23e439",
+          "observation_id": "O011",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "b21aef23e43913670a3b2001c73d9bcf0271bf8c5366dac82da43c7f15194e6c",
+          "order": 32
+        },
+        {
+          "trial_id": "T1-b4a00f005eb7",
+          "observation_id": "O013",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "b4a00f005eb77f1084ac7c4ecd5e6acb18b32e463545804a33fe51bf0a3d0a3e",
+          "order": 33
+        },
+        {
+          "trial_id": "T1-b7c642a4498c",
+          "observation_id": "O029",
+          "arm": "noisy",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "b7c642a4498cbe79e09e067a6a52f1f1fc28896eb7c9205ca57d4d92339140e8",
+          "order": 34
+        },
+        {
+          "trial_id": "T1-b8405b7c2afe",
+          "observation_id": "O008",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "b8405b7c2afef6c92742925c6b40a5e06e587f6020c0b1fd0627186c437e575f",
+          "order": 35
+        },
+        {
+          "trial_id": "T1-b9e6699fc3a3",
+          "observation_id": "O018",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "b9e6699fc3a341434e86bc6065923c4c4cd961ed44bc7c0cf7b5b4d40e251143",
+          "order": 36
+        },
+        {
+          "trial_id": "T1-bcd9e31375c7",
+          "observation_id": "O022",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "bcd9e31375c7d0149792caefd7421219d5ffa468b4232179f8b5e6792a1f4ccc",
+          "order": 37
+        },
+        {
+          "trial_id": "T1-be849fd8ad96",
+          "observation_id": "O039",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "be849fd8ad961781bcba103985834a4e4d62db06e00f67c8a03503a27272aa61",
+          "order": 38
+        },
+        {
+          "trial_id": "T1-caee6e310aad",
+          "observation_id": "O025",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "caee6e310aad6f9b1eaef76ebcd1560322ed3f7d4c1daaadd1a0cd9ffbc3a78c",
+          "order": 39
+        },
+        {
+          "trial_id": "T1-ce87b198df59",
+          "observation_id": "O012",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "ce87b198df59c63534e1ce1e42267333365a8a3683647e1b3f0af809681e1249",
+          "order": 40
+        },
+        {
+          "trial_id": "T1-cf209939ad18",
+          "observation_id": "O024",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "cf209939ad18ada8ee6e04cca97d766c8beb97e4d953c483ec69bbb8dfbcb73b",
+          "order": 41
+        },
+        {
+          "trial_id": "T1-d46dbfadfdf1",
+          "observation_id": "O019",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "d46dbfadfdf1f6bec22b9eb1fb535cb917ff342ab3b67a14db0b26c61bfd240a",
+          "order": 42
+        },
+        {
+          "trial_id": "T1-d5dd7a137d8d",
+          "observation_id": "O028",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "d5dd7a137d8d92db5c4634e03357958c510983015412ddf7d805429f9e0e8302",
+          "order": 43
+        },
+        {
+          "trial_id": "T1-e48c15912a35",
+          "observation_id": "O015",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "e48c15912a356977085c82cc5bca8180066b4b4e75cd7d6c167e1c6084482835",
+          "order": 44
+        },
+        {
+          "trial_id": "T1-e9fb84ef96f0",
+          "observation_id": "O026",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "e9fb84ef96f035a8ab8678406a0f4a1f6cc7d0540159a9fd78ed0519daad85da",
+          "order": 45
+        },
+        {
+          "trial_id": "T1-ec3027f1677a",
+          "observation_id": "O023",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "ec3027f1677ae99d7a84c42f7cab10b3f3cb6ace55161784a329d4116a8bdd78",
+          "order": 46
+        },
+        {
+          "trial_id": "T1-f10c75b0858a",
+          "observation_id": "O007",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "f10c75b0858ac665eb118281389a364a0d45c67a1ac466e1cb9e2614cce477af",
+          "order": 47
+        }
+      ]
+    },
+    {
+      "slot": 2,
+      "status": "unassigned_design_slot_not_person_or_response",
+      "trials": [
+        {
+          "trial_id": "T2-0562059022dd",
+          "observation_id": "O021",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "0562059022ddde8f531b21c715e02c07b3935357a5f80371acfa0e93e1a6df31",
+          "order": 1
+        },
+        {
+          "trial_id": "T2-0b60718f4f82",
+          "observation_id": "O038",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "0b60718f4f82d5ece4d145371b83df250def712bd60f41410e508f378ade14b9",
+          "order": 2
+        },
+        {
+          "trial_id": "T2-0facee81ca89",
+          "observation_id": "O005",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "0facee81ca89c02a248a3bb846574c549639a90b3afe469cc5048d2e1c8c3c39",
+          "order": 3
+        },
+        {
+          "trial_id": "T2-167049feb6c9",
+          "observation_id": "O042",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "167049feb6c97c2f2d26f1161684a6985f9a499626858b011f3afa4b90d32492",
+          "order": 4
+        },
+        {
+          "trial_id": "T2-178c7eb95f1a",
+          "observation_id": "O046",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "178c7eb95f1a213909a81397102a80b9ab8c9adbdb706c580266fbc010f2626d",
+          "order": 5
+        },
+        {
+          "trial_id": "T2-237da4c28383",
+          "observation_id": "O031",
+          "arm": "noisy",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "237da4c28383aa922a9e8513b26634a5bfa404306091cb89b1bb5cb534e36afb",
+          "order": 6
+        },
+        {
+          "trial_id": "T2-2460611d0a76",
+          "observation_id": "O001",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "2460611d0a76eb4cea20e0ffc89944a7ccaec7d731f28205517574fc4448bad1",
+          "order": 7
+        },
+        {
+          "trial_id": "T2-24fca252a690",
+          "observation_id": "O017",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "24fca252a69026dcd1cb9f87182837597b3b190002d2bd981a8a79df970d9ad8",
+          "order": 8
+        },
+        {
+          "trial_id": "T2-252988716bc0",
+          "observation_id": "O007",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "252988716bc08353cd3c04917f5d1f47b3c368179ab3044d13899678cc83e012",
+          "order": 9
+        },
+        {
+          "trial_id": "T2-2843d0cb1257",
+          "observation_id": "O039",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "2843d0cb1257755141d855e77d71aadbdd2708aee8dc355c00b48e5b4e42cb2a",
+          "order": 10
+        },
+        {
+          "trial_id": "T2-336ef352e544",
+          "observation_id": "O043",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "336ef352e5446d5e00a395d124825449ac8c5e78a1e0287f7415979b52c1f73f",
+          "order": 11
+        },
+        {
+          "trial_id": "T2-39b08448e5a2",
+          "observation_id": "O026",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "39b08448e5a2f204278b8e10f46f6b3a73fe885001f45f1a33fb29ff8eb0f664",
+          "order": 12
+        },
+        {
+          "trial_id": "T2-48ba7dd75db5",
+          "observation_id": "O003",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "48ba7dd75db51dc7e7d40be77309b222820ed53dec963563eb993ae80d2f555a",
+          "order": 13
+        },
+        {
+          "trial_id": "T2-4cff46bc4e17",
+          "observation_id": "O004",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "4cff46bc4e17441e74f3956bc1965477340e7e85d71a25465f65623a4ada1e66",
+          "order": 14
+        },
+        {
+          "trial_id": "T2-556118c3958b",
+          "observation_id": "O027",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "556118c3958b0adafed070e50b9f9642870a776cf8ed6f62ef430a07a2d79565",
+          "order": 15
+        },
+        {
+          "trial_id": "T2-563c17283bb7",
+          "observation_id": "O011",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "563c17283bb74f45a17e12e0f76804e6dc51cb3fb231726edaf3b3a22bfb8322",
+          "order": 16
+        },
+        {
+          "trial_id": "T2-576596417e3c",
+          "observation_id": "O028",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "576596417e3cba2c1cf69bcdc5eb9f709b9a516204faa316bc136eb2c4f49e16",
+          "order": 17
+        },
+        {
+          "trial_id": "T2-5b8388a11686",
+          "observation_id": "O020",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "5b8388a116865830434974f3ad224cd770de5a19271f0e60b0d937de15ad6505",
+          "order": 18
+        },
+        {
+          "trial_id": "T2-611102257c2a",
+          "observation_id": "O033",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "611102257c2a4ea3bbd907f31b5713e3d9d7c2992722ee4e8adfc65e347c1b99",
+          "order": 19
+        },
+        {
+          "trial_id": "T2-7254af95cd00",
+          "observation_id": "O013",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "7254af95cd0024d0e5ac521e4b4b4a33b1dea771fca496c5f0d1aaada18e4ebc",
+          "order": 20
+        },
+        {
+          "trial_id": "T2-743f9e488845",
+          "observation_id": "O041",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "743f9e488845d325d71dea73dfc413905be4e96d875bea65ec6ee809c931dc9c",
+          "order": 21
+        },
+        {
+          "trial_id": "T2-7714f962d4bf",
+          "observation_id": "O045",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "7714f962d4bf4ecae158ceaac77f28e3d78f441b0bd64d9a11e947e217d03070",
+          "order": 22
+        },
+        {
+          "trial_id": "T2-774621a04b4d",
+          "observation_id": "O019",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "774621a04b4d54996325e95e10001be786b3fefa7cbca14b6db0471a3c5e7922",
+          "order": 23
+        },
+        {
+          "trial_id": "T2-7bb0b97c64a4",
+          "observation_id": "O030",
+          "arm": "noisy",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "7bb0b97c64a4377221532f865fb546bcddf13849a6d66590767256461029531a",
+          "order": 24
+        },
+        {
+          "trial_id": "T2-7e937ba543c8",
+          "observation_id": "O010",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "7e937ba543c8cc3b9b4b10d5cdd7250de2994f8d439660bbab17d9e16c8b2cc6",
+          "order": 25
+        },
+        {
+          "trial_id": "T2-7eae64503a1c",
+          "observation_id": "O025",
+          "arm": "clean",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "7eae64503a1ceaf0220e698cedbefb1f245bd7d25d3acaf012a2b0cc2c2a9ebb",
+          "order": 26
+        },
+        {
+          "trial_id": "T2-877b7f061749",
+          "observation_id": "O023",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "877b7f0617497960801dcc78447efc4821947d26fb8328adc8bea649ae9816ec",
+          "order": 27
+        },
+        {
+          "trial_id": "T2-93ee3bebf567",
+          "observation_id": "O044",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "93ee3bebf567eda2b480b7dc0a1b01d956e94b69dffa85a8b6630b14b021bc2a",
+          "order": 28
+        },
+        {
+          "trial_id": "T2-9f3384cd78a9",
+          "observation_id": "O022",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "9f3384cd78a9b59e0ec7d55ca3d95f3a894b8c24d3be70a896b8f3e1015c2c56",
+          "order": 29
+        },
+        {
+          "trial_id": "T2-9f494935be4e",
+          "observation_id": "O009",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "9f494935be4e3d163bdb2022d44b59cf1cd95ffde2aaa395c7bc174719e911b0",
+          "order": 30
+        },
+        {
+          "trial_id": "T2-a0d7342a6e07",
+          "observation_id": "O035",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "a0d7342a6e07a83c60765c695de35c368dc22f1d7c473fa9ea65bdce35c127c7",
+          "order": 31
+        },
+        {
+          "trial_id": "T2-a44082ec3946",
+          "observation_id": "O008",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "a44082ec394642b0e20ebc9a781dd64887a7a7ddc86077c8385b388e5cf8f657",
+          "order": 32
+        },
+        {
+          "trial_id": "T2-a85d9294bd59",
+          "observation_id": "O018",
+          "arm": "clean",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "a85d9294bd59591948bc43a8ce8277320da557b54d634a440ce69d083d30efc5",
+          "order": 33
+        },
+        {
+          "trial_id": "T2-a8d71de1068a",
+          "observation_id": "O024",
+          "arm": "noisy",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "a8d71de1068a84cb46d6dc52b17b27cabea4fc70d0e847232310ab5976165558",
+          "order": 34
+        },
+        {
+          "trial_id": "T2-bb6f1531f0a3",
+          "observation_id": "O037",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "bb6f1531f0a349e6ac544d1118e50371036eb8ebf682255fe2a795d06a2b6980",
+          "order": 35
+        },
+        {
+          "trial_id": "T2-bceb50d71648",
+          "observation_id": "O040",
+          "arm": "clean",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "bceb50d71648cf6a2db597d58685b757cb5b8cd8c1343c63597c7e9fdfa01993",
+          "order": 36
+        },
+        {
+          "trial_id": "T2-cc51f9d1f310",
+          "observation_id": "O002",
+          "arm": "clean",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "cc51f9d1f310513ff44f79c5e34424ac6e2b4fe4fb0fbd9d72836d5701e71ea9",
+          "order": 37
+        },
+        {
+          "trial_id": "T2-d0d9e36bf2a8",
+          "observation_id": "O032",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "d0d9e36bf2a84013d02916665805a906b9dc7b943e9e4e47431700d5c1944247",
+          "order": 38
+        },
+        {
+          "trial_id": "T2-d5391e279e74",
+          "observation_id": "O036",
+          "arm": "noisy",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "d5391e279e74358de77ff19b22f8ac5ace937cf545b4dd44fad6df0c22bd899d",
+          "order": 39
+        },
+        {
+          "trial_id": "T2-e57229add6f9",
+          "observation_id": "O006",
+          "arm": "noisy",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "e57229add6f9240d16f8f68e31078a86f154558131748a97253acc1c4efa149a",
+          "order": 40
+        },
+        {
+          "trial_id": "T2-e8efc4fe0b0d",
+          "observation_id": "O012",
+          "arm": "clean",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "e8efc4fe0b0d5918b6f85604cfbebeddd68dd4b4d17abe26f351a8b791a3de9c",
+          "order": 41
+        },
+        {
+          "trial_id": "T2-ebfe8de0e0a8",
+          "observation_id": "O016",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "ebfe8de0e0a857273c92dd8be5b0f0363d7d9f01d17f41a6ffe0b65342c32feb",
+          "order": 42
+        },
+        {
+          "trial_id": "T2-f1b09b2928e7",
+          "observation_id": "O014",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "f1b09b2928e74597b8f825637dba184dc9ff29eb1c64aa6e1902ee3adc92d9c2",
+          "order": 43
+        },
+        {
+          "trial_id": "T2-f38c214628e4",
+          "observation_id": "O047",
+          "arm": "noisy",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "f38c214628e45614b1b555c06a25ed1b17a796c8f32071358381cbfc106d3a66",
+          "order": 44
+        },
+        {
+          "trial_id": "T2-f9230cb139f7",
+          "observation_id": "O029",
+          "arm": "noisy",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "f9230cb139f79bef30fbd5c77a3f19465559d71b220aed9e38877300744aa41d",
+          "order": 45
+        },
+        {
+          "trial_id": "T2-fc65c4fa642e",
+          "observation_id": "O015",
+          "arm": "noisy",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "fc65c4fa642ea3526f2ba58fa6233a442e51400464939d444ff6764c7ef1a86f",
+          "order": 46
+        },
+        {
+          "trial_id": "T2-febbc47d60f1",
+          "observation_id": "O034",
+          "arm": "clean",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "febbc47d60f1f632342eec3e98dea8f8e276c9100b6ccaaeee50dbfa0ed73bae",
+          "order": 47
+        }
+      ]
+    },
+    {
+      "slot": 3,
+      "status": "unassigned_design_slot_not_person_or_response",
+      "trials": [
+        {
+          "trial_id": "T3-068cf7ff53e6",
+          "observation_id": "O033",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "068cf7ff53e6c8f2cb32676b1f6759f63d21d9bc9cc64f7fcd3d9620f85448c7",
+          "order": 1
+        },
+        {
+          "trial_id": "T3-10e08665d063",
+          "observation_id": "O019",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "10e08665d063c9084a4cfebb1e5969c7869ef39ef6aba9916094c5300b50e25a",
+          "order": 2
+        },
+        {
+          "trial_id": "T3-11ebfe49b736",
+          "observation_id": "O047",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "11ebfe49b736111cf8aeade6330b7a5a686268b2c80a84de7fb767546ef89e0e",
+          "order": 3
+        },
+        {
+          "trial_id": "T3-1425f109eb08",
+          "observation_id": "O023",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "1425f109eb085b8b58fd0e9092eb5525d312446a9319fc1ce25cdb6b61aafa9e",
+          "order": 4
+        },
+        {
+          "trial_id": "T3-19e0de8c0db1",
+          "observation_id": "O045",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "19e0de8c0db1a1d98094346d6fbe2734e2106e385031ba43339211d11cd80624",
+          "order": 5
+        },
+        {
+          "trial_id": "T3-1e1c7784c280",
+          "observation_id": "O016",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "1e1c7784c280d1695c092297968f511c6fc15df09a353b1c2078335376a2afc9",
+          "order": 6
+        },
+        {
+          "trial_id": "T3-210b3d5f1e35",
+          "observation_id": "O039",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "210b3d5f1e35974bd47cc978fc565eec9c2af81a124594a08a848eddac9f0f23",
+          "order": 7
+        },
+        {
+          "trial_id": "T3-2d6202abc87f",
+          "observation_id": "O002",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "2d6202abc87f3439bff82fb3122cdd4d66d2081d7e0dc9c3ca15c2732109fbcb",
+          "order": 8
+        },
+        {
+          "trial_id": "T3-3247b61f9220",
+          "observation_id": "O010",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "3247b61f92203312a16d5b20f159245ec587df786c619e18794f1983bff775de",
+          "order": 9
+        },
+        {
+          "trial_id": "T3-3c29e19a03df",
+          "observation_id": "O038",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "3c29e19a03df1452029274afc9a4cd48e225f38852df2b098bf4c04ad26e01f6",
+          "order": 10
+        },
+        {
+          "trial_id": "T3-4638b4d4fff2",
+          "observation_id": "O012",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "4638b4d4fff2113cb8173a7928400163fdf09bce4fe9532585a9622a646e69d1",
+          "order": 11
+        },
+        {
+          "trial_id": "T3-4a6af6c9010d",
+          "observation_id": "O017",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "4a6af6c9010d261966ae07992dd8b0051a23c0f95a00f94d17859d7990482f9c",
+          "order": 12
+        },
+        {
+          "trial_id": "T3-4bdee5e45a95",
+          "observation_id": "O046",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "4bdee5e45a951827eb221c6c7f8e63b61e5c5c2f10a136da75272c4831b43cd4",
+          "order": 13
+        },
+        {
+          "trial_id": "T3-4cdd5d8765cb",
+          "observation_id": "O006",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "4cdd5d8765cb6a57067e4bf7a264d62951efc1e2fab13d46372a9b4a6a38fe57",
+          "order": 14
+        },
+        {
+          "trial_id": "T3-51158fc1b7df",
+          "observation_id": "O044",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "51158fc1b7dfe89225b0386ed7920c470e6e101c5018a95fdfff4cfffdac3765",
+          "order": 15
+        },
+        {
+          "trial_id": "T3-51fc585bded1",
+          "observation_id": "O020",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "51fc585bded1a44979ff10557df810b484a0f0a6be75948b5044ac6f3f0d3ffd",
+          "order": 16
+        },
+        {
+          "trial_id": "T3-53dc0a8648ed",
+          "observation_id": "O007",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "53dc0a8648edc6007ef376bc14b10f4231c30900852403ff0d0cbccec77624f8",
+          "order": 17
+        },
+        {
+          "trial_id": "T3-59e2de04d454",
+          "observation_id": "O031",
+          "arm": "clean",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "59e2de04d4540d58ff74876a33869a90c7b0611ca215dd06e5c3dad93248c3e0",
+          "order": 18
+        },
+        {
+          "trial_id": "T3-5abf1308fb6f",
+          "observation_id": "O027",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "5abf1308fb6fde2369f05dd9847aaf14f3b240234f57217b2ee51acf4f156ca3",
+          "order": 19
+        },
+        {
+          "trial_id": "T3-5de8ed1098b3",
+          "observation_id": "O028",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "5de8ed1098b36a72f72330c4ec3576225edbcc9d2e923679bfb2d8e803e80783",
+          "order": 20
+        },
+        {
+          "trial_id": "T3-72443d6309b5",
+          "observation_id": "O018",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "72443d6309b57834059a9dc48870f72d31b96ddbee780d86f6c81ccc55c64024",
+          "order": 21
+        },
+        {
+          "trial_id": "T3-73342e1d969d",
+          "observation_id": "O026",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "73342e1d969d0caf8a23862b8ac130d3b58a46893df2314208c9a7e222536346",
+          "order": 22
+        },
+        {
+          "trial_id": "T3-777f91144808",
+          "observation_id": "O022",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "777f9114480889eabff6719303ee62edddef4fe03ba8cf6837175788fa6a5a2b",
+          "order": 23
+        },
+        {
+          "trial_id": "T3-7a41f3eb43c7",
+          "observation_id": "O021",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "7a41f3eb43c7e20e580611d30b87b68addcd8eb2451c8ec16398c83f8e0ef104",
+          "order": 24
+        },
+        {
+          "trial_id": "T3-7ca4263b1b19",
+          "observation_id": "O013",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "7ca4263b1b1954fba20bf8d20cebab1960e05d85ae20e6facbd6ba313eeeba12",
+          "order": 25
+        },
+        {
+          "trial_id": "T3-85ff12d7e2e1",
+          "observation_id": "O034",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "85ff12d7e2e1da037a5a855533ad6437677773dbccb7db48f09c64dc4e2584d3",
+          "order": 26
+        },
+        {
+          "trial_id": "T3-88fd5a84e207",
+          "observation_id": "O040",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "88fd5a84e2079d2dcc183b229ed088358366c9caf3eda4883588e1dfdcbb6c1a",
+          "order": 27
+        },
+        {
+          "trial_id": "T3-925b08b27b6d",
+          "observation_id": "O032",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "925b08b27b6d2507d4093b7fbed9dead0fd38112456b18a49513e17fb6a2edb8",
+          "order": 28
+        },
+        {
+          "trial_id": "T3-9b43ea2e874a",
+          "observation_id": "O043",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "9b43ea2e874aa818582d18b946d23351ba0da41ef9c65ec1f0ce683750b51445",
+          "order": 29
+        },
+        {
+          "trial_id": "T3-a98a5ba0c6f1",
+          "observation_id": "O041",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "a98a5ba0c6f169e97b929e8a124831e7cd1b2d35f8a163610c5250672b376f46",
+          "order": 30
+        },
+        {
+          "trial_id": "T3-b87189686d50",
+          "observation_id": "O005",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "b87189686d5059e1c39224af2204450bcc4c26f792c7823e390651db10e157dd",
+          "order": 31
+        },
+        {
+          "trial_id": "T3-be2d0dc69be9",
+          "observation_id": "O030",
+          "arm": "clean",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "be2d0dc69be947f3c3266311fe2ec8112397348ccae5e620231bfdd7253337ec",
+          "order": 32
+        },
+        {
+          "trial_id": "T3-c119d5e338b3",
+          "observation_id": "O008",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "c119d5e338b3243c9c5e1b4f86b4073edcdd0000f17e3f061cbaad28476d84cc",
+          "order": 33
+        },
+        {
+          "trial_id": "T3-cc696d6efcc3",
+          "observation_id": "O024",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "cc696d6efcc328136842d7a6cec67c3531bb42c797474bd4973ae756329fc1d0",
+          "order": 34
+        },
+        {
+          "trial_id": "T3-cc8baed8a1ca",
+          "observation_id": "O003",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "cc8baed8a1ca0d35e8a1240d3165a0d56641970c3bc01512f57d2b1276dacf04",
+          "order": 35
+        },
+        {
+          "trial_id": "T3-d2739ce09f45",
+          "observation_id": "O025",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "d2739ce09f4505f09f2e1adafc401d61318c8dfcd6155f46393701d29ede9014",
+          "order": 36
+        },
+        {
+          "trial_id": "T3-d8498d27fd6b",
+          "observation_id": "O001",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "d8498d27fd6b8a397347c563a31765ac042d74c42d609a1b34f2d30b010d4418",
+          "order": 37
+        },
+        {
+          "trial_id": "T3-dbe1afe8622d",
+          "observation_id": "O004",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "dbe1afe8622d616d4cb1cb7eac55ff407af93fbe4d4a8fcf30cae018f1e4d050",
+          "order": 38
+        },
+        {
+          "trial_id": "T3-dbf6c88eb8be",
+          "observation_id": "O035",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "dbf6c88eb8bef0167c47bb415a7b3857d19a1a047227c57b342469c2102b189d",
+          "order": 39
+        },
+        {
+          "trial_id": "T3-de1d6cac1131",
+          "observation_id": "O009",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "de1d6cac11310df7baf2d2a71a45facd667393a17b9333132b5a19a8e99d2614",
+          "order": 40
+        },
+        {
+          "trial_id": "T3-e45ef77a8d75",
+          "observation_id": "O015",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "e45ef77a8d75a0feea778504b865b1fff3ff41225241a52d5f0bb68c7e0ee70f",
+          "order": 41
+        },
+        {
+          "trial_id": "T3-f21be8df16da",
+          "observation_id": "O036",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "f21be8df16da2764010242f5a1f8b8dffdce7856754eb4b9104accafea077202",
+          "order": 42
+        },
+        {
+          "trial_id": "T3-f243feac3a85",
+          "observation_id": "O029",
+          "arm": "clean",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "f243feac3a851e66a12ae6fc7c9ab5b0ec14ccfd44dc213d19e42e90005a51b0",
+          "order": 43
+        },
+        {
+          "trial_id": "T3-f24e62b94fad",
+          "observation_id": "O042",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "f24e62b94fad2872cef3ddcd8b21c392027aaffa98cc5d8f4f2b1527cb8d3ec0",
+          "order": 44
+        },
+        {
+          "trial_id": "T3-f84d9032d1ac",
+          "observation_id": "O011",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "f84d9032d1ac6d3cf52ae9dcad5c7248f866c3bee1f0093ca5dded4587b58f02",
+          "order": 45
+        },
+        {
+          "trial_id": "T3-fe66ac1836f1",
+          "observation_id": "O037",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "fe66ac1836f18dd8de199a4b16c0790f10e39a646fdebc228a9caa5880752dfa",
+          "order": 46
+        },
+        {
+          "trial_id": "T3-fff8594a6daa",
+          "observation_id": "O014",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "fff8594a6daa3e497cbc272259fe6ecb04211d936b6c1848e7bc645b8833730d",
+          "order": 47
+        }
+      ]
+    },
+    {
+      "slot": 4,
+      "status": "unassigned_design_slot_not_person_or_response",
+      "trials": [
+        {
+          "trial_id": "T4-006b8c1021e6",
+          "observation_id": "O006",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "006b8c1021e649861a392ae290c2af54ef3eafb76c341942f371b44e78ab5d1f",
+          "order": 1
+        },
+        {
+          "trial_id": "T4-0966f88064f5",
+          "observation_id": "O037",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "0966f88064f5153f7290c6bf55955a8302bdef4dbbc5b7abfb00760ec7ae1422",
+          "order": 2
+        },
+        {
+          "trial_id": "T4-0e4ea8bdd0b0",
+          "observation_id": "O034",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "0e4ea8bdd0b0c4cfa34383dae15085e087b817678e87a4c248eb55398b089266",
+          "order": 3
+        },
+        {
+          "trial_id": "T4-0efe9f945069",
+          "observation_id": "O028",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "0efe9f945069653e45e48e6ec9364aa01c85b34f16b4133b2ee467a77de47750",
+          "order": 4
+        },
+        {
+          "trial_id": "T4-0fec68ba00bf",
+          "observation_id": "O005",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "0fec68ba00bf5fe09a75a0f656baa6f7be81c776d07078523631afdf8576cf85",
+          "order": 5
+        },
+        {
+          "trial_id": "T4-124d92041fb7",
+          "observation_id": "O040",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "124d92041fb73fe5e37dbb82927535a3733e62e5680e76e57bd6ed89b43a535b",
+          "order": 6
+        },
+        {
+          "trial_id": "T4-140c692dafd1",
+          "observation_id": "O009",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "140c692dafd15f090b2231b83f353b8bd1ce9e5ccb68faa1ee03ccc44902e258",
+          "order": 7
+        },
+        {
+          "trial_id": "T4-1b9ad191f3d3",
+          "observation_id": "O016",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "1b9ad191f3d3a0db5d8b239ef0f6da7bacab8c8b99fc11c6dd5a5477984dcd18",
+          "order": 8
+        },
+        {
+          "trial_id": "T4-1f7ef532e5b6",
+          "observation_id": "O036",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "1f7ef532e5b69d41980a2abe982cd69c6ae86493c73e459bb657d5b7d04bcfb2",
+          "order": 9
+        },
+        {
+          "trial_id": "T4-20a9e19b8511",
+          "observation_id": "O012",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "20a9e19b85111231af4ca4a74615969d589ec8463ed302fad5c717cf0a8d99a0",
+          "order": 10
+        },
+        {
+          "trial_id": "T4-20b657355c6f",
+          "observation_id": "O038",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "20b657355c6f3edaec570bcab072b10fe7b72afbea10595c4a0adf145bdab3e0",
+          "order": 11
+        },
+        {
+          "trial_id": "T4-221244af1316",
+          "observation_id": "O010",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "221244af13169beb254166d05e8d4bb471b34426376fa2fb623736d0d852e5e4",
+          "order": 12
+        },
+        {
+          "trial_id": "T4-246f5e02c607",
+          "observation_id": "O019",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "246f5e02c607e6e0340ea82424b7066f0f70b938aa5b6295f0b44e4e2b85363a",
+          "order": 13
+        },
+        {
+          "trial_id": "T4-2ec5cc1930b2",
+          "observation_id": "O008",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "2ec5cc1930b2aa45613aa5a77eb4a4fc5e99195bcfca5572484d8d62e709e217",
+          "order": 14
+        },
+        {
+          "trial_id": "T4-38f4a8feca8a",
+          "observation_id": "O003",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "38f4a8feca8afd8ed4c81159b7ead0b33013c85d06c148ba71406d18d49b5bcb",
+          "order": 15
+        },
+        {
+          "trial_id": "T4-3a328069d6fd",
+          "observation_id": "O032",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "3a328069d6fdb72797923604347d722328d2317ba5a92e1ed852cd385261e0f5",
+          "order": 16
+        },
+        {
+          "trial_id": "T4-3e0806f947b9",
+          "observation_id": "O030",
+          "arm": "clean",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "3e0806f947b9b7340c3ebafbf9035099428cffcbbf5cad7f022eedbc797192bf",
+          "order": 17
+        },
+        {
+          "trial_id": "T4-418766d1b5e1",
+          "observation_id": "O046",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "418766d1b5e194563b92d576f58498307b009cc82139fe855adc5a76badfafbe",
+          "order": 18
+        },
+        {
+          "trial_id": "T4-4401d457e074",
+          "observation_id": "O007",
+          "arm": "clean",
+          "utterance_id": "p233_028",
+          "speaker": "p233",
+          "order_hash": "4401d457e074d2ea593809d53708708d013cdd211c908b13034192ecc844209c",
+          "order": 19
+        },
+        {
+          "trial_id": "T4-44faa97de167",
+          "observation_id": "O042",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "44faa97de167807d4985ecdffb268c16638a4ab47f27eab136e1172ce20534b7",
+          "order": 20
+        },
+        {
+          "trial_id": "T4-46134e8618a2",
+          "observation_id": "O022",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "46134e8618a2fa4a1b8b4f8182ffe237f4641f187159c5ed43cc60f415c4b635",
+          "order": 21
+        },
+        {
+          "trial_id": "T4-4d84544c132c",
+          "observation_id": "O041",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "4d84544c132cf3167f7a0ba724ea9f6e8fe42f4a45041f79424fb880ead29c57",
+          "order": 22
+        },
+        {
+          "trial_id": "T4-4e52f95742af",
+          "observation_id": "O002",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "4e52f95742af0a56cf7f38349a18c9a5a98082c7ba2be26ce6775f5ba5b6d1f3",
+          "order": 23
+        },
+        {
+          "trial_id": "T4-5df8cdcd2933",
+          "observation_id": "O025",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "5df8cdcd2933e746d512d0f9c09e8623ec121f4b2b6d87edbc9dcdf512f9a697",
+          "order": 24
+        },
+        {
+          "trial_id": "T4-60363b5c9c11",
+          "observation_id": "O033",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "60363b5c9c11b678cbf28cbd1a8608b450962dee383a2868511320e699a3a272",
+          "order": 25
+        },
+        {
+          "trial_id": "T4-637c660cbdd7",
+          "observation_id": "O001",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "637c660cbdd703d4efc1a04f78ea116f9c9da19ad801e1dd030a45f2c29ba7da",
+          "order": 26
+        },
+        {
+          "trial_id": "T4-6d01deab1fd3",
+          "observation_id": "O029",
+          "arm": "clean",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "6d01deab1fd3b64c159f4d2752bfe35a09e463a53ef5352e87c203f497e3ce7d",
+          "order": 27
+        },
+        {
+          "trial_id": "T4-70c28e1aec67",
+          "observation_id": "O044",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "70c28e1aec672fa18ddc224a08425d0fcca6cd9769055fa55b99328ab9c339cc",
+          "order": 28
+        },
+        {
+          "trial_id": "T4-77d6637b5456",
+          "observation_id": "O026",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "77d6637b5456cf31ffeceae88ca6a838d9943726f736c425a53afc1d081e8628",
+          "order": 29
+        },
+        {
+          "trial_id": "T4-86a2447772e6",
+          "observation_id": "O004",
+          "arm": "noisy",
+          "utterance_id": "p233_027",
+          "speaker": "p233",
+          "order_hash": "86a2447772e66c97be4331b174ee5e36712fe88121bc7597a92e79768ee8afa4",
+          "order": 30
+        },
+        {
+          "trial_id": "T4-971ef241d754",
+          "observation_id": "O017",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "971ef241d75479aee62bc368349236f058448e484d495248aaff6db1481b2078",
+          "order": 31
+        },
+        {
+          "trial_id": "T4-982a9e7c40ab",
+          "observation_id": "O024",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "982a9e7c40ab88ea0d4cbe380f255ca4cbe87d43663073bf50421679e4b17117",
+          "order": 32
+        },
+        {
+          "trial_id": "T4-a78d89fb3490",
+          "observation_id": "O045",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "a78d89fb3490817c42c8e6d802d45a61d318d6767c183f3df0360b2db23510d9",
+          "order": 33
+        },
+        {
+          "trial_id": "T4-aa459d0d794d",
+          "observation_id": "O018",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "aa459d0d794dbddeef8edf3c93fb8a28a4bb08ca6f4d03275d458c9b57fa2491",
+          "order": 34
+        },
+        {
+          "trial_id": "T4-aaf0cf8d4650",
+          "observation_id": "O020",
+          "arm": "noisy",
+          "utterance_id": "p239_026",
+          "speaker": "p239",
+          "order_hash": "aaf0cf8d4650fc847b92241bc84bca56144a1daff8e0f5eb9552f7fb24f6a461",
+          "order": 35
+        },
+        {
+          "trial_id": "T4-ac026710c254",
+          "observation_id": "O011",
+          "arm": "noisy",
+          "utterance_id": "p236_036",
+          "speaker": "p236",
+          "order_hash": "ac026710c2548c5b46fc24ff2f639e09ac6c1dd15f3a776ab09ca18f53492649",
+          "order": 36
+        },
+        {
+          "trial_id": "T4-ad5810c54d7a",
+          "observation_id": "O031",
+          "arm": "clean",
+          "utterance_id": "p243_027",
+          "speaker": "p243",
+          "order_hash": "ad5810c54d7a1f78a564f0141741d795b7b2db3121093632d5aa4b4840939f36",
+          "order": 37
+        },
+        {
+          "trial_id": "T4-af75a33844fd",
+          "observation_id": "O039",
+          "arm": "clean",
+          "utterance_id": "p244_034",
+          "speaker": "p244",
+          "order_hash": "af75a33844fdae32a8492162956043c480420f38bf9c0ec369f1942124d6d615",
+          "order": 38
+        },
+        {
+          "trial_id": "T4-b67425225022",
+          "observation_id": "O023",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "b67425225022026d104ecb497bac8bf0a2a52c8a3da90b466686328ab6ebe0a1",
+          "order": 39
+        },
+        {
+          "trial_id": "T4-b97267eaef5e",
+          "observation_id": "O021",
+          "arm": "clean",
+          "utterance_id": "p239_028",
+          "speaker": "p239",
+          "order_hash": "b97267eaef5e97cc3996df8fc381417be6b21dc7cdbba159aa5b9c0bda7dad60",
+          "order": 40
+        },
+        {
+          "trial_id": "T4-c46eb461079c",
+          "observation_id": "O014",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "c46eb461079c36a938395100f82f50c122ab2714afa9d6a9b9a79b4ed645c991",
+          "order": 41
+        },
+        {
+          "trial_id": "T4-c790f2669f90",
+          "observation_id": "O035",
+          "arm": "noisy",
+          "utterance_id": "p244_028",
+          "speaker": "p244",
+          "order_hash": "c790f2669f90d6c847aae046804299611cc5c6f301b080524184229e80eafdf8",
+          "order": 42
+        },
+        {
+          "trial_id": "T4-c8100270f195",
+          "observation_id": "O013",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "c8100270f195e115f00658bb882e8de160509dda1d39282844c6d556a95ea7e4",
+          "order": 43
+        },
+        {
+          "trial_id": "T4-d14d0f3f2c9d",
+          "observation_id": "O015",
+          "arm": "clean",
+          "utterance_id": "p236_040",
+          "speaker": "p236",
+          "order_hash": "d14d0f3f2c9d8336c2607297b7cda199743dca03c448eb683619b40ce84e3e49",
+          "order": 44
+        },
+        {
+          "trial_id": "T4-d619714689b0",
+          "observation_id": "O047",
+          "arm": "clean",
+          "utterance_id": "p250_050",
+          "speaker": "p250",
+          "order_hash": "d619714689b029c59a5aee700bdbe24bfba7b33e0a15c5f0529de527c33a3f27",
+          "order": 45
+        },
+        {
+          "trial_id": "T4-d6f67c7b1b96",
+          "observation_id": "O043",
+          "arm": "noisy",
+          "utterance_id": "p250_038",
+          "speaker": "p250",
+          "order_hash": "d6f67c7b1b9622d1e332f9df64ec428b5edb9f990ffcd8f0e513bf7c4b6ba6a0",
+          "order": 46
+        },
+        {
+          "trial_id": "T4-e7175fcf7f1c",
+          "observation_id": "O027",
+          "arm": "noisy",
+          "utterance_id": "p243_026",
+          "speaker": "p243",
+          "order_hash": "e7175fcf7f1ca295e37a96347c86eb95467559b4d261eba31848a69ce1125ede",
+          "order": 47
+        }
+      ]
+    }
+  ],
+  "presentation_rules": {
+    "max_plays_per_trial": 2,
+    "cross_trial_replay": false,
+    "per_arm_normalization": false,
+    "volume": "listener fixes device gain before trials; log subsequent change, not per item or arm",
+    "instruction": "judge only marked80ms; context speech is not sufficient; unknown separate from non-speech",
+    "no_edited_versions": true
+  },
+  "design_correction": "initial600ms allocation boundary assertion failed before file output; fixed480ms follows pre-existing200ms selection margin, no sourceaudio read or region replacement",
+  "do_not_expose_operator_metadata_to_listeners": true,
+  "launch_authorized": false,
+  "scientific_gate_ready": false
+}

@@ -1,0 +1,75 @@
+{
+  "request": {
+    "key": "p230_027__scaledclean",
+    "id": "p230_027",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+    "input": {
+      "wav_sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67",
+      "samples": 51162,
+      "array_sha256": "d493e6d3c4137b25b63b23dd41417dbdc37538df12dde4f66a667b6abeccc833",
+      "peak": 0.096893310546875,
+      "rms": 0.011973657987735562
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " He has the courage of the Unawah.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " He has the courage of the Unawah.",
+        "tokens": [
+          50363,
+          679,
+          468,
+          262,
+          11917,
+          286,
+          262,
+          791,
+          707,
+          993,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.6798880650446966,
+        "compression_ratio": 0.8918918918918919,
+        "no_speech_prob": 0.05506730079650879
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 5,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

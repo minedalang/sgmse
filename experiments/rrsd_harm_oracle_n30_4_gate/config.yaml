@@ -1,0 +1,10 @@
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+N: 30
+max_files: 4
+device: cuda
+seed: 2026
+use_ema: true
+harm_threshold: 0.0
+harm_scale: 0.0
+input_symlink_dir: /tmp/rrsd_oracle4/noisy
+git_commit: 3e08d3c23bae552238dfcc4abb75c05a7e8b1966

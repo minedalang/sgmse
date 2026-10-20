@@ -1,0 +1,14 @@
+{
+  "status": "passed_cpu_toy_only",
+  "exact_raw_ema_optimizer_rng_order_log": true,
+  "atomic_failure_preserved_old_latest": true,
+  "temporary_and_failure_receipt_retained": true,
+  "successful_atomic_replacement": true,
+  "uncommitted_tail_refused": true,
+  "unsafe_targets_refused": true,
+  "incomplete_schema_refused": true,
+  "cuda_or_real_source_verified": false,
+  "artifact_bytes": 58388,
+  "module_sha256": "5d10bf413590fa7b35ecc56602df2a2020e3a73c1ba52e8e838661e5ffd9c442",
+  "test_sha256": "d1c62acc5d4ab321acd30b41c4bc938eb41f6664eb93d57bb6aac94cc6534ce8"
+}

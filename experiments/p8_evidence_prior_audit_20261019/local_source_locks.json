@@ -1,0 +1,22 @@
+[
+  {
+    "path": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/experiment_report.md",
+    "bytes": 5202,
+    "sha256": "a03b132da0d045e88d9662a3a18c39f3863782aeb3af9e3d64952ccb98f97934"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/metrics.json",
+    "bytes": 126565,
+    "sha256": "b16c5d414f3b57163800b2272d1cc6e0aa54787560814c228c5cc77019fa2562"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "bytes": 7014,
+    "sha256": "b990afebe4ac3a05397830e762f50189eaa454dd8d7b2f2cbd839b5927a5fda2"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md",
+    "bytes": 10667,
+    "sha256": "6bd5875895c14c40e575cd660ebbeff2d922d0a70c8fceb744b0f1f0cae881f3"
+  }
+]

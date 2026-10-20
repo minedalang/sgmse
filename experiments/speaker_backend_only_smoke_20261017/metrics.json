@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "trainable_parameter_count_logged": 27800000,
+  "non_trainable_parameter_count_logged": 128000000,
+  "ema_tracked_parameter_tensors": 270,
+  "frontend_mode": "eval/frozen",
+  "router_mode": "train module but all router parameters frozen by rrsd_freeze_router",
+  "train_loss_step": 2683.139,
+  "gradient_path": "backend-only training graph completed one optimizer step",
+  "log": "/tmp/speaker_backend_only_smoke1.log",
+  "checkpoint_written": false,
+  "data_modified": false,
+  "objective_audit_note": "rrsd_weight=1.0 kept the RRSD auxiliary loss active; this verified gradient flow/parameter freezing only and did not isolate the standard score-matching plus speaker objective."
+}

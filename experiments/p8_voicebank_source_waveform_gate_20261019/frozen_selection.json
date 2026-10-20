@@ -1,0 +1,106 @@
+{
+  "status": "frozen_metadata_selection_before_remote_audio",
+  "rule": "For existing valid only p226,p287, lexicographic first2 IDs per speaker with integer utterance>=26 and clean_header duration in inclusive[3,8]s; no text meaning/ASR/output filter",
+  "eligible_counts": {
+    "p226": 150,
+    "p287": 89
+  },
+  "manifest_path": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl",
+  "manifest_SHA256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+  "text_source_archive": {
+    "path": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip",
+    "SHA256": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8",
+    "official_MD5": "48bfcd5945165c60ab9d2f312f4d6e1c"
+  },
+  "official_audio_archive_metadata": {
+    "bitstream_guid": "245452b6-6235-44b6-a6f9-e7eb19797769",
+    "name": "clean_trainset_28spk_wav.zip",
+    "sizeBytes": 2486057279,
+    "official_checksum_metadata": {
+      "checkSumAlgorithm": "MD5",
+      "value": "d2d5a45ec32f8fcbf201bde0447e20ba"
+    },
+    "checksum_not_full_archive_verified": true
+  },
+  "samples": [
+    {
+      "id": "p226_027",
+      "speaker": "p226",
+      "local_partition": "valid",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_027.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 63447,
+        "subtype": "PCM_16"
+      },
+      "duration_seconds": 3.9654375,
+      "source_audio_SHA256": "d56d7e5b9eda853a0d493c246f1e59ecd39cf830776ec1895691d57ec7e77385",
+      "raw_text_SHA256": "4c89a690f064039006e014051fd9c1520256f1fc8a454a312412600e13d8cbb3",
+      "normalized_text_SHA256": "c4e52deb21ccb52d09e47c47342b613668080d914e7432f97f51f38e109cbfab",
+      "text_archive_member": "trainset_28spk_txt/p226_027.txt",
+      "official_member": "clean_trainset_28spk_wav/p226_027.wav"
+    },
+    {
+      "id": "p226_028",
+      "speaker": "p226",
+      "local_partition": "valid",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_028.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 67653,
+        "subtype": "PCM_16"
+      },
+      "duration_seconds": 4.2283125,
+      "source_audio_SHA256": "7df2e7755da80d44493350eb7af61ebb022bd3bb9066f1145f028f35d574f3ec",
+      "raw_text_SHA256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+      "normalized_text_SHA256": "815af9ca628dc99c8d8caf899f10f4a1abcc9521bb49f843beb8d36b327b00e9",
+      "text_archive_member": "trainset_28spk_txt/p226_028.txt",
+      "official_member": "clean_trainset_28spk_wav/p226_028.wav"
+    },
+    {
+      "id": "p287_037",
+      "speaker": "p287",
+      "local_partition": "valid",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_037.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 60008,
+        "subtype": "PCM_16"
+      },
+      "duration_seconds": 3.7505,
+      "source_audio_SHA256": "bd02cedd2a8d847b8a4a0897ba61814ae6027faed162dce7f5e5bf557abfffcd",
+      "raw_text_SHA256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+      "normalized_text_SHA256": "002ede7684331190000922d5d0a3f85a1ebce667528c6013e6baf53a913163d1",
+      "text_archive_member": "trainset_28spk_txt/p287_037.txt",
+      "official_member": "clean_trainset_28spk_wav/p287_037.wav"
+    },
+    {
+      "id": "p287_054",
+      "speaker": "p287",
+      "local_partition": "valid",
+      "clean_path": "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_054.wav",
+      "clean_header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51089,
+        "subtype": "PCM_16"
+      },
+      "duration_seconds": 3.1930625,
+      "source_audio_SHA256": "05690fdc79c92a9a54b6a8fe6c0acdcb1f10be090773a4090418458fff052e76",
+      "raw_text_SHA256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+      "normalized_text_SHA256": "fe531f76e90a169481ff984477db401b4940199f129058461d03e936a7a61539",
+      "text_archive_member": "trainset_28spk_txt/p287_054.txt",
+      "official_member": "clean_trainset_28spk_wav/p287_054.wav"
+    }
+  ],
+  "recipe_script": {
+    "path": "/data/datasets/vb/voicebank_demand/voicebank_prepare.py",
+    "SHA256": "a659ad6f96441f4afe97e05e50638b6f45948b42efc2ed79b3bc545221076d6f",
+    "presence_proves_past_execution": false
+  },
+  "remote_requests_during_preparation": 0,
+  "audio_decodes_during_preparation": 0
+}

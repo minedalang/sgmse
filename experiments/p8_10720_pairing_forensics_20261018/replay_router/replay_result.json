@@ -1,0 +1,12 @@
+{
+  "status": "completed",
+  "metrics": "metrics.json",
+  "single_model_inference_completed": true,
+  "router_exact_byte_match": true,
+  "router_window_exact_pcm_match": true,
+  "frontend_exact_pcm16_match": true,
+  "off_rerun": false,
+  "user_postfix_content_difference_resolved": false,
+  "effective_per_file_seed": 2997368683,
+  "nfe": 30
+}

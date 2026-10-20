@@ -1,0 +1,31 @@
+{
+  "status": "passed",
+  "checks": [
+    {
+      "id": "p226_027",
+      "word_and_character_alignment_exact": true,
+      "publisher_raw_reference_exact": true
+    },
+    {
+      "id": "p226_028",
+      "word_and_character_alignment_exact": true,
+      "publisher_raw_reference_exact": true
+    },
+    {
+      "id": "p287_037",
+      "word_and_character_alignment_exact": true,
+      "publisher_raw_reference_exact": true
+    },
+    {
+      "id": "p287_054",
+      "word_and_character_alignment_exact": true,
+      "publisher_raw_reference_exact": true
+    }
+  ],
+  "source_locks": 37,
+  "metrics_SHA256_unchanged": "f443996cd8c5e80d0be224ab8fcbebcde925bec65cf9d87d045ebbb10ecfef6a",
+  "models": 0,
+  "network_calls": 0,
+  "audio_decodes": 0,
+  "independent_scoring": true
+}

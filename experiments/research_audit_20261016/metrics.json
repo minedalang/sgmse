@@ -1,0 +1,347 @@
+{
+  "experiment_id": "research_audit_20261016",
+  "data_audit": {
+    "train": {
+      "utterances": 10800,
+      "speakers": 1470,
+      "speakers_with_2plus": 1303,
+      "single_speaker_count": 167,
+      "max_utts_per_speaker": 33,
+      "missing_speaker_id": 0
+    },
+    "cv": {
+      "utterances": 1200,
+      "speakers": 158,
+      "speakers_with_2plus": 141,
+      "single_speaker_count": 17,
+      "max_utts_per_speaker": 24,
+      "missing_speaker_id": 0
+    },
+    "train_cv_speaker_overlap": [
+      "10658"
+    ],
+    "test_splits": {
+      "tt_synthetic_no_reverb": {
+        "utterances": 150,
+        "speakers": 0,
+        "speakers_with_2plus": 0,
+        "single_speaker_count": 0,
+        "max_utts_per_speaker": 0,
+        "missing_speaker_id": 150
+      },
+      "tt_synthetic_with_reverb": {
+        "utterances": 150,
+        "speakers": 0,
+        "speakers_with_2plus": 0,
+        "single_speaker_count": 0,
+        "max_utts_per_speaker": 0,
+        "missing_speaker_id": 150
+      },
+      "tt_real_recordings": {
+        "utterances": 300,
+        "speakers": 0,
+        "speakers_with_2plus": 0,
+        "single_speaker_count": 0,
+        "max_utts_per_speaker": 0,
+        "missing_speaker_id": 300
+      }
+    }
+  },
+  "A_harm_teacher": {
+    "fd_probe_record": "experiments/rrsd_harm_teacher_fd_probe",
+    "n_fd_rows": 86,
+    "conflict_rows": 64,
+    "conflict_only_plus_ok_rate": 0.71875,
+    "conflict_only_minus_ok_rate": 0.828125,
+    "conflict_only_bidirectional_rate": 0.59375,
+    "low_t_bidirectional_rate": 0.7142857142857143,
+    "mid_t_bidirectional_rate": 0.5,
+    "deployment_status": "oracle diagnostic implemented; CUDA N=4 smoke and 4-file N=4 validation passed; N=30 four-file hard-gate comparison completed without meaningful paired metric change",
+    "oracle_n30_4": {
+      "full_harm_steps": "0/120",
+      "gate_harm_steps": "19/120 (15.8%)",
+      "gate_minus_full": {
+        "pesq": {
+          "mean": 0.000158,
+          "ci95": [
+            -6e-06,
+            0.000388
+          ]
+        },
+        "stoi": {
+          "mean": 7e-06,
+          "ci95": [
+            -5e-06,
+            2.5e-05
+          ]
+        },
+        "si_sdr_db": {
+          "mean": -1.8e-05,
+          "ci95": [
+            -5.3e-05,
+            1.1e-05
+          ]
+        }
+      },
+      "interpretation": "No meaningful paired quality improvement on four files; do not train Harm Head yet.",
+      "record": "experiments/rrsd_harm_oracle_n30_4_paired"
+    }
+  },
+  "B_code_audit": {
+    "speaker_parser": "reader_(\\d+) from uttid or noisy basename; valid for tr/cv synthetic SCP",
+    "batch_sampler": "requires batch_size divisible by 2 and forms same-speaker groups",
+    "speaker_loss": "paired InfoNCE denominator retains same-speaker off-diagonal false negatives; auxiliary prototype uses other same-speaker clean embeddings",
+    "existing_runs": [
+      "rrsd_speaker_pair1000 cw=10 sw=0",
+      "rrsd_speaker_proto01_1000 cw=10 sw=0.1",
+      "rrsd_speaker_proto01_cw1_1000 cw=1 sw=0.1"
+    ],
+    "independent_eval_models": [
+      "/data/coding/sgmse/pre_models/speechbrain-xvector",
+      "/data/coding/sgmse/pre_models/wespeaker-voxceleb-campplus"
+    ],
+    "independent_probe_32": {
+      "encoder": "WeSpeaker CAM++ local avg_model.pt",
+      "same_reader_pairs": 2,
+      "different_reader_pairs": 494,
+      "clean_cosine_mean": {
+        "off": 0.88595,
+        "original_router": 0.88089,
+        "pair": 0.88289,
+        "proto01": 0.88286,
+        "proto01_cw1": 0.88176
+      },
+      "interpretation": "Diagnostic only; too few same-reader cross-utterance pairs to claim speaker verification improvement.",
+      "record": "experiments/rrsd_independent_speaker_probe_32"
+    },
+    "repeated_speaker_cv32": {
+      "record": "experiments/rrsd_cv_repeat32",
+      "speakers": 16,
+      "utterances": 32,
+      "same_pairs": 16,
+      "different_pairs": 480,
+      "mean_metrics": {
+        "off": {
+          "campp_cos": 0.844619,
+          "pesq": 1.678501,
+          "stoi": 0.796901,
+          "si_sdr_db": 6.482536
+        },
+        "router": {
+          "campp_cos": 0.841249,
+          "pesq": 1.691523,
+          "stoi": 0.798124,
+          "si_sdr_db": 6.966351
+        },
+        "pair": {
+          "campp_cos": 0.842628,
+          "pesq": 1.689088,
+          "stoi": 0.797883,
+          "si_sdr_db": 6.842032
+        },
+        "proto01": {
+          "campp_cos": 0.842649,
+          "pesq": 1.688038,
+          "stoi": 0.797876,
+          "si_sdr_db": 6.840583
+        },
+        "proto01_cw1": {
+          "campp_cos": 0.841882,
+          "pesq": 1.690266,
+          "stoi": 0.798048,
+          "si_sdr_db": 6.912326
+        },
+        "masked": {
+          "campp_cos": 0.8428624086081982,
+          "pesq": 1.6900232806801796,
+          "stoi": 0.7978248304293073,
+          "si_sdr_db": 6.822343752835877
+        }
+      },
+      "interpretation": "No speaker-trained arm exceeded Router on same-speaker CAM++ cosine; all three original arms and the masked arm lost SI-SDR. The masked arm has enhanced-clean CAM++ +0.001613 versus Router but same-speaker cross-utterance 0.840694 versus 0.842322, so this is not an independent speaker gain. Speaker checkpoints are 1000-step runs versus 80k Router, so this rejects the current short-run variants but is not a matched-budget universal rejection.",
+      "masked_full32": {
+        "delta_vs_router": {
+          "cos": {
+            "delta": 0.001612992025911808,
+            "ci95": [
+              0.0003917434019967914,
+              0.0028697450179606624
+            ]
+          },
+          "pesq": {
+            "delta": -0.0014995262026786804,
+            "ci95": [
+              -0.0066854657605290415,
+              0.003938331361860035
+            ]
+          },
+          "stoi": {
+            "delta": -0.0002996584015852559,
+            "ci95": [
+              -0.0005533573936096675,
+              -7.1030279519882e-05
+            ]
+          },
+          "sisdr": {
+            "delta": -0.14400767243932933,
+            "ci95": [
+              -0.16389656279061454,
+              -0.12451267697033473
+            ]
+          }
+        },
+        "speaker_pairs": {
+          "same": 0.8406941145658493,
+          "different": 0.2505150225856899
+        },
+        "record": "experiments/rrsd_cv_repeat32/masked_pair32_metrics.json",
+        "interpretation": "Masking same-speaker negatives does not improve same-speaker cross-utterance CAM++ over Router (0.840694 vs 0.842322) and loses 0.144 dB SI-SDR; PESQ CI crosses zero and STOI also declines."
+      }
+    }
+  },
+  "fairness_gaps": [
+    "80k Router and 300k 5ul7u03z are unequal training budgets",
+    "full 150 matched off/full/selective audio triplet is incomplete; selective and conflict full outputs exist",
+    "test SCP has no reader IDs, so cross-utterance speaker evaluation cannot use test split without external metadata",
+    "cv has one speaker overlap with train (reader_10658), so speaker-disjoint validation requires a new split or held-out IDs"
+  ],
+  "next_experiments": [
+    {
+      "id": "B_independent_speaker_probe",
+      "design": "reuse existing 32 cv outputs; evaluate clean/enhanced/noisy with SpeechBrain XVector or CAM++ and reader-ID same/different pairs",
+      "success": "speaker score improves over full Router and does not reduce PESQ/STOI",
+      "exit": "no independent speaker gain or strong content/reconstruction tradeoff"
+    },
+    {
+      "id": "fair_matched_full_triplet",
+      "design": "same 80k checkpoint, same 150 files/seed/N; generate off, full, selective with immutable separate dirs",
+      "success": "paired CIs available before any new tuning",
+      "exit": "cannot reproduce same stochastic inputs or evaluator mismatch"
+    },
+    {
+      "id": "A_tcut005_heldout",
+      "design": "validate t_cut=0.05 on held-out SNR/split with matched Router and fixed scale baselines",
+      "success": "DNSMOS OVRL/SIG gain with mean SI-SDR loss <=0.05 dB and no major PESQ/STOI collapse",
+      "exit": "gain disappears or reconstruction loss exceeds threshold",
+      "status": "next low-cost validation; no training yet"
+    }
+  ],
+  "A_conflict_aware_matched_20261017": {
+    "record": "experiments/rrsd_conflict_weight001_full_test/matched_comparison.json",
+    "control_record": "experiments/rrsd_control1000_full_matched_20261017/metrics.json",
+    "n": 150,
+    "conflict_minus_control": {
+      "pesq": {
+        "delta": -6.69725735982259e-05,
+        "ci95": [
+          -0.0024590117732683817,
+          0.0021700964570045473
+        ]
+      },
+      "stoi": {
+        "delta": -6.09282946149862e-05,
+        "ci95": [
+          -9.404897008931312e-05,
+          -2.7394249544744747e-05
+        ]
+      },
+      "si_sdr_db": {
+        "delta": -0.022527207831541697,
+        "ci95": [
+          -0.02484813493490219,
+          -0.02032451498260101
+        ]
+      },
+      "dnsmos_p808": {
+        "delta": 0.0024582799275716144,
+        "ci95": [
+          0.001406067689259847,
+          0.0035647118488947526
+        ]
+      },
+      "dnsmos_sig": {
+        "delta": 0.0003411016075073163,
+        "ci95": [
+          -0.0008365922829037816,
+          0.0015241683566379082
+        ]
+      },
+      "dnsmos_bak": {
+        "delta": -0.000565081295066913,
+        "ci95": [
+          -0.0014838113690724196,
+          0.00032136511477034047
+        ]
+      },
+      "dnsmos_ovrl": {
+        "delta": 0.00041043936189150663,
+        "ci95": [
+          -0.0009088604174282438,
+          0.0017136774111622555
+        ]
+      }
+    },
+    "interpretation": "No reliable OVRL/SIG gain beyond matched ordinary adaptation; SI-SDR and STOI decline. Do not long-train this route without a new hypothesis."
+  },
+  "A_fixed_scale_screen_20261017": {
+    "scale05_record": "experiments/rrsd_scale05_screen_20261017/metrics.json",
+    "scale025_record": "experiments/rrsd_scale025_screen_20261017/metrics.json",
+    "interpretation": "Global scale creates a DNSMOS-reconstruction Pareto curve but neither 0.25 nor 0.5 resolves the conflict; future gate must be state/time dependent."
+  },
+  "A_tcut005_full_20261017": {
+    "record": "experiments/rrsd_tcut005_full_20261017/metrics.json",
+    "n": 150,
+    "delta_vs_router": {
+      "pesq": {
+        "delta": -0.002534923553466797,
+        "ci95": [
+          -0.003759860336780548,
+          -0.0011545116305351284
+        ]
+      },
+      "stoi": {
+        "delta": -0.00019607181321001162,
+        "ci95": [
+          -0.0002607654269365363,
+          -0.000132307123860163
+        ]
+      },
+      "si_sdr_db": {
+        "delta": -0.049718802769978844,
+        "ci95": [
+          -0.05355598857005437,
+          -0.046116617749134704
+        ]
+      },
+      "dnsmos_p808": {
+        "delta": 0.0051880359649658205,
+        "ci95": [
+          0.0034066004753112796,
+          0.0069681120316187495
+        ]
+      },
+      "dnsmos_sig": {
+        "delta": 0.003971351731936031,
+        "ci95": [
+          0.002391451016034344,
+          0.005585318454901647
+        ]
+      },
+      "dnsmos_bak": {
+        "delta": -0.0002708544741036315,
+        "ci95": [
+          -0.0019093965537235929,
+          0.001416957221156264
+        ]
+      },
+      "dnsmos_ovrl": {
+        "delta": 0.003873180901455561,
+        "ci95": [
+          0.001864427543370136,
+          0.0059162886543629774
+        ]
+      }
+    },
+    "interpretation": "Best current Pareto candidate; hand-designed late-step cutoff, needs held-out validation."
+  }
+}

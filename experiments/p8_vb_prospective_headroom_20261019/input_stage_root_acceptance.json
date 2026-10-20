@@ -1,0 +1,17 @@
+{
+  "utc": "2026-10-19T06:44:13.350685+00:00",
+  "status": "CPU_inputs_accepted_for_model_preparation_only",
+  "registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "runtime_seconds": 4.34754569910001,
+  "groups": 8,
+  "noisy_cases": 32,
+  "signal_artifacts": 40,
+  "source_pcm_decodes": 10,
+  "runtime_artifact_hashes_verified_by_Root": 94,
+  "source_locks_verified": 32,
+  "preparation_locks_verified": 7,
+  "prepared_independent_reconstruction_status": "passed",
+  "model_preparation_authorized": true,
+  "model_execution_authorized": false,
+  "note": "All40input signals independently reconstructed by Worker validator; Root inspected current metrics/validator/registry and hashed artifacts and sources. Does not prove spoken alignment, phoneme truth or scientific headroom. Input-stage provenance finishing is separate and must not mutate original metrics/registry/frozen7."
+}

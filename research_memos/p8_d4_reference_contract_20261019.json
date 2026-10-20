@@ -1,0 +1,52 @@
+{
+  "kind": "analytic_D4_contract_not_empirical_detection_or_utterance_D4_scores",
+  "utc": "2026-10-19T09:37:12.863788+00:00",
+  "documents": {
+    "/data/coding/sgmse/research_memos/p8_d4_reference_contract_20261019.md": "08e8ef19b2b5371c7126eeb0dd2e19ac881e8e6f3bcbedc279e2fe2accbee5dc",
+    "/data/research/p8_noisy_identifiability.md": "c871dc8ef3efebee12571c0fc5aa187410d11713892f4505d33007a5efbaea05",
+    "/data/research/evidence_summary.md": "941b873f09ae57bc9d8de2065863988fff43825eb85527c04f3fb420a529e88d"
+  },
+  "existing_metrics_current_verified": {
+    "experiments/p8_i1_pair_residual_audit_20261019/metrics.json": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6",
+    "experiments/p8_i1b_event_pair_integrity_20261019/metrics.json": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c"
+  },
+  "local_links_checked": 17,
+  "primary_references": [
+    {
+      "url": "https://web.stanford.edu/class/stats202/notes/Classification/LDA.html",
+      "scope": "equal covariance Gaussian discriminant derivation"
+    },
+    {
+      "url": "https://www.ocw.mit.edu/courses/6-011-signals-systems-and-inference-spring-2018/dfe2855f36e44436678bfd3736c937fe_MIT6_011S18lec24.pdf",
+      "scope": "matched filtering and Gaussian Q tail"
+    }
+  ],
+  "analytic_counterexample": {
+    "delta": [
+      1,
+      0
+    ],
+    "covarianceA_diagonal": [
+      "1/4",
+      "7/4"
+    ],
+    "covarianceB_diagonal": [
+      "7/4",
+      "1/4"
+    ],
+    "same_trace": "2",
+    "d_squared_A": "4",
+    "d_squared_B": "4/7",
+    "conditional_error_A": 0.15865525393145707,
+    "conditional_error_B": 0.3527284930556367,
+    "not_real_voice_data": true
+  },
+  "independent_critic": "/root/research_gate_critic math-only review accepted; common mean and degenerate d0 tie randomization added",
+  "source_audio_reads": 0,
+  "noise_covariance_fits": 0,
+  "actual_D4_detection_scores": 0,
+  "models": 0,
+  "training": 0,
+  "real_run_authorized": false,
+  "goal_complete": false
+}

@@ -1,0 +1,76 @@
+{
+  "request": {
+    "key": "p287_054__scaledclean",
+    "id": "p287_054",
+    "arm": "scaledclean",
+    "path": "inputs/p287_054_scaledclean.wav",
+    "input": {
+      "wav_sha256": "095bc6c0ee82cdfa0e8c435c564539b2f09ff0551d62554ec6763d8af42a7280",
+      "samples": 51089,
+      "array_sha256": "e5d4d767326e88ba7e18dce26ba45b3a2b6a0ca30a795e5f4d4043f2609fd4d2",
+      "peak": 0.093994140625,
+      "rms": 0.012067457659704527
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " In time, the first minister will grow in stature.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " In time, the first minister will grow in stature.",
+        "tokens": [
+          50363,
+          554,
+          640,
+          11,
+          262,
+          717,
+          5342,
+          481,
+          1663,
+          287,
+          32600,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.31150480679103304,
+        "compression_ratio": 0.8596491228070176,
+        "no_speech_prob": 0.024350961670279503
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 4,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

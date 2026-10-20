@@ -1,0 +1,85 @@
+{
+  "status": "completed",
+  "initial_execution_failure": {
+    "command": "python verify.py",
+    "error": "ModuleNotFoundError: soundfile",
+    "resolution": "Used existing /data/coding/sgmse/env/bin/python, no installation"
+  },
+  "arms": {
+    "noisy": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_noisy.wav",
+      "url": "http://127.0.0.1:8766/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_noisy.wav",
+      "http_status": 200,
+      "http_matches_disk": true,
+      "sha256": "1ed4dfda8179b1ff06ed95e7513c00587bbca4c39f7be1eaf62629b91f0480b1",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "verified_source_window_s": [
+        4.75,
+        6.75
+      ],
+      "exact_pcm_equality": true,
+      "equals_current_clip": false
+    },
+    "clean": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_clean.wav",
+      "url": "http://127.0.0.1:8766/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_clean.wav",
+      "http_status": 200,
+      "http_matches_disk": true,
+      "sha256": "10435d243635f7b4135fbca220d6de45d2e501e6cdd0770abd209652ec85204c",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "verified_source_window_s": [
+        13.75,
+        15.75
+      ],
+      "exact_pcm_equality": true,
+      "equals_current_clip": true
+    },
+    "y_pre": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_y_pre.wav",
+      "url": "http://127.0.0.1:8766/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_y_pre.wav",
+      "http_status": 200,
+      "http_matches_disk": true,
+      "sha256": "559ec2a43e8ad6c694df307023a3e2454a13536c165b29a2cb63e19dbe126c0e",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "verified_source_window_s": [
+        13.75,
+        15.75
+      ],
+      "exact_pcm_equality": true,
+      "equals_current_clip": true
+    },
+    "off": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_off.wav",
+      "url": "http://127.0.0.1:8766/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_off.wav",
+      "http_status": 200,
+      "http_matches_disk": true,
+      "sha256": "368283fb95df9f7e569fde71d11cfc4fc04a967176667a3b14082bb75c70c8bb",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "verified_source_window_s": [
+        13.75,
+        15.75
+      ],
+      "exact_pcm_equality": true,
+      "equals_current_clip": true
+    },
+    "router": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_router.wav",
+      "url": "http://127.0.0.1:8766/p8_e1_candidate_listening_20261018/clips/fileid_10720_14.50_15.00_router.wav",
+      "http_status": 200,
+      "http_matches_disk": true,
+      "sha256": "e841bd82429671c6c7b33768e39d5d3bbcb8884ce989ec6ad9d491e47b4b7c51",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "verified_source_window_s": [
+        13.75,
+        15.75
+      ],
+      "exact_pcm_equality": true,
+      "equals_current_clip": true
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "request": {
+    "key": "p230_027_N2_snr_m18.wav__noisy",
+    "id": "p230_027",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_m18.wav",
+    "basename": "p230_027_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "4a61e4a6b0812fc3f28d928f8e70ffda939087546000ae1c10740dbe536c994c",
+      "samples": 51162,
+      "array_sha256": "56c3a0d2a420b7d613a24eb95f41bc51f78a1b5837212e480f89780a7f813d6c",
+      "peak": 0.899993896484375,
+      "rms": 0.09583974992083143
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.202760934829712,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.8283611536026001
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 63,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

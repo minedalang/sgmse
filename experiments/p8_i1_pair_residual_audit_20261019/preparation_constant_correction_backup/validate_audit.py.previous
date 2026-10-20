@@ -1,0 +1,123 @@
+"""Direct independent reconstruction; does not import business statistics or driver."""
+from pathlib import Path
+import csv,hashlib,json,math,os,signal,struct,sys,time,traceback,wave,importlib.abc,statistics
+for key in ['OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS']:os.environ[key]='1'
+OUT=Path(__file__).resolve().parent
+
+def digest(p):
+    h=hashlib.sha256()
+    with Path(p).open('rb') as f:
+        for b in iter(lambda:f.read(1048576),b''):h.update(b)
+    return h.hexdigest()
+def load(p):return json.loads(Path(p).read_text())
+def verify(locks):
+    for p,r in locks.items():assert Path(p).stat().st_size==r['bytes'] and digest(p)==r['sha256'],p
+
+def independent_relation(a,b):
+    import numpy as np
+    if not np.isfinite(a).all() or not np.isfinite(b).all():return dict(n=len(a),s_mean=None,x_mean=None,s_power=None,x_power=None,inner_product=None,pearson=None,pearson_reason='nonfinite samples',ols_gain=None,ols_reason='nonfinite samples',fit_residual_power=None,fit_residual_s_inner_product=None,fit_residual_pearson=None,fit_residual_pearson_reason='nonfinite samples',fit_residual_mean=None,numeric_reason='nonfinite samples')
+    n=len(a);am=float(np.mean(a));bm=float(np.mean(b));ac=a-am;bc=b-bm;ea=float(np.dot(ac,ac));eb=float(np.dot(bc,bc));rawa=float(np.dot(a,a));rawb=float(np.dot(b,b));dot=float(np.dot(a,b));g=dot/rawa if rawa>0 else None
+    fit_inner=fit_corr=fit_mean=None;fit_reason='zero reference energy' if g is None else None
+    if g is not None:
+        resid=b-g*a;centered=resid-np.mean(resid);er=float(np.dot(centered,centered));fit_inner=float(np.dot(a,resid));fit_mean=float(np.mean(resid))
+        if ea>0 and er>0:fit_corr=float(np.dot(ac,centered)/math.sqrt(ea*er))
+        else:fit_reason='zero centered energy'
+    return dict(numeric_reason=None,fit_residual_s_inner_product=fit_inner,fit_residual_pearson=fit_corr,fit_residual_pearson_reason=fit_reason,fit_residual_mean=fit_mean,n=n,s_mean=am,x_mean=bm,s_power=rawa/n,x_power=rawb/n,inner_product=dot,pearson=float(np.dot(ac,bc)/math.sqrt(ea*eb)) if ea>0 and eb>0 else None,pearson_reason=None if ea>0 and eb>0 else 'zero centered energy',ols_gain=g,ols_reason=None if g is not None else 'zero reference energy',fit_residual_power=float(np.dot(b-g*a,b-g*a)/n) if g is not None else None)
+def independent_stats(a):
+    import numpy as np
+    if not np.isfinite(a).all():return dict(n=len(a),minimum=None,maximum=None,abspeak=None,mean=None,power=None,rms=None,exact_zero=None,negative_pcm_endpoint=None,positive_pcm_endpoint=None,numeric_reason='nonfinite samples')
+    energy=float(np.dot(a,a)/len(a))
+    return dict(numeric_reason=None,n=len(a),minimum=float(np.min(a)),maximum=float(np.max(a)),abspeak=float(np.max(np.abs(a))),mean=float(np.sum(a)/len(a)),power=energy,rms=math.sqrt(energy),exact_zero=int(np.count_nonzero(a==0)),negative_pcm_endpoint=int(np.count_nonzero(a==-1)),positive_pcm_endpoint=int(np.count_nonzero(a==32767/32768)))
+def independent_best(rows):
+    defined={r['lag']:r for r in rows if r['pearson'] is not None}
+    if not defined:return None
+    high=max(r['pearson'] for r in defined.values());tie=[lag for lag,r in defined.items() if r['pearson']>=high-1e-12];lag=sorted(tie,key=lambda v:(abs(v),v))[0];return defined[lag]
+def independent_compute(s,x,sid):
+    import numpy as np
+    length=len(s);nr=x-s;curve=[]
+    for lag in range(-160,161):curve.append(dict(id=sid,lag=lag,**independent_relation(s[160:length-160],x[160+lag:length-160+lag])))
+    chosen=independent_best(curve);frames=[]
+    for start in range(0,length,160):
+        stop=min(length,start+320);a=s[start:stop];b=x[start:stop];n=nr[start:stop];fit=independent_relation(a,b);related=independent_relation(a,n);values={}
+        for prefix,array in [('s',a),('x',b),('raw',n)]:
+            p=float(np.dot(array,array)/len(array));values.update({prefix+'_mean':float(np.sum(array)/len(array)),prefix+'_power':p,prefix+'_rms':math.sqrt(p)})
+        res=b-fit['ols_gain']*a if fit['ols_gain'] is not None else None
+        frames.append(dict(id=sid,start=start,stop=stop,n=stop-start,**values,ols_gain=fit['ols_gain'],ols_reason=fit['ols_reason'],raw_s_inner_product=related['inner_product'],raw_s_pearson=related['pearson'],raw_s_pearson_reason=related['pearson_reason'],fit_residual_power=fit['fit_residual_power'],fit_residual_s_inner_product=float(np.dot(a,res)) if res is not None else None))
+    summary=dict(id=sid,clean=independent_stats(s),noisy=independent_stats(x),raw_residual=independent_stats(nr),raw_residual_relation=independent_relation(s,nr),reconstruction_max_abs_error=float(np.max(np.abs(s+nr-x))),X1_equals_X=True,full_zero_lag_OLS=independent_relation(s,x),common_zero_lag_OLS=curve[160],best_lag=chosen,best_at_boundary=chosen is not None and abs(chosen['lag'])==160,frame_count=len(frames))
+    return summary,curve,frames
+
+def compare(a,b,rel=1e-9,abs_=1e-12):
+    if isinstance(a,dict):assert set(a)==set(b);[compare(v,b[k],rel,abs_) for k,v in a.items()]
+    elif isinstance(a,list):assert len(a)==len(b);[compare(x,y,rel,abs_) for x,y in zip(a,b)]
+    elif isinstance(a,(int,float)) and not isinstance(a,bool):assert b is not None and math.isclose(a,b,rel_tol=rel,abs_tol=abs_),(a,b)
+    else:assert a==b,(a,b)
+def csv_compare(path,expected):
+    with Path(path).open() as f:actual=list(csv.DictReader(f))
+    assert len(actual)==len(expected)
+    for got,want in zip(actual,expected):
+        assert set(got)==set(want)
+        for k,v in want.items():
+            text=got[k]
+            if v is None:assert text==''
+            elif isinstance(v,(int,float)):compare(v,float(text),1e-9,1e-10 if 'lag' in Path(path).name else 1e-12)
+            else:assert text==str(v)
+
+def run():
+    cfg=load(OUT/'config.yaml');prep=load(OUT/'preparation_manifest.json');assert not (OUT/'VALIDATION_STARTED.json').exists();start=time.monotonic()
+    def hard(*args):
+        try:(OUT/'validation_hard_timeout.json').write_text('{"status":"failed","reason":"absolute120sdeadline"}')
+        finally:os._exit(124)
+    def soft(*args):raise TimeoutError('118s validation work deadline')
+    signal.signal(signal.SIGALRM,soft);signal.setitimer(signal.ITIMER_REAL,118)
+    with (OUT/'VALIDATION_STARTED.json').open('x') as f:json.dump(dict(pid=os.getpid()),f)
+    allowed=set(cfg['audio_locks_from_I0']);events=[]
+    class Block(importlib.abc.MetaPathFinder):
+        def find_spec(self,name,path=None,target=None):
+            if name.split('.')[0] in {'torch','soundfile','librosa','whisper','torchaudio','transformers','pystoi','pesq'}:
+                events.append(dict(kind='forbidden_import',name=name));raise RuntimeError('Forbidden validation model import')
+    sys.meta_path.insert(0,Block())
+    def audit(event,args):
+        if event.startswith('socket.') or event in ['subprocess.Popen','os.system','os.posix_spawn','os.fork']:
+            events.append(dict(kind='forbidden_network_process',event=event));raise RuntimeError('Forbidden validation network/process')
+        if event=='open' and isinstance(args[0],(str,bytes,os.PathLike)):
+            p=Path(os.fsdecode(args[0])).resolve();mode=args[1];flags=args[2];writing=(isinstance(mode,str) and any(c in mode for c in 'wax+')) or bool(flags&(os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC|os.O_APPEND))
+            if writing:assert p.is_relative_to(OUT.resolve())
+            elif p.suffix.lower()=='.wav' or str(p).startswith('/data/datasets/'):assert str(p) in allowed
+    sys.addaudithook(audit);result=dict(status='failed',failures=[],pcm_file_decodes=0,pcm_samples_decoded=0,pcm_payload_bytes_decoded=0,full_wav_hash_bytes=0)
+    original_metrics=digest(OUT/'metrics.json')
+    try:
+        import numpy as np
+        verify(prep['preparation_locks']);verify(cfg['source_record_locks']);metrics=load(OUT/'metrics.json');assert metrics['status']=='completed' and not (OUT/'main_hard_timeout.json').exists();reg=load(cfg['registry']);assert digest(cfg['registry'])==cfg['registry_sha256']
+        assert len(reg['records'])==len(metrics['pairs'])==12
+        expected_lags=[];expected_frames=[];summaries=[]
+        for r,want in zip(reg['records'],metrics['pairs']):
+            assert time.monotonic()-start<118;arrays=[]
+            for role in ['clean','noisy']:
+                path=Path(r['files'][role]['path']);lock=cfg['audio_locks_from_I0'][str(path)];anchor=Path('/data/datasets/vb/voicebank_demand/16k/train')/role
+                assert path.parent==path.resolve().parent==anchor and path.name==r['id']+'.wav' and not path.is_symlink();assert path.stat().st_size==lock['bytes'] and digest(path)==lock['sha256']
+                with wave.open(str(path),'rb') as w:
+                    assert (w.getframerate(),w.getnchannels(),w.getsampwidth(),w.getcomptype(),w.getnframes())==(16000,1,2,'NONE',lock['header']['frames']);data=w.readframes(w.getnframes());assert len(data)==2*lock['header']['frames']
+                # Independent int16 decoder (not driver's np.frombuffer path).
+                array=np.asarray([v[0]/32768 for v in struct.iter_unpack('<h',data)],dtype=np.float64);arrays.append(array);result['pcm_file_decodes']+=1;result['pcm_samples_decoded']+=len(array);result['pcm_payload_bytes_decoded']+=len(data);result['full_wav_hash_bytes']+=lock['bytes'];assert result['pcm_file_decodes']<=24
+            summary,lag,frames=independent_compute(*arrays,r['id']);compare(summary,want);summaries.append(summary);expected_lags.extend(lag);expected_frames.extend(frames)
+        assert len(summaries)==12 and result['pcm_file_decodes']==24 and [r['id'] for r in summaries]==cfg['ids']
+        csv_compare(OUT/'lag_curve.csv',expected_lags);csv_compare(OUT/'frames.csv',expected_frames)
+        csv_compare(OUT/'summary_all_pairs.csv',[dict(id=r['id'],n=r['clean']['n'],best_lag=r['best_lag']['lag'] if r['best_lag'] else None,best_corr=r['best_lag']['pearson'] if r['best_lag'] else None,zero_corr=r['common_zero_lag_OLS']['pearson'],full_zero_gain=r['full_zero_lag_OLS']['ols_gain'],raw_power=r['raw_residual']['power'],raw_corr=r['raw_residual_relation']['pearson'],reconstruction_max_abs_error=r['reconstruction_max_abs_error'],frame_count=r['frame_count']) for r in summaries])
+        desc={}
+        for key,vals in [('best_lag',[r['best_lag']['lag'] if r['best_lag'] else None for r in summaries]),('full_zero_gain',[r['full_zero_lag_OLS']['ols_gain'] for r in summaries]),('raw_residual_power',[r['raw_residual']['power'] for r in summaries])]:
+            a=sorted(v for v in vals if v is not None);desc[key]=dict(valid_n=len(a),missing_n=len(vals)-len(a),minimum=a[0] if a else None,maximum=a[-1] if a else None,median=statistics.median(a) if a else None)
+        compare(desc,metrics['descriptive']);assert metrics['lag_rows']==len(expected_lags)==3852 and metrics['frame_rows']==len(expected_frames)
+        for k in ['noise_disjoint_ready','scientific_gate_ready','split_frozen']:assert metrics[k] is False
+        assert not metrics['forbidden_attempts'] and not events;assert metrics['network_bytes']==metrics['model_calls']==0 and metrics['seconds']<=120 and metrics['pcm_file_decodes']==24
+        for k in ['pcm_samples_decoded','pcm_payload_bytes_decoded','full_wav_hash_bytes']:assert metrics[k]==result[k]
+        result.update(status='passed',pairs=12,lag_rows=len(expected_lags),frame_rows=len(expected_frames),metrics_sha256=original_metrics,noise_disjoint_ready=False,scientific_gate_ready=False,split_frozen=False)
+    except BaseException as e:result['failures'].append(dict(error=repr(e),traceback=traceback.format_exc()))
+    finally:signal.signal(signal.SIGALRM,hard);signal.setitimer(signal.ITIMER_REAL,max(.000001,start+120-time.monotonic()))
+    try:assert not events;verify(cfg['source_record_locks']);verify(cfg['audio_locks_from_I0']);verify(prep['preparation_locks']);assert digest(OUT/'metrics.json')==original_metrics
+    except BaseException as e:result['status']='failed';result['failures'].append(dict(final=repr(e)))
+    result.update(seconds=time.monotonic()-start,pid=os.getpid(),audio_hash_bytes_postcheck=sum(r['bytes'] for r in cfg['audio_locks_from_I0'].values()),network_bytes=0,model_calls=0,forbidden_attempts=events)
+    with (OUT/'independent_validation.json').open('x') as f:json.dump(result,f,indent=2,allow_nan=False)
+    assert sum(p.stat().st_size for p in OUT.rglob('*') if p.is_file() and not p.is_symlink())<=cfg['budgets']['artifact_bytes'] and time.monotonic()-start<=120
+    signal.setitimer(signal.ITIMER_REAL,0);print(json.dumps(dict(status=result['status'],seconds=result['seconds'])));return 0 if result['status']=='passed' else 1
+if __name__=='__main__':
+    assert sys.argv[1:]==['--validate-after-completed-run'];sys.exit(run())

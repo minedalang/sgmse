@@ -1,0 +1,80 @@
+{
+  "request": {
+    "key": "p230_027_N2_snr_m18.wav__frontend",
+    "id": "p230_027",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_m18.wav",
+    "basename": "p230_027_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "ecd7f600db3e5fc985ebc2779aa04ae2a63d93c75daf2bf0d06a20e2b2327155",
+      "samples": 51162,
+      "array_sha256": "e226f11ceed34ab4ba442b7a9fa88f01bd7eef79d9588bd69bd0cabf39b08766",
+      "peak": 0.072601318359375,
+      "rms": 0.009419741740049252
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " He has the courage to offer it for no one.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " He has the courage to offer it for no one.",
+        "tokens": [
+          50363,
+          679,
+          468,
+          262,
+          11917,
+          284,
+          2897,
+          340,
+          329,
+          645,
+          530,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.7999311174665179,
+        "compression_ratio": 0.875,
+        "no_speech_prob": 0.22472378611564636
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 64,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+{
+  "status": "completed",
+  "failures": [],
+  "wall_seconds": 67.56080955406651
+}

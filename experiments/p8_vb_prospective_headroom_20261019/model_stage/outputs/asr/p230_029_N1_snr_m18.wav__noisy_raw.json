@@ -1,0 +1,70 @@
+{
+  "request": {
+    "key": "p230_029_N1_snr_m18.wav__noisy",
+    "id": "p230_029",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_m18.wav",
+    "basename": "p230_029_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "91518bea237c9d0a35011738e0455718035a0f297d6ee278aaaaf08fc79d3b62",
+      "samples": 56211,
+      "array_sha256": "e74736a22ebeb370f284e7ee847dac7a00d5454960e871713a8c5bb7ca69304c",
+      "peak": 0.380523681640625,
+      "rms": 0.0923098702921859
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_029",
+    "original_text": "It shouldn't come as a surprise, but it does.\n",
+    "raw_text_hex": "49742073686f756c646e277420636f6d6520617320612073757270726973652c2062757420697420646f65732e0a",
+    "raw_text_sha256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+    "archive_entry": "trainset_28spk_txt/p230_029.txt"
+  },
+  "raw_result": {
+    "text": " .",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " .",
+        "tokens": [
+          50363,
+          764,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2153971195220947,
+        "compression_ratio": 0.1111111111111111,
+        "no_speech_prob": 0.9317269325256348
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 69,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

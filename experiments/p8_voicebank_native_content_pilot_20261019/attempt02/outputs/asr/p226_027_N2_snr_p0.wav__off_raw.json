@@ -1,0 +1,81 @@
+{
+  "request": {
+    "key": "p226_027_N2_snr_p0.wav__off",
+    "id": "p226_027",
+    "arm": "off",
+    "path": "outputs/off/p226_027_N2_snr_p0.wav",
+    "basename": "p226_027_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "input": {
+      "wav_sha256": "63a14a56791be37834ad581f67814cf32e944929299b5e389940d8722d2cfd98",
+      "samples": 63447,
+      "array_sha256": "23d6113fd9af0b7b76f3c804af1c5dec075990425aaedc8267196a269ae107c9",
+      "peak": 0.094970703125,
+      "rms": 0.010725795717195879
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_027",
+    "original_text": "They should have a major rethink about the event for next year.\n",
+    "raw_text_hex": "546865792073686f756c6420686176652061206d616a6f722072657468696e6b2061626f757420746865206576656e7420666f72206e65787420796561722e0a",
+    "raw_text_sha256": "4c89a690f064039006e014051fd9c1520256f1fc8a454a312412600e13d8cbb3",
+    "archive_entry": "trainset_28spk_txt/p226_027.txt"
+  },
+  "raw_result": {
+    "text": " They should have a major rethink about the event for next year.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " They should have a major rethink about the event for next year.",
+        "tokens": [
+          50363,
+          1119,
+          815,
+          423,
+          257,
+          1688,
+          36437,
+          546,
+          262,
+          1785,
+          329,
+          1306,
+          614,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5033009052276611,
+        "compression_ratio": 0.9545454545454546,
+        "no_speech_prob": 0.06560360640287399
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 16,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[0;93m2026-10-17 17:32:35.932912902 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:856 operator()] No registered plugin EP device found for 'CUDAExecutionProvider' with device_id=0[m
+[0;93m2026-10-17 17:32:36.085796254 [W:onnxruntime:Default, onnxruntime_pybind_state.cc:856 operator()] No registered plugin EP device found for 'CUDAExecutionProvider' with device_id=0[m
+evaluated 4/32 utterances
+evaluated 8/32 utterances
+evaluated 12/32 utterances
+evaluated 16/32 utterances
+evaluated 20/32 utterances
+evaluated 24/32 utterances
+evaluated 28/32 utterances
+evaluated 32/32 utterances
+
+EXECUTION NOTE: The first launcher invocation stopped before loading inputs because tee created run.log before the script's empty-output-directory guard ran. No metrics or audio were produced by that attempt. Diagnosis: the guard needed to allow the run script and its own log. The guard was narrowed to allow only those two files; the subsequent single scientific run completed all 32 utterances. The initial traceback was inspected and is preserved here by this note.

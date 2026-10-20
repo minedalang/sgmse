@@ -1,0 +1,92 @@
+{
+  "experiment_id": "rollout_adapter_pilot_20261018",
+  "status": "completed",
+  "device": "cuda",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "manifest": "/data/coding/sgmse/experiments/rollout_prediction_gap_20261018/fresh_cv_manifest.csv",
+  "n_utterances": 8,
+  "selected_steps": [
+    3,
+    5,
+    7,
+    9
+  ],
+  "train_utterances": 6,
+  "holdout_utterances": 2,
+  "train_steps": 200,
+  "adapter_parameters": 16512,
+  "baseline": {
+    "train_nmse": 0.7725533706446489,
+    "holdout_nmse": 0.4946419782936573
+  },
+  "trained": {
+    "train_nmse": 1.89938161149621,
+    "holdout_nmse": 1.0545323379337788
+  },
+  "holdout_before": [
+    0.3531116545200348,
+    0.4261920750141144,
+    0.45424219965934753,
+    0.461199551820755,
+    0.4311963617801666,
+    0.5863751769065857,
+    0.6223877668380737,
+    0.6224310398101807
+  ],
+  "holdout_after": [
+    1.3792160749435425,
+    0.8166418671607971,
+    0.5252858400344849,
+    0.369131475687027,
+    2.6752521991729736,
+    1.4274955987930298,
+    0.795455276966095,
+    0.4477803707122803
+  ],
+  "holdout_relative_change": 1.1319103194022238,
+  "history": [
+    {
+      "step": 1,
+      "train_loss": 0.28780654072761536
+    },
+    {
+      "step": 10,
+      "train_loss": 5.823542594909668
+    },
+    {
+      "step": 50,
+      "train_loss": 0.1341620683670044
+    },
+    {
+      "step": 100,
+      "train_loss": 0.18794173002243042
+    },
+    {
+      "step": 200,
+      "train_loss": 0.6025504469871521
+    }
+  ],
+  "runtime_seconds": 173.24480870796833,
+  "interpretation": "The 8-utterance audio aggregate includes six utterances used to train the adapter and two held-out utterances. Aggregate metric gains are partly in-sample; the two-utterance holdout is too small to establish generalization. Proxy holdout improved 42.4%; audio results are mixed and require independent speaker-disjoint CV replication.",
+  "stable_followup": {
+    "learning_rate": 1e-05,
+    "steps": 100,
+    "gradient_clip": 1.0,
+    "baseline_train_nmse": 0.7725533706446489,
+    "baseline_holdout_nmse": 0.4946419782936573,
+    "trained_train_nmse": 0.3679973982895414,
+    "trained_holdout_nmse": 0.2850838601589203,
+    "holdout_relative_change": -0.4236561540078737,
+    "state_file": "stable_adapter_state.pt"
+  },
+  "audio_metrics": {
+    "n_utterances": 8,
+    "baseline_csv": "metrics/baseline_dnsmos.csv",
+    "adapter_csv": "metrics/adapter_dnsmos.csv",
+    "paired_summary": "paired_audio_metrics.json",
+    "n_adapter_train_utterances": 6,
+    "n_utterance_holdout": 2,
+    "independent_cv_replication": false,
+    "split_summary": "audio_metric_split_summary.json"
+  }
+}

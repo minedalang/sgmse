@@ -1,0 +1,15 @@
+{
+  "first_direct_GET": "https://datashare.ed.ac.uk/items/6ed35425-bf14-4d2b-93a1-0a4984952757",
+  "stage_started_estimate_utc": "2026-10-19T02:17:57.221790+00:00",
+  "stage_started_epoch_from_original_script_mtime": 1792376277.2217903,
+  "interrupted_utc": "2026-10-19T02:19:52.326678+00:00",
+  "failure": "Direct item-page response body did not complete; read was intentionally interrupted. Traceback demonstrates response headers had been received, but actual HTTP status/final URL/partial received bytes were not persisted.",
+  "http_status": null,
+  "bytes": 0,
+  "sha256": null,
+  "final_url": null,
+  "fallback": "single proxy GET per remaining official URL;no further direct retry",
+  "metadata_recording_bug": "Missing local read() JSON helper exposed only while serializing interrupted request; fixed for final metadata recording without dataset/model changes.",
+  "bytes_saved": 0,
+  "received_bytes": null
+}

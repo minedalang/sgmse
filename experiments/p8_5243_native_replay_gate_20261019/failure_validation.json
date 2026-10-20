@@ -1,0 +1,18 @@
+{
+  "status": "passed_failure_record_validation",
+  "experiment_status": "failed",
+  "failure_stage": "model-code import before model initialization/forward calls",
+  "supervisor_wall_seconds": 6.960144313983619,
+  "frontend_calls": 0,
+  "backend_calls": 0,
+  "trace_calls": 0,
+  "pre_post_all17_locks_match_expected": true,
+  "frozen_preparation_hashes_valid": true,
+  "artifact_manifest_entries_verified": 10,
+  "output_directory_empty": true,
+  "native_gates_achieved": false,
+  "raw_arrays_recovered": false,
+  "ninja_environment_bin_exists": true,
+  "ninja_environment_bin_in_PATH": false,
+  "no_retry": true
+}

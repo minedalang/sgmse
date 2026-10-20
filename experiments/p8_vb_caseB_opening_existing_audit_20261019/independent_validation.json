@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "validated_rows": 1766,
+  "fixed_intervals": 7,
+  "frames_per_arm": 212,
+  "last_frame_samples": 133,
+  "source_locks": 25,
+  "metrics_sha256": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7",
+  "method": "Independent full complex FFT bands; dot-product RMS; Python math.fsum noise projection; full source hashes",
+  "seconds": 0.8549614270450547,
+  "model_loads": 0,
+  "ASR_calls": 0,
+  "network_bytes": 0,
+  "audio_outputs": 0
+}

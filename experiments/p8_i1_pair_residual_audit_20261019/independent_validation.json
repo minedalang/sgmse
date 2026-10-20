@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "failures": [],
+  "pcm_file_decodes": 24,
+  "pcm_samples_decoded": 1384834,
+  "pcm_payload_bytes_decoded": 2769668,
+  "full_wav_hash_bytes": 2770724,
+  "pairs": 12,
+  "lag_rows": 3852,
+  "frame_rows": 4330,
+  "metrics_sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6",
+  "noise_disjoint_ready": false,
+  "scientific_gate_ready": false,
+  "split_frozen": false,
+  "seconds": 7.332283942960203,
+  "pid": 40525,
+  "audio_hash_bytes_postcheck": 2770724,
+  "network_bytes": 0,
+  "model_calls": 0,
+  "forbidden_attempts": []
+}

@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "scope": "Node synthetic UI timing/state only plus raw file hash preservation; no source audio reads or browser listening",
+  "node_state_tests": {
+    "status": "passed",
+    "count": 16,
+    "checks": [
+      "no preselected structure or confidence",
+      "unplayed cannot lock",
+      "attempt not successful playback cannot lock",
+      "double failure stays partial unrated",
+      "all47Noisy lock gate; optional confidence",
+      "no bypass clean gate",
+      "partial export explicit no upload no human ratings",
+      "refresh state schema restores exact progress",
+      "single audio rapid play race blocked",
+      "Next locked until ended",
+      "ended plus structure allows next without confidence",
+      "stale play promise never pauses new playback",
+      "stale ended does not unlock new trial",
+      "browser partial JSON download no fake answer",
+      "localStorage failure visible no saved claim",
+      "partial export remains usable on storage failure"
+    ],
+    "real_browser_playback_tested": false,
+    "human_responses": 0,
+    "network_requests": "VM fake fetch only"
+  },
+  "node_timing_tests": {
+    "status": "passed",
+    "count": 8,
+    "checks": [
+      "exact 200inclusive280exclusive target boundaries",
+      "clamped readonly480ms timeline position",
+      "RAF follows audio.currentTime not wallclock",
+      "stale RAF cannot paint or schedule after new render generation",
+      "render pause reset cancels prior frame",
+      "ended stops RAF at480 with context status",
+      "state schema version answers counts and lock core byteunchanged",
+      "same localStorage key no reset or clear"
+    ],
+    "actual_browser_playback_tested": false,
+    "human_responses_generated": 0
+  },
+  "ui_sha256": {
+    "index.html": "60ea4a416b0a168b5a8c88e47efec25ef9f23041fbf0e3c4f690f526aaafe761",
+    "player.js": "7974fad6b3e83ae66a9974fa6105a4363c6c3c161198a1be384102030ac05e4d"
+  },
+  "previous_ui_sha256": {
+    "index.html": {
+      "bytes": 2741,
+      "sha256": "8f50fb5fcfa565f67c50a96dbaec1a8d9ef9423127cd253029e8e42a85ef0b4c"
+    },
+    "player.js": {
+      "bytes": 8242,
+      "sha256": "a82c25ab9c649178e4482c4fbacaddf8820282a7c3a701283d65150e2970deae"
+    }
+  },
+  "protected_files_checked": 112,
+  "protected_all_unchanged": true,
+  "actual_browser_playback_tested": false,
+  "new_human_feedback": 0,
+  "source_wav_reads": 0,
+  "audio_exports": 0,
+  "schema_and_localStorage_key_unchanged": true
+}

@@ -1,0 +1,61 @@
+{
+  "experiment_id": "p8_vb_train_noise_log_audit_20261019",
+  "scope": "official28spk training mixing-log metadata only; no test entry decoding or audio/model/training",
+  "publisher_item_uuid": "6ed35425-bf14-4d2b-93a1-0a4984952757",
+  "publisher_page": "https://datashare.ed.ac.uk/items/6ed35425-bf14-4d2b-93a1-0a4984952757/full",
+  "allowed_origin": "https://datashare.ed.ac.uk",
+  "first_metadata_url": "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/bundles?size=20",
+  "metadata_navigation": "select exactly one bundle nameORIGINAL; follow its literal bitstreams href, append size=20 only if absent; select exactly one name=logfiles.zip; download only its literal content href",
+  "expected_archive_name": "logfiles.zip",
+  "expected_archive_md5_from_publisher_page": "0d16f5b6afe12d64238d1e4a0e6ff6e8",
+  "maximum_archive_bytes": 262144,
+  "only_decoded_zip_basename": "log_trainset_28spk.txt",
+  "maximum_training_entry_uncompressed_bytes": 2097152,
+  "zip_policy": "inspect directory only; exactly one safe non-directory training basename match; no extractall/testzip; do not open/decompress/test or56spk entries; no filesystem extraction paths",
+  "registry": "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/registry.json",
+  "join_scope": "only12fixedI0localtrain IDs; totaltraining-log schema/counts/duplicates allowed, no other utterance results",
+  "semantics": "save literal source/noise token and nominalSNR only if schema supports; token is not automatically original recording identity or time segment; noise_recording_id staysunknown unless actual explicit evidence",
+  "graph": "descriptive connected components of12utterances with same speaker or same literal noise token; do not label true noise-disjoint or splitready",
+  "source_locks": {
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/item_metadata.json": {
+      "bytes": 8879,
+      "sha256": "02ddff01063747d9f02d453f8a8de70e8e6e033c7dae945d36e00f368c55cfb2"
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/license.txt": {
+      "bytes": 17416,
+      "sha256": "b34e17103bfb246f2549fc82a279e6ba28834e0cb42f76a92efc14b72e3a3723"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/registry.json": {
+      "bytes": 24065,
+      "sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/metrics.json": {
+      "bytes": 561,
+      "sha256": "9df573afc59542872c20545f2f3e1bdc3ed9a3b87f448860f43c709a54101ce7"
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/metrics.json": {
+      "bytes": 52921,
+      "sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6"
+    },
+    "/data/coding/sgmse/experiments/p8_i1b_event_pair_integrity_20261019/metrics.json": {
+      "bytes": 5524731,
+      "sha256": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c"
+    }
+  },
+  "budgets": {
+    "seconds": 90,
+    "http_requests": 3,
+    "network_body_bytes": 524288,
+    "per_request_timeout_seconds": 20,
+    "artifact_bytes": 4194304,
+    "audio_decodes": 0,
+    "models": 0,
+    "training": 0
+  },
+  "redirects_allowed": false,
+  "automatic_retries": 0,
+  "audio_downloads_allowed": false,
+  "test_payload_open_allowed": false,
+  "dataset_or_oldrecord_writes": false,
+  "source_id_gate_auto_promotion": false
+}

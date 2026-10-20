@@ -1,0 +1,23 @@
+{
+  "status": "completed",
+  "failures": [],
+  "human_responses": 0,
+  "PCM_sample_decodes": 0,
+  "model_calls": 0,
+  "ASR_calls": 0,
+  "training_calls": 0,
+  "external_network_bytes": 0,
+  "cases": 32,
+  "playback_entries": 128,
+  "unique_source_PCM": 104,
+  "source_pre_post_unchanged": true,
+  "source_files_fullhash_bytes_eachpass": 11902696,
+  "regular_file_bytes_before_report": 206258,
+  "symlink_own_bytes": 14416,
+  "referenced_unique_source_bytes": 11902696,
+  "referenced_entry_total_bytes": 14649472,
+  "AB_parity_frontend_A": 14,
+  "material_id": "a78b5db04fa268772c87997abab68f9001f1f17445ae7165014822d4430fb45d",
+  "seconds": 0.100404208060354,
+  "pid": 7604
+}

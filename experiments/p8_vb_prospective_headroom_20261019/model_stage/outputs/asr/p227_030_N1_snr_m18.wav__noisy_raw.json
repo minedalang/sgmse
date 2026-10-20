@@ -1,0 +1,70 @@
+{
+  "request": {
+    "key": "p227_030_N1_snr_m18.wav__noisy",
+    "id": "p227_030",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_m18.wav",
+    "basename": "p227_030_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "6b7802e0d1867551248e6da4829a66461811c46a76646da5208513dcab44942c",
+      "samples": 52810,
+      "array_sha256": "50b5b8527f609fe78178b8ff84bbf0ba462d8b7561b066228dfd431352d26ab1",
+      "peak": 0.378173828125,
+      "rms": 0.09532499456158555
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " .",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " .",
+        "tokens": [
+          50363,
+          764,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.193162441253662,
+        "compression_ratio": 0.1111111111111111,
+        "no_speech_prob": 0.9323930740356445
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 9,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

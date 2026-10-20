@@ -1,0 +1,23 @@
+# Listening feedback persistence fix — 2026-10-19
+
+The previous dropdowns had no change or submit handler. Selections existed only in the open DOM; they were never transmitted or durably saved. The user's first three answers were recovered through explicit chat by the Research Lead and recorded separately in `manual_listener_feedback_20261019.json`. They were not recovered from browser state. That file and its provenance have not been changed by this fix.
+
+The page now keeps a localStorage draft, has an explicit **保存选择** button, and distinguishes unsaved, saving, confirmed saved, and failed/unconfirmed states. It marks a submission saved only after matching the server acknowledgment. Failures preserve selections and the response ID for retry. Edits during a request stay unsaved. A three-case draft migrates to five without losing its session or earlier choices. Unrated options are omitted from partial submissions; they do not erase earlier answers.
+
+The compatible Python standard-library server retains the experiments static root and adds only this experiment's `listening/api/feedback` JSON GET/POST endpoint. Canonical UUID session/response IDs, fixed case IDs/choice values, JSON type, same-origin browser POSTs, note length, and a 16 KiB request limit are validated. Writes use a fixed append-only JSONL path with flush/fsync under a process lock. Repeated response IDs with identical submitted content return the original acknowledgment; conflicting reuse is rejected. Partial submissions merge the session's previous choices. Each record stores timestamp, session ID, response ID, submitted and merged choices, note, and `prompted/nonblind/singlelistener` provenance. Records are not exposed as static files. Real records use `responses/feedback.jsonl`; the test server uses only `responses/test_records.jsonl` and tags every record `test_record=true`.
+
+The first three cases and their order are unchanged and show their separate chat-confirmed choices. Only the two previously generated remaining ablation cases were appended: 4 `original__N1_snr-6__f11ata1`, 5 `fresh__N2_snr-6__f20aka1`. All twenty clips retain the existing full two-second, 16 kHz, original-amplitude audio. The first twelve WAV files were verified and not rewritten; only eight new byte copies were added. The builder reproduces the page and skips byte-identical existing audio. No inference, new experiment, original source lock, model, config, metrics, experimental report, manual response record, or research plan was edited.
+
+Validation evidence:
+
+- `validation.json`: all twenty source WAV/raw/float32 hashes, mono PCM16 16 kHz/32000-sample checks, and actual live HTTP byte equality.
+- `feedback_test_validation.json`: real temporary-port 8767 save/load/retry/conflict/rejection checks, partial case-4/5 merging without erasing the earlier three, and append-only record counts. Test records are retained and explicitly excluded from listener evidence.
+- `feedback_client_validation.json`: ten Node minimal-DOM checks for draft persistence, failure/retry, acknowledgment, reload, in-flight edits, delayed restore, migration, and partial submission. These are logic tests, not a claim of real-browser automation.
+- `player_validation.json`: existing eight single-player and stale-fetch checks passed.
+- `feedback_live_validation.json`: active port 8766 server PID/rollback command, current page/script/twenty WAVs plus representative 10720 and original VCV page/audio routes (26 files), GET byte equality, HEAD, missing-route 404, and scoped endpoint GET. Range behavior remains the previous Python SimpleHTTPRequestHandler behavior (200/full body). No synthetic feedback was submitted to the live endpoint.
+
+The original static process PID 60654 was verified before replacement. During the later five-case schema restart, a representative-path check initially assumed the 10720 audio lived beneath its page directory; that check raised `StopIteration`. Automatic rollback restored the static service. The representative WAV path was corrected to its existing sibling experiment, and the final compatible server activated successfully as recorded in `feedback_live_validation.json`. The rollback command remains available there. No response cleanup or overwrite was performed.
+
+Live page: http://localhost:8766/p8_vcv_speech_component_ablation_20261019/listening/index.html
+
+The user's general impression that speech was clear is not treated as evidence of a specific consonant identity or absence of artifacts. The original three selections remain prompted, nonblind, single-listener comparisons; the five selected cases do not estimate population-level benefit.

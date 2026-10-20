@@ -1,0 +1,2937 @@
+{
+  "operator_only_not_secure_hiding": true,
+  "cases": [
+    {
+      "case_id": "C02e225f7ee1a412f",
+      "order_hash": "02e225f7ee1a412faa943132a57deca9315a92699aed4bfed36056b0af4d3249",
+      "basename": "p227_031_N2_snr_m18.wav",
+      "id": "p227_031",
+      "speaker": "p227",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 51005,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_m18.wav",
+          "sha256": "517756d1e8662b79e467c4b6dcf71feaa5b224c44a9ec46d857a6dec88eef170"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_m18.wav",
+          "sha256": "75407bf0f890edff7c45c63ae79f620c7b7d62339d7a7ef9c88627b4f1cc5d6b"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_m18.wav",
+          "sha256": "8340fd9505373c691f8029a664ea4574b6d861ff803a313a3de63ea7af693016"
+        }
+      },
+      "reference": "The Premier League has been a huge success.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/8254e4d7b2acf26bfb1927091b1f1001892cdc60f1d8e9bbfd4cd6c0daf7a65a.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "link": "audio/bac8d5989c0a7dd0dda4c23cfac82df8b23d5b5af32142426f1023a3a85fa82d.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_m18.wav",
+          "sha256": "517756d1e8662b79e467c4b6dcf71feaa5b224c44a9ec46d857a6dec88eef170"
+        },
+        "A": {
+          "link": "audio/1d24a144d8005cd93631efe6cc907437e04297c35a86859afd686aca9479dc85.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_m18.wav",
+          "sha256": "8340fd9505373c691f8029a664ea4574b6d861ff803a313a3de63ea7af693016"
+        },
+        "B": {
+          "link": "audio/9fc35d4737a4a3685e84fc9fa5bf7bf50c54bbc2b14884531aaf279a17f15d9e.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_m18.wav",
+          "sha256": "75407bf0f890edff7c45c63ae79f620c7b7d62339d7a7ef9c88627b4f1cc5d6b"
+        }
+      }
+    },
+    {
+      "case_id": "C047ff2b0d4a5f0ec",
+      "order_hash": "047ff2b0d4a5f0ec4b74eb1c169b99c5a734ab19e68008b32003a0836d141b3f",
+      "basename": "p227_031_N1_snr_m18.wav",
+      "id": "p227_031",
+      "speaker": "p227",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 51005,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_m18.wav",
+          "sha256": "34849ec866f524004591ef5e13483fbdd26928ad4c8771447655ac8a7ff74587"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_m18.wav",
+          "sha256": "3dcf35cbc456154e4caeaeb58aad292f1233c061f16d32215c0c2c8074f725ec"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_m18.wav",
+          "sha256": "7afcb98484c6b7e84deefe008c037dd8b25e094c21d04047a48c96a7b75b4f4f"
+        }
+      },
+      "reference": "The Premier League has been a huge success.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/b36ade21060da0a486faddce1ddc1758b4df79d4c0348a1fb0508c778b06119b.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "link": "audio/eb7b2172d7db705dbb5d1dba1ddd1efeaec4114162964dcc30d2690d1a1d9497.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_m18.wav",
+          "sha256": "34849ec866f524004591ef5e13483fbdd26928ad4c8771447655ac8a7ff74587"
+        },
+        "A": {
+          "link": "audio/f018801bb656b3cd3797cdcb89e8f3fd939bbe30074ac49229807b2572716a12.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_m18.wav",
+          "sha256": "3dcf35cbc456154e4caeaeb58aad292f1233c061f16d32215c0c2c8074f725ec"
+        },
+        "B": {
+          "link": "audio/b1ac38c5850ee241df58ea6258cd0b851576c002e3a7f8238305797edbcf68c6.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_m18.wav",
+          "sha256": "7afcb98484c6b7e84deefe008c037dd8b25e094c21d04047a48c96a7b75b4f4f"
+        }
+      }
+    },
+    {
+      "case_id": "C0e302c8e70a69fec",
+      "order_hash": "0e302c8e70a69fec7ffde0db92cd73add5e6559c9fd90e1bc425191ec47e4e11",
+      "basename": "p231_032_N1_snr_m18.wav",
+      "id": "p231_032",
+      "speaker": "p231",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 55680,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_m18.wav",
+          "sha256": "341261243fb18c032aa10d5ccb87d48da42b2ef6d3416c7a6223cbe52284e4b7"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_m18.wav",
+          "sha256": "8da66d4a63a4a41c927c6938e9ee5df2504fce0eb927b5fb156c3b92b4007da8"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_m18.wav",
+          "sha256": "87a374a0e2704a9bd2d1afacdc0b672bdc4fd37a176ca4e2464c895e556b916f"
+        }
+      },
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/0c7381232e698d83178c001b68c1cecf9e7843930ec99e4568c8f1d5b7de2eaf.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "link": "audio/6fa2f90e7dd9118eda737253238977957056ec47fa63c745fa4422c52154a362.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_m18.wav",
+          "sha256": "341261243fb18c032aa10d5ccb87d48da42b2ef6d3416c7a6223cbe52284e4b7"
+        },
+        "A": {
+          "link": "audio/77dc84aea100928dd32be9cf5d37ffdfe5f7324158bc7e1094901166eddfbfe6.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_m18.wav",
+          "sha256": "87a374a0e2704a9bd2d1afacdc0b672bdc4fd37a176ca4e2464c895e556b916f"
+        },
+        "B": {
+          "link": "audio/e20c30b2de9b94c14314ff40fd6b8e5c2a790d44dd6230739b8465742a9a1a6b.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_m18.wav",
+          "sha256": "8da66d4a63a4a41c927c6938e9ee5df2504fce0eb927b5fb156c3b92b4007da8"
+        }
+      }
+    },
+    {
+      "case_id": "C0efcea8bfa42db06",
+      "order_hash": "0efcea8bfa42db0632300e207e4ca53af3b9ff05bbc221b4f217c4543627c4e5",
+      "basename": "p231_029_N2_snr_p0.wav",
+      "id": "p231_029",
+      "speaker": "p231",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 49851,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_p0.wav",
+          "sha256": "23382ac28e24fd29018cb500f28c5d0978f40f2dcf4e0675e79f385091a83b55"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_p0.wav",
+          "sha256": "46c4031e2263e8a632924d2fe6a5cb604365bb41284d4436febbfba4248b83ba"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_p0.wav",
+          "sha256": "63cb3850fb74448c29ee6b7ebc3aa1ce565de1c4c786c112e90c4736c0bf2502"
+        }
+      },
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/30c9ba60925b8b5853d02772cc2c48d4a8b82b224ee9f50efa7019bdd1b64944.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "link": "audio/8bcf4c1917b68db996f5b6009414c3392199237b0b8be5aed7ed3ead164a4e24.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_p0.wav",
+          "sha256": "23382ac28e24fd29018cb500f28c5d0978f40f2dcf4e0675e79f385091a83b55"
+        },
+        "A": {
+          "link": "audio/564bd668a096100157ddb7b3d4bfca472fa5e76b8a890940e7acb9075e2d39ae.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_p0.wav",
+          "sha256": "46c4031e2263e8a632924d2fe6a5cb604365bb41284d4436febbfba4248b83ba"
+        },
+        "B": {
+          "link": "audio/014ece58305ae70868bd55af10e464a6f7bac4c3895d970b496fbac5cf8fe346.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_p0.wav",
+          "sha256": "63cb3850fb74448c29ee6b7ebc3aa1ce565de1c4c786c112e90c4736c0bf2502"
+        }
+      }
+    },
+    {
+      "case_id": "C22c3debacf910a6a",
+      "order_hash": "22c3debacf910a6a7bfb169aff2c2f228bf3b80a939a739a52499b0325025fa8",
+      "basename": "p228_032_N1_snr_m18.wav",
+      "id": "p228_032",
+      "speaker": "p228",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 67141,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_m18.wav",
+          "sha256": "aae408eb8c373c072f81287eb56a3db50ed1ffd4d796192c6f2a5d2d8e671e57"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_m18.wav",
+          "sha256": "0e725fc5e2bd5a2305b654f2fe22a7d304db738805f80b2a3a6d3be19afec7bd"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_m18.wav",
+          "sha256": "7ebacf598638b93ef865ff904fa73c565bec2db8e7e6c5156a72da3edf4af742"
+        }
+      },
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/e7ee93594ea071b4d30c187161bee17ce4f2b135ccd9be335b5ed4c5c90bfb01.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "link": "audio/d6063b82f49eaa030fbdeac3ee18a3e3133b315a9d5f603a32d61a1237a7f0d6.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_m18.wav",
+          "sha256": "aae408eb8c373c072f81287eb56a3db50ed1ffd4d796192c6f2a5d2d8e671e57"
+        },
+        "A": {
+          "link": "audio/27566bac2d8494d0d356d1578afea24d41fe9ba3ba543f01df237615dc2f1493.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_m18.wav",
+          "sha256": "7ebacf598638b93ef865ff904fa73c565bec2db8e7e6c5156a72da3edf4af742"
+        },
+        "B": {
+          "link": "audio/d2147c47e7cedca78eb2d815d146a5faaead5db48acc16a9295ddbb28cbd493a.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_m18.wav",
+          "sha256": "0e725fc5e2bd5a2305b654f2fe22a7d304db738805f80b2a3a6d3be19afec7bd"
+        }
+      }
+    },
+    {
+      "case_id": "C28dbce90832410fb",
+      "order_hash": "28dbce90832410fbac4dcd3d5cb127aa9d77a496c62189efb348af4c5ab436c8",
+      "basename": "p230_029_N1_snr_p0.wav",
+      "id": "p230_029",
+      "speaker": "p230",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 56211,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_p0.wav",
+          "sha256": "112281251f57c88d9c1e4c1c2129aafde43f5d43c7045e0e7f92d90b410933ca"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_p0.wav",
+          "sha256": "689d589f801cced9ff3f60742cfe46bdc467ce29caa5620022393a0d5135bc90"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_p0.wav",
+          "sha256": "023bf55020630eaea815c58c673a570cf4fd7ac63aa270030b17382177ab2079"
+        }
+      },
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/68180508be8c207d500f0d695b9f68269ac72c1fd327427e36f843c714640c81.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "link": "audio/df389b683cecff287c949e36304529e20c70c2d4d591b05f2cd24ecbffabce2a.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_p0.wav",
+          "sha256": "112281251f57c88d9c1e4c1c2129aafde43f5d43c7045e0e7f92d90b410933ca"
+        },
+        "A": {
+          "link": "audio/5a9c2c4f652b3cd6f56703334b6b79c9735cbdc77c4bba3317c3e0d6aac2eb65.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_p0.wav",
+          "sha256": "689d589f801cced9ff3f60742cfe46bdc467ce29caa5620022393a0d5135bc90"
+        },
+        "B": {
+          "link": "audio/394884707ddfce9491f54b4188838eda615ff4ecd77ec088cf16a209c7ea00f2.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_p0.wav",
+          "sha256": "023bf55020630eaea815c58c673a570cf4fd7ac63aa270030b17382177ab2079"
+        }
+      }
+    },
+    {
+      "case_id": "C30ddb89c3f5cf45b",
+      "order_hash": "30ddb89c3f5cf45b31e5be0d4350759971dc0f60a902e44198fa775992338ab3",
+      "basename": "p231_029_N2_snr_m18.wav",
+      "id": "p231_029",
+      "speaker": "p231",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 49851,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_m18.wav",
+          "sha256": "719fe0481a6d93da8dfa0598e6662f0472bceb05d59ac2f70fdc637dc528b0f0"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_m18.wav",
+          "sha256": "1a74b605962b146add5618e7e04e8436ef3f9de7f452e7836db1fc5082e9438d"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_m18.wav",
+          "sha256": "4f73fa3a25187a76aa10a4daa7c00e02d71d2e6b35a3acd6174d39cf01d18161"
+        }
+      },
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/b00a7cc5ff3b0549693364482e23b522050b987e9c1b3a3f7044727ee50233dc.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "link": "audio/3eddb9c78df9559b903ef91d193458d80490ef1205f42cea62f9f68aa817201a.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_m18.wav",
+          "sha256": "719fe0481a6d93da8dfa0598e6662f0472bceb05d59ac2f70fdc637dc528b0f0"
+        },
+        "A": {
+          "link": "audio/7dd145fec2ee35ca5915b32d036c4afcc11843c64cdc654f109fa6814f58e5eb.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_m18.wav",
+          "sha256": "1a74b605962b146add5618e7e04e8436ef3f9de7f452e7836db1fc5082e9438d"
+        },
+        "B": {
+          "link": "audio/c9b668748057d609702e7559bbd82a47ec191552904eb11075ae73dc48916f13.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_m18.wav",
+          "sha256": "4f73fa3a25187a76aa10a4daa7c00e02d71d2e6b35a3acd6174d39cf01d18161"
+        }
+      }
+    },
+    {
+      "case_id": "C35fca845e6bb91d6",
+      "order_hash": "35fca845e6bb91d6303bc6e590b8294a931561d9317fcabe6ab2bfe23dffa054",
+      "basename": "p228_032_N2_snr_m18.wav",
+      "id": "p228_032",
+      "speaker": "p228",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 67141,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_m18.wav",
+          "sha256": "d1715019445f6033a31f8675975ae3dd6cc1e3f5c808a22e96409085bdc642b4"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_m18.wav",
+          "sha256": "3b77977361c87dc408688c061785529a753ab711713fc054f9833e8855380bad"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_m18.wav",
+          "sha256": "e41d309864aa0f51a6dd2de028763971c9ed98e474d0ac651380c6194be41635"
+        }
+      },
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/ae0ad36331c3b1f149c4cf7df37c19ad1b3ab084b5b9447a2c29efa568abb3ca.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "link": "audio/27e4d1601377d7b3e8a97bc4c6715c6dd2a4145e65d0ab60a931e6db54f50815.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_m18.wav",
+          "sha256": "d1715019445f6033a31f8675975ae3dd6cc1e3f5c808a22e96409085bdc642b4"
+        },
+        "A": {
+          "link": "audio/2763d8500a376cbd4e157d02f55377880f69b380ca4beba97a43ebebe971ff77.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_m18.wav",
+          "sha256": "e41d309864aa0f51a6dd2de028763971c9ed98e474d0ac651380c6194be41635"
+        },
+        "B": {
+          "link": "audio/dd6ac31e0a6dbafa3c9a9fb84419d99059955dddf26fc80cdaf1a22f4c1318f1.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_m18.wav",
+          "sha256": "3b77977361c87dc408688c061785529a753ab711713fc054f9833e8855380bad"
+        }
+      }
+    },
+    {
+      "case_id": "C3936dd1c4426b776",
+      "order_hash": "3936dd1c4426b776c6d5947eea3fc8fa5e81d5a95458f4cea7a2cfce2d0e46c3",
+      "basename": "p230_027_N1_snr_p0.wav",
+      "id": "p230_027",
+      "speaker": "p230",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 51162,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_p0.wav",
+          "sha256": "8a1d7d45dea499c10fb38f402aa8d293f52ce6874029cc5a144eceb4862aff5f"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_p0.wav",
+          "sha256": "bd5bd4fd05a48016a6bfef42e898b0cb55f6d27bb43c9c9c45b5cd49120238c1"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_p0.wav",
+          "sha256": "cc539c73f5336ea440615e793e6d9048d7aa78c0d60f8b28901d451a40da4646"
+        }
+      },
+      "reference": "He has the courage of the unaware.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/db91e4f508f0501df02f34ec21e056a4b48c91b119152c5fc2c3afbe2120a8e8.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "link": "audio/4106e7c8d538a622f48d53fc7bc8a6812c832207eb665b309574aa89651a7473.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_p0.wav",
+          "sha256": "8a1d7d45dea499c10fb38f402aa8d293f52ce6874029cc5a144eceb4862aff5f"
+        },
+        "A": {
+          "link": "audio/fa87ad24f36e7a1730eea472b4707ee26217f52760b4a3cd1499d0b7f59c7e52.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_p0.wav",
+          "sha256": "bd5bd4fd05a48016a6bfef42e898b0cb55f6d27bb43c9c9c45b5cd49120238c1"
+        },
+        "B": {
+          "link": "audio/cbc16ccaa6f8de26afb7834832cf2cdc7d5263e0870f5399edb0bb3da27426fd.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_p0.wav",
+          "sha256": "cc539c73f5336ea440615e793e6d9048d7aa78c0d60f8b28901d451a40da4646"
+        }
+      }
+    },
+    {
+      "case_id": "C40d22ef3affc62ca",
+      "order_hash": "40d22ef3affc62cab6880b5befcc02509ef7244c84abe4a58e8822c5fc732ccd",
+      "basename": "p230_029_N2_snr_p0.wav",
+      "id": "p230_029",
+      "speaker": "p230",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 56211,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_p0.wav",
+          "sha256": "8ad654f27d69c24a917e31cb40662d35cfd6dd0bf4220fda3af1c3db43a33dc5"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_p0.wav",
+          "sha256": "5e95991442b514ce5cacda810ffdf774be5050038274e6cf0242c286def882b5"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_p0.wav",
+          "sha256": "092f01f623cdc9f4c3c3d475acd7164c9312b810d02bdfaf477c7c9432138635"
+        }
+      },
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/959fcab3555a896596debb5a698c012683d1ea570132c3d68fcfcb2188f41ec5.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "link": "audio/a1024d165dd9c17bd0a0e7570cd8401848384532d5d21c4ace65883441bc78ec.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_p0.wav",
+          "sha256": "8ad654f27d69c24a917e31cb40662d35cfd6dd0bf4220fda3af1c3db43a33dc5"
+        },
+        "A": {
+          "link": "audio/4c9dc8f3c419af8ba2450769809db71148b30fdafdfb40923c46e137b07aa904.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_p0.wav",
+          "sha256": "092f01f623cdc9f4c3c3d475acd7164c9312b810d02bdfaf477c7c9432138635"
+        },
+        "B": {
+          "link": "audio/3ca4bcdaef0697d4706070098aa20d9765759812bd2e5bae3325ea304f51e60e.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_p0.wav",
+          "sha256": "5e95991442b514ce5cacda810ffdf774be5050038274e6cf0242c286def882b5"
+        }
+      }
+    },
+    {
+      "case_id": "C42502acd318f5869",
+      "order_hash": "42502acd318f5869a0923c7c06917a53cc0535c9c8524f608a2d7283c3d63233",
+      "basename": "p231_029_N1_snr_m18.wav",
+      "id": "p231_029",
+      "speaker": "p231",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 49851,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_m18.wav",
+          "sha256": "6cef0f9dcb0642c5b410e61c572199a0058267d1726ed2be5b7ead888fc5b26d"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_m18.wav",
+          "sha256": "91389721720610847313df7a38f9e4e572fe8bf2ea095fd10a889d0378b47fde"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_m18.wav",
+          "sha256": "e25e4e2e43fcb2cbedae6b9e49a105fd4a6e38e6dee7d39a255b02981ccec14b"
+        }
+      },
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/1e43a8a11619199e1e8c83b07d400f52fe00287561b2bd3bd8024ce732f9acd7.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "link": "audio/a29eac4818b3c19d41f747a584edc9dedcad125079468b759a3ded564f0b379c.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_m18.wav",
+          "sha256": "6cef0f9dcb0642c5b410e61c572199a0058267d1726ed2be5b7ead888fc5b26d"
+        },
+        "A": {
+          "link": "audio/74d539f1333dd437898735c46553323c30f0baad40a7550f4a8216c3bf37aae0.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_m18.wav",
+          "sha256": "e25e4e2e43fcb2cbedae6b9e49a105fd4a6e38e6dee7d39a255b02981ccec14b"
+        },
+        "B": {
+          "link": "audio/6ea1818d4969187911657eff2c29750e45e42577a262f57cc255b16dc7ecfa0c.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_m18.wav",
+          "sha256": "91389721720610847313df7a38f9e4e572fe8bf2ea095fd10a889d0378b47fde"
+        }
+      }
+    },
+    {
+      "case_id": "C43ef2b6c1741707a",
+      "order_hash": "43ef2b6c1741707a8f5ccd0b7ade89042d0589d1befaf7118de7e08bf8090271",
+      "basename": "p230_029_N2_snr_m18.wav",
+      "id": "p230_029",
+      "speaker": "p230",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 56211,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_m18.wav",
+          "sha256": "f2f474e0dc088e6a238df53ea4f2bda78d563210d0891aa99d83fc7e419c1330"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_m18.wav",
+          "sha256": "528730acb5bfec47cfba32bb25063f10ea3a1fae150ce96403c67b0ae1fd49bd"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_m18.wav",
+          "sha256": "974bdeae21a52a2d37b74f9bc37abfd7816e4827a39a8cc6221de3fffee24cda"
+        }
+      },
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/dcb90e53161ae61132db08fb06426cbe8725741676e9ab2d19e132f863ca6486.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "link": "audio/ab7f6eef1dc90c75629df442710567311830797d8a69631104d292c18e4338ec.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_m18.wav",
+          "sha256": "f2f474e0dc088e6a238df53ea4f2bda78d563210d0891aa99d83fc7e419c1330"
+        },
+        "A": {
+          "link": "audio/1abb15656a690671d557b574e04ab97f9f094b0b3069f6455ee8eaf741cc75a7.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_m18.wav",
+          "sha256": "974bdeae21a52a2d37b74f9bc37abfd7816e4827a39a8cc6221de3fffee24cda"
+        },
+        "B": {
+          "link": "audio/65180ffa87a7aad5ff3f4a59e4eed172b3d0e0866c529ccb31bcca7468e1ca03.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_m18.wav",
+          "sha256": "528730acb5bfec47cfba32bb25063f10ea3a1fae150ce96403c67b0ae1fd49bd"
+        }
+      }
+    },
+    {
+      "case_id": "C55d61d12b49b1d6b",
+      "order_hash": "55d61d12b49b1d6b4f230f82334dc292a0423c1a41929cf47a3e5ece9457b019",
+      "basename": "p230_027_N2_snr_m18.wav",
+      "id": "p230_027",
+      "speaker": "p230",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 51162,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_m18.wav",
+          "sha256": "4a61e4a6b0812fc3f28d928f8e70ffda939087546000ae1c10740dbe536c994c"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_m18.wav",
+          "sha256": "ecd7f600db3e5fc985ebc2779aa04ae2a63d93c75daf2bf0d06a20e2b2327155"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_m18.wav",
+          "sha256": "d282d73ee3bb053b3ed4fc4114a038657653e4406f56af5133dac1cf48716fe8"
+        }
+      },
+      "reference": "He has the courage of the unaware.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/4fe3ffe0b88e4974020c868809c8a0b10eb0d3d2e16402002dfc95df3f1f9d29.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "link": "audio/6f030b4bd60210342a806ebcbddc5f063c3075a3d17d212dea4bd5327df26ea6.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_m18.wav",
+          "sha256": "4a61e4a6b0812fc3f28d928f8e70ffda939087546000ae1c10740dbe536c994c"
+        },
+        "A": {
+          "link": "audio/aff602438c44e01b4078c88cd6e16ebc3b8480d93a33d6cda7db89985ed349e7.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_m18.wav",
+          "sha256": "d282d73ee3bb053b3ed4fc4114a038657653e4406f56af5133dac1cf48716fe8"
+        },
+        "B": {
+          "link": "audio/bd8e3bb65fe69cf75bbad1faeeb687b256476f02767d35ee6826f7e4fb34f0b2.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_m18.wav",
+          "sha256": "ecd7f600db3e5fc985ebc2779aa04ae2a63d93c75daf2bf0d06a20e2b2327155"
+        }
+      }
+    },
+    {
+      "case_id": "C577141b1673af333",
+      "order_hash": "577141b1673af333e4e6871a3435681096838e13979326058637e1a90ff29722",
+      "basename": "p230_029_N1_snr_m18.wav",
+      "id": "p230_029",
+      "speaker": "p230",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 56211,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_m18.wav",
+          "sha256": "91518bea237c9d0a35011738e0455718035a0f297d6ee278aaaaf08fc79d3b62"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_m18.wav",
+          "sha256": "97db4336f0ab4271ce079bfe5742ebbdb431b0a5530bdf581fa478cc3ebb245f"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_m18.wav",
+          "sha256": "a80a8aa7673f6f784607781af17b8c73d97fd4b141d636657497753dc21f83f2"
+        }
+      },
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/cba41fa30d6e0c670d9d75cb86edb93ea523bc6f6a88058b771fa15951952202.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+          "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51"
+        },
+        "noisy": {
+          "link": "audio/799d9dcbd2c6ac1164aa512180901b6a8e38df291c1441b1b7df2de25d1e113d.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_m18.wav",
+          "sha256": "91518bea237c9d0a35011738e0455718035a0f297d6ee278aaaaf08fc79d3b62"
+        },
+        "A": {
+          "link": "audio/332bf64eb0b7121b9c5298024aef6da0af975b08003e1169bc2c82ccd17afc12.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_m18.wav",
+          "sha256": "97db4336f0ab4271ce079bfe5742ebbdb431b0a5530bdf581fa478cc3ebb245f"
+        },
+        "B": {
+          "link": "audio/4561fce8d6e0aa14463f38f4dff7729a9cb43104c5d1a69b344b58575deeeb57.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_m18.wav",
+          "sha256": "a80a8aa7673f6f784607781af17b8c73d97fd4b141d636657497753dc21f83f2"
+        }
+      }
+    },
+    {
+      "case_id": "C61d95655dcea9c5f",
+      "order_hash": "61d95655dcea9c5ff053df10cad62761bebc8e6f64481e6d4a1964bc7493c3f7",
+      "basename": "p227_030_N2_snr_p0.wav",
+      "id": "p227_030",
+      "speaker": "p227",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 52810,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_p0.wav",
+          "sha256": "3b4637ce590f54101478ed1ae1b34e882eb27909d81f4c31dd249ee9cd5b1faf"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_p0.wav",
+          "sha256": "2db54fdbac04c8bb0bd8f5d74e3726bfdab77d35769e67263af21ef6aa315bdd"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_p0.wav",
+          "sha256": "577cfc375c3bf0a8017fbdd4c9b2efa7a3d37d9af0a82b83012f660e62991b6a"
+        }
+      },
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/0e38a0ac251f8b1190906451f2172680827e645f93cc9ff28677d5e8f9a7ad58.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "link": "audio/9b43b49439cba6ee92cfdb7d28e7c0509c037408ce66311ebbb87cbf218ebc5a.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_p0.wav",
+          "sha256": "3b4637ce590f54101478ed1ae1b34e882eb27909d81f4c31dd249ee9cd5b1faf"
+        },
+        "A": {
+          "link": "audio/baabc672cd13d92c600bc703578cb7450cf5f351a7fe015f7cc2ca4dd7a80733.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_p0.wav",
+          "sha256": "2db54fdbac04c8bb0bd8f5d74e3726bfdab77d35769e67263af21ef6aa315bdd"
+        },
+        "B": {
+          "link": "audio/24edb5859cb24c02904c8eed03c8f7a6d63d7b7bc4a59dae8f4256a008424239.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_p0.wav",
+          "sha256": "577cfc375c3bf0a8017fbdd4c9b2efa7a3d37d9af0a82b83012f660e62991b6a"
+        }
+      }
+    },
+    {
+      "case_id": "C672998ae6c0b71b4",
+      "order_hash": "672998ae6c0b71b40f805075b9f677bc97655a9d39de916b7f3a356851a899db",
+      "basename": "p231_032_N1_snr_p0.wav",
+      "id": "p231_032",
+      "speaker": "p231",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 55680,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_p0.wav",
+          "sha256": "63d1dd920a9af15f8bfbb972bac857e908c550ac477248faf5fd54d57dd85e81"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_p0.wav",
+          "sha256": "e111d098734a1a850a1ac0565b9738f713b1cb28bffd28b51c3afaf2ad1320d1"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_p0.wav",
+          "sha256": "f5a9dbb71bb476589bd0658fa546fee8054e8aac8cb0e6bc88e177b20627527f"
+        }
+      },
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/7ead4b69629a28f723a7dad832c1f822f09a45b3da17808cbf78266fa3eeb877.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "link": "audio/b88be2397da029339ab6b1037e457bd84822d3ad47fe023f69ab0ffff3208bcd.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_p0.wav",
+          "sha256": "63d1dd920a9af15f8bfbb972bac857e908c550ac477248faf5fd54d57dd85e81"
+        },
+        "A": {
+          "link": "audio/21eec288e61f597ba736fd74a6485b0b8095bde36c66da22ba296861ad86e1fa.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_p0.wav",
+          "sha256": "f5a9dbb71bb476589bd0658fa546fee8054e8aac8cb0e6bc88e177b20627527f"
+        },
+        "B": {
+          "link": "audio/09d6dd559942b13cc250e9c3b01212a3e70e2decd2d054d4301e8df0119b9bc8.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_p0.wav",
+          "sha256": "e111d098734a1a850a1ac0565b9738f713b1cb28bffd28b51c3afaf2ad1320d1"
+        }
+      }
+    },
+    {
+      "case_id": "C67c1dc5e8a0c35d5",
+      "order_hash": "67c1dc5e8a0c35d5bdfd6a1b363da8cbcfdc345826e4725dc577b3b074784ae3",
+      "basename": "p227_030_N2_snr_m18.wav",
+      "id": "p227_030",
+      "speaker": "p227",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 52810,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_m18.wav",
+          "sha256": "55e3e83994d5a2a5e9f180ed4d9b4c849b6b40ed7e889d4d39dec2048986cbd7"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_m18.wav",
+          "sha256": "754c25ba1c4076bc1a4ea7ff2f5b49444831fefb12ca4f3daa6459c2be312494"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_m18.wav",
+          "sha256": "d2e13f9833170378d15c56c14c66f6a6268489b9f37c54a79a256e8bed3017fd"
+        }
+      },
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/ac71bd8d842436a2f2b65bc3c597559517c777b8179745b1ff9942199460bef3.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "link": "audio/ec392d59892a4451e584222d1fa309f6af56dc431c20c717b07416203b6ffd5e.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_m18.wav",
+          "sha256": "55e3e83994d5a2a5e9f180ed4d9b4c849b6b40ed7e889d4d39dec2048986cbd7"
+        },
+        "A": {
+          "link": "audio/999e0de643ec44c76e7b620cb67c9fde6e9c69f77138ec13c96b9510156bd279.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_m18.wav",
+          "sha256": "d2e13f9833170378d15c56c14c66f6a6268489b9f37c54a79a256e8bed3017fd"
+        },
+        "B": {
+          "link": "audio/a04613c37c5ccfbbeb76bd1dedfd0a7780e1a4d1523959545ca3e1cbb3fc2f49.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_m18.wav",
+          "sha256": "754c25ba1c4076bc1a4ea7ff2f5b49444831fefb12ca4f3daa6459c2be312494"
+        }
+      }
+    },
+    {
+      "case_id": "C6999e660f113021d",
+      "order_hash": "6999e660f113021d853cdfce7bb0b31a8ede1b3dfefeb669c97fe12a508fea2d",
+      "basename": "p227_031_N1_snr_p0.wav",
+      "id": "p227_031",
+      "speaker": "p227",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 51005,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_p0.wav",
+          "sha256": "7fd533482e76c39eae0437db9999bfff205fab0a99a2354d8a3e997ad5f03b53"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_p0.wav",
+          "sha256": "233bf5b64bb6ac624a2067647e0317501376d9fc915e0728e75173c321f7bed9"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_p0.wav",
+          "sha256": "4277f1de5bf96ddcb99b4ec10a79124ec6464322375764a22d8f194f09358553"
+        }
+      },
+      "reference": "The Premier League has been a huge success.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/73ae7a5faa6f303463dd0f1ee9156ba45e44df9955b6f36163c6b4053665b064.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "link": "audio/7eacc99e90f3d6d83af2816327c500128cad4033d02c659bfd965af906d039a1.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_p0.wav",
+          "sha256": "7fd533482e76c39eae0437db9999bfff205fab0a99a2354d8a3e997ad5f03b53"
+        },
+        "A": {
+          "link": "audio/52f54acfc6936847fadc99472993ea82a145e1f2e88e6ce55e813a832566daed.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_p0.wav",
+          "sha256": "4277f1de5bf96ddcb99b4ec10a79124ec6464322375764a22d8f194f09358553"
+        },
+        "B": {
+          "link": "audio/64522d99f6917a05a46ce9de27607c7267b7638992a07bce652eac5270555673.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_p0.wav",
+          "sha256": "233bf5b64bb6ac624a2067647e0317501376d9fc915e0728e75173c321f7bed9"
+        }
+      }
+    },
+    {
+      "case_id": "C6fa680cf759bfe88",
+      "order_hash": "6fa680cf759bfe88458cd499ad8644072a4b832644a314604b52c6a7047de2f8",
+      "basename": "p228_026_N2_snr_m18.wav",
+      "id": "p228_026",
+      "speaker": "p228",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 73760,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_m18.wav",
+          "sha256": "989238705a187e3bdd0828e0155d25b0af0f3409f34891776135b81b2352cf90"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_m18.wav",
+          "sha256": "7860986e70039e3a53872128a1ac91af55b493d02992024fa48a46da6ff30adb"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_m18.wav",
+          "sha256": "dd293c5775ac82056eddbc6b1c63c0447adedac1976f5faf8aa04ae915a8074f"
+        }
+      },
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/e470b061db0cf252ccea3028e45c9147d06b0ddce881d4309a39cafb254cf9d5.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "link": "audio/f9ef689dc8061a7e08ea8ae86ba61f39222644470b06432c3c367c87100034c0.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_m18.wav",
+          "sha256": "989238705a187e3bdd0828e0155d25b0af0f3409f34891776135b81b2352cf90"
+        },
+        "A": {
+          "link": "audio/a15c401bc54b98706b8423a0f47c074e654a48773d49294805a0bfa59530bd26.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_m18.wav",
+          "sha256": "7860986e70039e3a53872128a1ac91af55b493d02992024fa48a46da6ff30adb"
+        },
+        "B": {
+          "link": "audio/f66389c8820563a2c452564ee8356aaf76e1da515b191dff26cfd19311263719.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_m18.wav",
+          "sha256": "dd293c5775ac82056eddbc6b1c63c0447adedac1976f5faf8aa04ae915a8074f"
+        }
+      }
+    },
+    {
+      "case_id": "C7874fbc8a5eec0be",
+      "order_hash": "7874fbc8a5eec0beb7363995eb1bb0d0da088bdc88a54e594633a5c0648663d1",
+      "basename": "p228_026_N1_snr_p0.wav",
+      "id": "p228_026",
+      "speaker": "p228",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 73760,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_p0.wav",
+          "sha256": "f26fc0cd4b4c57c7d91afb8ac1f81ba07b0d8b6e810be8662c9851fbebbd16ab"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_p0.wav",
+          "sha256": "181254b8ebca182f7eb002f26dbe1698b669958a02fba0eb5e6a5aafcd3b46ad"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_p0.wav",
+          "sha256": "c4dcfa23abe5b0cbc6279d9e36d4a481536535794528088064cae7d7becf7719"
+        }
+      },
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/293129ec3879b3bbd83fdda7c753748947e74403e0bbeaa46d0904d44b5f0d94.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "link": "audio/cd84771974c5a74f6e2411b32f9fc251b1d8a524ad59a61defa0d3d9b07fd3c7.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_p0.wav",
+          "sha256": "f26fc0cd4b4c57c7d91afb8ac1f81ba07b0d8b6e810be8662c9851fbebbd16ab"
+        },
+        "A": {
+          "link": "audio/06a635099639a64c54adb560e1e97cdf1b7832ce598844601e41236ebb7eacec.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_p0.wav",
+          "sha256": "c4dcfa23abe5b0cbc6279d9e36d4a481536535794528088064cae7d7becf7719"
+        },
+        "B": {
+          "link": "audio/88336e31068a57b2924ab3b9af19e8f373b1af4b42e14ef2a54cd05f5210f921.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_p0.wav",
+          "sha256": "181254b8ebca182f7eb002f26dbe1698b669958a02fba0eb5e6a5aafcd3b46ad"
+        }
+      }
+    },
+    {
+      "case_id": "C8d212b16a10e5c72",
+      "order_hash": "8d212b16a10e5c725b5491980ebc5ef9fda2871243335b1eb991ebb8d37f6ff0",
+      "basename": "p230_027_N2_snr_p0.wav",
+      "id": "p230_027",
+      "speaker": "p230",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 51162,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_p0.wav",
+          "sha256": "38d51096b4783e98b6d53f3faee1b712f9f4df060d71ab1be3866b88caf7af8d"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_p0.wav",
+          "sha256": "28a40a8c5d45ee5c16dd6d49af3384cbbd22d3bcaa57740c9e2fc01b829ecec1"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_p0.wav",
+          "sha256": "ccf42893caa8f84ce03d2df3b324cc90373cc6f4c9af48ae57deda98959a2416"
+        }
+      },
+      "reference": "He has the courage of the unaware.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/e4e6bd4ee168225845df752aafc079be2868038497f215641e8930cc3e512cd7.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "link": "audio/d841c52234826059f1a4b336ad889f03da371a900a90f47bcdd7934604f44a37.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_p0.wav",
+          "sha256": "38d51096b4783e98b6d53f3faee1b712f9f4df060d71ab1be3866b88caf7af8d"
+        },
+        "A": {
+          "link": "audio/0cfb5d881aefd0ac0fd609c7b95ce6656196c1364676d68ea64b1cb4cbdb62ea.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_p0.wav",
+          "sha256": "28a40a8c5d45ee5c16dd6d49af3384cbbd22d3bcaa57740c9e2fc01b829ecec1"
+        },
+        "B": {
+          "link": "audio/9bc28566fd12a95b9c69fbfb808095ee81f3245a6f7c057c705986574f5fbaab.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_p0.wav",
+          "sha256": "ccf42893caa8f84ce03d2df3b324cc90373cc6f4c9af48ae57deda98959a2416"
+        }
+      }
+    },
+    {
+      "case_id": "Ca4190a8c0315f48b",
+      "order_hash": "a4190a8c0315f48b28a10d5017977e78a538512403dc7d946d783dc1c7e10e80",
+      "basename": "p228_032_N1_snr_p0.wav",
+      "id": "p228_032",
+      "speaker": "p228",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 67141,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_p0.wav",
+          "sha256": "6835ab759873e737dcd6de251b541fb4f4e18b9182c462b263fdf66e04e65bf5"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_p0.wav",
+          "sha256": "3a25f75b649bd5ca1d9e17e6787c0587d51722a8cfd06918386008773ca55648"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_p0.wav",
+          "sha256": "b9832b943acd891955b84510f36aba74ffdc32e34cac32e7358be650d133adff"
+        }
+      },
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/589e242d5ad4320fe2e467e3f5d3a29d07fee2bfa898f74b8dabeccb5b4722e7.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "link": "audio/2cc428fa4d0ead9c2720f331e36fed8695e0bb4a7fba704c0ef18c8e52189f73.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_p0.wav",
+          "sha256": "6835ab759873e737dcd6de251b541fb4f4e18b9182c462b263fdf66e04e65bf5"
+        },
+        "A": {
+          "link": "audio/c16bc0aea05013ef355fae06b2426fd9c24b94455586feedf37e31de3faa3577.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_p0.wav",
+          "sha256": "b9832b943acd891955b84510f36aba74ffdc32e34cac32e7358be650d133adff"
+        },
+        "B": {
+          "link": "audio/081b42734b24b2596db394efb7133eea732b030d30953b3da3cfa7467aa2786a.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_p0.wav",
+          "sha256": "3a25f75b649bd5ca1d9e17e6787c0587d51722a8cfd06918386008773ca55648"
+        }
+      }
+    },
+    {
+      "case_id": "Ca58f9ff32ba8e0f1",
+      "order_hash": "a58f9ff32ba8e0f16b5b98203ed55166ed0f605443860eb7b1ddd0dd4dc78863",
+      "basename": "p227_031_N2_snr_p0.wav",
+      "id": "p227_031",
+      "speaker": "p227",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 51005,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_p0.wav",
+          "sha256": "b6ae4b6512cbdad86135ac4b7dbaedc67d18a25438800e8587fe62f45897c9cc"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_p0.wav",
+          "sha256": "44bd2e88dfe0d111f6da24fc5743ad2aa6bc08780406aed7fac8d0619da98e85"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_p0.wav",
+          "sha256": "5ea17f738e8affe251d94d3268320976a9782db5198d3760cf663caa5c35a4ea"
+        }
+      },
+      "reference": "The Premier League has been a huge success.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/14e11c1791f76825a7f29f5fcaf2e8aa339d8d9ee95f5fab24bd95636b0012d2.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+          "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898"
+        },
+        "noisy": {
+          "link": "audio/70c3776f3200722887ec587d8e67b25c0bab748df6b8738519e692729dfb7229.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_p0.wav",
+          "sha256": "b6ae4b6512cbdad86135ac4b7dbaedc67d18a25438800e8587fe62f45897c9cc"
+        },
+        "A": {
+          "link": "audio/d9474885a09f867e3c6cc1a23e717671f2a0dad0e2355a11d1272cb7835b55d7.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_p0.wav",
+          "sha256": "5ea17f738e8affe251d94d3268320976a9782db5198d3760cf663caa5c35a4ea"
+        },
+        "B": {
+          "link": "audio/b4fc9ecdad4841198f15eb09560ce59d8b4fb79584e9608ea234c8b6bf8b8d62.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_p0.wav",
+          "sha256": "44bd2e88dfe0d111f6da24fc5743ad2aa6bc08780406aed7fac8d0619da98e85"
+        }
+      }
+    },
+    {
+      "case_id": "Cb33fc94b89a7d763",
+      "order_hash": "b33fc94b89a7d7638353d588ba31317ee53d1579088a068e83e5c5f40dc77dbe",
+      "basename": "p231_032_N2_snr_m18.wav",
+      "id": "p231_032",
+      "speaker": "p231",
+      "noise": "N2",
+      "snr_db": -18,
+      "samples": 55680,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_m18.wav",
+          "sha256": "c0bc29d4678ca0cd943661872b2d4d7f3839c6caba7ded5d88ece760abdc6d38"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_m18.wav",
+          "sha256": "174a63c705a9d99f9c5852541c4b11ff425e53e511f3b74fa3aa883161a68717"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_m18.wav",
+          "sha256": "2d886c56b5bbe889f1683edff5e69adf5121da37f5187f62953bf3dc506f00f5"
+        }
+      },
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/532d119a50be3c57d3b48e037a67af483070f88bbf7db1ab91e72c14b6edca5c.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "link": "audio/625eb8df9c7d8ac1bc61eac21843305203654ea8b0d0f881e00787e58eb145ce.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_m18.wav",
+          "sha256": "c0bc29d4678ca0cd943661872b2d4d7f3839c6caba7ded5d88ece760abdc6d38"
+        },
+        "A": {
+          "link": "audio/7e7a97d2e905636720113a199cfe4f86bcd687622e3b863904f42be658951553.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_m18.wav",
+          "sha256": "174a63c705a9d99f9c5852541c4b11ff425e53e511f3b74fa3aa883161a68717"
+        },
+        "B": {
+          "link": "audio/3bb09554edb22d1d339538ea2dceccf8013632b50a8c4169ebb85093ed09e716.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_m18.wav",
+          "sha256": "2d886c56b5bbe889f1683edff5e69adf5121da37f5187f62953bf3dc506f00f5"
+        }
+      }
+    },
+    {
+      "case_id": "Cb8e8f962aca402ac",
+      "order_hash": "b8e8f962aca402acd6e86b105f4ea9d387fce01f2d2bf23397dea1c3e3d46543",
+      "basename": "p227_030_N1_snr_p0.wav",
+      "id": "p227_030",
+      "speaker": "p227",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 52810,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_p0.wav",
+          "sha256": "5f3a067bbf0a70abe734985a1bea82482629bd880e27ca54894183e29898363c"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_p0.wav",
+          "sha256": "bd5f55c08c2cef6cec7ab937bb167b47932b36ed66e950d67ca082fd2a62c443"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_p0.wav",
+          "sha256": "7f442f5d8e7c69db96d4b52ece3d1813b3bada43f3ffd937117d0d3fd61c24ae"
+        }
+      },
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/2c96491be6ab5542bf412174d7771bfd2e46610103d7d462c2698751598b1eff.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "link": "audio/f10609f9fe3c5a6f4548ab2c8d7b4e428d575d9040410be347840e3522f4494c.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_p0.wav",
+          "sha256": "5f3a067bbf0a70abe734985a1bea82482629bd880e27ca54894183e29898363c"
+        },
+        "A": {
+          "link": "audio/45c12fd761fa77160998ca537306280689f077986dedaecd2c0dd2f0dc4c4321.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_p0.wav",
+          "sha256": "bd5f55c08c2cef6cec7ab937bb167b47932b36ed66e950d67ca082fd2a62c443"
+        },
+        "B": {
+          "link": "audio/dd8dafeab7587bad46dc71e434d7406c13967f5913b5432c65299cd66e6b6022.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_p0.wav",
+          "sha256": "7f442f5d8e7c69db96d4b52ece3d1813b3bada43f3ffd937117d0d3fd61c24ae"
+        }
+      }
+    },
+    {
+      "case_id": "Cbb6fea1afba8d09c",
+      "order_hash": "bb6fea1afba8d09cf2b2e8f3d215430eb17d5570042e66a8ba6b5e709d2fd15d",
+      "basename": "p231_029_N1_snr_p0.wav",
+      "id": "p231_029",
+      "speaker": "p231",
+      "noise": "N1",
+      "snr_db": 0,
+      "samples": 49851,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_p0.wav",
+          "sha256": "3541ac74e10e793826fb8621404bd36b7db71e04446ad259e53bed02d5e5425f"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_p0.wav",
+          "sha256": "c6e103892bfa332bb0673801b47cbdbf78cb046818c31532e41cc21f95a3501c"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_p0.wav",
+          "sha256": "0e9f295c32578f172417ceedbac3c55f4b16aa4f75c9100e42e2b6e772599baf"
+        }
+      },
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/f46b86294d675e704269799b614a091379364bfa7d33259041cbd308d63f0113.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+          "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7"
+        },
+        "noisy": {
+          "link": "audio/50ef47195721dde12fe7d2077c10b79c7e650281a256b5988ba8da9b7acfbfb7.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_p0.wav",
+          "sha256": "3541ac74e10e793826fb8621404bd36b7db71e04446ad259e53bed02d5e5425f"
+        },
+        "A": {
+          "link": "audio/b327f2edb8c2cfd7a1913f31c68fa5f56e3a6f4cd51fd6d925f5e209d89707d5.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_p0.wav",
+          "sha256": "0e9f295c32578f172417ceedbac3c55f4b16aa4f75c9100e42e2b6e772599baf"
+        },
+        "B": {
+          "link": "audio/249eb61d1103cd6b9d7ca76bffd278f60876a45a264896c3dc46e5dd4e98ad46.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_p0.wav",
+          "sha256": "c6e103892bfa332bb0673801b47cbdbf78cb046818c31532e41cc21f95a3501c"
+        }
+      }
+    },
+    {
+      "case_id": "Cbc723a3d1b8d6cc9",
+      "order_hash": "bc723a3d1b8d6cc97bb6cc493e22a8c6c32b88cf5fa969676d3d77636ccaf7ce",
+      "basename": "p228_026_N2_snr_p0.wav",
+      "id": "p228_026",
+      "speaker": "p228",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 73760,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_p0.wav",
+          "sha256": "2efb01cf285e72b657b6dfbe36e416df18832fa02fbf925771cc7ca335af14f7"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_p0.wav",
+          "sha256": "9526784ff8f75ade23a0ed84443d89b41058351a9c115c8ec1657ca7a2a2c6f3"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_p0.wav",
+          "sha256": "0317a147b61c8cc2d070a5f77984268b79711c914b7b10825b460cc8831f3474"
+        }
+      },
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/0c515d50baa1da51d70e8e5880c51dd504b0427b4eb9f505aa61f4aa57559fd3.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "link": "audio/608f7d8eafee51b4a9adac4f08f0c49b78b85a03cbef57dc849d86b039958055.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_p0.wav",
+          "sha256": "2efb01cf285e72b657b6dfbe36e416df18832fa02fbf925771cc7ca335af14f7"
+        },
+        "A": {
+          "link": "audio/48b26d4e3f2bb4c7e9c0050dd9d5069098121690c641ee03b3626c41f762699f.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_p0.wav",
+          "sha256": "9526784ff8f75ade23a0ed84443d89b41058351a9c115c8ec1657ca7a2a2c6f3"
+        },
+        "B": {
+          "link": "audio/d2a96f46bf8ef2ba814b0f016fde74c0c1cf19930c48eef76f05459f4d9b8857.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_p0.wav",
+          "sha256": "0317a147b61c8cc2d070a5f77984268b79711c914b7b10825b460cc8831f3474"
+        }
+      }
+    },
+    {
+      "case_id": "Cc28e360f80e277c9",
+      "order_hash": "c28e360f80e277c9b76b039fecc0ac675c0bf41cd42aa15d92fd4eee6970eccb",
+      "basename": "p227_030_N1_snr_m18.wav",
+      "id": "p227_030",
+      "speaker": "p227",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 52810,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_m18.wav",
+          "sha256": "6b7802e0d1867551248e6da4829a66461811c46a76646da5208513dcab44942c"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_m18.wav",
+          "sha256": "bf1549163cfa9b83e192c04040ac5b01adcdc73db265d1a241c0eb6864eccd7a"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_m18.wav",
+          "sha256": "380dc7da1c18c5ab669e9fcc062a87154817a1f4f7c609f08daaf93d6072962a"
+        }
+      },
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/ecf51a222134a838be53905f63507ddc0ee974e65ca29b689d61158b5fca4c82.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+          "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c"
+        },
+        "noisy": {
+          "link": "audio/b6f91f466fa7eca2fbcf9cae43dbc0188a158cff1785b6dc93c1ec2e70b712a9.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_m18.wav",
+          "sha256": "6b7802e0d1867551248e6da4829a66461811c46a76646da5208513dcab44942c"
+        },
+        "A": {
+          "link": "audio/85f66eeda1e83bf306c0edeb9849550237e9c9b90c31cbfb521a23629e3f945f.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_m18.wav",
+          "sha256": "380dc7da1c18c5ab669e9fcc062a87154817a1f4f7c609f08daaf93d6072962a"
+        },
+        "B": {
+          "link": "audio/389da9a9b83e381b309bd692deca899991744f4cc31d3afffdddb39f7d4bb3b8.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_m18.wav",
+          "sha256": "bf1549163cfa9b83e192c04040ac5b01adcdc73db265d1a241c0eb6864eccd7a"
+        }
+      }
+    },
+    {
+      "case_id": "Cc3b24d0c9050c14e",
+      "order_hash": "c3b24d0c9050c14e93c6fe95ef353477b70433874d5e041db4f150d56033287a",
+      "basename": "p230_027_N1_snr_m18.wav",
+      "id": "p230_027",
+      "speaker": "p230",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 51162,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_m18.wav",
+          "sha256": "ed4af521229238341e8960cef4c3e094084a08a45cfb462da850b1b0fa2927dd"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_m18.wav",
+          "sha256": "752bfb9ca899fd79ccbf584ef47614e781a1dd07e5b50c0ad8d6c59d1bb43240"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_m18.wav",
+          "sha256": "ed9ee4ba67d7b472ed52a54fc28a013c71ecf4341cbb96896a5a75f1f304cc31"
+        }
+      },
+      "reference": "He has the courage of the unaware.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/d669939493ce592a70de0dd23f51fdf159740286904ab57e18aca94399c9dcf4.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav",
+          "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67"
+        },
+        "noisy": {
+          "link": "audio/98dbfd75b7e4a745ed1f7b4e05944be8e1cf18536dd5bf74a020bc2d52b553bb.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_m18.wav",
+          "sha256": "ed4af521229238341e8960cef4c3e094084a08a45cfb462da850b1b0fa2927dd"
+        },
+        "A": {
+          "link": "audio/e770952565161d9d7f2bf9d5ea5781ddd530d7a2b43176209872bf0b6d62c8f3.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_m18.wav",
+          "sha256": "ed9ee4ba67d7b472ed52a54fc28a013c71ecf4341cbb96896a5a75f1f304cc31"
+        },
+        "B": {
+          "link": "audio/e86a2f4fa3da6231a78fbbb90ae6894c0786cfdc4cf337dff595fde0c563659d.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_m18.wav",
+          "sha256": "752bfb9ca899fd79ccbf584ef47614e781a1dd07e5b50c0ad8d6c59d1bb43240"
+        }
+      }
+    },
+    {
+      "case_id": "Cd4a5dae69eb05041",
+      "order_hash": "d4a5dae69eb05041273950ee55918bcb51d6185019693ca85d36da92e7de813f",
+      "basename": "p231_032_N2_snr_p0.wav",
+      "id": "p231_032",
+      "speaker": "p231",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 55680,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_p0.wav",
+          "sha256": "cfc9d140a3abc386bed87bc946f911eb736015f09fd2e4267d44e8cd43e088f6"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_p0.wav",
+          "sha256": "e3ba6f0301e6c8753629c2548f3619ee7ce17285ebb684467964a63d37409e8f"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_p0.wav",
+          "sha256": "ed64a1f5c91c617b02807863cdc182672a924fe2f8ab3af39ec284283e11c9cd"
+        }
+      },
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/ed4f98d4826f51cee070bb281461da4d36335886c51b623e1ba0207cb35fa2fd.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav",
+          "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb"
+        },
+        "noisy": {
+          "link": "audio/e2bb5eeb5513eaef456400e1caa2f0210c61838143d12e7e0d69e4a358403a54.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_p0.wav",
+          "sha256": "cfc9d140a3abc386bed87bc946f911eb736015f09fd2e4267d44e8cd43e088f6"
+        },
+        "A": {
+          "link": "audio/ddec93c6e88bff67187f18b051da8f48d8f83201f9b3c606016d563ed7b0fde7.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_p0.wav",
+          "sha256": "e3ba6f0301e6c8753629c2548f3619ee7ce17285ebb684467964a63d37409e8f"
+        },
+        "B": {
+          "link": "audio/8035f1c682c135677694d90c5db9763d63a77e362ab6d42d8bb58a092f0a6d85.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_p0.wav",
+          "sha256": "ed64a1f5c91c617b02807863cdc182672a924fe2f8ab3af39ec284283e11c9cd"
+        }
+      }
+    },
+    {
+      "case_id": "Ce825f6a085511fa8",
+      "order_hash": "e825f6a085511fa83807d7407cce22c65aa5d55245a442d1f9e64d03e9755374",
+      "basename": "p228_026_N1_snr_m18.wav",
+      "id": "p228_026",
+      "speaker": "p228",
+      "noise": "N1",
+      "snr_db": -18,
+      "samples": 73760,
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_m18.wav",
+          "sha256": "8ce6f90c95ab1c684181c2d44508a1111e2743d7974002b0a3727694015bdba5"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_m18.wav",
+          "sha256": "e2a4b4e1f301cf5974be3b79ce6dc323fadde8453a5c01cc8eff13fb74595b98"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_m18.wav",
+          "sha256": "dbaaabc95e1165e1c82de69e9d0b69d8fe20ad753bd86ac662f717468bf71a03"
+        }
+      },
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/5087cdc1647443b9e68cede6d5f631a7203754416edb0ef5c55fe21444edc155.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+          "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c"
+        },
+        "noisy": {
+          "link": "audio/03467cd14875eb2c028e65c02094da0a30aaea51810cc4d1e3a1fcbb16151b32.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_m18.wav",
+          "sha256": "8ce6f90c95ab1c684181c2d44508a1111e2743d7974002b0a3727694015bdba5"
+        },
+        "A": {
+          "link": "audio/605ab10195c4a8bf886d8b841c406a5910ac7a1f9507607a15781a3050f3f4b0.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_m18.wav",
+          "sha256": "e2a4b4e1f301cf5974be3b79ce6dc323fadde8453a5c01cc8eff13fb74595b98"
+        },
+        "B": {
+          "link": "audio/6f18ae0f8b906a5d8bc704a410f02af63c1237070c701304a79c1ce9b5b6b280.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_m18.wav",
+          "sha256": "dbaaabc95e1165e1c82de69e9d0b69d8fe20ad753bd86ac662f717468bf71a03"
+        }
+      }
+    },
+    {
+      "case_id": "Ced63b5684ab079cb",
+      "order_hash": "ed63b5684ab079cbb3a8a6f1cdbdd3db7915d7439f43b91c3b3ada2cbf975ef3",
+      "basename": "p228_032_N2_snr_p0.wav",
+      "id": "p228_032",
+      "speaker": "p228",
+      "noise": "N2",
+      "snr_db": 0,
+      "samples": 67141,
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      },
+      "sources": {
+        "clean": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_p0.wav",
+          "sha256": "d1fc4d808e272d32f99995305726533505508134ebcfed0279c71a6f334c21d3"
+        },
+        "frontend": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_p0.wav",
+          "sha256": "ac06bcf09c491a8c23c7363993492745eb833731417fc769fc9d1d2a4f7f3312"
+        },
+        "off": {
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_p0.wav",
+          "sha256": "80a9cefa28a1ff3f4b6ea2cc70fff63ac9e17458676609514d85eda9b826daf0"
+        }
+      },
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "entries": {
+        "clean": {
+          "link": "audio/02e7449efdeb9ca46d7ff4bc031b14b19138bd137bcc81e20b027dc21e1a81e5.wav",
+          "source": "clean",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+          "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9"
+        },
+        "noisy": {
+          "link": "audio/0c0535827a757a679433c9b6c517805f3fdb191588364d8050d303dfcd62374f.wav",
+          "source": "noisy",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_p0.wav",
+          "sha256": "d1fc4d808e272d32f99995305726533505508134ebcfed0279c71a6f334c21d3"
+        },
+        "A": {
+          "link": "audio/136a72f77b94be0ca6bf3db5d850d85da61d02de262b8e8a3461ff805c2ecbf5.wav",
+          "source": "off",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_p0.wav",
+          "sha256": "80a9cefa28a1ff3f4b6ea2cc70fff63ac9e17458676609514d85eda9b826daf0"
+        },
+        "B": {
+          "link": "audio/0ac873e9a4308afa843d7d95fb63e2cc64ddadb8841c8e8163a726b0d304d062.wav",
+          "source": "frontend",
+          "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_p0.wav",
+          "sha256": "ac06bcf09c491a8c23c7363993492745eb833731417fc769fc9d1d2a4f7f3312"
+        }
+      }
+    }
+  ],
+  "source_pre": {
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav": {
+      "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_m18.wav": {
+      "sha256": "517756d1e8662b79e467c4b6dcf71feaa5b224c44a9ec46d857a6dec88eef170",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_m18.wav": {
+      "sha256": "75407bf0f890edff7c45c63ae79f620c7b7d62339d7a7ef9c88627b4f1cc5d6b",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_m18.wav": {
+      "sha256": "8340fd9505373c691f8029a664ea4574b6d861ff803a313a3de63ea7af693016",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_m18.wav": {
+      "sha256": "34849ec866f524004591ef5e13483fbdd26928ad4c8771447655ac8a7ff74587",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_m18.wav": {
+      "sha256": "3dcf35cbc456154e4caeaeb58aad292f1233c061f16d32215c0c2c8074f725ec",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_m18.wav": {
+      "sha256": "7afcb98484c6b7e84deefe008c037dd8b25e094c21d04047a48c96a7b75b4f4f",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav": {
+      "sha256": "72da1f75128c7e3466e93b05650f2f0efcde7fe1eebb4f70a9d80cb3d098babb",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_m18.wav": {
+      "sha256": "341261243fb18c032aa10d5ccb87d48da42b2ef6d3416c7a6223cbe52284e4b7",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_m18.wav": {
+      "sha256": "8da66d4a63a4a41c927c6938e9ee5df2504fce0eb927b5fb156c3b92b4007da8",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_m18.wav": {
+      "sha256": "87a374a0e2704a9bd2d1afacdc0b672bdc4fd37a176ca4e2464c895e556b916f",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav": {
+      "sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_p0.wav": {
+      "sha256": "23382ac28e24fd29018cb500f28c5d0978f40f2dcf4e0675e79f385091a83b55",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_p0.wav": {
+      "sha256": "46c4031e2263e8a632924d2fe6a5cb604365bb41284d4436febbfba4248b83ba",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_p0.wav": {
+      "sha256": "63cb3850fb74448c29ee6b7ebc3aa1ce565de1c4c786c112e90c4736c0bf2502",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav": {
+      "sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_m18.wav": {
+      "sha256": "aae408eb8c373c072f81287eb56a3db50ed1ffd4d796192c6f2a5d2d8e671e57",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_m18.wav": {
+      "sha256": "0e725fc5e2bd5a2305b654f2fe22a7d304db738805f80b2a3a6d3be19afec7bd",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_m18.wav": {
+      "sha256": "7ebacf598638b93ef865ff904fa73c565bec2db8e7e6c5156a72da3edf4af742",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav": {
+      "sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_p0.wav": {
+      "sha256": "112281251f57c88d9c1e4c1c2129aafde43f5d43c7045e0e7f92d90b410933ca",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_p0.wav": {
+      "sha256": "689d589f801cced9ff3f60742cfe46bdc467ce29caa5620022393a0d5135bc90",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_p0.wav": {
+      "sha256": "023bf55020630eaea815c58c673a570cf4fd7ac63aa270030b17382177ab2079",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_m18.wav": {
+      "sha256": "719fe0481a6d93da8dfa0598e6662f0472bceb05d59ac2f70fdc637dc528b0f0",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_m18.wav": {
+      "sha256": "1a74b605962b146add5618e7e04e8436ef3f9de7f452e7836db1fc5082e9438d",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_m18.wav": {
+      "sha256": "4f73fa3a25187a76aa10a4daa7c00e02d71d2e6b35a3acd6174d39cf01d18161",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_m18.wav": {
+      "sha256": "d1715019445f6033a31f8675975ae3dd6cc1e3f5c808a22e96409085bdc642b4",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_m18.wav": {
+      "sha256": "3b77977361c87dc408688c061785529a753ab711713fc054f9833e8855380bad",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_m18.wav": {
+      "sha256": "e41d309864aa0f51a6dd2de028763971c9ed98e474d0ac651380c6194be41635",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav": {
+      "sha256": "e2fc21f541ecc1b9f61889c39ab307d36ed8221acfbf694a96888f6629bd5e67",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_p0.wav": {
+      "sha256": "8a1d7d45dea499c10fb38f402aa8d293f52ce6874029cc5a144eceb4862aff5f",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_p0.wav": {
+      "sha256": "bd5bd4fd05a48016a6bfef42e898b0cb55f6d27bb43c9c9c45b5cd49120238c1",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_p0.wav": {
+      "sha256": "cc539c73f5336ea440615e793e6d9048d7aa78c0d60f8b28901d451a40da4646",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_p0.wav": {
+      "sha256": "8ad654f27d69c24a917e31cb40662d35cfd6dd0bf4220fda3af1c3db43a33dc5",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_p0.wav": {
+      "sha256": "5e95991442b514ce5cacda810ffdf774be5050038274e6cf0242c286def882b5",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_p0.wav": {
+      "sha256": "092f01f623cdc9f4c3c3d475acd7164c9312b810d02bdfaf477c7c9432138635",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_m18.wav": {
+      "sha256": "6cef0f9dcb0642c5b410e61c572199a0058267d1726ed2be5b7ead888fc5b26d",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_m18.wav": {
+      "sha256": "91389721720610847313df7a38f9e4e572fe8bf2ea095fd10a889d0378b47fde",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_m18.wav": {
+      "sha256": "e25e4e2e43fcb2cbedae6b9e49a105fd4a6e38e6dee7d39a255b02981ccec14b",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_m18.wav": {
+      "sha256": "f2f474e0dc088e6a238df53ea4f2bda78d563210d0891aa99d83fc7e419c1330",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_m18.wav": {
+      "sha256": "528730acb5bfec47cfba32bb25063f10ea3a1fae150ce96403c67b0ae1fd49bd",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_m18.wav": {
+      "sha256": "974bdeae21a52a2d37b74f9bc37abfd7816e4827a39a8cc6221de3fffee24cda",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_m18.wav": {
+      "sha256": "4a61e4a6b0812fc3f28d928f8e70ffda939087546000ae1c10740dbe536c994c",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_m18.wav": {
+      "sha256": "ecd7f600db3e5fc985ebc2779aa04ae2a63d93c75daf2bf0d06a20e2b2327155",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_m18.wav": {
+      "sha256": "d282d73ee3bb053b3ed4fc4114a038657653e4406f56af5133dac1cf48716fe8",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_m18.wav": {
+      "sha256": "91518bea237c9d0a35011738e0455718035a0f297d6ee278aaaaf08fc79d3b62",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_m18.wav": {
+      "sha256": "97db4336f0ab4271ce079bfe5742ebbdb431b0a5530bdf581fa478cc3ebb245f",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_m18.wav": {
+      "sha256": "a80a8aa7673f6f784607781af17b8c73d97fd4b141d636657497753dc21f83f2",
+      "bytes": 112466
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav": {
+      "sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_p0.wav": {
+      "sha256": "3b4637ce590f54101478ed1ae1b34e882eb27909d81f4c31dd249ee9cd5b1faf",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_p0.wav": {
+      "sha256": "2db54fdbac04c8bb0bd8f5d74e3726bfdab77d35769e67263af21ef6aa315bdd",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_p0.wav": {
+      "sha256": "577cfc375c3bf0a8017fbdd4c9b2efa7a3d37d9af0a82b83012f660e62991b6a",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_p0.wav": {
+      "sha256": "63d1dd920a9af15f8bfbb972bac857e908c550ac477248faf5fd54d57dd85e81",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_p0.wav": {
+      "sha256": "e111d098734a1a850a1ac0565b9738f713b1cb28bffd28b51c3afaf2ad1320d1",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_p0.wav": {
+      "sha256": "f5a9dbb71bb476589bd0658fa546fee8054e8aac8cb0e6bc88e177b20627527f",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_m18.wav": {
+      "sha256": "55e3e83994d5a2a5e9f180ed4d9b4c849b6b40ed7e889d4d39dec2048986cbd7",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_m18.wav": {
+      "sha256": "754c25ba1c4076bc1a4ea7ff2f5b49444831fefb12ca4f3daa6459c2be312494",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_m18.wav": {
+      "sha256": "d2e13f9833170378d15c56c14c66f6a6268489b9f37c54a79a256e8bed3017fd",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_p0.wav": {
+      "sha256": "7fd533482e76c39eae0437db9999bfff205fab0a99a2354d8a3e997ad5f03b53",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_p0.wav": {
+      "sha256": "233bf5b64bb6ac624a2067647e0317501376d9fc915e0728e75173c321f7bed9",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_p0.wav": {
+      "sha256": "4277f1de5bf96ddcb99b4ec10a79124ec6464322375764a22d8f194f09358553",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav": {
+      "sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_m18.wav": {
+      "sha256": "989238705a187e3bdd0828e0155d25b0af0f3409f34891776135b81b2352cf90",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_m18.wav": {
+      "sha256": "7860986e70039e3a53872128a1ac91af55b493d02992024fa48a46da6ff30adb",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_m18.wav": {
+      "sha256": "dd293c5775ac82056eddbc6b1c63c0447adedac1976f5faf8aa04ae915a8074f",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_p0.wav": {
+      "sha256": "f26fc0cd4b4c57c7d91afb8ac1f81ba07b0d8b6e810be8662c9851fbebbd16ab",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_p0.wav": {
+      "sha256": "181254b8ebca182f7eb002f26dbe1698b669958a02fba0eb5e6a5aafcd3b46ad",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_p0.wav": {
+      "sha256": "c4dcfa23abe5b0cbc6279d9e36d4a481536535794528088064cae7d7becf7719",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_p0.wav": {
+      "sha256": "38d51096b4783e98b6d53f3faee1b712f9f4df060d71ab1be3866b88caf7af8d",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_p0.wav": {
+      "sha256": "28a40a8c5d45ee5c16dd6d49af3384cbbd22d3bcaa57740c9e2fc01b829ecec1",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_p0.wav": {
+      "sha256": "ccf42893caa8f84ce03d2df3b324cc90373cc6f4c9af48ae57deda98959a2416",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_p0.wav": {
+      "sha256": "6835ab759873e737dcd6de251b541fb4f4e18b9182c462b263fdf66e04e65bf5",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_p0.wav": {
+      "sha256": "3a25f75b649bd5ca1d9e17e6787c0587d51722a8cfd06918386008773ca55648",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_p0.wav": {
+      "sha256": "b9832b943acd891955b84510f36aba74ffdc32e34cac32e7358be650d133adff",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_p0.wav": {
+      "sha256": "b6ae4b6512cbdad86135ac4b7dbaedc67d18a25438800e8587fe62f45897c9cc",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_p0.wav": {
+      "sha256": "44bd2e88dfe0d111f6da24fc5743ad2aa6bc08780406aed7fac8d0619da98e85",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_p0.wav": {
+      "sha256": "5ea17f738e8affe251d94d3268320976a9782db5198d3760cf663caa5c35a4ea",
+      "bytes": 102054
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_m18.wav": {
+      "sha256": "c0bc29d4678ca0cd943661872b2d4d7f3839c6caba7ded5d88ece760abdc6d38",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_m18.wav": {
+      "sha256": "174a63c705a9d99f9c5852541c4b11ff425e53e511f3b74fa3aa883161a68717",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_m18.wav": {
+      "sha256": "2d886c56b5bbe889f1683edff5e69adf5121da37f5187f62953bf3dc506f00f5",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_p0.wav": {
+      "sha256": "5f3a067bbf0a70abe734985a1bea82482629bd880e27ca54894183e29898363c",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_p0.wav": {
+      "sha256": "bd5f55c08c2cef6cec7ab937bb167b47932b36ed66e950d67ca082fd2a62c443",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_p0.wav": {
+      "sha256": "7f442f5d8e7c69db96d4b52ece3d1813b3bada43f3ffd937117d0d3fd61c24ae",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_p0.wav": {
+      "sha256": "3541ac74e10e793826fb8621404bd36b7db71e04446ad259e53bed02d5e5425f",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_p0.wav": {
+      "sha256": "c6e103892bfa332bb0673801b47cbdbf78cb046818c31532e41cc21f95a3501c",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_p0.wav": {
+      "sha256": "0e9f295c32578f172417ceedbac3c55f4b16aa4f75c9100e42e2b6e772599baf",
+      "bytes": 99746
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_p0.wav": {
+      "sha256": "2efb01cf285e72b657b6dfbe36e416df18832fa02fbf925771cc7ca335af14f7",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_p0.wav": {
+      "sha256": "9526784ff8f75ade23a0ed84443d89b41058351a9c115c8ec1657ca7a2a2c6f3",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_p0.wav": {
+      "sha256": "0317a147b61c8cc2d070a5f77984268b79711c914b7b10825b460cc8831f3474",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_m18.wav": {
+      "sha256": "6b7802e0d1867551248e6da4829a66461811c46a76646da5208513dcab44942c",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_m18.wav": {
+      "sha256": "bf1549163cfa9b83e192c04040ac5b01adcdc73db265d1a241c0eb6864eccd7a",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_m18.wav": {
+      "sha256": "380dc7da1c18c5ab669e9fcc062a87154817a1f4f7c609f08daaf93d6072962a",
+      "bytes": 105664
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_m18.wav": {
+      "sha256": "ed4af521229238341e8960cef4c3e094084a08a45cfb462da850b1b0fa2927dd",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_m18.wav": {
+      "sha256": "752bfb9ca899fd79ccbf584ef47614e781a1dd07e5b50c0ad8d6c59d1bb43240",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_m18.wav": {
+      "sha256": "ed9ee4ba67d7b472ed52a54fc28a013c71ecf4341cbb96896a5a75f1f304cc31",
+      "bytes": 102368
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_p0.wav": {
+      "sha256": "cfc9d140a3abc386bed87bc946f911eb736015f09fd2e4267d44e8cd43e088f6",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_p0.wav": {
+      "sha256": "e3ba6f0301e6c8753629c2548f3619ee7ce17285ebb684467964a63d37409e8f",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_p0.wav": {
+      "sha256": "ed64a1f5c91c617b02807863cdc182672a924fe2f8ab3af39ec284283e11c9cd",
+      "bytes": 111404
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_m18.wav": {
+      "sha256": "8ce6f90c95ab1c684181c2d44508a1111e2743d7974002b0a3727694015bdba5",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_m18.wav": {
+      "sha256": "e2a4b4e1f301cf5974be3b79ce6dc323fadde8453a5c01cc8eff13fb74595b98",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_m18.wav": {
+      "sha256": "dbaaabc95e1165e1c82de69e9d0b69d8fe20ad753bd86ac662f717468bf71a03",
+      "bytes": 147564
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_p0.wav": {
+      "sha256": "d1fc4d808e272d32f99995305726533505508134ebcfed0279c71a6f334c21d3",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_p0.wav": {
+      "sha256": "ac06bcf09c491a8c23c7363993492745eb833731417fc769fc9d1d2a4f7f3312",
+      "bytes": 134326
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_p0.wav": {
+      "sha256": "80a9cefa28a1ff3f4b6ea2cc70fff63ac9e17458676609514d85eda9b826daf0",
+      "bytes": 134326
+    }
+  },
+  "headers": {
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 56211
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51005
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 49851
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 52810
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 51162
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 55680
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_m18.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 73760
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_p0.wav": {
+      "sample_rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 67141
+    }
+  }
+}

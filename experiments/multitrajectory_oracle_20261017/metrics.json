@@ -1,0 +1,1604 @@
+{
+  "metadata": {
+    "n_files": 16,
+    "seeds": [
+      2026,
+      2027,
+      2028,
+      2029
+    ],
+    "N": 30,
+    "snr": 0.5,
+    "wav_dir": "/dev/shm/multitraj_router_wavs_16",
+    "bootstrap": 20000,
+    "bootstrap_seed": 2026,
+    "selection": "max DNSMOS OVRL subject to SI-SDR >= seed2026 baseline - 0.05 dB"
+  },
+  "baseline_seed2026_means": {
+    "pesq": 1.8444013819098473,
+    "stoi": 0.8145064843705248,
+    "sisdr": 8.145444450434297,
+    "dnsmos_p808": 3.960788905620575,
+    "dnsmos_sig": 3.422921771837624,
+    "dnsmos_bak": 4.104706608500788,
+    "dnsmos_ovrl": 3.0853225008902845
+  },
+  "oracle_means": {
+    "pesq": 1.8282192051410675,
+    "stoi": 0.8146625924262414,
+    "sisdr": 8.264103121124208,
+    "dnsmos_p808": 3.9408997510160715,
+    "dnsmos_sig": 3.460350992213669,
+    "dnsmos_bak": 4.12527521571835,
+    "dnsmos_ovrl": 3.1350633176919356
+  },
+  "paired_bootstrap_oracle_vs_seed2026": {
+    "pesq": {
+      "delta": -0.016182176768779755,
+      "ci95": [
+        -0.052356470748782157,
+        0.0190976858139038
+      ]
+    },
+    "stoi": {
+      "delta": 0.00015610805571666941,
+      "ci95": [
+        -0.005028281412171766,
+        0.004854105372244901
+      ]
+    },
+    "sisdr": {
+      "delta": 0.11865867068991065,
+      "ci95": [
+        0.053094783797860146,
+        0.1902065191417932
+      ]
+    },
+    "dnsmos_p808": {
+      "delta": -0.01988915460450308,
+      "ci95": [
+        -0.07096219004264905,
+        0.025530911662748876
+      ]
+    },
+    "dnsmos_sig": {
+      "delta": 0.03742922037604496,
+      "ci95": [
+        0.018343488245389346,
+        0.05821932043927856
+      ]
+    },
+    "dnsmos_bak": {
+      "delta": 0.020568607217562207,
+      "ci95": [
+        0.002561543408156576,
+        0.044736866394655746
+      ]
+    },
+    "dnsmos_ovrl": {
+      "delta": 0.04974081680165107,
+      "ci95": [
+        0.025177185438681037,
+        0.07713715658701147
+      ]
+    }
+  },
+  "per_trajectory": [
+    {
+      "filename": "000_reader_10660_fileid_7601.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/000_reader_10660_fileid_7601_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.4559037685394287,
+      "stoi": 0.7281268969260329,
+      "sisdr": 1.7329089641571045,
+      "dnsmos_p808": 4.164814131600516,
+      "dnsmos_sig": 3.1633947864200422,
+      "dnsmos_bak": 4.1527619038553185,
+      "dnsmos_ovrl": 2.735121381720384
+    },
+    {
+      "filename": "000_reader_10660_fileid_7601.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/000_reader_10660_fileid_7601_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.4405819177627563,
+      "stoi": 0.7050368113450705,
+      "sisdr": 1.8614752292633057,
+      "dnsmos_p808": 4.105791909354074,
+      "dnsmos_sig": 3.174868976802784,
+      "dnsmos_bak": 4.15647557777534,
+      "dnsmos_ovrl": 2.7622796781534844
+    },
+    {
+      "filename": "000_reader_10660_fileid_7601.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/000_reader_10660_fileid_7601_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.4111579656600952,
+      "stoi": 0.6981812361723545,
+      "sisdr": 1.8866469860076904,
+      "dnsmos_p808": 4.18734393801008,
+      "dnsmos_sig": 3.2216323889849905,
+      "dnsmos_bak": 4.155302666749065,
+      "dnsmos_ovrl": 2.8043785354251947
+    },
+    {
+      "filename": "000_reader_10660_fileid_7601.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/000_reader_10660_fileid_7601_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.449890375137329,
+      "stoi": 0.7329340399647383,
+      "sisdr": 2.038571357727051,
+      "dnsmos_p808": 4.150763784136091,
+      "dnsmos_sig": 3.1467374985662984,
+      "dnsmos_bak": 4.147884239229842,
+      "dnsmos_ovrl": 2.7309381419988314
+    },
+    {
+      "filename": "001_reader_10660_fileid_855.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/001_reader_10660_fileid_855_seed2026.wav",
+      "nfe": 30,
+      "pesq": 2.741666078567505,
+      "stoi": 0.9698678062146459,
+      "sisdr": 15.555051803588867,
+      "dnsmos_p808": 4.222893101828439,
+      "dnsmos_sig": 3.592502540567454,
+      "dnsmos_bak": 4.1720044992776915,
+      "dnsmos_ovrl": 3.3313791564662343
+    },
+    {
+      "filename": "001_reader_10660_fileid_855.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/001_reader_10660_fileid_855_seed2027.wav",
+      "nfe": 30,
+      "pesq": 2.74229097366333,
+      "stoi": 0.9680879854380721,
+      "sisdr": 15.798253059387207,
+      "dnsmos_p808": 4.202419485364642,
+      "dnsmos_sig": 3.5645622614413237,
+      "dnsmos_bak": 4.162342695191081,
+      "dnsmos_ovrl": 3.3090349626581825
+    },
+    {
+      "filename": "001_reader_10660_fileid_855.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/001_reader_10660_fileid_855_seed2028.wav",
+      "nfe": 30,
+      "pesq": 2.7263011932373047,
+      "stoi": 0.964745503096494,
+      "sisdr": 15.817317008972168,
+      "dnsmos_p808": 4.154045581817627,
+      "dnsmos_sig": 3.5862489895637943,
+      "dnsmos_bak": 4.141782003988263,
+      "dnsmos_ovrl": 3.3185119698458245
+    },
+    {
+      "filename": "001_reader_10660_fileid_855.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/001_reader_10660_fileid_855_seed2029.wav",
+      "nfe": 30,
+      "pesq": 2.589522123336792,
+      "stoi": 0.9635138062033808,
+      "sisdr": 15.873588562011719,
+      "dnsmos_p808": 4.136678900037493,
+      "dnsmos_sig": 3.6087094944329037,
+      "dnsmos_bak": 4.160744686954678,
+      "dnsmos_ovrl": 3.3455130298549824
+    },
+    {
+      "filename": "002_reader_10666_fileid_10077.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/002_reader_10666_fileid_10077_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.7822409868240356,
+      "stoi": 0.9028450029231447,
+      "sisdr": 9.788285255432129,
+      "dnsmos_p808": 4.200702394757952,
+      "dnsmos_sig": 3.109761345896843,
+      "dnsmos_bak": 4.133073538022435,
+      "dnsmos_ovrl": 2.742163094081718
+    },
+    {
+      "filename": "002_reader_10666_fileid_10077.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/002_reader_10666_fileid_10077_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.7613542079925537,
+      "stoi": 0.9008355504826427,
+      "sisdr": 10.125155448913574,
+      "dnsmos_p808": 4.137050628662109,
+      "dnsmos_sig": 3.1417060285442098,
+      "dnsmos_bak": 4.135896711903859,
+      "dnsmos_ovrl": 2.7818623191005947
+    },
+    {
+      "filename": "002_reader_10666_fileid_10077.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/002_reader_10666_fileid_10077_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.92087984085083,
+      "stoi": 0.9085790515725917,
+      "sisdr": 9.765433311462402,
+      "dnsmos_p808": 4.111875670296805,
+      "dnsmos_sig": 3.1986742578723475,
+      "dnsmos_bak": 4.134694772539313,
+      "dnsmos_ovrl": 2.8469816958825
+    },
+    {
+      "filename": "002_reader_10666_fileid_10077.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/002_reader_10666_fileid_10077_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.7522701025009155,
+      "stoi": 0.8956722749207472,
+      "sisdr": 9.804123878479004,
+      "dnsmos_p808": 4.106532641819546,
+      "dnsmos_sig": 3.1480442103992443,
+      "dnsmos_bak": 4.150201649036354,
+      "dnsmos_ovrl": 2.775220309729214
+    },
+    {
+      "filename": "003_reader_10666_fileid_1450.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/003_reader_10666_fileid_1450_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.2000967264175415,
+      "stoi": 0.5737564761458831,
+      "sisdr": -0.08976057916879654,
+      "dnsmos_p808": 3.8162985188620433,
+      "dnsmos_sig": 3.0505838804019594,
+      "dnsmos_bak": 4.07421697325153,
+      "dnsmos_ovrl": 2.6818201242499353
+    },
+    {
+      "filename": "003_reader_10666_fileid_1450.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/003_reader_10666_fileid_1450_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.2107181549072266,
+      "stoi": 0.574142891450898,
+      "sisdr": 0.21635816991329193,
+      "dnsmos_p808": 3.9717468874795094,
+      "dnsmos_sig": 3.104785887124874,
+      "dnsmos_bak": 4.104211236988067,
+      "dnsmos_ovrl": 2.726555592920898
+    },
+    {
+      "filename": "003_reader_10666_fileid_1450.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/003_reader_10666_fileid_1450_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.2119444608688354,
+      "stoi": 0.6172801061428899,
+      "sisdr": 0.020703354850411415,
+      "dnsmos_p808": 3.7229350294385637,
+      "dnsmos_sig": 3.0588461090861565,
+      "dnsmos_bak": 4.044307839512362,
+      "dnsmos_ovrl": 2.6864525471012803
+    },
+    {
+      "filename": "003_reader_10666_fileid_1450.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/003_reader_10666_fileid_1450_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.1857552528381348,
+      "stoi": 0.5907396788310061,
+      "sisdr": 0.3193998634815216,
+      "dnsmos_p808": 3.698876823697771,
+      "dnsmos_sig": 3.0670881451565952,
+      "dnsmos_bak": 4.078402039193873,
+      "dnsmos_ovrl": 2.6934211270718813
+    },
+    {
+      "filename": "004_reader_10676_fileid_10380.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/004_reader_10676_fileid_10380_seed2026.wav",
+      "nfe": 30,
+      "pesq": 2.5805115699768066,
+      "stoi": 0.859229648128564,
+      "sisdr": 12.862850189208984,
+      "dnsmos_p808": 3.919076374598912,
+      "dnsmos_sig": 3.5761550477175468,
+      "dnsmos_bak": 3.9294651932210987,
+      "dnsmos_ovrl": 3.159989476958457
+    },
+    {
+      "filename": "004_reader_10676_fileid_10380.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/004_reader_10676_fileid_10380_seed2027.wav",
+      "nfe": 30,
+      "pesq": 2.7313616275787354,
+      "stoi": 0.8656281384473037,
+      "sisdr": 12.845844268798828,
+      "dnsmos_p808": 3.989677292960031,
+      "dnsmos_sig": 3.5381400490282853,
+      "dnsmos_bak": 3.9261082236153606,
+      "dnsmos_ovrl": 3.117975059771401
+    },
+    {
+      "filename": "004_reader_10676_fileid_10380.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/004_reader_10676_fileid_10380_seed2028.wav",
+      "nfe": 30,
+      "pesq": 2.79036808013916,
+      "stoi": 0.8634575145492344,
+      "sisdr": 12.872316360473633,
+      "dnsmos_p808": 3.9481355122157504,
+      "dnsmos_sig": 3.518636273590346,
+      "dnsmos_bak": 3.915182265008933,
+      "dnsmos_ovrl": 3.081257680983016
+    },
+    {
+      "filename": "004_reader_10676_fileid_10380.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/004_reader_10676_fileid_10380_seed2029.wav",
+      "nfe": 30,
+      "pesq": 2.7156996726989746,
+      "stoi": 0.8631312368209806,
+      "sisdr": 12.762248992919922,
+      "dnsmos_p808": 3.9649132319859097,
+      "dnsmos_sig": 3.560516479426766,
+      "dnsmos_bak": 3.842523452019796,
+      "dnsmos_ovrl": 3.106139749438776
+    },
+    {
+      "filename": "005_reader_10676_fileid_10692.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/005_reader_10676_fileid_10692_seed2026.wav",
+      "nfe": 30,
+      "pesq": 2.1380534172058105,
+      "stoi": 0.829790295943217,
+      "sisdr": 8.686254501342773,
+      "dnsmos_p808": 3.747145107814244,
+      "dnsmos_sig": 3.593565834052412,
+      "dnsmos_bak": 3.815077441705499,
+      "dnsmos_ovrl": 3.127943317719457
+    },
+    {
+      "filename": "005_reader_10676_fileid_10692.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/005_reader_10676_fileid_10692_seed2027.wav",
+      "nfe": 30,
+      "pesq": 2.1287028789520264,
+      "stoi": 0.8430667481100302,
+      "sisdr": 8.856453895568848,
+      "dnsmos_p808": 3.877469369343349,
+      "dnsmos_sig": 3.6095603964640977,
+      "dnsmos_bak": 3.9275514095998756,
+      "dnsmos_ovrl": 3.2122568364164867
+    },
+    {
+      "filename": "005_reader_10676_fileid_10692.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/005_reader_10676_fileid_10692_seed2028.wav",
+      "nfe": 30,
+      "pesq": 2.168623208999634,
+      "stoi": 0.8416078141009011,
+      "sisdr": 8.718893051147461,
+      "dnsmos_p808": 3.6966751643589566,
+      "dnsmos_sig": 3.6159316303957185,
+      "dnsmos_bak": 3.97666969363128,
+      "dnsmos_ovrl": 3.233706205360111
+    },
+    {
+      "filename": "005_reader_10676_fileid_10692.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/005_reader_10676_fileid_10692_seed2029.wav",
+      "nfe": 30,
+      "pesq": 2.1801276206970215,
+      "stoi": 0.8358041613864691,
+      "sisdr": 8.522369384765625,
+      "dnsmos_p808": 3.8276600497109547,
+      "dnsmos_sig": 3.6162285666768197,
+      "dnsmos_bak": 3.9039601849996766,
+      "dnsmos_ovrl": 3.201599421259767
+    },
+    {
+      "filename": "006_reader_10686_fileid_10298.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/006_reader_10686_fileid_10298_seed2026.wav",
+      "nfe": 30,
+      "pesq": 3.1779298782348633,
+      "stoi": 0.9903606548537052,
+      "sisdr": 18.318300247192383,
+      "dnsmos_p808": 4.016838414328439,
+      "dnsmos_sig": 3.729994564818363,
+      "dnsmos_bak": 4.237173883584086,
+      "dnsmos_ovrl": 3.516834125111219
+    },
+    {
+      "filename": "006_reader_10686_fileid_10298.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/006_reader_10686_fileid_10298_seed2027.wav",
+      "nfe": 30,
+      "pesq": 3.2321548461914062,
+      "stoi": 0.9909357010428117,
+      "sisdr": 17.986391067504883,
+      "dnsmos_p808": 4.016039643968854,
+      "dnsmos_sig": 3.738655439924462,
+      "dnsmos_bak": 4.246944641053418,
+      "dnsmos_ovrl": 3.534814267759709
+    },
+    {
+      "filename": "006_reader_10686_fileid_10298.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/006_reader_10686_fileid_10298_seed2028.wav",
+      "nfe": 30,
+      "pesq": 3.138518810272217,
+      "stoi": 0.9905842476356473,
+      "sisdr": 18.14886474609375,
+      "dnsmos_p808": 4.028782844543457,
+      "dnsmos_sig": 3.717275875547403,
+      "dnsmos_bak": 4.226438164120878,
+      "dnsmos_ovrl": 3.4959380729598486
+    },
+    {
+      "filename": "006_reader_10686_fileid_10298.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/006_reader_10686_fileid_10298_seed2029.wav",
+      "nfe": 30,
+      "pesq": 3.0555107593536377,
+      "stoi": 0.9898777355124584,
+      "sisdr": 17.806713104248047,
+      "dnsmos_p808": 4.026469571249826,
+      "dnsmos_sig": 3.6738375681087603,
+      "dnsmos_bak": 4.206880494448495,
+      "dnsmos_ovrl": 3.4462898686169305
+    },
+    {
+      "filename": "007_reader_10686_fileid_1347.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/007_reader_10686_fileid_1347_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.8085466623306274,
+      "stoi": 0.9139748745560732,
+      "sisdr": 7.6184916496276855,
+      "dnsmos_p808": 4.1201686177934915,
+      "dnsmos_sig": 3.720710279828816,
+      "dnsmos_bak": 4.232710454942272,
+      "dnsmos_ovrl": 3.4768662668776193
+    },
+    {
+      "filename": "007_reader_10686_fileid_1347.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/007_reader_10686_fileid_1347_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.752754807472229,
+      "stoi": 0.9117011237325273,
+      "sisdr": 7.8208417892456055,
+      "dnsmos_p808": 4.132858889443534,
+      "dnsmos_sig": 3.7024544426967347,
+      "dnsmos_bak": 4.2311069948319675,
+      "dnsmos_ovrl": 3.457377829882026
+    },
+    {
+      "filename": "007_reader_10686_fileid_1347.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/007_reader_10686_fileid_1347_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.7855281829833984,
+      "stoi": 0.9086535540576688,
+      "sisdr": 7.770195960998535,
+      "dnsmos_p808": 4.093293598720005,
+      "dnsmos_sig": 3.6977040648075934,
+      "dnsmos_bak": 4.234195659344564,
+      "dnsmos_ovrl": 3.452247055566944
+    },
+    {
+      "filename": "007_reader_10686_fileid_1347.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/007_reader_10686_fileid_1347_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.7796688079833984,
+      "stoi": 0.9056830177817975,
+      "sisdr": 7.731077194213867,
+      "dnsmos_p808": 4.068704571042742,
+      "dnsmos_sig": 3.6871731793487124,
+      "dnsmos_bak": 4.224585272951587,
+      "dnsmos_ovrl": 3.4414346725973126
+    },
+    {
+      "filename": "008_reader_10687_fileid_11569.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/008_reader_10687_fileid_11569_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.4696025848388672,
+      "stoi": 0.8123322890757773,
+      "sisdr": 6.799169540405273,
+      "dnsmos_p808": 3.891908986227853,
+      "dnsmos_sig": 3.254006923813933,
+      "dnsmos_bak": 3.9882605268992566,
+      "dnsmos_ovrl": 2.8250901330196347
+    },
+    {
+      "filename": "008_reader_10687_fileid_11569.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/008_reader_10687_fileid_11569_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.4669928550720215,
+      "stoi": 0.8065255080801486,
+      "sisdr": 6.698838233947754,
+      "dnsmos_p808": 3.8279058592660085,
+      "dnsmos_sig": 3.128767096044239,
+      "dnsmos_bak": 4.096847937528001,
+      "dnsmos_ovrl": 2.759722402867193
+    },
+    {
+      "filename": "008_reader_10687_fileid_11569.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/008_reader_10687_fileid_11569_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.4470710754394531,
+      "stoi": 0.8125311211808416,
+      "sisdr": 6.4106550216674805,
+      "dnsmos_p808": 3.8450803416115895,
+      "dnsmos_sig": 3.091015887562421,
+      "dnsmos_bak": 4.024348190875032,
+      "dnsmos_ovrl": 2.7182133062447886
+    },
+    {
+      "filename": "008_reader_10687_fileid_11569.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/008_reader_10687_fileid_11569_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.4456855058670044,
+      "stoi": 0.8150376221065524,
+      "sisdr": 6.404684066772461,
+      "dnsmos_p808": 3.8783047880445207,
+      "dnsmos_sig": 3.0555010184614706,
+      "dnsmos_bak": 4.058056478981808,
+      "dnsmos_ovrl": 2.694205342393816
+    },
+    {
+      "filename": "009_reader_10687_fileid_1879.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/009_reader_10687_fileid_1879_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.880086898803711,
+      "stoi": 0.9107226084757439,
+      "sisdr": 10.48046875,
+      "dnsmos_p808": 3.838317939213344,
+      "dnsmos_sig": 3.479818020469664,
+      "dnsmos_bak": 4.176026170605902,
+      "dnsmos_ovrl": 3.21329151674488
+    },
+    {
+      "filename": "009_reader_10687_fileid_1879.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/009_reader_10687_fileid_1879_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.893627643585205,
+      "stoi": 0.9182659129463955,
+      "sisdr": 10.384615898132324,
+      "dnsmos_p808": 3.8965185369764055,
+      "dnsmos_sig": 3.424427058850666,
+      "dnsmos_bak": 4.143739216384845,
+      "dnsmos_ovrl": 3.1528179896253983
+    },
+    {
+      "filename": "009_reader_10687_fileid_1879.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/009_reader_10687_fileid_1879_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.907285213470459,
+      "stoi": 0.913991730466298,
+      "sisdr": 10.472210884094238,
+      "dnsmos_p808": 3.872914961406163,
+      "dnsmos_sig": 3.4939876357034905,
+      "dnsmos_bak": 4.168730274611285,
+      "dnsmos_ovrl": 3.22713983836417
+    },
+    {
+      "filename": "009_reader_10687_fileid_1879.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/009_reader_10687_fileid_1879_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.8901011943817139,
+      "stoi": 0.9151602358488103,
+      "sisdr": 10.647686004638672,
+      "dnsmos_p808": 3.8190270832606723,
+      "dnsmos_sig": 3.5576504052279248,
+      "dnsmos_bak": 4.180284738714643,
+      "dnsmos_ovrl": 3.2900539734007266
+    },
+    {
+      "filename": "010_reader_10715_fileid_10235.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/010_reader_10715_fileid_10235_seed2026.wav",
+      "nfe": 30,
+      "pesq": 2.0960841178894043,
+      "stoi": 0.932034265557759,
+      "sisdr": 12.931336402893066,
+      "dnsmos_p808": 4.045554671968732,
+      "dnsmos_sig": 3.7344430810845144,
+      "dnsmos_bak": 4.203894003923341,
+      "dnsmos_ovrl": 3.5018335444735
+    },
+    {
+      "filename": "010_reader_10715_fileid_10235.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/010_reader_10715_fileid_10235_seed2027.wav",
+      "nfe": 30,
+      "pesq": 2.0424394607543945,
+      "stoi": 0.93369742699038,
+      "sisdr": 13.064861297607422,
+      "dnsmos_p808": 4.063306093215942,
+      "dnsmos_sig": 3.712993536045569,
+      "dnsmos_bak": 4.2101190475765815,
+      "dnsmos_ovrl": 3.4876589086216323
+    },
+    {
+      "filename": "010_reader_10715_fileid_10235.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/010_reader_10715_fileid_10235_seed2028.wav",
+      "nfe": 30,
+      "pesq": 2.0205674171447754,
+      "stoi": 0.9330379849219921,
+      "sisdr": 13.089289665222168,
+      "dnsmos_p808": 4.053092820303781,
+      "dnsmos_sig": 3.730036260541734,
+      "dnsmos_bak": 4.215221773862032,
+      "dnsmos_ovrl": 3.503785348689249
+    },
+    {
+      "filename": "010_reader_10715_fileid_10235.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/010_reader_10715_fileid_10235_seed2029.wav",
+      "nfe": 30,
+      "pesq": 2.1071431636810303,
+      "stoi": 0.9340360573487299,
+      "sisdr": 13.219741821289062,
+      "dnsmos_p808": 4.021460124424526,
+      "dnsmos_sig": 3.726349482049155,
+      "dnsmos_bak": 4.214873196414364,
+      "dnsmos_ovrl": 3.5028494953162297
+    },
+    {
+      "filename": "011_reader_10715_fileid_10668.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/011_reader_10715_fileid_10668_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.1189011335372925,
+      "stoi": 0.6026125728596746,
+      "sisdr": 1.6234440803527832,
+      "dnsmos_p808": 3.646879162107195,
+      "dnsmos_sig": 3.1411142905824545,
+      "dnsmos_bak": 3.926409825979899,
+      "dnsmos_ovrl": 2.7412535634347788
+    },
+    {
+      "filename": "011_reader_10715_fileid_10668.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/011_reader_10715_fileid_10668_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.120381236076355,
+      "stoi": 0.6180807488051072,
+      "sisdr": 1.6750575304031372,
+      "dnsmos_p808": 3.8009845869881764,
+      "dnsmos_sig": 3.2145803741010033,
+      "dnsmos_bak": 4.079997378756203,
+      "dnsmos_ovrl": 2.885477723878347
+    },
+    {
+      "filename": "011_reader_10715_fileid_10668.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/011_reader_10715_fileid_10668_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.1189594268798828,
+      "stoi": 0.6248087311332483,
+      "sisdr": 1.954236626625061,
+      "dnsmos_p808": 3.7518480845860074,
+      "dnsmos_sig": 3.2536207952840597,
+      "dnsmos_bak": 4.027798941649364,
+      "dnsmos_ovrl": 2.913820765174989
+    },
+    {
+      "filename": "011_reader_10715_fileid_10668.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/011_reader_10715_fileid_10668_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.1075245141983032,
+      "stoi": 0.6132934904013466,
+      "sisdr": 1.6531362533569336,
+      "dnsmos_p808": 3.696164812360491,
+      "dnsmos_sig": 3.157775956725463,
+      "dnsmos_bak": 3.9127960498552783,
+      "dnsmos_ovrl": 2.764033023346777
+    },
+    {
+      "filename": "012_reader_10721_fileid_11656.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/012_reader_10721_fileid_11656_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.8916261196136475,
+      "stoi": 0.8899522217936056,
+      "sisdr": 10.467855453491211,
+      "dnsmos_p808": 3.9628540107182095,
+      "dnsmos_sig": 3.4891714961071574,
+      "dnsmos_bak": 4.190903784616121,
+      "dnsmos_ovrl": 3.1739664674228814
+    },
+    {
+      "filename": "012_reader_10721_fileid_11656.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/012_reader_10721_fileid_11656_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.7148276567459106,
+      "stoi": 0.885213212787191,
+      "sisdr": 10.87354850769043,
+      "dnsmos_p808": 3.8375426701136996,
+      "dnsmos_sig": 3.529535503708708,
+      "dnsmos_bak": 4.187560538231365,
+      "dnsmos_ovrl": 3.2330668443408896
+    },
+    {
+      "filename": "012_reader_10721_fileid_11656.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/012_reader_10721_fileid_11656_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.7856451272964478,
+      "stoi": 0.8931453168121,
+      "sisdr": 10.541535377502441,
+      "dnsmos_p808": 3.8789833273206438,
+      "dnsmos_sig": 3.477213150491533,
+      "dnsmos_bak": 4.171698375317131,
+      "dnsmos_ovrl": 3.161158167791713
+    },
+    {
+      "filename": "012_reader_10721_fileid_11656.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/012_reader_10721_fileid_11656_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.7889295816421509,
+      "stoi": 0.8897202698512423,
+      "sisdr": 10.669166564941406,
+      "dnsmos_p808": 3.8214333398001537,
+      "dnsmos_sig": 3.498603039488912,
+      "dnsmos_bak": 4.030397610537581,
+      "dnsmos_ovrl": 3.0769859247361846
+    },
+    {
+      "filename": "013_reader_10721_fileid_2682.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/013_reader_10721_fileid_2682_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.4550650119781494,
+      "stoi": 0.7507296014767745,
+      "sisdr": 3.593088388442993,
+      "dnsmos_p808": 3.8152354785374234,
+      "dnsmos_sig": 3.4578273857392268,
+      "dnsmos_bak": 4.136508151203704,
+      "dnsmos_ovrl": 3.149185137106329
+    },
+    {
+      "filename": "013_reader_10721_fileid_2682.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/013_reader_10721_fileid_2682_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.5410265922546387,
+      "stoi": 0.7612738779667384,
+      "sisdr": 3.4668028354644775,
+      "dnsmos_p808": 3.7878012316567555,
+      "dnsmos_sig": 3.4529470425629945,
+      "dnsmos_bak": 4.143257421373313,
+      "dnsmos_ovrl": 3.1425860844615587
+    },
+    {
+      "filename": "013_reader_10721_fileid_2682.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/013_reader_10721_fileid_2682_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.4527240991592407,
+      "stoi": 0.7655711066005105,
+      "sisdr": 3.8708319664001465,
+      "dnsmos_p808": 3.866124050957816,
+      "dnsmos_sig": 3.3724437928023763,
+      "dnsmos_bak": 4.07909444316516,
+      "dnsmos_ovrl": 3.0390250786271444
+    },
+    {
+      "filename": "013_reader_10721_fileid_2682.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/013_reader_10721_fileid_2682_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.4890074729919434,
+      "stoi": 0.756690484604704,
+      "sisdr": 3.552663564682007,
+      "dnsmos_p808": 3.7885685988834927,
+      "dnsmos_sig": 3.264535477423059,
+      "dnsmos_bak": 3.9537358635467115,
+      "dnsmos_ovrl": 2.8706874901348676
+    },
+    {
+      "filename": "014_reader_10733_fileid_10118.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/014_reader_10733_fileid_10118_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.052235722541809,
+      "stoi": 0.5041076619206483,
+      "sisdr": -1.6014816761016846,
+      "dnsmos_p808": 3.803664003099714,
+      "dnsmos_sig": 2.984167361690315,
+      "dnsmos_bak": 4.093002527456442,
+      "dnsmos_ovrl": 2.5217315712200272
+    },
+    {
+      "filename": "014_reader_10733_fileid_10118.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/014_reader_10733_fileid_10118_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.0772472620010376,
+      "stoi": 0.5093384813214927,
+      "sisdr": -1.3113393783569336,
+      "dnsmos_p808": 3.7033941745758057,
+      "dnsmos_sig": 3.07035146216806,
+      "dnsmos_bak": 4.102749049502152,
+      "dnsmos_ovrl": 2.638189976796739
+    },
+    {
+      "filename": "014_reader_10733_fileid_10118.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/014_reader_10733_fileid_10118_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.092274785041809,
+      "stoi": 0.5268401505357855,
+      "sisdr": -1.6576638221740723,
+      "dnsmos_p808": 3.4547700541360036,
+      "dnsmos_sig": 3.1535490235157124,
+      "dnsmos_bak": 4.122425813295849,
+      "dnsmos_ovrl": 2.7085449856082215
+    },
+    {
+      "filename": "014_reader_10733_fileid_10118.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/014_reader_10733_fileid_10118_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.106317162513733,
+      "stoi": 0.5028569401957482,
+      "sisdr": -1.608668327331543,
+      "dnsmos_p808": 3.505194766180856,
+      "dnsmos_sig": 3.1003798124362127,
+      "dnsmos_bak": 4.1201692757828825,
+      "dnsmos_ovrl": 2.645243616301143
+    },
+    {
+      "filename": "015_reader_10733_fileid_11101.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/015_reader_10733_fileid_11101_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.6618714332580566,
+      "stoi": 0.8616608730771482,
+      "sisdr": 11.560848236083984,
+      "dnsmos_p808": 4.160271576472691,
+      "dnsmos_sig": 3.689531510211285,
+      "dnsmos_bak": 4.213816857468016,
+      "dnsmos_ovrl": 3.466691137637493
+    },
+    {
+      "filename": "015_reader_10733_fileid_11101.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/015_reader_10733_fileid_11101_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.6081774234771729,
+      "stoi": 0.8608725063418539,
+      "sisdr": 11.616737365722656,
+      "dnsmos_p808": 4.220142160143171,
+      "dnsmos_sig": 3.705965237491346,
+      "dnsmos_bak": 4.217626916540502,
+      "dnsmos_ovrl": 3.4899423366470232
+    },
+    {
+      "filename": "015_reader_10733_fileid_11101.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/015_reader_10733_fileid_11101_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.6300084590911865,
+      "stoi": 0.8613741033316128,
+      "sisdr": 11.6344633102417,
+      "dnsmos_p808": 4.216716289520264,
+      "dnsmos_sig": 3.6979421087849067,
+      "dnsmos_bak": 4.188381168273154,
+      "dnsmos_ovrl": 3.4588568069907915
+    },
+    {
+      "filename": "015_reader_10733_fileid_11101.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/015_reader_10733_fileid_11101_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.7318483591079712,
+      "stoi": 0.8655044775614553,
+      "sisdr": 11.494545936584473,
+      "dnsmos_p808": 4.1879313332693915,
+      "dnsmos_sig": 3.701798602893955,
+      "dnsmos_bak": 4.205897646285687,
+      "dnsmos_ovrl": 3.4799777447279463
+    }
+  ],
+  "oracle_per_file": [
+    {
+      "filename": "000_reader_10660_fileid_7601.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/000_reader_10660_fileid_7601_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.4111579656600952,
+      "stoi": 0.6981812361723545,
+      "sisdr": 1.8866469860076904,
+      "dnsmos_p808": 4.18734393801008,
+      "dnsmos_sig": 3.2216323889849905,
+      "dnsmos_bak": 4.155302666749065,
+      "dnsmos_ovrl": 2.8043785354251947,
+      "oracle_source_seed": 2028,
+      "baseline_seed2026_sisdr": 1.7329089641571045,
+      "eligible_count": 4
+    },
+    {
+      "filename": "001_reader_10660_fileid_855.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/001_reader_10660_fileid_855_seed2029.wav",
+      "nfe": 30,
+      "pesq": 2.589522123336792,
+      "stoi": 0.9635138062033808,
+      "sisdr": 15.873588562011719,
+      "dnsmos_p808": 4.136678900037493,
+      "dnsmos_sig": 3.6087094944329037,
+      "dnsmos_bak": 4.160744686954678,
+      "dnsmos_ovrl": 3.3455130298549824,
+      "oracle_source_seed": 2029,
+      "baseline_seed2026_sisdr": 15.555051803588867,
+      "eligible_count": 4
+    },
+    {
+      "filename": "002_reader_10666_fileid_10077.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/002_reader_10666_fileid_10077_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.92087984085083,
+      "stoi": 0.9085790515725917,
+      "sisdr": 9.765433311462402,
+      "dnsmos_p808": 4.111875670296805,
+      "dnsmos_sig": 3.1986742578723475,
+      "dnsmos_bak": 4.134694772539313,
+      "dnsmos_ovrl": 2.8469816958825,
+      "oracle_source_seed": 2028,
+      "baseline_seed2026_sisdr": 9.788285255432129,
+      "eligible_count": 4
+    },
+    {
+      "filename": "003_reader_10666_fileid_1450.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/003_reader_10666_fileid_1450_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.2107181549072266,
+      "stoi": 0.574142891450898,
+      "sisdr": 0.21635816991329193,
+      "dnsmos_p808": 3.9717468874795094,
+      "dnsmos_sig": 3.104785887124874,
+      "dnsmos_bak": 4.104211236988067,
+      "dnsmos_ovrl": 2.726555592920898,
+      "oracle_source_seed": 2027,
+      "baseline_seed2026_sisdr": -0.08976057916879654,
+      "eligible_count": 4
+    },
+    {
+      "filename": "004_reader_10676_fileid_10380.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/004_reader_10676_fileid_10380_seed2026.wav",
+      "nfe": 30,
+      "pesq": 2.5805115699768066,
+      "stoi": 0.859229648128564,
+      "sisdr": 12.862850189208984,
+      "dnsmos_p808": 3.919076374598912,
+      "dnsmos_sig": 3.5761550477175468,
+      "dnsmos_bak": 3.9294651932210987,
+      "dnsmos_ovrl": 3.159989476958457,
+      "oracle_source_seed": 2026,
+      "baseline_seed2026_sisdr": 12.862850189208984,
+      "eligible_count": 3
+    },
+    {
+      "filename": "005_reader_10676_fileid_10692.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/005_reader_10676_fileid_10692_seed2028.wav",
+      "nfe": 30,
+      "pesq": 2.168623208999634,
+      "stoi": 0.8416078141009011,
+      "sisdr": 8.718893051147461,
+      "dnsmos_p808": 3.6966751643589566,
+      "dnsmos_sig": 3.6159316303957185,
+      "dnsmos_bak": 3.97666969363128,
+      "dnsmos_ovrl": 3.233706205360111,
+      "oracle_source_seed": 2028,
+      "baseline_seed2026_sisdr": 8.686254501342773,
+      "eligible_count": 3
+    },
+    {
+      "filename": "006_reader_10686_fileid_10298.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/006_reader_10686_fileid_10298_seed2026.wav",
+      "nfe": 30,
+      "pesq": 3.1779298782348633,
+      "stoi": 0.9903606548537052,
+      "sisdr": 18.318300247192383,
+      "dnsmos_p808": 4.016838414328439,
+      "dnsmos_sig": 3.729994564818363,
+      "dnsmos_bak": 4.237173883584086,
+      "dnsmos_ovrl": 3.516834125111219,
+      "oracle_source_seed": 2026,
+      "baseline_seed2026_sisdr": 18.318300247192383,
+      "eligible_count": 1
+    },
+    {
+      "filename": "007_reader_10686_fileid_1347.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/007_reader_10686_fileid_1347_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.8085466623306274,
+      "stoi": 0.9139748745560732,
+      "sisdr": 7.6184916496276855,
+      "dnsmos_p808": 4.1201686177934915,
+      "dnsmos_sig": 3.720710279828816,
+      "dnsmos_bak": 4.232710454942272,
+      "dnsmos_ovrl": 3.4768662668776193,
+      "oracle_source_seed": 2026,
+      "baseline_seed2026_sisdr": 7.6184916496276855,
+      "eligible_count": 4
+    },
+    {
+      "filename": "008_reader_10687_fileid_11569.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/008_reader_10687_fileid_11569_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.4696025848388672,
+      "stoi": 0.8123322890757773,
+      "sisdr": 6.799169540405273,
+      "dnsmos_p808": 3.891908986227853,
+      "dnsmos_sig": 3.254006923813933,
+      "dnsmos_bak": 3.9882605268992566,
+      "dnsmos_ovrl": 2.8250901330196347,
+      "oracle_source_seed": 2026,
+      "baseline_seed2026_sisdr": 6.799169540405273,
+      "eligible_count": 1
+    },
+    {
+      "filename": "009_reader_10687_fileid_1879.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/009_reader_10687_fileid_1879_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.8901011943817139,
+      "stoi": 0.9151602358488103,
+      "sisdr": 10.647686004638672,
+      "dnsmos_p808": 3.8190270832606723,
+      "dnsmos_sig": 3.5576504052279248,
+      "dnsmos_bak": 4.180284738714643,
+      "dnsmos_ovrl": 3.2900539734007266,
+      "oracle_source_seed": 2029,
+      "baseline_seed2026_sisdr": 10.48046875,
+      "eligible_count": 3
+    },
+    {
+      "filename": "010_reader_10715_fileid_10235.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/010_reader_10715_fileid_10235_seed2028.wav",
+      "nfe": 30,
+      "pesq": 2.0205674171447754,
+      "stoi": 0.9330379849219921,
+      "sisdr": 13.089289665222168,
+      "dnsmos_p808": 4.053092820303781,
+      "dnsmos_sig": 3.730036260541734,
+      "dnsmos_bak": 4.215221773862032,
+      "dnsmos_ovrl": 3.503785348689249,
+      "oracle_source_seed": 2028,
+      "baseline_seed2026_sisdr": 12.931336402893066,
+      "eligible_count": 4
+    },
+    {
+      "filename": "011_reader_10715_fileid_10668.wav",
+      "seed": 2028,
+      "wav": "/dev/shm/multitraj_router_wavs_16/011_reader_10715_fileid_10668_seed2028.wav",
+      "nfe": 30,
+      "pesq": 1.1189594268798828,
+      "stoi": 0.6248087311332483,
+      "sisdr": 1.954236626625061,
+      "dnsmos_p808": 3.7518480845860074,
+      "dnsmos_sig": 3.2536207952840597,
+      "dnsmos_bak": 4.027798941649364,
+      "dnsmos_ovrl": 2.913820765174989,
+      "oracle_source_seed": 2028,
+      "baseline_seed2026_sisdr": 1.6234440803527832,
+      "eligible_count": 4
+    },
+    {
+      "filename": "012_reader_10721_fileid_11656.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/012_reader_10721_fileid_11656_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.7148276567459106,
+      "stoi": 0.885213212787191,
+      "sisdr": 10.87354850769043,
+      "dnsmos_p808": 3.8375426701136996,
+      "dnsmos_sig": 3.529535503708708,
+      "dnsmos_bak": 4.187560538231365,
+      "dnsmos_ovrl": 3.2330668443408896,
+      "oracle_source_seed": 2027,
+      "baseline_seed2026_sisdr": 10.467855453491211,
+      "eligible_count": 4
+    },
+    {
+      "filename": "013_reader_10721_fileid_2682.wav",
+      "seed": 2026,
+      "wav": "/dev/shm/multitraj_router_wavs_16/013_reader_10721_fileid_2682_seed2026.wav",
+      "nfe": 30,
+      "pesq": 1.4550650119781494,
+      "stoi": 0.7507296014767745,
+      "sisdr": 3.593088388442993,
+      "dnsmos_p808": 3.8152354785374234,
+      "dnsmos_sig": 3.4578273857392268,
+      "dnsmos_bak": 4.136508151203704,
+      "dnsmos_ovrl": 3.149185137106329,
+      "oracle_source_seed": 2026,
+      "baseline_seed2026_sisdr": 3.593088388442993,
+      "eligible_count": 3
+    },
+    {
+      "filename": "014_reader_10733_fileid_10118.wav",
+      "seed": 2029,
+      "wav": "/dev/shm/multitraj_router_wavs_16/014_reader_10733_fileid_10118_seed2029.wav",
+      "nfe": 30,
+      "pesq": 1.106317162513733,
+      "stoi": 0.5028569401957482,
+      "sisdr": -1.608668327331543,
+      "dnsmos_p808": 3.505194766180856,
+      "dnsmos_sig": 3.1003798124362127,
+      "dnsmos_bak": 4.1201692757828825,
+      "dnsmos_ovrl": 2.645243616301143,
+      "oracle_source_seed": 2029,
+      "baseline_seed2026_sisdr": -1.6014816761016846,
+      "eligible_count": 3
+    },
+    {
+      "filename": "015_reader_10733_fileid_11101.wav",
+      "seed": 2027,
+      "wav": "/dev/shm/multitraj_router_wavs_16/015_reader_10733_fileid_11101_seed2027.wav",
+      "nfe": 30,
+      "pesq": 1.6081774234771729,
+      "stoi": 0.8608725063418539,
+      "sisdr": 11.616737365722656,
+      "dnsmos_p808": 4.220142160143171,
+      "dnsmos_sig": 3.705965237491346,
+      "dnsmos_bak": 4.217626916540502,
+      "dnsmos_ovrl": 3.4899423366470232,
+      "oracle_source_seed": 2027,
+      "baseline_seed2026_sisdr": 11.560848236083984,
+      "eligible_count": 3
+    }
+  ],
+  "no_reference_selectors": {
+    "dnsmos_ovrl": {
+      "means": {
+        "pesq": 1.8307306170463562,
+        "stoi": 0.8161974834593129,
+        "sisdr": 8.240296578966081,
+        "dnsmos_p808": 3.9376982833657945,
+        "dnsmos_sig": 3.464215372600269,
+        "dnsmos_bak": 4.126026921654744,
+        "dnsmos_ovrl": 3.1401434121891585
+      },
+      "paired_bootstrap_vs_seed2026": {
+        "pesq": {
+          "delta": -0.013670764863491058,
+          "ci95": [
+            -0.050828886963427064,
+            0.02157343458384259
+          ],
+          "min_per_file": -0.17679846286773682
+        },
+        "stoi": {
+          "delta": 0.001690999088788156,
+          "ci95": [
+            -0.004063029916842974,
+            0.007152836568808386
+          ],
+          "min_per_file": -0.029945660753678438
+        },
+        "sisdr": {
+          "delta": 0.09485212853178382,
+          "ci95": [
+            0.004535382986068726,
+            0.18081293711438773
+          ],
+          "min_per_file": -0.3319091796875
+        },
+        "dnsmos_p808": {
+          "delta": -0.023090622254780396,
+          "ci95": [
+            -0.07998250547264307,
+            0.02532766738108219
+          ],
+          "min_per_file": -0.3488939489637106
+        },
+        "dnsmos_sig": {
+          "delta": 0.04129360076264488,
+          "ci95": [
+            0.01957515934757404,
+            0.06627672334421836
+          ],
+          "min_per_file": -0.004406820542780299
+        },
+        "dnsmos_bak": {
+          "delta": 0.021320313153955883,
+          "ci95": [
+            0.003366703462498673,
+            0.04516567421286763
+          ],
+          "min_per_file": -0.011259812323013207
+        },
+        "dnsmos_ovrl": {
+          "delta": 0.05482091129887412,
+          "ci95": [
+            0.027659275079006253,
+            0.08553383009350148
+          ],
+          "min_per_file": 0.0
+        }
+      },
+      "chosen_seed_counts": {
+        "2026": 4,
+        "2027": 4,
+        "2028": 6,
+        "2029": 2
+      },
+      "per_file": [
+        {
+          "filename": "000_reader_10660_fileid_7601.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "001_reader_10660_fileid_855.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "002_reader_10666_fileid_10077.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "003_reader_10666_fileid_1450.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "004_reader_10676_fileid_10380.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "005_reader_10676_fileid_10692.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "006_reader_10686_fileid_10298.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "007_reader_10686_fileid_1347.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "008_reader_10687_fileid_11569.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "009_reader_10687_fileid_1879.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "010_reader_10715_fileid_10235.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "011_reader_10715_fileid_10668.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "012_reader_10721_fileid_11656.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "013_reader_10721_fileid_2682.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "014_reader_10733_fileid_10118.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "015_reader_10733_fileid_11101.wav",
+          "seed": 2027
+        }
+      ]
+    },
+    "dnsmos_sig": {
+      "means": {
+        "pesq": 1.8361694365739822,
+        "stoi": 0.8157720227043963,
+        "sisdr": 8.218141770921648,
+        "dnsmos_p808": 3.945413704429354,
+        "dnsmos_sig": 3.4645093574017616,
+        "dnsmos_bak": 4.120774591744101,
+        "dnsmos_ovrl": 3.1380147504194027
+      },
+      "paired_bootstrap_vs_seed2026": {
+        "pesq": {
+          "delta": -0.00823194533586502,
+          "ci95": [
+            -0.04589023701846599,
+            0.025848347879946207
+          ],
+          "min_per_file": -0.17679846286773682
+        },
+        "stoi": {
+          "delta": 0.0012655383338715867,
+          "ci95": [
+            -0.004405980885312953,
+            0.006696804652998593
+          ],
+          "min_per_file": -0.029945660753678438
+        },
+        "sisdr": {
+          "delta": 0.07269732048735023,
+          "ci95": [
+            -0.020179505459964275,
+            0.16722168236738066
+          ],
+          "min_per_file": -0.3319091796875
+        },
+        "dnsmos_p808": {
+          "delta": -0.015375201191221044,
+          "ci95": [
+            -0.07351822081421118,
+            0.03390945132289603
+          ],
+          "min_per_file": -0.3488939489637106
+        },
+        "dnsmos_sig": {
+          "delta": 0.04158758556413747,
+          "ci95": [
+            0.020253466809181404,
+            0.0669152925007278
+          ],
+          "min_per_file": 0.0
+        },
+        "dnsmos_bak": {
+          "delta": 0.01606798324331246,
+          "ci95": [
+            0.0025099846848982105,
+            0.033126310045586166
+          ],
+          "min_per_file": -0.011259812323013207
+        },
+        "dnsmos_ovrl": {
+          "delta": 0.0526922495291183,
+          "ci95": [
+            0.026310892236990926,
+            0.0825063244409258
+          ],
+          "min_per_file": 0.0
+        }
+      },
+      "chosen_seed_counts": {
+        "2026": 5,
+        "2027": 4,
+        "2028": 4,
+        "2029": 3
+      },
+      "per_file": [
+        {
+          "filename": "000_reader_10660_fileid_7601.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "001_reader_10660_fileid_855.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "002_reader_10666_fileid_10077.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "003_reader_10666_fileid_1450.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "004_reader_10676_fileid_10380.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "005_reader_10676_fileid_10692.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "006_reader_10686_fileid_10298.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "007_reader_10686_fileid_1347.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "008_reader_10687_fileid_11569.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "009_reader_10687_fileid_1879.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "010_reader_10715_fileid_10235.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "011_reader_10715_fileid_10668.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "012_reader_10721_fileid_11656.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "013_reader_10721_fileid_2682.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "014_reader_10733_fileid_10118.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "015_reader_10733_fileid_11101.wav",
+          "seed": 2027
+        }
+      ]
+    },
+    "pesq": {
+      "means": {
+        "pesq": 1.8885904178023338,
+        "stoi": 0.8202671646767272,
+        "sisdr": 8.14397392666433,
+        "dnsmos_p808": 3.946568633828844,
+        "dnsmos_sig": 3.4383080840317635,
+        "dnsmos_bak": 4.1190621413650925,
+        "dnsmos_ovrl": 3.109653707983398
+      },
+      "paired_bootstrap_vs_seed2026": {
+        "pesq": {
+          "delta": 0.04418903589248657,
+          "ci95": [
+            0.01904317643493414,
+            0.07478129900991912
+          ],
+          "min_per_file": 0.0
+        },
+        "stoi": {
+          "delta": 0.0057606803062023385,
+          "ci95": [
+            0.0016448839669334562,
+            0.01181424908817843
+          ],
+          "min_per_file": -0.0017798207765737928
+        },
+        "sisdr": {
+          "delta": -0.001470523769967258,
+          "ci95": [
+            -0.07024885062128305,
+            0.0672390791791258
+          ],
+          "min_per_file": -0.3319091796875
+        },
+        "dnsmos_p808": {
+          "delta": -0.01422027179173066,
+          "ci95": [
+            -0.06340702836002635,
+            0.02654646523296822
+          ],
+          "min_per_file": -0.2984692369188582
+        },
+        "dnsmos_sig": {
+          "delta": 0.015386312194139301,
+          "ci95": [
+            -0.0038343722216993593,
+            0.03723503621329719
+          ],
+          "min_per_file": -0.05751877412720097
+        },
+        "dnsmos_bak": {
+          "delta": 0.01435553286430466,
+          "ci95": [
+            -0.003502674869569622,
+            0.038054892367759906
+          ],
+          "min_per_file": -0.029909133739168148
+        },
+        "dnsmos_ovrl": {
+          "delta": 0.02433120709311376,
+          "ci95": [
+            -0.0018855364338055665,
+            0.05275739312636648
+          ],
+          "min_per_file": -0.078731795975441
+        }
+      },
+      "chosen_seed_counts": {
+        "2026": 4,
+        "2027": 4,
+        "2028": 4,
+        "2029": 4
+      },
+      "per_file": [
+        {
+          "filename": "000_reader_10660_fileid_7601.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "001_reader_10660_fileid_855.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "002_reader_10666_fileid_10077.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "003_reader_10666_fileid_1450.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "004_reader_10676_fileid_10380.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "005_reader_10676_fileid_10692.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "006_reader_10686_fileid_10298.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "007_reader_10686_fileid_1347.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "008_reader_10687_fileid_11569.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "009_reader_10687_fileid_1879.wav",
+          "seed": 2028
+        },
+        {
+          "filename": "010_reader_10715_fileid_10235.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "011_reader_10715_fileid_10668.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "012_reader_10721_fileid_11656.wav",
+          "seed": 2026
+        },
+        {
+          "filename": "013_reader_10721_fileid_2682.wav",
+          "seed": 2027
+        },
+        {
+          "filename": "014_reader_10733_fileid_10118.wav",
+          "seed": 2029
+        },
+        {
+          "filename": "015_reader_10733_fileid_11101.wav",
+          "seed": 2029
+        }
+      ]
+    }
+  },
+  "selection_note": "DNSMOS selectors use only candidate enhanced waveforms and are deployment-observable; no clean reference is used. These are in-split diagnostic results and require held-out 16-file confirmation."
+}

@@ -1,0 +1,16 @@
+{
+  "status": "passed_with_disclosed_external_git_addition",
+  "old_files_checked": 528,
+  "preparation_locks": 8,
+  "source_manifest_sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+  "registry_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6",
+  "metrics_sha256": "9df573afc59542872c20545f2f3e1bdc3ed9a3b87f448860f43c709a54101ce7",
+  "independent_validation_sha256": "aebd1becca187f2f8506d1afb74c5bae0b2264bce5154ff5507268827ff30d25",
+  "external_git_added": [
+    "?? research_memos/p8_noisy_identifiability_preparation_review_20261019.json"
+  ],
+  "external_git_removed": [],
+  "worker_write_scope": "new directory only",
+  "no_finalization_source_WAV_read": true,
+  "all_unknown_gates_false": true
+}

@@ -1,0 +1,1500 @@
+{
+  "files": [
+    {
+      "basename": "f6aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 19330,
+      "consonant": "k",
+      "crc32": "91f37789",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f6aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f6",
+        "speaker_number": 6,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f6_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f6aka1",
+      "sha256": "519babe8e11c32cf034e464acee302132eaa3f9511a0358368a04782c3f02536",
+      "size": 23546,
+      "speaker": "f6",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6aka1.wav"
+    },
+    {
+      "basename": "f6aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 15945,
+      "consonant": "g",
+      "crc32": "04e6fce4",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f6aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f6",
+        "speaker_number": 6,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f6_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f6aga1",
+      "sha256": "0127df08b74ec2cc077e383feacf735bc1f541d916434ca01b4c466e95645346",
+      "size": 19546,
+      "speaker": "f6",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6aga1.wav"
+    },
+    {
+      "basename": "f6ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 20020,
+      "consonant": "t",
+      "crc32": "82ee7702",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f6ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f6",
+        "speaker_number": 6,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f6_td"
+      ],
+      "role": "primary",
+      "sample_id": "f6ata1",
+      "sha256": "948d78aea7864caeda30287ed384bb4ddfb53cb7c575ea10a9945e8516666433",
+      "size": 24046,
+      "speaker": "f6",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6ata1.wav"
+    },
+    {
+      "basename": "f6ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16749,
+      "consonant": "d",
+      "crc32": "5ee64061",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f6ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f6",
+        "speaker_number": 6,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f6_td"
+      ],
+      "role": "primary",
+      "sample_id": "f6ada1",
+      "sha256": "4869074b9a990300dbb4a5c086c2842776288fb3562a32f5372063f179652996",
+      "size": 20546,
+      "speaker": "f6",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6ada1.wav"
+    },
+    {
+      "basename": "m2aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 19707,
+      "consonant": "k",
+      "crc32": "7f61a1a0",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m2aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m2",
+        "speaker_number": 2,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m2_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m2aka1",
+      "sha256": "61a2f98a2478301ea4d1e4658af6982e9780e474568090c419ed4e3d3d66e9d4",
+      "size": 24546,
+      "speaker": "m2",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2aka1.wav"
+    },
+    {
+      "basename": "m2aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 19488,
+      "consonant": "g",
+      "crc32": "0393ac5a",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m2aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m2",
+        "speaker_number": 2,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m2_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m2aga1",
+      "sha256": "1dce6ec9cee454415a33852a403ea91678cadedcc6464feae077a1559e388d7d",
+      "size": 24546,
+      "speaker": "m2",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2aga1.wav"
+    },
+    {
+      "basename": "m2ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 20452,
+      "consonant": "t",
+      "crc32": "da4c6bda",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m2ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m2",
+        "speaker_number": 2,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m2_td"
+      ],
+      "role": "primary",
+      "sample_id": "m2ata1",
+      "sha256": "485adf590aade0fc1f158049a3ec50f872acdfa6e70d205f55067b97caefb08e",
+      "size": 25546,
+      "speaker": "m2",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ata1.wav"
+    },
+    {
+      "basename": "m2ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 17692,
+      "consonant": "d",
+      "crc32": "8f831d55",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m2ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m2",
+        "speaker_number": 2,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m2_td"
+      ],
+      "role": "primary",
+      "sample_id": "m2ada1",
+      "sha256": "6bf6ce3f47d7238ff86daf255a061ed114363535b980e4f25e21f17314e4a29c",
+      "size": 22546,
+      "speaker": "m2",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ada1.wav"
+    },
+    {
+      "basename": "f11aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 17119,
+      "consonant": "k",
+      "crc32": "13c14d4a",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f11aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f11",
+        "speaker_number": 11,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f11_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f11aka1",
+      "sha256": "8c21d64d7b2e2cb18c105a8506d04242c2ba24a3bd51bd8b11068791bbd2a684",
+      "size": 21046,
+      "speaker": "f11",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11aka1.wav"
+    },
+    {
+      "basename": "f11aga1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 14637,
+      "consonant": "g",
+      "crc32": "99513ac8",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": [
+        {
+          "end_htk": 100000,
+          "end_seconds": 0.01,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1200000,
+          "end_seconds": 0.12,
+          "label": "aa1",
+          "start_htk": 100000,
+          "start_seconds": 0.01
+        },
+        {
+          "end_htk": 1900000,
+          "end_seconds": 0.19,
+          "label": "g",
+          "start_htk": 1200000,
+          "start_seconds": 0.12
+        },
+        {
+          "end_htk": 3200000,
+          "end_seconds": 0.32,
+          "label": "aa2",
+          "start_htk": 1900000,
+          "start_seconds": 0.19
+        }
+      ],
+      "manual_end_s": 0.19,
+      "manual_start_s": 0.12,
+      "member": "train/f11aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f11",
+        "speaker_number": 11,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f11_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f11aga1",
+      "sha256": "2c22bbc1ecfa7c446c3179f2d48f19667b22625f1e8149bf18bf96c68633cd41",
+      "size": 17046,
+      "speaker": "f11",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11aga1.wav"
+    },
+    {
+      "basename": "f11ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16335,
+      "consonant": "t",
+      "crc32": "b655c7a6",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f11ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f11",
+        "speaker_number": 11,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f11_td"
+      ],
+      "role": "primary",
+      "sample_id": "f11ata1",
+      "sha256": "56c839ef855fba8ebde60e16b5b619274a60e987972b3c5ea0f2d2db1bff563e",
+      "size": 20546,
+      "speaker": "f11",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11ata1.wav"
+    },
+    {
+      "basename": "f11ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16001,
+      "consonant": "d",
+      "crc32": "6a0f95db",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f11ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f11",
+        "speaker_number": 11,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f11_td"
+      ],
+      "role": "primary",
+      "sample_id": "f11ada1",
+      "sha256": "a95582c030774eda18af9ea49cc48f382ba4fbfc3f7763be4208c29155cc2d1e",
+      "size": 19046,
+      "speaker": "f11",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11ada1.wav"
+    },
+    {
+      "basename": "m4aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 18684,
+      "consonant": "k",
+      "crc32": "64c87c28",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m4aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m4",
+        "speaker_number": 4,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m4_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m4aka1",
+      "sha256": "1a4dc49cc9dc1d8b07a3369a555929ae466e0c99a0fcff7ed04b83997a94e816",
+      "size": 22546,
+      "speaker": "m4",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4aka1.wav"
+    },
+    {
+      "basename": "m4aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 17893,
+      "consonant": "g",
+      "crc32": "7e239967",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m4aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m4",
+        "speaker_number": 4,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m4_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m4aga1",
+      "sha256": "5bd6bb5fc0353b12c7699f1099398f12f58cc66e2d00e23bf3b805e2788cc37d",
+      "size": 21546,
+      "speaker": "m4",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4aga1.wav"
+    },
+    {
+      "basename": "m4ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 18148,
+      "consonant": "t",
+      "crc32": "1e27e3ea",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m4ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m4",
+        "speaker_number": 4,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m4_td"
+      ],
+      "role": "primary",
+      "sample_id": "m4ata1",
+      "sha256": "70ff3809ea432c5eeefdc8f6ea65e59fb82f2d0e246f3a4dd48f18f0d4f8068f",
+      "size": 22046,
+      "speaker": "m4",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4ata1.wav"
+    },
+    {
+      "basename": "m4ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 18005,
+      "consonant": "d",
+      "crc32": "2a2a5147",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m4ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m4",
+        "speaker_number": 4,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m4_td"
+      ],
+      "role": "primary",
+      "sample_id": "m4ada1",
+      "sha256": "0621f46b3efff33e339a1957a73df3271b4ee00b408f48a7e785c8e7d95b8f6a",
+      "size": 21546,
+      "speaker": "m4",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4ada1.wav"
+    },
+    {
+      "basename": "f22idi1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 26968,
+      "consonant": "d",
+      "crc32": "25840bc8",
+      "gender": "f",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 400000,
+          "end_seconds": 0.04,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 2100000,
+          "end_seconds": 0.21,
+          "label": "iy1",
+          "start_htk": 400000,
+          "start_seconds": 0.04
+        },
+        {
+          "end_htk": 3100000,
+          "end_seconds": 0.31,
+          "label": "d",
+          "start_htk": 2100000,
+          "start_seconds": 0.21
+        },
+        {
+          "end_htk": 6200000,
+          "end_seconds": 0.62,
+          "label": "iy2",
+          "start_htk": 3100000,
+          "start_seconds": 0.31
+        }
+      ],
+      "manual_end_s": 0.31,
+      "manual_start_s": 0.21,
+      "member": "train/f22idi1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "iCi",
+        "sex": "f",
+        "speaker": "f22",
+        "speaker_number": 22,
+        "stress": "1",
+        "vowel1": "i",
+        "vowel2": "i"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "f22idi1",
+      "sha256": "7672f904462bbacea3134a5524a02c3fefc1f0c062a73d71f5e00e7a309fb021",
+      "size": 32046,
+      "speaker": "f22",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "i",
+      "vowel_right": "i",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f22idi1.wav"
+    },
+    {
+      "basename": "f23iki1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 20128,
+      "consonant": "k",
+      "crc32": "90cb005e",
+      "gender": "f",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 400000,
+          "end_seconds": 0.04,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1300000,
+          "end_seconds": 0.13,
+          "label": "iy1",
+          "start_htk": 400000,
+          "start_seconds": 0.04
+        },
+        {
+          "end_htk": 3000000,
+          "end_seconds": 0.3,
+          "label": "k",
+          "start_htk": 1300000,
+          "start_seconds": 0.13
+        },
+        {
+          "end_htk": 4800000,
+          "end_seconds": 0.48,
+          "label": "iy2",
+          "start_htk": 3000000,
+          "start_seconds": 0.3
+        }
+      ],
+      "manual_end_s": 0.3,
+      "manual_start_s": 0.13,
+      "member": "train/f23iki1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "iCi",
+        "sex": "f",
+        "speaker": "f23",
+        "speaker_number": 23,
+        "stress": "1",
+        "vowel1": "i",
+        "vowel2": "i"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "f23iki1",
+      "sha256": "f95db453d9ab1ed002ff754180b2935ae48bb597099ea32c25fef8654b1d3d61",
+      "size": 25046,
+      "speaker": "f23",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "i",
+      "vowel_right": "i",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f23iki1.wav"
+    },
+    {
+      "basename": "f6iti1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 24001,
+      "consonant": "t",
+      "crc32": "398bdb80",
+      "gender": "f",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 200000,
+          "end_seconds": 0.02,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 2000000,
+          "end_seconds": 0.2,
+          "label": "iy1",
+          "start_htk": 200000,
+          "start_seconds": 0.02
+        },
+        {
+          "end_htk": 3600000,
+          "end_seconds": 0.36,
+          "label": "t",
+          "start_htk": 2000000,
+          "start_seconds": 0.2
+        },
+        {
+          "end_htk": 5500000,
+          "end_seconds": 0.55,
+          "label": "iy2",
+          "start_htk": 3600000,
+          "start_seconds": 0.36
+        }
+      ],
+      "manual_end_s": 0.36,
+      "manual_start_s": 0.2,
+      "member": "train/f6iti1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "iCi",
+        "sex": "f",
+        "speaker": "f6",
+        "speaker_number": 6,
+        "stress": "1",
+        "vowel1": "i",
+        "vowel2": "i"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "f6iti1",
+      "sha256": "ea8f1f436010a6ca90ef75ea27f9565f73c8932ebdb1df2a80e349ae97857bb3",
+      "size": 28546,
+      "speaker": "f6",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "i",
+      "vowel_right": "i",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6iti1.wav"
+    },
+    {
+      "basename": "m10uku2.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 27332,
+      "consonant": "k",
+      "crc32": "61e4295b",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 400000,
+          "end_seconds": 0.04,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 2000000,
+          "end_seconds": 0.2,
+          "label": "uw1",
+          "start_htk": 400000,
+          "start_seconds": 0.04
+        },
+        {
+          "end_htk": 3800000,
+          "end_seconds": 0.38,
+          "label": "k",
+          "start_htk": 2000000,
+          "start_seconds": 0.2
+        },
+        {
+          "end_htk": 6800000,
+          "end_seconds": 0.68,
+          "label": "uw2",
+          "start_htk": 3800000,
+          "start_seconds": 0.38
+        }
+      ],
+      "manual_end_s": 0.38,
+      "manual_start_s": 0.2,
+      "member": "train/m10uku2.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "uCu",
+        "sex": "m",
+        "speaker": "m10",
+        "speaker_number": 10,
+        "stress": "2",
+        "vowel1": "u",
+        "vowel2": "u"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m10uku2",
+      "sha256": "45b9043c8cb28be49c148a7c421ee517b3e42806536ca2aafe2c9e67633b1868",
+      "size": 34046,
+      "speaker": "m10",
+      "split": "corpus_train",
+      "stress": "2",
+      "vowel_left": "u",
+      "vowel_right": "u",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m10uku2.wav"
+    },
+    {
+      "basename": "m2ata2.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 22130,
+      "consonant": "t",
+      "crc32": "2458211b",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 300000,
+          "end_seconds": 0.03,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1200000,
+          "end_seconds": 0.12,
+          "label": "aa1",
+          "start_htk": 300000,
+          "start_seconds": 0.03
+        },
+        {
+          "end_htk": 3000000,
+          "end_seconds": 0.3,
+          "label": "t",
+          "start_htk": 1200000,
+          "start_seconds": 0.12
+        },
+        {
+          "end_htk": 5300000,
+          "end_seconds": 0.53,
+          "label": "aa2",
+          "start_htk": 3000000,
+          "start_seconds": 0.3
+        }
+      ],
+      "manual_end_s": 0.3,
+      "manual_start_s": 0.12,
+      "member": "train/m2ata2.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m2",
+        "speaker_number": 2,
+        "stress": "2",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m2ata2",
+      "sha256": "98903cdce9269c41d441bbe1f24c863a9432105e876b12f4730c32cb99749569",
+      "size": 26546,
+      "speaker": "m2",
+      "split": "corpus_train",
+      "stress": "2",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ata2.wav"
+    },
+    {
+      "basename": "m2ugu1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 29102,
+      "consonant": "g",
+      "crc32": "9010ec02",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 400000,
+          "end_seconds": 0.04,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 2500000,
+          "end_seconds": 0.25,
+          "label": "uw1",
+          "start_htk": 400000,
+          "start_seconds": 0.04
+        },
+        {
+          "end_htk": 3600000,
+          "end_seconds": 0.36,
+          "label": "g",
+          "start_htk": 2500000,
+          "start_seconds": 0.25
+        },
+        {
+          "end_htk": 6800000,
+          "end_seconds": 0.68,
+          "label": "uw2",
+          "start_htk": 3600000,
+          "start_seconds": 0.36
+        }
+      ],
+      "manual_end_s": 0.36,
+      "manual_start_s": 0.25,
+      "member": "train/m2ugu1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "uCu",
+        "sex": "m",
+        "speaker": "m2",
+        "speaker_number": 2,
+        "stress": "1",
+        "vowel1": "u",
+        "vowel2": "u"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m2ugu1",
+      "sha256": "47c221a201b6290edabb94f7dfd3a2920e31a53013d0c44f08aa4fd82c7d57ae",
+      "size": 35046,
+      "speaker": "m2",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "u",
+      "vowel_right": "u",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ugu1.wav"
+    },
+    {
+      "basename": "m4udu1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 19965,
+      "consonant": "d",
+      "crc32": "b4ef9a7d",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 500000,
+          "end_seconds": 0.05,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1500000,
+          "end_seconds": 0.15,
+          "label": "uw1",
+          "start_htk": 500000,
+          "start_seconds": 0.05
+        },
+        {
+          "end_htk": 2300000,
+          "end_seconds": 0.23,
+          "label": "d",
+          "start_htk": 1500000,
+          "start_seconds": 0.15
+        },
+        {
+          "end_htk": 4600000,
+          "end_seconds": 0.46,
+          "label": "uw2",
+          "start_htk": 2300000,
+          "start_seconds": 0.23
+        }
+      ],
+      "manual_end_s": 0.23,
+      "manual_start_s": 0.15,
+      "member": "train/m4udu1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "uCu",
+        "sex": "m",
+        "speaker": "m4",
+        "speaker_number": 4,
+        "stress": "1",
+        "vowel1": "u",
+        "vowel2": "u"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m4udu1",
+      "sha256": "21b2551fbb0452d0c4bbb2f6d1c12cdf2cdf3cbe0ef90935163b2d02e5e98b77",
+      "size": 24046,
+      "speaker": "m4",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "u",
+      "vowel_right": "u",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4udu1.wav"
+    },
+    {
+      "basename": "m4udu2.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 21925,
+      "consonant": "d",
+      "crc32": "47816d44",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 400000,
+          "end_seconds": 0.04,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1300000,
+          "end_seconds": 0.13,
+          "label": "uw1",
+          "start_htk": 400000,
+          "start_seconds": 0.04
+        },
+        {
+          "end_htk": 2300000,
+          "end_seconds": 0.23,
+          "label": "d",
+          "start_htk": 1300000,
+          "start_seconds": 0.13
+        },
+        {
+          "end_htk": 5100000,
+          "end_seconds": 0.51,
+          "label": "uw2",
+          "start_htk": 2300000,
+          "start_seconds": 0.23
+        }
+      ],
+      "manual_end_s": 0.23,
+      "manual_start_s": 0.13,
+      "member": "train/m4udu2.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "uCu",
+        "sex": "m",
+        "speaker": "m4",
+        "speaker_number": 4,
+        "stress": "2",
+        "vowel1": "u",
+        "vowel2": "u"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m4udu2",
+      "sha256": "8b522bb0111eb08c2ab53460d54b7692d90cde7a9a30b149ea090ae366ec3a55",
+      "size": 26546,
+      "speaker": "m4",
+      "split": "corpus_train",
+      "stress": "2",
+      "vowel_left": "u",
+      "vowel_right": "u",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4udu2.wav"
+    },
+    {
+      "basename": "m8ada1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 17207,
+      "consonant": "d",
+      "crc32": "c6e36d8e",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 300000,
+          "end_seconds": 0.03,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1600000,
+          "end_seconds": 0.16,
+          "label": "aa1",
+          "start_htk": 300000,
+          "start_seconds": 0.03
+        },
+        {
+          "end_htk": 3000000,
+          "end_seconds": 0.3,
+          "label": "d",
+          "start_htk": 1600000,
+          "start_seconds": 0.16
+        },
+        {
+          "end_htk": 4500000,
+          "end_seconds": 0.45,
+          "label": "aa2",
+          "start_htk": 3000000,
+          "start_seconds": 0.3
+        }
+      ],
+      "manual_end_s": 0.3,
+      "manual_start_s": 0.16,
+      "member": "train/m8ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m8",
+        "speaker_number": 8,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m8ada1",
+      "sha256": "70e84b412a94a86c15a9af83aa7c9f2df9bdf7cb08bfbb9b3114327fc8489f80",
+      "size": 23546,
+      "speaker": "m8",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8ada1.wav"
+    },
+    {
+      "basename": "m8igi1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 26124,
+      "consonant": "g",
+      "crc32": "729230a0",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 300000,
+          "end_seconds": 0.03,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 2200000,
+          "end_seconds": 0.22,
+          "label": "iy1",
+          "start_htk": 300000,
+          "start_seconds": 0.03
+        },
+        {
+          "end_htk": 3800000,
+          "end_seconds": 0.38,
+          "label": "g",
+          "start_htk": 2200000,
+          "start_seconds": 0.22
+        },
+        {
+          "end_htk": 6300000,
+          "end_seconds": 0.63,
+          "label": "iy2",
+          "start_htk": 3800000,
+          "start_seconds": 0.38
+        }
+      ],
+      "manual_end_s": 0.38,
+      "manual_start_s": 0.22,
+      "member": "train/m8igi1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "iCi",
+        "sex": "m",
+        "speaker": "m8",
+        "speaker_number": 8,
+        "stress": "1",
+        "vowel1": "i",
+        "vowel2": "i"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m8igi1",
+      "sha256": "cea6389e8713495d50ea6146e560457d3ce9e58fc29623faa5d15c315fc3aac0",
+      "size": 32546,
+      "speaker": "m8",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "i",
+      "vowel_right": "i",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8igi1.wav"
+    },
+    {
+      "basename": "m8utu1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 25548,
+      "consonant": "t",
+      "crc32": "21167286",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 400000,
+          "end_seconds": 0.04,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 2000000,
+          "end_seconds": 0.2,
+          "label": "uw1",
+          "start_htk": 400000,
+          "start_seconds": 0.04
+        },
+        {
+          "end_htk": 3600000,
+          "end_seconds": 0.36,
+          "label": "t",
+          "start_htk": 2000000,
+          "start_seconds": 0.2
+        },
+        {
+          "end_htk": 6200000,
+          "end_seconds": 0.62,
+          "label": "uw2",
+          "start_htk": 3600000,
+          "start_seconds": 0.36
+        }
+      ],
+      "manual_end_s": 0.36,
+      "manual_start_s": 0.2,
+      "member": "train/m8utu1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "uCu",
+        "sex": "m",
+        "speaker": "m8",
+        "speaker_number": 8,
+        "stress": "1",
+        "vowel1": "u",
+        "vowel2": "u"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m8utu1",
+      "sha256": "4addec665537d56255c84209079b4a2370929923bf83837d0aa1c7854a44339d",
+      "size": 32046,
+      "speaker": "m8",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "u",
+      "vowel_right": "u",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8utu1.wav"
+    },
+    {
+      "basename": "m9aka1.wav",
+      "boundary_source": "manual_mlf",
+      "compressed_size": 17666,
+      "consonant": "k",
+      "crc32": "d4009973",
+      "gender": "m",
+      "is_primary": false,
+      "manual_boundaries": [
+        {
+          "end_htk": 100000,
+          "end_seconds": 0.01,
+          "label": "sil",
+          "start_htk": 0,
+          "start_seconds": 0.0
+        },
+        {
+          "end_htk": 1400000,
+          "end_seconds": 0.14,
+          "label": "aa1",
+          "start_htk": 100000,
+          "start_seconds": 0.01
+        },
+        {
+          "end_htk": 2900000,
+          "end_seconds": 0.29,
+          "label": "k",
+          "start_htk": 1400000,
+          "start_seconds": 0.14
+        },
+        {
+          "end_htk": 4100000,
+          "end_seconds": 0.41,
+          "label": "aa2",
+          "start_htk": 2900000,
+          "start_seconds": 0.29
+        }
+      ],
+      "manual_end_s": 0.29,
+      "manual_start_s": 0.14,
+      "member": "train/m9aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m9",
+        "speaker_number": 9,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [],
+      "role": "supplementary_manual",
+      "sample_id": "m9aka1",
+      "sha256": "f6ad1b858b7a2382d405274db1910f1b5f240b162df18abf7d4433130eb8681c",
+      "size": 21546,
+      "speaker": "m9",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m9aka1.wav"
+    }
+  ],
+  "frozen_before_model_results": true,
+  "identity_basis": "Corpus filename nominal labels, independent of teacher/model results",
+  "manual_boundary_caveat": "Hand segmentation is supplementary; it does not establish perfect consonant identity",
+  "manual_targets_in_archive": [
+    "f11aga1.wav",
+    "f22idi1.wav",
+    "f23iki1.wav",
+    "f6iti1.wav",
+    "m10uku2.wav",
+    "m2ata2.wav",
+    "m2ugu1.wav",
+    "m4udu1.wav",
+    "m4udu2.wav",
+    "m8ada1.wav",
+    "m8igi1.wav",
+    "m8utu1.wav",
+    "m9aka1.wav"
+  ],
+  "pairs": [
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "f6aka1.wav",
+        "f6aga1.wav"
+      ],
+      "pair_id": "f6_kg",
+      "speaker": "f6",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "f6ata1.wav",
+        "f6ada1.wav"
+      ],
+      "pair_id": "f6_td",
+      "speaker": "f6",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "m2aka1.wav",
+        "m2aga1.wav"
+      ],
+      "pair_id": "m2_kg",
+      "speaker": "m2",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "m2ata1.wav",
+        "m2ada1.wav"
+      ],
+      "pair_id": "m2_td",
+      "speaker": "m2",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "f11aka1.wav",
+        "f11aga1.wav"
+      ],
+      "pair_id": "f11_kg",
+      "speaker": "f11",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "f11ata1.wav",
+        "f11ada1.wav"
+      ],
+      "pair_id": "f11_td",
+      "speaker": "f11",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "m4aka1.wav",
+        "m4aga1.wav"
+      ],
+      "pair_id": "m4_kg",
+      "speaker": "m4",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "m4ata1.wav",
+        "m4ada1.wav"
+      ],
+      "pair_id": "m4_td",
+      "speaker": "m4",
+      "stress": "1"
+    }
+  ],
+  "provenance": {
+    "archive_checksum_verified": false,
+    "archive_metadata": {
+      "checksum": "md5:53a9ede7b84cfb61e4189ccd3149a744",
+      "id": "105cd005-714b-4b5f-a743-0c3d69dbaca5",
+      "key": "train.zip",
+      "links": {
+        "self": "https://zenodo.org/api/records/3538223/files/train.zip/content"
+      },
+      "size": 169755879
+    },
+    "checksum_note": "Full archive MD5 is metadata only; each extracted WAV CRC32 is verified",
+    "doi": "10.5281/zenodo.3538223",
+    "license": {
+      "id": "cc-by-4.0"
+    },
+    "manual_mlf_sha256": "f373fbfa6c065b85ea98ac0be86644ea108a35c0189fca061aebe1420cf1e646",
+    "record_id": 3538223,
+    "record_sha256": "b581f11dd6418902349d5913bfa3d9e81bc1dd6d611e60aad22ec6257c18f4ad",
+    "source_url": "https://zenodo.org/api/records/3538223/files/train.zip/content"
+  },
+  "speakers": [
+    "f6",
+    "m2",
+    "f11",
+    "m4"
+  ]
+}

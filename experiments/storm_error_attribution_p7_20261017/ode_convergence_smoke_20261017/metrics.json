@@ -1,0 +1,209 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_ode_convergence_smoke_20261017",
+  "status": "incomplete_stopped_after_bounded_supplement",
+  "scope": "partial four-utterance probability-flow ODE tolerance smoke plus one bounded 1e-6 follow-up; no speech quality evaluation",
+  "checkpoint": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "checkpoint_global_step": 80000,
+  "manifest": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv",
+  "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "sampler": {
+    "implementation": "sgmse.sampling.get_ode_sampler",
+    "process": "probability_flow",
+    "solver": "SciPy RK45",
+    "denoise": false,
+    "integration_interval": [
+      1.0,
+      0.03
+    ],
+    "planned_rtol_atol": [
+      0.001,
+      1e-05,
+      1e-07
+    ],
+    "initial_state_policy": "one saved OUVE prior x_T per utterance, reused across tolerances",
+    "score_call_validation": "independent model.dnn forward hook equals SciPy nfev for completed integrations",
+    "supplemental_rtol_atol": [
+      1e-06
+    ],
+    "state_precision_path_audit": "SciPy 1.15.3 promotes complex64 y0 to complex128 internal state in an isolated CPU check; repository ode_func converts each intermediate state to torch.complex64 before drift evaluation."
+  },
+  "execution": {
+    "initial_attempt": {
+      "status": "failed_before_model_load",
+      "error": "PyTorch cpp_extension could not find Ninja because /data/coding/sgmse/env/bin was missing from PATH",
+      "ninja_was_installed": true,
+      "ninja_version": "1.13.2",
+      "remedy": "prepended /data/coding/sgmse/env/bin to PATH; no package installation or environment modification"
+    },
+    "successful_attempt": {
+      "status": "stopped_at_compute_cost_gate",
+      "stop_signal": "SIGINT",
+      "stop_reason": "rtol=atol=1e-7 integration remained compute-bound for about 14.5 minutes without returning; 15-minute observation limit",
+      "model_loaded": true,
+      "device": "cuda",
+      "gpu": "NVIDIA L40S",
+      "peak_observed_gpu_memory_mb": 15333,
+      "training": false,
+      "quality_evaluation": false,
+      "dns_mos_migration_or_evaluation": false,
+      "source_data_or_checkpoint_modified": false
+    },
+    "bounded_supplemental_attempt": {
+      "status": "completed",
+      "utterance": "000_fileid_2673.wav",
+      "tolerance": 1e-06,
+      "rtol": 1e-06,
+      "atol": 1e-06,
+      "nfev": 464,
+      "score_dnn_forward_calls": 464,
+      "nfev_matches_hook_count": true,
+      "solve_elapsed_seconds": 174.03201788000297,
+      "total_elapsed_seconds": 183.02281238196883,
+      "device": "cuda",
+      "output": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/rk45_rtol_atol_1e-06/000_fileid_2673.wav",
+      "output_sha256": "87bb481e5aa5c183f07f35cf84d34380f92d9019291e831087de6aaf5dedc915",
+      "source_data_or_checkpoint_modified": false,
+      "speech_quality_metrics_generated": false,
+      "dns_mos_values_generated": false
+    }
+  },
+  "utterances": [
+    {
+      "filename": "000_fileid_2673.wav",
+      "uttid": "reader_11065_fileid_2673",
+      "sample_rate_hz": 16000,
+      "input_samples": 480000,
+      "duration_seconds": 30.0,
+      "noisy_sha256": "dd574edbba369208ade9d262e3b985fea9dfa95b53e5a668aec119ca0a8eb5b8",
+      "shared_xT": {
+        "path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/shared_xT/000_fileid_2673.pt",
+        "sha256": "385d538a61c2d30b7d8e2d53ef1fed102ccfac7c41361f545a4b1eb1afe36058",
+        "prior_seed": 20261017
+      },
+      "completed_runs": [
+        {
+          "tolerance": 0.001,
+          "rtol": 0.001,
+          "atol": 0.001,
+          "status": "completed",
+          "nfev": 26,
+          "score_dnn_forward_calls": 26,
+          "nfev_matches_hook_count": true,
+          "elapsed_seconds": 15.74,
+          "endpoint_finite": true,
+          "wav_path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/rk45_rtol_atol_1e-03/000_fileid_2673.wav",
+          "wav_sha256": "3a9e625c4ff6516a8797d59c03848094738cd318206726f1f6a38b28363848b9",
+          "wav_peak_abs": 0.028326304629445076,
+          "clipped_sample_count": 0
+        },
+        {
+          "tolerance": 1e-05,
+          "rtol": 1e-05,
+          "atol": 1e-05,
+          "status": "completed",
+          "nfev": 92,
+          "score_dnn_forward_calls": 92,
+          "nfev_matches_hook_count": true,
+          "elapsed_seconds": 45.55,
+          "endpoint_finite": true,
+          "wav_path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/rk45_rtol_atol_1e-05/000_fileid_2673.wav",
+          "wav_sha256": "91270745f2c381589894983c60e53061e9936a18921216505e02ac6956c8fc71",
+          "wav_peak_abs": 0.028371136635541916,
+          "clipped_sample_count": 0
+        },
+        {
+          "tolerance": 1e-06,
+          "rtol": 1e-06,
+          "atol": 1e-06,
+          "status": "completed_as_bounded_supplement",
+          "nfev": 464,
+          "score_dnn_forward_calls": 464,
+          "nfev_matches_hook_count": true,
+          "elapsed_seconds": 174.03201788000297,
+          "total_elapsed_seconds": 183.02281238196883,
+          "endpoint_finite": true,
+          "wav_path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/rk45_rtol_atol_1e-06/000_fileid_2673.wav",
+          "wav_sha256": "87bb481e5aa5c183f07f35cf84d34380f92d9019291e831087de6aaf5dedc915",
+          "wav_peak_abs": 0.028361454606056213,
+          "clipped_sample_count": 0,
+          "initial_state_sha256": "385d538a61c2d30b7d8e2d53ef1fed102ccfac7c41361f545a4b1eb1afe36058"
+        }
+      ],
+      "interrupted_run": {
+        "tolerance": 1e-07,
+        "rtol": 1e-07,
+        "atol": 1e-07,
+        "status": "interrupted_before_endpoint",
+        "approximate_solve_runtime_seconds": 870,
+        "nfev": null,
+        "score_dnn_forward_calls": null,
+        "endpoint_finite": null,
+        "wav_written": false
+      },
+      "not_run_tolerances": [],
+      "posthoc_completed_tolerance_comparison": {
+        "comparison": "rtol=atol 1e-3 against 1e-5; same saved x_T; saved FLOAT WAVs; no samples clipped",
+        "waveform_relative_l2": 0.07564600025499543,
+        "waveform_max_abs": 0.010596381616778672,
+        "complex_stft_relative_l2": 0.0756447920839311,
+        "stft_parameters": {
+          "n_fft": 510,
+          "hop_length": 128,
+          "window": "periodic Hann",
+          "center": true
+        },
+        "within_planned_1e-3_threshold": false,
+        "interpretation": "The two completed tolerances differ materially; without the 1e-7 endpoint this does not establish convergence or identify the more accurate solution."
+      },
+      "posthoc_supplemental_tolerance_comparison": {
+        "comparison": "rtol=atol 1e-5 against 1e-6; same saved x_T; saved FLOAT WAVs; no samples clipped",
+        "waveform_relative_l2": 0.003985330294534366,
+        "complex_stft_relative_l2": 0.003985748587460134,
+        "stft_parameters": {
+          "implementation": "model._stft",
+          "n_fft": 510,
+          "hop_length": 128,
+          "window": "periodic Hann",
+          "center": true
+        },
+        "within_planned_1e-3_threshold": false,
+        "interpretation": "The 1e-6 output is closer to 1e-5 than the 1e-3 output was, but remains above threshold; this single utterance does not establish convergence or identify accuracy."
+      }
+    },
+    {
+      "filename": "001_fileid_2972.wav",
+      "status": "not_run"
+    },
+    {
+      "filename": "002_fileid_7247.wav",
+      "status": "not_run"
+    },
+    {
+      "filename": "003_fileid_4431.wav",
+      "status": "not_run"
+    }
+  ],
+  "runtime_environment": {
+    "python": "3.10",
+    "torch": "2.14.1+cu130",
+    "cuda_runtime": "13.0",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "soundfile": "0.14.0",
+    "gpu": "NVIDIA L40S",
+    "gpu_driver": "610.57.04"
+  },
+  "conclusion": "P7-A remains incomplete and is stopped after the bounded 1e-6 follow-up. On the one 30-second utterance, 1e-3/1e-5/1e-6 required 26/92/464 Score calls and 15.74/45.55/174.03 seconds. The 1e-3 to 1e-5 waveform/complex-STFT relative L2 difference was about 7.56%; the 1e-5 to 1e-6 difference was about 0.399%, still above the planned 1e-3 threshold. The 1e-7 solve exceeded the 15-minute compute-cost gate, and the other three utterances were not run. No convergence or accuracy conclusion is supported. Code audit found a complex128 SciPy state re-cast to complex64 in each model callback, a plausible but unquantified precision floor. Do not run further strict-tolerance integrations until a separately bounded precision-path experiment is justified.",
+  "dns_mos_values_generated": false,
+  "speech_quality_metrics_generated": false,
+  "checkpoint_or_source_data_modified": false,
+  "precision_path_audit": {
+    "source": "sgmse/sampling/__init__.py::get_ode_sampler",
+    "rhs_state_cast": "from_flattened_numpy(...).to(device).type(torch.complex64)",
+    "endpoint_cast": "torch.complex64",
+    "isolated_scipy_check": "With SciPy 1.15.3, solve_ivp promoted a complex64 initial vector to complex128 internal state; each repository RHS callback nevertheless casts its state to complex64 before drift evaluation.",
+    "interpretation": "Potential precision floor / excess NFE under tighter tolerances; contribution to observed output differences is unmeasured.",
+    "sampler_code_modified": false
+  }
+}

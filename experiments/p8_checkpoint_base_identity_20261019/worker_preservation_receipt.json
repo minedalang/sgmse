@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "protected_old_metrics": 8,
+  "protected_feedback": 1,
+  "source_pre_post_equal": true,
+  "frozen_files_unchanged": true,
+  "metrics_sha256": "78d832dfa3123d1c27a4bc5daa7002521874d2b5d5f0947f1f913de4a9d07858",
+  "report_sha256": "1cf75a1299a969e72d5f7d4efce536851c03eeb7eae7d4189f7f6c8ccdf98618",
+  "external_git_added": [],
+  "external_git_removed": [],
+  "no_follow_on": true
+}

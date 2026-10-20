@@ -1,0 +1,82 @@
+{
+  "request": {
+    "key": "p231_032_N2_snr_p0.wav__off",
+    "id": "p231_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N2_snr_p0.wav",
+    "basename": "p231_032_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "ed64a1f5c91c617b02807863cdc182672a924fe2f8ab3af39ec284283e11c9cd",
+      "samples": 55680,
+      "array_sha256": "68a512e2bc5940424ce98f504c474ac3d39734ec8ad5121b764540bb679fddde",
+      "peak": 0.10736083984375,
+      "rms": 0.011397559174280173
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " that the cantals succeed in listening diverse and so be it.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 7.0,
+        "text": " that the cantals succeed in listening diverse and so be it.",
+        "tokens": [
+          50363,
+          326,
+          262,
+          18548,
+          874,
+          6758,
+          287,
+          8680,
+          10084,
+          290,
+          523,
+          307,
+          340,
+          13,
+          50713
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.6917846202850342,
+        "compression_ratio": 1.0172413793103448,
+        "no_speech_prob": 0.027558933943510056
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 104,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

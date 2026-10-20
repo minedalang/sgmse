@@ -1,0 +1,73 @@
+{
+  "id": "p287_054",
+  "publisher_reference": {
+    "id": "p287_054",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt",
+    "raw_text_SHA256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "original_text": "In time, the First Minister will grow in stature.\n"
+  },
+  "input": {
+    "array_SHA256": "df4a838a61877ed2cf2d65a360e85a83801c1e30031f02643b19d531695f8b53",
+    "frames": 51089,
+    "sample_rate": 16000,
+    "dtype": "float32",
+    "peak": 0.4912109375,
+    "rms": 0.06308332295288398,
+    "input_WAV_SHA256": "bf9cbee7cd93e04df4b7a8651246fb0d8becb85b94caeddb6abcdb753196d681"
+  },
+  "raw_result": {
+    "text": " In time, the first minister will grow in stature.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " In time, the first minister will grow in stature.",
+        "tokens": [
+          50363,
+          554,
+          640,
+          11,
+          262,
+          717,
+          5342,
+          481,
+          1663,
+          287,
+          32600,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.31278620447431293,
+        "compression_ratio": 0.8596491228070176,
+        "no_speech_prob": 0.014737993478775024
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 4,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

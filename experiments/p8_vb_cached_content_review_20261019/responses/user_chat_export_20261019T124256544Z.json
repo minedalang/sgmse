@@ -1,0 +1,1292 @@
+{
+  "schema": "p8-vb-content-single-v1",
+  "material_id": "a78b5db04fa268772c87997abab68f9001f1f17445ae7165014822d4430fb45d",
+  "kind": "single_listener_reference_aided_exploratory_not_WER_gold",
+  "uploaded_to_server": false,
+  "exported_at": "2026-10-19T12:42:56.544Z",
+  "progress": {
+    "complete_cases": 12,
+    "content_locked": 12,
+    "total": 32
+  },
+  "answers": [
+    {
+      "case_id": "C02e225f7ee1a412f",
+      "plays": {
+        "clean": {
+          "attempts": 2,
+          "successes": 2,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 2,
+          "successes": 2,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 2,
+          "successes": 2,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "missing"
+      ],
+      "B": [
+        "missing"
+      ],
+      "note": "A在句首The之前就生成了幻觉音素，B没有。",
+      "content_locked": true,
+      "quality": "unknown",
+      "complete": true,
+      "locked_at": "2026-10-19T12:28:08.249Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C047ff2b0d4a5f0ec",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 2,
+          "successes": 2,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "missing"
+      ],
+      "B": [
+        "missing",
+        "different"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "A",
+      "complete": true,
+      "locked_at": "2026-10-19T12:29:40.730Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C0e302c8e70a69fec",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "unknown",
+      "A": [
+        "different"
+      ],
+      "B": [
+        "unknown"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "unknown",
+      "complete": true,
+      "locked_at": "2026-10-19T12:31:01.270Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C0efcea8bfa42db06",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "preserved"
+      ],
+      "B": [
+        "preserved"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "similar",
+      "complete": true,
+      "locked_at": "2026-10-19T12:32:18.338Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C22c3debacf910a6a",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "partial",
+      "A": [
+        "missing"
+      ],
+      "B": [
+        "missing"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "similar",
+      "complete": true,
+      "locked_at": "2026-10-19T12:33:50.620Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C28dbce90832410fb",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "preserved"
+      ],
+      "B": [
+        "preserved"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "B",
+      "complete": true,
+      "locked_at": "2026-10-19T12:35:10.588Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C30ddb89c3f5cf45b",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "missing"
+      ],
+      "B": [
+        "added"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "similar",
+      "complete": true,
+      "locked_at": "2026-10-19T12:36:40.787Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C35fca845e6bb91d6",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 2,
+          "successes": 2,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "missing"
+      ],
+      "B": [
+        "missing"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "similar",
+      "complete": true,
+      "locked_at": "2026-10-19T12:38:11.616Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C3936dd1c4426b776",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "preserved"
+      ],
+      "B": [
+        "preserved"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "B",
+      "complete": true,
+      "locked_at": "2026-10-19T12:39:10.662Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C40d22ef3affc62ca",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "preserved"
+      ],
+      "B": [
+        "preserved"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "A",
+      "complete": true,
+      "locked_at": "2026-10-19T12:40:09.957Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C42502acd318f5869",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 2,
+          "successes": 2,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "different"
+      ],
+      "B": [
+        "missing"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "similar",
+      "complete": true,
+      "locked_at": "2026-10-19T12:41:26.432Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C43ef2b6c1741707a",
+      "plays": {
+        "clean": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 1,
+          "successes": 1,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": "yes",
+      "A": [
+        "unknown"
+      ],
+      "B": [
+        "unknown"
+      ],
+      "note": "",
+      "content_locked": true,
+      "quality": "unknown",
+      "complete": true,
+      "locked_at": "2026-10-19T12:42:50.711Z",
+      "status": "complete"
+    },
+    {
+      "case_id": "C55d61d12b49b1d6b",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C577141b1673af333",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C61d95655dcea9c5f",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C672998ae6c0b71b4",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C67c1dc5e8a0c35d5",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C6999e660f113021d",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C6fa680cf759bfe88",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C7874fbc8a5eec0be",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "C8d212b16a10e5c72",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Ca4190a8c0315f48b",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Ca58f9ff32ba8e0f1",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cb33fc94b89a7d763",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cb8e8f962aca402ac",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cbb6fea1afba8d09c",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cbc723a3d1b8d6cc9",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cc28e360f80e277c9",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cc3b24d0c9050c14e",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Cd4a5dae69eb05041",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Ce825f6a085511fa8",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    },
+    {
+      "case_id": "Ced63b5684ab079cb",
+      "plays": {
+        "clean": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "noisy": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "A": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        },
+        "B": {
+          "attempts": 0,
+          "successes": 0,
+          "failures": 0,
+          "active": null
+        }
+      },
+      "reference_issue": null,
+      "noisy": null,
+      "A": [],
+      "B": [],
+      "note": "",
+      "content_locked": false,
+      "quality": null,
+      "complete": false,
+      "status": "partial_or_unrated"
+    }
+  ],
+  "volume_changes": []
+}

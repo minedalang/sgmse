@@ -1,0 +1,22 @@
+{
+  "experiment_id": "p8_vb_residual_direction_audit_20261019",
+  "kind": "existing_complete_PCM_error_geometry_not_enhancement",
+  "source_experiment": "p8_vb_prospective_headroom_20261019",
+  "input_registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "source_metrics_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "cases": 32,
+  "unique_source_WAVs": 72,
+  "primary_domain": "full_length_native_PCM16_amplitude_no_centering",
+  "common_alpha_objective": "equal_case_clean_power_normalized_MSE",
+  "alpha_bounds": [0, 1],
+  "gain_direction": "projection_of_existing_OFF_minus_frontend_onto_frontend_not_clean_gain_fit",
+  "main_seconds": 60,
+  "artifact_bytes": 2097152,
+  "audio_outputs": 0,
+  "models": 0,
+  "ASR": 0,
+  "network": 0,
+  "training": 0,
+  "resampling": 0,
+  "new_selector_authorized": false
+}

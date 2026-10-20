@@ -1,0 +1,20 @@
+# I1b software preparation: NOT EXECUTED
+
+Only this new directory written, originalanalysis/config unchanged.10source metadata records rehashed;24audio path/header/byte/SHA locks inherited only, NOT read/rehashed this preparation. No actual WAV/header/sample, real event selection, main/validator execution, model/ASR/network/training/delegation. NumPyCPU synthetic arrays/container bytes only; threadenv1.
+
+Implemented full frozen rule:320symmetricHann/160hop/512rfft, bins64:240inclusive, Q normalization/positiveflux/sevenframeR. Complete frames, chronological candidate scores AND selection ranks retained; unavailablezero denominator/no positiveflux/margin/overlap/no control stay in slots.24eventslots and96operation slots required, includingunsafe/unavailable. Samecontrol dependencies areexplicit. ConstantHann has spectral leakage: positiveR is not human eventtruth. No frequency/candidate/threshold/outcome search.
+
+Fixed two masks exact1280samples,160ramp endpoints0,960plateau1;delta=-.75maskS. Both editedS/X use identicaldelta;X1/raw and identitysham original file bytes retained onlyinmemory/SHA, never reencoded. OriginalPCMint16 roundtrip is checked separately from fullWAVbyte identity. Float prequantizerange AND roundedrange both checked, unsafe stays row/no payload/no clipping/no source replacement. Safe ties-even PCM payloadhash/quantizationerror onlyinmemory. Sharedrawresidual and independentlyquantizedresidual reconstruction reported separately, not noise-purity proof. Local spectral/envelope descriptors and actual tapered target/control energy mismatch are explicit; control may contain speech.
+
+Independent validator imports no event_integrity business functions; it independently frames/normalizes/selects/ranks/control/masks/quantizes/describes/reconstructs. It shares runtime.py only for lifecycle/sourceIO/guards/recordwriting (independentPCM decoder uses struct.iter_unpack while main np.frombuffer). Both use sameNumPyFFT/cos backend and specified arithmetic order so exact mask/PCM hashes are meaningful; this is not an independent FFT library. Synthetic small16rfft and fixed512Hann compared with directcomplexDFT reference. Numerical values use1e-12absolute/1e-9relative; source/mask/payload hashes exact, not retuned to satisfy equality.
+
+42named synthetic checks passed, including full twoevent/eightoperation comparison, knownHFregions, zero/constant/missingcontrol/boundary, numeric ties/gap, allmaskendpoints, taperedenergymismatch, delta0, ties-even negativehalfLSB, prefloatunsafe thoughrounded-safe and roundedunsafe, nonfiniteJSON, source/shamcopy/originalPCM, badhash/path/header/truncation, existingmarker/deadline/byte reserve, blockedmodel/network/sourcewrite/waveexport and caughtnetworkevent. No synthetic test reads true sourceaudio.
+
+Each future process118s work+absolute120s harddeadline across finalization, exclusivemain/validationmarker,8MiBtotalwithreserves, allsocket/model/process/outputaudio forbidden, caughtattempts fail. networkbytes0 is refusalpolicy accounting, not packetcapture. Each24PCMdecodes/counters separate samplebytes/fullfilehash/identityread/posthash; externalWorkerpreflight not counted as decodes. No audio/NPY/PCM/payload output allowed. Originalmetrics SHA retained immutable in validation; sourcepre/post and preparedlocks enforced.
+
+Future commands AFTER separateRootreview/Worker authorization only:
+```
+/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_i1b_event_pair_integrity_20261019/run_integrity.py --execute-after-root-review
+/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_i1b_event_pair_integrity_20261019/validate_integrity.py --validate-after-completed-run
+```
+Runtime standardconfig/metrics/experimentreport plus independentvalidation. No real execution authorized by preparation. Technicalcompletion≠operationidentifiability≠phonemeidentity; noclassifier/AUC/dprime/split/scientificupgrade; allgatesfalse. Futuremultiple-noise/SNR andD0–D4 remainunimplemented/unapproved.

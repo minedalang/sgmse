@@ -1,0 +1,27 @@
+{
+  "kind": "I1b design review only not waveform construction or identifiability measurement",
+  "utc": "2026-10-19T09:02:24.313677+00:00",
+  "documents": {
+    "/data/research_plan.md": "8ed8572e5e4468d0cee7a165abff3ee799fbb4ba96240d45901459fcd3939e86",
+    "/data/research/p8_noisy_identifiability.md": "8a3d7ac4c645a8cfa1d087bc0683264c9486e228ea328f47c0d54e5d371d0066",
+    "/data/research/evidence_summary.md": "913285e2b9e023e561a78e1be9ef5de18dd216efbd66f57ed830dffd84715a12",
+    "/data/coding/sgmse/research_memos/p8_i1b_event_edit_protocol_20261019.md": "51a9ed5406e2006dfd880102dd8d9a68aee6111d5be8788d9016b8053a5d2934"
+  },
+  "local_links_checked": 23,
+  "actual_audio_reads": 0,
+  "actual_audio_decodes": 0,
+  "models": 0,
+  "training": 0,
+  "new_audio": 0,
+  "critic": "/root/research_gate_critic readonly design reply; three constraints accepted",
+  "accepted_constraints": [
+    "operation label is not natural-event truth and operationAUC not success",
+    "position control not negative; original/edit arms at both positions and paired dependence",
+    "float algebra distinct from PCM quantization/clipping; original/sham bytecopy; no silent normalization"
+  ],
+  "I0_registry_current_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6",
+  "I1a_metrics_current_sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6",
+  "launch_authorized": false,
+  "remaining": "freeze exact candidate ranking/mask/control algorithms and synthetic validation before any real preparation; D0-D4 and CAEG still future",
+  "goal_complete": false
+}

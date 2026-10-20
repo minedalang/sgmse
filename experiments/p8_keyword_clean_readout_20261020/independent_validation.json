@@ -1,0 +1,21 @@
+{
+  "status": "passed_saved_activity_bookkeeping_only",
+  "metrics_sha256": "3323188a5f8a3fca87258581e233c2855d07b9b629d22997085e9963d6105bb8",
+  "items_observed": 0,
+  "actual_transcribe_calls": 0,
+  "actual_internal_decode_calls": 0,
+  "correct_count": null,
+  "per_word_correct": null,
+  "empty_multiword_OOV_flags": null,
+  "applicability_passed": null,
+  "reason": "No items were transcribed; 64-case applicability and perclass flags undefined, not0/64 failure",
+  "HTTP_requests": 1,
+  "partial_written_bytes": 11534336,
+  "full_archive_bytes_required": 182082353,
+  "archive_complete": false,
+  "extracted_members": 0,
+  "member_read_attempts": 0,
+  "header_checked": 0,
+  "ASR_model_loads": 0,
+  "no_model_recomputation": true
+}

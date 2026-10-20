@@ -1,0 +1,23 @@
+HTTP/1.1 200 Connection established
+
+HTTP/2 200 
+date: Mon, 19 Oct 2026 06:15:09 GMT
+content-type: text/plain
+server: cloudflare
+last-modified: Tue, 20 Mar 2018 21:17:36 GMT
+vary: Accept-Encoding
+vary: Accept-Encoding
+etag: W/"5ab17a70-dfb"
+age: 206575
+cache-control: public, max-age=31536000
+access-control-allow-origin: *
+cf-cache-status: HIT
+set-cookie: __cf_bm=h_RBdxbGjoUAVRw7vVAXwut4MbXxLTIuPU_3ivS0WTk-1792390509.2666276-1.0.1.1-hVB4iwFp9Gez.Oy5Ds5UQTJjb96wOueJXx8t6DZGcpngg4r4gAaNI1v0Pi9xiINhu7Lf4aLF9PxWKsGNeaHHoXNM73oxAvBio55gY_Esrp5C2CvaCZh7Ld9dsSVS.y_c; HttpOnly; SameSite=None; Secure; Path=/; Domain=psi.engr.tamu.edu; Expires=Mon, 19 Oct 2026 06:45:09 GMT
+referrer-policy: strict-origin
+strict-transport-security: max-age=31536000 ; includeSubDomains
+x-content-type-options: nosniff
+x-frame-options: SAMEORIGIN
+x-xss-protection: 1; mode=block
+cf-ray: a4cda58aeb2fa5d6-NRT
+alt-svc: h3=":443"; ma=86400
+

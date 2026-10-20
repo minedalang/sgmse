@@ -1,0 +1,26 @@
+{
+  "kind": "Root software-preparation review not scientific result",
+  "utc": "2026-10-19T08:35:47.723262+00:00",
+  "preparation_manifest_sha256": "4cfac03d9a9d528d960f1a5c8cbc8c5fcbe927d38467ca253b673ce4cd4ca2cb",
+  "preparation_locks_verified": 8,
+  "synthetic_tests_reported": 29,
+  "synthetic_scope_reviewed": true,
+  "real_waveform_run_by_root": false,
+  "independent_critic": {
+    "agent": "/root/research_gate_critic",
+    "mode": "readonly",
+    "accepted_clarifications": [
+      "H1 original observation and residual leakage limits",
+      "unknown noise identity not unique pseudorecording",
+      "effective context parity across D0-D3"
+    ]
+  },
+  "documents": {
+    "/data/research/p8_noisy_identifiability.md": "e04bc14443b6e17f82e5a5e8538479efe3422f45b83a31c66c1485406d2965be",
+    "/data/research_plan.md": "c2f753f905e54581df91fc64137b5d6e03d0557e272710ce44f371df640e1a4e",
+    "/data/research/evidence_summary.md": "55bcc1c1545ae8c4b0aa870ea72f98dc9cdf24c2b34b60a6954dbb6287ad6778"
+  },
+  "authorization": "I0 metadata only; Worker followup delivered; no I1, probe training or StoRM calls",
+  "expected_remaining_work": "inspect actual registration and independent validation, then decide next data-preparation gate",
+  "goal_complete": false
+}

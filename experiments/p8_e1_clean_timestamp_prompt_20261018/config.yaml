@@ -1,0 +1,9 @@
+experiment_id: p8_e1_clean_timestamp_prompt_20261018
+purpose: "Timestamped Whisper prompt for locating P8 candidate clean speech"
+source_audio: ../p8_frontend_backend_audit_20261020/listening_pack/*_clean_*center12s.wav
+model: whisper-tiny.en
+decoding: beam_size_5
+word_timestamps: true
+dataset_modified: false
+checkpoint_modified: false
+interpretation: "Automatic listening prompt only; not ground-truth transcript or WER"

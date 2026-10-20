@@ -5,6 +5,9 @@ source_probe: experiments/p8_local_content_probe_20261020
 clip_duration_seconds: 0.5
 selection: Y_pre suppression windows with clean-aware local SNR above -10 dB
 arms: [noisy, clean, y_pre, off, router]
-status: completed_optional_listening_pack
+status: completed_optional_listening_pack_plus_phoneme_probe
+phoneme_model: facebook/wav2vec2-lv-60-espeak-cv-ft
+phoneme_probe: clean-active CTC pseudo-target posterior and consonant proxy; CUDA greedy decode
+phoneme_result_file: metrics.json
 dataset_modified: false
 checkpoint_modified: false

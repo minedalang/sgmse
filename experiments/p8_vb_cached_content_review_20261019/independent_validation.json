@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "entries": 128,
+  "unique_sources": 104,
+  "source_header_checks": 104,
+  "PCM_sample_decodes": 0,
+  "human_responses": 0,
+  "regular_bytes_before_record": 207587,
+  "symlink_own_bytes": 14416,
+  "referenced_unique_bytes": 11902696,
+  "referenced_entry_total_bytes": 14649472,
+  "metrics_sha256": "171bb9f017e4bb886c3b4108da75493e72056f16899594dc0c56e0c010f89871",
+  "actual_browser_playback_tested": false
+}

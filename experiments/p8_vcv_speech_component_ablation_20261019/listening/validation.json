@@ -1,0 +1,471 @@
+{
+  "url": "http://localhost:8766/p8_vcv_speech_component_ablation_20261019/listening/index.html",
+  "amplitude": "original; byte copies; no per-clip normalization",
+  "cases": [
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "manual_chat_choice": "两者差不多",
+      "proxy_native_label": "d",
+      "proxy_ablated_label": "t",
+      "clips": [
+        {
+          "name": "original__N1_snr-6__m2ada1 · 干净参考",
+          "label": "干净参考",
+          "file": "original__N1_snr-6__m2ada1__clean.wav"
+        },
+        {
+          "name": "original__N1_snr-6__m2ada1 · 前端 Y_pre",
+          "label": "前端 Y_pre",
+          "file": "original__N1_snr-6__m2ada1__y_pre.wav"
+        },
+        {
+          "name": "original__N1_snr-6__m2ada1 · 原始后端 native",
+          "label": "原始后端 native",
+          "file": "original__N1_snr-6__m2ada1__native.wav"
+        },
+        {
+          "name": "original__N1_snr-6__m2ada1 · 后端（移除 noisy 条件中的语音）",
+          "label": "后端（移除 noisy 条件中的语音）",
+          "file": "original__N1_snr-6__m2ada1__ablated.wav"
+        }
+      ],
+      "manual_chat_comment": ""
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "manual_chat_choice": "原始后端更接近",
+      "proxy_native_label": "k",
+      "proxy_ablated_label": "n",
+      "clips": [
+        {
+          "name": "fresh__N1_snr-6__f20aka1 · 干净参考",
+          "label": "干净参考",
+          "file": "fresh__N1_snr-6__f20aka1__clean.wav"
+        },
+        {
+          "name": "fresh__N1_snr-6__f20aka1 · 前端 Y_pre",
+          "label": "前端 Y_pre",
+          "file": "fresh__N1_snr-6__f20aka1__y_pre.wav"
+        },
+        {
+          "name": "fresh__N1_snr-6__f20aka1 · 原始后端 native",
+          "label": "原始后端 native",
+          "file": "fresh__N1_snr-6__f20aka1__native.wav"
+        },
+        {
+          "name": "fresh__N1_snr-6__f20aka1 · 后端（移除 noisy 条件中的语音）",
+          "label": "后端（移除 noisy 条件中的语音）",
+          "file": "fresh__N1_snr-6__f20aka1__ablated.wav"
+        }
+      ],
+      "manual_chat_comment": ""
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "manual_chat_choice": "两者差不多",
+      "proxy_native_label": "k",
+      "proxy_ablated_label": "g",
+      "clips": [
+        {
+          "name": "original__N2_snr-6__m2aga1 · 干净参考",
+          "label": "干净参考",
+          "file": "original__N2_snr-6__m2aga1__clean.wav"
+        },
+        {
+          "name": "original__N2_snr-6__m2aga1 · 前端 Y_pre",
+          "label": "前端 Y_pre",
+          "file": "original__N2_snr-6__m2aga1__y_pre.wav"
+        },
+        {
+          "name": "original__N2_snr-6__m2aga1 · 原始后端 native",
+          "label": "原始后端 native",
+          "file": "original__N2_snr-6__m2aga1__native.wav"
+        },
+        {
+          "name": "original__N2_snr-6__m2aga1 · 后端（移除 noisy 条件中的语音）",
+          "label": "后端（移除 noisy 条件中的语音）",
+          "file": "original__N2_snr-6__m2aga1__ablated.wav"
+        }
+      ],
+      "manual_chat_comment": ""
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "manual_chat_choice": "两者差不多",
+      "proxy_native_label": "k",
+      "proxy_ablated_label": "k",
+      "clips": [
+        {
+          "name": "original__N1_snr-6__f11ata1 · 干净参考",
+          "label": "干净参考",
+          "file": "original__N1_snr-6__f11ata1__clean.wav"
+        },
+        {
+          "name": "original__N1_snr-6__f11ata1 · 前端 Y_pre",
+          "label": "前端 Y_pre",
+          "file": "original__N1_snr-6__f11ata1__y_pre.wav"
+        },
+        {
+          "name": "original__N1_snr-6__f11ata1 · 原始后端 native",
+          "label": "原始后端 native",
+          "file": "original__N1_snr-6__f11ata1__native.wav"
+        },
+        {
+          "name": "original__N1_snr-6__f11ata1 · 后端（移除 noisy 条件中的语音）",
+          "label": "后端（移除 noisy 条件中的语音）",
+          "file": "original__N1_snr-6__f11ata1__ablated.wav"
+        }
+      ],
+      "manual_chat_comment": "原始后端和消融后端都把原来的t,变成k了。"
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "manual_chat_choice": "两者差不多",
+      "proxy_native_label": "ch",
+      "proxy_ablated_label": "ch",
+      "clips": [
+        {
+          "name": "fresh__N2_snr-6__f20aka1 · 干净参考",
+          "label": "干净参考",
+          "file": "fresh__N2_snr-6__f20aka1__clean.wav"
+        },
+        {
+          "name": "fresh__N2_snr-6__f20aka1 · 前端 Y_pre",
+          "label": "前端 Y_pre",
+          "file": "fresh__N2_snr-6__f20aka1__y_pre.wav"
+        },
+        {
+          "name": "fresh__N2_snr-6__f20aka1 · 原始后端 native",
+          "label": "原始后端 native",
+          "file": "fresh__N2_snr-6__f20aka1__native.wav"
+        },
+        {
+          "name": "fresh__N2_snr-6__f20aka1 · 后端（移除 noisy 条件中的语音）",
+          "label": "后端（移除 noisy 条件中的语音）",
+          "file": "fresh__N2_snr-6__f20aka1__ablated.wav"
+        }
+      ],
+      "manual_chat_comment": "消融后端语音末尾加了个明显的/s/辅音，y_pre末尾没有一点声音，原始后端末尾有相对轻微的声音，但不似人声。"
+    }
+  ],
+  "files": [
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "arm": "clean",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/m2ada1/clean/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/m2ada1/clean/output_raw.npy",
+      "wav_sha256": "2fb4f230a0b57d8155cc0083c509ad1e92e3390941fb0c31d82070f7fa1bfd24",
+      "raw_sha256": "4c5e0f5e91625586f416f8e34810643d0a3687c7921d231daad20ba65789c044",
+      "float32_sha256": "6c18db166870716bb29d863c78544ad3466ccaff36e31dbecb0325c45926ee84",
+      "local_file": "original__N1_snr-6__m2ada1__clean.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "arm": "y_pre",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/m2ada1/y_pre/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/m2ada1/y_pre/output_raw.npy",
+      "wav_sha256": "c8f01b130980ba2a358615fde69f07aa2942fdf825a8f0619a1dad75632739ff",
+      "raw_sha256": "8fa576a4f2b1d3c39deebd6e846c37606b1adb3a66c6fe55d40d726fb0438c4e",
+      "float32_sha256": "fd7c09dec72b8f1470ecbffbe1b37317342c55350b8e90e2a398b3bf4880533f",
+      "local_file": "original__N1_snr-6__m2ada1__y_pre.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "arm": "native",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__m2ada1__native/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__m2ada1__native/output_raw.npy",
+      "wav_sha256": "c2a81bd2300112d60c8bd2f5d0fc32de494db51cbbe44f948f670c7e0dcc5c90",
+      "raw_sha256": "ce60749a4e721d2ed5a84b5fb4f553dfeb18408f9b36221c89ec5cd0ff9f9d5d",
+      "float32_sha256": "7018a9ec95f11bcba14dda1c0928d30780f98e67387c71d4d4ce3cb44a56e799",
+      "local_file": "original__N1_snr-6__m2ada1__native.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "arm": "ablated",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__m2ada1__noise_only/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__m2ada1__noise_only/output_raw.npy",
+      "wav_sha256": "5c98d3f4cc46afbafd8c2fd208c123efe588b6169b98834ee5360e1da9cd7485",
+      "raw_sha256": "da386f974b14cdae5b418e1ff6e3b46c064eb6bfda2616e95a884fcca7031d3a",
+      "float32_sha256": "9366390d23ca7105dff8388798f59f69732a79734c59a6bb8d2adf625f2d5888",
+      "local_file": "original__N1_snr-6__m2ada1__ablated.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "arm": "clean",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N1_snr-6/f20aka1/clean/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N1_snr-6/f20aka1/clean/output_raw.npy",
+      "wav_sha256": "db053e3e526540ebd456e1f99f2efc29d4fba8acb6cb5d34e6f547158b3beea4",
+      "raw_sha256": "40f43ae33358cea199bb08aacc1c8fdd032e6c04ddfa1e201b56fc80a47d51a9",
+      "float32_sha256": "32264c108a809c5b7b82a563242a7efa8041b24e4d58c8048429b4d6e0b8ff9b",
+      "local_file": "fresh__N1_snr-6__f20aka1__clean.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "arm": "y_pre",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N1_snr-6/f20aka1/y_pre/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N1_snr-6/f20aka1/y_pre/output_raw.npy",
+      "wav_sha256": "3be5e14f608ea8367f2c377c51c22cf131431bc48ac8c5e306d69f9daaef8529",
+      "raw_sha256": "2d96cd9b4702ec6b09d2e2c5a1f4485df28e27ae7de1b380f0cdc815f5fa58a7",
+      "float32_sha256": "ecf34b174af6666f1687459921fc62d14f39df308d2ca1909943fc450521ea4b",
+      "local_file": "fresh__N1_snr-6__f20aka1__y_pre.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "arm": "native",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N1_snr-6__f20aka1__native/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N1_snr-6__f20aka1__native/output_raw.npy",
+      "wav_sha256": "97b11d7618fe6aa07cae641bc9eaf58fb17eb5c6bc422f46a28fd3d377d11cbe",
+      "raw_sha256": "5f438e39e2799f9c96122b203ac0fec22ec8cd6f3e21c141d58066a1469f7261",
+      "float32_sha256": "b2ce1ab92739c125cc708090d1648cb94e954decf86a67a00fcaa74c61cfd513",
+      "local_file": "fresh__N1_snr-6__f20aka1__native.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "arm": "ablated",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N1_snr-6__f20aka1__noise_only/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N1_snr-6__f20aka1__noise_only/output_raw.npy",
+      "wav_sha256": "4eda376aed131345cacc683a7ff713e530472d5d5bdd55e3af2f088eef15c00b",
+      "raw_sha256": "de4953c3262cd8cb27bee0a8e275593bb073320d24feea07ae2292b4398c0634",
+      "float32_sha256": "052be7e35e508250a257ec752d43e323b1d634668e9b26ecb3828e4816f3a65d",
+      "local_file": "fresh__N1_snr-6__f20aka1__ablated.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "arm": "clean",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N2_snr-6/m2aga1/clean/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N2_snr-6/m2aga1/clean/output_raw.npy",
+      "wav_sha256": "7272e23f52b4d69400a50071b8f5d1b9232845f42185d74bead35264e61adc5f",
+      "raw_sha256": "168805202970aad4d2abc7aa732b09957b1b4be73bed4de44c5f80da564191fd",
+      "float32_sha256": "9ec5125223194147ece228ba17faf7e17c9716d5ea2ae8c02b87a41bd3e75faa",
+      "local_file": "original__N2_snr-6__m2aga1__clean.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "arm": "y_pre",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N2_snr-6/m2aga1/y_pre/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N2_snr-6/m2aga1/y_pre/output_raw.npy",
+      "wav_sha256": "7d8e4a46b8aa05572491a9270b456397fe7c6c5dcf68ef335b4447baa0bf73bb",
+      "raw_sha256": "e7fd898790919b7aa8362932e392412a2ad5ea1956e171161c199e389d12efac",
+      "float32_sha256": "9d902c1dd78f4ab771c56c567451ca833f848cc89988d0a21bdab9f8020248bd",
+      "local_file": "original__N2_snr-6__m2aga1__y_pre.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "arm": "native",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N2_snr-6__m2aga1__native/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N2_snr-6__m2aga1__native/output_raw.npy",
+      "wav_sha256": "81b20ee7ff1ad18a271bb7d90aa2518122d64a54c0856b3802074a7f9ad2b38a",
+      "raw_sha256": "10bb629f46fb35991e80d8fdd62e50ea19a53621acfc2f7341b992a22e0193fb",
+      "float32_sha256": "bd08990721dc53954564b04cb60d4acbc5e3a3f1b72903cade6998ebfa843953",
+      "local_file": "original__N2_snr-6__m2aga1__native.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "arm": "ablated",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N2_snr-6__m2aga1__noise_only/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N2_snr-6__m2aga1__noise_only/output_raw.npy",
+      "wav_sha256": "218f36c1b5af5fdf1df471bb670bd9fbd667cc0e7089690ac67766f20d20917b",
+      "raw_sha256": "827b11c0622c3a0b7c8d15724870b5e4430b7ecd4034def927782d08fe56fc38",
+      "float32_sha256": "9c080b1e503d209a4150593b65ef38beea5ea69ec94b10c39e98cb93337564a3",
+      "local_file": "original__N2_snr-6__m2aga1__ablated.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "arm": "clean",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/f11ata1/clean/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/f11ata1/clean/output_raw.npy",
+      "wav_sha256": "25387b9442703025a5de629e314ba901ca30b4444966464e953d88c865aa247a",
+      "raw_sha256": "2bbb9954c9804e52a08b218ca7b131a7ef245bcf9b7f39948ab7a72c56d78422",
+      "float32_sha256": "6848f736b49e942ad1e81565f806aaa7c47be2002af2126693ca9a6dbfc3f4c0",
+      "local_file": "original__N1_snr-6__f11ata1__clean.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "arm": "y_pre",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/f11ata1/y_pre/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/f11ata1/y_pre/output_raw.npy",
+      "wav_sha256": "a56473b7d05db07d85fae9cac0fb57e251314bfb4677280bd168599d018ba3f1",
+      "raw_sha256": "643372d0fa4fc4a29945bbe50763ba6c95100aae380f387d3fe4c11a40c3adea",
+      "float32_sha256": "b23dee706a5e4e3c5a36e294bbe104316bb53a4b41c05e0c33d3fce2a4a1ad67",
+      "local_file": "original__N1_snr-6__f11ata1__y_pre.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "arm": "native",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__f11ata1__native/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__f11ata1__native/output_raw.npy",
+      "wav_sha256": "62b4a9d011a9d43868ccef11f8fe32c8fce9df7f1decd43a1d60b3167ef80351",
+      "raw_sha256": "e802c8b14e5a1f7a2c136fdc59baf5f063fb0adc681390d1ad10e7a542c1d36d",
+      "float32_sha256": "06d00c23ad1fd1913c76f78be8437e01726d90abad943db1487afc1ff749aab1",
+      "local_file": "original__N1_snr-6__f11ata1__native.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "arm": "ablated",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__f11ata1__noise_only/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/original__N1_snr-6__f11ata1__noise_only/output_raw.npy",
+      "wav_sha256": "fa643113c739b4c1aa5f7cdc3b0e72e2651a9bbc79f9214890bb074a5b899fed",
+      "raw_sha256": "f5903663ec787b81b9b7e97536a3bc4d7e2c76ab2a39ea3fa0144327a6330eb5",
+      "float32_sha256": "68bd63c5db1b5c390d61342194705a3b9e6f3ffc1d0c0dbe09d540b8dd83cfe7",
+      "local_file": "original__N1_snr-6__f11ata1__ablated.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "arm": "clean",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/clean/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/clean/output_raw.npy",
+      "wav_sha256": "db053e3e526540ebd456e1f99f2efc29d4fba8acb6cb5d34e6f547158b3beea4",
+      "raw_sha256": "40f43ae33358cea199bb08aacc1c8fdd032e6c04ddfa1e201b56fc80a47d51a9",
+      "float32_sha256": "32264c108a809c5b7b82a563242a7efa8041b24e4d58c8048429b4d6e0b8ff9b",
+      "local_file": "fresh__N2_snr-6__f20aka1__clean.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "arm": "y_pre",
+      "source_wav": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/y_pre/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/y_pre/output_raw.npy",
+      "wav_sha256": "8db6bdd8668e6325454ea9de76bace9cf52d225cf25a406000210ea5fdc6c15d",
+      "raw_sha256": "0ffcf03c026b15f2ea56b0a7e75fd79311d3f9130702c6f6b54bd4afec4d499d",
+      "float32_sha256": "92db2f506286271428cfbf86051c0238a1883c2f9344c0a8fff6e86ada23c201",
+      "local_file": "fresh__N2_snr-6__f20aka1__y_pre.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "arm": "native",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__native/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__native/output_raw.npy",
+      "wav_sha256": "e5f5b7dcc3ea73e73a55ccea1d931249c24d497c36e0e713e88991aff58a8241",
+      "raw_sha256": "05b4e387d1378bcf0010abef46e38772c0403f9650b20349c9ff82469401640a",
+      "float32_sha256": "6098964963b71352ca10f1f59e23b1a56a4242ff8a5887999c0fdfc9b539ff0c",
+      "local_file": "fresh__N2_snr-6__f20aka1__native.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "arm": "ablated",
+      "source_wav": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__noise_only/listening.wav",
+      "source_raw": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__noise_only/output_raw.npy",
+      "wav_sha256": "69ca60d62a6a72017ed88286d8a5e9a5e0e8d05cddb1278da96c895c64e37f83",
+      "raw_sha256": "3e287695a998d80294b59b1b29d4c398fee49e4985a1eedc9633a52f7de2f673",
+      "float32_sha256": "797881f84ba8341a3e458b0b0f1ef1ffc07397f904e49b2cb482f9416ca5397c",
+      "local_file": "fresh__N2_snr-6__f20aka1__ablated.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "http_byte_equal": true,
+      "raw_and_wav_hashes_valid": true
+    }
+  ],
+  "source_documents": {
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/metrics.json": "b16c5d414f3b57163800b2272d1cc6e0aa54787560814c228c5cc77019fa2562",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/selection_frozen.json": "c3e7327573f2ec46b7745ba5a5db8484dc4a1876d1ab830fa8d731ef2b7c4b76",
+    "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/outputs/audio_manifest.json": "8ea3dbc75489dc09ec0aba9bcf2fc5e9de4425de868cb8bb04b9ac991421d691",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio_manifest.json": "b88b428710063e0a0114d1dc96c38aa45cac3da6d6f96e19bc6653570d89cc32"
+  },
+  "status": "passed",
+  "wav_count": 20,
+  "all_http_byte_equal": true,
+  "page_http_byte_equal": true,
+  "single_audio_element": true,
+  "alignment": "untrimmed existing full2s carrier; original manifests; no resampling or amplitude changes",
+  "feedback_fix": {
+    "status": "passed",
+    "page_sha256": "125ebb4ce4d657c72c6086674b16b010f8cabadfc59f4a6b186dbe4f7173fe2b",
+    "builder_page_matches": true,
+    "live_api": "api/feedback",
+    "durable_store": "responses/feedback.jsonl",
+    "manual_chat_provenance": "manual_listener_feedback_20261019.json",
+    "first_three_order_preserved": true,
+    "additional_cases": [
+      "original__N1_snr-6__f11ata1",
+      "fresh__N2_snr-6__f20aka1"
+    ],
+    "recorded_original_answers_not_inferred_from_browser": true,
+    "feedback_server_pid": 16022
+  },
+  "manual_completion_ui": {
+    "status": "passed",
+    "source": "manual_listener_feedback_completion_20261019.json",
+    "exact_comments_rendered": true,
+    "listening_task_status": "completed",
+    "no_audio_or_response_records_modified": true,
+    "builder_page_matches": true,
+    "http_page_byte_equal": true,
+    "single_audio_element": true,
+    "page_sha256": "125ebb4ce4d657c72c6086674b16b010f8cabadfc59f4a6b186dbe4f7173fe2b"
+  }
+}

@@ -1,0 +1,23 @@
+schema_version: 1
+experiment_id: p3b_literature_code_audit_20261017
+status: completed_read_only_audit
+purpose: compare_existing_perceptual_objectives_with_current_storm_ouve_training_path
+mutates_dataset: false
+mutates_checkpoint: false
+training_or_inference: false
+local_code:
+  project: /data/coding/sgmse
+  current_router_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+  current_logged_objective: OUVE + score_matching + sigma^2
+  current_frontend: storm
+  current_sampler: PC, N=30
+sources:
+  cdpam: https://arxiv.org/abs/2102.05109
+  nomad: https://research.google/pubs/nomad-unsupervised-learning-of-perceptual-embeddings-for-speech-enhancement-and-non-matching-reference-audio-quality-assessment/
+  generative_objectives: https://arxiv.org/abs/2409.10753
+local_files_inspected:
+  - sgmse/model.py
+  - sgmse/joint_model.py
+  - joint_train_logs/wandb/run-20261015_182105-7x0m2u68/logs/debug.log
+  - experiments/perceptual_representation_probe_20261017/experiment_report.md
+storage_action: no_model_or_weight_downloaded

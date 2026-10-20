@@ -1,0 +1,55 @@
+{
+  "status": "passed",
+  "validation": "CPU artifact/cache recomputation only; no model calls",
+  "immutable_locks_checked": 166,
+  "audio_pairs_checked": 10,
+  "ctc_caches_exactly_recomputed": 15,
+  "artifact_bytes_before_validation_record": 3843789,
+  "cases": [
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "outcome": "lost",
+      "normalized_noise_peak": 0.5568432211875916,
+      "native_to_ablation_waveform_rms_difference": 0.0031904654758756527,
+      "native_to_ablation_waveform_max_abs_difference": 0.04249004274606705,
+      "ablated_minus_native_target_margin": -0.9826316833496094,
+      "all_checks_passed": true
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "outcome": "remained_original_error",
+      "normalized_noise_peak": 0.43428927659988403,
+      "native_to_ablation_waveform_rms_difference": 0.0036687810448098267,
+      "native_to_ablation_waveform_max_abs_difference": 0.06572814285755157,
+      "ablated_minus_native_target_margin": -5.490137100219727,
+      "all_checks_passed": true
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "outcome": "reverted_to_nominal",
+      "normalized_noise_peak": 0.8771175742149353,
+      "native_to_ablation_waveform_rms_difference": 0.003410945675250531,
+      "native_to_ablation_waveform_max_abs_difference": 0.0618911013007164,
+      "ablated_minus_native_target_margin": 1.2263736724853516,
+      "all_checks_passed": true
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "outcome": "lost",
+      "normalized_noise_peak": 0.31677597761154175,
+      "native_to_ablation_waveform_rms_difference": 0.0035793065976553002,
+      "native_to_ablation_waveform_max_abs_difference": 0.10170653462409973,
+      "ablated_minus_native_target_margin": -5.285058975219727,
+      "all_checks_passed": true
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "outcome": "remained_original_error",
+      "normalized_noise_peak": 0.5329480767250061,
+      "native_to_ablation_waveform_rms_difference": 0.0036080271209943953,
+      "native_to_ablation_waveform_max_abs_difference": 0.10109259188175201,
+      "ablated_minus_native_target_margin": 0.11156654357910156,
+      "all_checks_passed": true
+    }
+  ]
+}

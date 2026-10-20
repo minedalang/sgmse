@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "frozen_grid_windows_checked": 91,
+  "clean_only_control_selection_verified": true,
+  "in_memory_condition_hashes_reconstructed": 3,
+  "frozen_selection_config_unchanged_since_initial_write": true,
+  "source_locks_rehashed": 42,
+  "checkpoint_loaded": false,
+  "model_calls": 0,
+  "reserved_run_outputs_absent": true
+}

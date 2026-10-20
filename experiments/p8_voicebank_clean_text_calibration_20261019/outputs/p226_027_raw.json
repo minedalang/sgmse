@@ -1,0 +1,75 @@
+{
+  "id": "p226_027",
+  "publisher_reference": {
+    "id": "p226_027",
+    "archive_entry": "trainset_28spk_txt/p226_027.txt",
+    "raw_text_SHA256": "4c89a690f064039006e014051fd9c1520256f1fc8a454a312412600e13d8cbb3",
+    "raw_text_hex": "546865792073686f756c6420686176652061206d616a6f722072657468696e6b2061626f757420746865206576656e7420666f72206e65787420796561722e0a",
+    "original_text": "They should have a major rethink about the event for next year.\n"
+  },
+  "input": {
+    "array_SHA256": "cbd4e4a21eb090be8be4bc1e6134f2f990d382608cc6a63264661ebe95fb8e93",
+    "frames": 63447,
+    "sample_rate": 16000,
+    "dtype": "float32",
+    "peak": 0.474365234375,
+    "rms": 0.056775835901382674,
+    "input_WAV_SHA256": "edfd0f5b4d41591c5ca78edf00ae1a1253c63238e071dbb7db033623d70adb54"
+  },
+  "raw_result": {
+    "text": " They should have a major rethink about the event for next year.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " They should have a major rethink about the event for next year.",
+        "tokens": [
+          50363,
+          1119,
+          815,
+          423,
+          257,
+          1688,
+          36437,
+          546,
+          262,
+          1785,
+          329,
+          1306,
+          614,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.2618042230606079,
+        "compression_ratio": 0.9545454545454546,
+        "no_speech_prob": 0.029101986438035965
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 1,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

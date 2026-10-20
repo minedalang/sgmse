@@ -1,0 +1,72 @@
+{
+  "request": {
+    "key": "p228_032_N2_snr_m18.wav__noisy",
+    "id": "p228_032",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_N2_snr_m18.wav",
+    "basename": "p228_032_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "d1715019445f6033a31f8675975ae3dd6cc1e3f5c808a22e96409085bdc642b4",
+      "samples": 67141,
+      "array_sha256": "be2c74c6006a2ab9dd48583f8918fea375245cc80538a9b8b6e47377d636ce42",
+      "peak": 0.899383544921875,
+      "rms": 0.05124277081896597
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.2,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50573
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1982142925262451,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.7943201065063477
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 51,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

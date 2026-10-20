@@ -1,0 +1,17 @@
+schema_version: 1
+experiment_id: rrsd_conflict_weight001_full_test
+checkpoint: joint_train_logs/01maaifx-conflict_w0.001_s1000/epoch=0-step=1000.ckpt
+input_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisy
+clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/clean
+n: 150
+sampler: pc
+corrector: none
+N: 30
+snr: 0.5
+seed: 2026
+use_ema: true
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_max: 1.0
+inference_command: 'python joint_enhance_by_dir.py --ckpt joint_train_logs/01maaifx-conflict_w0.001_s1000/epoch=0-step=1000.ckpt --in_dir .../noisy --out_dir experiment_logs/rrsd_conflict_weight001_full_test/infer --sampler_type pc --corrector none --N 30 --snr 0.5 --use_ema --rrsd --rrsd_scale 1.0 --rrsd_t_max 1.0 --seed 2026'
+evaluator: 'mymetrics get_metrics_for_papertable_forDNS.py --dnsmos --dnsmos_device cpu'

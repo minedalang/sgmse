@@ -1,0 +1,30 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 1
+[RRSD-TCUT] t_cut=0.0 t_cut_scale=0.0 scale=1.0 enabled=False seed=2026 N=30
+Done. Output: /data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/output
+{
+  "status": "completed",
+  "wall_seconds": 19.395719449035823,
+  "byte_hash_matches_saved": true,
+  "full_comparison": {
+    "samples": 480000,
+    "exact_pcm_equality": true,
+    "max_absolute_difference": 0.0,
+    "difference_rms": 0.0,
+    "correlation": 1.0,
+    "replay_rms": 0.002774159869138021,
+    "saved_rms": 0.002774159869138021
+  },
+  "clip_13p75_15p75_comparison": {
+    "samples": 32000,
+    "exact_pcm_equality": true,
+    "max_absolute_difference": 0.0,
+    "difference_rms": 0.0,
+    "correlation": 1.0,
+    "replay_rms": 0.002787858291700449,
+    "saved_rms": 0.002787858291700449
+  },
+  "failures": []
+}

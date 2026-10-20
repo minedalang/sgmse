@@ -1,0 +1,49 @@
+{
+  "historical_directory": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019",
+  "baseline": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/initial_base_metrics.json",
+    "sha256": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388",
+    "identity": {
+      "config_sha256": "20f750545ff249238dc2e012d474d0ee1f3137abc8218a93cfea9891894864e5",
+      "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+      "dev_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+      "code_sha256": {
+        "run_pilot.py": "1cd4d65b5009c12385afae70e1e34ba04214b5c9366e20e85254e27c2995cd4f",
+        "editing.py": "05b40d9b13c58b224b468d7dae424dfcdbc2d5cc20c83d276f63da5a2d06281a",
+        "loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+        "gradient_budget.py": "3cc7dac72de799717184c54d89f9f3d63dd2b5fbf939fbbdaf71b7624367bfda"
+      }
+    }
+  },
+  "historical_files": {
+    "run_pilot.py": "1cd4d65b5009c12385afae70e1e34ba04214b5c9366e20e85254e27c2995cd4f",
+    "editing.py": "05b40d9b13c58b224b468d7dae424dfcdbc2d5cc20c83d276f63da5a2d06281a",
+    "loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "gradient_budget.py": "3cc7dac72de799717184c54d89f9f3d63dd2b5fbf939fbbdaf71b7624367bfda",
+    "config.yaml": "20f750545ff249238dc2e012d474d0ee1f3137abc8218a93cfea9891894864e5"
+  },
+  "core_sources": {
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a"
+  },
+  "seed": 20261019,
+  "dev_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "historical_protection_pre": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/training_source_protection_attempt02_pre.json",
+    "sha256": "8e19cc0fbe603813872a48662090b6063330627a90966d1955ad2a6c3ebd7130"
+  },
+  "historical_receipt": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/training_execution_receipt_attempt02.json",
+    "sha256": "749e0df37a407f3211353176e87b646c5c1bcc21b8e43d74b4a6f7892c5a614d"
+  },
+  "reuse_scope": "source initial64 only; old identity retained, not misrepresented as a new-run baseline; new eval/init AST invariants required",
+  "not_shared": "training optimizer/objective/gradients/weights; no M/P terminal reuse",
+  "current_source_dependencies": {
+    "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21",
+    "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+    "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1"
+  },
+  "dependency_history_limit": "core_sources matched historical old prehash; current_source_dependencies are locked current bytes but not separately historical-hash-proven by old manifest; do not claim exhaustive source reproducibility"
+}

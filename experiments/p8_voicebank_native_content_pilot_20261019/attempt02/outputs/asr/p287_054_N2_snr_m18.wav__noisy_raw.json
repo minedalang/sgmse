@@ -1,0 +1,77 @@
+{
+  "request": {
+    "key": "p287_054_N2_snr_m18.wav__noisy",
+    "id": "p287_054",
+    "arm": "noisy",
+    "path": "inputs/p287_054_N2_snr_m18.wav",
+    "basename": "p287_054_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "80451a78ad6d34bfceb4234f7f96e5ad8cb402255fd1f1ccd7b394d34004b316",
+      "samples": 51089,
+      "array_sha256": "5a648a0deb56f0cd1d34ceb834f4d7dab4e3587126c7d8131ad450eb8df67608",
+      "peak": 0.89593505859375,
+      "rms": 0.09655777006563722
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " I'm going to do a few more.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " I'm going to do a few more.",
+        "tokens": [
+          50363,
+          314,
+          1101,
+          1016,
+          284,
+          466,
+          257,
+          1178,
+          517,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.4299758275349934,
+        "compression_ratio": 0.7714285714285715,
+        "no_speech_prob": 0.7923572659492493
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 48,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

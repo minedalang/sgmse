@@ -1,0 +1,72 @@
+{
+  "request": {
+    "key": "p231_029_N2_snr_m18.wav__noisy",
+    "id": "p231_029",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_N2_snr_m18.wav",
+    "basename": "p231_029_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "719fe0481a6d93da8dfa0598e6662f0472bceb05d59ac2f70fdc637dc528b0f0",
+      "samples": 49851,
+      "array_sha256": "02b471959af7ecc21247fe9ca8cbda1d8ae8d565191344b4482707fad95a55aa",
+      "peak": 0.897735595703125,
+      "rms": 0.09680942771341981
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_029",
+    "original_text": "Last night, Mr Robertson said he was delighted.\n",
+    "raw_text_hex": "4c617374206e696768742c204d7220526f62657274736f6e2073616964206865207761732064656c6967687465642e0a",
+    "raw_text_sha256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+    "archive_entry": "trainset_28spk_txt/p231_029.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1711126963297527,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.7499670386314392
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 87,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,213 @@
+{
+  "status": "passed_saved_JSON_arithmetic",
+  "scope": "No model/audio or additional HTTP; raw SHA relations checked as saved metadata, not regenerated waveforms",
+  "metrics_sha256": "2113502e6ae2523b673a731fda001ad90bef9d789cd07904b5cdb3479136322d",
+  "rows": 64,
+  "correct": 49,
+  "per_word_correct": {
+    "down": 4,
+    "go": 7,
+    "left": 7,
+    "no": 5,
+    "right": 6,
+    "stop": 6,
+    "up": 7,
+    "yes": 7
+  },
+  "flag_counts_nonexclusive": {
+    "empty": 1,
+    "multiword": 1,
+    "out_of_vocabulary": 12,
+    "single_token_wrong_in_vocab": 2
+  },
+  "applicability_passed": false,
+  "minimum_total": 58,
+  "minimum_each": 6,
+  "HTTP_requests": 64,
+  "body_bytes": 5535648,
+  "all_exact_206_ranges_checked": true,
+  "raw_member_SHA_matches_recorded_WAV_SHA": 64,
+  "range_body_SHA_matches_saved_body_SHA": 64,
+  "internal_decode_sum": 64,
+  "incorrect_records": [
+    {
+      "index": 3,
+      "label": "no",
+      "group": "bdee441c",
+      "raw_text": " Now...",
+      "tokens": [
+        "now"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 8,
+      "label": "down",
+      "group": "dbb40d24",
+      "raw_text": " Yeah.",
+      "tokens": [
+        "yeah"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 9,
+      "label": "go",
+      "group": "dbb40d24",
+      "raw_text": " Cool.",
+      "tokens": [
+        "cool"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 10,
+      "label": "left",
+      "group": "dbb40d24",
+      "raw_text": " Now.",
+      "tokens": [
+        "now"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 11,
+      "label": "no",
+      "group": "dbb40d24",
+      "raw_text": " We know.",
+      "tokens": [
+        "we",
+        "know"
+      ],
+      "empty": false,
+      "multiword": true,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 12,
+      "label": "right",
+      "group": "dbb40d24",
+      "raw_text": " Okay.",
+      "tokens": [
+        "okay"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 13,
+      "label": "stop",
+      "group": "dbb40d24",
+      "raw_text": " Go.",
+      "tokens": [
+        "go"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": false
+    },
+    {
+      "index": 14,
+      "label": "up",
+      "group": "dbb40d24",
+      "raw_text": " Um.",
+      "tokens": [
+        "um"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 15,
+      "label": "yes",
+      "group": "dbb40d24",
+      "raw_text": " Okay.",
+      "tokens": [
+        "okay"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 19,
+      "label": "no",
+      "group": "c6ee87a7",
+      "raw_text": " Now.",
+      "tokens": [
+        "now"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 20,
+      "label": "right",
+      "group": "c6ee87a7",
+      "raw_text": " Great.",
+      "tokens": [
+        "great"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 24,
+      "label": "down",
+      "group": "099d52ad",
+      "raw_text": " Don.",
+      "tokens": [
+        "don"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 37,
+      "label": "stop",
+      "group": "7fd25f7c",
+      "raw_text": " .",
+      "tokens": [],
+      "empty": true,
+      "multiword": false,
+      "out_of_vocabulary": false
+    },
+    {
+      "index": 40,
+      "label": "down",
+      "group": "439c84f4",
+      "raw_text": " Darling.",
+      "tokens": [
+        "darling"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": true
+    },
+    {
+      "index": 48,
+      "label": "down",
+      "group": "7c1d8533",
+      "raw_text": " No.",
+      "tokens": [
+        "no"
+      ],
+      "empty": false,
+      "multiword": false,
+      "out_of_vocabulary": false
+    }
+  ]
+}

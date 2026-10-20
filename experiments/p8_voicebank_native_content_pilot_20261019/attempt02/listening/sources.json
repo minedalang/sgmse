@@ -1,0 +1,294 @@
+{
+  "selection": "Lead-fixed post-hoc exploratory diagnostics selected using existing ASR differences; not independent samples or blind listening; no population win rate",
+  "operations": "8 byte-for-byte copies only; complete original amplitude; no normalization, trim, resample or audio regeneration",
+  "records": [
+    {
+      "group": "A",
+      "case": "p287_054_N1_snr_p0.wav",
+      "arm": "clean",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_scaledclean.wav",
+      "copy": "audio/A_clean.wav",
+      "sha256": "095bc6c0ee82cdfa0e8c435c564539b2f09ff0551d62554ec6763d8af42a7280",
+      "bytes": 102222,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 51089,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_float32": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_scaledclean.f32le",
+        "raw_format": "little-endian IEEE754 float32, shape [samples], no header",
+        "max_pcm_vs_float32_error": 3.0511990189552307e-05,
+        "registry_quantizer": "floor(x_float64*32768), saturate forbidden",
+        "shared_group_scale": 0.19129400031449756,
+        "source_wave": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav",
+        "clean_scaled_pcm_exact": true
+      }
+    },
+    {
+      "group": "A",
+      "case": "p287_054_N1_snr_p0.wav",
+      "arm": "noisy",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_N1_snr_p0.wav",
+      "copy": "audio/A_noisy.wav",
+      "sha256": "6ff9d222dec1bc3a489a043e9b47d8996875e7567bafd7065ec0c61d4daa366b",
+      "bytes": 102222,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 51089,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_float32": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_N1_snr_p0.f32le",
+        "raw_format": "little-endian IEEE754 float32, shape [samples], no header",
+        "max_pcm_vs_float32_error": 3.051740350201726e-05,
+        "registry_quantizer": "floor(x_float64*32768), saturate forbidden",
+        "shared_group_scale": 0.19129400031449756,
+        "source_wave": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav",
+        "clean_scaled_pcm_exact": null
+      }
+    },
+    {
+      "group": "A",
+      "case": "p287_054_N1_snr_p0.wav",
+      "arm": "frontend",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/frontend/p287_054_N1_snr_p0.wav",
+      "copy": "audio/A_frontend.wav",
+      "sha256": "3096a926666a3a008fced515fc8597d879009ba8e7d4c9b1b3c0286bc964ff8f",
+      "bytes": 102222,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 51089,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_npy": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p287_054_N1_snr_p0.wav__frontend.npy",
+        "raw_shape": [
+          1,
+          1,
+          51089
+        ],
+        "raw_array_sha256": "51a563c493d6420fc217eedfdc6011d14c27f29f419ea79e9f03fcd7614667f3",
+        "native_serialization": "raw float32 -> in-memory libsndfile WAV PCM_16; exact bytes match existing WAV",
+        "soundfile_version": "0.14.0",
+        "libsndfile_version": "1.2.2",
+        "native_no_loudness_normalization": true
+      }
+    },
+    {
+      "group": "A",
+      "case": "p287_054_N1_snr_p0.wav",
+      "arm": "off",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/off/p287_054_N1_snr_p0.wav",
+      "copy": "audio/A_off.wav",
+      "sha256": "06f40a1b474377104dae933b20a12f57fd53293c31694ce7e1c24a1a4954f926",
+      "bytes": 102222,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 51089,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_npy": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p287_054_N1_snr_p0.wav__off.npy",
+        "raw_shape": [
+          51089
+        ],
+        "raw_array_sha256": "bcb5f817069f8c5bc4a75414732796fd331fb5209525666e458bb21a0491ba77",
+        "native_serialization": "raw float32 -> in-memory libsndfile WAV PCM_16; exact bytes match existing WAV",
+        "soundfile_version": "0.14.0",
+        "libsndfile_version": "1.2.2",
+        "native_no_loudness_normalization": true
+      }
+    },
+    {
+      "group": "B",
+      "case": "p226_028_N2_snr_m18.wav",
+      "arm": "clean",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_scaledclean.wav",
+      "copy": "audio/B_clean.wav",
+      "sha256": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a",
+      "bytes": 135350,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 67653,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_float32": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_scaledclean.f32le",
+        "raw_format": "little-endian IEEE754 float32, shape [samples], no header",
+        "max_pcm_vs_float32_error": 3.051524981856346e-05,
+        "registry_quantizer": "floor(x_float64*32768), saturate forbidden",
+        "shared_group_scale": 0.12425738974272588,
+        "source_wave": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav",
+        "clean_scaled_pcm_exact": true
+      }
+    },
+    {
+      "group": "B",
+      "case": "p226_028_N2_snr_m18.wav",
+      "arm": "noisy",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_N2_snr_m18.wav",
+      "copy": "audio/B_noisy.wav",
+      "sha256": "50fdfe9c34ad5dd8d82ce1c9c47befbd637d31009168e73349a6c5a6aec19af8",
+      "bytes": 135350,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 67653,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_float32": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_N2_snr_m18.f32le",
+        "raw_format": "little-endian IEEE754 float32, shape [samples], no header",
+        "max_pcm_vs_float32_error": 3.0517578125e-05,
+        "registry_quantizer": "floor(x_float64*32768), saturate forbidden",
+        "shared_group_scale": 0.12425738974272588,
+        "source_wave": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav",
+        "clean_scaled_pcm_exact": null
+      }
+    },
+    {
+      "group": "B",
+      "case": "p226_028_N2_snr_m18.wav",
+      "arm": "frontend",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/frontend/p226_028_N2_snr_m18.wav",
+      "copy": "audio/B_frontend.wav",
+      "sha256": "d2af3533e221364cc123030c38fce085b08d3069de5a768868232f365a6c6921",
+      "bytes": 135350,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 67653,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_npy": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p226_028_N2_snr_m18.wav__frontend.npy",
+        "raw_shape": [
+          1,
+          1,
+          67653
+        ],
+        "raw_array_sha256": "470ab7f0e1b55e0deb95d5d3d5fe974182b64e0ecec675c9cc3b04118044f94e",
+        "native_serialization": "raw float32 -> in-memory libsndfile WAV PCM_16; exact bytes match existing WAV",
+        "soundfile_version": "0.14.0",
+        "libsndfile_version": "1.2.2",
+        "native_no_loudness_normalization": true
+      }
+    },
+    {
+      "group": "B",
+      "case": "p226_028_N2_snr_m18.wav",
+      "arm": "off",
+      "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/off/p226_028_N2_snr_m18.wav",
+      "copy": "audio/B_off.wav",
+      "sha256": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737",
+      "bytes": 135350,
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 67653,
+        "compression": "NONE"
+      },
+      "evidence": {
+        "raw_npy": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p226_028_N2_snr_m18.wav__off.npy",
+        "raw_shape": [
+          67653
+        ],
+        "raw_array_sha256": "cf593cb5cface080efc17f4a2d234a2c18085d32c59af27a666bb276f637e7b5",
+        "native_serialization": "raw float32 -> in-memory libsndfile WAV PCM_16; exact bytes match existing WAV",
+        "soundfile_version": "0.14.0",
+        "libsndfile_version": "1.2.2",
+        "native_no_loudness_normalization": true
+      }
+    }
+  ],
+  "source_locks": {
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav": {
+      "sha256": "bf9cbee7cd93e04df4b7a8651246fb0d8becb85b94caeddb6abcdb753196d681",
+      "bytes": 102222
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_scaledclean.f32le": {
+      "sha256": "253c136796208424df2edeb6ef05d9ab2e6511f49d29dfeaa93195102c20f0b4",
+      "bytes": 204356
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_scaledclean.wav": {
+      "sha256": "095bc6c0ee82cdfa0e8c435c564539b2f09ff0551d62554ec6763d8af42a7280",
+      "bytes": 102222
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_N1_snr_p0.f32le": {
+      "sha256": "1d4803d0f97bdaf1df6cab403b091607768ef1c077c8f6c5ac56ca9862b3fd23",
+      "bytes": 204356
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p287_054_N1_snr_p0.wav": {
+      "sha256": "6ff9d222dec1bc3a489a043e9b47d8996875e7567bafd7065ec0c61d4daa366b",
+      "bytes": 102222
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p287_054_N1_snr_p0.wav__frontend.npy": {
+      "sha256": "61ba971b735f9d9453844fad6e619070e33cd633509f998e75fec3e211940170",
+      "bytes": 204484
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/frontend/p287_054_N1_snr_p0.wav": {
+      "sha256": "3096a926666a3a008fced515fc8597d879009ba8e7d4c9b1b3c0286bc964ff8f",
+      "bytes": 102222
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p287_054_N1_snr_p0.wav__off.npy": {
+      "sha256": "dac8f13487f519cbc479a7acc21e2b5e03f129598a508dc63fcd72d531facd60",
+      "bytes": 204484
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/off/p287_054_N1_snr_p0.wav": {
+      "sha256": "06f40a1b474377104dae933b20a12f57fd53293c31694ce7e1c24a1a4954f926",
+      "bytes": 102222
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav": {
+      "sha256": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e",
+      "bytes": 135350
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_scaledclean.f32le": {
+      "sha256": "210c1fcd37a625ab1b2a50fd628ad66de796a6626f0d1aa55a04072dc4d5c262",
+      "bytes": 270612
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_scaledclean.wav": {
+      "sha256": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a",
+      "bytes": 135350
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_N2_snr_m18.f32le": {
+      "sha256": "4aca8c8ed938ed75a101c13f97f0d5eaa86c218a002c35e13f002789de9493e4",
+      "bytes": 270612
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_N2_snr_m18.wav": {
+      "sha256": "50fdfe9c34ad5dd8d82ce1c9c47befbd637d31009168e73349a6c5a6aec19af8",
+      "bytes": 135350
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p226_028_N2_snr_m18.wav__frontend.npy": {
+      "sha256": "6550206f8447a663e60b097b7b9bc2c058b107f02cc39c135a66e417cdf9099c",
+      "bytes": 270740
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/frontend/p226_028_N2_snr_m18.wav": {
+      "sha256": "d2af3533e221364cc123030c38fce085b08d3069de5a768868232f365a6c6921",
+      "bytes": 135350
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p226_028_N2_snr_m18.wav__off.npy": {
+      "sha256": "b251433974a2f439b7b563e753a7228e79a801c937c382d3a9cf199fa4dbbba8",
+      "bytes": 270740
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/off/p226_028_N2_snr_m18.wav": {
+      "sha256": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737",
+      "bytes": 135350
+    }
+  },
+  "registry_sha256": "0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13",
+  "metrics_sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0"
+}

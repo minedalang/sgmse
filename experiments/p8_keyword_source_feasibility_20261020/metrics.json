@@ -1,0 +1,278 @@
+{
+  "status": "failed_HTTP_source_verification_and_artifact_budget",
+  "pid": 5566,
+  "requests": [
+    {
+      "url": "https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip",
+      "method": "GET",
+      "Range": "bytes=-65557",
+      "status": 206,
+      "body_bytes": 65557,
+      "Content_Range": "bytes 182016796-182082352/182082353",
+      "Content_Length": "65557",
+      "ETag": "\"4b8a67bae2973844e84fa7ac988d1a44\"",
+      "Last_Modified": "Thu, 20 Aug 2020 21:34:32 GMT",
+      "start": 182016796,
+      "end": 182082352,
+      "total": 182082353,
+      "sha256": "a8539d66e17a28a740c684abd42c439623acbb3d3c389d78199471d6c0f4b7e1",
+      "seconds": 1.4331655870191753
+    },
+    {
+      "url": "https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip",
+      "method": "GET",
+      "Range": "bytes=180004164-182082330",
+      "status": 206,
+      "body_bytes": 2078167,
+      "Content_Range": "bytes 180004164-182082330/182082353",
+      "Content_Length": "2078167",
+      "ETag": "\"4b8a67bae2973844e84fa7ac988d1a44\"",
+      "Last_Modified": "Thu, 20 Aug 2020 21:34:32 GMT",
+      "start": 180004164,
+      "end": 182082330,
+      "total": 182082353,
+      "sha256": "b9a648bea6e90561117605e2cfe10a44c38055429ee088c7429520f07a6c179c",
+      "seconds": 11.88164544897154
+    },
+    {
+      "url": "https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/speech_commands/input_data.py",
+      "method": "GET",
+      "Range": null,
+      "status": null,
+      "body_bytes": 0,
+      "seconds": 20.196192458970472
+    }
+  ],
+  "response_body_bytes": 2143724,
+  "failures": [
+    {
+      "error": "TimeoutError('The read operation timed out')",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_keyword_source_feasibility_20261020/check_zip_metadata.py\", line 73, in <module>\n    code,codeq=get(C['official_which_set_source_url']);(D/'official_input_data.py.txt').write_bytes(code);tree=ast.parse(code.decode())\n  File \"/data/coding/sgmse/experiments/p8_keyword_source_feasibility_20261020/check_zip_metadata.py\", line 20, in get\n    with opener.open(urllib.request.Request(url,headers=headers),timeout=20) as response:\n  File \"/usr/lib/python3.10/urllib/request.py\", line 519, in open\n    response = self._open(req, data)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 536, in _open\n    result = self._call_chain(self.handle_open, protocol, protocol +\n  File \"/usr/lib/python3.10/urllib/request.py\", line 496, in _call_chain\n    result = func(*args)\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1391, in https_open\n    return self.do_open(http.client.HTTPSConnection, req,\n  File \"/usr/lib/python3.10/urllib/request.py\", line 1352, in do_open\n    r = h.getresponse()\n  File \"/usr/lib/python3.10/http/client.py\", line 1375, in getresponse\n    response.begin()\n  File \"/usr/lib/python3.10/http/client.py\", line 318, in begin\n    version, status, reason = self._read_status()\n  File \"/usr/lib/python3.10/http/client.py\", line 279, in _read_status\n    line = str(self.fp.readline(_MAXLINE + 1), \"iso-8859-1\")\n  File \"/usr/lib/python3.10/socket.py\", line 705, in readinto\n    return self._sock.recv_into(b)\n  File \"/usr/lib/python3.10/ssl.py\", line 1303, in recv_into\n    return self.read(nbytes, buffer)\n  File \"/usr/lib/python3.10/ssl.py\", line 1159, in read\n    return self._sslobj.read(len, buffer)\nTimeoutError: The read operation timed out\n"
+    }
+  ],
+  "member_content_reads": 0,
+  "WAV_decodes": 0,
+  "archive_README_read": false,
+  "EOCD": {
+    "entries": 16020,
+    "central_directory_size": 2078167,
+    "central_directory_offset": 180004164,
+    "archive_bytes": 182082353,
+    "comment_length": 0,
+    "sha256": "6b50552c32fff779f5e27fb9537218c7be361ec23d7d0a1f4ed25183c20b2446"
+  },
+  "seconds": 33.603907694108784,
+  "requests_used": 3,
+  "config_sha256": "569b6969516b4a41db36fd083066d3263b5a9940b23843fc6c07e96111d35f93",
+  "code_sha256": "5acd90e46d06469039e05b5bcf5733713ac39565b00c70ce0ed98d4a3336ff3d",
+  "disk_free_bytes": 1618382848,
+  "partial_cached_metadata_statistics": {
+    "labelled_WAV_files": 8000,
+    "word_counts": {
+      "down": {
+        "files": 1000,
+        "groups": 702,
+        "conditional_splits": {
+          "training": {
+            "files": 783,
+            "groups": 552
+          },
+          "validation": {
+            "files": 115,
+            "groups": 79
+          },
+          "testing": {
+            "files": 102,
+            "groups": 71
+          }
+        }
+      },
+      "go": {
+        "files": 1000,
+        "groups": 697,
+        "conditional_splits": {
+          "training": {
+            "files": 784,
+            "groups": 557
+          },
+          "validation": {
+            "files": 110,
+            "groups": 73
+          },
+          "testing": {
+            "files": 106,
+            "groups": 67
+          }
+        }
+      },
+      "left": {
+        "files": 1000,
+        "groups": 708,
+        "conditional_splits": {
+          "training": {
+            "files": 784,
+            "groups": 561
+          },
+          "validation": {
+            "files": 107,
+            "groups": 73
+          },
+          "testing": {
+            "files": 109,
+            "groups": 74
+          }
+        }
+      },
+      "no": {
+        "files": 1000,
+        "groups": 721,
+        "conditional_splits": {
+          "training": {
+            "files": 775,
+            "groups": 564
+          },
+          "validation": {
+            "files": 106,
+            "groups": 75
+          },
+          "testing": {
+            "files": 119,
+            "groups": 82
+          }
+        }
+      },
+      "right": {
+        "files": 1000,
+        "groups": 707,
+        "conditional_splits": {
+          "training": {
+            "files": 787,
+            "groups": 558
+          },
+          "validation": {
+            "files": 109,
+            "groups": 76
+          },
+          "testing": {
+            "files": 104,
+            "groups": 73
+          }
+        }
+      },
+      "stop": {
+        "files": 1000,
+        "groups": 683,
+        "conditional_splits": {
+          "training": {
+            "files": 798,
+            "groups": 553
+          },
+          "validation": {
+            "files": 96,
+            "groups": 65
+          },
+          "testing": {
+            "files": 106,
+            "groups": 65
+          }
+        }
+      },
+      "up": {
+        "files": 1000,
+        "groups": 723,
+        "conditional_splits": {
+          "training": {
+            "files": 788,
+            "groups": 575
+          },
+          "validation": {
+            "files": 108,
+            "groups": 77
+          },
+          "testing": {
+            "files": 104,
+            "groups": 71
+          }
+        }
+      },
+      "yes": {
+        "files": 1000,
+        "groups": 704,
+        "conditional_splits": {
+          "training": {
+            "files": 791,
+            "groups": 551
+          },
+          "validation": {
+            "files": 114,
+            "groups": 81
+          },
+          "testing": {
+            "files": 95,
+            "groups": 72
+          }
+        }
+      }
+    },
+    "nohash_groups": 1750,
+    "cross_word_groups": 1516,
+    "group_word_coverage_histogram": {
+      "3": 489,
+      "4": 293,
+      "8": 88,
+      "6": 37,
+      "7": 56,
+      "2": 437,
+      "1": 234,
+      "5": 116
+    },
+    "duplicate_paths": [],
+    "path_anomalies": [],
+    "other_entries": {
+      "directory": 9,
+      "macos_metadata": 8010,
+      "other_nonlabelled_file": 1
+    },
+    "conditional_split_totals": {
+      "training": 6290,
+      "testing": 845,
+      "validation": 865
+    },
+    "conditional_split_groups": {
+      "training": 1399,
+      "validation": 177,
+      "testing": 174
+    },
+    "conditional_group_intersections": {
+      "training__validation": 0,
+      "training__testing": 0,
+      "validation__testing": 0
+    },
+    "split_rule_provenance": "Offline arithmetic following rule Root independently web-verified; this Worker source request timed out and no source file was fetched. Not an archive-provided official split manifest.",
+    "split_rule": "group=basename before _nohash_; percentage=(int(SHA1(group),16)%2^27)*(100/(2^27-1)); validation<10, testing<20, else training",
+    "group_scope": "filename identifier, not verified true speaker"
+  },
+  "artifact_gate": {
+    "limit_bytes": 4194304,
+    "observed_bytes_before_small_reporting": 5556584,
+    "file_sizes_before_reporting": {
+      "config.yaml": 1401,
+      "check_zip_metadata.py": 9584,
+      "STARTED.json": 13,
+      "zip_tail.bin": 65557,
+      "central_directory.bin": 2078167,
+      "central_directory_entries.json": 3397730,
+      "metrics.json": 4132
+    },
+    "passed": false,
+    "cause": "Parsed entriesJSON3397730 plus CDbin2078167 and tail65557 exceed4MiB; output guard omitted. No deletion/compression/cap increase/retry."
+  },
+  "report_generation_note": "First offline report command had a Python syntax error before execution/writes; corrected only local reporting, no driver/network rerun.",
+  "limitations": [
+    "CC BY from official tutorial documentation supplied by Root; archive README/license not inspected",
+    "No member content/header/PCM read, no content-label accuracy check",
+    "Filename group not verified speaker; pretraining exposure unknown",
+    "No classifier/model/training/download continuation authorized",
+    "Metadata shows labels/grouping potential but bounded execution/resource gates failed"
+  ]
+}

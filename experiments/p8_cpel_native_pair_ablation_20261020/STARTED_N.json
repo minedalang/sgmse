@@ -1,0 +1,27 @@
+{
+  "pid": 13601,
+  "config_sha256": "56787f457b21d44345ac476a972ab830ff6695cf3d5532b850fc8be8dfbe2ff2",
+  "config_path": "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/config.yaml",
+  "arm": "N",
+  "seed": 20261019,
+  "steps": 500,
+  "batch_original_pairs": 1,
+  "lr": 1e-05,
+  "clip": 1.0,
+  "ema": 0.999,
+  "native_t": [
+    0.03,
+    1.0
+  ],
+  "aux_t": [
+    0.3,
+    0.7
+  ],
+  "pair_rule": "dynamic raw-gradient budget relative to native-only gradient; target .01 cap100; N eta_applied0",
+  "common_clean_aux": false,
+  "common_state_role": "pair only; no pointwise clean regression",
+  "reverse_traversals_per_step": 2,
+  "dtype": "float32/complex64",
+  "loss_reduction": "coefficient mean, then branch mean",
+  "score_mode": "eval_with_parameter_grad"
+}

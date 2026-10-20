@@ -1,5 +1,11 @@
 # 硕士论文创新点与结果草稿
 
+已实现方法的完整正文、符号和训练／推理伪代码见 [Router方法正文草稿](METHODS_RRSD_IMPLEMENTED_DRAFT_20261019.md)；该正文描述既有实现，不代表P8-I或CAEG已验证。
+
+冻结JSON转录的完整分层表、原置信区间、VoiceBank内容代理及最新单人结构反馈见 [实验章节草稿](THESIS_EXPERIMENTS_CHAPTER_DRAFT_20261019.md)。该章节将正式测试与探索材料分开，不用后者填成新算法确认。
+
+> **历史草稿提示（P8补充后）**：本文保留较早Router叙事及原数值；“创新点”与“足以支撑论文”是当时写作建议，不是已完成的新颖性或学位要求审核。最新P8观察、反事实消融与未验证事项见 [P8论文讨论草稿](P8_EVIDENCE_DISCUSSION_DRAFT_20261019.md)，研究决策以 [/data/research_plan.md](../../research_plan.md) 为准。Router-on/off与frontend/native-OFF是不同对照；本次未重核本文旧最终测试，也不据P8结果重新调试冻结测试集。
+
 日期：2026-10-20  
 依据：真实 StoRM/SGMSE 代码、80k checkpoint、冻结 DNS Ins20 官方测试集及已归档实验
 
@@ -20,6 +26,8 @@
 
 ### 2.1 机制描述
 
+训练历史经用户后续明确：本文件的80k checkpoint来自300k基础权重，前后端冻结，仅Router额外训练80k；不是主干从头只训练80k。Router增量训练成本单列，初始化RAW/EMA细节不由文件名推定。
+
 当前 80k checkpoint 的关键配置为：
 
 - OUVE；
@@ -35,11 +43,12 @@ Router 根据 noisy 输入、判别式前端输出及扩散状态生成局部 `a
 
 \[
 L_{future}=\frac{1}{B}\sum_i
-\frac{\|\hat{x}_{0,i}^{route}-x_{0,i}\|_2^2}
-{\operatorname{stopgrad}(\|\hat{x}_{0,i}^{base}-x_{0,i}\|_2^2)+\epsilon}.
+\frac{E_i^{route}}
+{\max(\operatorname{stopgrad}(E_i^{base}),\epsilon)},
+\qquad E_i^j=\operatorname{mean}|\hat{x}_{0,i}^{j}-x_{0,i}|^2.
 \]
 
-其中 `base` 是同一当前状态、同一 future 时间点下的 `alpha=0` counterfactual，分母停止梯度。训练时通过 Score 网络的输入梯度把 future 误差传回 Router；扩散主干保持冻结。额外的平滑项约束局部路由图，最终 checkpoint 的 `contrastive_weight=0`，因此当前主结果不是由 WavLM/UniSpeech 对比损失得到的。
+其中 `base` 是同一当前状态、同一 future 时间点下的 `alpha=0` counterfactual，分母停止梯度并设下界，不是加epsilon。训练时通过 Score 网络的输入梯度把 future 误差传回 Router；扩散主干保持冻结。额外的平滑项约束局部路由图，最终 checkpoint 的 `contrastive_weight=0`，因此当前主结果不是由 WavLM/UniSpeech 对比损失得到的。虽然保存了gate-cost系数，`rrsd_use_gate=False`使该项实际为零，不将其写成有效门控正则。
 
 ### 2.2 官方冻结评测结果
 
@@ -59,11 +68,36 @@ Router 相对 Router-off 的 pooled 结果：
 
 ### 2.3 论文中可以使用的表述
 
+pooled区间的最新配对单位补充见[matched-file不确定性报告](experiments/final_matched_file_uncertainty_20261019/experiment_report.md)：原均值未变，150 file-id两条件共同抽样后Router SI-SDR95%CI为[+0.201401,+0.282815]dB，OVRL为[−0.021592,−0.007543]，PESQ仍跨零。原历史区间保留，本补充是事后统计修正，不是独立测试、多重比较校正或新的增强结果。
+
 > Future-gradient routing improves reconstruction under the matched Router protocol, but its effect is conditional rather than globally perceptual. The same routing action changes from a small reconstruction benefit in the official no-reverb split to a reconstruction–perception trade-off in the official with-reverb split.
 
 中文可写为：
 
 > Future guidance 并非对所有条件都产生一致的感知增益。它在无混响条件下带来小幅重建改善，在官方混响条件下则表现为 SI-SDR 与感知代理之间的权衡。该现象说明局部路由系数改变了前端信息与生成后端之间的协作方式，但当前 Router 尚不能识别所有需要保护或修复的局部区域。
+
+### 2.4 复杂度与计时口径：区分训练lookahead和推理路由
+
+本节依据当前源码和已有冻结日志的只读核查，没有新增推理、训练、音频读取或计时。参数规模引用已有[机制审计](experiments/rrsd_router_mechanism_audit_20261020/metrics.json)：Router为42,577个参数，相对55,118,388个非Router参数增量约0.07725%；参数增量小不能直接推出延时增量为零。
+
+`future_grad`训练loss中的一次额外Score重评分使用堆叠的2B批量，保留输入梯度以训练Router；这是**训练开销**，不是每一步推理都额外重评分。正常推理中的`build_rrsd_score_calibrator`重用已计算的base score，调用小Router并进行代数修正，不再调用Score网络。
+
+在`N=30`、reverse-diffusion predictor、`corrector=none`且无其他控制器的正常路径下，静态调用口径如下：
+
+| 配置 | Score函数评估 | Router调用 | 解释 |
+|---|---:|---:|---|
+| 正式冻结`off`：`rrsd=true, scale=0` | 30 | 30 | 计算Router后将动作缩为零，并非跳过Router |
+| 正式`router`：`rrsd=true, scale=1` | 30 | 30 | 激活路由修正 |
+| 正式`tcut005` | 30 | 30 | 在Router计算后屏蔽低t动作，不减少调用 |
+| P8另用的native OFF：`rrsd=false` | 30 | 0 | 不构造Router校准闭包；不能与正式zero-scale计时混用 |
+
+这是**当前源码的静态调用推导，不是历史forward插桩、FLOPs或显存实测**；实际返回NFE也不计小Router成本。原正式对照的基础Score评估数相同，但不能笼统称所有计算成本完全相等。
+
+既有[正式评测配置](experiments/final_eval_full_20261018/config.yaml)与[六份原始日志](experiments/final_eval_full_20261018/logs/)明确使用`rrsd=true`；off/router/t-cut各处理300条10秒音频的job级总耗时为958/956/957秒，对应总job时间／音频时长约0.31933/0.31867/0.31900。该计时包含进程启动、模型/前端与I/O等，不是重复测得的纯GPU稳态RTF，也没有独立延时置信区间。**不能据2秒差宣称Router更快、无开销，或t-cut能节省计算**；zero-scale基线本身也运行了Router。保留原性能结果，不为补计时重新运行冻结测试集。
+
+可写结论：本实现保持相同的基础Score NFE，增加小Router的逐步计算；现有日志只描述这组包含Router计算的作业耗时，尚未隔离真正bypass Router相对启用Router的延时/峰值显存增量。
+
+源码定位：`sgmse/model.py:enhance`、`sgmse/sampling/__init__.py:get_pc_sampler`、`sgmse/sampling/predictors.py:ReverseDiffusionPredictor`、`sgmse/sampling/correctors.py:NoneCorrector`、`sgmse/sdes.py:SDE.reverse`、`sgmse/joint_model.py:build_rrsd_score_calibrator/_rrsd_future_grad_loss`、`sgmse/reliability_router.py:BandTimeReliabilityRouter.forward`。只读复审交叉核对了代码和全部六份时间日志；不将当前代码替代未保存的历史全链路插桩证据。
 
 ## 3. 第二创新点的当前证据边界
 

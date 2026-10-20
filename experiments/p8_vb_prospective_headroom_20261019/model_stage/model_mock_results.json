@@ -1,0 +1,6 @@
+{
+  "status": "passed",
+  "stdout": "{\"status\": \"passed\", \"native_mock_cases\": 32, \"observer_args_returns_identity\": true, \"model_release_weakref\": true, \"independent_alignment_pairs\": 225, \"synthetic_serialization_pairs\": 64, \"real_model_loads\": 0, \"real_audio_decodes\": 0, \"network_bytes\": 0}\n{\"weight_filelike_mock\": \"passed\", \"position_preserved\": true, \"unknown_filelike_rejected\": true, \"network_process_rejected\": true}\n",
+  "real_model_imports": 0,
+  "real_source_decodes": 0
+}

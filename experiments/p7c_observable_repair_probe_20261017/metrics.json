@@ -1,0 +1,882 @@
+{
+  "descriptive_backend_help_fraction": {
+    "definition": "fraction of eligible one-second chunks with delta_log_waveform_nrmse > 0",
+    "eligible_chunks": 955,
+    "fraction_help": 0.2094240837696335,
+    "help_chunks": 200,
+    "interpretation": "descriptive only; chunks are clustered and not independent confirmation",
+    "tie_chunks": 0,
+    "worsen_chunks": 755
+  },
+  "execution": {
+    "analysis_runtime_seconds": 4.31219217996113,
+    "dataset_or_checkpoint_modified": false,
+    "device": "cpu",
+    "gpu_used": false,
+    "inference_run": false,
+    "training_run": false
+  },
+  "experiment_id": "p7c_observable_repair_probe_20261017",
+  "grouping": {
+    "chunks_per_speaker": {
+      "reader_10658": 30,
+      "reader_10686": 30,
+      "reader_10927": 30,
+      "reader_10929": 29,
+      "reader_11006": 30,
+      "reader_11052": 30,
+      "reader_11053": 30,
+      "reader_11062": 30,
+      "reader_11065": 28,
+      "reader_11128": 30,
+      "reader_11144": 29,
+      "reader_11166": 30,
+      "reader_11170": 30,
+      "reader_11208": 30,
+      "reader_11252": 30,
+      "reader_11254": 30,
+      "reader_11273": 30,
+      "reader_11297": 30,
+      "reader_11301": 30,
+      "reader_11346": 30,
+      "reader_11382": 30,
+      "reader_11446": 30,
+      "reader_11458": 30,
+      "reader_11459": 30,
+      "reader_11729": 60,
+      "reader_11794": 30,
+      "reader_11880": 59,
+      "reader_11935": 30,
+      "reader_11951": 30,
+      "reader_11970": 30
+    },
+    "cv": "per_speaker_grouped_5_fold",
+    "folds": [
+      {
+        "fold": 1,
+        "test_chunks": 180,
+        "test_speaker_ids": [
+          "reader_11052",
+          "reader_11128",
+          "reader_11254",
+          "reader_11382",
+          "reader_11729"
+        ],
+        "test_speakers": 5,
+        "train_chunks": 775,
+        "train_speakers": 25
+      },
+      {
+        "fold": 2,
+        "test_chunks": 208,
+        "test_speaker_ids": [
+          "reader_10686",
+          "reader_10929",
+          "reader_11166",
+          "reader_11273",
+          "reader_11446",
+          "reader_11880"
+        ],
+        "test_speakers": 6,
+        "train_chunks": 747,
+        "train_speakers": 24
+      },
+      {
+        "fold": 3,
+        "test_chunks": 180,
+        "test_speaker_ids": [
+          "reader_11006",
+          "reader_11053",
+          "reader_11252",
+          "reader_11346",
+          "reader_11794",
+          "reader_11951"
+        ],
+        "test_speakers": 6,
+        "train_chunks": 775,
+        "train_speakers": 24
+      },
+      {
+        "fold": 4,
+        "test_chunks": 180,
+        "test_speaker_ids": [
+          "reader_10658",
+          "reader_11062",
+          "reader_11208",
+          "reader_11301",
+          "reader_11459",
+          "reader_11970"
+        ],
+        "test_speakers": 6,
+        "train_chunks": 775,
+        "train_speakers": 24
+      },
+      {
+        "fold": 5,
+        "test_chunks": 207,
+        "test_speaker_ids": [
+          "reader_10927",
+          "reader_11065",
+          "reader_11144",
+          "reader_11170",
+          "reader_11297",
+          "reader_11458",
+          "reader_11935"
+        ],
+        "test_speakers": 7,
+        "train_chunks": 748,
+        "train_speakers": 23
+      }
+    ],
+    "speaker_id_rule": "uttid prefix before _fileid_ (validated reader_<digits>_fileid_<digits>)",
+    "speaker_ids": [
+      "reader_10658",
+      "reader_10686",
+      "reader_10927",
+      "reader_10929",
+      "reader_11006",
+      "reader_11052",
+      "reader_11053",
+      "reader_11062",
+      "reader_11065",
+      "reader_11128",
+      "reader_11144",
+      "reader_11166",
+      "reader_11170",
+      "reader_11208",
+      "reader_11252",
+      "reader_11254",
+      "reader_11273",
+      "reader_11297",
+      "reader_11301",
+      "reader_11346",
+      "reader_11382",
+      "reader_11446",
+      "reader_11458",
+      "reader_11459",
+      "reader_11729",
+      "reader_11794",
+      "reader_11880",
+      "reader_11935",
+      "reader_11951",
+      "reader_11970"
+    ],
+    "speakers": 30,
+    "utterances": 32
+  },
+  "input_validation": {
+    "all_files_16khz_and_mono_sample_lengths_aligned": true,
+    "all_required_wavs_present_and_hash_verified": true,
+    "expected_manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+    "frontend_manifest_entries": 32,
+    "manifest_path": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv",
+    "manifest_rows": 32,
+    "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+    "unique_uttids": 32,
+    "utterance_input_hashes": [
+      {
+        "filename": "000_fileid_2673.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2673.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02715_chp_0010_reader_11065_4_NevaxykoWq0-IDj-ZL1PteI-1RWn2td-9ZA_snr-18_fileid_2673.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/000_fileid_2673.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/000_fileid_2673.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "84a9b26ba5c94f37e3c482bc7e15a1526651737e431c3383c9f5aaed06fda1b7",
+          "noisy": "dd574edbba369208ade9d262e3b985fea9dfa95b53e5a668aec119ca0a8eb5b8",
+          "router_off": "d5de9c5fbf7796d21b657013cc107c676db55d8e2ada2aa7c1d3aed760939a64",
+          "y_pre": "b9a5be6fc8e77d948f5fbd4a88f9dd878874ff2912295524cf1e9a80f129cad7"
+        },
+        "uttid": "reader_11065_fileid_2673"
+      },
+      {
+        "filename": "001_fileid_2972.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2972.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04362_chp_0020_reader_11254_5_kee9vQ5eO3M-squeak_squeakyChair_Freesound_validated_452632_9-wHFfewEmosc_snr-10_fileid_2972.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/001_fileid_2972.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/001_fileid_2972.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "208181e817aa305b767c0e213d41d0a984ea713da3f98603678c4a7d7893ec35",
+          "noisy": "cd70a523242c263cbaa0073ab886cce6bf8f7a2fa6fa398a0b4796f73b79837d",
+          "router_off": "43c908efedb83134251e6797d3832105a2e9880a14a56328908fedf883bc8740",
+          "y_pre": "a0885337e919409eb1d480d3cebff3455260619fcb2f73367b62a5992cbac637"
+        },
+        "uttid": "reader_11254_fileid_2972"
+      },
+      {
+        "filename": "002_fileid_7247.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7247.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07714_chp_0007_reader_11794_8_tKLJAX3iYTQ-2yUkySlo0nE-door_Freesound_validated_257372_37_snr-16_fileid_7247.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/002_fileid_7247.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/002_fileid_7247.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "c762282b7d59b45245f0a1acf7c8507d20c05c531790e99be6941215165e0d9c",
+          "noisy": "6ea9aa12565269f739fed9b7937c40ef75b6e10da9a2ce350f296347f02eb60b",
+          "router_off": "d5828caf5dfb31fa12f845246b1adfc82f630d04e24b0c91dd26484177a2c07f",
+          "y_pre": "bfa0bd2cd0f95edb2b2b6489854965e3c908b3f2744eecf14de35ad9b7ce6e4d"
+        },
+        "uttid": "reader_11794_fileid_7247"
+      },
+      {
+        "filename": "003_fileid_4431.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4431.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07459_chp_0011_reader_11880_35_dpgpX_Fnmk0-flD_lj-Dg2c-iP4XCZRWwpc_snr-6_fileid_4431.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/003_fileid_4431.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/003_fileid_4431.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "a0fa55b029e690a433ec2abe9f1c8bcd3b1dbcebce07f2665d3830a23d9dd463",
+          "noisy": "daa6a24f15fdc631c2449a7ef4c80aaf03e28f5677136ae38a042bf84f96849d",
+          "router_off": "f38750cfcb5d0872234234d76223f57a84fecbf3981030717404400aa1bcad85",
+          "y_pre": "47e5420123309388bc07a0f09fc070060064d123e8dea7c2be32e087c148d0c1"
+        },
+        "uttid": "reader_11880_fileid_4431"
+      },
+      {
+        "filename": "004_fileid_11675.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11675.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_36_cVhvmK7jolc-8zQRteW-pqA-R3gTSnfCiuM_snr-10_fileid_11675.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/004_fileid_11675.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/004_fileid_11675.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "d2bfd6038628b2ddfe52dbc6f2f8d45a05033f94a88fec0d04a4f6729a0dfe13",
+          "noisy": "fd8bb3790eb82c6cca6bddf47befac3c4f081909d5c4ed0a34cd39a1be939cbb",
+          "router_off": "da5380770e497a28ed77c15795f03be3076393b93a46552929fcaaab2858078f",
+          "y_pre": "e609f090f778533071a34954b8de72eda32dd7c9448f0932516f50ccf31dc4b2"
+        },
+        "uttid": "reader_11053_fileid_11675"
+      },
+      {
+        "filename": "005_fileid_6115.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6115.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_00600_chp_0016_reader_11144_43_2YKWINi2fys-QT-HjKnGrB0-NiwIjjX-jRs_snr-6_fileid_6115.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/005_fileid_6115.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/005_fileid_6115.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "fb5b682c7e8e0fe91ca604594848e6a48a73d1d2e509f280574db7e81dea0f58",
+          "noisy": "513481a0b27385fb2f270abc9440bf19207ebb9dd8d3095b4bbb9d6de357cc62",
+          "router_off": "8251e80689d4679fc595e7488249454bfc79363c93241af1726f6adda5a10d85",
+          "y_pre": "e24d39d1b697814a5de4d0c9cd2449e1fd9761da1f45a195e6ff263a4782669a"
+        },
+        "uttid": "reader_11144_fileid_6115"
+      },
+      {
+        "filename": "006_fileid_8110.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_8110.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02580_chp_0001_reader_11951_1_mU-S2FruM00-door_Freesound_validated_202515_44-0IQm0P1ZYQM_snr-15_fileid_8110.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/006_fileid_8110.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/006_fileid_8110.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "e7732f0fe38544bb47623d09b1881b7c5ed729d8916b22afcd1fb892d0a8629a",
+          "noisy": "7d5c1ba690cd07af52d7823be3b1f56e28aa8c63191576c8b8820c85a6a4b513",
+          "router_off": "d5ffbd823aaa1cd70afb4b030301e47537ea2370fdc9ef576c63fe51ae1d7366",
+          "y_pre": "376ec8fd5bf6d1929cc84f0d2e9e8e7fcb68211b5d3347462a21f56a33e3df88"
+        },
+        "uttid": "reader_11951_fileid_8110"
+      },
+      {
+        "filename": "007_fileid_10001.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10001.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06632_chp_0020_reader_11446_34_door_Freesound_validated_260073_0-xsstz4r-t0c-Sz9eCUKuXUM_snr-6_fileid_10001.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/007_fileid_10001.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/007_fileid_10001.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "6d6fb65763379719d113daee57946322c3b5fca83b94d267abe92041594d982d",
+          "noisy": "61f4ede99535f95ae1e96a40a51634550547aa43fcbb40d6d2193b9a35a23be1",
+          "router_off": "6f941763acfb0e242c0fae5903127289195506e05c5693a8e300835d4bc8e72c",
+          "y_pre": "ede793ed985d6b5c9b7dadd337334f7888049e64a1e1995d875e90ee379d59b3"
+        },
+        "uttid": "reader_11446_fileid_10001"
+      },
+      {
+        "filename": "008_fileid_5878.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5878.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08729_chp_0003_reader_11970_11_QJv4jmwkDl4-DOoxj59sxvM-_N_cUtALnVw_snr-18_fileid_5878.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/008_fileid_5878.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/008_fileid_5878.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "e37682ed91cc89a8ea86460a18183b5ed76247bb3e00b429d692dc14154cf671",
+          "noisy": "8ae744c0d0c8d7571458b4e76c4c05d23791bd707626336efb135bcfe0d3d204",
+          "router_off": "defb28b140105cc231a29a09a589fee544818d28a409130e58b8516e6e02147d",
+          "y_pre": "65fbea4b93c385823709c8d6e0bfe7bcaa7229f055c8d8f097b426923d883c15"
+        },
+        "uttid": "reader_11970_fileid_5878"
+      },
+      {
+        "filename": "009_fileid_7221.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7221.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06409_chp_0001_reader_11935_36_weSnioFU2T4-WA9pddxslaw-KXSrXxfhdDI_snr-15_fileid_7221.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/009_fileid_7221.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/009_fileid_7221.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "97f8dd4fc159cf1648850d07b98c98f5a1fecd4c2ebb707c75b5e1fac7cb8b1c",
+          "noisy": "6bd502b124a6c7bd9dab9db03f35e6dbb68055428872d298e38e316d43f8e519",
+          "router_off": "899069d0b8bee8f79f0c38807d8badf7b5239c704b1a930ea1bd17837b2e80ea",
+          "y_pre": "5717b1010f091a43358942ec298e5bf32f71e78504e9ad3159255fd8692de44e"
+        },
+        "uttid": "reader_11935_fileid_7221"
+      },
+      {
+        "filename": "010_fileid_3501.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3501.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10886_chp_0035_reader_11729_32_vOLKqHTXmfE-typing_Freesound_validated_215005_1-ZadheuoT0go_snr-7_fileid_3501.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/010_fileid_3501.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/010_fileid_3501.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "f6e724db1bd12caf721eaaf889ef404855919bdc2c375f3c338c535dfed0a745",
+          "noisy": "6b654840d67948cd283408b77be4d562e8f095ea4258f4bbc14a62b2a274e76e",
+          "router_off": "dbcf37a138e1044f6472d9f2346102c8d266b28c0e6eaf47f837efabf871c139",
+          "y_pre": "bd1594f6160fe59ccb4e8801733b6c15c2dd7f95319e96f2ddfbbffd4dbc1e49"
+        },
+        "uttid": "reader_11729_fileid_3501"
+      },
+      {
+        "filename": "011_fileid_8207.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_8207.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_00564_chp_0015_reader_11458_43_ZkLVM5js2fw-door_Freesound_validated_425183_44-ImDWvvcJ9EE_snr-11_fileid_8207.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/011_fileid_8207.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/011_fileid_8207.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "b3cfc26b1cfbffb234fea20d14ff10012a9ddff3f796cb2945617944df5eb6a9",
+          "noisy": "9e36a50bbf243e7824793ce130441694f2d2829c29911cf0c0d8265f070d3bb9",
+          "router_off": "0890de4d5743fa84e2dd8efcfb9650937dec850cfb9b9953d7d0b1b0887a36c6",
+          "y_pre": "1c7cf5f55249fe1b7642646f34eb7bfcf5b889dbefc840d9973cb16e16872552"
+        },
+        "uttid": "reader_11458_fileid_8207"
+      },
+      {
+        "filename": "012_fileid_2279.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2279.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02442_chp_0021_reader_11166_2_JeeD6dRGZxY-yHfVobB86HA-GXInxxM0-Y0_snr-13_fileid_2279.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/012_fileid_2279.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/012_fileid_2279.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "7329f8a758f72736b2c03af13ca06b15b5b55d12bd6e55e5f3d92da5ad6398fa",
+          "noisy": "b87751970fe15bf250deac61c72663cb5bdc06958091be64bfe02f8a73ac7b81",
+          "router_off": "d9de691418c17221390e94368aae33567e55752190b8e291eba57b438998339f",
+          "y_pre": "79f2cf38949e717e4da0795a014c8a6458349fac6a51918ac1aa915a14000083"
+        },
+        "uttid": "reader_11166_fileid_2279"
+      },
+      {
+        "filename": "013_fileid_7021.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7021.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_21_pvguRTYGCOo-1s-rlqwtNTU-W9FMMz6SlVM-DzDSv5jF1cc_snr-13_fileid_7021.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/013_fileid_7021.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/013_fileid_7021.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "73baf752ac8f0ef9299b1eeca606b49ce450e105521eccaf0d68df80a76c690e",
+          "noisy": "19b578a05d01e1e0dcbab111a624e5cd3f8b88eefa4b2ebf3a6d2e2b22f63ff4",
+          "router_off": "cdbfa08cfeea013bcfbff480d0dd2652e9be72b82469b6c817892b4fca32e624",
+          "y_pre": "fcd6c05a55dcf044da37c52c6f691c3e59fbe9be965b688808b14ba4f0340382"
+        },
+        "uttid": "reader_10658_fileid_7021"
+      },
+      {
+        "filename": "014_fileid_3187.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3187.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04733_chp_0031_reader_10929_26_yrptEYvgiIU-WRHS36ap6Gs-YwYqnCXdtaE_snr-19_fileid_3187.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/014_fileid_3187.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/014_fileid_3187.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "02b15bbcd781efbe28d0a7618def80cc0861d31700b3ffb2a23db06a55555758",
+          "noisy": "9eafc1874f1736bb39f9e7f1d1991704ef90b4599c063baa2604f30790820c81",
+          "router_off": "7eee543018f924cb22f0ebc8256237e0ff453705419ba6f25a61ebbda00c03aa",
+          "y_pre": "e6f61172f28dec50d3ce1318aadf315ec50fdc49c28f44c32340b1cc3055c6a9"
+        },
+        "uttid": "reader_10929_fileid_3187"
+      },
+      {
+        "filename": "015_fileid_10839.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10839.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_03787_chp_0011_reader_11062_30_door_Freesound_validated_250024_0-jBN680cKdPc-NZQtROju-To_snr-10_fileid_10839.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/015_fileid_10839.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/015_fileid_10839.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "aba52e95ef7edbb89ae17994e62426ae64a18e1ca58ca8d1ea195f4795a9be82",
+          "noisy": "6c6f974d493ccf3032c34ca0007838c7ce9224e4916a8f5345030ed3fd4137f1",
+          "router_off": "0c9604eb2ccce3863397aa3cfd434fbd2c30daf2e244341d98276d79611fc241",
+          "y_pre": "38ee8cc6a10f01342324b70127da6a2131faccce6b97d13d6cfe599557c4553e"
+        },
+        "uttid": "reader_11062_fileid_10839"
+      },
+      {
+        "filename": "016_fileid_7803.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7803.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09669_chp_0017_reader_11208_34_QlC8w4L1kY4-crgM97w4fM4-IVrErotAG_o_snr-13_fileid_7803.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/016_fileid_7803.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/016_fileid_7803.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "97e745338e7d514c2d19438dddad9b4a07eeaafe99ed7e74d83a2d42df01606c",
+          "noisy": "9f9722edefb709af151a2186e22ad878fff72118b6ba31d14a99b192ee40901c",
+          "router_off": "dd1a9651ee9ddeb09453abca22b90782686769641ee077ff7dbf3a08b887e213",
+          "y_pre": "611afcd803d57450419d85374407f88beca2c898e16e3903267f415c92590755"
+        },
+        "uttid": "reader_11208_fileid_7803"
+      },
+      {
+        "filename": "017_fileid_1253.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1253.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04113_chp_0008_reader_11052_24_iq2X0F83kK8-V7GyCQegZGk-z7GzHi6OnDk_snr-9_fileid_1253.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/017_fileid_1253.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/017_fileid_1253.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "2837be1624458baed3ab7f6f21fb50e77474871fe9daa8695aa9139d1383a231",
+          "noisy": "ec99b57b1931c8c637fbb9d59061e09bdec0dc7d09219e12269f17495e162148",
+          "router_off": "6f331af257562910bac1ab23bcedb157acc727ad3f262564f73c2d8c9038da1c",
+          "y_pre": "261b41bb1d072e63761a95e64d3f9d781e07afe3240f2eef55fb98bceeef469b"
+        },
+        "uttid": "reader_11052_fileid_1253"
+      },
+      {
+        "filename": "018_fileid_8516.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_8516.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_05778_chp_0035_reader_11459_21_fan_Freesound_validated_390562_2-L8b5KZf5-OM-BatGg1Wwhz4_snr-18_fileid_8516.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/018_fileid_8516.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/018_fileid_8516.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "a34ed2cbb9f2af342fe142daf7256f3a254fd751433c7576d79a1720398c8bb9",
+          "noisy": "00f6f254dc0bb919befb01f5fe38686624fa3f7fabb7a696ae3b6220347e20af",
+          "router_off": "63fc35611d3958142cc4498435bb296beb2015bac1dea7c9a5bf92e98520598f",
+          "y_pre": "1a5cfbf8dd9ec8eb5695dc74d22c86292d8c927d35ab8ff215261767ccb25ba8"
+        },
+        "uttid": "reader_11459_fileid_8516"
+      },
+      {
+        "filename": "019_fileid_273.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_273.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06674_chp_0021_reader_10686_4_breath_spit_Freesound_validated_151206_1-4WSj0iNXCx8-0Qyk_eLpAYw-jB1nJloenZI_snr-17_fileid_273.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/019_fileid_273.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/019_fileid_273.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "2ccf24d7c6df34d8281dd9d558e7d96cd6159e67bfc74c72c44b7e5d4dba3a77",
+          "noisy": "7ad60d517d4605d2eb923944f37f3090921ccfa7681ef20b7c790a5daef67b92",
+          "router_off": "27c3049cec8345ae6863ca86fe1e0ea1f704c127f8c5a94cbe2a764b6da7d48b",
+          "y_pre": "62e13d6823a34765f4391f6ee212f502ca91ab9c1e1dc82e3f3c646efe807a23"
+        },
+        "uttid": "reader_10686_fileid_273"
+      },
+      {
+        "filename": "020_fileid_2196.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2196.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10886_chp_0035_reader_11729_21_YZ1pFAGWEYc-VyI32EB_K9k-9X19PHXQD7A_snr-17_fileid_2196.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/020_fileid_2196.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/020_fileid_2196.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "e510d0eabf0830332b4adaf18ae3624298d4ba48eb84f8d628700e7340f06519",
+          "noisy": "edab4d7b8019c4548cdca4baf2be879115d5757b2d996ea12c4d6f5e1d22a345",
+          "router_off": "78f501240b06570fb7878953120bc60e0f36de3837fde6a551963d44671c425d",
+          "y_pre": "f29e09d513c2e3e8bb9c53d40d479c67c566a36b9a739b380025020fb23e9bb6"
+        },
+        "uttid": "reader_11729_fileid_2196"
+      },
+      {
+        "filename": "021_fileid_726.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_726.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08134_chp_0024_reader_11252_64_D7nNLQYI6ds-rsn4DibQnRA-fan_Freesound_validated_390562_3_snr-15_fileid_726.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/021_fileid_726.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/021_fileid_726.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "7cc181f4fadc4e99e34096f411038b16e606c8bfeca383a5fcd77491fdd3f55f",
+          "noisy": "59e7108a2bfe533ef89b171900ab96f0d93a9804f2686bd56db301f3b5151568",
+          "router_off": "f462c8b34241132cab0b4e5f036b5b000be6a15182b9a41d32a9dbe05f5d845d",
+          "y_pre": "d11ccf7bdccfdafa700cedcb823bc2481f6c1f131fbce48b7e9f8a00466b651c"
+        },
+        "uttid": "reader_11252_fileid_726"
+      },
+      {
+        "filename": "022_fileid_9359.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_9359.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08134_chp_0001_reader_11128_48_typing_Freesound_validated_383677_15-CATSR4XHXFM-squeak_squeakyChair_Freesound_validated_277164_0_snr-14_fileid_9359.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/022_fileid_9359.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/022_fileid_9359.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "8049933052a65e887e934a0cf2b1c533df05c50b52c69b8f3c18a8bf34705448",
+          "noisy": "a42860e1a39d0c6eb211e8e3d8f205da7f46b98763a1e82ef9e1df7c23adfd3d",
+          "router_off": "da36f561c9a17cd1d16b07ff503ab0116a6d7de9bf9da8b800b34756a723284b",
+          "y_pre": "e8a928adc9ec12814b850430ea4f6dc04e330efbb02a5079f648612307550356"
+        },
+        "uttid": "reader_11128_fileid_9359"
+      },
+      {
+        "filename": "023_fileid_2286.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2286.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_05185_chp_0003_reader_11382_23_-DexfVugZDE-kTOYz_OSZT8-mdbFAPh6EQ0-hl4W7hDMn9I_snr-18_fileid_2286.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/023_fileid_2286.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/023_fileid_2286.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "c241911246ed2b99400fbd43c77e2ecfeb1a41f85728b39cb06968961375d6f2",
+          "noisy": "9b53587b1a019c3f3490d2d9694b5e70de53be8de6aef1a6ddd80cea9460969f",
+          "router_off": "773e5f43989e3ad474bd2b7f5bef97326fcc436eb71dd7fe96c79846d16dff58",
+          "y_pre": "1922fa1d76e302e871c283131053a4d34e9b11e859bfbe60572f3c0ea5cc7606"
+        },
+        "uttid": "reader_11382_fileid_2286"
+      },
+      {
+        "filename": "024_fileid_6209.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6209.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07650_chp_0008_reader_11170_31_FlPEf49c714-K0eDwNG-T3w-wRylO0lTrHE_snr-8_fileid_6209.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/024_fileid_6209.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/024_fileid_6209.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "7c38d776694f78d76244bf6c43a5e5bb21b2ba7846288b4ab5ac5ffce2c4f94a",
+          "noisy": "9046113ce439d43d9483cc4e46710232f412a922247c1f0daa097399204d8554",
+          "router_off": "c8970732be84dc25cf1f6d147098690f5726f0f8f046db34b95cddc7a3ffcdc1",
+          "y_pre": "1cfaca3fbe08128e9ad3007ade1d1f07f9586512e9390455cb5725fbed57d37c"
+        },
+        "uttid": "reader_11170_fileid_6209"
+      },
+      {
+        "filename": "025_fileid_3545.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3545.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08791_chp_0027_reader_11297_3_fan_Freesound_validated_169966_2-h73U6D_wUmQ-U17jrWTTu6o_snr-20_fileid_3545.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/025_fileid_3545.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/025_fileid_3545.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "3f6244f7f7d6c43ec1833d29f572b288b9c89e5f4295a6b819ebd05a1071d02d",
+          "noisy": "1d0ed53321fa2001e68a230ecf9761f8751e255b71bb2314897a67fb5fe0970f",
+          "router_off": "e1e22ee0823f8732673000711b2013fafb8061eb1f29a1fe3638393ac5b7ca37",
+          "y_pre": "4e64818cb26562cc9604ba86abd2aab1997d39c63fd9257504286887334ae2eb"
+        },
+        "uttid": "reader_11297_fileid_3545"
+      },
+      {
+        "filename": "026_fileid_5223.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5223.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02353_chp_0003_reader_11301_18_nsq1IgiTPUg-typing_Freesound_validated_265486_0-TCsYg3KH5yY_snr-9_fileid_5223.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/026_fileid_5223.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/026_fileid_5223.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "9e6734bf4d667ee6909ca023f1aa7d20432d98702efa0d2ed155bbf4de4a06ef",
+          "noisy": "90ce94f4be3ab9d338de8e5be8e42e7c9175c50a9c7be995970882ce01993f80",
+          "router_off": "3abb2656ae2b8042d954c0e610453a5ee1b5c838c5a24118b5e4394cc3e2cfde",
+          "y_pre": "58e36cbd08b15aaabe58840e536b52bc8c2eb452bd9d8223704ec7cac25700df"
+        },
+        "uttid": "reader_11301_fileid_5223"
+      },
+      {
+        "filename": "027_fileid_6428.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6428.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_03191_chp_0005_reader_11346_16_dYXTUpqce-0-Y_3kgjN0AcI-door_Freesound_validated_201910_0_snr-6_fileid_6428.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/027_fileid_6428.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/027_fileid_6428.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "47b9d66b1cf8bbae5274ed320f5c1d9724c7f9549bf2c2d83731d7756e002396",
+          "noisy": "bf42022877fb01e84bc6cd07110adedd270d9c8803e73451753d287099272019",
+          "router_off": "47388b649ca82dd5bf9fd586725897f3d46f9ef8206f8662231d54cd283ea821",
+          "y_pre": "0fc397f65949366fa1c512c65b45b4db6b4785e503362b9034f22cbac70833f3"
+        },
+        "uttid": "reader_11346_fileid_6428"
+      },
+      {
+        "filename": "028_fileid_7165.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7165.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07459_chp_0011_reader_11880_27_gY2HbzzdJo0-Iwl1FoN_fJ4-SmtEawVCdb8_snr-10_fileid_7165.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/028_fileid_7165.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/028_fileid_7165.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "0711a1fe885d50d8d3ca579f75b2cfb35db947c9975f65ef4a4b4c44325d7a49",
+          "noisy": "69985f444dabdcac0bda3030fba5a63d55819c13f140ac1f16db02556e29bbcd",
+          "router_off": "a74402a9686a752ed7ae8a0c9e3a9749452d7e2ba46ac7148f1c77d94fd58dd1",
+          "y_pre": "d9ded8dd147ee33d0e58bd96ec5854e8c9adcc6dd591cf1e208fd9de11c5e68d"
+        },
+        "uttid": "reader_11880_fileid_7165"
+      },
+      {
+        "filename": "029_fileid_7104.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7104.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07500_chp_0005_reader_10927_55_1kc968WZ9dw--SZ0l6mdchw-U0QhiD0qYi8_snr-6_fileid_7104.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/029_fileid_7104.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/029_fileid_7104.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "b84dd4e429ac97d8b8937c1b4b10cd579ceaa70b825e01a32630cd059c6d7e12",
+          "noisy": "4dbc00c01237fc933b72d491db73cc544ea705220b2f7d9d9ac96dad8313ea86",
+          "router_off": "2452355630183319ca8b23408a710e8583260b0e015fba62973d9d47afeba0c0",
+          "y_pre": "f39295f8db476a2fa86a0eb5e554095967369f12730633e874ac9925856917b3"
+        },
+        "uttid": "reader_10927_fileid_7104"
+      },
+      {
+        "filename": "030_fileid_1816.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1816.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09742_chp_0004_reader_11273_21_V12yiKmIbWc-door_Freesound_validated_69888_2-aGu1_3wm3Ys_snr-6_fileid_1816.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/030_fileid_1816.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/030_fileid_1816.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "3cd3cc9b8a77e2c433fdc0e52e0c1a946565911a72c38665eb4074c7f42db20a",
+          "noisy": "ad2557a35ac97b132550ab6d35fcb4be18d7a24aca7520e1dbba4ceabe013cae",
+          "router_off": "46a27926393e2c36f16b1bba416cacc19342b02eed605581da416930b3909398",
+          "y_pre": "84c71aca151f8052e01e5904f0fed723c8e7c7bda39763982e9afd9c336408d6"
+        },
+        "uttid": "reader_11273_fileid_1816"
+      },
+      {
+        "filename": "031_fileid_9984.wav",
+        "paths": {
+          "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_9984.wav",
+          "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04475_chp_0006_reader_11006_13_fan_Freesound_validated_267497_120-Zma_Oe5WVFU-sPvbBIiHgb8_snr-10_fileid_9984.wav",
+          "router_off": "/data/coding/sgmse/experiment_logs/rrsd_tcut_screen/off/031_fileid_9984.wav",
+          "y_pre": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/frontend_only/031_fileid_9984.wav"
+        },
+        "sample_rate_hz": 16000,
+        "samples": 480000,
+        "sha256": {
+          "clean": "25af4addcd389bb0da53da15b9f3ca4efc05b044117926a3b0162099c797c0dd",
+          "noisy": "c34d87f67e2e2271eb78069cb7cc7804cbbe543a957d11fc328a4968bd43de90",
+          "router_off": "fa0a4d5632d11d4f25742b207083457ea7f883c3765de8abdcca5e5024b5ef97",
+          "y_pre": "aeedfcc3fd77f72693209a1c4a65edd0025469d84b2477c30f5290ab494f94ea"
+        },
+        "uttid": "reader_11006_fileid_9984"
+      }
+    ]
+  },
+  "limitations": [
+    "Repeatedly screened 32-item P7-C development split; exploratory only, not held-out or confirmatory.",
+    "Chunks within utterances and speakers are correlated; segment count does not equal independent sample count.",
+    "The 30-speaker grouped bootstrap is approximate and operates on fixed grouped out-of-fold predictions.",
+    "Local waveform NRMSE is a reconstruction proxy, not a perceptual metric; no DNSMOS or local perceptual claims are made."
+  ],
+  "model_comparison": {
+    "ridge_minus_mean_only": {
+      "mae": 0.007490087647650107,
+      "r2": -0.02023501148230422,
+      "spearman": 0.1637351279557644
+    }
+  },
+  "out_of_fold_metrics": {
+    "mean_only": {
+      "mae": 0.09746781665376585,
+      "r2": -0.005565526660747722,
+      "spearman": -0.0918007024219089
+    },
+    "ridge": {
+      "mae": 0.10495790430141595,
+      "r2": -0.025800538143051943,
+      "spearman": 0.07193442553385548
+    }
+  },
+  "outputs": {
+    "analysis_script": "/data/coding/sgmse/experiments/p7c_observable_repair_probe_20261017/analyze_observable_repair.py",
+    "analysis_script_sha256": "bb7d8b4d847f7bcf14ebd82b690d596e81395bb1b5ecade9396ef7f0b4589ba5",
+    "per_chunk_predictions_csv": "/data/coding/sgmse/experiments/p7c_observable_repair_probe_20261017/per_chunk_predictions.csv",
+    "per_chunk_predictions_csv_sha256": "48311bf328bbefaede0fdf6117bd8e9972b7efc75208f0b08379b7b6eb828179"
+  },
+  "question": "Can deployment-observable noisy/Y_pre features predict local Router-off repair vs harm relative to Y_pre?",
+  "speaker_cluster_bootstrap": {
+    "confidence_level": 0.95,
+    "method": "speaker_cluster_bootstrap_on_fixed_grouped_oof_predictions",
+    "metric_ci": {
+      "mean_only": {
+        "mae": [
+          0.08774784260824561,
+          0.10902824925488323
+        ],
+        "r2": [
+          -0.02295947789438964,
+          -0.0016767576363100228
+        ],
+        "spearman": [
+          -0.19370930824131904,
+          0.011203513565076971
+        ]
+      },
+      "ridge": {
+        "mae": [
+          0.09572850817915615,
+          0.11589169142901551
+        ],
+        "r2": [
+          -0.17292749044235925,
+          0.0602257818772335
+        ],
+        "spearman": [
+          -0.033491313060192575,
+          0.17750734287248873
+        ]
+      }
+    },
+    "replicates": 2000,
+    "ridge_minus_mean_only_ci": {
+      "mae": [
+        0.0020842382604865954,
+        0.014921431846406808
+      ],
+      "r2": [
+        -0.162703208306606,
+        0.06903727318035455
+      ],
+      "spearman": [
+        0.035066487640744846,
+        0.30708481156825035
+      ]
+    },
+    "seed": 20261017,
+    "unit": "speaker; all chunks from each sampled speaker travel together"
+  },
+  "specification": {
+    "chunk_duration_seconds": 1.0,
+    "chunk_samples": 16000,
+    "dropped_incomplete_tail_samples": 0,
+    "eligible_chunks": 955,
+    "excluded_chunks_clean_rms_below_1e-4": 5,
+    "feature_count": 12,
+    "feature_names": [
+      "log_rms_noisy",
+      "log_rms_y_pre",
+      "rms_ratio_y_pre_over_noisy",
+      "rms_difference_y_pre_minus_noisy",
+      "band_energy_fraction_noisy_0_1khz",
+      "band_energy_fraction_noisy_1_4khz",
+      "band_energy_fraction_noisy_4_8khz",
+      "band_energy_fraction_y_pre_0_1khz",
+      "band_energy_fraction_y_pre_1_4khz",
+      "band_energy_fraction_y_pre_4_8khz",
+      "spectral_flatness_noisy",
+      "spectral_flatness_y_pre"
+    ],
+    "feature_selection_after_target_inspection": false,
+    "feature_sources": [
+      "noisy input",
+      "Frontend-only Y_pre"
+    ],
+    "full_chunks_before_exclusion": 960,
+    "nrmse_definition": "sqrt(mean((estimate-clean)^2)) / sqrt(mean(clean^2))",
+    "router_output_used_as_predictive_input": false,
+    "spectral_definition": "rectangular 1-s FFT power; fractional energy in [0,1k), [1k,4k), [4k,8k]; spectral flatness geometric/mean power with 1e-30 floor",
+    "target": "log(NRMSE(Y_pre, clean)) - log(NRMSE(Router-off, clean)); natural log; positive means Router-off helps",
+    "target_clean_usage": "offline target and sole eligibility threshold only"
+  },
+  "status": "exploratory_not_held_out_or_confirmatory",
+  "target_distribution": {
+    "maximum": 1.123887659946107,
+    "mean": -0.07850467145209712,
+    "median": -0.08088216572319992,
+    "minimum": -1.1000937989862232,
+    "n_chunks": 955,
+    "p05": -0.2733896893230682,
+    "p95": 0.12078361733745709,
+    "sample_standard_deviation": 0.15978146361761877
+  }
+}

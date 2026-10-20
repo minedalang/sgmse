@@ -1,0 +1,130 @@
+{
+  "status": "completed_no_updates_scalar_validation_passed",
+  "thread_id": "01a153f1-d6c2-7f42-9c8b-323bcb2a9375",
+  "provider": "codex_tools_compat",
+  "authorization_sha256": "0429568758047ace03756121b67e001b4dc4b3f03860f2b63da12222b4c256d0",
+  "config_sha_pre": "a11afbbf9cd8bef70f301e99cb81916b9af8a0777efa146eaf8f08ba75cee0ef",
+  "code_sha_pre": "965929560943b62543af4060f20d8de1f25bb7bcef71dc13fb4f45161f44c829",
+  "registry_sha_pre": "b4dddc93ed1471e25f6bc7e06180b178a4aebb77255519898b57e4ca58217a31",
+  "PATH": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "git_HEAD": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status_pre": " D \"SGMSE_RRSD_\\346\\216\\250\\347\\220\\206\\346\\227\\266\\351\\227\\264\\351\\227\\250\\346\\216\\247.patch\"\n M THESIS_INNOVATION_RESULTS_DRAFT_2026-10-20.md\n M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M research_status_brief_2026-10-18.md\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? METHODS_RRSD_IMPLEMENTED_DRAFT_20261019.md\n?? P8_EVIDENCE_DISCUSSION_DRAFT_20261019.md\n?? P8_RELATED_WORK_DRAFT_20261019.md\n?? P8_RELATED_WORK_REFERENCES_20261019.bib\n?? RESEARCH_BRIEF_2026-10-18_TAIL.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? THESIS_EXPERIMENTS_CHAPTER_DRAFT_20261019.md\n?? THESIS_FRAMING_DRAFT_20261019.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/final_matched_file_uncertainty_20261019/\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_3321_tail_condition_20261018/\n?? experiments/p8_5243_local_condition_necessity_20261019/\n?? experiments/p8_5243_native_replay_gate_20261019/\n?? experiments/p8_5243_natural_evidence_feasibility_20261019/\n?? experiments/p8_cached_multiseed_variance_audit_20261019/\n?? experiments/p8_cached_structure_readability_20261019/\n?? experiments/p8_checkpoint_base_identity_20261019/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_cpel_codec_consistency_20261019/\n?? experiments/p8_cpel_mp_pilot_20261019/\n?? experiments/p8_cpel_objective_prototype_20261019/\n?? experiments/p8_cpel_train_scale_calibration_20261019/\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_evidence_prior_audit_20261019/\n?? experiments/p8_i1_pair_residual_audit_20261019/\n?? experiments/p8_i1b_event_pair_integrity_20261019/\n?? experiments/p8_i1b_single_listener_materials_20261019/\n?? experiments/p8_l2_public_annotation_schema_audit_20261019/\n?? experiments/p8_noisy_condition_path_audit_20261018/\n?? experiments/p8_noisy_local_identifiability_prep_20261019/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_q_vcv_enhance_follow_20261018/\n?? experiments/p8_q_vcv_fixed_noise_20261018/\n?? experiments/p8_q_vcv_lowsnr_challenge_20261018/\n?? experiments/p8_q_vcv_speaker_replication_20261019/\n?? experiments/p8_silent_gap_screen8_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_vb_cached_content_review_20261019/\n?? experiments/p8_vb_caseB_opening_existing_audit_20261019/\n?? experiments/p8_vb_prospective_headroom_20261019/\n?? experiments/p8_vb_residual_direction_audit_20261019/\n?? experiments/p8_vb_train_noise_log_audit_20261019/\n?? experiments/p8_vcv_common_scale_factorial_20261019/\n?? experiments/p8_vcv_f20_noise_correspondence_20261019/\n?? experiments/p8_vcv_f20_tail_existing_audit_20261019/\n?? experiments/p8_vcv_fixed_norm_condition_swap_20261019/\n?? experiments/p8_vcv_speech_component_ablation_20261019/\n?? experiments/p8_voicebank_clean_text_calibration_20261019/\n?? experiments/p8_voicebank_content_reference_audit_20261019/\n?? experiments/p8_voicebank_native_content_pilot_20261019/\n?? experiments/p8_voicebank_source_waveform_gate_20261019/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? research_memos/\n?? research_tools/\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py\n?? thesis/\n",
+  "disk_free_bytes": 1859297280,
+  "bridge39452_alive_pre": true,
+  "server16022_alive_pre": true,
+  "no_live_driver_or_marker": true,
+  "utc_completed": "2026-10-19T15:37:16.806955+00:00",
+  "command": "env PATH='/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin' env/bin/python -B experiments/p8_cpel_train_scale_calibration_20261019/calibrate.py --execute-calibration",
+  "cwd": "/data/coding/sgmse",
+  "execution_count": 1,
+  "pid": 38731,
+  "exec_session_id": 79848,
+  "initial_tool_chunk_id": "932385",
+  "completion_tool_chunk_id": "a2a267",
+  "exit_code": 0,
+  "script_seconds": 22.66393294208683,
+  "stdout": "Running NCSN++ as discriminative backbone\n[EMA] checkpoint EMA loaded successfully, shadow params = 8\n",
+  "stderr": "",
+  "calls": {
+    "score": 64,
+    "reverse": 32,
+    "optimizer": 0,
+    "ema_updates": 0
+  },
+  "pcm_decode_count": 16,
+  "model_pre_digest": "533d10eca54f5ff711f1697768d3e34b557d9cb06873239beceef325cd7f99a4",
+  "model_post_digest": "533d10eca54f5ff711f1697768d3e34b557d9cb06873239beceef325cd7f99a4",
+  "protected_pre_sha256": {
+    "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4279.wav": "97c96482e416bf9f020507a711302c710f76339f1d09a01889f86b98f2d856b8",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09781_chp_0002_reader_05264_81_5LEW_H__nmA-fan_Freesound_validated_452146_7-1FN6aQV5QBY_snr-19_fileid_4279.wav": "9c0f30e2455d63e340078807bf6a43a343386d8d84bb41ac9aa9fb4c223e4eea",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_8404.wav": "9ab893cbddfb272e4e920cf2d13598cb8350dc37bbb3f20ed52a544ab0abb0e2",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10514_chp_0003_reader_02071_13_waE8T620RhI-g379Mr9MxfI-typing_Freesound_validated_399603_59_snr-19_fileid_8404.wav": "c88b7278b090175dadeb6b6826af232718ac84159a226a7b0a0cc3bbff3d5703",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2307.wav": "ac2f42f4cf7ad14a4c6fa9638c55148fbb04f0b894b64b1bffc97ccb751e525c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_00398_chp_0022_reader_09747_1_YhPZhTMJJto-t0sZ55rWHtA-r-GYAZnGGPA_snr-16_fileid_2307.wav": "2c909ee5bc68ed2f1c569845a60e441022a41c73d8f6b828d4f3219a97ef8fb9",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5789.wav": "f7b576ece93ae466f4aa305e0f0192f24763ea6a3f07a8f0fdc8f9e62238623c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_05779_chp_0009_reader_09137_1_jMrVN39k-ok-fan_Freesound_validated_267497_101-squeak_squeakyChair_Freesound_validated_461183_0_snr-16_fileid_5789.wav": "0df21bee496d2df6dbf16401cdd4c1f9283442c92970d2d8d322f807bb2a03fb",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_339.wav": "5509f3d7423c0a4f556156511a582bf961b2f237853c5e763e66eef8770bd6e3",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09026_chp_0007_reader_02047_36_breath_spit_Freesound_validated_180206_2-door_Freesound_validated_32938_0-squeak_squeakyChair_Freeso_snr-12_fileid_339.wav": "5553691adfbcdaec9401f197f3f8ecab228b762d58515fc1b4e538a7302b17c1",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5756.wav": "800a0e96ef4d012448efb3580a37504c99d36ceb798ab409d8f9895886f51790",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06687_chp_0021_reader_01106_4_4F6doPiSR3A-RPgAyWgOY8c-TwN0NKB6kPc_snr-14_fileid_5756.wav": "97930ddcdf4dac692ff88bef749bcc0250cfd1d7cbe29cda4acb95ed1032573e",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7621.wav": "179e933d3e61817ade39a9ddd8e4c32689a5cc34b427ef6e735ff568a5614979",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_05033_chp_0008_reader_03369_0_door_Freesound_validated_173498_0-door_Freesound_validated_202515_8-poHAL8qj8B0_snr-9_fileid_7621.wav": "5712c0773bd1ce0e73afaa05bd94177cd91b4b453d33a84fb7e2ff05f44e9e6c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3938.wav": "4e510496df90ea7c6d2bc500495f3997fee60415e26daa16d742f0816079511a",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02685_chp_0011_reader_08563_20_B3aFxHuR7bY-gGEMLjm8FNI-36fj2DgCQko_snr-8_fileid_3938.wav": "85a3087ce42f2ec54346a89dbc98a93d785288cd241c6d75fac3b7b96c7762bc",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/run_pilot.py": "fff9adb4ab1da2e5c8735778e3df6e1b3202717354230cb416b211f7294aa74c",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/editing.py": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/config.yaml": "b20f5022c8a251bb273b546dcf311135aab536744c5fe09cb76110be75749c3c"
+  },
+  "protected_post_sha256": {
+    "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4279.wav": "97c96482e416bf9f020507a711302c710f76339f1d09a01889f86b98f2d856b8",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09781_chp_0002_reader_05264_81_5LEW_H__nmA-fan_Freesound_validated_452146_7-1FN6aQV5QBY_snr-19_fileid_4279.wav": "9c0f30e2455d63e340078807bf6a43a343386d8d84bb41ac9aa9fb4c223e4eea",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_8404.wav": "9ab893cbddfb272e4e920cf2d13598cb8350dc37bbb3f20ed52a544ab0abb0e2",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10514_chp_0003_reader_02071_13_waE8T620RhI-g379Mr9MxfI-typing_Freesound_validated_399603_59_snr-19_fileid_8404.wav": "c88b7278b090175dadeb6b6826af232718ac84159a226a7b0a0cc3bbff3d5703",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2307.wav": "ac2f42f4cf7ad14a4c6fa9638c55148fbb04f0b894b64b1bffc97ccb751e525c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_00398_chp_0022_reader_09747_1_YhPZhTMJJto-t0sZ55rWHtA-r-GYAZnGGPA_snr-16_fileid_2307.wav": "2c909ee5bc68ed2f1c569845a60e441022a41c73d8f6b828d4f3219a97ef8fb9",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5789.wav": "f7b576ece93ae466f4aa305e0f0192f24763ea6a3f07a8f0fdc8f9e62238623c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_05779_chp_0009_reader_09137_1_jMrVN39k-ok-fan_Freesound_validated_267497_101-squeak_squeakyChair_Freesound_validated_461183_0_snr-16_fileid_5789.wav": "0df21bee496d2df6dbf16401cdd4c1f9283442c92970d2d8d322f807bb2a03fb",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_339.wav": "5509f3d7423c0a4f556156511a582bf961b2f237853c5e763e66eef8770bd6e3",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09026_chp_0007_reader_02047_36_breath_spit_Freesound_validated_180206_2-door_Freesound_validated_32938_0-squeak_squeakyChair_Freeso_snr-12_fileid_339.wav": "5553691adfbcdaec9401f197f3f8ecab228b762d58515fc1b4e538a7302b17c1",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5756.wav": "800a0e96ef4d012448efb3580a37504c99d36ceb798ab409d8f9895886f51790",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06687_chp_0021_reader_01106_4_4F6doPiSR3A-RPgAyWgOY8c-TwN0NKB6kPc_snr-14_fileid_5756.wav": "97930ddcdf4dac692ff88bef749bcc0250cfd1d7cbe29cda4acb95ed1032573e",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7621.wav": "179e933d3e61817ade39a9ddd8e4c32689a5cc34b427ef6e735ff568a5614979",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_05033_chp_0008_reader_03369_0_door_Freesound_validated_173498_0-door_Freesound_validated_202515_8-poHAL8qj8B0_snr-9_fileid_7621.wav": "5712c0773bd1ce0e73afaa05bd94177cd91b4b453d33a84fb7e2ff05f44e9e6c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3938.wav": "4e510496df90ea7c6d2bc500495f3997fee60415e26daa16d742f0816079511a",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02685_chp_0011_reader_08563_20_B3aFxHuR7bY-gGEMLjm8FNI-36fj2DgCQko_snr-8_fileid_3938.wav": "85a3087ce42f2ec54346a89dbc98a93d785288cd241c6d75fac3b7b96c7762bc",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/run_pilot.py": "fff9adb4ab1da2e5c8735778e3df6e1b3202717354230cb416b211f7294aa74c",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/editing.py": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/config.yaml": "b20f5022c8a251bb273b546dcf311135aab536744c5fe09cb76110be75749c3c"
+  },
+  "protected_unchanged": true,
+  "intrinsic_fixed_parameters": [
+    "dnn.all_modules.0.W"
+  ],
+  "cuda_peak_allocated_bytes": 9805556736,
+  "metrics_sha256": "6c0727cda954d732aef33874a1ed0bb093f0f23a0330a207def164aafc33023f",
+  "independent_validation_sha256": "3e4731cf8848019040509a3972d969ab23256eae34ad560f9f27213b408fe26f",
+  "code_sha_post": "965929560943b62543af4060f20d8de1f25bb7bcef71dc13fb4f45161f44c829",
+  "config_sha_post": "a11afbbf9cd8bef70f301e99cb81916b9af8a0777efa146eaf8f08ba75cee0ef",
+  "registry_sha_post": "b4dddc93ed1471e25f6bc7e06180b178a4aebb77255519898b57e4ca58217a31",
+  "bridge39452_alive_post": true,
+  "server16022_alive_post": true,
+  "lambda_applied": false,
+  "parent_training_authorization_absent": true,
+  "descriptive_distributions": {
+    "M_norm": {
+      "min": 0.007306763452076432,
+      "median": 0.014040845889735757,
+      "max": 0.04405095523508568
+    },
+    "pair_norm": {
+      "min": 5.284555723835127e-07,
+      "median": 9.168396441772117e-06,
+      "max": 0.0028233573854955876
+    },
+    "ratio": {
+      "min": 2.6689351811153453e-05,
+      "median": 0.0007206012998190784,
+      "max": 0.2042272329867966
+    },
+    "cosine": {
+      "min": -0.10993303706552027,
+      "median": 0.014333819491421627,
+      "max": 0.422843393752152
+    },
+    "effective_current": {
+      "min": 2.6689351811153456e-06,
+      "median": 7.206012998190784e-05,
+      "max": 0.02042272329867966
+    },
+    "effective_proposed": {
+      "min": 0.00037037612640796456,
+      "median": 0.010000000000000002,
+      "max": 2.834122461867221
+    }
+  },
+  "report_sha256": "050c6bbbda3de0c17599e038d378bcfcdc39efa80e7f48e0392abf6cff98251f"
+}

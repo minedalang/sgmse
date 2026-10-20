@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p228_032__scaledclean",
+    "id": "p228_032",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_032_scaledclean.wav",
+    "input": {
+      "wav_sha256": "1e2c9732b0a54ebc5f7f738c8e01f92dc1c1c77c4a604aef18ab2c73b1d1afd9",
+      "samples": 67141,
+      "array_sha256": "8e26b6cac942a59cbacc4b7deca4533b12448eaee998dacd10e4d4bd212f0f7a",
+      "peak": 0.043182373046875,
+      "rms": 0.006397844067353299
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " We must provide a long-term solution to tackle this attitude.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " We must provide a long-term solution to tackle this attitude.",
+        "tokens": [
+          50363,
+          775,
+          1276,
+          2148,
+          257,
+          890,
+          12,
+          4354,
+          4610,
+          284,
+          9761,
+          428,
+          9408,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.2679305970668793,
+        "compression_ratio": 0.9682539682539683,
+        "no_speech_prob": 0.03150823712348938
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 4,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

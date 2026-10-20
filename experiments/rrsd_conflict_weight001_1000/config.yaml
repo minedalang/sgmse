@@ -1,0 +1,19 @@
+schema_version: 1
+experiment_id: rrsd_conflict_weight001_1000
+purpose: Pre-registered conflict-weight dose comparison
+router_ckpt: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+steps: 1000
+batch_size: 1
+seed: 2026
+conflict_weight: 0.001
+lr: 3e-5
+tag: conflict_w0.001_s1000
+training_command: 'ROUTER_CKPT=/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt STEPS=1000 BATCH_SIZE=1 SEED=2026 CONFLICT_WEIGHT=0.001 LR=3e-5 TAG=conflict_w0.001_s1000 bash run_rrsd_conflict_train.sh'
+checkpoint: joint_train_logs/01maaifx-conflict_w0.001_s1000/epoch=0-step=1000.ckpt
+train_log: experiment_logs/rrsd_conflict_train_conflict_w0.001_s1000.log
+inference_input: experiment_logs/rrsd_tcut_screen/noisy
+inference_parameters: 'PC sampler, N=30, snr=0.5, seed=2026, EMA, RRSD scale 1.0'
+inference_command: 'python joint_enhance_by_dir.py --ckpt joint_train_logs/01maaifx-conflict_w0.001_s1000/epoch=0-step=1000.ckpt --in_dir experiment_logs/rrsd_tcut_screen/noisy --out_dir experiment_logs/rrsd_conflict_weight001_1000/infer --sampler_type pc --corrector none --N 30 --snr 0.5 --use_ema --rrsd --rrsd_scale 1.0 --rrsd_t_max 1.0 --seed 2026'
+failed_attempt: 'Initial inference with omitted rrsd_t_max failed because current router received None and raised TypeError float(None); rerun used explicit rrsd_t_max=1.0, equivalent full time range.'
+evaluator: '/data/coding/mymetrics/env/bin/python get_metrics_for_papertable_forDNS.py --dnsmos --dnsmos_device cpu'
+controls: 'experiment_logs/rrsd_conflict_eval/control* and conflict* (existing, not rerun)'

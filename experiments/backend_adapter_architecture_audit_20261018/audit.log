@@ -1,0 +1,10 @@
+{
+  "dnn_parameter_count": 27776038,
+  "dnn_tensor_count": 271,
+  "spatial_conv_count": 45,
+  "candidate_summary": {
+    "late_decoder_base_parameters": 2211840,
+    "late_decoder_rank4_flattened_lora_parameters": 54784,
+    "note": "LoRA counts are a design estimate, not implemented parameters; decoder insertion and zero-init behavior still require a separate code change and smoke test."
+  }
+}

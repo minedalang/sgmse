@@ -1,0 +1,314 @@
+{
+  "source": "user_explicit_chat_browser_export",
+  "storage": "structured_transcription_of_supplied_fields_not_verbatim_chat_bytes",
+  "response_file": "user_chat_export_20261019T124256544Z.json",
+  "response_sha256": "372f2709fe64f5f993fb1ffa6ad4e6ec91f3dfece945aed32eae98622e7ccb06",
+  "all32_case_ID_order_matches": true,
+  "completed_cases": 12,
+  "unrated_cases": 20,
+  "distinct_utterances": 6,
+  "speakers": [
+    "p227",
+    "p228",
+    "p230",
+    "p231"
+  ],
+  "SNR_counts": {
+    "-18": 8,
+    "0": 4
+  },
+  "noisy_counts": {
+    "yes": 10,
+    "unknown": 1,
+    "partial": 1
+  },
+  "content_checkbox_counts": {
+    "frontend": {
+      "missing": 6,
+      "unknown": 2,
+      "preserved": 4
+    },
+    "off": {
+      "missing": 4,
+      "different": 3,
+      "preserved": 4,
+      "added": 1,
+      "unknown": 1
+    }
+  },
+  "quality_counts": {
+    "unknown": 3,
+    "frontend": 1,
+    "similar": 5,
+    "off": 3
+  },
+  "cases": [
+    {
+      "case_id": "C02e225f7ee1a412f",
+      "basename": "p227_031_N2_snr_m18.wav",
+      "speaker": "p227",
+      "id": "p227_031",
+      "snr_db": -18,
+      "noise": "N2",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "missing"
+      ],
+      "off_tags": [
+        "missing"
+      ],
+      "quality_system": "unknown",
+      "note": "A在句首The之前就生成了幻觉音素，B没有。",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    },
+    {
+      "case_id": "C047ff2b0d4a5f0ec",
+      "basename": "p227_031_N1_snr_m18.wav",
+      "speaker": "p227",
+      "id": "p227_031",
+      "snr_db": -18,
+      "noise": "N1",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "missing"
+      ],
+      "off_tags": [
+        "missing",
+        "different"
+      ],
+      "quality_system": "frontend",
+      "note": "",
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      }
+    },
+    {
+      "case_id": "C0e302c8e70a69fec",
+      "basename": "p231_032_N1_snr_m18.wav",
+      "speaker": "p231",
+      "id": "p231_032",
+      "snr_db": -18,
+      "noise": "N1",
+      "Noisy_response": "unknown",
+      "frontend_tags": [
+        "unknown"
+      ],
+      "off_tags": [
+        "different"
+      ],
+      "quality_system": "unknown",
+      "note": "",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    },
+    {
+      "case_id": "C0efcea8bfa42db06",
+      "basename": "p231_029_N2_snr_p0.wav",
+      "speaker": "p231",
+      "id": "p231_029",
+      "snr_db": 0,
+      "noise": "N2",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "preserved"
+      ],
+      "off_tags": [
+        "preserved"
+      ],
+      "quality_system": "similar",
+      "note": "",
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      }
+    },
+    {
+      "case_id": "C22c3debacf910a6a",
+      "basename": "p228_032_N1_snr_m18.wav",
+      "speaker": "p228",
+      "id": "p228_032",
+      "snr_db": -18,
+      "noise": "N1",
+      "Noisy_response": "partial",
+      "frontend_tags": [
+        "missing"
+      ],
+      "off_tags": [
+        "missing"
+      ],
+      "quality_system": "similar",
+      "note": "",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    },
+    {
+      "case_id": "C28dbce90832410fb",
+      "basename": "p230_029_N1_snr_p0.wav",
+      "speaker": "p230",
+      "id": "p230_029",
+      "snr_db": 0,
+      "noise": "N1",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "preserved"
+      ],
+      "off_tags": [
+        "preserved"
+      ],
+      "quality_system": "off",
+      "note": "",
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      }
+    },
+    {
+      "case_id": "C30ddb89c3f5cf45b",
+      "basename": "p231_029_N2_snr_m18.wav",
+      "speaker": "p231",
+      "id": "p231_029",
+      "snr_db": -18,
+      "noise": "N2",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "missing"
+      ],
+      "off_tags": [
+        "added"
+      ],
+      "quality_system": "similar",
+      "note": "",
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      }
+    },
+    {
+      "case_id": "C35fca845e6bb91d6",
+      "basename": "p228_032_N2_snr_m18.wav",
+      "speaker": "p228",
+      "id": "p228_032",
+      "snr_db": -18,
+      "noise": "N2",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "missing"
+      ],
+      "off_tags": [
+        "missing"
+      ],
+      "quality_system": "similar",
+      "note": "",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    },
+    {
+      "case_id": "C3936dd1c4426b776",
+      "basename": "p230_027_N1_snr_p0.wav",
+      "speaker": "p230",
+      "id": "p230_027",
+      "snr_db": 0,
+      "noise": "N1",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "preserved"
+      ],
+      "off_tags": [
+        "preserved"
+      ],
+      "quality_system": "off",
+      "note": "",
+      "AB_mapping": {
+        "A": "frontend",
+        "B": "off"
+      }
+    },
+    {
+      "case_id": "C40d22ef3affc62ca",
+      "basename": "p230_029_N2_snr_p0.wav",
+      "speaker": "p230",
+      "id": "p230_029",
+      "snr_db": 0,
+      "noise": "N2",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "preserved"
+      ],
+      "off_tags": [
+        "preserved"
+      ],
+      "quality_system": "off",
+      "note": "",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    },
+    {
+      "case_id": "C42502acd318f5869",
+      "basename": "p231_029_N1_snr_m18.wav",
+      "speaker": "p231",
+      "id": "p231_029",
+      "snr_db": -18,
+      "noise": "N1",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "missing"
+      ],
+      "off_tags": [
+        "different"
+      ],
+      "quality_system": "similar",
+      "note": "",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    },
+    {
+      "case_id": "C43ef2b6c1741707a",
+      "basename": "p230_029_N2_snr_m18.wav",
+      "speaker": "p230",
+      "id": "p230_029",
+      "snr_db": -18,
+      "noise": "N2",
+      "Noisy_response": "yes",
+      "frontend_tags": [
+        "unknown"
+      ],
+      "off_tags": [
+        "unknown"
+      ],
+      "quality_system": "unknown",
+      "note": "",
+      "AB_mapping": {
+        "A": "off",
+        "B": "frontend"
+      }
+    }
+  ],
+  "note_checkbox_discrepancy": {
+    "case_id": "C02e225f7ee1a412f",
+    "original_checkbox_A": [
+      "missing"
+    ],
+    "original_checkbox_B": [
+      "missing"
+    ],
+    "original_note": "A在句首The之前就生成了幻觉音素，B没有。",
+    "note_described_system": "off",
+    "treatment": "preserve both; do not silently insert added tag; user-reported additional pre-The sound not adjudicated phoneme hallucination"
+  },
+  "scope": "single_listener_reference_aided_partial_case_observation; no WER/gold/phoneme_rate/population_winrate",
+  "remaining_not_required": true
+}

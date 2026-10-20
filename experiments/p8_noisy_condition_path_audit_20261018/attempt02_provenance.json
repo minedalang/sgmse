@@ -1,0 +1,7 @@
+{
+  "attempt": 2,
+  "launcher": "PYTHONPATH=/data/coding/sgmse PATH=/data/coding/sgmse/env/bin:$PATH /data/coding/sgmse/env/bin/python experiments/p8_noisy_condition_path_audit_20261018/audit.py",
+  "outcome": "success",
+  "scope_authorization": "Research Lead authorized corrected import launcher after first failure",
+  "additional_dependencies_installed": false
+}

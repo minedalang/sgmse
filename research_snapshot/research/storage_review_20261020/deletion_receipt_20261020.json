@@ -1,0 +1,79 @@
+{
+  "status": "completed_two_exact_files_deleted",
+  "authorization_verbatim": "ok 这两个zip删了",
+  "scope": "Only two exact paths; one original.gz and one failed partial.zip. Earlier752 candidates excluded. No other cleanup or research execution.",
+  "manifest_path": "/data/research/storage_review_20261020/final_confirmation_two_archives.json",
+  "manifest_sha256": "497861afdfe7ea046f1ecd96d00f46b56ff9dfeaaea1760a16f13c3354abff4c",
+  "user_backup_statement": "User confirmed external backup of original train/test clean archive; agent has not independently verified the remote backup",
+  "backup_independently_verified": false,
+  "metadata_pre": [
+    {
+      "path": "/data/aliyunpan-v0.4.0-linux-amd64/Downloads/86e8209211ee43c18d73dccdf862dfb9/dataset/dns_ins20/clean_testandtrain.gz",
+      "regular_file": true,
+      "bytes": 50048880605,
+      "allocated_bytes": 50048880640,
+      "device": 64536,
+      "inode": 107780035,
+      "mtime_ns": 1791868869693827786,
+      "nlink": 1
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/mini_speech_commands.zip",
+      "regular_file": true,
+      "bytes": 11534336,
+      "allocated_bytes": 11534336,
+      "device": 64536,
+      "inode": 264197274,
+      "mtime_ns": 1792428993464632608,
+      "nlink": 1
+    }
+  ],
+  "open_fd_check": {
+    "matching_fds": [],
+    "scan_errors": [],
+    "fds_checked": 739,
+    "utc": "2026-10-20T02:06:06.065761+00:00"
+  },
+  "df_before": {
+    "available_bytes": 106642829312,
+    "free_bytes": 106642829312,
+    "block_size": 4096,
+    "df": "Filesystem                                                                1B-blocks         Used    Available Use% Mounted on\n/dev/mapper/localdatak8s-pvc--b0a6ac0e--ea2c--480e--884b--7750a8c587dd 332792856576 226150027264 106642829312  68% /data\n"
+  },
+  "expected_logical_bytes": 50060414941,
+  "expected_allocated_bytes": 50060414976,
+  "deleted": [
+    "/data/aliyunpan-v0.4.0-linux-amd64/Downloads/86e8209211ee43c18d73dccdf862dfb9/dataset/dns_ins20/clean_testandtrain.gz",
+    "/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/mini_speech_commands.zip"
+  ],
+  "goal_status_note": "Root reports user separately reactivated goal; this task performs only the authorized cleanup and does not change goal status or start research.",
+  "post_paths": [
+    {
+      "path": "/data/aliyunpan-v0.4.0-linux-amd64/Downloads/86e8209211ee43c18d73dccdf862dfb9/dataset/dns_ins20/clean_testandtrain.gz",
+      "lexists": false
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/mini_speech_commands.zip",
+      "lexists": false
+    }
+  ],
+  "df_after": {
+    "available_bytes": 106642825216,
+    "free_bytes": 106642825216,
+    "block_size": 4096,
+    "df": "Filesystem                                                                1B-blocks         Used    Available Use% Mounted on\n/dev/mapper/localdatak8s-pvc--b0a6ac0e--ea2c--480e--884b--7750a8c587dd 332792856576 176089616384 156703240192  53% /data\n"
+  },
+  "available_bytes_delta": 50060410880,
+  "completed_utc": "2026-10-20T02:06:06.104506+00:00",
+  "manifest_unchanged": true,
+  "immediate_statvfs_delta_bytes": -4096,
+  "df_available_before_bytes": 106642829312,
+  "df_available_first_after_bytes": 156703240192,
+  "df_available_delta_bytes": 50060410880,
+  "settled_verification": {
+    "utc": "2026-10-20T02:06:39.615973+00:00",
+    "statvfs_available_bytes": 156703170560,
+    "df": "Filesystem                                                                1B-blocks         Used    Available Use% Mounted on\n/dev/mapper/localdatak8s-pvc--b0a6ac0e--ea2c--480e--884b--7750a8c587dd 332792856576 176089686016 156703170560  53% /data\n"
+  },
+  "filesystem_accounting_note": "Immediate statvfs sampled before delayed block reclamation; subsequent df in same call reflects freed bytes. Preserve both observations; actual df delta uses recorded before/after df values."
+}

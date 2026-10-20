@@ -1,0 +1,31 @@
+{
+  "utc": "2026-10-19T01:31:23.097728+00:00",
+  "parent_attempt": "/data/coding/sgmse/experiments/p8_5243_native_replay_gate_20261019",
+  "parent_status": "failed_import_before_model_initialization",
+  "parent_frontend_calls": 0,
+  "parent_backend_calls": 0,
+  "parent_failure_artifact_sha256": {
+    "STARTED.json": "641e35f482a38dae490cd8d35264f3072d16d8a971d14fb7c81b5d0c13568163",
+    "metrics.json": "0a976ef545bb1588c52ff167188c9893afbad5e8303b76fdfa3f6b2aaae7630a",
+    "experiment_report.md": "2581256fa120db67b28ce00ea1e1f9c3d1c382cef450d827e4ddb991d2246e63",
+    "child_result.json": "e854b08b14466415503a80f5fb04c61b285cdfdcabce4534d83cdd3166f03dc3",
+    "run.log": "96621c8b3c63989cd2413211779f12ef339f2539668feecc609b1b829382f133",
+    "failure_validation.json": "a9084ef83ed5a6f1e007ae607e12766c80c1c728eebeecd743435cbf6b159851"
+  },
+  "scientific_changes": false,
+  "environment_correction_only": "prepend /data/coding/sgmse/env/bin to PATH so installed Ninja is discoverable",
+  "other_environment_changes": false,
+  "original_PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "corrected_PATH": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "frozen_files_copied_byte_identical": {
+    "run_replay.py": "8ec8481e7548ef6ebe99097fb5347a66be65aa83b4b2d8429645ea3642b165d0",
+    "config.yaml": "c22f2db26f52aed12bf29610e651a2f7aeaebc924f74a724e24a50723872b400",
+    "preparation_metrics.json": "4a8b0d68fe961770d979707a82393317b7cc7ceb3f5c376df5559232a0d7301a",
+    "preparation_report.md": "034dcfb8f751a1c6a3642f6e4a28ec81817b48157b419fca6da9014decc19c0a",
+    "preparation_git_status.txt": "9c8cbc4284439c54e22d169c97cf0f612ebae951c779165ab708f20320d3ac9e"
+  },
+  "frozen_manifest_sha256": "3658fecece008aaef026e48c201346bbf2bc1fb9819e078d3e4e3e40db08cc50",
+  "authorized_attempt_count": 2,
+  "max_total_scientific_frontend_calls": 1,
+  "max_total_scientific_backend_calls": 1
+}

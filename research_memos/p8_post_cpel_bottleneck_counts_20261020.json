@@ -1,0 +1,26 @@
+{
+  "kind": "existing_CV_scalar_reassessment_not_new_model_experiment",
+  "source_sha256": {
+    "/data/coding/sgmse/experiments/speaker_headroom_replication_64_20261017/quality_per_utterance.csv": "a8300cc9c90d063259556ec340470bebbdcd84dcf1b105971c1e12e20dc2a1a6",
+    "/data/coding/sgmse/experiments/distillmos_surrogate_independent64_20261020/per_file.csv": "bb0b9bd7d9939a7a8a8ab86b2bec0540f4c24946ca7a5e729d2069d8ca720e13"
+  },
+  "source_sha_unchanged": true,
+  "join_key": "exact filename",
+  "rows": 128,
+  "speakers": 64,
+  "counts": {
+    "SI_positive": 128,
+    "SI_positive_and_OVRL_negative": 105,
+    "SI_positive_and_OVRL_and_Distill_negative": 83
+  },
+  "delta_si_min": 0.1251378218251702,
+  "delta_si_median": 0.4758602925208466,
+  "delta_ovrl_median": -0.018238893315001725,
+  "negative_speaker_mean_OVRL": 60,
+  "limits": [
+    "Repeated exploratory CV, not final-test selection",
+    "Predicted MOS is not human quality",
+    "Strict sign counts, no practical-effect or significance claim",
+    "No audio, weight, model, bootstrap or new metric inference"
+  ]
+}

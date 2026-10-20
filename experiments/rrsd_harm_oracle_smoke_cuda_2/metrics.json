@@ -1,0 +1,20 @@
+[
+  {
+    "file": "book_00000_chp_0009_reader_06709_16_OfdoLzrAwa4-typing_Freesound_validated_399603_74-trKqRxC0mhk_snr-10_fileid_10823.wav",
+    "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10823.wav",
+    "harm_steps": 1,
+    "steps": 4,
+    "mse_base": [
+      0.11341072618961334,
+      0.08590882271528244,
+      0.08574068546295166,
+      0.08679462969303131
+    ],
+    "mse_route": [
+      0.11341072618961334,
+      0.085910364985466,
+      0.08573810756206512,
+      0.08678695559501648
+    ]
+  }
+]

@@ -1,0 +1,10 @@
+experiment_id: p8_text_source_external_audit_20261018
+purpose: "Read-only provenance search for P8 book/reader transcripts"
+local_scan: "/data excluding binary model/audio files"
+external_queries:
+  - '"But there are no sharp lines in nature"'
+  - '"all-absorbing passion" "gone to Canada"'
+  - '"The successes for which it strives" "Belico"'
+proxy: "http://127.0.0.1:7890"
+dataset_modified: false
+checkpoint_modified: false

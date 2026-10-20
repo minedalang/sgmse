@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "method": "Node VM minimal DOM, no browser automation",
+  "checks": [
+    "change persists local draft",
+    "explicit unsaved and saving status",
+    "network failure preserves choices and retry ID",
+    "retry acknowledgment required before saved",
+    "reload restores saved choices",
+    "editing during save remains unsaved",
+    "unsaved draft survives reload",
+    "late restore cannot undo a newer successful save",
+    "three-case draft migrates to five without choice/session loss",
+    "unrated added cases excluded from partial submission"
+  ]
+}

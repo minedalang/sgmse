@@ -1,0 +1,45 @@
+{
+  "status": "passed",
+  "utc": "2026-10-19T11:30:08.568550+00:00",
+  "worker_pid": 58697,
+  "http_host": "127.0.0.1:8766",
+  "http_gets": {
+    "index.html": {
+      "status": 200,
+      "bytes": 3798,
+      "sha256": "60ea4a416b0a168b5a8c88e47efec25ef9f23041fbf0e3c4f690f526aaafe761",
+      "equals_disk": true
+    },
+    "player.js": {
+      "status": 200,
+      "bytes": 9617,
+      "sha256": "7974fad6b3e83ae66a9974fa6105a4363c6c3c161198a1be384102030ac05e4d",
+      "equals_disk": true
+    },
+    "trials.json": {
+      "status": 200,
+      "bytes": 10916,
+      "sha256": "9605145d9c1070d26967578f6b93be0cf950d4ba7af8e0a449f1aca5c25f8e59",
+      "equals_disk": true
+    }
+  },
+  "server_pid_unchanged": 16022,
+  "metrics_sha256": "aa2443321cf4a23b0a3b988c4ccf915a1f5b46d9eb115511b9b69c0bd6142d4e",
+  "config_unchanged": true,
+  "crop_hashes_unchanged": 94,
+  "old_feedback_hashes_unchanged": 1,
+  "cursor_and_target_time_elements_present": true,
+  "target_ms": {
+    "start_inclusive": 200,
+    "stop_exclusive": 280
+  },
+  "schema_and_localStorage_key_unchanged": true,
+  "real_browser_playback_tested": false,
+  "builder_or_material_validator_runs": 0,
+  "audio_http_gets": 0,
+  "audio_playbacks": 0,
+  "post_requests": 0,
+  "external_requests": 0,
+  "human_feedback_created": 0,
+  "directory_bytes": 1611829
+}

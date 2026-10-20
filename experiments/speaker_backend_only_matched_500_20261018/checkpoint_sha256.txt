@@ -1,0 +1,3 @@
+ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9  /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+f42b60d0d25d6cfc0bfef3255ec3c0ef3926968367145c9f271eee1411106740  /data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/logs/None-speaker_backend_only_matched500_control/epoch=0-step=500-last.ckpt
+fe58f906124a345082964004e2db852cc4d233c3138768e1da10b148971ec894  /data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/logs/None-speaker_backend_only_matched500_control/last.ckpt

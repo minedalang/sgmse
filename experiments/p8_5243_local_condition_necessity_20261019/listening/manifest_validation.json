@@ -1,0 +1,160 @@
+{
+  "status": "passed",
+  "url": "http://localhost:8766/p8_5243_local_condition_necessity_20261019/listening/index.html",
+  "source_interval_s": [
+    18.75,
+    20.75
+  ],
+  "source_interval_samples": [
+    300000,
+    332000
+  ],
+  "amplitude": "original; no normalization or gain change",
+  "sources": [
+    {
+      "arm": "clean",
+      "source_wav": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_clean.wav",
+      "source_full_wav": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
+      "raw_source": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
+      "wav_sha256": "68ac516f4bb79c02cb80cf37c804246cdbd0c9fba9ca1f7bb4c2afb064163b62",
+      "full_wav_sha256": "7a87811cbefd60005be820188eaf918f8a19c00bafb626054205ec6365ef9781",
+      "raw_sha256": "7a87811cbefd60005be820188eaf918f8a19c00bafb626054205ec6365ef9781",
+      "local_file": "clean.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "source_slice_pcm_exact": true,
+      "raw_to_full_pcm_exact": true,
+      "http_get_byte_equal": true,
+      "http_head_passed": true
+    },
+    {
+      "arm": "y_pre",
+      "source_wav": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_y_pre.wav",
+      "source_full_wav": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
+      "raw_source": "/data/coding/sgmse/experiments/p8_5243_native_replay_gate_20261019/attempt02/outputs/frontend_raw.npy",
+      "wav_sha256": "8605439d964067279155d2820ac5f340ed5a899f6fad966392db7883fb97db38",
+      "full_wav_sha256": "b947b42959316da5886a934c16fa6f345e8cf4721a9c8d4ed2aadce0c185f868",
+      "raw_sha256": "f3d4e0c6c2f38a42a4d1eaebda223ee977894bf406b23c424cb5cd27283a9800",
+      "local_file": "y_pre.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "source_slice_pcm_exact": true,
+      "raw_to_full_pcm_exact": true,
+      "http_get_byte_equal": true,
+      "http_head_passed": true
+    },
+    {
+      "arm": "native",
+      "source_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/native_context.wav",
+      "source_full_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/native.wav",
+      "raw_source": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/native_raw.npy",
+      "wav_sha256": "bce51cca6ff679913fc41af4645826ba2266d09c334734479305e14450c6cce0",
+      "full_wav_sha256": "b4de19918c094f322aab87905a78e889b4624b1aa319ae85c060eadcdc1d82e4",
+      "raw_sha256": "dd7ed14e01b6a5ffe870617b759a7de8fab1921d61c714c7b4b1212567784850",
+      "local_file": "native.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "source_slice_pcm_exact": true,
+      "raw_to_full_pcm_exact": true,
+      "http_get_byte_equal": true,
+      "http_head_passed": true
+    },
+    {
+      "arm": "target",
+      "source_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/target_context.wav",
+      "source_full_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/target.wav",
+      "raw_source": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/target_raw.npy",
+      "wav_sha256": "2e26f1477e7288d4e7ce4c56035ea05d1ecbc67cb111c05e0f3a1254be216bed",
+      "full_wav_sha256": "30e0df9452934dd7ab7fbc435db403aba3f07cd4092da8c0ed0e0b9d1cf07006",
+      "raw_sha256": "52955ee259ae484bc4102a08f91f4ab7dd0041c299cc8092f1fe5ab20603f05d",
+      "local_file": "target.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "source_slice_pcm_exact": true,
+      "raw_to_full_pcm_exact": true,
+      "http_get_byte_equal": true,
+      "http_head_passed": true
+    },
+    {
+      "arm": "left",
+      "source_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/left_context.wav",
+      "source_full_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/left.wav",
+      "raw_source": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/left_raw.npy",
+      "wav_sha256": "3ae97627a52d65c896bbede261d6f4f15eafff59359b829155a82142c7eb5645",
+      "full_wav_sha256": "5b85796b3a704d77ae365e60654a452362c19da4f80979fcb0cd483038894f64",
+      "raw_sha256": "963162ef4286b6fc9d7deb0c244c55767825e4d6dda0e41a53c95b30ccae2f77",
+      "local_file": "left.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "source_slice_pcm_exact": true,
+      "raw_to_full_pcm_exact": true,
+      "http_get_byte_equal": true,
+      "http_head_passed": true
+    },
+    {
+      "arm": "right",
+      "source_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/right_context.wav",
+      "source_full_wav": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/right.wav",
+      "raw_source": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/outputs/right_raw.npy",
+      "wav_sha256": "2bd2c491207587c9af3d2183556e0d155f48394f780ed43179dec4779e93939a",
+      "full_wav_sha256": "ac27eaf01c5946ce78f217c94445ba4c62b5a813b5df0bf6853822895c28d0bf",
+      "raw_sha256": "8de95f84bd47947487b1319bf4049c8a34b55a7c2bb7322c191c8d5d7e9fba87",
+      "local_file": "right.wav",
+      "sample_rate": 16000,
+      "samples": 32000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "source_slice_pcm_exact": true,
+      "raw_to_full_pcm_exact": true,
+      "http_get_byte_equal": true,
+      "http_head_passed": true
+    }
+  ],
+  "documents": {
+    "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/metrics.json": "de82cd812d2100dac0fc0849b5bc8a5f104328090cfab2ca461883ae4b19916e",
+    "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/selection_frozen.json": "f59cff9bdfc80a32c4a5b2959ddde0f3b295b7ecf2c5b8eb67736ac76f43ca6d",
+    "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json": "ce6aa76da041f7651baadb48317e6e5b6f27422d38cd5671f142ce9bfa8e5b39"
+  },
+  "single_audio_element": true,
+  "no_forms_or_dropdowns": true,
+  "page_http_byte_equal": true,
+  "page_head_passed": true,
+  "page_sha256": "39ad5c945c935b1a55c7fc5a316f4ebbfd539d5955a60d99c06266c2687c19b6",
+  "copied_audio_bytes": 384264,
+  "feedback_source": {
+    "path": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/listening/user_feedback_20261019.json",
+    "sha256": "5f899cebc437d36479116c87446de08c02609b077cb4afeb79830f9715c5b658",
+    "task_status": "completed_with_uncertain_judgment"
+  },
+  "completion_page_validation": {
+    "status": "passed",
+    "builder_page_matches": true,
+    "http_page_byte_equal": true,
+    "six_audio_hashes_unchanged": true,
+    "feedback_json_unchanged": true,
+    "exact_quote_read_from_json": true
+  },
+  "feedback_amendment_source": {
+    "path": "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/listening/user_feedback_amendment_20261019.json",
+    "sha256": "96d883c9a64e409f65913c04399b8b8e4f829ea3cfc0dc549b11d0e92a71499e",
+    "task_status": "completed_with_directional_strength_amendment"
+  },
+  "amendment_page_validation": {
+    "status": "passed",
+    "builder_page_matches": true,
+    "http_page_byte_equal": true,
+    "six_audio_hashes_unchanged": true,
+    "both_feedback_jsons_unchanged": true,
+    "latest_quote_read_from_json": true
+  }
+}

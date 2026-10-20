@@ -1,0 +1,77 @@
+{
+  "request": {
+    "key": "p287_037__scaledclean",
+    "id": "p287_037",
+    "arm": "scaledclean",
+    "path": "inputs/p287_037_scaledclean.wav",
+    "input": {
+      "wav_sha256": "deb264ce4ae5f5136792896ce332fbae49d2b14fba2041004bf6bf7cf808b47a",
+      "samples": 60008,
+      "array_sha256": "038fbb83f5c65590cf416215cc2a56f3da0e7cf8064b43e0bbfc70013207308d",
+      "peak": 0.1187744140625,
+      "rms": 0.01117805911833798
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_037",
+    "original_text": "But, after a dip in sales, growth was recorded.\n",
+    "raw_text_hex": "4275742c20616674657220612064697020696e2073616c65732c2067726f77746820776173207265636f726465642e0a",
+    "raw_text_sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+    "archive_entry": "trainset_28spk_txt/p287_037.txt"
+  },
+  "raw_result": {
+    "text": " But, after a dip in sales, growth was recorded.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " But, after a dip in sales, growth was recorded.",
+        "tokens": [
+          50363,
+          887,
+          11,
+          706,
+          257,
+          19550,
+          287,
+          4200,
+          11,
+          3349,
+          373,
+          6264,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.36063903172810874,
+        "compression_ratio": 0.8545454545454545,
+        "no_speech_prob": 0.033331528306007385
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 3,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

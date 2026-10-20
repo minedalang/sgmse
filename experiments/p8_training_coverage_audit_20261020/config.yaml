@@ -1,0 +1,68 @@
+experiment_id: p8_training_coverage_audit_20261020
+date: 2026-10-18
+type: read_only_training_distribution_audit
+purpose: >-
+  Quantify the nominal SNR, duration, speaker, and noise-manifest coverage of
+  the synthetic train/CV manifests used by the 80k checkpoint, and audit the
+  actual joint_scp data-loader path.
+read_only: true
+dataset_modified: false
+model_inference: false
+training_started: false
+frozen_test_manifest_read: false
+
+dataset:
+  root: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5
+  manifest_root: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new
+  splits:
+    train: tr_synthetic
+    cv: cv_synthetic
+  manifests:
+    - wav.scp
+    - spk1.scp
+    - noise1.scp
+  nominal_snr_source: noisy_filename_snr_token
+  actual_snr_status: unknown
+  actual_snr_reason: >-
+    The audit did not estimate power SNR for every utterance; filename SNR is
+    therefore reported as nominal only.
+
+checkpoint_reference:
+  path: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+  audit_reference: /data/coding/sgmse/experiments/checkpoint_data_condition_audit_20261018
+  saved_train_manifest: /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/tr_synthetic/wav.scp
+  saved_valid_manifest: /home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/cv_synthetic/wav.scp
+  mapped_manifest: >-
+    The current scp_new manifests have the same utterance IDs, ordering, and
+    audio basenames as the saved scp manifests; only path prefixes differ.
+
+code_audit:
+  entrypoint: /data/coding/sgmse/joint_train.py
+  dataset_class: sgmse.joint_data_module.JointWaveScpDataModule
+  item_class: sgmse.joint_data_module.WavePairsScp
+  relevant_behavior:
+    - "WavePairsScp reads wav.scp and resolves clean_fileid_<fileid>.wav under clean_dir by default."
+    - "spk1.scp is used only when train_clean_scp/valid_clean_scp are explicitly passed; checkpoint audit recorded null values."
+    - "noise1.scp is not consumed by WavePairsScp.__getitem__; no online noise remix or SNR resampling is implemented."
+    - "Training uses random crop when an utterance exceeds target_len; validation uses the centered crop."
+    - "Both clean and noisy are normalized by the noisy waveform max by default."
+    - "Default train loader shuffles and drops the final incomplete batch; validation is ordered and keeps all items."
+    - "SpeakerBatchSampler is conditional on contrastive_weight > 0 or speaker_balanced_batches; the 80k checkpoint audit records contrastive_weight=0."
+
+command:
+  python: /data/coding/sgmse/env/bin/python
+  script: /data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/audit_training_coverage.py
+  invocation: >-
+    /data/coding/sgmse/env/bin/python experiments/p8_training_coverage_audit_20261020/audit_training_coverage.py
+    --dataset-root /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5
+    --manifest-root /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new
+    --repo /data/coding/sgmse
+    --out /data/coding/sgmse/experiments/p8_training_coverage_audit_20261020
+
+outputs:
+  metrics: metrics.json
+  report: experiment_report.md
+  reproducible_script: audit_training_coverage.py
+  per_utterance_records:
+    - tr_synthetic_records.jsonl
+    - cv_synthetic_records.jsonl

@@ -1,0 +1,84 @@
+{
+  "request": {
+    "key": "p227_030_N2_snr_m18.wav__off",
+    "id": "p227_030",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_m18.wav",
+    "basename": "p227_030_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "d2e13f9833170378d15c56c14c66f6a6268489b9f37c54a79a256e8bed3017fd",
+      "samples": 52810,
+      "array_sha256": "050c4d20f7e8c3211de6a9141402e2031fe73473f65a7161bde9100a242cd2d6",
+      "peak": 0.12835693359375,
+      "rms": 0.010438451652631532
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " Mumble action, they pulled the oyster's to a big test.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Mumble action, they pulled the oyster's to a big test.",
+        "tokens": [
+          50363,
+          337,
+          10344,
+          2223,
+          11,
+          484,
+          5954,
+          262,
+          35104,
+          1706,
+          338,
+          284,
+          257,
+          1263,
+          1332,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1805539660983615,
+        "compression_ratio": 0.9152542372881356,
+        "no_speech_prob": 0.07743002474308014
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 17,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

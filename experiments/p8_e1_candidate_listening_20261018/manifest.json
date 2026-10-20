@@ -1,0 +1,66 @@
+[
+  {
+    "fileid": 5243,
+    "speaker": "reader_10658",
+    "snr_db": -19.0,
+    "candidate_window_s": [
+      19.5,
+      20.0
+    ],
+    "clip_window_s": [
+      9.75,
+      11.75
+    ],
+    "rank": 1,
+    "oracle_local_snr_db": -8.028036650648326,
+    "noisy_clean_wave_corr": 0.3214810155109329
+  },
+  {
+    "fileid": 4812,
+    "speaker": "reader_10921",
+    "snr_db": -17.0,
+    "candidate_window_s": [
+      12.5,
+      13.0
+    ],
+    "clip_window_s": [
+      2.75,
+      4.75
+    ],
+    "rank": 2,
+    "oracle_local_snr_db": -9.209446796228733,
+    "noisy_clean_wave_corr": 0.327576259688424
+  },
+  {
+    "fileid": 11999,
+    "speaker": "reader_10927",
+    "snr_db": -17.0,
+    "candidate_window_s": [
+      19.5,
+      20.0
+    ],
+    "clip_window_s": [
+      9.75,
+      11.75
+    ],
+    "rank": 7,
+    "oracle_local_snr_db": -16.95430277144246,
+    "noisy_clean_wave_corr": 0.2189880973733839
+  },
+  {
+    "fileid": 10720,
+    "speaker": "reader_10929",
+    "snr_db": -16.0,
+    "candidate_window_s": [
+      14.5,
+      15.0
+    ],
+    "clip_window_s": [
+      4.75,
+      6.75
+    ],
+    "rank": 8,
+    "oracle_local_snr_db": -15.409568354996845,
+    "noisy_clean_wave_corr": 0.1873247044698666
+  }
+]

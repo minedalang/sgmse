@@ -1,0 +1,38 @@
+{
+  "status": "prepared_only",
+  "source_locks": 32,
+  "synthetic_tests": {
+    "status": "passed",
+    "checks": [
+      "AST all scripts",
+      "four recipes common downward scale",
+      "physical component SNR N1-18",
+      "physical component SNR N10",
+      "physical component SNR N2-18",
+      "physical component SNR N20",
+      "floor not round/truncate",
+      "saturation rejection",
+      "synthetic PCM16 headers and lengths",
+      "synthetic floor serialization",
+      "reject mismatched WAV header",
+      "guard import torch",
+      "guard import numpy",
+      "guard import soundfile",
+      "guard import socket; socket.socket()",
+      "guard import subprocess;subprocess.run([\"true\"])",
+      "missing supervisor rejected before source decoding",
+      "existing marker rejects duplicate execution",
+      "metadata dimensions",
+      "all source hashes bytes only",
+      "no actual execution artifacts"
+    ],
+    "real_audio_sample_decodes": 0,
+    "model_imports": 0,
+    "network_bytes": 0,
+    "synthetic_signals": 4
+  },
+  "estimated_signal_artifact_bytes": 13730360,
+  "real_audio_decodes": 0,
+  "model_imports": 0,
+  "network_bytes": 0
+}

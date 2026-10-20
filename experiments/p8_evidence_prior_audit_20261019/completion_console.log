@@ -1,0 +1,14 @@
+{
+  "status": "completed_with_recorded_transport_failures",
+  "retrieval_finished_utc": "2026-10-19T01:01:33.565276+00:00",
+  "wall_seconds": 145.05273163411766,
+  "saved_payload_bytes": 1448124,
+  "essential_code_bytes": 85266,
+  "galdse_commit": "4444cfed9944d20908d1d2a22fbb8ec81ecc530f",
+  "galdse_arxiv_version": 5,
+  "local_sources_unchanged": true,
+  "git_status_outside_audit_unchanged": true,
+  "training_forwards": 0,
+  "inference_forwards": 0,
+  "note": "Broad utility iteration was intentionally interrupted after targeted ncsnpp/conformer files; no utility was saved. Completed only essential model/TinyNCSNpp/stochastic_process path. No successful payload downloaded twice."
+}

@@ -1,0 +1,41 @@
+{
+  "status": "passed",
+  "scope": "JSON scalar bookkeeping only, no independent GPU gradient/model or audio recomputation",
+  "recipe_paired_steps": 500,
+  "native_only_budget_steps_checked": 1000,
+  "max_effective_reconstruction_error": 0.0,
+  "no_common_aux_in_steps": true,
+  "baseline_same64_hash_verified": true,
+  "input_json_sha256": {
+    "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/metrics_N.json": "eae9d47fcf6e5387428918a18d020a6b104a7dbbec97a30f0521fc783689b598",
+    "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/metrics_D.json": "1174f563fb610acfd27055ebec27d5135c89bf17065b4f6598a28511bba93fc1",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/metrics_M.json": "e50f682208921de8cbe557a7781e14c46a4c9be1ec68133a3850bf16b71ac48a",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/metrics_P.json": "79ec90e6cc369d25b64a2b2f89ccf9877f2d75845175be16e1076513e15dedf2",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/initial_base_metrics.json": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388"
+  },
+  "parent_averaging": "lower+upper+.25orth+.2outside perparent; parents averaged perfile then equal files; ratio of means",
+  "standalone_component_reconstruction": {
+    "speech_hann": {
+      "N_mean": 4.158645800261817e-06,
+      "D_mean": 3.973065474818793e-06,
+      "D_over_N": 0.9553748180642506
+    },
+    "speech_tukey": {
+      "N_mean": 8.803339034134382e-06,
+      "D_mean": 8.496609184051319e-06,
+      "D_over_N": 0.9651575556849807
+    },
+    "speech_tukey_pcm16": {
+      "N_mean": 8.835099538613903e-06,
+      "D_mean": 8.527875471092681e-06,
+      "D_over_N": 0.9652268696941676
+    }
+  },
+  "standalone_normal_D_minus_N": {
+    "pesq": 0.0014835726469755173,
+    "stoi": 0.00012771648000130037,
+    "si_sdr_db": 0.0395794284525743,
+    "normalized_wave_mse": -3.4589606156462274e-07
+  },
+  "standalone_note": "separate scalar per-parent weighted-sum implementation on original arm JSON; no model/gradient/audio rerun"
+}

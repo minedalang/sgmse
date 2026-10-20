@@ -1,0 +1,81 @@
+{
+  "status": "metadata_registration_complete_no_acquisition",
+  "utc": "2026-10-19T16:45:48.067513+00:00",
+  "source_entries_sha256": "e2cdcf745406b23df35301ce396ffc08176d37e03befd66c442830bf949dcb42",
+  "source_central_directory_sha256": "b9a648bea6e90561117605e2cfe10a44c38055429ee088c7429520f07a6c179c",
+  "official_which_set_rule_provenance": "Root independently verified official rule; previous Worker HTTP source-code fetch failed and source experiment remains failed. This is offline conditional grouping, not a packaged split manifest.",
+  "conditional_rule": "percentage=(int(SHA1(prefix),16) % (2**27))*(100/(2**27-1)); validation<10, testing10<=pct<20",
+  "selection_rule": "Complete8-word validation prefixes only; ascending sha256('p8-word-calibration-v1|'+prefix), first8; words down/go/left/no/right/stop/up/yes; lexicographic first filename per group/word",
+  "validation_full_groups": [
+    "099d52ad",
+    "439c84f4",
+    "56eb74ae",
+    "7c1d8533",
+    "7fd25f7c",
+    "bdee441c",
+    "c6ee87a7",
+    "dbb40d24",
+    "f17be97f"
+  ],
+  "validation_full_group_count": 9,
+  "selected_validation_groups_in_hash_order": [
+    "bdee441c",
+    "dbb40d24",
+    "c6ee87a7",
+    "099d52ad",
+    "7fd25f7c",
+    "439c84f4",
+    "7c1d8533",
+    "56eb74ae"
+  ],
+  "unused_validation_groups": [
+    "f17be97f"
+  ],
+  "testing_full_groups_reserved": [
+    "1b4c9b89",
+    "37dca74f",
+    "5c8af87a",
+    "5e3dde6b",
+    "94de6a6a",
+    "964e8cfd",
+    "97f4c236",
+    "d0faf7e4"
+  ],
+  "testing_full_group_count": 8,
+  "selected_testing_group_intersection": [],
+  "selected_records": 64,
+  "records_per_label": {
+    "down": 8,
+    "go": 8,
+    "left": 8,
+    "no": 8,
+    "right": 8,
+    "stop": 8,
+    "up": 8,
+    "yes": 8
+  },
+  "group_counts": {
+    "bdee441c": 8,
+    "dbb40d24": 8,
+    "c6ee87a7": 8,
+    "099d52ad": 8,
+    "7fd25f7c": 8,
+    "439c84f4": 8,
+    "7c1d8533": 8,
+    "56eb74ae": 8
+  },
+  "acquisition_calls": 0,
+  "network_requests": 0,
+  "archive_member_reads": 0,
+  "WAV_reads_or_decodes": 0,
+  "model_or_ASR_calls": 0,
+  "source_experiment_artifacts_modified": false,
+  "limitations": [
+    "prefix group is not verified speaker identity",
+    "pretraining exposure unknown",
+    "word-directory labels not checked against recording contents",
+    "this metadata registration is not a rerun or repair of the failed source feasibility run",
+    "Clean ASR/acquisition not executed and no automatic download follows"
+  ],
+  "selected64_manifest_sha256": "b13b25ba2bedf4a3f636a7d68b5d60873e6a148a84c7197c5e40446b1805a1cf"
+}

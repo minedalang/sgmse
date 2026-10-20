@@ -1,0 +1,68 @@
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 24731.74it/s]
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+N1_snr-6/f18aka1: enhancement done
+N1_snr-6/f18aga1: enhancement done
+N1_snr-6/f18ata1: enhancement done
+N1_snr-6/f18ada1: enhancement done
+N1_snr-6/m5aka1: enhancement done
+N1_snr-6/m5aga1: enhancement done
+N1_snr-6/m5ata1: enhancement done
+N1_snr-6/m5ada1: enhancement done
+N1_snr-6/f20aka1: enhancement done
+N1_snr-6/f20aga1: enhancement done
+N1_snr-6/f20ata1: enhancement done
+N1_snr-6/f20ada1: enhancement done
+N1_snr-6/m15aka1: enhancement done
+N1_snr-6/m15aga1: enhancement done
+N1_snr-6/m15ata1: enhancement done
+N1_snr-6/m15ada1: enhancement done
+N2_snr-6/f18aka1: enhancement done
+N2_snr-6/f18aga1: enhancement done
+N2_snr-6/f18ata1: enhancement done
+N2_snr-6/f18ada1: enhancement done
+N2_snr-6/m5aka1: enhancement done
+N2_snr-6/m5aga1: enhancement done
+N2_snr-6/m5ata1: enhancement done
+N2_snr-6/m5ada1: enhancement done
+N2_snr-6/f20aka1: enhancement done
+N2_snr-6/f20aga1: enhancement done
+N2_snr-6/f20ata1: enhancement done
+N2_snr-6/f20ada1: enhancement done
+N2_snr-6/m15aka1: enhancement done
+N2_snr-6/m15aga1: enhancement done
+N2_snr-6/m15ata1: enhancement done
+N2_snr-6/m15ada1: enhancement done
+N1_snr+6/f18aka1: enhancement done
+N1_snr+6/f18aga1: enhancement done
+N1_snr+6/f18ata1: enhancement done
+N1_snr+6/f18ada1: enhancement done
+N1_snr+6/m5aka1: enhancement done
+N1_snr+6/m5aga1: enhancement done
+N1_snr+6/m5ata1: enhancement done
+N1_snr+6/m5ada1: enhancement done
+N1_snr+6/f20aka1: enhancement done
+N1_snr+6/f20aga1: enhancement done
+N1_snr+6/f20ata1: enhancement done
+N1_snr+6/f20ada1: enhancement done
+N1_snr+6/m15aka1: enhancement done
+N1_snr+6/m15aga1: enhancement done
+N1_snr+6/m15ata1: enhancement done
+N1_snr+6/m15ada1: enhancement done
+N2_snr+6/f18aka1: enhancement done
+N2_snr+6/f18aga1: enhancement done
+N2_snr+6/f18ata1: enhancement done
+N2_snr+6/f18ada1: enhancement done
+N2_snr+6/m5aka1: enhancement done
+N2_snr+6/m5aga1: enhancement done
+N2_snr+6/m5ata1: enhancement done
+N2_snr+6/m5ada1: enhancement done
+N2_snr+6/f20aka1: enhancement done
+N2_snr+6/f20aga1: enhancement done
+N2_snr+6/f20ata1: enhancement done
+N2_snr+6/f20ada1: enhancement done
+N2_snr+6/m15aka1: enhancement done
+N2_snr+6/m15aga1: enhancement done
+N2_snr+6/m15ata1: enhancement done
+N2_snr+6/m15ada1: enhancement done
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 24803.14it/s]

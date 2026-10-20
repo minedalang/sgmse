@@ -1,0 +1,180 @@
+{
+  "seed": 369124093,
+  "wrong_unprefixed_seed": 613242433,
+  "mixture": {
+    "global": {
+      "samples": [
+        0,
+        480000
+      ],
+      "seconds": [
+        0.0,
+        30.0
+      ],
+      "clean": {
+        "rms": 0.007890530685044677,
+        "mean_square": 6.226047449163162e-05,
+        "peak": 0.07977294921875,
+        "nonzero_samples": 474504,
+        "samples": 480000
+      },
+      "noise": {
+        "rms": 0.07032422100175748,
+        "mean_square": 0.004945496059504027,
+        "peak": 0.43304443359375,
+        "nonzero_samples": 472441,
+        "samples": 480000
+      },
+      "noisy": {
+        "rms": 0.07079459290942405,
+        "mean_square": 0.0050118743852110735,
+        "peak": 0.431304931640625,
+        "nonzero_samples": 479768,
+        "samples": 480000
+      },
+      "mixture_error": {
+        "rms": 2.1418180505583666e-05,
+        "mean_square": 4.587384561697642e-10,
+        "peak": 3.0517578125e-05,
+        "nonzero_samples": 236432,
+        "samples": 480000
+      },
+      "mixture_error_max_lsb": 1.0,
+      "mixture_error_rms_lsb": 0.7018309388069656,
+      "samples_exceeding_3lsb": 0,
+      "pcm_quantization_bound": 9.1552734375e-05,
+      "passes_3lsb_decomposition": true,
+      "least_squares_clean_gain": 0.9999938736771965,
+      "least_squares_noise_gain": 1.0000002237939705,
+      "least_squares_residual": {
+        "rms": 2.1418120304413713e-05,
+        "mean_square": 4.58735877374339e-10,
+        "peak": 3.0795255796245424e-05,
+        "nonzero_samples": 479974,
+        "samples": 480000
+      },
+      "paired_component_snr_db": -18.999974340106085,
+      "ls_fitted_component_snr_db": -19.00002949668235
+    },
+    "context": {
+      "samples": [
+        300000,
+        332000
+      ],
+      "seconds": [
+        18.75,
+        20.75
+      ],
+      "clean": {
+        "rms": 0.006581119698324933,
+        "mean_square": 4.3311136483680456e-05,
+        "peak": 0.041229248046875,
+        "nonzero_samples": 31741,
+        "samples": 32000
+      },
+      "noise": {
+        "rms": 0.04860980337321705,
+        "mean_square": 0.0023629129839828236,
+        "peak": 0.3690185546875,
+        "nonzero_samples": 28753,
+        "samples": 32000
+      },
+      "noisy": {
+        "rms": 0.04905816672868687,
+        "mean_square": 0.002406703722779639,
+        "peak": 0.37017822265625,
+        "nonzero_samples": 31974,
+        "samples": 32000
+      },
+      "mixture_error": {
+        "rms": 2.0363481439762254e-05,
+        "mean_square": 4.146713763475418e-10,
+        "peak": 3.0517578125e-05,
+        "nonzero_samples": 14248,
+        "samples": 32000
+      },
+      "mixture_error_max_lsb": 1.0,
+      "mixture_error_rms_lsb": 0.6672705598181295,
+      "samples_exceeding_3lsb": 0,
+      "pcm_quantization_bound": 9.1552734375e-05,
+      "passes_3lsb_decomposition": true,
+      "least_squares_clean_gain": 0.9999934916205988,
+      "least_squares_noise_gain": 0.9999978036182426,
+      "least_squares_residual": {
+        "rms": 2.0363156332283268e-05,
+        "mean_square": 4.146581358130081e-10,
+        "peak": 3.1272294537310064e-05,
+        "nonzero_samples": 31983,
+        "samples": 32000
+      },
+      "paired_component_snr_db": -17.368481489503985,
+      "ls_fitted_component_snr_db": -17.368518943202652
+    },
+    "target_neighborhood": {
+      "samples": [
+        309600,
+        312800
+      ],
+      "seconds": [
+        19.35,
+        19.55
+      ],
+      "clean": {
+        "rms": 0.007321920868896905,
+        "mean_square": 5.361052521038801e-05,
+        "peak": 0.0234375,
+        "nonzero_samples": 3195,
+        "samples": 3200
+      },
+      "noise": {
+        "rms": 0.016528041242429795,
+        "mean_square": 0.0002731761473114602,
+        "peak": 0.04840087890625,
+        "nonzero_samples": 3196,
+        "samples": 3200
+      },
+      "noisy": {
+        "rms": 0.01754939801575611,
+        "mean_square": 0.00030798137071542443,
+        "peak": 0.04681396484375,
+        "nonzero_samples": 3199,
+        "samples": 3200
+      },
+      "mixture_error": {
+        "rms": 2.1518409387467123e-05,
+        "mean_square": 4.6304194256663323e-10,
+        "peak": 3.0517578125e-05,
+        "nonzero_samples": 1591,
+        "samples": 3200
+      },
+      "mixture_error_max_lsb": 1.0,
+      "mixture_error_rms_lsb": 0.7051152388085227,
+      "samples_exceeding_3lsb": 0,
+      "pcm_quantization_bound": 9.1552734375e-05,
+      "passes_3lsb_decomposition": true,
+      "least_squares_clean_gain": 1.000082431950292,
+      "least_squares_noise_gain": 1.00000857837764,
+      "least_squares_residual": {
+        "rms": 2.1509785250196878e-05,
+        "mean_square": 4.626708615095871e-10,
+        "peak": 3.23965009626781e-05,
+        "nonzero_samples": 3200,
+        "samples": 3200
+      },
+      "paired_component_snr_db": -7.071927138117184,
+      "ls_fitted_component_snr_db": -7.071285683324967
+    },
+    "interpretation": "SNR uses supplied paired component powers, not consonant-isolated SNR. Least-squares is descriptive; it does not create or replace noise. Three-LSB bound assumes independent PCM16 quantization with each error <1LSB, and is conservative even for truncation.",
+    "clean_source_support": {
+      "first_nonzero_sample": 0,
+      "last_nonzero_sample_inclusive": 479999,
+      "total_nonzero_samples": 474504,
+      "exact_zero_samples": 5496,
+      "clean_energy": 29.885027755983174,
+      "target_neighborhood_clean_energy_fraction": 0.005740455791910565,
+      "meaning": "Exact nonzero PCM support is not a phonetic boundary or VAD truth."
+    }
+  },
+  "raw_frontend_candidates": [],
+  "wall_seconds": 0.19887662504334003
+}

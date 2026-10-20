@@ -1,0 +1,31 @@
+{
+  "status": "FINAL_CONFIRMATION_PENDING_NO_DELETION",
+  "created_utc": "2026-10-20T02:00:03.655782+00:00",
+  "scope": "Only the following 2 exact files; not the earlier 752-file inventory",
+  "user_backup_statement": "User confirmed external backup of original train/test clean archive; agent has not independently verified the remote backup",
+  "free_bytes": 106646802432,
+  "files": [
+    {
+      "path": "/data/aliyunpan-v0.4.0-linux-amd64/Downloads/86e8209211ee43c18d73dccdf862dfb9/dataset/dns_ins20/clean_testandtrain.gz",
+      "bytes": 50048880605,
+      "allocated_bytes": 50048880640,
+      "device": 64536,
+      "inode": 107780035,
+      "mtime_ns": 1791868869693827786,
+      "nlink": 1
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/mini_speech_commands.zip",
+      "bytes": 11534336,
+      "allocated_bytes": 11534336,
+      "device": 64536,
+      "inode": 264197274,
+      "mtime_ns": 1792428993464632608,
+      "nlink": 1
+    }
+  ],
+  "total_allocated_bytes": 50060414976,
+  "keep": "ALL weights, generated WAVs, existing synthesized datasets, metrics/configs/logs/user feedback and runtime environments",
+  "archive_tradeoff": "Current CPEL registries consume synthesized WAVs, not this archive; future resynthesis needs user backup download",
+  "approval": "Awaiting explicit final confirmation for these two files only; no deletion done"
+}

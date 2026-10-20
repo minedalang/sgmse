@@ -1,0 +1,86 @@
+{
+  "request": {
+    "key": "p287_037_N2_snr_m18.wav__off",
+    "id": "p287_037",
+    "arm": "off",
+    "path": "outputs/off/p287_037_N2_snr_m18.wav",
+    "basename": "p287_037_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "ce2f75df1636839f410d48f48c1d634b0b0876fe9f731ed27d53964eedb5a004",
+      "samples": 60008,
+      "array_sha256": "093453d347a26bcdbe968d4d89f55bd9af311506cefaa3490cdac0afde6df0d3",
+      "peak": 0.108245849609375,
+      "rms": 0.011238094017714686
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_037",
+    "original_text": "But, after a dip in sales, growth was recorded.\n",
+    "raw_text_hex": "4275742c20616674657220612064697020696e2073616c65732c2067726f77746820776173207265636f726465642e0a",
+    "raw_text_sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+    "archive_entry": "trainset_28spk_txt/p287_037.txt"
+  },
+  "raw_result": {
+    "text": " the birth of its sense after it didn't say me the situation that you're talking.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " the birth of its sense after it didn't say me the situation that you're talking.",
+        "tokens": [
+          50363,
+          262,
+          4082,
+          286,
+          663,
+          2565,
+          706,
+          340,
+          1422,
+          470,
+          910,
+          502,
+          262,
+          3074,
+          326,
+          345,
+          821,
+          3375,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2448973882765997,
+        "compression_ratio": 1.0810810810810811,
+        "no_speech_prob": 0.2658921182155609
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 38,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+{
+  "request": {
+    "key": "p228_026_N1_snr_m18.wav__frontend",
+    "id": "p228_026",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_026_N1_snr_m18.wav",
+    "basename": "p228_026_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "e2a4b4e1f301cf5974be3b79ce6dc323fadde8453a5c01cc8eff13fb74595b98",
+      "samples": 73760,
+      "array_sha256": "780d3505e51c655b36f86a786a08eb1e19dff386ed807450a0bb985c35f1f4fc",
+      "peak": 0.01531982421875,
+      "rms": 0.0009320809622564799
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_026",
+    "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+    "raw_text_hex": "536f2069662077652063616e2074616b6520616e797468696e672066726f6d20746f6e696768742c2069742077696c6c2062652066616e7461737469632e0a",
+    "raw_text_sha256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+    "archive_entry": "trainset_28spk_txt/p228_026.txt"
+  },
+  "raw_result": {
+    "text": " So we can bring that.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " So we can bring that.",
+        "tokens": [
+          50363,
+          1406,
+          356,
+          460,
+          2222,
+          326,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0627637439303927,
+        "compression_ratio": 0.7241379310344828,
+        "no_speech_prob": 0.7821561694145203
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 34,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

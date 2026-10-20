@@ -1,0 +1,84 @@
+{
+  "request": {
+    "key": "p228_032_N2_snr_p0.wav__off",
+    "id": "p228_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_p0.wav",
+    "basename": "p228_032_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "80a9cefa28a1ff3f4b6ea2cc70fff63ac9e17458676609514d85eda9b826daf0",
+      "samples": 67141,
+      "array_sha256": "44ee5d157f274a8e1dbfc63d616705771e9abd16e385587038622b1bb84ffb3e",
+      "peak": 0.0443115234375,
+      "rms": 0.006357806388293726
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " We must provide a long-term solution to pack full-less attitude.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " We must provide a long-term solution to pack full-less attitude.",
+        "tokens": [
+          50363,
+          775,
+          1276,
+          2148,
+          257,
+          890,
+          12,
+          4354,
+          4610,
+          284,
+          2353,
+          1336,
+          12,
+          1203,
+          9408,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.6228044297960069,
+        "compression_ratio": 0.9846153846153847,
+        "no_speech_prob": 0.03924310579895973
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 56,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

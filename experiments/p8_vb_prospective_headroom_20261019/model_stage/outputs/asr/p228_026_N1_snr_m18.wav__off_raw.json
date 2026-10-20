@@ -1,0 +1,85 @@
+{
+  "request": {
+    "key": "p228_026_N1_snr_m18.wav__off",
+    "id": "p228_026",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N1_snr_m18.wav",
+    "basename": "p228_026_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "dbaaabc95e1165e1c82de69e9d0b69d8fe20ad753bd86ac662f717468bf71a03",
+      "samples": 73760,
+      "array_sha256": "c2e0d68fbeed45f3250b5285e50a74257190a3ed8b3d089627dbcc6fa96dd90f",
+      "peak": 0.0291748046875,
+      "rms": 0.0035043333868051544
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_026",
+    "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+    "raw_text_hex": "536f2069662077652063616e2074616b6520616e797468696e672066726f6d20746f6e696768742c2069742077696c6c2062652066616e7461737469632e0a",
+    "raw_text_sha256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+    "archive_entry": "trainset_28spk_txt/p228_026.txt"
+  },
+  "raw_result": {
+    "text": " They were 50mm hard way for you to think to have the hardest tires.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " They were 50mm hard way for you to think to have the hardest tires.",
+        "tokens": [
+          50363,
+          1119,
+          547,
+          2026,
+          3020,
+          1327,
+          835,
+          329,
+          345,
+          284,
+          892,
+          284,
+          423,
+          262,
+          17612,
+          17920,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1770563627544202,
+        "compression_ratio": 0.9852941176470589,
+        "no_speech_prob": 0.29742375016212463
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 35,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

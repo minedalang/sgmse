@@ -1,0 +1,99 @@
+{
+  "experiment_id": "p8_cpel_train_scale_calibration_20261019",
+  "scope": "train-only gradient magnitude scale measurement, not training/evidence-probability calibration",
+  "status": "prepared_not_executed",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "initialization": "strict JointWaveScpDataModule, materialize source EMA once"
+  },
+  "registry": {
+    "path": "calibration_registry.jsonl",
+    "sha256": "b4dddc93ed1471e25f6bc7e06180b178a4aebb77255519898b57e4ca58217a31",
+    "records": 8,
+    "selection": "first two rows in each of four existing priority_bin groups, in frozen parent train-registry order; no replacements or outcome ranking",
+    "parent_train_registry_sha256": "23e138517a3860695b44d8d99bd9f3bfa04d1b5f6366ab5ca517cdf2ebbdb2b3"
+  },
+  "parent_helpers": {
+    "run_pilot.py": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/run_pilot.py",
+      "sha256": "fff9adb4ab1da2e5c8735778e3df6e1b3202717354230cb416b211f7294aa74c"
+    },
+    "loss_helpers.py": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/loss_helpers.py",
+      "sha256": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9"
+    },
+    "editing.py": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/editing.py",
+      "sha256": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d"
+    }
+  },
+  "pilot_config": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/config.yaml",
+    "sha256": "b20f5022c8a251bb273b546dcf311135aab536744c5fe09cb76110be75749c3c"
+  },
+  "seed": 20261019,
+  "device": "cuda:0",
+  "native_path": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "source_audio_limit": 16,
+  "source_keys": [
+    "clean_path_loader",
+    "wav_path"
+  ],
+  "crop_samples": 32640,
+  "sample_rate": 16000,
+  "crop_policy": "fixed center common crop; same original Noisy peak shared across edited arms",
+  "draws_per_record": 2,
+  "native_time_range": [
+    0.03,
+    1.0
+  ],
+  "aux_time_range": [
+    0.3,
+    0.7
+  ],
+  "parent": "uniform random 0/1 with fixed explicit generators",
+  "seed_rule": "base_seed + 1000*record_index + draw_index, fixed per-probe CPU and CUDA generators",
+  "losses": "native DSM+common-point auxiliary M, unweighted outer-lambda pair from locked parent loss_helpers",
+  "current_lambda_reference": 0.1,
+  "target_gradient_norm_ratio": 0.01,
+  "ratio_definition": "r_i=norm(grad pair)/norm(grad M), same forward graph and same originally learnable parameter set",
+  "aggregation": "median of all sixteen paired ratios, NOT ratio of median norms",
+  "inactive_policy": "inactive/zero pair gradient stays ratio zero; no replacement; cosine undefined if either norm zero",
+  "undefined_policy": "any nonfinite or nonpositive M gradient norm => calibration undefined; all rows retained, no finite-subset selection",
+  "lambda_rule": "if all sixteen ratios defined and median>0, raw=.01/median; proposal=min(100,max(.1,raw)); otherwise no proposal",
+  "lambda_clip_range": [
+    0.1,
+    100.0
+  ],
+  "apply_proposal": false,
+  "expected_counts": {
+    "records": 8,
+    "probes": 16,
+    "score_sample_forwards": 64,
+    "reverse_traversals": 32,
+    "normal_sampler_calls": 0,
+    "optimizer_steps": 0,
+    "ema_updates": 0,
+    "parameter_updates": 0
+  },
+  "intrinsic_fixed": "GaussianFourierProjection.W remains fixed; optimizer-independent grad targets only originally learnable dnn parameters",
+  "outputs": "per-probe losses/gains/norms/cosine/coverage, raw+clipped lambda proposal and actual effective ratio distribution; no weights/audio or parent-config writes",
+  "limits": {
+    "seconds": 300,
+    "max_directory_bytes": 2097152,
+    "minimum_free_disk_bytes": 1073741824,
+    "network": false,
+    "install": false,
+    "dev_or_final_test_access": false,
+    "automatic_retry": false
+  },
+  "root_authorization_required": true,
+  "authorization_file": "root_calibration_authorization.json",
+  "limitations": [
+    "8 related training records x 2 draws are sixteen correlated descriptive probes, not independent evidence",
+    "gradient norm target is not Adam update ratio or semantic reliability",
+    "no native enhancement/phone/hallucination benefit inferred",
+    "current float-edited arms may retain quantization-grid editing shortcuts; changing window alone does not rule this out"
+  ]
+}

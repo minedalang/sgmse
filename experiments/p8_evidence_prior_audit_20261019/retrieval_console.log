@@ -1,0 +1,34 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/retrieve_sources.py", line 76, in <module>
+    rr=fallback('galdse/code/'+r['path'],f'https://raw.githubusercontent.com/wangchengzhong/GALDSE/{commit}/'+r['path'])
+  File "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/retrieve_sources.py", line 45, in fallback
+    r=fetch(name,url)
+  File "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/retrieve_sources.py", line 28, in fetch
+    with opener.open(req,timeout=18) as response:
+  File "/data/coding/sgmse/env/lib/python3.10/urllib/request.py", line 519, in open
+    response = self._open(req, data)
+  File "/data/coding/sgmse/env/lib/python3.10/urllib/request.py", line 536, in _open
+    result = self._call_chain(self.handle_open, protocol, protocol +
+  File "/data/coding/sgmse/env/lib/python3.10/urllib/request.py", line 496, in _call_chain
+    result = func(*args)
+  File "/data/coding/sgmse/env/lib/python3.10/urllib/request.py", line 1404, in https_open
+    return self.do_open(http.client.HTTPSConnection, req,
+  File "/data/coding/sgmse/env/lib/python3.10/urllib/request.py", line 1361, in do_open
+    h.request(req.get_method(), req.selector, req.data, headers,
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 1331, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 1377, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 1326, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 1086, in _send_output
+    self.send(msg)
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 1024, in send
+    self.connect()
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 1496, in connect
+    super().connect()
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 990, in connect
+    self.sock = self._create_connection(
+  File "/data/coding/sgmse/env/lib/python3.10/socket.py", line 845, in create_connection
+    sock.connect(sa)
+KeyboardInterrupt

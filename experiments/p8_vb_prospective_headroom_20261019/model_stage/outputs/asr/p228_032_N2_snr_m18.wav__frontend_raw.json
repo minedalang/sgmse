@@ -1,0 +1,83 @@
+{
+  "request": {
+    "key": "p228_032_N2_snr_m18.wav__frontend",
+    "id": "p228_032",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N2_snr_m18.wav",
+    "basename": "p228_032_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "3b77977361c87dc408688c061785529a753ab711713fc054f9833e8855380bad",
+      "samples": 67141,
+      "array_sha256": "9b16bde7d17efefb1b2ef5cee2a66fae9b5864a1e8f4ef5f6f87ce976a2b0668",
+      "peak": 0.0439453125,
+      "rms": 0.006045554426419635
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " much that I have a long time to eat, suffer and practice.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " much that I have a long time to eat, suffer and practice.",
+        "tokens": [
+          50363,
+          881,
+          326,
+          314,
+          423,
+          257,
+          890,
+          640,
+          284,
+          4483,
+          11,
+          8659,
+          290,
+          3357,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8903433294857249,
+        "compression_ratio": 0.9344262295081968,
+        "no_speech_prob": 0.07728251814842224
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 52,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

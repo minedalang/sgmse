@@ -1,0 +1,13 @@
+experiment_id: p8_10720_pairing_forensics_20261018_replay_off
+purpose: single_authorized_causal_provenance_replay
+checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+use_ema: true
+sampler: pc
+N: 30
+corrector: none
+snr: 0.5
+seed: 2026
+rrsd: false
+train_type: mode2
+device: cuda:0
+input_basename: 04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav

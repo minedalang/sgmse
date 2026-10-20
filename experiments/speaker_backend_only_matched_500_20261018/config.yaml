@@ -1,0 +1,51 @@
+experiment_id: speaker_backend_only_matched_500_20261018
+purpose: matched_backend_only_unispeech_speaker_loss_vs_no_loss
+status: control_complete_speaker_arm_not_started
+init_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+init_checkpoint_use_ema: true
+source_checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+dataset:
+  train_wav_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/wav.scp
+  valid_wav_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp
+  test_wav_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tt_real_recordings/wav.scp
+  clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean
+  dataset_modified: false
+arms:
+  control:
+    contrastive_weight: 0.0
+    contrastive_speaker_weight: 0.0
+  speaker:
+    contrastive_weight: 10.0
+    contrastive_speaker_weight: 0.5
+    contrastive_objective: infonce
+    contrastive_mask_same_speaker_negatives: true
+common:
+  seed: 2026
+  max_steps: 500
+  batch_size: 8
+  lr: 3.0e-5
+  train_type: mode2
+  mode2_include_noisy_main: true
+  backend: ncsnpp_v2
+  sde: ouve
+  loss_type: score_matching
+  loss_weighting: sigma^2
+  network_scaling: 1/t
+  frontend: storm
+  frontend_trainable: false
+  rrsd_weight: 1.0
+  rrsd_freeze_router: true
+  rrsd_disable_aux_loss: true
+  speaker_balanced_batches: true
+  plm_type: unispeech_sat
+  plm_name_or_path: microsoft/unispeech-sat-base-plus-sv
+  unispeech_sv_head: true
+  max_plm_length: 32000
+  num_eval_files: 0
+  precision: 32-true
+  device: cuda
+  no_data_or_checkpoint_modification: true
+success_gate:
+  primary: same-speaker cosine or AUC vs no-loss improves by >= 0.005 with speaker-cluster CI lower bound > 0
+  guardrails: SI-SDR >= -0.10 dB, PESQ >= -0.01, STOI >= -0.001, DNSMOS SIG/OVRL >= -0.02 vs no-loss
+  stop: no primary gain, gain below margin, or guardrail breach

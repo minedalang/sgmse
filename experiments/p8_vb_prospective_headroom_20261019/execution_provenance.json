@@ -1,0 +1,12 @@
+{
+  "command": "/usr/bin/python3 -B /data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/register_metadata.py",
+  "pid": 9946,
+  "started_utc": "2026-10-19T06:27:09.355092+00:00",
+  "ended_utc": "2026-10-19T06:27:10.330875+00:00",
+  "thread_id": "01a152d6-4ba1-7b22-a983-bc96a5514c3d",
+  "provider_verified": "codex_tools_compat via readonly SQLite before execution",
+  "budget_seconds": 60,
+  "artifact_limit_bytes": 2097152,
+  "artifact_bytes_at_execution_end": 849857,
+  "script_sha256": "f2439a64a374e75c57147a8503aa7f49be7ad2065925c6d6b094fc42fd67ef56"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "passed",
+  "source": "manual_listener_feedback_completion_20261019.json",
+  "exact_comments_rendered": true,
+  "listening_task_status": "completed",
+  "no_audio_or_response_records_modified": true,
+  "builder_page_matches": true,
+  "http_page_byte_equal": true,
+  "single_audio_element": true,
+  "page_sha256": "125ebb4ce4d657c72c6086674b16b010f8cabadfc59f4a6b186dbe4f7173fe2b"
+}

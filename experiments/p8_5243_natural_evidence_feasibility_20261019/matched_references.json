@@ -1,0 +1,4287 @@
+[
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 10,
+    "text": "  \"checkpoint_path\": \"/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 11,
+    "text": "  \"checkpoint_sha256\": \"ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 23,
+    "text": "    \"/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 42,
+    "text": "    \"--seed\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 48,
+    "text": "  \"effective_per_file_seed\": 2997368683,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 50,
+    "text": "  \"git_status\": \" M experiment_logs/rrsd_conflict_weight001_1000_infer.log\\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\\n M joint_train.py\\n M sgmse/joint_data_module.py\\n M sgmse/joint_model.py\\n M \\\"\\\\345\\\\210\\\\233\\\\346\\\\226\\\\260\\\\347\\\\202\\\\271\\\\344\\\\274\\\\230\\\\345\\\\214\\\\226_\\\\351\\\\252\\\\214\\\\350\\\\257\\\\201\\\\345\\\\256\\\\236\\\\351\\\\252\\\\214\\\\344\\\\270\\\\216\\\\347\\\\240\\\\224\\\\347\\\\251\\\\266\\\\346\\\\226\\\\271\\\\345\\\\220\\\\221\\\\346\\\\200\\\\273\\\\347\\\\273\\\\223_2026-10-16.md\\\"\\n?? \\\"10-17\\\\346\\\\227\\\\251\\\\344\\\\270\\\\212gpt\\\\345\\\\257\\\\271\\\\344\\\\272\\\\216\\\\345\\\\220\\\\216\\\\347\\\\273\\\\255\\\\347\\\\240\\\\224\\\\347\\\\251\\\\266\\\\350\\\\256\\\\241\\\\345\\\\210\\\\222\\\\347\\\\232\\\\204\\\\345\\\\273\\\\272\\\\350\\\\256\\\\256.md\\\"\\n?? LISTENING_TODO.md\\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\\n?? experiment_logs/rrsd_conflict_weight001_1000/\\n?? experiment_logs/rrsd_conflict_weight001_full_test/\\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\\n?? experiment_logs/rrsd_cv_repeat32/\\n?? experiment_logs/rrsd_gate_projection_smoke4.log\\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\\n?? experiment_logs/rrsd_harm_oracle_smoke/\\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\\n?? experiment_logs/rrsd_projection_gate_1000.log\\n?? experiment_logs/rrsd_projection_nogate_1000.log\\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\\n?? experiment_logs/rrsd_router_alt15_full_20261017/\\n?? experiment_logs/rrsd_router_full_matched_20261017.log\\n?? experiment_logs/rrsd_router_full_matched_20261017/\\n?? experiment_logs/rrsd_scale025_screen_20261017.log\\n?? experiment_logs/rrsd_scale05_screen_20261017.log\\n?? experiment_logs/rrsd_scale05_screen_20261017/\\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\\n?? experiment_logs/rrsd_tcut005_full_20261017.log\\n?? experiment_logs/rrsd_tcut005_full_20261017/\\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\\n?? experiment_logs/rrsd_tcut_screen/cut005/\\n?? experiment_logs/rrsd_tcut_screen/router/\\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\\n?? experiment_logs/speaker_headroom_replication_64_20261017/\\n?? experiments/anchor_v2_real_oracle_20261017/\\n?? experiments/backend_adapter_architecture_audit_20261018/\\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\\n?? experiments/multitrajectory_distillmos_audit_20261020/\\n?? experiments/multitrajectory_oracle_20261017/\\n?? experiments/multitrajectory_oracle_heldout16/\\n?? experiments/multitrajectory_pair_subset_20261017/\\n?? experiments/p3b_blind_listening_pilot_20261017/\\n?? experiments/p3b_literature_code_audit_20261017/\\n?? experiments/p7c_observable_repair_probe_20261017/\\n?? experiments/p8_10720_content_identity_audit_20261018/\\n?? experiments/p8_10720_pairing_forensics_20261018/\\n?? experiments/p8_11999_forced_choice_pack_20261020/\\n?? experiments/p8_consonant_acoustic_probe_20261020/\\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\\n?? experiments/p8_e1_aligned_listening_20261020/\\n?? experiments/p8_e1_candidate_listening_20261018/\\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\\n?? experiments/p8_e1_candidate_ranking_20261018/\\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\\n?? experiments/p8_phoneme_probe_20261020/\\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\\n?? experiments/p8_q_a_shorttime_probe_20261020/\\n?? experiments/p8_q_external_corpus_audit_20261018/\\n?? experiments/p8_q_vcv_clean_calibration_20261018/\\n?? experiments/p8_text_source_external_audit_20261018/\\n?? experiments/p8_text_source_repository_audit_20261018/\\n?? experiments/p8_training_coverage_audit_20261020/\\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\\n?? experiments/perceptual_representation_probe_20261017/\\n?? experiments/research_audit_20261016/\\n?? experiments/rollout_adapter_pilot_20261018/\\n?? experiments/rrsd_conflict_weight001_1000/\\n?? experiments/rrsd_conflict_weight001_full_test/\\n?? experiments/rrsd_control1000_full_matched_20261017/\\n?? experiments/rrsd_cv_repeat32/\\n?? experiments/rrsd_harm_oracle_4_cuda/\\n?? experiments/rrsd_harm_oracle_n30_4_full/\\n?? experiments/rrsd_harm_oracle_n30_4_gate/\\n?? experiments/rrsd_harm_oracle_n30_4_paired/\\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\\n?? experiments/rrsd_harm_teacher_fd_probe/\\n?? experiments/rrsd_independent_speaker_probe_32/\\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\\n?? experiments/rrsd_router_full_matched_20261017/\\n?? experiments/rrsd_scale025_screen_20261017/\\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\\n?? experiments/rrsd_scale05_screen_20261017/\\n?? experiments/rrsd_speaker_pair_masked1000/\\n?? experiments/rrsd_tcut005_alt15_full_20261017/\\n?? experiments/rrsd_tcut005_full_20261017/\\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\\n?? experiments/speaker_backend_only_matched_500_20261018/\\n?? experiments/speaker_backend_only_smoke_20261017/\\n?? experiments/speaker_data_audit_20261017/\\n?? experiments/speaker_headroom_20261017/\\n?? experiments/speaker_headroom_replication_64_20261017/\\n?? experiments/speaker_parameter_audit_20261017/\\n?? experiments/storm_error_attribution_p7_20261017/\\n?? lightning_logs/version_6/\\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\\n?? rrsd_harm_oracle_infer.py\\n?? sgmse/joint_training_utils.py\\n?? tests/test_joint_training_options.py\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 53,
+    "text": "  \"gpu_inventory\": \"index, name, uuid, driver_version, memory.used [MiB], memory.total [MiB]\\n0, NVIDIA L40S, GPU-f9aa822f-67b6-c2aa-c2f9-eeabe9ab7cde, 610.57.04, 0 MiB, 49140 MiB\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 70,
+    "text": "    \"pcm16_sha256\": \"285a319dfcbea54bdcfce623220ae858ac7d53afd5981db97c7eaddf96725f4d\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 71,
+    "text": "    \"comparison_after_pcm16_quantization\": {"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 73,
+    "text": "      \"exact_pcm_equality\": true,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 98,
+    "text": "    \"rrsd\": false,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 99,
+    "text": "    \"rrsd_scale\": 1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 100,
+    "text": "    \"rrsd_t_cut\": 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 101,
+    "text": "    \"rrsd_t_cut_scale\": 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 102,
+    "text": "    \"rrsd_t_min\": 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 103,
+    "text": "    \"rrsd_t_max\": null,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 125,
+    "text": "    \"exact_pcm_equality\": true,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 134,
+    "text": "    \"exact_pcm_equality\": true,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/metrics.json",
+    "line": 146,
+    "text": "  \"post_run_checkpoint_sha256\": \"ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9\""
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 9,
+    "text": "ckpt=ROOT/'joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt'"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 11,
+    "text": "argv=['joint_enhance_by_dir.py','--ckpt',str(ckpt),'--in_dir',str(inp),'--out_dir',str(out),'--device','cuda:0','--sample_rate','16000','--train_type','mode2','--sampler_type','pc','--N','30','--corrector','none','--snr','0.5','--seed','2026','--use_ema']"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 13,
+    "text": "d={'status':'running','purpose':'One explicitly authorized forensic reproduction to test causal input/output pairing; not a new research experiment','started_at_utc':datetime.datetime.now(datetime.timezone.utc).isoformat(),'input_path':str(src),'input_symlink':str(inp/name),'input_sha256':sha(src),'saved_output_path':str(saved),'saved_output_sha256':sha(saved),'checkpoint_path':str(ckpt),'checkpoint_sha256':sha(ckpt),'script_sha256':{f:sha(ROOT/f) for f in files},'replay_wrapper_sha256':sha(__file__),'argv':argv,'literal_historical_command_available':False,'command_provenance':'Reconstructed from original config.yaml, off_retry.log and report; exact literal historical command/script hashes unavailable','effective_per_file_seed':(2026+int.from_bytes(hashlib.blake2b(name.encode(),digest_size=4).digest(),'little'))%2**32,'git_head':subprocess.getoutput('git rev-parse HEAD'),'git_status':subprocess.getoutput('git status --short'),'path':os.environ.get('PATH'),'cuda_visible_devices':os.environ.get('CUDA_VISIBLE_DEVICES'),'gpu_inventory':subprocess.getoutput('nvidia-smi --query-gpu=index,name,uuid,driver_version,memory.used,memory.total --format=csv'),'failures':[]}"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 14,
+    "text": "(OUT/'config.yaml').write_text('experiment_id: p8_10720_pairing_forensics_20261018_replay_off\\npurpose: single_authorized_causal_provenance_replay\\ncheckpoint: '+str(ckpt)+'\\nuse_ema: true\\nsampler: pc\\nN: 30\\ncorrector: none\\nsnr: 0.5\\nseed: 2026\\nrrsd: false\\ntrain_type: mode2\\ndevice: cuda:0\\ninput_basename: '+name+'\\n')"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 23,
+    "text": "  return dict(samples=len(a),exact_pcm_equality=bool(np.array_equal(a,b)),max_absolute_difference=float(np.max(abs(delta))),difference_rms=float(np.sqrt(np.mean(delta*delta))),correlation=float(np.corrcoef(a,b)[0,1]),replay_rms=float(np.sqrt(np.mean(a*a))),saved_rms=float(np.sqrt(np.mean(b*b))))"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 26,
+    "text": "  z=oldmatch(a,b);v=z.detach().cpu().numpy().reshape(-1);bio=io.BytesIO();sf.write(bio,v,16000,format='WAV',subtype='PCM_16');quantized=sf.read(io.BytesIO(bio.getvalue()))[0];ref=sf.read(original['sources']['y_pre']['path'])[0]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 27,
+    "text": "  d['frontend']={'before_match_samples':int(a.shape[-1]),'after_match_samples':int(z.shape[-1]),'noisy_samples':int(b.shape[-1]),'float32_sha256':hashlib.sha256(v.tobytes()).hexdigest(),'pcm16_sha256':hashlib.sha256(bio.getvalue()).hexdigest(),'comparison_after_pcm16_quantization':compare(quantized,ref)};return z"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_pairing_forensics_20261018/replay_off/attempt02/run_replay.py",
+    "line": 39,
+    "text": "d['wall_seconds']=time.monotonic()-t0;d['completed_at_utc']=datetime.datetime.now(datetime.timezone.utc).isoformat();d['post_run_input_sha256']=sha(src);d['post_run_saved_output_sha256']=sha(saved);d['post_run_checkpoint_sha256']=sha(ckpt)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/config.yaml",
+    "line": 4,
+    "text": "checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/config.yaml",
+    "line": 5,
+    "text": "seed: 2997368683"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/config.yaml",
+    "line": 10,
+    "text": "runs: [no_op, condition_tail_clean, anchor_tail_clean, both_tail_clean, baseline_seed_plus1, baseline_seed_plus2]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/config.yaml",
+    "line": 21,
+    "text": "prior_history: P8-M_5243_active_masking_negative_is_distinct_and_preserved"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/config.yaml",
+    "line": 22,
+    "text": "seed_purpose: stochastic_risk_diagnostic_not_ensemble_selection_or_novelty"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 21,
+    "text": "Seed controls confirm that the sampled waveform is variable, but their two"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 23,
+    "text": "ArtiFree already studies seed/embedding consistency; PASE already studies"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 30,
+    "text": "Oracle clean-tail intervention is an OOD mechanism probe, not a deployable method. Seeds diagnose stochastic risk, not ensemble selection or novelty. Prior P8-M 5243 active masking negative is preserved and is a distinct experiment."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 32,
+    "text": "Window: samples240800:252000, 15.05\u201315.75s, internal20ms raised cosine fades. Model loaded once; original FLOAT frontend recomputed once and hash checked. All six runs are backend off, NFE30. Full speech activity uses clean20ms disjoint frames above\u221270dBFS. Raw metrics compare with new no_op raw; PCM16 values are reference only. frames.csv retains raw fixed frame values. No clean/noisy corpus changes or downloads."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 40,
+    "text": "|baseline_seed_plus1|-65.66020|2.1299347e-07|0.32728481|0.32245322|"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 41,
+    "text": "|baseline_seed_plus2|-62.31304|2.3576037e-07|0.33124752|0.32242659|"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 45,
+    "text": "Verification used existing arrays only, with no model load or repeated inference. Input/code/checkpoint/config/driver and raw/WAV hashes matched. The saved frontend hash and no_op exact PCM16 baseline gate passed. Cached anchor/condition interventions reconstruct exactly, preserve all input samples outside the window, and preserve the noisy global normalization peak. Every recorded NFE is30. Independent SciPy boxcar periodogram integration and raw RMS/RMSE reproduce reported energies."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 55,
+    "text": "| baseline_seed_plus1 | 0.000521182829 | -5.800 | -4.997 | 0.327283 | 0.322453 | 0.400240 | 0.00148646727 |"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 56,
+    "text": "| baseline_seed_plus2 | 0.000766210505 | -2.453 | -4.556 | 0.331246 | 0.322426 | 0.403058 | 0.00149693397 |"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/experiment_report.md",
+    "line": 58,
+    "text": "The baseline seeds span \u221265.660 to \u221259.860 dBFS tail RMS. The two additional seed runs provide a small stochastic contrast, not a precise variance estimate. Input changes are confined to the intervention window; output differences outside it remain possible through the model. Raw no_op is the comparator for all causal and seed deltas. These energy changes are not speech/phoneme truth, evidence of deployment performance, or a novelty claim. Prior negatives are preserved."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 8,
+    "text": "SR, LENGTH, A, B, FADE, SEED, CAP = 16000, 480000, 240800, 252000, 320, 2997368683, 50_000_000"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 9,
+    "text": "RUNS = [('no_op', SEED, False, False), ('condition_tail_clean', SEED, False, True),"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 10,
+    "text": "        ('anchor_tail_clean', SEED, True, False), ('both_tail_clean', SEED, True, True),"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 11,
+    "text": "        ('baseline_seed_plus1', (SEED+1)%2**32, False, False), ('baseline_seed_plus2', (SEED+2)%2**32, False, False)]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 26,
+    "text": "def make_mask(length=LENGTH, a=A, b=B, fade=FADE):"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 28,
+    "text": "    mask = np.zeros(length, np.float32); mask[a:b] = 1"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 30,
+    "text": "    mask[a:a+fade] = ramp; mask[b-fade:b] = ramp[::-1]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 31,
+    "text": "    return mask"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 33,
+    "text": "def intervene(original, clean, mask):"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 34,
+    "text": "    # Assignment only on mask support guarantees bitwise identity elsewhere."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 36,
+    "text": "    selected = mask > 0"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 37,
+    "text": "    result[selected] = original[selected] + mask[selected] * (clean[selected] - original[selected])"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 61,
+    "text": "    m=make_mask(100,20,80,5)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 62,
+    "text": "    assert np.array_equal(m,make_mask(100,20,80,5)) and np.count_nonzero(m[:20])==0 and np.count_nonzero(m[80:])==0"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 64,
+    "text": "    x=torch.linspace(-1,1,100); c=torch.zeros(100); mask=torch.from_numpy(m)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 65,
+    "text": "    z=intervene(x,c,mask)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 66,
+    "text": "    assert torch.equal(z,intervene(x,c,mask)) and torch.equal(x[m==0],z[m==0]) and torch.equal(z[25:75],c[25:75])"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 67,
+    "text": "    assert torch.equal(intervene(x,x,mask),x)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 70,
+    "text": "    return {'status':'passed','inference_executed':False,'checks':['mask deterministic symmetric internal raised cosine','strict unchanged outside support','tensor shape dtype and deterministic interpolation','no-op identity','Parseval highband calibration']}"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 77,
+    "text": "       'limits':'Oracle clean-tail intervention is an OOD mechanism probe, not a deployable method. Seeds diagnose stochastic risk, not ensemble selection or novelty. Prior P8-M 5243 active masking negative is preserved and is a distinct experiment.'}"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 86,
+    "text": "        assert cfg['window_samples']==[A,B] and cfg['fade_samples']==FADE and cfg['seed']==SEED and cfg['runs']==[r[0] for r in RUNS]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 90,
+    "text": "        d['enhance_kwargs']={**common,'rrsd':False,'timeit':True}"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 94,
+    "text": "        ckpt=Path(source['checkpoint']['path']); assert sha(ckpt)==source['checkpoint']['sha256']==cfg['checkpoint_sha256']"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 95,
+    "text": "        d['checkpoint']=source['checkpoint']; d['driver_sha256']=sha(__file__); d['config_sha256']=sha(OUT/'config.yaml')"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 108,
+    "text": "        d['clean_tail']={'rms':rms(clean[A:B]),'rms_dbfs':db(rms(clean[A:B])),'floor_limit_pcm16_steps':3}"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 113,
+    "text": "        model=mod.JointSemambaSgmseModel.load_from_checkpoint(str(ckpt),map_location='cpu',strict=True,data_module_cls=mod.JointWaveDataModule,base_dir='.',batch_size=1,num_workers=0,dummy=True,weights_only=False)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 114,
+    "text": "        model.eval(no_ema=False).to('cuda:0')"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 117,
+    "text": "        raw_baseline=None; pcm_baseline=None"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 119,
+    "text": "            torch.manual_seed(SEED)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 123,
+    "text": "            pre=model._frontend_forward(noisy/norm)*norm"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 130,
+    "text": "            np.save(OUT/'frontend_raw.npy',front_np,allow_pickle=False)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 131,
+    "text": "            mask_np=make_mask(); np.save(OUT/'intervention_mask.npy',mask_np,allow_pickle=False)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 132,
+    "text": "            mask=torch.from_numpy(mask_np).to(noisy); clean_t=torch.from_numpy(clean).to(noisy)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 136,
+    "text": "                for name,seed,edit_anchor,edit_condition in RUNS:"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 137,
+    "text": "                    anchor=intervene(frontend,clean_t,mask) if edit_anchor else frontend"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 138,
+    "text": "                    condition=intervene(noisy,clean_t,mask) if edit_condition else noisy"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 141,
+    "text": "                    r={'seed':seed,'anchor_tail_clean':edit_anchor,'condition_tail_clean':edit_condition,'outside_input_max_abs_difference':0.,'normalization_peak':float(condition.abs().max()),'anchor_float32_sha256':ah(anchor.cpu().numpy()),'condition_float32_sha256':ah(condition.cpu().numpy())}"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 146,
+    "text": "                    torch.manual_seed(seed)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 148,
+    "text": "                    tt=time.monotonic();out,nfe,rtf=model.enhance(anchor,y_cond=condition,**common,rrsd=False,timeit=True);torch.cuda.synchronize()"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 151,
+    "text": "                    pcm_path=OUT/f'{name}.wav';sf.write(pcm_path,np.clip(out,-1,1),SR,subtype='PCM_16')"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 152,
+    "text": "                    pcm,_=sf.read(pcm_path,dtype='float32')"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 153,
+    "text": "                    r.update({'nfe':int(nfe),'wall_seconds':time.monotonic()-tt,'rtf':float(rtf),'raw_dtype':str(out.dtype),'raw_sha256':ah(out),'raw_file_sha256':sha(OUT/f'{name}_raw.npy'),'pcm16_sha256':sha(pcm_path),'clipped_samples':int(np.count_nonzero(abs(out)>1))})"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 155,
+    "text": "                        r['exact_saved_pcm16_byte_match']=sha(pcm_path)==v['off']['sha256']"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 156,
+    "text": "                        assert r['exact_saved_pcm16_byte_match'],'No-op not exact PCM16 match: STOP before causal runs'"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 157,
+    "text": "                        raw_baseline=out.copy();pcm_baseline=pcm.copy()"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 158,
+    "text": "                    r['raw_metrics']=summary(out,raw_baseline,clean,active);r['pcm16_reference_metrics']=summary(pcm,pcm_baseline,clean,active)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 163,
+    "text": "        assert all(sha(p)==expected[k] for k,p in paths.items()) and sha(ckpt)==cfg['checkpoint_sha256']"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 164,
+    "text": "        d['sources_and_checkpoint_unchanged']=True;d['output_bytes']=cap();d['status']='completed'"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_causal_pilot_20261018/run_pilot.py",
+    "line": 171,
+    "text": "    report='# 10720 tail causal pilot\\n\\nStatus: '+d['status']+'\\n\\n'+d['limits']+'\\n\\nWindow: samples240800:252000, 15.05\u201315.75s, internal20ms raised cosine fades. Model loaded once; original FLOAT frontend recomputed once and hash checked. All six runs are backend off, NFE30. Full speech activity uses clean20ms disjoint frames above\u221270dBFS. Raw metrics compare with new no_op raw; PCM16 values are reference only. frames.csv retains raw fixed frame values. No clean/noisy corpus changes or downloads.\\n\\n'"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/config.yaml",
+    "line": 4,
+    "text": "checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/config.yaml",
+    "line": 5,
+    "text": "seed: 2997368683"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/config.yaml",
+    "line": 21,
+    "text": "prior_history: P8-M_5243_active_masking_negative_is_distinct_and_preserved"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/experiment_report.md",
+    "line": 5,
+    "text": "Oracle clean-tail intervention is an OOD mechanism probe, not a deployable method. This is within-case/SNR replication, not independent generalization or a trained method. Prior P8-M 5243 active masking negative is preserved and is a distinct experiment."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/experiment_report.md",
+    "line": 7,
+    "text": "Window: samples240800:252000, 15.05\u201315.75s, internal20ms raised cosine fades. Model loaded once; original FLOAT frontend recomputed once and hash checked. Both runs are backend off, NFE30. Full speech activity uses clean20ms disjoint frames above\u221270dBFS. Raw metrics compare with new no_op raw; PCM16 values are reference only. frames.csv retains raw fixed frame values. No clean/noisy corpus changes or downloads."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/experiment_report.md",
+    "line": 16,
+    "text": "Both runs passed NFE30, exact20dB float frontend SHA and no_op PCM16 byte gates. Saved frontend hashes are globally identical across the two runs. Cached condition exactly reconstructs the frozen cosine interpolation, is bitwise unchanged outside the window, and retains the original noisy global peak. Source WAV, checkpoint, code, config, driver and output hashes matched. Independent SciPy periodogram band energy and float64 RMS matched raw and PCM16 metrics."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/experiment_report.md",
+    "line": 23,
+    "text": "| pcm16_reference | no_op | 0.000239928906 | -72.398 | 0.000 | 5.21291178e-08 | 0.000 | 0.000000 | 0.000000 | 0.218908 |"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/experiment_report.md",
+    "line": 25,
+    "text": "| pcm16_reference | condition_tail_clean | 2.86091396e-05 | -90.870 | -18.472 | 3.93788426e-11 | -31.218 | 0.003666 | 0.003439 | 0.218455 |"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_condition20_20261018/experiment_report.md",
+    "line": 43,
+    "text": "PCM16 statistics are reported separately and cannot replace the raw energy"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_mechanism_20261018/config.yaml",
+    "line": 20,
+    "text": "near_quantization_floor_pcm16_steps: 3.0"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_mechanism_20261018/config.yaml",
+    "line": 21,
+    "text": "near_floor_note: Fixed diagnostic threshold of three PCM16 steps RMS; flag only, not a speech decision; raw values retained. Also used as conservative reference validity threshold for cosine scans."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_mechanism_20261018/experiment_report.md",
+    "line": 9,
+    "text": "tail_clean_spectrum_scan.csv scans every tail frame against all clean frames in the five second context. References at or below three PCM16 steps RMS are excluded from valid winners; unfiltered winners and their floor flags remain available. Query frames near that floor have no valid winner."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_mechanism_20261018/experiment_report.md",
+    "line": 43,
+    "text": "No fixed windows or thresholds were changed. Values below aggregate exactly the saved frames; levels are the mean of frame dBFS values, not dB of mean RMS. Highband, flatness and periodicity are dimensionless acoustic proxies, not speech labels. The three PCM16 step floor is a conservative diagnostic flag, not an audibility threshold."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_10720_tail_mechanism_20261018/experiment_report.md",
+    "line": 89,
+    "text": "Post-run verification additionally rehashed all listening clips, all loaded WAVs, source metrics/manifest, prepared config and probe script against recorded provenance: unchanged. No model/checkpoint is opened by the probe; runtime outputs are confined to this experiment directory. No experiment retry was performed."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/config.yaml",
+    "line": 4,
+    "text": "checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/config.yaml",
+    "line": 5,
+    "text": "seed: 513132500"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/config.yaml",
+    "line": 21,
+    "text": "prior_history: P8-M_5243_active_masking_negative_is_distinct_and_preserved"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/experiment_report.md",
+    "line": 7,
+    "text": "Required config.yaml and metrics.json plus failure_archive/failure_snapshot.json preserve the failed attempt. worker_failure_diagnosis.json records parsed key types and independent post-failure hashes. The four source WAV hashes and checkpoint hash match configured values. No retry was performed. The failed driver and config remain unchanged; an engineer must quote the off key and validate all arm keys before a separately approved new attempt."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/experiment_report.md",
+    "line": 9,
+    "text": "Planned only: original3321 PCM16 input, seed513132500, condition gap22.62\u201323.66s with20ms internal fades, globally held float frontend, exact frontend/no_op PCM16 gates, two off NFE30 runs. No claims about this causal effect can be drawn from this failed attempt. Prior results and negatives are preserved."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/config.yaml",
+    "line": 6,
+    "text": "target_windows: fileid 5243 19.5-20.0; fileid 4812 12.5-13.0; fileid 11999 19.5-20.0; fileid 10720 14.5-15.0"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/experiment_report.md",
+    "line": 3,
+    "text": "\u65e7\u8bd5\u542c\u5305\u5b58\u5728\u53ef\u590d\u73b0\u7684\u88c1\u526a bug\uff1a\u5b8c\u6574 noisy \u6587\u4ef6\u4f7f\u7528\u4e86\u4e2d\u592e 12 \u79d2\u7d22\u5f15\uff0c\u548c\u5176\u5b83\u5df2\u7ecf\u4e2d\u5fc3\u88c1\u526a\u7684 arm \u76f8\u5dee 9 \u79d2\u3002\u6b64\u76ee\u5f55\u91cd\u65b0\u4ece\u4e94\u4e2a\u5b8c\u6574 30 \u79d2\u6e90\u6587\u4ef6\u6309\u540c\u4e00\u539f\u59cb\u65f6\u95f4\u5750\u6807\u88c1\u526a\u4e86\u539f\u56db\u4e2a\u5019\u9009\u3002\u672a\u8fd0\u884c\u63a8\u7406\u3001\u8bad\u7ec3\u6216 DNSMOS\uff0c\u672a\u4fee\u6539\u6570\u636e\u96c6\u548c checkpoint\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/experiment_report.md",
+    "line": 5,
+    "text": "\u56db\u4e2a\u5019\u9009\u4e3a file-id 5243 (19.5\u201320.0 s)\u30014812 (12.5\u201313.0 s)\u300111999 (19.5\u201320.0 s)\u300110720 (14.5\u201315.0 s)\uff0c\u6bcf\u4e2a\u751f\u6210 clean/noisy/Y_pre/Router-off/Router \u4e94\u6bb5 2 \u79d2 WAV\u3002\u6e90\u6587\u4ef6\u5747\u4e3a 16 kHz\u300130 \u79d2\uff1b`metrics.json` \u4fdd\u5b58\u54c8\u5e0c\u548c \u00b1100 ms lag scan\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 7,
+    "text": "      \"fileid\": 5243,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 20,
+    "text": "        \"noisy\": \"/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 21,
+    "text": "        \"clean\": \"/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 22,
+    "text": "        \"y_pre\": \"/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 23,
+    "text": "        \"off\": \"/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/off/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 24,
+    "text": "        \"router\": \"/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/router/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\""
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/metrics.json",
+    "line": 276,
+    "text": "  \"checkpoint_modified\": false"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/config.yaml",
+    "line": 6,
+    "text": "excluded_speakers_from: [experiments/rrsd_cv_repeat32, experiments/tr0_fresh_cv_manifest_20261018]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/config.yaml",
+    "line": 7,
+    "text": "checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/config.yaml",
+    "line": 13,
+    "text": "seed: 2026"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/config.yaml",
+    "line": 20,
+    "text": "checkpoint_modified: false"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/experiment_report.md",
+    "line": 11,
+    "text": "Eight CV utterances were selected read-only from `wav.scp`, one per speaker, with `_snr-(\\d+)` parsed as negative SNR. All selected SNRs are -16 to -19 dB. Speakers in `rrsd_cv_repeat32` and `tr0_fresh_cv_manifest_20261018` were excluded. Inputs are symlinks only."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/experiment_report.md",
+    "line": 19,
+    "text": "After the repair, all three requested arms completed on CUDA device 0 with the locked EMA checkpoint, PC sampler N=30, corrector none, SNR 0.5, seed 2026:"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/experiment_report.md",
+    "line": 22,
+    "text": "- Router-off (no `--rrsd`): 8/8, 87 s."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/experiment_report.md",
+    "line": 23,
+    "text": "- Router (`--rrsd --rrsd_scale 1.0`): 8/8, 88 s."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/experiment_report.md",
+    "line": 29,
+    "text": "`listening_pack/` contains 32 labeled 12-second clips (8 utterances \u00d7 clean reference plus 3 enhancement arms). Each arm uses the same centered crop from its 30-second source. `listening_pack/simple/` provides short names (`00_clean.wav`, `00_Y_pre.wav`, `00_Router-off.wav`, `00_Router.wav`, etc.) for direct playback. `LISTENING_GUIDE_CN.md` gives Chinese listening instructions; `key.csv` records the arm mapping and clip hashes. This is a qualitative artifact screen only: the dataset's SCP `text` entries are `dummy`, so no human WER/CER or transcript claim is made here. No quality metrics were run. Dataset and checkpoint were not modified."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/off_retry.log",
+    "line": 3,
+    "text": "[EMA] checkpoint EMA loaded successfully, shadow params = 8"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/off_retry.log",
+    "line": 6,
+    "text": "[RRSD-TCUT] t_cut=0.0 t_cut_scale=0.0 scale=1.0 enabled=False seed=2026 N=30"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/router_retry.log",
+    "line": 3,
+    "text": "[EMA] checkpoint EMA loaded successfully, shadow params = 8"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/router_retry.log",
+    "line": 6,
+    "text": "[RRSD-TCUT] t_cut=0.0 t_cut_scale=0.0 scale=1.0 enabled=True seed=2026 N=30"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre.log",
+    "line": 6,
+    "text": "    model = JointSemambaSgmseModel.load_from_checkpoint(args.ckpt, **load_kwargs)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre.log",
+    "line": 9,
+    "text": "  File \"/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/module.py\", line 1796, in load_from_checkpoint"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre.log",
+    "line": 10,
+    "text": "    loaded = _load_from_checkpoint("
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre.log",
+    "line": 11,
+    "text": "  File \"/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/saving.py\", line 72, in _load_from_checkpoint"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre.log",
+    "line": 12,
+    "text": "    checkpoint = pl_load(checkpoint_path, map_location=map_location, weights_only=weights_only)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre.log",
+    "line": 17,
+    "text": "_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, \u001b[1mdo those steps only if you trust the source of the checkpoint\u001b[0m. "
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/logs/y_pre_retry.log",
+    "line": 3,
+    "text": "[EMA] checkpoint EMA loaded successfully, shadow params = 8"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/metrics.json",
+    "line": 15,
+    "text": "          \"basename\": \"00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/metrics.json",
+    "line": 87,
+    "text": "          \"basename\": \"00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/metrics.json",
+    "line": 159,
+    "text": "          \"basename\": \"00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/metrics.json",
+    "line": 240,
+    "text": "  \"checkpoint_modified\": false,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md",
+    "line": 16,
+    "text": "\u968f\u540e\u7528\u6b63\u786e10720 noisy\u3001\u540c\u4e0080k EMA checkpoint\u3001PC N30\u53ca\u76f8\u540c\u6709\u6548\u79cd\u5b50"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md",
+    "line": 101,
+    "text": "## 2026-10-18 \u65b0\u7684\u5b9a\u70b9\u8bd5\u542c\uff1a5243 \u7684 d \u662f\u5148\u524d\u6574\u4f53\u5224\u65ad\u7684\u5177\u4f53\u4f8b\u5916"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md",
+    "line": 104,
+    "text": "\u7b2c\u4e00\u7ec4 5243 \u4e0a\u660e\u786e\u53cd\u9988\uff1a"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md",
+    "line": 106,
+    "text": "> \u6211\u8bd5\u542c\u4e86\u7b2c\u4e00\u7ec45243 \u786e\u5b9e\u662fy_pre\u4e22\u6389\u4e86/d/ \u800c\u540e\u7aef\u7ed3\u679c\u6ca1\u4e22"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md",
+    "line": 116,
+    "text": "  \u539f\u5f55\u97f3\u5b9a\u4f4d\u7ea6 19.45\u201319.47 s\u3002\u8be5\u5750\u6807\u662f\u6a21\u578b\u5e27\u5b9a\u4f4d\uff0c\u4e0d\u662f\u4eba\u5de5\u7cbe\u786e\u97f3\u7d20\u8fb9\u754c\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/config.yaml",
+    "line": 2,
+    "text": "purpose: scoped_read_only_checkpoint_and_noisy_condition_code_path_audit"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/config.yaml",
+    "line": 3,
+    "text": "checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/config.yaml",
+    "line": 13,
+    "text": "prior_audits: [backend_adapter_architecture_audit_20261018, checkpoint_data_condition_audit_20261018]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/experiment_report.md",
+    "line": 3,
+    "text": "Completed read-only audit. The first CPU load failed with an import-path error; the Research Lead authorized one corrected launcher retry with PYTHONPATH pointing to the repository. Attempt 02 succeeded. There were two load attempts, one successful checkpoint metadata read, and no model initialization, inference, training, GPU use, dependency install, or checkpoint write. failures.json retains the initial failure, and attempt02_provenance.json records the correction. The checkpoint SHA256 was identical before and after the successful read: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/experiment_report.md",
+    "line": 11,
+    "text": "Optional mechanisms are gated separately: selector_type creates a learned evidence selector or residual/noise-prior updates (ncsnpp_v2.py:639\u2013643,730\u2013746,823\u2013841), cross_attn creates bottleneck_cross_attn (787\u2013792), and film_modulate creates conditional decoder blocks (805\u2013818). At forward time, a TF-grid selector builds y_hint from anchor and condition; otherwise y_hint=y_cond (1001\u20131010). Cross-attention consumes y_hint (1015\u20131018); FiLM consumes y_cond (1033); residual paths consume y_cond-y (1013,1049+). Saved hyperparameters and the state key snapshot establish that all these optional condition paths are inactive in this checkpoint. Bottleneck cross-attention, TF-grid selector/context, FiLM decoder wrappers/condition networks, residual regeneration, noise-prior guidance, and backend adapter key tests each have zero matching DNN keys. This does not mean the backbone lacks ordinary self-attention: its standard unconditional bottleneck attention is a separate mechanism."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/experiment_report.md",
+    "line": 13,
+    "text": "In the 20dB pilot, run_pilot.py:140\u2013149 retains the frontend anchor and seed while editing only the waveform condition in the fixed tail window. It explicitly asserts unchanged outside-window condition samples and unchanged global peak. This prevents normalization from changing the anchor or the global amplitude scale for that recorded intervention. Score trajectory x_t remains free to change after altered score evaluations. The STFT window and network receptive fields can spread an initially localized waveform edit in time; output changes beyond the edited window are expected possibilities. The intervention establishes sensitivity to condition evidence under matched anchor/randomness; it cannot identify a learned selection mechanism without module evidence, and it does not hold the reverse trajectory fixed."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/experiment_report.md",
+    "line": 16,
+    "text": "## Actual checkpoint configuration"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_noisy_condition_path_audit_20261018/experiment_report.md",
+    "line": 18,
+    "text": "|Field|Saved in checkpoint|Effective value and basis|"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/config.yaml",
+    "line": 9,
+    "text": "groups: [00_fileid_5243, 01_fileid_4812, 02_fileid_11999, 03_fileid_10720]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/config.yaml",
+    "line": 22,
+    "text": "  seed: 0"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/config.yaml",
+    "line": 25,
+    "text": "  checkpoint_modified: false"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 13,
+    "text": "The model, 20 clips, clean-derived token sequence, seed, and five conditions"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 21,
+    "text": "inference. No source audio, datasets, or checkpoints are modified."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 46,
+    "text": "136,188 bytes. Source audio, datasets and checkpoints were not modified."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 67,
+    "text": "| 5243 | \u22120.127192 | \u22120.126805 | +0.425293 | +0.027813 |"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 73,
+    "text": "The k,d aggregate is dominated by one d pseudo-target in file-id 5243:"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 80,
+    "text": "The +/-200 ms maximum also exposes timing sensitivity. For the 5243 k"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 96,
+    "text": "Stop further alignment/window tuning on these four examples. Keep the 5243 d"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 103,
+    "text": "## Subsequent listener confirmation: file-id 5243 d"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_q_a_ctc_fixed_time_v2_20261018/experiment_report.md",
+    "line": 113,
+    "text": "CTC frames [35,36), approximately clip0.70\u20130.72 s / original19.45\u201319.47 s."
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 1,
+    "text": "experiment_id: p8_y_pre_mask_counterfactual_20261020"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 3,
+    "text": "checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 9,
+    "text": "seed: 2026"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 10,
+    "text": "input_fileid: 5243"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 11,
+    "text": "target_window_seconds: [10.0, 10.5]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 13,
+    "text": "mask_scales: [0.0, 0.5]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/config.yaml",
+    "line": 15,
+    "text": "checkpoint_modified: false"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 9,
+    "text": "- \u8f93\u5165\uff1aP8 \u63a2\u7d22\u96c6 file-id 5243\uff0c\u539f\u59cb\u65e0\u6df7\u54cd noisy\uff1b\u76ee\u6807\u7a97\u53e3 `10.0\u201310.5 s`\uff0c\u8be5\u7a97\u53e3 clean-aware \u5c40\u90e8 SNR \u7ea6 `+3.93 dB`\uff0c\u524d\u7aef\u6ca1\u6709\u88ab\u6807\u8bb0\u4e3a\u660e\u663e\u6291\u5236\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 11,
+    "text": "- 80k EMA checkpoint\u3001PC `N=30`\u3001`snr=0.5`\u3001corrector none\u3001seed 2026\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 13,
+    "text": "- \u539f\u59cb\u6570\u636e\u548c checkpoint \u5747\u672a\u4fee\u6539\uff1b\u8f93\u51fa\u4ec5\u5199\u5165\u672c\u5b9e\u9a8c\u76ee\u5f55\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 42,
+    "text": "## \u4e24\u4e2a\u8ffd\u52a0 seed \u7684\u91cd\u590d\u6027"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 44,
+    "text": "\u4e3a\u907f\u514d\u628a\u5355\u6761\u968f\u673a\u8f68\u8ff9\u5f53\u4f5c\u7ed3\u8bba\uff0c\u53c8\u7528 seed 2027\u30012028 \u91cd\u590d baseline \u4e0e\u76ee\u6807\u5b8c\u5168\u62b9\u9664\u3002\u76ee\u6807\u62b9\u9664\u76f8\u5bf9\u540c seed baseline \u7684\u6574\u53e5\u5dee\u503c\u4e3a\uff1a"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 46,
+    "text": "| seed | \u0394PESQ | \u0394STOI | \u0394SI-SDR (dB) |"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/experiment_report.md",
+    "line": 51,
+    "text": "SI-SDR \u548c STOI \u7684\u4e0b\u964d\u65b9\u5411\u5728\u4e24\u4e2a\u8ffd\u52a0 seed \u4e0a\u4e00\u81f4\uff1bPESQ \u65b9\u5411\u4e0d\u7a33\u5b9a\u3002\u8be5\u91cd\u590d\u7ed3\u679c\u52a0\u5f3a\u4e86\u201c\u5c40\u90e8\u951a\u70b9\u88ab\u62b9\u9664\u540e\u8f93\u51fa\u4f1a\u53d7\u635f\u201d\u7684\u5224\u65ad\uff0c\u4f46\u4ecd\u7136\u6ca1\u6709\u63d0\u4f9b\u81ea\u7136\u541e\u97f3\u7684\u97f3\u7d20\u6062\u590d\u8bc1\u636e\u3002"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 16,
+    "text": "CKPT = ROOT / \"joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt\""
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 17,
+    "text": "NOISY = Path(\"/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav\")"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 19,
+    "text": "SEED = 2026"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 21,
+    "text": "def smooth_mask(n, start, end, scale, edge=0.04):"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 22,
+    "text": "    \"\"\"Time-domain smooth attenuation mask, with cosine ramps.\"\"\""
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 41,
+    "text": "    model = JointSemambaSgmseModel.load_from_checkpoint("
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 44,
+    "text": "    model.eval(no_ema=False).to(\"cuda\")"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 48,
+    "text": "        y_pre = _match_length(model._frontend_forward(y/norm)*norm, y)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 51,
+    "text": "        \"target_zero_10.0_10.5\": (10.0, 10.5, 0.0),"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 52,
+    "text": "        \"target_half_10.0_10.5\": (10.0, 10.5, 0.5),"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 60,
+    "text": "            yp = yp * smooth_mask(yp.shape[-1],a,b,s).to(yp.device)[None,None,:]"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 61,
+    "text": "        torch.manual_seed(SEED)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 62,
+    "text": "        torch.cuda.manual_seed_all(SEED)"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 69,
+    "text": "        records.append({\"arm\":name,\"mask\":spec,\"runtime_s\":time.time()-t0,"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 72,
+    "text": "        \"experiment_id\":\"p8_y_pre_mask_counterfactual_20261020\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 73,
+    "text": "        \"checkpoint\":str(CKPT),\"checkpoint_sha256\":hashlib.sha256(CKPT.read_bytes()).hexdigest(),"
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 75,
+    "text": "        \"seed\":SEED,\"sampler\":\"pc\",\"N\":30,\"snr\":0.5,\"corrector\":\"none\","
+  },
+  {
+    "path": "/data/coding/sgmse/experiments/p8_y_pre_mask_counterfactual_20261020/run_probe.py",
+    "line": 76,
+    "text": "        \"arms\":records,\"dataset_modified\":False,\"checkpoint_modified\":False,"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 16,
+    "text": "python joint_enhance_by_dir.py --ckpt /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch\\=118-step\\=80000.ckpt --in_dir /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisy --out_dir en"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 17,
+    "text": "hanced/enahnced_sb61i0gj_300k_-5_testset  --frontend storm --N 30 --rrsd --rrsd_scale 0.5"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 101,
+    "text": "    # frontend loader (match your training args) - \u63a8\u7406\u65f6\u4e0d\u4f20\uff0c\u8ba9checkpoint\u91cc\u7684\u503c\u751f\u6548"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 122,
+    "text": "        help=\"Enable state-aware conditional anchor calibration during PC sampling. Requires a checkpoint trained with --anchor_calib_weight > 0.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 128,
+    "text": "        help=\"Inference-time override for anchor K_max. If omitted, use the value saved in the checkpoint.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 139,
+    "text": "        help=\"Enable fine-grained band-time Anchor V2. Requires a checkpoint trained with --anchor_v2_weight > 0.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 142,
+    "text": "        \"--rrsd\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 147,
+    "text": "        \"--rrsd_scale\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 153,
+    "text": "        \"--rrsd_t_cut\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 156,
+    "text": "        help=\"Disable only RRSD additional score guidance at diffusion t < this cutoff. 0=off.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 159,
+    "text": "        \"--rrsd_t_cut_scale\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 162,
+    "text": "        help=\"Partial RRSD scale for t < rrsd_t_cut; 0 reproduces hard cutoff, 1 keeps guidance.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 165,
+    "text": "        \"--rrsd_t_min\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 168,
+    "text": "        help=\"Optional lower bound on diffusion t for RRSD guidance. 0 preserves the old behavior.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 171,
+    "text": "        \"--rrsd_t_max\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 174,
+    "text": "        help=\"Optional upper bound on diffusion t for RRSD guidance. None preserves the old behavior.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 177,
+    "text": "        \"--seed\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 180,
+    "text": "        help=\"Per-utterance torch RNG seed, deterministic across ablations.\","
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 251,
+    "text": "    # \u63a8\u7406\u65f6\u4e0d\u4f20 frontend \u76f8\u5173\u53c2\u6570\uff0c\u8ba9 checkpoint \u91cc\u7684\u503c\u751f\u6548"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 252,
+    "text": "    # checkpoint \u4f1a\u81ea\u5e26 frontend=storm \u548c frontend_ckpt \u7b49\u4fe1\u606f"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 261,
+    "text": "    # \u5426\u5219\u4f7f\u7528 checkpoint \u4e2d\u4fdd\u5b58\u7684\u503c"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 271,
+    "text": "    model = JointSemambaSgmseModel.load_from_checkpoint("
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 277,
+    "text": "    model.eval(no_ema=not args.use_ema).to(args.device)"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 283,
+    "text": "    print(f\"[RRSD-TCUT] t_cut={args.rrsd_t_cut} t_cut_scale={args.rrsd_t_cut_scale} \""
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 284,
+    "text": "          f\"scale={args.rrsd_scale} \""
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 285,
+    "text": "          f\"enabled={args.rrsd} seed={args.seed} N={args.N}\", flush=True)"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 290,
+    "text": "            h = hashlib.blake2b(os.path.basename(wp).encode(\"utf-8\"), digest_size=4).digest()"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 291,
+    "text": "            file_seed = (int(args.seed) + int.from_bytes(h, \"little\")) % (2**32)"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 292,
+    "text": "            torch.manual_seed(file_seed)"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 297,
+    "text": "            # y_pre = model._semamba_forward(y)  # [1, T]"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 307,
+    "text": "            y_pre = model._frontend_forward(y/norm)* norm   # [1,1,T']"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 308,
+    "text": "            y_pre = _match_length(y_pre, y)      # \u5bf9\u9f50\u957f\u5ea6\uff08\u8bad\u7ec3\u91cc\u5c31\u662f\u8fd9\u4e48\u505a\u7684\uff09"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 328,
+    "text": "                rrsd=args.rrsd,"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 329,
+    "text": "                rrsd_scale=args.rrsd_scale,"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 330,
+    "text": "                rrsd_t_cut=args.rrsd_t_cut,"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 331,
+    "text": "                rrsd_t_cut_scale=args.rrsd_t_cut_scale,"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 332,
+    "text": "                rrsd_t_min=args.rrsd_t_min,"
+  },
+  {
+    "path": "/data/coding/sgmse/joint_enhance_by_dir.py",
+    "line": 333,
+    "text": "                rrsd_t_max=args.rrsd_t_max,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 45,
+    "text": "from sgmse.joint_training_utils import rrsd_aux_loss_enabled"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 46,
+    "text": "from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 146,
+    "text": "    This is the original/global controller.  It is kept for checkpoint"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 207,
+    "text": "            y_pre = y_pre.detach()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 346,
+    "text": "            y_pre = y_pre.detach()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 413,
+    "text": "        parser.add_argument(\"--frontend_ckpt\", type=str, default=None, help=\"Optional frontend checkpoint\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 416,
+    "text": "        parser.add_argument(\"--frontend_state_dict_key\", type=str, default=None, help=\"Optional checkpoint key for external frontends\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 500,
+    "text": "        # ===== RRSD: Oracle-distilled reliability-routed diffusion ====="
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 501,
+    "text": "        parser.add_argument(\"--rrsd_weight\", type=float, default=0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 502,
+    "text": "                            help=\"Training weight for the RRSD reliability-router distillation loss. 0 disables RRSD training.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 503,
+    "text": "        parser.add_argument(\"--rrsd_hidden_ch\", type=int, default=48)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 504,
+    "text": "        parser.add_argument(\"--rrsd_num_bands\", type=int, default=32)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 505,
+    "text": "        parser.add_argument(\"--rrsd_num_time_blocks\", type=int, default=16)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 506,
+    "text": "        parser.add_argument(\"--rrsd_init_alpha\", type=float, default=0.05,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 508,
+    "text": "        parser.add_argument(\"--rrsd_benefit_weight\", type=float, default=4.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 510,
+    "text": "        parser.add_argument(\"--rrsd_recon_weight\", type=float, default=0.10,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 512,
+    "text": "        parser.add_argument(\"--rrsd_smooth_weight\", type=float, default=0.01,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 514,
+    "text": "        parser.add_argument(\"--rrsd_oracle_eps\", type=float, default=1e-6)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 516,
+    "text": "            \"--rrsd_teacher\", type=str, default=\"projection\", choices=[\"projection\", \"kstep\", \"future_grad\"],"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 518,
+    "text": "                \"RRSD training objective. 'projection' uses the original x0 projection oracle; \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 524,
+    "text": "        parser.add_argument(\"--rrsd_lookahead_k\", type=int, default=1,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 527,
+    "text": "            \"--rrsd_lookahead_candidates\", type=str, default=\"0,0.25,0.5,0.75,1.0\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 531,
+    "text": "            \"--rrsd_lookahead_dt\", type=float, default=0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 535,
+    "text": "            \"--rrsd_lookahead_chunk\", type=int, default=0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 541,
+    "text": "        parser.add_argument(\"--rrsd_future_weight\", type=float, default=1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 542,
+    "text": "                            help=\"Weight of the one-step future re-score loss in --rrsd_teacher future_grad mode.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 543,
+    "text": "        parser.add_argument(\"--rrsd_future_gate_cost\", type=float, default=1e-3,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 546,
+    "text": "            \"--rrsd_perceptual_conflict_weight\", type=float, default=0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 548,
+    "text": "                \"Selective conflict suppression weight for future_grad RRSD. \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 553,
+    "text": "        parser.add_argument(\"--rrsd_perceptual_conflict_layer\", type=int, default=3,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 554,
+    "text": "                            help=\"Frozen WavLM hidden layer used by selective RRSD conflict supervision.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 555,
+    "text": "        parser.add_argument(\"--rrsd_perceptual_conflict_rel_tol\", type=float, default=0.10,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 556,
+    "text": "                            help=\"Relative gradient threshold used to build the detached conflict mask.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 557,
+    "text": "        parser.add_argument(\"--rrsd_perceptual_conflict_min_alpha\", type=float, default=0.006,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 558,
+    "text": "                            help=\"Minimum effective alpha for a tile to enter the conflict mask.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 560,
+    "text": "            \"--rrsd_desat_weight\", type=float, default=0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 561,
+    "text": "            help=\"Weight of future-gradient-selected anti-saturation logit penalty; 0 leaves original RRSD unchanged.\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 564,
+    "text": "            \"--rrsd_desat_logit_floor\", type=float, default=-10.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 568,
+    "text": "            \"--rrsd_desat_grad_rel_tol\", type=float, default=0.10,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 572,
+    "text": "            \"--rrsd_use_gate\", action=\"store_true\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 579,
+    "text": "        parser.add_argument(\"--rrsd_init_gate\", type=float, default=0.20,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 580,
+    "text": "                            help=\"Initial sigmoid probability of the explicit gate when --rrsd_use_gate is enabled.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 581,
+    "text": "        parser.add_argument(\"--rrsd_gate_threshold\", type=float, default=0.01,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 582,
+    "text": "                            help=\"Minimum K-step relative trajectory gain required for a positive gate label; used only with --rrsd_teacher kstep.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 583,
+    "text": "        parser.add_argument(\"--rrsd_gate_local_threshold\", type=float, default=0.005,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 584,
+    "text": "                            help=\"Minimum local projection benefit ratio required for a positive band-time gate label. This is the gate-only threshold with --rrsd_teacher projection.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 585,
+    "text": "        parser.add_argument(\"--rrsd_gate_weight\", type=float, default=1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 586,
+    "text": "                            help=\"Weight of gate BCE when --rrsd_use_gate is enabled.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 587,
+    "text": "        parser.add_argument(\"--rrsd_strength_weight\", type=float, default=1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 588,
+    "text": "                            help=\"Weight of conditional strength distillation when --rrsd_use_gate is enabled.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 589,
+    "text": "        parser.add_argument(\"--rrsd_gate_pos_weight\", type=float, default=2.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 591,
+    "text": "        parser.add_argument(\"--rrsd_validate\", action=\"store_true\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 592,
+    "text": "                            help=\"Use RRSD during the periodic file-level validation sampler.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 593,
+    "text": "        parser.add_argument(\"--rrsd_freeze_base\", action=\"store_true\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 594,
+    "text": "                            help=\"Freeze the frontend and score network; train only the RRSD router. Recommended for projection-gate and required for K-step teacher experiments.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 596,
+    "text": "            \"--rrsd_freeze_router\", action=\"store_true\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 597,
+    "text": "            help=\"Freeze the RRSD router while leaving the score network trainable; use with a frozen frontend for backend-only adaptation.\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 600,
+    "text": "            \"--rrsd_disable_aux_loss\", action=\"store_true\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 601,
+    "text": "            help=\"Skip the RRSD training auxiliary loss while retaining the frozen router for inference. Requires --rrsd_freeze_router.\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 695,
+    "text": "        # ===== TF-grid selector oracle mask loss ====="
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 697,
+    "text": "                            help=\"Weight of projection-oracle mask loss for tfgrid selector. 0 disables it.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 699,
+    "text": "                            help=\"0 = unweighted mask loss; 1 = fully confidence-weighted mask loss.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 734,
+    "text": "                                \"incompatible with --rrsd_freeze_base.\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 777,
+    "text": "                            help=\"Checkpoint of the independently trained variance path estimator.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 795,
+    "text": "                            help=\"Residual prior. 'predictive' is an alias of the direct complex predictor H_theta(Y_pre,Y_noisy); 'direct' is kept for checkpoint compatibility.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 828,
+    "text": "        parser.add_argument(\"--ctm_teacher_ckpt\", type=str, default=None, help=\"Teacher ckpt path (SGMSE/SBVE checkpoint)\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 870,
+    "text": "        rrsd_weight: float = 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 871,
+    "text": "        rrsd_hidden_ch: int = 48,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 872,
+    "text": "        rrsd_num_bands: int = 32,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 873,
+    "text": "        rrsd_num_time_blocks: int = 16,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 874,
+    "text": "        rrsd_init_alpha: float = 0.05,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 875,
+    "text": "        rrsd_benefit_weight: float = 4.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 876,
+    "text": "        rrsd_recon_weight: float = 0.10,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 877,
+    "text": "        rrsd_smooth_weight: float = 0.01,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 878,
+    "text": "        rrsd_oracle_eps: float = 1e-6,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 879,
+    "text": "        rrsd_teacher: str = \"projection\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 880,
+    "text": "        rrsd_lookahead_k: int = 1,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 881,
+    "text": "        rrsd_lookahead_candidates: str = \"0,0.25,0.5,0.75,1.0\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 882,
+    "text": "        rrsd_lookahead_dt: float = 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 883,
+    "text": "        rrsd_lookahead_chunk: int = 0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 884,
+    "text": "        rrsd_future_weight: float = 1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 885,
+    "text": "        rrsd_future_gate_cost: float = 1e-3,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 886,
+    "text": "        rrsd_perceptual_conflict_weight: float = 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 887,
+    "text": "        rrsd_perceptual_conflict_layer: int = 3,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 888,
+    "text": "        rrsd_perceptual_conflict_rel_tol: float = 0.10,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 889,
+    "text": "        rrsd_perceptual_conflict_min_alpha: float = 0.006,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 890,
+    "text": "        rrsd_desat_weight: float = 0.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 891,
+    "text": "        rrsd_desat_logit_floor: float = -10.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 892,
+    "text": "        rrsd_desat_grad_rel_tol: float = 0.10,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 893,
+    "text": "        rrsd_use_gate: bool = False,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 894,
+    "text": "        rrsd_init_gate: float = 0.20,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 895,
+    "text": "        rrsd_gate_threshold: float = 0.01,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 896,
+    "text": "        rrsd_gate_local_threshold: float = 0.005,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 897,
+    "text": "        rrsd_gate_weight: float = 1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 898,
+    "text": "        rrsd_strength_weight: float = 1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 899,
+    "text": "        rrsd_gate_pos_weight: float = 2.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 900,
+    "text": "        rrsd_validate: bool = False,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 901,
+    "text": "        rrsd_freeze_base: bool = False,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 902,
+    "text": "        rrsd_freeze_router: bool = False,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 903,
+    "text": "        rrsd_disable_aux_loss: bool = False,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1021,
+    "text": "        # RRSD learns a deployable local routing coefficient alpha(t,f,tau) from"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1023,
+    "text": "        self.rrsd_weight = float(rrsd_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1024,
+    "text": "        self.rrsd_benefit_weight = float(rrsd_benefit_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1025,
+    "text": "        self.rrsd_recon_weight = float(rrsd_recon_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1026,
+    "text": "        self.rrsd_smooth_weight = float(rrsd_smooth_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1027,
+    "text": "        self.rrsd_oracle_eps = float(rrsd_oracle_eps)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1028,
+    "text": "        self.rrsd_teacher = str(rrsd_teacher).strip().lower()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1029,
+    "text": "        self.rrsd_lookahead_k = int(rrsd_lookahead_k)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1030,
+    "text": "        self.rrsd_lookahead_candidates_raw = str(rrsd_lookahead_candidates)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1032,
+    "text": "            self.rrsd_lookahead_candidates = tuple("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1033,
+    "text": "                sorted(set(float(v.strip()) for v in self.rrsd_lookahead_candidates_raw.split(\",\") if v.strip()))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1036,
+    "text": "            raise ValueError(f\"Invalid --rrsd_lookahead_candidates={rrsd_lookahead_candidates!r}\") from e"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1037,
+    "text": "        self.rrsd_lookahead_dt = float(rrsd_lookahead_dt)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1038,
+    "text": "        self.rrsd_lookahead_chunk = int(rrsd_lookahead_chunk)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1039,
+    "text": "        self.rrsd_future_weight = float(rrsd_future_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1040,
+    "text": "        self.rrsd_future_gate_cost = float(rrsd_future_gate_cost)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1041,
+    "text": "        self.rrsd_perceptual_conflict_weight = float(rrsd_perceptual_conflict_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1042,
+    "text": "        self.rrsd_perceptual_conflict_layer = int(rrsd_perceptual_conflict_layer)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1043,
+    "text": "        self.rrsd_perceptual_conflict_rel_tol = float(rrsd_perceptual_conflict_rel_tol)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1044,
+    "text": "        self.rrsd_perceptual_conflict_min_alpha = float(rrsd_perceptual_conflict_min_alpha)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1045,
+    "text": "        if self.rrsd_perceptual_conflict_weight < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1046,
+    "text": "            raise ValueError(\"rrsd_perceptual_conflict_weight must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1047,
+    "text": "        if self.rrsd_perceptual_conflict_rel_tol < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1048,
+    "text": "            raise ValueError(\"rrsd_perceptual_conflict_rel_tol must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1049,
+    "text": "        if self.rrsd_perceptual_conflict_min_alpha < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1050,
+    "text": "            raise ValueError(\"rrsd_perceptual_conflict_min_alpha must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1051,
+    "text": "        self.rrsd_desat_weight = float(rrsd_desat_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1052,
+    "text": "        self.rrsd_desat_logit_floor = float(rrsd_desat_logit_floor)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1053,
+    "text": "        self.rrsd_desat_grad_rel_tol = float(rrsd_desat_grad_rel_tol)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1054,
+    "text": "        if self.rrsd_desat_weight < 0.0 or self.rrsd_desat_grad_rel_tol < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1055,
+    "text": "            raise ValueError(\"RRSD desaturation weight and gradient threshold must be >= 0\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1056,
+    "text": "        if self.rrsd_desat_weight > 0.0 and rrsd_teacher != \"future_grad\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1057,
+    "text": "            raise ValueError(\"--rrsd_desat_weight requires --rrsd_teacher future_grad\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1058,
+    "text": "        if self.rrsd_desat_weight > 0.0 and bool(rrsd_use_gate):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1059,
+    "text": "            raise ValueError(\"Pilot desaturation supports no-gate RRSD only\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1060,
+    "text": "        self.rrsd_use_gate = bool(rrsd_use_gate)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1061,
+    "text": "        self.rrsd_init_gate = float(rrsd_init_gate)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1062,
+    "text": "        self.rrsd_gate_threshold = float(rrsd_gate_threshold)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1063,
+    "text": "        self.rrsd_gate_local_threshold = float(rrsd_gate_local_threshold)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1064,
+    "text": "        self.rrsd_gate_weight = float(rrsd_gate_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1065,
+    "text": "        self.rrsd_strength_weight = float(rrsd_strength_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1066,
+    "text": "        self.rrsd_gate_pos_weight = float(rrsd_gate_pos_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1067,
+    "text": "        self.rrsd_validate = bool(rrsd_validate)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1068,
+    "text": "        self.rrsd_freeze_base = bool(rrsd_freeze_base)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1069,
+    "text": "        self.rrsd_freeze_router = bool(rrsd_freeze_router)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1070,
+    "text": "        self.rrsd_disable_aux_loss = bool(rrsd_disable_aux_loss)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1072,
+    "text": "        if self.rrsd_freeze_router and self.rrsd_freeze_base:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1073,
+    "text": "            raise ValueError(\"--rrsd_freeze_router cannot be combined with --rrsd_freeze_base.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1074,
+    "text": "        if self.rrsd_weight < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1075,
+    "text": "            raise ValueError(\"rrsd_weight must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1076,
+    "text": "        if self.rrsd_disable_aux_loss and self.rrsd_weight <= 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1077,
+    "text": "            raise ValueError(\"--rrsd_disable_aux_loss requires --rrsd_weight > 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1078,
+    "text": "        if self.rrsd_disable_aux_loss and not self.rrsd_freeze_router:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1079,
+    "text": "            raise ValueError(\"--rrsd_disable_aux_loss requires --rrsd_freeze_router.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1080,
+    "text": "        if self.rrsd_benefit_weight < 0.0 or self.rrsd_recon_weight < 0.0 or self.rrsd_smooth_weight < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1081,
+    "text": "            raise ValueError(\"RRSD loss weights must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1082,
+    "text": "        if self.rrsd_gate_weight < 0.0 or self.rrsd_strength_weight < 0.0 or self.rrsd_gate_pos_weight <= 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1083,
+    "text": "            raise ValueError(\"RRSD gate/strength weights must be non-negative and gate_pos_weight > 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1084,
+    "text": "        if self.rrsd_oracle_eps <= 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1085,
+    "text": "            raise ValueError(\"rrsd_oracle_eps must be > 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1086,
+    "text": "        if self.rrsd_teacher not in {\"projection\", \"kstep\", \"future_grad\"}:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1087,
+    "text": "            raise ValueError(\"rrsd_teacher must be 'projection', 'kstep', or 'future_grad'.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1088,
+    "text": "        if self.rrsd_lookahead_chunk < 0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1089,
+    "text": "            raise ValueError(\"rrsd_lookahead_chunk must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1090,
+    "text": "        if self.rrsd_future_weight < 0.0 or self.rrsd_future_gate_cost < 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1091,
+    "text": "            raise ValueError(\"rrsd_future_weight and rrsd_future_gate_cost must be >= 0.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1092,
+    "text": "        if self.rrsd_lookahead_k < 1:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1093,
+    "text": "            raise ValueError(\"rrsd_lookahead_k must be >= 1.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1094,
+    "text": "        if len(self.rrsd_lookahead_candidates) < 2 or 0.0 not in self.rrsd_lookahead_candidates:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1095,
+    "text": "            raise ValueError(\"rrsd_lookahead_candidates must contain 0 and at least one positive candidate.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1096,
+    "text": "        if any(v < 0.0 or v > 1.0 for v in self.rrsd_lookahead_candidates):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1097,
+    "text": "            raise ValueError(\"rrsd_lookahead_candidates must lie in [0,1].\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1098,
+    "text": "        if self.rrsd_teacher in {\"kstep\", \"future_grad\"} and not self.rrsd_freeze_base:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1100,
+    "text": "                f\"--rrsd_teacher {self.rrsd_teacher} requires --rrsd_freeze_base so the diffusion model is a stable frozen evaluator.\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1106,
+    "text": "        # it is evaluated on x0_next_route inside _rrsd_future_grad_loss."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1107,
+    "text": "        self.rrsd_route_contrastive = bool("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1108,
+    "text": "            self.rrsd_teacher == \"future_grad\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1109,
+    "text": "            and self.rrsd_freeze_base"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1112,
+    "text": "        if self.rrsd_route_contrastive:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1115,
+    "text": "        self.rrsd_router = None"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1116,
+    "text": "        if self.rrsd_weight > 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1118,
+    "text": "                raise ValueError(\"RRSD currently supports OUVESDE only.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1120,
+    "text": "                raise ValueError(\"RRSD currently requires score_matching with sigma^2 weighting.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1121,
+    "text": "            self.rrsd_router = BandTimeReliabilityRouter("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1122,
+    "text": "                hidden_ch=int(rrsd_hidden_ch),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1123,
+    "text": "                num_bands=int(rrsd_num_bands),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1124,
+    "text": "                num_time_blocks=int(rrsd_num_time_blocks),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1125,
+    "text": "                init_alpha=float(rrsd_init_alpha),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1126,
+    "text": "                use_gate=self.rrsd_use_gate,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1127,
+    "text": "                init_gate=self.rrsd_init_gate,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1235,
+    "text": "        # controller and all of its checkpoint keys untouched."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1240,
+    "text": "        if self.anchor_v2_freeze_base and self.rrsd_freeze_base:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1242,
+    "text": "                \"--anchor_v2_freeze_base is incompatible with --rrsd_freeze_base; \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1288,
+    "text": "                model_va, _ = load_pathsim_va_checkpoint(pathsim_va_ckpt, map_location=\"cpu\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1293,
+    "text": "                    \"using a zero-initialized rho=1 estimator until checkpoint weights are loaded.\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1312,
+    "text": "        if self.rrsd_weight > 0.0 and self.residual_refine_enable:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1314,
+    "text": "                \"RRSD is defined for the full-speech frontend/diffusion path only; \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1318,
+    "text": "        # 'predictive' is a paper/CLI alias; the module/checkpoint layout is"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1398,
+    "text": "        self.hparams[\"rrsd_weight\"] = self.rrsd_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1399,
+    "text": "        self.hparams[\"rrsd_hidden_ch\"] = int(rrsd_hidden_ch)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1400,
+    "text": "        self.hparams[\"rrsd_num_bands\"] = int(rrsd_num_bands)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1401,
+    "text": "        self.hparams[\"rrsd_num_time_blocks\"] = int(rrsd_num_time_blocks)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1402,
+    "text": "        self.hparams[\"rrsd_init_alpha\"] = float(rrsd_init_alpha)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1403,
+    "text": "        self.hparams[\"rrsd_benefit_weight\"] = self.rrsd_benefit_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1404,
+    "text": "        self.hparams[\"rrsd_recon_weight\"] = self.rrsd_recon_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1405,
+    "text": "        self.hparams[\"rrsd_smooth_weight\"] = self.rrsd_smooth_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1406,
+    "text": "        self.hparams[\"rrsd_oracle_eps\"] = self.rrsd_oracle_eps"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1407,
+    "text": "        self.hparams[\"rrsd_teacher\"] = self.rrsd_teacher"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1408,
+    "text": "        self.hparams[\"rrsd_lookahead_k\"] = self.rrsd_lookahead_k"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1409,
+    "text": "        self.hparams[\"rrsd_lookahead_candidates\"] = self.rrsd_lookahead_candidates_raw"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1410,
+    "text": "        self.hparams[\"rrsd_lookahead_dt\"] = self.rrsd_lookahead_dt"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1411,
+    "text": "        self.hparams[\"rrsd_lookahead_chunk\"] = self.rrsd_lookahead_chunk"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1412,
+    "text": "        self.hparams[\"rrsd_future_weight\"] = self.rrsd_future_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1413,
+    "text": "        self.hparams[\"rrsd_future_gate_cost\"] = self.rrsd_future_gate_cost"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1414,
+    "text": "        self.hparams[\"rrsd_perceptual_conflict_weight\"] = self.rrsd_perceptual_conflict_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1415,
+    "text": "        self.hparams[\"rrsd_perceptual_conflict_layer\"] = self.rrsd_perceptual_conflict_layer"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1416,
+    "text": "        self.hparams[\"rrsd_perceptual_conflict_rel_tol\"] = self.rrsd_perceptual_conflict_rel_tol"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1417,
+    "text": "        self.hparams[\"rrsd_perceptual_conflict_min_alpha\"] = self.rrsd_perceptual_conflict_min_alpha"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1418,
+    "text": "        self.hparams[\"rrsd_desat_weight\"] = self.rrsd_desat_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1419,
+    "text": "        self.hparams[\"rrsd_desat_logit_floor\"] = self.rrsd_desat_logit_floor"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1420,
+    "text": "        self.hparams[\"rrsd_desat_grad_rel_tol\"] = self.rrsd_desat_grad_rel_tol"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1421,
+    "text": "        self.hparams[\"rrsd_use_gate\"] = self.rrsd_use_gate"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1422,
+    "text": "        self.hparams[\"rrsd_init_gate\"] = self.rrsd_init_gate"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1423,
+    "text": "        self.hparams[\"rrsd_gate_threshold\"] = self.rrsd_gate_threshold"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1424,
+    "text": "        self.hparams[\"rrsd_gate_local_threshold\"] = self.rrsd_gate_local_threshold"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1425,
+    "text": "        self.hparams[\"rrsd_gate_weight\"] = self.rrsd_gate_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1426,
+    "text": "        self.hparams[\"rrsd_strength_weight\"] = self.rrsd_strength_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1427,
+    "text": "        self.hparams[\"rrsd_gate_pos_weight\"] = self.rrsd_gate_pos_weight"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1428,
+    "text": "        self.hparams[\"rrsd_validate\"] = self.rrsd_validate"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1429,
+    "text": "        self.hparams[\"rrsd_freeze_base\"] = self.rrsd_freeze_base"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1430,
+    "text": "        self.hparams[\"rrsd_freeze_router\"] = self.rrsd_freeze_router"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1431,
+    "text": "        self.hparams[\"rrsd_disable_aux_loss\"] = self.rrsd_disable_aux_loss"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1464,
+    "text": "                self.rrsd_perceptual_conflict_weight > 0.0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1465,
+    "text": "                and self.rrsd_teacher == \"future_grad\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1466,
+    "text": "                and self.rrsd_freeze_base"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1484,
+    "text": "            self.rrsd_perceptual_conflict_weight > 0.0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1485,
+    "text": "            and self.rrsd_teacher == \"future_grad\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1486,
+    "text": "            and self.rrsd_freeze_base"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1490,
+    "text": "                \"Selective RRSD perceptual conflict supervision requires a loaded frozen content model.\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1534,
+    "text": "        if self.rrsd_freeze_base:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1535,
+    "text": "            if self.rrsd_router is None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1536,
+    "text": "                raise ValueError(\"--rrsd_freeze_base requires --rrsd_weight > 0 so a router exists.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1538,
+    "text": "                p.requires_grad = name.startswith(\"rrsd_router.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1540,
+    "text": "        if self.rrsd_freeze_router:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1541,
+    "text": "            if self.rrsd_router is None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1542,
+    "text": "                raise ValueError(\"--rrsd_freeze_router requires --rrsd_weight > 0 so a router exists.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1544,
+    "text": "                if name.startswith(\"rrsd_router.\"):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1562,
+    "text": "        \"\"\"Create a frozen teacher_dnn from a Lightning checkpoint."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1585,
+    "text": "        # if checkpoint contains EMA, prefer EMA weights"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1777,
+    "text": "    def train(self, mode: bool = True, no_ema: bool = False):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1778,
+    "text": "        out = super().train(mode, no_ema=no_ema)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1780,
+    "text": "            bool(getattr(self, \"rrsd_freeze_base\", False))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1797,
+    "text": "            if getattr(self, \"rrsd_router\", None) is not None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1798,
+    "text": "                self.rrsd_router.train("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1799,
+    "text": "                    bool(getattr(self, \"rrsd_freeze_base\", False))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1800,
+    "text": "                    and not bool(getattr(self, \"rrsd_freeze_router\", False))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1804,
+    "text": "        if mode and bool(getattr(self, \"rrsd_freeze_router\", False)):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1807,
+    "text": "            if getattr(self, \"rrsd_router\", None) is not None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1808,
+    "text": "                self.rrsd_router.eval()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1824,
+    "text": "    def _frontend_forward(self, y_noisy: torch.Tensor) -> torch.Tensor:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1830,
+    "text": "        return self._frontend_forward(y_noisy)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1914,
+    "text": "        selector_mask: torch.Tensor,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1916,
+    "text": "        \"\"\"Projection-oracle loss for tfgrid_a selector mask."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1925,
+    "text": "        Then regress the predicted selector mask M to M_star.  X/Y_noisy/Y_pre"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1926,
+    "text": "        are detached, so this auxiliary loss updates the selector mask path only."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1930,
+    "text": "        if selector_mask is None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1933,
+    "text": "        # Predicted mask M should remain differentiable."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1934,
+    "text": "        M = selector_mask"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1941,
+    "text": "            raise RuntimeError(f\"selector_mask must be 4D [B,C,F,T], got {tuple(M.shape)}\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1947,
+    "text": "        # Stop gradients through clean/noisy/frontend spectra; only train selector mask."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1988,
+    "text": "            \"selector_mask_mean\": M.detach().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 1989,
+    "text": "            \"selector_mask_std\": M.detach().std(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2459,
+    "text": "        modify checkpoint weights; they only change the pull strength used by"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2461,
+    "text": "            K_t = (k_max_override or checkpoint K_max) * k_scale * E(t) * g_t."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2719,
+    "text": "        recover. R_obs = Y_noisy - Y_pre = R_target + N is available at"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2739,
+    "text": "        return 10.0 * torch.log10((target_energy + eps) / (error_energy + eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2870,
+    "text": "        rrsd_arg = bool(kwargs.pop(\"rrsd\", False))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2871,
+    "text": "        kwargs.pop(\"rrsd_scale\", None)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2886,
+    "text": "        if rrsd_arg:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2888,
+    "text": "                \"RRSD V1-clean does not support residual-refinement inference. \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2917,
+    "text": "        Y_pre = torch.unsqueeze(self._forward_transform(self._stft(y_pre_n)), 0)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 2919,
+    "text": "        Y_pre = pad_spec(Y_pre)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3011,
+    "text": "    def _rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3018,
+    "text": "        \"\"\"Invert the OUVE marginal mean for the full-speech RRSD path."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3024,
+    "text": "            raise ValueError(\"RRSD V1 currently supports OUVESDE only.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3048,
+    "text": "    def _rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3068,
+    "text": "            raise ValueError(\"RRSD K-step teacher currently supports OUVESDE only.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3081,
+    "text": "    def _rrsd_kstep_trajectory_probe("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3088,
+    "text": "        - base: never use RRSD;"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3089,
+    "text": "        - first: RRSD only at the first reverse update;"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3090,
+    "text": "        - full: recompute RRSD from the current state at EVERY update."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3096,
+    "text": "        if self.rrsd_router is None or not self.rrsd_freeze_base:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3097,
+    "text": "            raise RuntimeError(\"K-step diagnosis needs frozen base and a loaded RRSD router\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3139,
+    "text": "            x0_b_current, sigma, wx, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3142,
+    "text": "            pred = self.rrsd_router("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3163,
+    "text": "                x_stop2, t_stop2_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3167,
+    "text": "                x_stop1, t_stop1_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3170,
+    "text": "            x_base, t_base_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3173,
+    "text": "            x_first, t_first_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3176,
+    "text": "            x_full, t_full_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3186,
+    "text": "            # The score network is frozen and in eval mode under --rrsd_freeze_base."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3202,
+    "text": "            x0_base, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3205,
+    "text": "            x0_first, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3208,
+    "text": "            x0_full, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3214,
+    "text": "            ratio_first = err_first / err_b.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3215,
+    "text": "            ratio_full = err_full / err_b.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3221,
+    "text": "                x0_stop2, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3224,
+    "text": "                ratio_stop2 = sample_err(x0_stop2) / err_b.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3228,
+    "text": "                x0_stop1, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3231,
+    "text": "                ratio_stop1 = sample_err(x0_stop1) / err_b.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3242,
+    "text": "        n = int(getattr(self, \"_rrsd_kstep_done\", 0)) + 1"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3243,
+    "text": "        total = int(os.environ.get(\"SGMSE_RRSD_KSTEP_BATCHES\", \"0\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3245,
+    "text": "            \"[RRSD-KSTEP] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3259,
+    "text": "                \"[RRSD-KSAMPLE] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3275,
+    "text": "                \"[RRSD-KSTOP] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3292,
+    "text": "        self._rrsd_kstep_done = n"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3293,
+    "text": "        if n >= total and os.environ.get(\"SGMSE_RRSD_KSTEP_EXIT\", \"0\") == \"1\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3294,
+    "text": "            print(\"[RRSD-KSTEP] Completed; exiting without optimizer update/saving.\", flush=True)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3297,
+    "text": "    def _rrsd_lookahead_teacher("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3328,
+    "text": "        if not bool(getattr(self, \"rrsd_freeze_base\", False)):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3329,
+    "text": "            raise RuntimeError(\"RRSD K-step teacher requires a frozen base model.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3333,
+    "text": "        candidates = tuple(float(v) for v in self.rrsd_lookahead_candidates)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3335,
+    "text": "        base_dt = float(self.rrsd_lookahead_dt)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3349,
+    "text": "        chunk = int(self.rrsd_lookahead_chunk)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3379,
+    "text": "                x_cur, t_cur = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3383,
+    "text": "                for _ in range(1, int(self.rrsd_lookahead_k)):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3389,
+    "text": "                    x_cur, t_cur = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3394,
+    "text": "                x0_final, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3410,
+    "text": "        advantage_ratio = advantage / base_error.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3424,
+    "text": "    def _rrsd_diagnose_alpha_zero("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3430,
+    "text": "        Env: SGMSE_RRSD_FD_PROBE=1, SGMSE_RRSD_FD_EPS=0.01."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3447,
+    "text": "            x_next, t_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3454,
+    "text": "            x0_next, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3464,
+    "text": "                / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3485,
+    "text": "            def fraction(mask, population):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3487,
+    "text": "                    (mask & population).float().sum()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3492,
+    "text": "                \"rrsd_diag_grad_abs_mean\": g0.abs().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3493,
+    "text": "                \"rrsd_diag_grad_tolerance\": g0.new_tensor(tol),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3494,
+    "text": "                \"rrsd_diag_beneficial_fraction\": beneficial.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3495,
+    "text": "                \"rrsd_diag_harmful_fraction\": harmful.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3496,
+    "text": "                \"rrsd_diag_weak_fraction\": (~(beneficial | harmful)).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3497,
+    "text": "                \"rrsd_diag_beneficial_ignored\": fraction(~active, beneficial),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3498,
+    "text": "                \"rrsd_diag_harmful_used\": fraction(active, harmful),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3499,
+    "text": "                \"rrsd_diag_alpha_on_beneficial\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3502,
+    "text": "                \"rrsd_diag_alpha_on_harmful\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3505,
+    "text": "                \"rrsd_diag_alpha_active\": active.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3506,
+    "text": "                \"rrsd_diag_probe_loss_at_zero\": ratio.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3518,
+    "text": "                        \"[RRSD-LOGIT] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3530,
+    "text": "                    \"[RRSD-LOGIT] strength_logit unavailable; apply the \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3534,
+    "text": "            if os.environ.get(\"SGMSE_RRSD_FD_PROBE\", \"0\") == \"1\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3535,
+    "text": "                eps = float(os.environ.get(\"SGMSE_RRSD_FD_EPS\", \"0.01\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3537,
+    "text": "                    raise ValueError(\"SGMSE_RRSD_FD_EPS must be in (0, 1].\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3540,
+    "text": "                mask = ignored_benefit.float()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3541,
+    "text": "                oracle_from_zero = eps * mask"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3542,
+    "text": "                oracle_plus_router = (alpha + eps * mask).clamp(0.0, 1.0)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3567,
+    "text": "                # \u6ca1\u6709\u989d\u5916 gate / contrastive \u65f6\u7684\u5b8c\u6574 RRSD \u635f\u5931\u53d8\u5316"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3569,
+    "text": "                    float(self.rrsd_future_weight) * delta_added"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3570,
+    "text": "                    + float(self.rrsd_smooth_weight) * delta_smooth"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3574,
+    "text": "                    \"[RRSD-FULL]\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3579,
+    "text": "                    f\"{(self.rrsd_smooth_weight * delta_smooth).item():+.8e}\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3584,
+    "text": "                    \"rrsd_fd_alpha_zero\": ratio0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3585,
+    "text": "                    \"rrsd_fd_alpha_router\": ratio_router,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3586,
+    "text": "                    \"rrsd_fd_alpha_oracle_zero\": ratio_oracle_zero,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3587,
+    "text": "                    \"rrsd_fd_alpha_oracle_plus\": ratio_oracle_plus,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3588,
+    "text": "                    \"rrsd_fd_oracle_delta_from_zero\": delta_zero,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3589,
+    "text": "                    \"rrsd_fd_oracle_delta_from_router\": delta_added,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3590,
+    "text": "                    \"rrsd_fd_zero_repeat_jitter\": jitter,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3591,
+    "text": "                    \"rrsd_fd_ignored_beneficial_fraction\": mask.mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3594,
+    "text": "                    \"[RRSD-FD] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3595,
+    "text": "                    f\"eps={eps:.4f} selected={mask.mean().item():.3f} \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3606,
+    "text": "                # reference-derived gradient masks. Both options add the same"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3608,
+    "text": "                if os.environ.get(\"SGMSE_RRSD_SMOOTH_PROBE\", \"0\") == \"1\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3609,
+    "text": "                    def _rrsd_diag_tv(a):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3617,
+    "text": "                    w_future = float(self.rrsd_future_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3618,
+    "text": "                    w_smooth = float(self.rrsd_smooth_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3619,
+    "text": "                    smooth_router = _rrsd_diag_tv(alpha)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3623,
+    "text": "                    sparse_smooth_delta = _rrsd_diag_tv(sparse_alpha) - smooth_router"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3631,
+    "text": "                        soft_mask = F.avg_pool2d("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3632,
+    "text": "                            mask, kernel_size=kernel, stride=1,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3637,
+    "text": "                        dims = tuple(range(1, soft_mask.ndim))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3638,
+    "text": "                        mass = mask.sum(dim=dims, keepdim=True)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3639,
+    "text": "                        mass_after_pool = soft_mask.sum(dim=dims, keepdim=True)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3640,
+    "text": "                        soft_mask = soft_mask * ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3643,
+    "text": "                        smooth_alpha = (alpha + eps * soft_mask).clamp(0.0, 1.0)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3646,
+    "text": "                        smooth_smooth_delta = _rrsd_diag_tv(smooth_alpha) - smooth_router"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3657,
+    "text": "                            \"[RRSD-SMOOTH] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3659,
+    "text": "                            f\"selected={mask.mean().item():.3f} \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3675,
+    "text": "    def _rrsd_alpha_sweep_probe("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3686,
+    "text": "        if not bool(self.rrsd_freeze_base):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3687,
+    "text": "            raise RuntimeError(\"Alpha sweep requires --rrsd_freeze_base\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3702,
+    "text": "        chunk = int(os.environ.get(\"SGMSE_RRSD_SWEEP_CHUNK\", \"2\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3704,
+    "text": "            raise ValueError(\"SGMSE_RRSD_SWEEP_CHUNK must be >= 1\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3727,
+    "text": "            x_next, t_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3732,
+    "text": "            x0_next, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3740,
+    "text": "        ratio = errors / base_error.clamp_min(float(self.rrsd_oracle_eps))[:, None]"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3746,
+    "text": "            / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3750,
+    "text": "            / route_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3752,
+    "text": "        n = int(getattr(self, \"_rrsd_alpha_sweep_done\", 0)) + 1"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3753,
+    "text": "        total = int(os.environ.get(\"SGMSE_RRSD_SWEEP_BATCHES\", \"0\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3755,
+    "text": "            \"[RRSD-ASWEEP-BATCH] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3769,
+    "text": "                \"[RRSD-ASWEEP] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3782,
+    "text": "                \"[RRSD-ASWEEP-WARN] Probe rescoring differs by >0.1% from \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3786,
+    "text": "        self._rrsd_alpha_sweep_done = n"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3787,
+    "text": "        if n >= total and os.environ.get(\"SGMSE_RRSD_SWEEP_EXIT\", \"0\") == \"1\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3788,
+    "text": "            print(\"[RRSD-ASWEEP] Completed; exiting without optimizer update/saving.\", flush=True)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3791,
+    "text": "    def _rrsd_future_grad_loss("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3809,
+    "text": "        if not bool(getattr(self, \"rrsd_freeze_base\", False)):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3810,
+    "text": "            raise RuntimeError(\"RRSD future_grad requires a frozen base model.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3829,
+    "text": "        base_dt = float(self.rrsd_lookahead_dt)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3848,
+    "text": "        x_next_route, t_next = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3851,
+    "text": "        x_next_base, t_next_base = self._rrsd_reverse_mean_step("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3864,
+    "text": "        # under --rrsd_freeze_base, yet autograd must retain"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3873,
+    "text": "        x0_next_route, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3876,
+    "text": "        x0_next_base, _, _, _ = self._rrsd_score_to_x0("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3892,
+    "text": "            and self.rrsd_perceptual_conflict_weight > 0.0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3899,
+    "text": "                    layer=self.rrsd_perceptual_conflict_layer,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3904,
+    "text": "                layer=self.rrsd_perceptual_conflict_layer,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3928,
+    "text": "                gf.abs().mean(1) * float(self.rrsd_perceptual_conflict_rel_tol),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3932,
+    "text": "                gp.abs().mean(1) * float(self.rrsd_perceptual_conflict_rel_tol),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3938,
+    "text": "                & (alpha_flat >= float(self.rrsd_perceptual_conflict_min_alpha))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3941,
+    "text": "            # of selected tiles prevents sparse masks from changing loss scale."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3951,
+    "text": "                conflict.sum() / alpha_flat.ge(float(self.rrsd_perceptual_conflict_min_alpha)).sum().clamp_min(1.0)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3963,
+    "text": "        if bool(getattr(self, \"rrsd_route_contrastive\", False)):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 3994,
+    "text": "            future_err / base_future_err.detach().clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4005,
+    "text": "        if self.rrsd_use_gate:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4009,
+    "text": "            float(self.rrsd_future_weight) * loss_future"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4010,
+    "text": "            + float(self.rrsd_smooth_weight) * loss_smooth"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4011,
+    "text": "            + float(self.rrsd_future_gate_cost) * loss_gate_cost"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4013,
+    "text": "            + float(self.rrsd_perceptual_conflict_weight) * loss_perceptual_conflict"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4025,
+    "text": "        if self.training and float(self.rrsd_desat_weight) > 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4028,
+    "text": "                    \"RRSD desaturation requires strength_logit_train from patched reliability_router.py\""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4038,
+    "text": "                * float(self.rrsd_desat_grad_rel_tol)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4044,
+    "text": "            gap = torch.relu(float(self.rrsd_desat_logit_floor) - logit)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4046,
+    "text": "            loss = loss + float(self.rrsd_desat_weight) * loss_desat_raw"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4049,
+    "text": "                beneficial * (logit.detach() < float(self.rrsd_desat_logit_floor)).float()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4056,
+    "text": "                    \"[RRSD-DESAT] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4063,
+    "text": "                    f\"penalty_weighted={(float(self.rrsd_desat_weight)*loss_desat_raw.detach()).item():.3e} \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4071,
+    "text": "                \"rrsd_loss_future\": loss_future.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4072,
+    "text": "                \"rrsd_future_x0_error\": future_err.mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4073,
+    "text": "                \"rrsd_base_future_x0_error\": base_future_err.mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4074,
+    "text": "                \"rrsd_future_error_over_base_future\": loss_future.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4075,
+    "text": "                \"rrsd_route_contrastive_loss\": loss_route_contrastive.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4076,
+    "text": "                \"rrsd_route_contrastive_raw\": route_ssl_raw.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4077,
+    "text": "                \"rrsd_route_contrastive_base\": base_ssl_reference.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4078,
+    "text": "                \"rrsd_route_contrastive_weighted\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4081,
+    "text": "                \"rrsd_future_improve_fraction\": (future_err < base_future_err).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4082,
+    "text": "                \"rrsd_future_relative_error_change\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4084,
+    "text": "                    / base_future_err.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4086,
+    "text": "                \"rrsd_loss_smooth\": loss_smooth.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4087,
+    "text": "                \"rrsd_desat_loss_raw\": loss_desat_raw.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4088,
+    "text": "                \"rrsd_desat_loss_weighted\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4089,
+    "text": "                    float(self.rrsd_desat_weight) * loss_desat_raw.detach()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4091,
+    "text": "                \"rrsd_desat_beneficial_fraction\": desat_good_frac.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4092,
+    "text": "                \"rrsd_desat_beneficial_saturated_fraction\": desat_stuck_frac.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4093,
+    "text": "                \"rrsd_future_gate_cost\": loss_gate_cost.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4094,
+    "text": "                \"rrsd_perceptual_conflict_loss\": loss_perceptual_conflict.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4095,
+    "text": "                \"rrsd_perceptual_conflict_loss_weighted\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4096,
+    "text": "                    float(self.rrsd_perceptual_conflict_weight)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4099,
+    "text": "                \"rrsd_perceptual_conflict_fraction\": conflict_fraction.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4100,
+    "text": "                \"rrsd_perceptual_conflict_active_fraction\": conflict_active_fraction.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4101,
+    "text": "                \"rrsd_alpha_mean\": pred[\"alpha_tile\"].detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4102,
+    "text": "                \"rrsd_alpha_active_fraction\": (pred[\"alpha_tile\"].detach().float() > 1e-3).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4103,
+    "text": "                \"rrsd_t_mean\": t_det.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4104,
+    "text": "                \"rrsd_next_t_mean\": t_next.detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4108,
+    "text": "            and self.rrsd_perceptual_conflict_weight > 0.0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4116,
+    "text": "                \"[RRSD-PERC-CONFLICT] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4119,
+    "text": "                f\"weighted={(float(self.rrsd_perceptual_conflict_weight) * loss_perceptual_conflict.detach()).item():.6e} \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4124,
+    "text": "            if self.rrsd_use_gate:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4126,
+    "text": "                    \"rrsd_gate_mean\": pred[\"gate_tile\"].detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4127,
+    "text": "                    \"rrsd_gate_active_fraction\": (pred[\"gate_tile\"].detach().float() > 0.5).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4128,
+    "text": "                    \"rrsd_strength_mean\": pred[\"strength_tile\"].detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4133,
+    "text": "            stats[\"rrsd_logit_p50\"] = logit_obs.median()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4134,
+    "text": "            stats[\"rrsd_logit_lt_m20_fraction\"] = (logit_obs < -20.0).float().mean()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4140,
+    "text": "                \"[RRSD-TRAIN] \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4145,
+    "text": "                f\"logit_p50={float(stats.get('rrsd_logit_p50', loss_future.new_zeros(()))):.3f} \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4146,
+    "text": "                f\"logit_lt_m20={float(stats.get('rrsd_logit_lt_m20_fraction', loss_future.new_zeros(()))):.3f}\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4150,
+    "text": "        sweep_total = int(os.environ.get(\"SGMSE_RRSD_SWEEP_BATCHES\", \"0\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4151,
+    "text": "        if int(getattr(self, \"_rrsd_alpha_sweep_done\", 0)) < sweep_total:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4152,
+    "text": "            self._rrsd_alpha_sweep_probe("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4161,
+    "text": "        diagnostic_max = int(os.environ.get(\"SGMSE_RRSD_DIAG_BATCHES\", \"0\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4162,
+    "text": "        diagnostic_done = int(getattr(self, \"_rrsd_diag_done\", 0))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4164,
+    "text": "            diag = self._rrsd_diagnose_alpha_zero("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4171,
+    "text": "            self._rrsd_diag_done = diagnostic_done + 1"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4182,
+    "text": "                        \"[RRSD-PER-SAMPLE]\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4195,
+    "text": "                \"[RRSD-EXTRA]\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4207,
+    "text": "                \"[RRSD-DIAG] batch={}/{} good={:.3f} bad={:.3f} \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4210,
+    "text": "                    self._rrsd_diag_done, diagnostic_max,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4211,
+    "text": "                    float(diag[\"rrsd_diag_beneficial_fraction\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4212,
+    "text": "                    float(diag[\"rrsd_diag_harmful_fraction\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4213,
+    "text": "                    float(diag[\"rrsd_diag_beneficial_ignored\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4214,
+    "text": "                    float(diag[\"rrsd_diag_harmful_used\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4215,
+    "text": "                    float(diag[\"rrsd_diag_alpha_on_beneficial\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4216,
+    "text": "                    float(diag[\"rrsd_diag_alpha_on_harmful\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4217,
+    "text": "                    float(diag[\"rrsd_diag_grad_abs_mean\"]),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4220,
+    "text": "            if (self._rrsd_diag_done >= diagnostic_max"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4221,
+    "text": "                    and os.environ.get(\"SGMSE_RRSD_DIAG_EXIT\", \"0\") == \"1\"):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4222,
+    "text": "                print(\"[RRSD-DIAG] Completed; exiting diagnostic run without saving.\", flush=True)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4224,
+    "text": "        kstep_max = int(os.environ.get(\"SGMSE_RRSD_KSTEP_BATCHES\", \"0\"))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4225,
+    "text": "        if kstep_max > int(getattr(self, \"_rrsd_kstep_done\", 0)):"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4226,
+    "text": "            self._rrsd_kstep_trajectory_probe("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4233,
+    "text": "    def _compute_rrsd_loss("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4240,
+    "text": "        \"\"\"Train RRSD with either the projection or trajectory-aware teacher."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4245,
+    "text": "            Backward-compatible RRSD V1."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4263,
+    "text": "        if self.rrsd_router is None or self.rrsd_weight <= 0.0:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4283,
+    "text": "        pred = self.rrsd_router("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4298,
+    "text": "        if self.rrsd_teacher == \"future_grad\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4299,
+    "text": "            return self._rrsd_future_grad_loss("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4310,
+    "text": "            num_bands=int(self.rrsd_router.num_bands),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4311,
+    "text": "            num_time_blocks=int(self.rrsd_router.num_time_blocks),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4312,
+    "text": "            eps=float(self.rrsd_oracle_eps),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4316,
+    "text": "        if self.rrsd_teacher == \"kstep\":"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4317,
+    "text": "            alpha_teacher, trajectory_stats = self._rrsd_lookahead_teacher("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4334,
+    "text": "        oracle_weight = 1.0 + float(self.rrsd_benefit_weight) * benefit_ratio"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4340,
+    "text": "        if self.rrsd_use_gate:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4346,
+    "text": "            # behaviour seen with the original single-alpha RRSD."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4352,
+    "text": "                benefit_ratio > float(self.rrsd_gate_local_threshold)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4358,
+    "text": "                    trajectory_stats[\"advantage_ratio\"] > float(self.rrsd_gate_threshold)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4376,
+    "text": "                float(self.rrsd_gate_pos_weight) - 1.0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4405,
+    "text": "        loss_recon = (route_err / base_err.clamp_min(float(self.rrsd_oracle_eps))).mean()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4416,
+    "text": "            + float(self.rrsd_recon_weight) * loss_recon"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4417,
+    "text": "            + float(self.rrsd_smooth_weight) * loss_smooth"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4419,
+    "text": "        if self.rrsd_use_gate:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4422,
+    "text": "                + float(self.rrsd_gate_weight) * loss_gate"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4423,
+    "text": "                + float(self.rrsd_strength_weight) * loss_strength"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4431,
+    "text": "                \"rrsd_loss_alpha\": loss_alpha.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4432,
+    "text": "                \"rrsd_loss_recon_norm\": loss_recon.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4433,
+    "text": "                \"rrsd_loss_smooth\": loss_smooth.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4434,
+    "text": "                \"rrsd_loss_gate\": loss_gate.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4435,
+    "text": "                \"rrsd_loss_strength\": loss_strength.detach(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4436,
+    "text": "                \"rrsd_alpha_mean\": pred[\"alpha_tile\"].detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4437,
+    "text": "                \"rrsd_alpha_target_mean\": alpha_star.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4438,
+    "text": "                \"rrsd_alpha_mae\": torch.abs("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4441,
+    "text": "                \"rrsd_alpha_active_fraction\": pred_active,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4442,
+    "text": "                \"rrsd_oracle_active_fraction\": oracle_active,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4443,
+    "text": "                \"rrsd_oracle_front_heavy_fraction\": oracle_front_heavy,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4444,
+    "text": "                \"rrsd_oracle_benefit_ratio_mean\": benefit_ratio.mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4445,
+    "text": "                \"rrsd_route_improve_fraction\": (route_err < base_err).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4446,
+    "text": "                \"rrsd_route_relative_error_change\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4447,
+    "text": "                    (route_err - base_err) / base_err.clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4449,
+    "text": "                \"rrsd_t_mean\": t_det.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4456,
+    "text": "                    \"rrsd_kstep_best_scale_mean\": best_scale.mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4457,
+    "text": "                    \"rrsd_kstep_scale_zero_fraction\": (best_scale <= 1e-8).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4458,
+    "text": "                    \"rrsd_kstep_advantage_ratio_mean\": adv_ratio.mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4459,
+    "text": "                    \"rrsd_kstep_advantage_positive_fraction\": (adv_ratio > 0.0).float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4460,
+    "text": "                    \"rrsd_kstep_gateworthy_fraction\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4461,
+    "text": "                        adv_ratio > float(self.rrsd_gate_threshold)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4463,
+    "text": "                    \"rrsd_kstep_future_error_ratio\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4465,
+    "text": "                        / trajectory_stats[\"base_future_error\"].clamp_min(float(self.rrsd_oracle_eps))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4468,
+    "text": "                for candidate_scale in self.rrsd_lookahead_candidates:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4470,
+    "text": "                    stats[f\"rrsd_kstep_scale_{tag}_fraction\"] = ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4474,
+    "text": "            if self.rrsd_use_gate:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4476,
+    "text": "                    \"rrsd_gate_mean\": pred[\"gate_tile\"].detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4477,
+    "text": "                    \"rrsd_gate_target_mean\": gate_target.float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4478,
+    "text": "                    \"rrsd_gate_active_fraction\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4481,
+    "text": "                    \"rrsd_gate_target_active_fraction\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4484,
+    "text": "                    \"rrsd_projection_gateworthy_fraction\": ("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4485,
+    "text": "                        (benefit_ratio > float(self.rrsd_gate_local_threshold))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4488,
+    "text": "                    \"rrsd_strength_mean\": pred[\"strength_tile\"].detach().float().mean(),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4492,
+    "text": "    def build_rrsd_score_calibrator("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4503,
+    "text": "        \"\"\"Build the inference-time RRSD routing step used inside the PC sampler."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4512,
+    "text": "        if self.rrsd_router is None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4515,
+    "text": "            warnings.warn(\"RRSD V1 currently supports OUVESDE only; disabling routing.\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4520,
+    "text": "        # RRSD V1-clean routes the current diffusion x0 estimate toward the"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4531,
+    "text": "            raise ValueError(f\"rrsd_t_cut must be in [0, {sde_t_max}], got {t_cut}\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4533,
+    "text": "            raise ValueError(f\"rrsd_t_cut_scale must be in [0, 1], got {t_cut_scale}\")"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4538,
+    "text": "                f\"rrsd t window must satisfy 0 <= t_min <= t_max <= {sde_t_max}, \""
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4543,
+    "text": "            x0_base, sigma, w_x, _ = self._rrsd_score_to_x0(x_t, y_main, t, score_base)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4544,
+    "text": "            pred = self.rrsd_router("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4561,
+    "text": "            # Inference-only: suppress the *additional* RRSD score correction"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4594,
+    "text": "            self._last_rrsd_alpha_mean = pred[\"alpha_map\"].detach().float().mean()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4595,
+    "text": "            self._last_rrsd_alpha_max = pred[\"alpha_map\"].detach().float().max()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4664,
+    "text": "        time_mask = time_active[:, None, None, None]"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4697,
+    "text": "            positive_log_regret = positive_log_regret * time_mask"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4745,
+    "text": "            ).clamp(max=10.0)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4818,
+    "text": "        time_mask = time_active[:, None, None, None]"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 4850,
+    "text": "            severity = severity * time_mask"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5119,
+    "text": "        local_violation_mask = relative_severity > 0.0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5120,
+    "text": "        sample_has_violation = local_violation_mask.flatten(1).any(dim=1).float()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5121,
+    "text": "        local_active_fraction = local_violation_mask.float().mean(dim=(1, 2, 3))"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5194,
+    "text": "            Y_pre = self.frontend.forward_transformed_spec(Y_noisy)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5201,
+    "text": "            y_pre = None"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5204,
+    "text": "            y_pre = self._frontend_forward(y_wav)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5205,
+    "text": "            y_pre = _match_length(y_pre, y_wav)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5206,
+    "text": "            Y_pre = self._sgmse_stft(y_pre)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5454,
+    "text": "        # ===== selector projection-oracle mask loss ====="
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5455,
+    "text": "        # This loss is only active for selector backbones that expose _last_selector_mask."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5459,
+    "text": "            selector_mask = getattr(self.dnn, \"_last_selector_mask\", None)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5464,
+    "text": "            if selector_mask is not None:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5469,
+    "text": "                    selector_mask=selector_mask,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5488,
+    "text": "            if selector_mask is not None or has_residual_gates or has_noise_prior_gates:"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5538,
+    "text": "        # ===== RRSD: reliability routing ====="
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5542,
+    "text": "        # --rrsd_freeze_base is used."
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5543,
+    "text": "        loss_rrsd = torch.zeros((), device=x_wav.device, dtype=torch.float32)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5544,
+    "text": "        if rrsd_aux_loss_enabled("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5545,
+    "text": "            self.rrsd_router,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5546,
+    "text": "            getattr(self, \"rrsd_weight\", 0.0),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5547,
+    "text": "            getattr(self, \"rrsd_disable_aux_loss\", False),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5549,
+    "text": "            # Full-speech RRSD: Oracle-distill how far the current diffusion x0"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5551,
+    "text": "            loss_rrsd, rrsd_stats = self._compute_rrsd_loss("
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5556,
+    "text": "            weighted_rrsd = float(self.rrsd_weight) * loss_rrsd"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5557,
+    "text": "            loss = loss + weighted_rrsd.to(loss.dtype)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5558,
+    "text": "            self.log(\"train_loss_rrsd\", loss_rrsd,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5560,
+    "text": "            self.log(\"train_loss_rrsd_weighted\", weighted_rrsd,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5562,
+    "text": "            for k, v in rrsd_stats.items():"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5724,
+    "text": "                        y_pre = self.frontend.spec_to_waveform(Y_pre_n, length=y_t.size(-1)) * norm"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5725,
+    "text": "                        y_pre = _match_length(y_pre, y_t)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5727,
+    "text": "                        y_pre = self._frontend_forward(y_t / norm) * norm"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5728,
+    "text": "                        y_pre = _match_length(y_pre, y_t)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5741,
+    "text": "                        rrsd=bool(getattr(self, \"rrsd_validate\", False)),"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5742,
+    "text": "                        rrsd_scale=1.0,"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5838,
+    "text": "                Y_pre = self.frontend.forward_transformed_spec(Y_noisy)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5840,
+    "text": "                y_pre = self._frontend_forward(y_wav)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5841,
+    "text": "                y_pre = _match_length(y_pre, y_wav)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/joint_model.py",
+    "line": 5842,
+    "text": "                Y_pre = self._sgmse_stft(y_pre)"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/model.py",
+    "line": 1415,
+    "text": "    def enhance(self, y, y_cond=None, sampler_type=\"pc\", predictor=\"reverse_diffusion\","
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/model.py",
+    "line": 1476,
+    "text": "        norm_factor = ref.abs().max().clamp_min(1e-12).item()"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/model.py",
+    "line": 1479,
+    "text": "        y = y / norm_factor"
+  },
+  {
+    "path": "/data/coding/sgmse/sgmse/model.py",
+    "line": 1486,
+    "text": "            y_cond_n = y_cond / norm_factor"
+  }
+]

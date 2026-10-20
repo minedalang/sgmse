@@ -1,0 +1,2419 @@
+{
+  "experiment_id": "backend_adapter_architecture_audit_20261018",
+  "status": "audit_complete_no_training",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "global_step": 80000,
+    "epoch": 118
+  },
+  "model_hyperparameters": {
+    "backbone": "ncsnpp_v2",
+    "nf": 128,
+    "ch_mult": [
+      1,
+      2,
+      2,
+      2
+    ],
+    "num_res_blocks": 1,
+    "attn_resolutions": [
+      0
+    ],
+    "train_type": "mode2",
+    "sde": "ouve",
+    "loss_type": "score_matching",
+    "loss_weighting": "sigma^2",
+    "network_scaling": "1/t"
+  },
+  "dnn_parameter_count": 27776038,
+  "dnn_tensor_count": 271,
+  "module_rows": [
+    {
+      "all_modules_index": 0,
+      "parameter_count": 128,
+      "tensor_count": 1,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.0.W",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    },
+    {
+      "all_modules_index": 1,
+      "parameter_count": 131584,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.1.weight",
+          "shape": [
+            512,
+            256
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.1.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        }
+      ]
+    },
+    {
+      "all_modules_index": 2,
+      "parameter_count": 262656,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.2.weight",
+          "shape": [
+            512,
+            512
+          ],
+          "parameters": 262144
+        },
+        {
+          "name": "dnn.all_modules.2.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        }
+      ]
+    },
+    {
+      "all_modules_index": 3,
+      "parameter_count": 7040,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.3.weight",
+          "shape": [
+            128,
+            6,
+            3,
+            3
+          ],
+          "parameters": 6912
+        },
+        {
+          "name": "dnn.all_modules.3.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    },
+    {
+      "all_modules_index": 4,
+      "parameter_count": 361344,
+      "tensor_count": 10,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.4.GroupNorm_0.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.4.GroupNorm_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.4.Conv_0.weight",
+          "shape": [
+            128,
+            128,
+            3,
+            3
+          ],
+          "parameters": 147456
+        },
+        {
+          "name": "dnn.all_modules.4.Conv_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.4.Dense_0.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.4.Dense_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.4.GroupNorm_1.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.4.GroupNorm_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.4.Conv_1.weight",
+          "shape": [
+            128,
+            128,
+            3,
+            3
+          ],
+          "parameters": 147456
+        },
+        {
+          "name": "dnn.all_modules.4.Conv_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    },
+    {
+      "all_modules_index": 5,
+      "parameter_count": 377856,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.5.GroupNorm_0.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.GroupNorm_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.Conv_0.weight",
+          "shape": [
+            128,
+            128,
+            3,
+            3
+          ],
+          "parameters": 147456
+        },
+        {
+          "name": "dnn.all_modules.5.Conv_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.Dense_0.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.5.Dense_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.GroupNorm_1.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.GroupNorm_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.Conv_1.weight",
+          "shape": [
+            128,
+            128,
+            3,
+            3
+          ],
+          "parameters": 147456
+        },
+        {
+          "name": "dnn.all_modules.5.Conv_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.5.Conv_2.weight",
+          "shape": [
+            128,
+            128,
+            1,
+            1
+          ],
+          "parameters": 16384
+        },
+        {
+          "name": "dnn.all_modules.5.Conv_2.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    },
+    {
+      "all_modules_index": 6,
+      "parameter_count": 896,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.6.Conv_0.weight",
+          "shape": [
+            128,
+            6,
+            1,
+            1
+          ],
+          "parameters": 768
+        },
+        {
+          "name": "dnn.all_modules.6.Conv_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    },
+    {
+      "all_modules_index": 7,
+      "parameter_count": 1050368,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.7.GroupNorm_0.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.7.GroupNorm_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.7.Conv_0.weight",
+          "shape": [
+            256,
+            128,
+            3,
+            3
+          ],
+          "parameters": 294912
+        },
+        {
+          "name": "dnn.all_modules.7.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.7.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.7.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.7.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.7.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.7.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.7.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.7.Conv_2.weight",
+          "shape": [
+            256,
+            128,
+            1,
+            1
+          ],
+          "parameters": 32768
+        },
+        {
+          "name": "dnn.all_modules.7.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 8,
+      "parameter_count": 1378304,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.8.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.8.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.8.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.8.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.8.Conv_2.weight",
+          "shape": [
+            256,
+            256,
+            1,
+            1
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.8.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 9,
+      "parameter_count": 1792,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.9.Conv_0.weight",
+          "shape": [
+            256,
+            6,
+            1,
+            1
+          ],
+          "parameters": 1536
+        },
+        {
+          "name": "dnn.all_modules.9.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 10,
+      "parameter_count": 1312512,
+      "tensor_count": 10,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.10.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.10.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.10.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.10.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.10.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.10.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.10.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.10.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.10.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.10.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 11,
+      "parameter_count": 1378304,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.11.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.11.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.11.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.11.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.11.Conv_2.weight",
+          "shape": [
+            256,
+            256,
+            1,
+            1
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.11.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 12,
+      "parameter_count": 1792,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.12.Conv_0.weight",
+          "shape": [
+            256,
+            6,
+            1,
+            1
+          ],
+          "parameters": 1536
+        },
+        {
+          "name": "dnn.all_modules.12.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 13,
+      "parameter_count": 1312512,
+      "tensor_count": 10,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.13.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.13.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.13.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.13.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.13.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.13.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.13.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.13.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.13.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.13.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 14,
+      "parameter_count": 1312512,
+      "tensor_count": 10,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.14.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.14.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.14.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.14.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.14.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.14.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.14.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.14.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.14.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.14.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 15,
+      "parameter_count": 263680,
+      "tensor_count": 10,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.15.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.15.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_0.W",
+          "shape": [
+            256,
+            256
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_0.b",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_1.W",
+          "shape": [
+            256,
+            256
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_1.b",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_2.W",
+          "shape": [
+            256,
+            256
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_2.b",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_3.W",
+          "shape": [
+            256,
+            256
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.15.NIN_3.b",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 16,
+      "parameter_count": 1312512,
+      "tensor_count": 10,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.16.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.16.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.16.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.16.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.16.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.16.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.16.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.16.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.16.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.16.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 17,
+      "parameter_count": 2034176,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.17.GroupNorm_0.weight",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.17.GroupNorm_0.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.17.Conv_0.weight",
+          "shape": [
+            256,
+            512,
+            3,
+            3
+          ],
+          "parameters": 1179648
+        },
+        {
+          "name": "dnn.all_modules.17.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.17.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.17.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.17.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.17.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.17.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.17.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.17.Conv_2.weight",
+          "shape": [
+            256,
+            512,
+            1,
+            1
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.17.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 18,
+      "parameter_count": 2034176,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.18.GroupNorm_0.weight",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.18.GroupNorm_0.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.18.Conv_0.weight",
+          "shape": [
+            256,
+            512,
+            3,
+            3
+          ],
+          "parameters": 1179648
+        },
+        {
+          "name": "dnn.all_modules.18.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.18.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.18.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.18.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.18.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.18.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.18.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.18.Conv_2.weight",
+          "shape": [
+            256,
+            512,
+            1,
+            1
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.18.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 19,
+      "parameter_count": 512,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.19.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.19.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 20,
+      "parameter_count": 13830,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.20.weight",
+          "shape": [
+            6,
+            256,
+            3,
+            3
+          ],
+          "parameters": 13824
+        },
+        {
+          "name": "dnn.all_modules.20.bias",
+          "shape": [
+            6
+          ],
+          "parameters": 6
+        }
+      ]
+    },
+    {
+      "all_modules_index": 21,
+      "parameter_count": 1378304,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.21.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.21.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.21.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.21.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.21.Conv_2.weight",
+          "shape": [
+            256,
+            256,
+            1,
+            1
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.21.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 22,
+      "parameter_count": 2034176,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.22.GroupNorm_0.weight",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.22.GroupNorm_0.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.22.Conv_0.weight",
+          "shape": [
+            256,
+            512,
+            3,
+            3
+          ],
+          "parameters": 1179648
+        },
+        {
+          "name": "dnn.all_modules.22.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.22.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.22.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.22.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.22.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.22.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.22.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.22.Conv_2.weight",
+          "shape": [
+            256,
+            512,
+            1,
+            1
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.22.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 23,
+      "parameter_count": 2034176,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.23.GroupNorm_0.weight",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.23.GroupNorm_0.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.23.Conv_0.weight",
+          "shape": [
+            256,
+            512,
+            3,
+            3
+          ],
+          "parameters": 1179648
+        },
+        {
+          "name": "dnn.all_modules.23.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.23.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.23.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.23.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.23.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.23.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.23.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.23.Conv_2.weight",
+          "shape": [
+            256,
+            512,
+            1,
+            1
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.23.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 24,
+      "parameter_count": 512,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.24.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.24.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 25,
+      "parameter_count": 13830,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.25.weight",
+          "shape": [
+            6,
+            256,
+            3,
+            3
+          ],
+          "parameters": 13824
+        },
+        {
+          "name": "dnn.all_modules.25.bias",
+          "shape": [
+            6
+          ],
+          "parameters": 6
+        }
+      ]
+    },
+    {
+      "all_modules_index": 26,
+      "parameter_count": 1378304,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.26.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.26.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.26.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.26.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.26.Conv_2.weight",
+          "shape": [
+            256,
+            256,
+            1,
+            1
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.26.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 27,
+      "parameter_count": 2034176,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.27.GroupNorm_0.weight",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.27.GroupNorm_0.bias",
+          "shape": [
+            512
+          ],
+          "parameters": 512
+        },
+        {
+          "name": "dnn.all_modules.27.Conv_0.weight",
+          "shape": [
+            256,
+            512,
+            3,
+            3
+          ],
+          "parameters": 1179648
+        },
+        {
+          "name": "dnn.all_modules.27.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.27.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.27.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.27.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.27.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.27.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.27.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.27.Conv_2.weight",
+          "shape": [
+            256,
+            512,
+            1,
+            1
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.27.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 28,
+      "parameter_count": 1706240,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.28.GroupNorm_0.weight",
+          "shape": [
+            384
+          ],
+          "parameters": 384
+        },
+        {
+          "name": "dnn.all_modules.28.GroupNorm_0.bias",
+          "shape": [
+            384
+          ],
+          "parameters": 384
+        },
+        {
+          "name": "dnn.all_modules.28.Conv_0.weight",
+          "shape": [
+            256,
+            384,
+            3,
+            3
+          ],
+          "parameters": 884736
+        },
+        {
+          "name": "dnn.all_modules.28.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.28.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.28.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.28.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.28.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.28.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.28.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.28.Conv_2.weight",
+          "shape": [
+            256,
+            384,
+            1,
+            1
+          ],
+          "parameters": 98304
+        },
+        {
+          "name": "dnn.all_modules.28.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 29,
+      "parameter_count": 512,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.29.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.29.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 30,
+      "parameter_count": 13830,
+      "tensor_count": 2,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.30.weight",
+          "shape": [
+            6,
+            256,
+            3,
+            3
+          ],
+          "parameters": 13824
+        },
+        {
+          "name": "dnn.all_modules.30.bias",
+          "shape": [
+            6
+          ],
+          "parameters": 6
+        }
+      ]
+    },
+    {
+      "all_modules_index": 31,
+      "parameter_count": 1378304,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.31.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.Conv_0.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.31.Conv_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.Dense_0.weight",
+          "shape": [
+            256,
+            512
+          ],
+          "parameters": 131072
+        },
+        {
+          "name": "dnn.all_modules.31.Dense_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.GroupNorm_1.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.GroupNorm_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.Conv_1.weight",
+          "shape": [
+            256,
+            256,
+            3,
+            3
+          ],
+          "parameters": 589824
+        },
+        {
+          "name": "dnn.all_modules.31.Conv_1.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.31.Conv_2.weight",
+          "shape": [
+            256,
+            256,
+            1,
+            1
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.31.Conv_2.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        }
+      ]
+    },
+    {
+      "all_modules_index": 32,
+      "parameter_count": 706048,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.32.GroupNorm_0.weight",
+          "shape": [
+            384
+          ],
+          "parameters": 384
+        },
+        {
+          "name": "dnn.all_modules.32.GroupNorm_0.bias",
+          "shape": [
+            384
+          ],
+          "parameters": 384
+        },
+        {
+          "name": "dnn.all_modules.32.Conv_0.weight",
+          "shape": [
+            128,
+            384,
+            3,
+            3
+          ],
+          "parameters": 442368
+        },
+        {
+          "name": "dnn.all_modules.32.Conv_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.32.Dense_0.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.32.Dense_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.32.GroupNorm_1.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.32.GroupNorm_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.32.Conv_1.weight",
+          "shape": [
+            128,
+            128,
+            3,
+            3
+          ],
+          "parameters": 147456
+        },
+        {
+          "name": "dnn.all_modules.32.Conv_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.32.Conv_2.weight",
+          "shape": [
+            128,
+            384,
+            1,
+            1
+          ],
+          "parameters": 49152
+        },
+        {
+          "name": "dnn.all_modules.32.Conv_2.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    },
+    {
+      "all_modules_index": 33,
+      "parameter_count": 541952,
+      "tensor_count": 12,
+      "shapes": [
+        {
+          "name": "dnn.all_modules.33.GroupNorm_0.weight",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.33.GroupNorm_0.bias",
+          "shape": [
+            256
+          ],
+          "parameters": 256
+        },
+        {
+          "name": "dnn.all_modules.33.Conv_0.weight",
+          "shape": [
+            128,
+            256,
+            3,
+            3
+          ],
+          "parameters": 294912
+        },
+        {
+          "name": "dnn.all_modules.33.Conv_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.33.Dense_0.weight",
+          "shape": [
+            128,
+            512
+          ],
+          "parameters": 65536
+        },
+        {
+          "name": "dnn.all_modules.33.Dense_0.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.33.GroupNorm_1.weight",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.33.GroupNorm_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.33.Conv_1.weight",
+          "shape": [
+            128,
+            128,
+            3,
+            3
+          ],
+          "parameters": 147456
+        },
+        {
+          "name": "dnn.all_modules.33.Conv_1.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        },
+        {
+          "name": "dnn.all_modules.33.Conv_2.weight",
+          "shape": [
+            128,
+            256,
+            1,
+            1
+          ],
+          "parameters": 32768
+        },
+        {
+          "name": "dnn.all_modules.33.Conv_2.bias",
+          "shape": [
+            128
+          ],
+          "parameters": 128
+        }
+      ]
+    }
+  ],
+  "spatial_conv_count": 45,
+  "late_decoder_candidates": [
+    {
+      "name": "dnn.all_modules.31.Conv_0.weight",
+      "shape": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "base_parameters": 589824,
+      "rank4_flattened_lora_parameters": 10240,
+      "rank4_fraction_of_base": 0.017361111111111112
+    },
+    {
+      "name": "dnn.all_modules.31.Conv_1.weight",
+      "shape": [
+        256,
+        256,
+        3,
+        3
+      ],
+      "base_parameters": 589824,
+      "rank4_flattened_lora_parameters": 10240,
+      "rank4_fraction_of_base": 0.017361111111111112
+    },
+    {
+      "name": "dnn.all_modules.32.Conv_0.weight",
+      "shape": [
+        128,
+        384,
+        3,
+        3
+      ],
+      "base_parameters": 442368,
+      "rank4_flattened_lora_parameters": 14336,
+      "rank4_fraction_of_base": 0.032407407407407406
+    },
+    {
+      "name": "dnn.all_modules.32.Conv_1.weight",
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "base_parameters": 147456,
+      "rank4_flattened_lora_parameters": 5120,
+      "rank4_fraction_of_base": 0.034722222222222224
+    },
+    {
+      "name": "dnn.all_modules.33.Conv_0.weight",
+      "shape": [
+        128,
+        256,
+        3,
+        3
+      ],
+      "base_parameters": 294912,
+      "rank4_flattened_lora_parameters": 9728,
+      "rank4_fraction_of_base": 0.03298611111111111
+    },
+    {
+      "name": "dnn.all_modules.33.Conv_1.weight",
+      "shape": [
+        128,
+        128,
+        3,
+        3
+      ],
+      "base_parameters": 147456,
+      "rank4_flattened_lora_parameters": 5120,
+      "rank4_fraction_of_base": 0.034722222222222224
+    }
+  ],
+  "candidate_summary": {
+    "late_decoder_base_parameters": 2211840,
+    "late_decoder_rank4_flattened_lora_parameters": 54784,
+    "note": "LoRA counts are a design estimate, not implemented parameters; decoder insertion and zero-init behavior still require a separate code change and smoke test."
+  },
+  "data_or_checkpoint_modified": false
+}

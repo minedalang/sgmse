@@ -1,0 +1,17 @@
+{
+  "experiment_id": "p8_voicebank_content_reference_audit_20261019",
+  "status": "local_inventory_only",
+  "dataset_root": "/data/datasets/vb/voicebank_demand",
+  "training": false,
+  "model_calls": false,
+  "network": false,
+  "waveform_decode": false,
+  "test_access": "SCP IDs and directory filenames/count only; no test audio header/decode or transcript content",
+  "train_access": "all train/valid-source WAV headers only",
+  "budget_seconds": 120,
+  "artifact_cap_bytes": 2000000,
+  "external_metadata_status": "Root separately checking publisher license/download URL; no network or download authorized here",
+  "external_source_parent_reported": "https://datashare.ed.ac.uk/handle/10283/2791 -> item6ed35425-bf14-4d2b-93a1-0a4984952757; trainset_28spk_txt.zip6.19MB,testset_txt.zip429.96KB; not independently retrieved by this script",
+  "pretraining_exposure": "unknown for enhancement and ASR/SSL backbones; potential project-independent pilot is not strict pretraining holdout",
+  "speaker_selection": "none; no model-based split decisions"
+}

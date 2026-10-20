@@ -1,0 +1,74 @@
+{
+  "status": "passed",
+  "network_requests": 0,
+  "models": 0,
+  "training_calls": 0,
+  "resample_calls": 0,
+  "checks": {
+    "frozen_preparation_files": 13,
+    "source_locks_pre_post_now": 10,
+    "original_run_artifacts": 47,
+    "HTTP_transactions": 15,
+    "gate_reached": true,
+    "gate_passed": false,
+    "transport_complete": true,
+    "serialized_waveforms": 4
+  },
+  "samples": {
+    "p226_027": {
+      "samples": 63447,
+      "max_abs_difference_LSB": 262.0850830078125,
+      "rms_difference_LSB": 14.874868530784351,
+      "correlation": 0.9999681281795149,
+      "snr_db": 41.93920945218139,
+      "gate_passed": false,
+      "zero_alignment": true,
+      "CRC_and_payload_verified": true,
+      "serialized_PCM_verified": true
+    },
+    "p226_028": {
+      "samples": 67653,
+      "max_abs_difference_LSB": 572.6947021484375,
+      "rms_difference_LSB": 34.725000535009016,
+      "correlation": 0.9997866662184465,
+      "snr_db": 33.69668540525969,
+      "gate_passed": false,
+      "zero_alignment": true,
+      "CRC_and_payload_verified": true,
+      "serialized_PCM_verified": true
+    },
+    "p287_037": {
+      "samples": 60008,
+      "max_abs_difference_LSB": 432.62451171875,
+      "rms_difference_LSB": 21.581062922706717,
+      "correlation": 0.9999037160309915,
+      "snr_db": 37.15304440752016,
+      "gate_passed": false,
+      "zero_alignment": true,
+      "CRC_and_payload_verified": true,
+      "serialized_PCM_verified": true
+    },
+    "p287_054": {
+      "samples": 51089,
+      "max_abs_difference_LSB": 431.01190185546875,
+      "rms_difference_LSB": 28.682933808306974,
+      "correlation": 0.9999037417668998,
+      "snr_db": 37.15242721962484,
+      "gate_passed": false,
+      "zero_alignment": true,
+      "CRC_and_payload_verified": true,
+      "serialized_PCM_verified": true
+    }
+  },
+  "failures": [],
+  "verification_script_sha256": "1f34805d968ec09fb3dc6cac580e64a05eff998c3faddf9f5ba713fdc7aa0145",
+  "metrics_sha256": "3f25d3a8180cab6533bc987dc070fe01f86c96e5242053c4f32300f864f9f742",
+  "network_body_bytes": 2286268,
+  "network_bytes_accounted": 3269308,
+  "stable_validators": {
+    "etag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+    "last-modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+  },
+  "seconds": 0.1134979339549318,
+  "artifact_bytes_before_validation_json": 5514440
+}

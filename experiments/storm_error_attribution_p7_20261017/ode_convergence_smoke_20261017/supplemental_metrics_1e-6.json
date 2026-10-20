@@ -1,0 +1,140 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_ode_convergence_smoke_20261017",
+  "supplement": "single-utterance practical 1e-6 RK45 probability-flow ODE cost and delta check",
+  "status": "completed",
+  "checkpoint": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "checkpoint_global_step": 80000,
+  "manifest": "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv",
+  "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "utterance": {
+    "filename": "000_fileid_2673.wav",
+    "uttid": "reader_11065_fileid_2673",
+    "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02715_chp_0010_reader_11065_4_NevaxykoWq0-IDj-ZL1PteI-1RWn2td-9ZA_snr-18_fileid_2673.wav",
+    "noisy_sha256": "dd574edbba369208ade9d262e3b985fea9dfa95b53e5a668aec119ca0a8eb5b8",
+    "sample_rate_hz": 16000,
+    "input_samples": 480000
+  },
+  "initial_state": {
+    "path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/shared_xT/000_fileid_2673.pt",
+    "sha256": "385d538a61c2d30b7d8e2d53ef1fed102ccfac7c41361f545a4b1eb1afe36058",
+    "reused_without_rewrite": true
+  },
+  "sampler": {
+    "implementation": "sgmse.sampling.get_ode_sampler",
+    "process": "probability_flow",
+    "solver": "SciPy RK45",
+    "rtol": 1e-06,
+    "atol": 1e-06,
+    "denoise": false,
+    "integration_interval": [
+      1.0,
+      0.03
+    ],
+    "initial_state_policy": "reuse the existing saved 000_fileid_2673 x_T tensor"
+  },
+  "runtime": {
+    "python": "3.10.22",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.2.6",
+    "scipy": "1.15.3",
+    "device": "cuda",
+    "model_load_seconds": 8.31544409506023,
+    "input_preparation_seconds": 0.6685055850539356,
+    "solve_elapsed_seconds": 174.03201788000297,
+    "total_elapsed_seconds": 183.02281238196883,
+    "progress_samples": [
+      {
+        "elapsed_seconds": 30.0,
+        "score_forward_calls": 80
+      },
+      {
+        "elapsed_seconds": 60.0,
+        "score_forward_calls": 160
+      },
+      {
+        "elapsed_seconds": 90.0,
+        "score_forward_calls": 240
+      },
+      {
+        "elapsed_seconds": 120.001,
+        "score_forward_calls": 321
+      },
+      {
+        "elapsed_seconds": 150.001,
+        "score_forward_calls": 401
+      }
+    ]
+  },
+  "reference_1e-5": {
+    "wav_path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/rk45_rtol_atol_1e-05/000_fileid_2673.wav",
+    "wav_sha256": "91270745f2c381589894983c60e53061e9936a18921216505e02ac6956c8fc71",
+    "metrics_json_sha256_before": "4b4f7222a9261349f92b5e30d9dbb6da3617f711a4943b73cebd6a1bd90c60a8"
+  },
+  "loaded_model_parameters": {
+    "frontend": "storm",
+    "backbone": "ncsnpp_v2",
+    "sde": "OUVESDE",
+    "saved_sampler_type": "pc",
+    "train_type": "mode2",
+    "mode2_include_noisy_main": true,
+    "sample_rate": 16000,
+    "N": 30,
+    "theta": 1.5,
+    "sigma_min": 0.05,
+    "sigma_max": 0.5,
+    "t_eps": 0.03,
+    "loss_type": "score_matching",
+    "loss_weighting": "sigma^2",
+    "network_scaling": "1/t",
+    "c_in": "1",
+    "c_out": "1",
+    "c_skip": "0",
+    "sigma_data": 0.1,
+    "n_fft": 510,
+    "hop_length": 128,
+    "num_frames": 256,
+    "spec_factor": 0.15,
+    "spec_abs_exponent": 0.5,
+    "normalize": "noisy",
+    "transform_type": "exponent"
+  },
+  "training": false,
+  "quality_evaluation": false,
+  "dns_mos_or_other_speech_quality_metrics": false,
+  "checkpoint_or_source_data_modified": false,
+  "nfev": 464,
+  "score_dnn_forward_calls": 464,
+  "nfev_matches_hook_count": true,
+  "endpoint_spectrum_finite": true,
+  "endpoint_waveform_finite": true,
+  "output": {
+    "wav_path": "experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/rk45_rtol_atol_1e-06/000_fileid_2673.wav",
+    "wav_sha256": "87bb481e5aa5c183f07f35cf84d34380f92d9019291e831087de6aaf5dedc915",
+    "wav_subtype": "FLOAT",
+    "samples": 480000,
+    "unclipped_absmax": 0.028361454606056213,
+    "clipped_sample_count": 0
+  },
+  "comparison_to_1e-5": {
+    "reference_wav_sha256": "91270745f2c381589894983c60e53061e9936a18921216505e02ac6956c8fc71",
+    "waveform_relative_l2": 0.003985330294534366,
+    "complex_stft_relative_l2": 0.003985748587460134,
+    "complex_stft_parameters": {
+      "implementation": "model._stft",
+      "n_fft": 510,
+      "hop_length": 128,
+      "window": "periodic Hann",
+      "center": true
+    },
+    "reference_is_1e-5_saved_FLOAT_wav": true
+  },
+  "immutability_checks": {
+    "shared_xT_sha256_after": "385d538a61c2d30b7d8e2d53ef1fed102ccfac7c41361f545a4b1eb1afe36058",
+    "metrics_json_sha256_after": "4b4f7222a9261349f92b5e30d9dbb6da3617f711a4943b73cebd6a1bd90c60a8",
+    "1e-5_wav_sha256_after": "91270745f2c381589894983c60e53061e9936a18921216505e02ac6956c8fc71",
+    "shared_xT_unchanged": true,
+    "metrics_json_unchanged": true,
+    "1e-5_wav_unchanged": true
+  }
+}

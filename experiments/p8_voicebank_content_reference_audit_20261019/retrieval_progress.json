@@ -1,0 +1,76 @@
+{
+  "records": [
+    {
+      "name": "publisher/item.html",
+      "url": "https://datashare.ed.ac.uk/items/6ed35425-bf14-4d2b-93a1-0a4984952757",
+      "retrieval_utc": "2026-10-19T02:19:52.381661+00:00",
+      "proxy": true,
+      "status": "saved",
+      "bytes": 574697,
+      "sha256": "f87f16037ef976f453950d591d6773eb606c0adcbb4f6d3257c143e8bf1fe2c0",
+      "http_status": 200,
+      "final_url": "https://datashare.ed.ac.uk/items/6ed35425-bf14-4d2b-93a1-0a4984952757",
+      "content_type": "text/html; charset=utf-8",
+      "content_length": "574697",
+      "md5": "ad1b423311f0a871921fb763a8260358"
+    },
+    {
+      "name": "publisher/item_metadata.json",
+      "url": "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757",
+      "retrieval_utc": "2026-10-19T02:20:02.596619+00:00",
+      "proxy": true,
+      "status": "saved",
+      "bytes": 8879,
+      "sha256": "02ddff01063747d9f02d453f8a8de70e8e6e033c7dae945d36e00f368c55cfb2",
+      "http_status": 200,
+      "final_url": "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757",
+      "content_type": "application/hal+json;charset=UTF-8",
+      "content_length": null,
+      "md5": "145b43bb0d0fb48118f2170eb3e493b9"
+    },
+    {
+      "name": "publisher/license.txt",
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/7e7bc32f-e94a-436a-8e97-416a972c7e1a/content",
+      "retrieval_utc": "2026-10-19T02:20:04.396251+00:00",
+      "proxy": true,
+      "status": "saved",
+      "bytes": 17416,
+      "sha256": "b34e17103bfb246f2549fc82a279e6ba28834e0cb42f76a92efc14b72e3a3723",
+      "http_status": 200,
+      "final_url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/7e7bc32f-e94a-436a-8e97-416a972c7e1a/content",
+      "content_type": "text/plain;charset=UTF-8",
+      "content_length": "17416",
+      "md5": "2946b37a07baeba80cea628909e28cae"
+    },
+    {
+      "name": "publisher/train_bitstream_metadata.json",
+      "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa",
+      "retrieval_utc": "2026-10-19T02:20:08.229330+00:00",
+      "proxy": true,
+      "status": "saved",
+      "bytes": 1598,
+      "sha256": "05719d5ef5256403ce09c495a9791d0528d50cd4cb6e07e58ebdd5d7b9e93446",
+      "http_status": 200,
+      "final_url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa",
+      "content_type": "application/hal+json;charset=UTF-8",
+      "content_length": null,
+      "md5": "c0870de2731c5b5f9637f8e0aef0474a"
+    },
+    {
+      "name": "publisher/trainset_28spk_txt.zip",
+      "url": "https://datashare.ed.ac.uk/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/download",
+      "retrieval_utc": "2026-10-19T02:20:10.138262+00:00",
+      "proxy": true,
+      "status": "failed",
+      "bytes": 0,
+      "sha256": null,
+      "http_status": 200,
+      "final_url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/content",
+      "content_type": "application/zip ;charset=UTF-8",
+      "content_length": "6489312",
+      "error": "AssertionError('Networkstage180s cap')"
+    }
+  ],
+  "cumulative_network_bytes": 4534750,
+  "wall_seconds": 181.17679965868592
+}

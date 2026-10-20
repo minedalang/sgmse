@@ -1,0 +1,14 @@
+experiment_id: p8_e1_aligned_listening_20261020
+purpose: alignment_repair_listening_pack
+source_manifest: ../p8_frontend_backend_audit_20261020/manifest.csv
+source_outputs: ../p8_frontend_backend_audit_20261020/outputs
+source_dataset: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5
+sample_rate_hz: 16000
+source_duration_s: 30.0
+central_usable_range_s: [9.0, 21.0]
+target_window_duration_s: 0.5
+context_each_side_s: 0.75
+windows: 4
+arms: [noisy, clean, y_pre, off, router]
+selection_rule: among unused central-12s candidates, rank by clean-aware local SNR and noisy-clean local correlation; prefer the highest-evidence windows; exclude all four prior counterexample-pack windows.
+processing: read-only source scan; crop only into new clips; no inference, training, DNSMOS, or source overwrite

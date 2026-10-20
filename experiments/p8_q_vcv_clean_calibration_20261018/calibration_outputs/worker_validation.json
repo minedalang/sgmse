@@ -1,0 +1,144 @@
+{
+  "status": "passed",
+  "saved_arrays": 28,
+  "all24_scores_recomputed_from_saved_logits": true,
+  "max_recomputed_ctc_absolute_error": 0.0,
+  "source_wav_hashes_unchanged": true,
+  "primary": {
+    "n": 16,
+    "top1_correct": 16,
+    "top1_accuracy": 1.0,
+    "binary_correct": 16,
+    "binary_accuracy": 1.0,
+    "mean_binary_loglikelihood_margin": 3.758225679397583
+  },
+  "supplementary_descriptive_only": {
+    "n": 12,
+    "top1_correct": 7,
+    "top1_accuracy": 0.5833333333333334,
+    "binary_correct": 7,
+    "binary_accuracy": 0.5833333333333334,
+    "mean_binary_loglikelihood_margin": 2.491361896197001
+  },
+  "primary_groups": {
+    "contrast=k/g": {
+      "n": 8,
+      "top1_correct": 8,
+      "top1_accuracy": 1.0,
+      "binary_correct": 8,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.3891761302948
+    },
+    "contrast=t/d": {
+      "n": 8,
+      "top1_correct": 8,
+      "top1_accuracy": 1.0,
+      "binary_correct": 8,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 4.127275228500366
+    },
+    "speaker=f11": {
+      "n": 4,
+      "top1_correct": 4,
+      "top1_accuracy": 1.0,
+      "binary_correct": 4,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.9607627391815186
+    },
+    "speaker=f11/contrast=k/g": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 4.145740509033203
+    },
+    "speaker=f11/contrast=t/d": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.775784969329834
+    },
+    "speaker=f6": {
+      "n": 4,
+      "top1_correct": 4,
+      "top1_accuracy": 1.0,
+      "binary_correct": 4,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.898513078689575
+    },
+    "speaker=f6/contrast=k/g": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.4186315536499023
+    },
+    "speaker=f6/contrast=t/d": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 4.378394603729248
+    },
+    "speaker=m2": {
+      "n": 4,
+      "top1_correct": 4,
+      "top1_accuracy": 1.0,
+      "binary_correct": 4,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.0530312061309814
+    },
+    "speaker=m2/contrast=k/g": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 2.399055004119873
+    },
+    "speaker=m2/contrast=t/d": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.70700740814209
+    },
+    "speaker=m4": {
+      "n": 4,
+      "top1_correct": 4,
+      "top1_accuracy": 1.0,
+      "binary_correct": 4,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 4.120595693588257
+    },
+    "speaker=m4/contrast=k/g": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 3.5932774543762207
+    },
+    "speaker=m4/contrast=t/d": {
+      "n": 2,
+      "top1_correct": 2,
+      "top1_accuracy": 1.0,
+      "binary_correct": 2,
+      "binary_accuracy": 1.0,
+      "mean_binary_loglikelihood_margin": 4.647913932800293
+    }
+  },
+  "gate_passed": true,
+  "next_stage": "eligible_for_research_lead_review",
+  "primary_top1_errors": [],
+  "process_wall_seconds": 8.99,
+  "script_runtime_seconds": 3.5277204513549805,
+  "cuda_forward_duration_seconds": null,
+  "timing_note": "CUDA-only forward duration was not instrumented; complete script runtime includes hashing, model load, forward, scoring and writing. No rerun performed. Initial external /usr/bin/time launcher failed before Python execution; Bash builtin time then launched calibration once."
+}

@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "input_registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "reconstructed_artifacts": 40,
+  "cases": 32,
+  "scaledclean_controls": 8,
+  "model_loads": 0,
+  "network_bytes": 0
+}

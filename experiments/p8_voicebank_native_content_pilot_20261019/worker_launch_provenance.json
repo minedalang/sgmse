@@ -1,0 +1,27 @@
+{
+  "utc_recorded": "2026-10-19T03:34:03.352573+00:00",
+  "provider": "codex_tools_compat",
+  "thread_id": "01a15236-cb95-7653-bbe2-358a4778675c",
+  "command": "python3 -B /data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/prepare_inputs.py",
+  "tool_session_id": 46463,
+  "supervisor_pid": 44927,
+  "child_pid": "not recorded by frozen supervisor",
+  "exit_code": 0,
+  "seconds": 2.523976451018825,
+  "independent_validation_command": "python3 -B /data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/validate_inputs.py",
+  "independent_validation_exit_code": 0,
+  "independent_validation_tool_chunk": "463122",
+  "supplemental_validation_exit_code": 0,
+  "runtime_calls": {
+    "models": 0,
+    "network": 0,
+    "training": 0
+  },
+  "protected_services": {
+    "39452": "/usr/bin/python3 /data/codex-state/tool-compat/bridge.py --port 42084 ",
+    "16022": "/data/coding/sgmse/env/bin/python /data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listening/feedback_server.py --port 8766 "
+  },
+  "model_phase_authorized": false,
+  "registry_sha256": "0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13",
+  "input_metrics_sha256": "59f41885a76e611c1aef6b71b17d10adc00a22e74565af3f7af8d24ece13d209"
+}

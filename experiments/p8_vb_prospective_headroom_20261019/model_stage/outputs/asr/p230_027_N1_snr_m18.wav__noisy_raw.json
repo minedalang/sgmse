@@ -1,0 +1,70 @@
+{
+  "request": {
+    "key": "p230_027_N1_snr_m18.wav__noisy",
+    "id": "p230_027",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_m18.wav",
+    "basename": "p230_027_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "ed4af521229238341e8960cef4c3e094084a08a45cfb462da850b1b0fa2927dd",
+      "samples": 51162,
+      "array_sha256": "785df9570cd01e906d18a673d7cc07cd795c3f7868f250c214a0e5cbc7f44d54",
+      "peak": 0.4351806640625,
+      "rms": 0.09588726089699381
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " .",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " .",
+        "tokens": [
+          50363,
+          764,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.219879150390625,
+        "compression_ratio": 0.1111111111111111,
+        "no_speech_prob": 0.9312887787818909
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 57,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

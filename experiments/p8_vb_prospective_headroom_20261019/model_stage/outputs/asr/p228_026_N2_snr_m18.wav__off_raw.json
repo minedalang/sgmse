@@ -1,0 +1,85 @@
+{
+  "request": {
+    "key": "p228_026_N2_snr_m18.wav__off",
+    "id": "p228_026",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_026_N2_snr_m18.wav",
+    "basename": "p228_026_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "dd293c5775ac82056eddbc6b1c63c0447adedac1976f5faf8aa04ae915a8074f",
+      "samples": 73760,
+      "array_sha256": "b9d1a916982157dbd166727d685ae362369c9f64d9789e74c23bb0b69a2fd1ef",
+      "peak": 0.043548583984375,
+      "rms": 0.006419745512525349
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_026",
+    "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+    "raw_text_hex": "536f2069662077652063616e2074616b6520616e797468696e672066726f6d20746f6e696768742c2069742077696c6c2062652066616e7461737469632e0a",
+    "raw_text_sha256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+    "archive_entry": "trainset_28spk_txt/p228_026.txt"
+  },
+  "raw_result": {
+    "text": " if there are items through, I'm gonna think the handoff of me.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " if there are items through, I'm gonna think the handoff of me.",
+        "tokens": [
+          50363,
+          611,
+          612,
+          389,
+          3709,
+          832,
+          11,
+          314,
+          1101,
+          8066,
+          892,
+          262,
+          1021,
+          2364,
+          286,
+          502,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9228683270906147,
+        "compression_ratio": 0.96875,
+        "no_speech_prob": 0.20065313577651978
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 41,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

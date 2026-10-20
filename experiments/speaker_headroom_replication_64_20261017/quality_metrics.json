@@ -1,0 +1,219 @@
+{
+  "experiment_id": "speaker_headroom_replication_64_20261017_quality",
+  "n": 128,
+  "n_speakers": 64,
+  "sample_rate_hz": 16000,
+  "metrics": {
+    "pesq_wb": {
+      "per_arm": {
+        "off": {
+          "mean": 1.6201062751933932,
+          "std": 0.46373432775699164,
+          "speaker_cluster_bootstrap_95ci": [
+            1.5405119499890134,
+            1.7033470556838437
+          ]
+        },
+        "router": {
+          "mean": 1.631031148135662,
+          "std": 0.4683195397445962,
+          "speaker_cluster_bootstrap_95ci": [
+            1.5505570066161454,
+            1.7156930014956742
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": 0.010924872942268848,
+        "speaker_cluster_bootstrap_95ci": [
+          0.006828561774455011,
+          0.015095412964001298
+        ]
+      }
+    },
+    "stoi": {
+      "per_arm": {
+        "off": {
+          "mean": 0.8067700064248717,
+          "std": 0.11504091128188763,
+          "speaker_cluster_bootstrap_95ci": [
+            0.7856854177081214,
+            0.8264231150878005
+          ]
+        },
+        "router": {
+          "mean": 0.8079155940921445,
+          "std": 0.11497610139220381,
+          "speaker_cluster_bootstrap_95ci": [
+            0.7869364623672227,
+            0.8275417582688182
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": 0.001145587667272728,
+        "speaker_cluster_bootstrap_95ci": [
+          0.0009227664670501702,
+          0.0013703262946926956
+        ]
+      }
+    },
+    "si_sdr_db": {
+      "per_arm": {
+        "off": {
+          "mean": 6.257239274071819,
+          "std": 4.622959420593324,
+          "speaker_cluster_bootstrap_95ci": [
+            5.444706754560137,
+            7.062814575505726
+          ]
+        },
+        "router": {
+          "mean": 6.76872659563227,
+          "std": 4.505230401427186,
+          "speaker_cluster_bootstrap_95ci": [
+            5.9798599945825135,
+            7.561541227646253
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": 0.5114873215604513,
+        "speaker_cluster_bootstrap_95ci": [
+          0.48180219455481527,
+          0.5425525502192033
+        ]
+      }
+    },
+    "dnsmos_p808": {
+      "per_arm": {
+        "off": {
+          "mean": 4.033289355625,
+          "std": 0.166181480191778,
+          "speaker_cluster_bootstrap_95ci": [
+            4.002931959481378,
+            4.063498407263043
+          ]
+        },
+        "router": {
+          "mean": 4.00330005799021,
+          "std": 0.18172946488636066,
+          "speaker_cluster_bootstrap_95ci": [
+            3.9692120178203494,
+            4.036989842854174
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": -0.029989297634788945,
+        "speaker_cluster_bootstrap_95ci": [
+          -0.037816681413512104,
+          -0.022580702562949518
+        ]
+      }
+    },
+    "dnsmos_sig": {
+      "per_arm": {
+        "off": {
+          "mean": 3.4615907619994806,
+          "std": 0.2049255562126755,
+          "speaker_cluster_bootstrap_95ci": [
+            3.426345982815282,
+            3.496089162820724
+          ]
+        },
+        "router": {
+          "mean": 3.43072224155965,
+          "std": 0.22977739374466613,
+          "speaker_cluster_bootstrap_95ci": [
+            3.390751231402797,
+            3.4695957574601763
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": -0.03086852043983088,
+        "speaker_cluster_bootstrap_95ci": [
+          -0.03792059253904189,
+          -0.024630368917651156
+        ]
+      }
+    },
+    "dnsmos_bak": {
+      "per_arm": {
+        "off": {
+          "mean": 4.141512567528884,
+          "std": 0.08341512746128087,
+          "speaker_cluster_bootstrap_95ci": [
+            4.124874122897955,
+            4.156890895319612
+          ]
+        },
+        "router": {
+          "mean": 4.144650302001214,
+          "std": 0.07315940658028398,
+          "speaker_cluster_bootstrap_95ci": [
+            4.129996092378786,
+            4.158377641433914
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": 0.003137734472329557,
+        "speaker_cluster_bootstrap_95ci": [
+          -0.00070553998325039,
+          0.007143493745335032
+        ]
+      }
+    },
+    "dnsmos_ovrl": {
+      "per_arm": {
+        "off": {
+          "mean": 3.164488881160757,
+          "std": 0.25461638389967645,
+          "speaker_cluster_bootstrap_95ci": [
+            3.120344928145344,
+            3.2081526390375545
+          ]
+        },
+        "router": {
+          "mean": 3.1346516071394817,
+          "std": 0.2792304745298769,
+          "speaker_cluster_bootstrap_95ci": [
+            3.0859022445564217,
+            3.1823607723459664
+          ]
+        }
+      },
+      "router_minus_off": {
+        "mean_delta": -0.02983727402127514,
+        "speaker_cluster_bootstrap_95ci": [
+          -0.036850390770322435,
+          -0.02336044432055383
+        ]
+      }
+    }
+  },
+  "dnsmos_runtime": {
+    "requested_device": "auto",
+    "device": "cpu",
+    "execution_provider": "CPUExecutionProvider",
+    "onnx_session_providers": {
+      "sig_bak_ovr": [
+        "CPUExecutionProvider"
+      ],
+      "model_v8": [
+        "CPUExecutionProvider"
+      ]
+    },
+    "torch": "2.14.1+cu130"
+  },
+  "bootstrap": {
+    "replicates": 5000,
+    "seed": 20261017,
+    "unit": "speaker cluster"
+  },
+  "runtime_seconds": 955.194361448288,
+  "manifest_sha256": "c04657fa21a33c7f2dc749514cec899767101ba53f46222e9f4ab8577e2f4492",
+  "training": false
+}

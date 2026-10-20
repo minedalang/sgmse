@@ -1,0 +1,13 @@
+experiment_id: p8_e1_candidate_listening_20261018
+purpose: "Read-only listening clips for manual verification of P8-E1 candidates"
+source_ranking: ../p8_e1_candidate_ranking_20261018/candidate_windows.csv
+source_audio: ../p8_frontend_backend_audit_20261020/listening_pack
+source_noisy: ../p8_frontend_backend_audit_20261020/inputs/noisy
+selected_fileids: [5243, 4812, 11999, 10720]
+clip_context_seconds: 0.75
+clip_sample_rate: 16000
+clip_duration_seconds: 2.0
+model_inference: false
+dataset_modified: false
+checkpoint_modified: false
+transcript_status: "Whisper prompt only; no ground-truth text"

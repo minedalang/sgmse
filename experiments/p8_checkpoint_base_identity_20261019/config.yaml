@@ -1,0 +1,22 @@
+{
+  "experiment_id": "p8_checkpoint_base_identity_20261019",
+  "stage": "software_preparation_only",
+  "source_A": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "source_A_expected_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "source_B": "/data/coding/sgmse/joint_train_logs/5ul7u03z/epoch=444-step=300000.ckpt",
+  "compare_prefixes": ["dnn.", "frontend."],
+  "primary_reference": "same_named_RAW_state_dict_tensors",
+  "ema_name_mapping_if_unproven": "unknown",
+  "max_seconds": 120,
+  "max_directory_bytes": 2097152,
+  "max_pickle_metadata_bytes_per_source": 1048576,
+  "source_hash_pre_and_post": true,
+  "stream_storage_only_no_extraction": true,
+  "execute_authorized": false,
+  "allow_torch_or_numpy": false,
+  "allow_waveform_or_dataset_access": false,
+  "allow_model_or_training": false,
+  "allow_network": false,
+  "allow_checkpoint_writes": false,
+  "retry_scientific_run": false
+}

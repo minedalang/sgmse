@@ -1,0 +1,81 @@
+{
+  "request": {
+    "key": "p231_032_N2_snr_p0.wav__frontend",
+    "id": "p231_032",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_p0.wav",
+    "basename": "p231_032_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "e3ba6f0301e6c8753629c2548f3619ee7ce17285ebb684467964a63d37409e8f",
+      "samples": 55680,
+      "array_sha256": "5fc995bf5b954447d40b8f4baa5284d1c4ec784e71cf53d7ade812dfd3e03900",
+      "peak": 0.107696533203125,
+      "rms": 0.011340592297527818
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " But we cannot succeed in this endeavor and so be it.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " But we cannot succeed in this endeavor and so be it.",
+        "tokens": [
+          50363,
+          887,
+          356,
+          2314,
+          6758,
+          287,
+          428,
+          28251,
+          290,
+          523,
+          307,
+          340,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.3931330998738607,
+        "compression_ratio": 0.9122807017543859,
+        "no_speech_prob": 0.03968434780836105
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 103,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

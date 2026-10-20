@@ -1,0 +1,14 @@
+{"file":"listening_before_playback_fix_20261018.html","test":"resume_reordered","result":"FAIL","message":"stale clean must never start\n\n1 !== 0\n"}
+{"file":"listening_before_playback_fix_20261018.html","test":"metadata_reordered","result":"FAIL","message":"Expected values to be strictly equal:\n\n1 !== 0\n"}
+{"file":"listening_before_playback_fix_20261018.html","test":"stop_during_metadata","result":"FAIL","message":"Expected values to be strictly equal:\n\n1 !== 0\n"}
+{"file":"listening_before_playback_fix_20261018.html","test":"stop_during_resume","result":"FAIL","message":"Expected values to be strictly equal:\n\n1 !== 0\n"}
+{"file":"listening_before_playback_fix_20261018.html","test":"stale_play_rejection","result":"FAIL","message":"old rejection must not stop latest\n\ntrue !== false\n"}
+{"file":"listening_before_playback_fix_20261018.html","test":"stale_play_resolution","result":"FAIL","message":"Expected values to be strictly equal:\n\n2 !== 1\n"}
+{"file":"listening_before_playback_fix_20261018.html","test":"stop_during_play","result":"PASS","message":""}
+{"file":"listening.html","test":"resume_reordered","result":"PASS","message":""}
+{"file":"listening.html","test":"metadata_reordered","result":"PASS","message":""}
+{"file":"listening.html","test":"stop_during_metadata","result":"PASS","message":""}
+{"file":"listening.html","test":"stop_during_resume","result":"PASS","message":""}
+{"file":"listening.html","test":"stale_play_rejection","result":"PASS","message":""}
+{"file":"listening.html","test":"stale_play_resolution","result":"PASS","message":""}
+{"file":"listening.html","test":"stop_during_play","result":"PASS","message":""}

@@ -1,0 +1,506 @@
+{
+  "_embedded" : {
+    "bitstreams" : [ {
+      "id" : "dec213d3-bf57-4777-9663-c24bdce92d5e",
+      "uuid" : "dec213d3-bf57-4777-9663-c24bdce92d5e",
+      "name" : "clean_testset_wav.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "clean_testset_wav.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 154332064,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "34eb1c0ba7ef667e9b966866c542fc16"
+      },
+      "sequenceId" : 1,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/dec213d3-bf57-4777-9663-c24bdce92d5e"
+        }
+      }
+    }, {
+      "id" : "245452b6-6235-44b6-a6f9-e7eb19797769",
+      "uuid" : "245452b6-6235-44b6-a6f9-e7eb19797769",
+      "name" : "clean_trainset_28spk_wav.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "clean_trainset_28spk_wav.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 2486057279,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "d2d5a45ec32f8fcbf201bde0447e20ba"
+      },
+      "sequenceId" : 2,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769"
+        }
+      }
+    }, {
+      "id" : "386ac199-5d34-402f-8112-2a123577dd57",
+      "uuid" : "386ac199-5d34-402f-8112-2a123577dd57",
+      "name" : "clean_trainset_56spk_wav.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "clean_trainset_56spk_wav.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 4770619279,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "c351cbc9db30e41686c988c19f0e1475"
+      },
+      "sequenceId" : 3,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/386ac199-5d34-402f-8112-2a123577dd57/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/386ac199-5d34-402f-8112-2a123577dd57/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/386ac199-5d34-402f-8112-2a123577dd57/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/386ac199-5d34-402f-8112-2a123577dd57/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/386ac199-5d34-402f-8112-2a123577dd57/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/386ac199-5d34-402f-8112-2a123577dd57"
+        }
+      }
+    }, {
+      "id" : "11185dc8-9cf1-405b-b858-35bd6a04aedd",
+      "uuid" : "11185dc8-9cf1-405b-b858-35bd6a04aedd",
+      "name" : "logfiles.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "logfiles.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 115932,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "0d16f5b6afe12d64238d1e4a0e6ff6e8"
+      },
+      "sequenceId" : 4,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/11185dc8-9cf1-405b-b858-35bd6a04aedd"
+        }
+      }
+    }, {
+      "id" : "13c1bfbf-14a6-41db-9b41-8f7310f01ad5",
+      "uuid" : "13c1bfbf-14a6-41db-9b41-8f7310f01ad5",
+      "name" : "noisy_testset_wav.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "noisy_testset_wav.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 170578854,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "fb1b86caa31e8ba5b506c0c64da9aab5"
+      },
+      "sequenceId" : 5,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/13c1bfbf-14a6-41db-9b41-8f7310f01ad5"
+        }
+      }
+    }, {
+      "id" : "ecb5a102-bb00-46d3-8af5-40c79823b837",
+      "uuid" : "ecb5a102-bb00-46d3-8af5-40c79823b837",
+      "name" : "noisy_trainset_28spk_wav.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "noisy_trainset_28spk_wav.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 2830205201,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "1fca9e8bafb8cd069f6653c6d92f9e9c"
+      },
+      "sequenceId" : 6,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/ecb5a102-bb00-46d3-8af5-40c79823b837"
+        }
+      }
+    }, {
+      "id" : "60506429-e89f-4ae5-a28f-da63238d11cb",
+      "uuid" : "60506429-e89f-4ae5-a28f-da63238d11cb",
+      "name" : "noisy_trainset_56spk_wav.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "noisy_trainset_56spk_wav.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 5627055496,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "b26382542716642b8f2845880af69cf0"
+      },
+      "sequenceId" : 7,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/60506429-e89f-4ae5-a28f-da63238d11cb/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/60506429-e89f-4ae5-a28f-da63238d11cb/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/60506429-e89f-4ae5-a28f-da63238d11cb/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/60506429-e89f-4ae5-a28f-da63238d11cb/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/60506429-e89f-4ae5-a28f-da63238d11cb/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/60506429-e89f-4ae5-a28f-da63238d11cb"
+        }
+      }
+    }, {
+      "id" : "09e12592-879e-4749-bf6d-e34cf0d1ddf6",
+      "uuid" : "09e12592-879e-4749-bf6d-e34cf0d1ddf6",
+      "name" : "testset_txt.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "testset_txt.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 440277,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "6ca8ef3756f3769c05bb694e77ad29f0"
+      },
+      "sequenceId" : 8,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/09e12592-879e-4749-bf6d-e34cf0d1ddf6"
+        }
+      }
+    }, {
+      "id" : "fb55b5de-c2db-4451-ac0a-134e98011ffa",
+      "uuid" : "fb55b5de-c2db-4451-ac0a-134e98011ffa",
+      "name" : "trainset_28spk_txt.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "trainset_28spk_txt.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 6489312,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "48bfcd5945165c60ab9d2f312f4d6e1c"
+      },
+      "sequenceId" : 9,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa"
+        }
+      }
+    }, {
+      "id" : "5dd7f013-dfde-45b0-a9ee-3818ca00951b",
+      "uuid" : "5dd7f013-dfde-45b0-a9ee-3818ca00951b",
+      "name" : "trainset_56spk_txt.zip",
+      "handle" : null,
+      "metadata" : {
+        "dc.source" : [ {
+          "value" : "class org.dspace.app.itemimport.ItemImport",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ],
+        "dc.title" : [ {
+          "value" : "trainset_56spk_txt.zip",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "bundleName" : "ORIGINAL",
+      "sizeBytes" : 12918133,
+      "checkSum" : {
+        "checkSumAlgorithm" : "MD5",
+        "value" : "8aa183b7cfbf148b9558302a0c0c3771"
+      },
+      "sequenceId" : 10,
+      "type" : "bitstream",
+      "_links" : {
+        "content" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/5dd7f013-dfde-45b0-a9ee-3818ca00951b/content"
+        },
+        "bundle" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/5dd7f013-dfde-45b0-a9ee-3818ca00951b/bundle"
+        },
+        "format" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/5dd7f013-dfde-45b0-a9ee-3818ca00951b/format"
+        },
+        "thumbnail" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/5dd7f013-dfde-45b0-a9ee-3818ca00951b/thumbnail"
+        },
+        "accessStatus" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/5dd7f013-dfde-45b0-a9ee-3818ca00951b/accessStatus"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bitstreams/5dd7f013-dfde-45b0-a9ee-3818ca00951b"
+        }
+      }
+    } ]
+  },
+  "page" : {
+    "number" : 0,
+    "size" : 20,
+    "totalPages" : 1,
+    "totalElements" : 10
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/bdb21ae9-97ad-46dc-89b6-c1884783df6a/bitstreams?size=20"
+    }
+  }
+}

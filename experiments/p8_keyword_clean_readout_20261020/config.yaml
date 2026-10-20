@@ -1,0 +1,109 @@
+{
+  "experiment_id": "p8_keyword_clean_readout_20261020",
+  "status": "prepared_not_executed",
+  "authorization_file": "root_execution_authorization.json",
+  "manifest_file": "selected64_manifest.json",
+  "registry_receipt": "registry_receipt.json",
+  "source": {
+    "url": "https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip",
+    "archive_bytes": 182082353,
+    "etag": "\"4b8a67bae2973844e84fa7ac988d1a44\"",
+    "entries_path": "../p8_keyword_source_feasibility_20261020/central_directory_entries.json",
+    "entries_sha256": "e2cdcf745406b23df35301ce396ffc08176d37e03befd66c442830bf949dcb42",
+    "central_directory_path": "../p8_keyword_source_feasibility_20261020/central_directory.bin",
+    "central_directory_sha256": "b9a648bea6e90561117605e2cfe10a44c38055429ee088c7429520f07a6c179c",
+    "license_documentation": "CC BY per official TensorFlow tutorial; archive README not read",
+    "prior_source_experiment": "failed source-code request and 4MiB output budget; not recast as passed"
+  },
+  "selection": {
+    "words": [
+      "down",
+      "go",
+      "left",
+      "no",
+      "right",
+      "stop",
+      "up",
+      "yes"
+    ],
+    "records": 64,
+    "groups": 8,
+    "partition": "validation",
+    "which_set": "pct=(int(sha1(group),16) % 2**27)*100/(2**27-1); validation pct<10; testing pct<20 otherwise training",
+    "group_rule": "complete eight-label groups, sort sha256(p8-word-calibration-v1|group), first8",
+    "member_rule": "fixed group order; fixed listed word order; lexicographically first filename for group/word",
+    "labels_input_to_model": false,
+    "reserved_testing_audio_reads": false,
+    "pretraining_exposure": "unknown"
+  },
+  "audio": {
+    "sample_rate": 16000,
+    "channels": 1,
+    "sample_width_bytes": 2,
+    "maximum_samples": 16000,
+    "minimum_samples": 1,
+    "max_member_bytes": 65536,
+    "max_selected_member_bytes": 3145728,
+    "resampling": false,
+    "external_padding": false
+  },
+  "asr": {
+    "model_path": "/data/.rootcache/whisper/tiny.en.pt",
+    "model_sha256": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03",
+    "package_path": "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper",
+    "device": "cuda:0",
+    "seed": 20261020,
+    "transcribe_options": {
+      "language": "en",
+      "task": "transcribe",
+      "temperature": [
+        0.0
+      ],
+      "beam_size": 1,
+      "best_of": 1,
+      "condition_on_previous_text": false,
+      "initial_prompt": null,
+      "no_speech_threshold": null,
+      "verbose": false,
+      "word_timestamps": false,
+      "fp16": false
+    }
+  },
+  "scoring": {
+    "word_regex": "[a-z0-9]+(?:'[a-z0-9]+)*",
+    "lowercase": true,
+    "correct": "single normalized token exactly equals directory label",
+    "no_homophone_spelling_or_dictionary_remapping": true,
+    "all_fixed_records_retained": true,
+    "source_semantics": "directory word label; not phone boundary/human noisy gold"
+  },
+  "screen": {
+    "minimum_correct_total": 58,
+    "minimum_correct_per_word": 6,
+    "meaning": "fixed clean readout applicability only, not enhancement or noisy/human reliability",
+    "failure_action": "do not adopt this endpoint with this readout; no prompt/model/classifier rescue"
+  },
+  "limits": {
+    "seconds_total": 300,
+    "seconds_download": 120,
+    "HTTP_requests": 1,
+    "network_body_bytes": 182082353,
+    "new_artifact_bytes": 209715200,
+    "minimum_free_disk_bytes": 1073741824,
+    "transcribe_calls": 64,
+    "frontend_calls": 0,
+    "backend_calls": 0,
+    "optimizer_steps": 0,
+    "weight_copies": 0,
+    "network_after_archive": false,
+    "redirects": false,
+    "retries": false,
+    "installs": false
+  },
+  "outputs": {
+    "source_archive": "mini_speech_commands.zip",
+    "selected_wav_directory": "selected_wav",
+    "metrics": "metrics.json",
+    "no_audio_modified_or_regenerated": true
+  }
+}

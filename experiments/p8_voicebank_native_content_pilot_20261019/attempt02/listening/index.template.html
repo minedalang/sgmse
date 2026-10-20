@@ -1,0 +1,24 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>自然语音 pilot · 本轮试听已完成</title>
+<style>body{font:18px/1.65 system-ui,sans-serif;max-width:880px;margin:24px auto;padding:0 18px;color:#192734;background:#f6f8fa}section{background:white;padding:18px;margin:18px 0;border:1px solid #ccd4dc;border-radius:10px}button{font:inherit;padding:10px;margin:5px}audio{width:100%}#playerbox{position:sticky;top:0;background:#e8eff7;padding:12px;z-index:1}small{color:#465566}</style>
+<h1>自然语音 pilot · 本轮试听已完成</h1>
+<p><strong>本轮 A/B 反馈已完成，无需重新试听或提交。</strong>音频仅保留供日后自愿回听。</p>
+<p>这是来源已验证的<strong>单人、有参考、非盲诊断</strong>。两例按既有 ASR 差异事后挑选，属于探索性诊断，不是新的独立统计样本，不能估计总体正确率或总体胜率。</p>
+<p>本轮已对照 clean 参考比较前端与后端。每条都是完整句、原幅度，未经响度归一化、裁剪或重采样；同组 clean 使用输入配方的共同缩放。响度可能不同，请按舒适音量试听。本页只提供这两组，不需要重听旧 VCV 或 5243。</p>
+<div id="playerbox"><div id="current" role="status" aria-live="polite">当前片段：尚未选择</div><audio id="player" controls preload="none"></audio><button id="stop" type="button">停止</button></div>
+<section><h2>A · p287_054 / N1 / 0 dB</h2><p>完整 51089 样本，约 3.19 秒。</p>
+<button type="button" data-file="audio/A_clean.wav" data-name="A · clean 干净参考">A · clean 干净参考</button>
+<button type="button" data-file="audio/A_noisy.wav" data-name="A · noisy 带噪输入">A · noisy 带噪输入</button>
+<button type="button" data-file="audio/A_frontend.wav" data-name="A · 前端 Y_pre">A · 前端 Y_pre</button>
+<button type="button" data-file="audio/A_off.wav" data-name="A · 原生后端 OFF">A · 原生后端 OFF</button>
+<h3>用户原话 · A</h3><blockquote>__FEEDBACK_A__</blockquote><p>这位听者认为两版句末均无额外语音、音节相近，后端音节质量更好。这一观察不支持将该例的 ASR 差异当作人工确认的末段内容损伤；未逐词核定全句。</p></section>
+<section><h2>B · p226_028 / N2 / −18 dB</h2><p>完整 67653 样本，约 4.23 秒。</p>
+<button type="button" data-file="audio/B_clean.wav" data-name="B · clean 干净参考">B · clean 干净参考</button>
+<button type="button" data-file="audio/B_noisy.wav" data-name="B · noisy 带噪输入">B · noisy 带噪输入</button>
+<button type="button" data-file="audio/B_frontend.wav" data-name="B · 前端 Y_pre">B · 前端 Y_pre</button>
+<button type="button" data-file="audio/B_off.wav" data-name="B · 原生后端 OFF">B · 原生后端 OFF</button>
+<h3>用户原话 · B</h3><blockquote>__FEEDBACK_B__</blockquote><p>用户报告前端丢失音节，后端有奇怪、难懂的音节，尤其提到开头的差异。“把噪声识别成语音”是用户推测，尚未证明因果机制。用户未给出精确人工时间边界；听觉上无语音不等于波形样本精确为零。</p></section>
+<p>以上为同一位听者在聊天中提供的有参考、非盲反馈，案例为事后挑选，不能据此估计总体正确率或总体胜率。A 的感知收益与 B 的风险同时保留。本轮已完成，无需重听或重交；本页无表单。</p>
+<p><a href="user_feedback_20261019.json">原始聊天反馈记录</a></p>
+<p><small><a href="sources.json">来源、原始幅度与 SHA256</a> · <a href="validation.json">本地与 HTTP 校验</a>。播放器已做最小 DOM 模拟测试；未声称实际浏览器播放已测。</small></p>
+<script src="player.js"></script></html>

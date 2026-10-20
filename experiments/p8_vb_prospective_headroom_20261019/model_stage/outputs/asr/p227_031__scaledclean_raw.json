@@ -1,0 +1,74 @@
+{
+  "request": {
+    "key": "p227_031__scaledclean",
+    "id": "p227_031",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_scaledclean.wav",
+    "input": {
+      "wav_sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898",
+      "samples": 51005,
+      "array_sha256": "156b8fdd62479dcceb362521e4444b117d0c594a9b5d3a1a76f8bb48ed3a3302",
+      "peak": 0.172698974609375,
+      "rms": 0.012070910852939355
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " The Premier League has been a huge success.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " The Premier League has been a huge success.",
+        "tokens": [
+          50363,
+          383,
+          9952,
+          4041,
+          468,
+          587,
+          257,
+          3236,
+          1943,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.4703463713328044,
+        "compression_ratio": 0.8431372549019608,
+        "no_speech_prob": 0.025924107059836388
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 2,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

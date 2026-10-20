@@ -1,0 +1,14 @@
+experiment_id: rrsd_harm_oracle_n30_4_paired
+type: paired_metrics_evaluation
+arms:
+  - experiment_logs/rrsd_harm_oracle_n30_4_full
+  - experiment_logs/rrsd_harm_oracle_n30_4_gate
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+selected_fileids: [2673, 2972, 7247, 4431]
+metrics: [PESQ_wb, STOI, SI-SDR]
+bootstrap_replicates: 10000
+bootstrap_seed: 2026
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+N: 30
+use_ema: true
+mutates_dataset: false

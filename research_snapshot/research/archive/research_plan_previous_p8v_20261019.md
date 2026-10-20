@@ -1,0 +1,987 @@
+# StoRM / SGMSE Research Plan
+
+> **新增待证伪算法候选 P8-V：反事实声学证据引导（2026-10-19；仅研究设计，不授权实验）**：承接 P8-C 的“Noisy 可能约束错误生成”假说，但不将已有 VCV 尾音差异当作有效音素否决证据。核心从“检测 `Y_pre` 哪里被过抑制”推进到“对一个具体候选弱辅音/语音事件，比较**有该事件与无该事件**哪种解释更符合原始 `noisy`”；采用有支持／有反证／不可判定三态，双向处理真实漏音和虚假补音。初期定位为冻结 StoRM 输出的离线候选审查/重排序研究问题；不立刻训练 verifier、改 OUVE、跑新实验或用已反复分析的案例宣布新颖性。详细定义、前置证据门与先例边界见 §3.8 的 **P8-V**。
+
+> **B开头既有音频CPU复核已预登记（2026-10-19）**：`experiments/p8_vb_caseB_opening_existing_audit_20261019/analysis_plan.md`，仅B=p226_028/N2/-18dB缓存/实际物理噪声与播放源。固定[0,.1),[.1,.2),[.2,.3),[.3,.4),[.4,.5)、[0,.5)及全句，不把这些区间当无语音标签；全句所有20ms帧/末尾残帧都保留，无改窗/平移/平滑搜索。核raw/PCM、来源、实际尺度/长度、RMS/peak/精确零、固定频带Parseval与同区间零延迟标量噪声对应，不用低能量/相关性认定音素或因果。Worker60秒/2MB、0新模型/ASR/训练/网络/输出音频，原冻结实验不改。用户没给人工起止，不能生成假边界；A后端质量更好的观察必须并存保留。另只更新A/B页显示本轮反馈已完成，不要求重听。
+
+> **最新人工听感修正（2026-10-19，不能用ASR盖过）**：用户已完成新A/B：A=p287_054/N1/0dB，明确句末前端和后端均无额外语音、音节差不多，前端高频较少、后端音节质量好很多；因此这例**不支持由ASR增错挑出的末段内容损伤候选**，不能把整组0dB更差WER自动判为人耳变差，也未据此宣称全句所有词人工核定。B=p226_028/N2/-18dB，用户认为前端丢失很多音节，后端有很多奇怪音节；特别开头clean/Y_pre没有语音，OFF有难懂音节。此为有参考人工观察的自然匹配伪影候选，不只是ASR长句；“把噪声识别成语音”仍是用户机制猜想，未证明因果。无精确人工时间边界；听觉无语音不等于clean样本精确为0。原话独立保存于attempt02/listening/user_feedback_20261019.json，不改原metrics/转写/旧反馈，不造浏览器提交。下一步只做B既有音频/实际合成源的有界CPU开头/全句固定网格复核，先登记固定区间，不新增模型/ASR、强制对齐、重听要求或阈值/窗口搜索；A感知收益与B风险同时保留，不训练全局高频抑制/全局Noisy加权。
+
+> **既有结果的幅度/ASR字数混杂复核（2026-10-19，0新推理）**：Lead从同一不可变metrics全部16格记录直接推导，无音频变换/解码。-18dB后端相对前端RMS中位+1.895dB（+0.981至+10.845），ASR假设字数55→103；0dB中位-0.008dB（-0.102至+0.346），字数77→77但编辑错误18→25。试听A仅+0.130dB RMS、误差2→5，B约+0.981dB RMS、字数12→20；另有+10.845dB而字数不变，故不能用全局增能一个量解释全部差异，也未据此排除ASR幅度敏感性。保留0dB内容风险与-18dB残噪/增能驱动识别的竞争解释；字数不是实际语音字数。可复现派生脚本/JSON见`research_memos/p8_native_gain_length_summary_20261019.*`，原metrics SHA不变，完整判读memo新增§6。未追加任何本16格模型调用、人工反馈或训练；可选A/B页仍等待用户自愿判断，不以未到反馈阻塞其他无推理分析。
+
+> **最新实际结果：自然匹配内容pilot完成（2026-10-19，覆盖下方待执行）**：`p8_voicebank_native_content_pilot_20261019/attempt02/` 唯一46.539450秒，16front+16OFF NFE30、52transcribe/53internal decode（非神经forward），0训练/外部网络；260锁、32raw/PCM及52独立评分复核通过，输出全部无裁切/饱和、长度identity、norm准确匹配，原78文件/第一失败保留。相对发布者原文，noisy/Y_pre/OFF微WER总体66.03/59.62/80.77%，-18dB为100/96.15/129.49%，0dB为32.05/23.08/32.05%；新缩放clean39词零错。OFF相对前端编辑错误+33，其中H净少5、I净多28，D反而30→10；不是已证明的“新增删除”或语义幻觉。固定ASR参考位置总体损失11/恢复6，0dB6/0、-18dB5/6；两说话人/四句和重复噪声不是16独立样本，156词是39词重复，严禁统计泛化。-18dB单ASR已近失败区，优先用0dB候选区分真实内容损伤与ASR伪影。Root已归档`research_memos/p8_voicebank_native_pilot_interpretation_20261019.md`，停止本16格新推理/换参，不开训。
+
+> **新增可选试听已上线（仅缓存、非新模型实验）**：Engineer仅在attempt02/listening构建A=p287_054/N1/0dB、B=p226_028/N2/-18dB两例各clean/noisy/Y_pre/OFF的完整原幅度8WAV页，按已有最大proxy差异事后选例，单人有参考非盲，不展示ASR文本诱导、不重听旧VCV/5243。询问A末段内容是否真改变、B是否为可辨词还是碎片/噪声，unknown允许，尚无用户新反馈。页面http://localhost:8766/p8_voicebank_native_content_pilot_20261019/attempt02/listening/index.html已通过8份原幅度完整WAV来源/raw/PCM/HTTP字节核验与单播放器9项逻辑检查（非真实浏览器播放测试），新增1,039,828字节、当前父实文件25,193,581字节，符号链接重复不计预算。模型阶段父目录完成快照24,153,753字节，试听新增量另记，不能覆盖冻结指标或据两例偏好宣布总体改善。后续独立验证/测量补强需新设计，不自动增加Noisy权重、训练loss或运行冲突四格。
+
+> **attempt02已审并核定唯一模型运行（2026-10-19）**：原78文件/失败metrics与输入均保存，260锁实核一致；独立目录`p8_voicebank_native_content_pilot_20261019/attempt02/`继承相同16条件/seed/scale/ASR/80kEMA/N30，父目录总40MB、410+10秒、16front/16OFF/52ASR不变。依赖smoke01在自加GELU构造guard误报后停止；另行批准的smoke02真实导入Torch/native/Whisper完成10.137秒、0权重加载，但原记录有1个被拒socket构造，历史来源不能倒推确证。新定向CPU测试已验证：只把精确已锁urllib3代码/host::1/AF_INET6/原拒绝调用链的**仍被拒绝**本地探测单列，其余未知事件在模型调用前停止，所有socket依然拒绝，不新增网络权限。Lead已核读collector、process guard、driver/validator差异与数据/预算隔离，批准Worker仅一次执行新命令。最终driver SHA256 `ff337743676ffc7eaa2d067b1af2bd07f5ea6a132bc74b361b461b6fd6af0f81`、execution config `b3bc9064c59af391cd01c050f6e45430946e171e654da202028ed52495e875bb`、manifest `de564d709bf70f6158bc8c0420a7b5ff338a35b7e644268ab195067d63a36995`。尚未有attempt02科学结果；不再做第三次import smoke/自动重试，真实结果及本地/未知拒绝分别由metrics与独立验证证明，原科学假说不因工程失败改判。
+
+> **自然内容pilot首个模型启动已技术失败（2026-10-19，无模型结果）**：唯一原命令1.853733秒，在import torch→cuda.pathfinder→ctypes的只读`ldconfig -p`查询被过严本地进程白名单拒绝；增强/ASR装载、frontend/OFF/transcribe/internal decode均0，0网络/训练。已保存原metrics（SHA256 `6e70d1bef76eb8ea752f401d5fa102b377580365cda477742e4131d4d25fa929`）、log/report及失败-only审计，173锁pre/post/current和74原工件通过，目录7,880,926字节；成功验证器未运行，无WER/clip/NFE可报告。冻结输入/科学设置不变，不能据此判断增强性能。Lead已核读失败链，原目录不重跑/不修文件；只批准Engineer在独立attempt02内做一次60秒/5MB、0权重模型/网络的依赖导入debug，静态核查和记录必要本地查询后准备最小guard修正。任何attempt02科学模型运行仍须新冻结后Lead审/Worker单次执行；40MB预算涵盖父目录/旧失败/输入与新尝试，不允许仅算子目录或无穷追加白名单重试。
+
+> **自然匹配内容pilot模型阶段已核定（2026-10-19，待唯一执行）**：Lead已实读原生入口、ScoreModel归一化/采样返回、Whisper源码、完整observer/配置/独立评分及序列化验证器，173当前锁通过。Engineer在准备阶段修正dict共用、Lightning合法file-like加载和本地Ninja进程误拦截；16case假模型端到端/32合成PCM/225独立DP/weakref释放/文件对象位置保持等通过，真实模型仍0。现核定Worker单次`env/bin/python -B .../model_stage/run_pilot.py`，原生main一次16noisy，16front+16OFF N30+52短Whisper API，410秒执行+10秒收尾/40MB/0网络训练test，不变更输入、阈值、seed或源代码。冻结driver SHA256 `d6789a9a3c4e4210e16db8fbda362286d9a2df88fc7c8dcc33e2c11648205efb`，execution config `a99f3bd76ec184ec2afc44a7715eded82b5a0ad1abd543ffce2a84b7c7d9441e`，execution manifest `1605fe58d5963b5300c83da51b0c248722e561235708e3b20229d90651937528`。输入registry保持`0af790...df13`；仅观察真实frontend/OFF参数、归一化、NFE及raw/PCM，保持原生args/returns。实际依赖导入仍未验证，未知命令或技术错误保留失败停止，不能自动重试；结果好坏不触发换参或选例。
+
+> **自然内容pilot输入已生成并冻结（2026-10-19，尚无模型结果）**：Worker唯一CPU准备2.523976秒，16份noisy+4份scaledclean及20份raw float32完整保留，目录7,614,542字节，0模型/ASR/网络/训练/重试。`input_registry.json` SHA256 `0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13`；独立重建20工件、全16配方/SNR/seed/order及4发布者原文通过，12源锁与8准备锁pre/post/current一致。四句共享缩放各为0.192723/0.124257/0.235519/0.191294；全部输入零饱和，PCM残差SNR偏差最大约0.000104dB，原规定全句分量SNR[-18,0]未改。只解决输入可复现性，不是增强或内容恢复结果。Engineer现仅准备原生main观察型模型driver/专用execution config/最终manifest与CPU验证器；原准备config/registry/input_metrics保持冻结，不得拿CPU批准启动模型。模型入口交Lead审后才交Worker单次运行，既定16front+16OFF/52ASR上限及420秒/40MB不变。
+
+> **自然内容pilot的CPU输入准备已核定（2026-10-19，仅CPU）**：Lead已审`prepare_inputs.py`、配方config、旧noise源锁及独立输入重建器；8准备文件锁/合成PCM与拒绝guard测试通过，真实输入尚未生成。核定Worker唯一执行`python3 -B .../p8_voicebank_native_content_pilot_20261019/prepare_inputs.py`，120秒/12MB/0模型网络、完成后独立CPU重建。driver SHA256 `fc776a6d48552b0b44ef29595ff10eb24ef6031ae27e7383399a33f43148a0c0`，config `3b271bf7cd74d59997feffc3a56caddac536f6899757b17c5b129b93e2381a2b`，preparation manifest `100a771d82c3734a972496cb276fa5f09a6b10fdf389c283a303cdd73143dd01`。此核定只批准生成和核查16份noisy+4份scaledclean输入，模型driver尚未实现、模型manifest未冻结，不能启动16格增强/ASR或换参数。
+
+> **下一项自然匹配内容pilot已设计，当前仅允许准备（2026-10-19）**：`experiments/p8_voicebank_native_content_pilot_20261019/analysis_plan.md`固定原四官方派生句×历史N1/N2物理噪声×完整句SNR[-18,0]共16格，全保留，无条件冲突或旧VCV/5243事件重跑。每噪声从5秒取完整句长，按全句分量能量定增益；每句四格共享一次仅向下缩放防输入裁切，实际模型仍只用原生noisy峰值。先Engineer准备、Worker只执行有界CPU合成/源核验（0模型/网络、120秒/12MB），再冻结输入、Lead审后才另行核定最多16front+16OFF N30+52短Whisper API（含4个新缩放clean控制）/420秒/40MB，当前未授权模型启动。原生80kEMA/OFF流程及文件名seed公式不变，不把跨SNR随机轨迹差异隐去；发布者原文/现有固定评分，报告代理S/D/I及参考位置转移而非真实吞音率。此pilot沿用两说话人和历史噪声，不是16个独立样本或确认集；不下载/训练/调冻结官方测试集，不因clean零WER扩张结论。
+
+> **最新结果：四条官方派生clean文本校准完成（2026-10-19，覆盖下方准备状态）**：`experiments/p8_voicebank_clean_text_calibration_20261019/` 单次6.099228秒，1次本地Whisper模型装载、4次transcribe API与4次internal decode API（未测神经forward数），0网络/增强/训练/重试。原四条发布者参考39词/177评分字符全部匹配，S=D=I=0，WER/CER微平均与句均均0；没有事后准确率门或样本剔除。Lead实际核对四份原始reference/hypothesis、指标与独立验证：37源锁pre/post/supervisor-post一致，9准备锁、22原产物及原文/字词对齐/聚合复算通过，最终364,400字节。此结果只说明该单识别器在四条clean上的参考一致性，不是人工真值、极低SNR可懂度、独立泛化或增强收益；先前本地转换门仍失败。下一项可设计**自然匹配**的noisy→原生Y_pre→OFF内容测量小pilot，先固定噪声来源、完整句SNR、输入/量化/种子及预算，再准备脚本；不能拿四条clean零错率自动授权噪声/增强调用，不再换clean/ASR设置追求好看结果。保留原文文本作为参考，按删除/替换/插入分项看代理与人工判断，不回到单CTC尖峰真值。
+
+> **clean文本校准执行核定（2026-10-19）**：Lead已核读本机Whisper实际load/transcribe/DecodingOptions源码、新driver/config和独立评分验证器；225组独立DP及空串/超1WER/tie/离线拒绝/源哈希测试通过。核定保持4条/39参考词、单temperature/beam-1、无prompt、0网络、180秒/5MB边界，由兼容provider上的Worker唯一执行。driver SHA256 `74f838ffbf2004136e440943989c188d5f9a563f0097e0861ea35130a9b65bcf`，config `f6ff1db0f615b0b62ee28e751a40422aeae45d836c0766c270270f3e5a4dad19`，manifest `dd1e4f58596fe539aada4f4c3336f0a1defc7fff5509e9fd1a2498b86ef8340e`。准备阶段0模型/解码/网络；实际结果待metrics/report，不将beam-1误称严格GreedyDecoder，也不将4次transcribe误称4个forward。只授权本项clean测量，不包括加噪、增强或训练。
+
+> **下一项执行前设计：四条官方派生clean的文本测量校准（2026-10-19，准备中，尚未授权运行）**：目录`experiments/p8_voicebank_clean_text_calibration_20261019/`，冻结`analysis_plan.md`。仍全保留原四ID及其官方48k→默认16k派生PCM，不改变已失败的本地转换门、不搭配本地VB noisy。仅已缓存Whisper tiny.en显式本地路径、固定单temperature/beam-1/无prompt，全句原幅度，最多4次transcribe API调用（不是4次神经forward）、180秒/5MB/0网络；无ASR选例、增强、CTC音素、训练或test。发布者原文而非clean-ASR作参考，事先固定简单字词规范化、S/D/I最优对齐tie规则，逐条保留39个参考词、WER/CER微平均及句均，不以结果改设置。现只交Engineer准备静态实现/CPU合成评分测试；Lead再核定才交Worker单次执行。单word-ASR的clean偏差是工具校准，不是真值、增强收益或独立泛化结论；第二套word-ASR当前本机未发现，不能把音素CTC冒充独立词识别裁判，也不自动下载新模型。
+
+> **最新结果：VoiceBank四条来源门已执行、未过固定转换门（2026-10-19，覆盖下方准备/待执行状态）**：唯一运行14.611230秒，15次Range请求全部206且范围/identity/稳定ETag与Last-Modified/四成员CRC检查通过，计账网络3,269,308字节；8次音频解码、4次默认CPU重采样，0ASR/增强/训练/test内容访问、无重试。四条长度均匹配，但max差为262.085/572.695/432.625/431.012个PCM16单位，全部超过原定2单位，`metrics.json`为`waveform_gate_failed`。零延迟相关0.999787–0.999968只说明强相似，不证明指定转换已复现，也不据此断言错配或转写错误；独立离线验证已通过13准备锁、10源的pre/post/current锁、47原运行产物、15事务及4波形的固定差值/序列化复算，0新网络/重采样/模型；最终目录5,522,248字节。验证通过不是波形门通过。停止同四条重下载/重跑及增益、延迟、裁剪、阈值或重采样器搜索。下一步只设计复用已缓存官方成员及其明确16k派生物的内容测量校准协议；它是新参考来源，不是原门改判通过，不能与本地VB noisy冒充原生配对，也不代表独立确认集。详见`research_memos/p8_voicebank_waveform_gate_decision_20261019.md`。暂未登记新模型执行，不重开5243/VCV消融。
+
+> **恢复后的执行核定（2026-10-19）**：用户明确恢复科研goal，实际get_goal为active；已重新检查本文件、AGENTS、git、进程与目录，来源波形门仍仅准备、无旧执行结果。Lead审阅发现HTTP版本标识允许完全缺失，Engineer已在读取body前加“每次至少一个非空ETag/Last-Modified”保护，真实RangeReader.get的14项CPU mock通过；旧准备文件完整归档，config/selection、四条样本、阈值与预算不变。新driver SHA256 `d7114eee7128bd61496926f8b692fc403514583a68cf6babbcfd9a43dfb49664`，新冻结manifest `2aedc78cce659639f5164e3687356563cfd6e4bb78d395c2e77301dde064cab6`；已交新的Experiment Worker按下列边界单次执行，最终结论以metrics/report/独立验证为准。旧Worker未发请求，保持idle；新Engineer实际验证继承兼容provider，后续新委派也须核查，不将一次未生效的旧线程provider应用误报成功。
+
+> **当前执行前登记：VoiceBank四条原始来源—本地clean波形门（2026-10-19）**：目录 `experiments/p8_voicebank_source_waveform_gate_20261019/`；仅从现有valid的p226/p287各取数字ID≥26、3–8秒中按ID排序最先两条，已固定p226_027/p226_028/p287_037/p287_054，不依据文本含义、ASR或增强输出筛选。优先复用已存官方元数据，用HTTP Range只读原始clean训练ZIP的目录与四个成员；必须206/正确范围/身份编码及稳定版本信息，若不支持范围则停止，不下载2.486GB整包。上限16请求/8MB网络/12MB产物/180秒，无自动重试、无test内容、无ASR/增强/训练。官方成员需CRC/安全/尺寸校验，CPU按本地准备脚本唯一默认48k→16k Resample流程比较四条完整零延迟波形，不做增益/延迟/裁剪/重采样器搜索。四条长度须匹配、最大差≤2个PCM16单位；否则记录未过门，不改阈值找一致。通过仅证明这四条来源转换可对应，不等于全库逐字转写/音素边界或预训练独立。Engineer准备，Lead核后由Worker执行；此刻未发起范围请求/模型调用。
+
+> **VB用途边界（答复用户本轮问题）**：只作为有发布者原文的辅助内容评价/校准来源，解决DNS缺少可信转写、单CTC后验不能代表人耳强度/内容的问题；当前不是改用VB训练或替换DNS主线。四条来源门是数据核验，不是性能样本或泛化结果。原生VB噪声难度/说话方式与DNS极低SNR不同，不能把VB高SNR结果当作原问题解决；若后续做内容对照，须另行预注册噪声/SNR与评价协议，并最终回到DNS相关条件核验。test仍保留，原始数据不修改。
+
+> **最新数据进展（2026-10-19）：VoiceBank独立文字参考已完成映射，尚未验证实际语音一致性。** `experiments/p8_voicebank_content_reference_audit_20261019/attempt02/` 已取官方trainset_28spk_txt.zip，6,489,312字节、官方MD5及23,145文件CRC/路径安全校验通过；11,572条原文与本机ID一一对应，其中train10,802/26说话人、valid770/p226+p287，无缺失/重复/空文本/解码异常。来源/许可CC BY4.0与原始bytes/hash/仅空白归一化文本单独保留，非ASR伪标签。23,144个训练来源clean/noisy头信息均16k单声道PCM16、长度匹配；test只看SCP/文件名，未读其音频/文本内容。首阶段超时失败完整保留；独立ZIP-only流式attempt02一次事务9.63秒成功，校验映射11.62秒，约26.1MB产物，无模型/音频解码/训练。按ID对应不证明实际spoken text、原生48k到本地16k转换或预训练独立，不能立即宣称可靠WER/音素真值。下一步仅先设计小规模原始来源—本地clean一致性门，保护test；不因此重开已停止的5243/VCV消融或新四格。
+
+> **最新结果与决策（2026-10-19，覆盖下方历史状态）**：`experiments/p8_5243_local_condition_necessity_20261019/` 已完成0frontend/4OFF N30/4短CTC，53.18秒；原生raw/历史完整与片段PCM精确门、58个实际前后源/权重锁及独立CPU核验通过，无失败/重试。固定P(d)为原生0.869617、目标移除0.979222、前方对照0.614505、后方对照0.959156，均峰值35帧且判d。**预注册基于后验的局部必要性方向未获支持**，后验不等于真实改善。新听感初次不确定，用户随后明确修正：**第4目标移除版/d/比第3原后端相对弱一点**。以修正后的相对可听强度为准；哪版更接近clean、是否删除/替换及5/6对照未获新判断，不把稍弱升级成身份错误或必要性证明。前次不确定答复/早先前后端观察均保留，同一人修正不计额外样本。目标更高CTC后验与更弱人耳强度方向不同，需分别评价强度、身份、参考相似度。停止同事件模型调用/换窗/seed/强度/对齐及重复听音，不开训；原话见实验 `listening/user_feedback_20261019.json`、`user_feedback_amendment_20261019.json`，判读见 `listener_assessment_20261019.md`。继续无依赖的独立真实内容来源审计。
+>
+> **冻结设计保留**：目标19.35–19.55秒、对照18.81–19.01及19.83–20.03秒；同200ms/20ms边缘、移除L2相同，后两alpha约0.868838/0.966659。控制只由clean能量/时间选择，噪声、全局峰值、fullfloat锚点和共同随机数保持；原固定帧[35,36)与邻域[25,46)不变。200ms不是孤立/d/边界、条件/锚点不一致是OOD；全部四臂保留，不能估计总体正确率。原始冻结config、analysis_plan和全部结果不因本次计划更新改变。
+>
+> **用户P8备忘录审阅已归档，仅作机制假说（2026-10-19）**：同意“非局部条件敏感性+待区分的声学证据约束H-C1/条件冲突H-C2”，不认定新音素/语义幻觉，两者可共存。新增§3.8的P8-C协议，明确F(N),N不自动是训练域内控制、换anchor一般也改变OUVE xT/漂移、跨行共享z而非强求同xT、四格尺度和冲突格参考目标问题；当前不运行该2×2、不取新样本、不训练/改SDE/调官方冻结测试集。第5例原后端“轻微/k/”在旧人工原话中未确认，来自缓存解码，需与用户所说较轻非人声/低频残留分开。详细四问答复与最新5243结果见 `research_memos/p8_noisy_constraint_review_20261019.md`。未来两类目标应分别评价前端真实删除/替换与后端错误新增/非语音伪影，不预设两个Head或低能量gate。
+
+> **当前决策：会话恢复与五例语音分量消融完成（2026-10-19；覆盖下方历史待执行状态）**：已读取旧会话及用户新指定的长期goal附件，恢复记录见 `/data/SESSION_RECOVERY_2026-10-19.md`。冻结的 `experiments/p8_vcv_speech_component_ablation_20261019/` 已完成：0次frontend、10次off N30、5次新CTC，19.22秒；全部5个原始float/NPY/PCM输出先精确重放，之后才移除noisy条件中的已知整段VCV语音分量。前端锚点、归一化参考、物理噪声、seed/RNG/初始xT均保持；所有条件归一化峰值≤1、输出无PCM截断。CPU独立复核通过166个不可变锁、10对音频及15份缓存的全部24类CTC似然重算，无新模型调用或推理重试。
+>
+> **逐例结果与解释**：原N1/m2ada1的修正d在去语音后变t；新N1/f20aka1的修正k变n，两例原有修正均不再出现。原N2/m2aga1的损伤k回到名义g；原N1/f11ata1仍判k、新N2/f20aka1仍判ch。不能把两个top1不变当成条件无效：f11ata1的target−rival margin由原始−0.4679降至去语音−5.9580，原语音分量虽未使其判对，仍提高了目标相对支持。该结果反对“后端始终只跟随前端、直接noisy不参与纠错”的简单解释，也不足以断言其提取了正确单辅音证据。仅为先前按错误筛出的5个案例、整段语音移除造成的OOD对照与单识别器代理，不能估计总体恢复/损伤率、证明原noisy独立可辨或将新增类别定为幻觉。此前两对k/g的互换结果及新说话人Router负结果保持原结论。
+>
+> **五例听感已完成及停止边界**：不再要求用户补听这五例，不重复VCV推理/扩case/换seed，不据此训练loss/gate。五例整体偏好为第2例原后端更接近clean、其余4例两者差不多；单人有提示非盲、按错误转换挑选，不能估计总体胜率或统计等效。另有重要逐事件反馈：第4例用户明确原后端/消融均把/t/变成/k/；第5例消融有明显/s/样尾声，Y_pre无声、原后端仅轻微非人声样残留。用户又报告频谱中消融尾部高频噪声更多，原后端主要残余低频，因此当前应保留“高频噪声样残留/摩擦样伪影”解释，不能自动升级为语义幻觉。中心标签未变既不表示内容正确，也不保证无额外结构。原始聊天答复分存 `listening/manual_listener_feedback_20261019.json`、`manual_listener_feedback_completion_20261019.json`、`manual_listener_spectral_followup_20261019.json`，同一人重复观察不增加样本/听者数；汇总见 `listener_assessment_20261019.md`。原页面未上传的选择由聊天补回；现已修好实际保存/草稿/回执，20条音频未改，页面展示五例已完成，不要求重交。
+
+> **第5例已有缓存尾部复核（2026-10-19，0模型调用）**：`experiments/p8_vcv_f20_tail_existing_audit_20261019/` 证实clean在0.9300625秒后精确为零；按预先固定的支撑结束及+100ms两区间，消融相对原后端4–7.5kHz能量分别约31.24/33.59倍。旧1.3–2秒粗尾区RMS反而降低，不能用总体RMS否定用户听到的结构。已缓存全词表解码在消融frame53出现/s/argmax，posterior0.67217，卷积支撑约1.060–1.085秒；这是模型定位，非人工时间边界。原/消融中央24类均ch，但自由解码尾部不同。原/消融条件在clean支撑之外逐样本完全相同，锚点/尺度/RNG/xT也同；因此尾部变化可来自前面语音条件改变引发的非局部响应，不能解释为尾部输入噪声增加。后续 `experiments/p8_vcv_f20_noise_correspondence_20261019/` 已完成同区间的零延迟固定标量投影：消融高频与原噪声rho约0.0104/0.0103、相应投影能量占比约0.0109%/0.0106%，独立inverse-RFFT核验30个组合通过。它排除了较大的同相固定比例直通分量，但不能排除相位改变/非线性残噪，也不能据此宣布新音素或语义幻觉。两项分析均无新模型调用，停止对该单例继续换窗口/延迟/阈值；保留用户的高频噪声样伪影描述、具体波形和全解码记录，现无理由训练全局条件削弱门控。
+
+> **已完成的先例/代码核对及下一项独立工作（2026-10-19）**：`experiments/p8_evidence_prior_audit_20261019/` 归档ArtiFree/PASE/Grounded Decoding精确v1、GALD-SE v5及官方commit `4444cfed9944d20908d1d2a22fbb8ec81ecc530f`。关键更正：GALD-SE README虽称移除显式引导输入，实际TinyNCSNpp仍以mask相关通道确定性预缩放低能量状态，之后才送两通道状态给学习主干；随机扰动亦保留mask。不能称其完全独立于引导，也不能将普通mask弱能量保护、多候选一致性或观测约束生成视为新颖性。PASE的可训练去噪WavLM学生不同于本项目冻结SSL loss；Grounded Decoding的FSQ约束不同于连续OUVE。原始页/代码共约1.45MB，0训练/推理；传输失败与代理回退已记录。下一项不依赖新听感的工作限于**5243已确认/d/自然正例的只读可执行性审计**：核对源、真实seed、噪声分解和是否已有同位置干预，不新增模型调用；不得把识别器19.45秒的20ms尖峰当作人工音素边界。三例VCV听感仍待具体身份判断；用户最新“诊断输出很清晰、无noise”仅是未指定样本的整体印象，不能写成修正已人工确认。页面已澄清只去除一路条件中的语音、仍保留Y_pre锚点，音频未变；反馈见该实验 `listening/user_feedback_20261019.json`。
+
+> **5243自然正例可执行性审计完成（2026-10-19）**：`experiments/p8_5243_natural_evidence_feasibility_20261019/` 在CPU核验五臂完整源及18.75–20.75秒裁剪，配对noise确实存在；原noisy−clean−noise最大误差为1个PCM16单位，全句分量SNR约−19.00dB、19.35–19.55秒邻域约−7.07dB。后者不是人工分割/d/的SNR，也不证明noisy独立可辨。**真实有效seed为369124093**，来自原输入`00_`前缀文件名；直接2026或无前缀seed613242433均不等价。未发现相同位置的既有直接条件语音移除；此前P8-M是10.0–10.5秒的锚点遮蔽。当前未恢复5243全精度前端，也未做精确原输出重放。下一项若推进，仅先准备一次完整30秒前端/后端no-op门：重建float前端并验证历史前端与off完整/片段PCM精确一致，才允许注册局部条件干预；不能拿量化Y_pre或2秒VCV helper直接替代。此次0模型调用、无音频输出，不据静态兼容性声称运行等价。听音页修复与补充现有两例优先完成；不重复VCV推理或扩训。
+
+> **5243原生重放门已通过（2026-10-19）**：仅恢复原生float锚点并验证追踪入口，不是重新评比模型。`experiments/p8_5243_native_replay_gate_20261019/` 首次启动因命令PATH不含已有env/bin/ninja，在模型初始化前失败（0frontend/0backend），完整保留。核定现有ninja可执行后，在独立 `attempt02/` 仅补正确PATH并复用字节相同的冻结代码/config，22.32秒完成1次frontend+1次OFF N30；前端PCM、完整30秒OFF及原2秒片段均与历史逐字节/逐样本一致，raw前/后端与RNG已恢复并经独立重编码复核，NFE/trace30、17个前后源/权重锁通过。总科学调用仍仅1+1，两次启动总29.28秒，无干预/分类器/训练。真实seed369124093、原noisy参考峰值0.431304931640625。新raw不是历史raw相等声明；trace的x_t为predictor前、回调RNG为predictor后，另外保留before_sampler随机状态。准备阶段发现的局部变量遮蔽已在执行前修正并做实际hook的CPU mock，没有靠改seed/参数找一致。下一阶段只允许先设计有边界的局部证据/位置对照，不因重放过门直接训练loss或改网络。
+
+> **统一尺度2×2补充对照完成，结束两对录音归一化迭代（2026-10-19）**：`experiments/p8_vcv_common_scale_factorial_20261019/` 对每组pair+noise的全部4格采用共同最大参考，16次off N30/16次CTC、25.28秒；4个k/k matched格精确复现原raw/PCM，其余格所有归一化条件峰值≤1，同组噪声尺度一致，同row归一化anchor/RNG/初始xT一致。全部g/k二选一仍跟随anchor来源名义身份，2个第三类输出仍在。q=LLg−LLk的anchor主效应在4组为+9.70665/+7.88445/+8.32172/+7.78024，而condition主效应为−0.27978/+0.33478/+0.53957/−0.12743，方向不一致；仅是当前识别器似然对比，不是可跨任务解释的物理效应量或总体显著性。去除峰值>1后原现象仍在，但冲突条件仍是OOD，不证明自然输入有可利用信息却被忽略。按登记停止在f6/m5 k/g上继续换归一化/seed。
+>
+> **下一项固定的5例语音分量必要性诊断（执行前登记）**：取原探索与新说话人复验的−6dB自然运行中，排除f6/m5后所有Y_pre↔off的24类正确性转换，共5例：原N1/f11ata1 t→k（损伤）、原N1/m2ada1 t→d（修正）、原N2/m2aga1 g→k（损伤）、新N1/f20aka1 t→k（修正）、新N2/f20aka1 k→ch（损伤）。先用缓存float前端和固定native尺度精确复现5个原off，再将noisy条件替为同一物理噪声分量（去掉已知clean VCV，原噪声幅度不改），固定前端、尺度、seed/初始xT，总10次N30+5次新CTC。它检验noisy分支的真实语音分量对已有修正/损伤是否必要；不会切换到另一说话内容，也不继续前面两对归一化实验。依然是clean-aware/OOD机制消融，移除整个VCV而非单辅音；选例根据既有错误，不作总体恢复率。记录 `experiments/p8_vcv_speech_component_ablation_20261019/`。不直接训练loss/gate，不以单模型类别偏好代替人耳或自然语音确认。
+
+> **行内固定归一化条件互换结果（2026-10-19，完成）**：`experiments/p8_vcv_fixed_norm_condition_swap_20261019/` 的8个native frontend和8个off diagonal均与原float/PCM16精确一致后才进行8个条件互换，共16次N30后端、8次新识别器前向、26.49秒。每行归一化参考、raw/归一化anchor、RNG和初始xT均相同，物理噪声及归一化噪声尺度有配方/误差界验证。8个互换的g/k二选一均仍为**anchor来源录音的名义身份**，不是说前端识别器已把该身份判对（f6的g来源前端原先可被判k）。全24类中6个仍为anchor来源类别，另2个为第三类（f6aka/N2→t、m5aga/N1→dj）。条件改变后的q=LLg−LLk仅5/8向donor名义方向移动、3/8反向，不支持简单“后端总跟随noisy真实身份”。这些有冲突条件的输出没有唯一正确增强目标，nested正确字段只表示与donor标签一致，不能统计为互换后的真实准确率。初次运行仅NumPy标量JSON序列化在加载模型前失败，两处float转换后成功；原始失败完整归档，未重复已完成推理。
+>
+> **唯一补充对照（执行前登记，消除归一化范围混淆）**：由于4个互换donor在行内native参考下峰值达1.04–1.26，不能把第三类错误排除为越界影响。下一次仅将每组pair+noise的参考固定为两原始noisy峰值的最大值，并对该组全部2×2 anchor身份×noisy身份共用；保留原两pair/两noise/同seed，总16个off输出、无新frontend、无Router。所有条件归一化峰值≤1，先验证4个共同参考恰等于native参考的matched cell精确复现，再运行其余12个。报告q的anchor主效应、condition主效应和交互，只作描述，不做显著性或OOD冲突准确率。此后停止在这两个选中pair上继续换归一化/seed作方案搜索，无论结果方向如何。记录 `experiments/p8_vcv_common_scale_factorial_20261019/`；不把OOD条件冲突当作自然输入错误机制已经证实。
+
+> **固定归一化的条件互换诊断（2026-10-19；执行前登记）**：停止Router辅音收益扩展后，选原探索集f6的k/g（有前端k、off回g的正候选）与新复验m5的k/g（含Router错误的负例），保留N1/N2、−6dB完整2s载体。每个前端anchor身份为一行，冻结该anchor原始输入的归一化参考峰值与pair seed，在同一行中只把noisy条件换为实际g或k录音；两条件的物理噪声波形/幅度一致，经相同参考归一化后噪声尺度仍一致。先用实验目录内显式norm的off采样入口，逐项精确复现8个未互换diagonal的原float输出（不仅PCM16），任一个失败即停止互换并排查实现。过门后才进行另8个互换，最多16次N30推理，不改核心代码/权重/源数据，不加Router或seed扫参。
+>
+> 同一行冻结raw及归一化anchor、归一化参考和随机数，不意味着reverse轨迹固定；结果分析只比较行内。跨行参考可不同，不混作只改变身份的因果效应。noisy替换涉及自然VCV录音的身份、时长和协同发音，不是只手术替换单一辅音；部分donor在固定参考下峰值可超过正常逐条归一化范围（约1.04–1.26），必须报告而不截断。它是带冲突条件的OOD机制诊断，不是增强算法或效果榜单。主要量为输出24类及g/k二选一、输出g-v-k序列似然比对条件g→k的变化，区分真正双身份跟随、仅margin变化和坚持anchor。后续是否有效利用noisy只能依据这些有界测量，不从单例猜词推出真实低SNR可恢复。记录 `experiments/p8_vcv_fixed_norm_condition_swap_20261019/`。
+
+> **新说话人VCV复验结果与明确退出（2026-10-19）**：f18/m5/f20/m15 clean门16/16通过，全部4条件执行完成（64frontend/128后端/272识别器、122.10秒、无训练）。N1−6dB的Y_pre/off/Router24类为14/15/14，N2−6为13/12/12；N1+6为16/16/15，N2+6均16（每项分母16）。Router相对off在N1−6新增m5aga1的g→dj类别错误（二选一未变），N1+6新增m5ata1的t→d错误，N2无预测变化。因此先前四说话人中N1的两次修正**未能跨说话人复现**，当前停止“Router稳定提升辅音身份”的扩大验证/加权重/扩训叙事，不用再换seed、speaker或噪声挑正例。`experiments/p8_q_vcv_speaker_replication_20261019/` 保留全结果，6528个CTC缓存分数、全部输入/输出和source/hash/共同随机数检查通过。其他两噪声固定、VCV受控分布与单识别器局限不变；也不能把这次负结果推广为Router一定损害自然语音内容。
+>
+> **Research Lead重评**：现在有两类可复现证据：①noisy直接条件路径在10720/3321的近静音间隙推动额外能量，②前后端既有纠错也有损伤，Router的原四人标签收益不稳定。下一步研究应区分“真实辅音证据的利用”与“噪声诱发额外结构”，不继续单一SSL/对比学习损失或全局条件抑制的试训。已检查原f6和新m5的k/g配对：不同真实录音的noisy峰值不同，直接互换raw noisy条件会通过全局归一化同时改变前端锚点与噪声幅度；**不能将这种简单互换伪装成只改变音素身份的严格因果实验**。新机制对照必须显式固定归一化后的锚点和噪声尺度、记录输入变换，或采用不会影响全局峰值的局部已知语音分量干预；先设计无干预精确等价门，再运行有界试验。相关原始正/负例与已有P8-M负结果全部保留。用户离线，任何必要人耳核验只入可选待办，不成为等待门槛。
+
+> **独立说话人复验已冻结并启动（2026-10-19）**：f18/m5/f20/m15的16条录音已取回并验证，排除之前28条VCV实际加载过的全部9位说话人；manifest SHA256=`31c4e4aa9abd9a2cae0cf8b2576942506e3f1cb18cfdb5d7ffd356ff24773ff2`。仅1.38MB HTTP Range正文，未下载整套ZIP。`experiments/p8_q_vcv_speaker_replication_20261019/` 先16条clean诊断门，过门后保留两噪声×±6dB carrier的全部64输入，执行64frontend、128后端、272识别器总前向，10分钟/200MB界限，无训练。这里的holdout仅指此前项目VCV分析未加载，不能声称预训练没见过；新数据若不复现增益，必须保留负结果，不继续换speaker或噪声来挑正例。
+>
+> **复验前决策边界**：本轮主要确认现象方向而非统计显著性。若新说话人上的Router相对off没有正向净24类标签收益，或收益被相当新增错误抵消，则当前“Router稳定提升辅音身份”的假说不升级，不继续按加大训练/换随机种子重复；转回同时保护真实辅音与减少条件诱发伪影的机制验证。即使有正向净变化，也只保留受控VCV的有限证据，仍需自然片段与听感，不能直接成为论文综合指标提升。自动三token CTC排序只裁判中心候选身份，无法保证没有额外音素、正确元音或自然听感；已有padding能量和用户新增尾音必须并列报告。
+
+> **固定标签VCV困难实验已完成（执行跨2026-10-18/19，目录沿用20261018）**：`experiments/p8_q_vcv_lowsnr_challenge_20261018/` 完成32次frontend、64次后端和96次识别器前向，62.62秒。N1的noisy/Y_pre/off/Router在24类标称身份上为8/12/13/15（分母16），二选一11/13/14/15，8对中双正确为3/5/6/7；N2相应24类6/12/12/12、二选一均在增强后三臂14/16、成对6/8。N1的off相对Y_pre有2个正确→错、3个错→正确，说明净收益掩盖局部损伤；Router相对off修正2个24类错误、未新增，N2无同类增益。例子N1 f11ata1的t被off判k、Router回t，f6ada1的d被off判t、Router回d；这些仍为单识别器对外部标称身份的判定，尚无人耳复核。+6dB正控制和其输入门原状保留，困难条件没有追认“可辨输入”资格。全套缓存分数/采样/共同seed/来源hash验证通过，无训练。
+>
+> **SNR口径纠正与保护性限制**：本组−6/+6dB均指完整2秒载体，真实VCV原录音仅0.340–0.510秒；其原录音支撑区间平均分别约+0.867/+12.867dB，范围分别−0.330…+3.195、+11.670…+15.195dB。这不是单辅音局部SNR，也不能将“−6dB carrier”的结果直接写成极低SNR弱辅音恢复。来源/配方未改变，已独立核验 `p8_q_vcv_fixed_noise_20261018/support_snr_audit.json`。静音padding能量与标签正确性分开：−6dB两噪声下off后padding中位RMS约1.38e−4/9.24e−5，Router约9.78e−5/6.89e−5，Y_pre更低；能量不是幻觉率。当前只是四说话人、两固定噪声的机制性探索，不能因N1的2个修正扩训Router或宣称新创新。
+>
+> **独立说话人复核的下一项固定选择（2026-10-19；尚未取回/推理）**：先复用作者ZIP中央目录，排除此前28条VCV实际加载过的所有说话人，而不根据识别性能排除。按原数字排序、女/男交替规则，选择f18、m5、f20、m15，均有同元音aCa、重音1的k/g和t/d，共16条录音/8对；此选择已由本地archive成员清单核实，但尚未下载这些WAV。保留原两噪声5–7s和−6/+6dB carrier设计，先预注册/核验新clean诊断，再保留所有样本进行跨说话人复验。不得按新结果换speaker或微调元音映射；新增样本若clean门失败，记录测量工具的限制并停止该裁判下的确认性结论，不挑对的样本。该阶段是验证前述N1增益是否能在新说话人重现，而非在当前四人上继续扫seed或loss。原DNS冻结测试集不参与选择。
+
+> **+6dB VCV前后端正控制已完成（2026-10-18）**：`experiments/p8_q_vcv_enhance_follow_20261018/` 在两个通过输入门的条件上保留全部32输入，32次frontend、64次off/Router N30、96次已有识别器前向共64.46秒；每对两身份/两噪声/两后端共享同一pair seed，源/hash/采样/缓存分数检查通过。N1+6dB的noisy/Y_pre/off均15/16（成对双正确7/8），Router16/16（8/8）；N2+6dB各臂16/16（8/8）。off与Y_pre身份正确性没有变化，Router在N1修正一个m2ada1的d→t标签错误。不能将一个代理模型判断的修正宣称普遍内容提升。输入clean的固定后padding精确为零，但增强后仍可有小能量残留，所以“身份对应”和“无静音伪影”必须分开。没有收集该VCV试听页的人耳结果，也不等用户今夜答复。
+>
+> **下一项独立困难样本实验，执行前登记**：固定N1/N2的−6dB条件，全部原16身份不变，沿用相同pair seeds、32/64/96前向预算及外部标称身份评分，目录 `experiments/p8_q_vcv_lowsnr_challenge_20261018/`。这是**已知标签的困难输入增强挑战，不是对输入辨识门失败条件重新授予“可辨输入”资格**。原先的门限制“识别器已证明输入身份可辨，所以输出不跟随意味着忽略证据”的强归因；它不能被误用为禁止在外部已知身份录音上评价增强结果。困难实验只比较24类/二选一、成对正确、原来正确→错误与错误→正确；既不以直接noisy识别失败证明输入无信息，也不以增强碰巧正确证明原始输入已具有独立可辨证据。其结果不混入已完成+6dB正控制，不改旧阈值、不反选样本或扩大训练。
+
+> **VCV固定噪声输入辨识已完成（2026-10-18）**：144次已有wav2vec2短前向完成，padding后的clean仍为24类和二选一16/16。固定的两噪声×四SNR条件，24类/二选一/8对双身份同时正确数为：N1−12=`5/8/0`、−6=`8/11/3`、0=`12/13/5`、+6=`15/15/7`；N2−12=`1/9/1`、−6=`6/14/6`、0=`12/14/6`、+6=`16/16/8`。前两个分母各16，第三个为8；N2在0dB的t/d仅5/8，故仍未过预设门。仅N1+6、N2+6同时满足所有进入标准。不能从低SNR识别失败推出人类/输入信息不可辨；二选一看似较高而24类不高也说明指标不能混用。缓存3456个CTC分数离线精确重算，144输入配方和来源hash不变，实际float32混合SNR偏差≤2.07e−8dB。记录 `experiments/p8_q_vcv_fixed_noise_20261018/`。下一项仅在两种+6dB条件、原16条全部保留，运行Y_pre/off/Router的内容跟随正控制；每对共用相同采样种子、两种噪声亦复用，避免把随机轨迹差异混作音素响应。这个条件由预先门槛决定，是识别器可判的受控诊断，不是无偏模型榜单；+6dB与孤立VCV偏离原名义训练分布，不能替代极低SNR DNS实验。
+
+> **真实noisy通道审计完成（2026-10-18）**：80k checkpoint实际保存 `mode2_include_noisy_main=true`、`cross_attn=false`、`film_modulate=false`、`selector_type=none`。主卷积输入为 `[x_t.real,x_t.imag,noisy.real,noisy.imag,anchor.real,anchor.imag]`，noisy还经过progressive input skip；无已启用learned selector/条件cross-attention/FiLM。因此前述tail条件干预改变的是普通卷积中的直接noisy证据通道，不是未启用模块的门控行为。前端/归一化峰值/随机数保持不变，不等于reverse轨迹也固定：Score输出和后续状态会改变。checkpoint读前后hash不变；首个CPU读取仅import路径失败，修正路径后成功元数据审计，无模型初始化/GPU推理。记录 `experiments/p8_noisy_condition_path_audit_20261018/`。
+
+> **下一步已冻结的输入辨识设计（2026-10-18；执行前登记）**：原VCV clean校准主集16条不变，重采样16kHz后从固定0.50s起置于2s共同载体，按整个2s归一至RMS0.01；该变换后的clean必须再次通过原预设辨识门，不能假定padding无影响。两条噪声取自非冻结测试集的 `noise_fileid_5243.wav`、`noise_fileid_6339.wav`，各固定5.0–7.0s片段、单位RMS；各SNR下所有辅音使用相同noise及相同gain，已知辅音身份来自语料而非识别器。固定SNR为−12/−6/0/+6dB，16clean+128noisy，共144条短前向；此阶段仅运行已有wav2vec2，不运行增强或训练。报告24类/二选一、8对中双身份同时正确比例、跨噪声稳定性与错误稳定性，不能用“不变”替代“正确”。后续增强可用条件须同时满足>=12/16的24类、>=14/16二选一、每对比>=6/8的24类、>=6/8成对二选一双正确；这是后续有界诊断的进入门，非人耳或信息论可恢复性证明。模型在noisy上失败不能证明输入没有辨识信息。代码/协议准备及结果目录为 `experiments/p8_q_vcv_fixed_noise_20261018/`，未根据模型输出挑选样本、SNR或噪声。
+
+> **第二条语音3321的条件路径复验（2026-10-18，完成；探索性选例）**：根据固定静音间隙筛查，在3321的22.62–23.66s做两臂off诊断。第一启动因YAML把未加引号的off键读成布尔False而在加载模型前失败，保留failure记录；修正后的独立 `attempt02/` 引号/类型校验通过，才执行2次推理。原前端PCM16和off no-op均逐字节复现，实际种子513132500、NFE30、全前端/窗口外条件/归一化峰值保持不变。只把局部noisy条件替换为clean后，间隙raw RMS从−59.043降至−88.794dBFS（−29.751dB），高频能量下降20.908dB；窗口外相对L2为0.015713，clean-active相对clean距离从0.610313略升至0.611415。故局部额外能量下降**不代表整句改善**。这在第二个按探索结果选中的例子上重复了10720的局部noisy路径敏感性，但不证明发生率或通用算法效果。记录见 `experiments/p8_3321_tail_condition_20261018/attempt02/`；原失败目录不能误作最终结果。
+>
+> **当前科研判断**：有实际人耳正/负例、正确源配对、精确baseline重放、两语音Oracle条件干预，足以将“何时需要输入noisy的辅音证据，何时它推动生成多余结构”作为有证据的候选机制问题；仍不足以训练通用门控。必须把5243 d真实补音候选及已知身份VCV放入保护真实弱辅音的对照，防止靠删除所有低能量高频声获得伪进展。下一轮优先冻结VCV的噪声身份/SNR/随机数，先检验输入可辨性和增强是否跟随真实辅音变化；不在现有两句上扫抑制阈值、扩大训练或官方测试调参。用户离线不阻止该独立工作，待听项只留可选清单。
+
+> **8条静音间隙只读筛查（2026-10-18，完成）**：`experiments/p8_silent_gap_screen8_20261018/` 使用固定20ms不重叠帧、clean RMS≤3个PCM16单位且连续≥300ms，排除首尾各0.2s，保存全部39个间隙。10720为发现例，有8个间隙/6.38s；其他7条有31个/21.00s。预先固定的探索排序条件（后端RMS>−60dBFS且较Y_pre至少高10dB）下，10720的off有2处、Router1处；其他7条仅3321的off有1处22.62–23.66s（−59.041dBFS，较前端+15.148dB），Router无。不能据该排序估计幻觉率，亦不能按阈值多次筛选后宣称总体效应。10720静音帧内的off/Router波形变化能量占各自内区总变化能量19.41%/18.02%，其他7条合计仅0.427%/0.383%，变化能量包含相位差。说明该问题在现有样本中稀疏且10720较突出，不能简单给所有静音区加统一惩罚。下一项只在预先定位的3321间隙做baseline精确复现/条件替换两臂，以检查局部noisy路径敏感性能否跨句出现；该例按结果选中，属于探索性机制复验，不是新的独立确认集。
+
+> **10720尾段条件路径机制候选（2026-10-18，低成本干预已执行）**：固定原始30秒输入、80k EMA、PC N30、相同实际seed，先严格复现已保存的10dB降低噪声组；保留原float前端，只在15.05–15.75s用20ms平滑边缘将Score的noisy条件替换为clean。no-op逐字节相同，前端hash/窗口外输入/归一化峰值均不变。尾段raw RMS下降`25.657dB`、4–7.5kHz能量下降`44.902dB`；只替换前端锚点下降`8.566/9.579dB`，两者同时替换下降`28.988/45.507dB`。两条额外seed原条件对照仅显示RMS下降`5.800/2.453dB`，不能作为稳定方差估计。进一步在用户明确听出s样尾音的20dB组仅做no-op/条件替换两臂，raw RMS下降`29.372dB`、高频能量下降`37.573dB`，窗口外输出相对L2约`0.002207`；完整float前端保持不变、no-op精确匹配。
+>
+> 结果支持“该位置的后端额外能量对局部noisy条件敏感，前端残留也有作用”，不再只能将其解释为无条件随机幻觉。它**没有证明网络逐音素转换了噪声、没有独立多句复现，也不是可部署方法**；clean替换是离线Oracle/OOD诊断，扰动可能改变条件一致性。20dB尾声接近量化底噪，raw与PCM16的降幅不同（PCM16 RMS仅下降18.472dB），报告不得混用。副本位于 `experiments/p8_10720_tail_causal_pilot_20261018/` 和 `experiments/p8_10720_tail_condition20_20261018/`，缓存数值检查/原文件hash均通过。下一步复用已有8条音频的clean静音间隙作只读探索性重复性筛查，10720为发现例、其余7条仍是已分析开发语音，不能冒充全新确认集；暂不训练新gate/loss。
+
+> **最新局部尾音反馈及自主任务（2026-10-18）**：用户进一步报告10720噪声降低20dB组off/Router末尾多一个s样声，clean/Y_pre没有；降低10dB组后端将相应声响变得更像人声，Y_pre只有少量非人声样残留。整体内容可对应不等于局部无伪影；该反馈优先检验“残余噪声被语音化”“生成新增结构”“邻近正确内容的时序拖尾/提前”三个解释。**当前2s试听窗只是30s文件的13.75–15.75s，不能把片段结束当作真实语句结束**：先在12.75–17.75s扩展上下文上定位，并检查固定15.05–15.75s尾段。只复用已有输出做声学诊断，再由结果决定少量局部干预/种子复验，不直接训练抑制器。原话保存在 `experiments/p8_10720_snr_control_20261018/user_tail_feedback_20261018.json`。用户离开至明天，明确要求自主研究；不等待额外听音，必要人耳核验只列可选待办，继续独立任务。
+
+> **10720较高SNR对照已获用户反馈（2026-10-18）**：用户在同一句话噪声衰减对照页试听后明确反馈“我听了 确实降低db的 听着几段语音是匹配的”。该结果是有clean参考、非盲、单听者的控制组内容对应观察；未逐档/逐臂评分，不推造成功率。结合原始off和Router均可由正确10720 noisy精确重放、当前裁剪/HTTP源文件验证，可结束本例重复的文件错配排查。原始极低SNR下用户持续报告的前后端内容差异，应作为**后端内容偏离/疑似错误补音或语音样伪影候选**研究，不再用播放修复解释。它仍不能单独区分具体音素替换、时序拖尾、生成先验与noisy声学证据的作用，也不证明原始noisy音素可恢复。保留5243 d人工正候选，避免把所有后端补音都视作错误。下一步优先用已冻结、clean门通过的VCV身份对，在固定噪声下检查输入真实辅音改变时输出是否跟随；不据该单例直接训练新loss/controller。原话及边界已写入 `experiments/p8_10720_snr_control_20261018/user_listening_feedback.json` 和实验报告。
+
+> **用户建议的10720较高SNR正控制已完成（2026-10-18，尚待听感）**：实际发现并核验数据自带 `noise/noise_fileid_10720.wav`；原noisy与clean+配对noise最多差1个PCM16单位，拟合clean/noise增益约0.999969/0.9999995。无需假定本机拥有原始外部噪声素材库，也不必把残差当作未经验证的纯噪声。使用固定clean加0.3162/0.1倍该噪声，在新实验目录生成两个更易条件；原始数据、checkpoint和基线结果未改。整句实际SNR为−15.99988→−5.99988/+4.00012dB，试听13.75–15.75s局部为−18.24421→−8.24421/+1.75579dB。80k EMA、PC N30、seed2997368683、采样snr0.5与精确重放保持一致，2次frontend+4次后端前向共48.25秒；15个试听按钮的源坐标/采样与HTTP返回验证通过，使用单个共享播放器。完整记录 `experiments/p8_10720_snr_control_20261018/`；可选听感任务见 `coding/sgmse/LISTENING_TODO.md`。若较高SNR下内容对应，将进一步支持流程正确、问题与困难输入有关；不能由此单独断言原始输入可恢复或把差异全部判为幻觉。若仍不同，继续定位生成/内容机制，不改配对来迎合听感。+4dB高于既有名义训练SNR范围，不能将该控制单独作为训练域内性能结论。
+
+> **10720 配对/播放故障优先排查已完成（2026-10-18）**：历史旧包noisy确有9秒裁剪坐标错误；当前专用页有过期异步播放请求竞争，原生候选页允许多音频叠播，已修复、备份旧页并保存回归。当前五臂2s片段均逐采样对应各自完整源文件13.75–15.75s，HTTP音频与磁盘相同。对同一10720 noisy、同一checkpoint/EMA/PC N30/实际逐文件种子2997368683，分别只重放一次off与Router；完整30s及2s片段均与保存结果逐采样、字节完全一致，Y_pre亦一致。**用户在修复后仍报告off/Router内容一组、clean/Y_pre/noisy内容另一组**，不能继续归咎播放器或文件错配；后续应研究后端局部内容偏离/拖尾/错误生成。重放证明来源，不证明音素正确。真实浏览器自动验证因缺库未执行，代码7项模拟回归通过；已转向用户可选听音核对并清理仅此次下载的浏览器临时目录，未改数据/checkpoint。完整证据见 `experiments/p8_10720_pairing_forensics_20261018/`。本次故障修复按用户指令优先完成；长期科研继续围绕已有正负案例及独立VCV固定噪声正控制，不因该单例启动训练。
+
+> **防止再次出现配对问题的执行规则**：新听感包必须保存可复现构建脚本，按原始完整WAV的统一采样坐标裁剪，manifest记录file-id、解析后源路径、输入/输出hash、start/end sample；行号前缀不得作为配对依据。发布前用实际PCM和HTTP返回文件验证；播放器采用单播放流及过期请求取消，显示当前arm/文件/窗口。每次增强导出记录实际逐文件seed、checkpoint/hash、源文件hash和命令。主观内容有疑问时先让用户做一个低负担可选对照，未答复继续独立任务，不把识别器与clean不一致直接写成幻觉。
+
+> **最新定点人工观察（2026-10-18；更正此前整体听感的适用范围）**：用户重听修复包第一组 5243 后明确报告“Y_pre 丢掉了 /d/，而后端结果没丢”。该位置的 fixed-time CTC 为 Y_pre/off/Router `0.018755/0.869617/0.875637`，人工与代理同向；这是“前端缺失、后端目标辅音可听”的正候选，不能再笼统表述为后端只圆润、从不恢复辅音。它来自一个有提示的非盲单听者观察，不是总体发生率或 noisy 利用的因果证明；用户未逐臂分别评分，off/Router 的共有收益与 Router 增量仍须分开。**位置约为原录音 19.45 s（2秒片段约0.70 s），属于标题19.50–20.00 s之前的上下文**；不是该中心半秒窗内已确认的恢复事件。原话和坐标见 `experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md`。
+
+> **P8 听感包时间轴更正（2026-10-20）**：事后核查发现 `experiments/p8_e1_candidate_listening_20261018/` 的旧构建脚本把完整 30 秒 noisy 按中央 12 秒坐标裁剪，导致 noisy 与 clean/Y_pre/Router-off/Router 不在同一原始时间段；该包及基于它的 noisy 内容判断全部作废。`experiments/p8_e1_aligned_listening_20261020/` 是新窗口的对齐诊断包；`experiments/p8_e1_candidate_listening_aligned_20261020/` 保留原四个候选并修正了同一 bug。两个修复包的五个 arm 均直接从完整 30 秒源文件按同一原始时间窗裁剪，并以 ±100 ms 相关扫描验证最佳滞后为 0。此前仅使用正确中央 12 秒包的后端平滑听感观察不受此错误影响；任何涉及 noisy 对应词句的结论须重新试听修复包。
+> **修复包 ASR 边界（2026-10-20）**：对 `p8_e1_candidate_listening_aligned_20261020` 的 20 个片段使用统一 Whisper tiny.en beam-5 解码，四个 noisy 片段均未产生稳定文本，Router-off/Router 出现近音词或无关词串。该结果只支持“低 SNR 下自动识别不可靠”，不能作为真实 WER、幻觉率或音素恢复证据；人工试听仍是 P8-1 的必要门槛。记录见该目录的 `asr_diagnostic.md/json`。
+> **修复包人工试听补充（2026-10-20）**：用户在正确时间轴上观察到 `Y_pre` 与 Router-off 都没有补回低 SNR noisy 中丢失的音节，`k/d` 等辅音尤其容易消失；`Y_pre` 有电流声，Router-off 主要把已有残余音节修得更圆润自然。该观察进一步支持“前端/输入阶段内容伪阴性，后端声学自然化但未做音素纠错”的 H8-E/H8-C，暂时削弱 H8-A，但仍不能证明 noisy 中没有可利用证据，也不能把共同 Router-off 效果归因于 Future Router。记录见 `experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md`。
+
+> **P8 最新局部诊断（上传的 2026-10-20 版本；以下为用户提供的既有记录，本次未复核远端产物）**：`experiments/p8_local_content_probe_20261020/` 对 8 条无混响低 SNR 语音的中央 12 秒进行 clean/noisy/`Y_pre`/Router-off/Router 对照。181 个 clean-active 的 0.5 s 窗口中，55 个（30.4%）满足 `Y_pre` 相对 clean RMS 低于 −8 dB；其中 48 个 Router-off 相对 `Y_pre` 至少增能 2 dB，抑制区增能中位 `+10.69 dB`，但与 clean 的局部归一化 log-spectrum cosine 中位改善仅 `+0.0011`（Router `+0.0014`）。file-id 10720 有 18/20 抑制窗口被填能量，Router-off 增能中位 `+13.94 dB`、谱 cosine `−0.0023`。支持“平滑、掩蔽损坏、补能量不等于补音节”的听感解释，但没有证明音节恢复。
+>
+> **P8 noisy 线索与局部 SNR（同一已上传既有记录；clean-aware 探针）**：抑制窗口中 noisy-clean 波形相关中位 `0.098`，其余 active 窗口 `0.356`；归一化 log-spectrum cosine `0.912` 对 `0.964`。利用合成关系 `noise=noisy−clean` 估得抑制窗口局部 SNR 中位 `−20.41 dB`，其余为 `−8.30 dB`，差约 `12.1 dB`；两组 clean RMS 中位约 `−48.19/−49.87 dBFS`，差距较小。全窗口局部 SNR 与前端相对 clean RMS 的相关为 `0.492`，clean RMS 相关仅 `−0.022`。这些结果使“原始局部证据弱”成为不可忽视的强竞争解释，但**不能证明任何特定音节已无法恢复，更不能把 clean-aware 统计量部署为门控信号**。
+>
+> **P8 后端作用层次（同一已上传既有记录）**：抑制区 Router 相对 Router-off 的 RMS 中位 `−1.999 dB`，谱余弦增量接近零；增能主要来自 Router-off 共享生成阶段。抑制窗口中 Y_pre/off/Router 与 clean 的原始波形相关中位为 `0.474/0.350/0.393`，而 10 ms RMS 包络相关为 `0.519/0.575/0.598`；不应由波形相关下降直接推断吞音。冻结 WavLM Base+ 在 55 个抑制窗口的第 3/6/12 层上，off−Y_pre cosine 中位为 `−0.013/−0.036/−0.021`，Router 为近似同向；全部 181 窗口却为第 3 层 `+0.0329/+0.0307`、第 6 层 `+0.0136/+0.0173`、第 12 层仅 `+0.0032/+0.0031`。因此问题集中在极低局部 SNR 困难子集；后端一般性的低/中层声学改善**不等于**困难位置有稳定的音素恢复。上述均为代理而非人工音素标签或盲转写，不因此重启 raw WavLM-MSE、Harm Head 或 GAN。
+>
+> **本次新增研究假设 H8-E（讨论形成；未运行实验）**：用户进一步报告，前端已经吞掉的音节，后端主要将剩余音节圆润化、统一化，而没有补回真实缺失的音节。提出三条待区分解释：① `Y_pre` 作为扩散初始状态和漂移锚点，使后端过度沿袭前端的“此处无语音”判断；② noisy 虽物理上含有语音，但局部音素证据被强噪声掩蔽，难以可靠辨识；③ 两者共同作用。提出“noisy 中心扩散互补”“过抑制定位后的 noisy 证据增采”“正常 `Y_pre` 音节的局部抹除反事实探针”三个候选，但**均尚未证明有效**。实施与判定细则见 §3.8 新增小节，P9 混响仍为条件式第二优先级。
+
+> **最新研究优先级修订（本次用户观察触发；待独立验证，不是新增实验结果）**：**P8「无混响、极低 SNR 下的语音可懂度与前后端内容失真归因」为第一研究任务**。用户报告：部分无混响低 SNR 语音的最终增强结果听不懂原话；特别需要验证 Frontend-only `Y_pre` 是否仍保留可辨认词句，而 Router-off / Router 的完整生成结果发生删除、替换、插入、断续或严重音素变形。若这一差异在独立样本、人类转写及多 ASR 检查中稳定存在，才构成值得介入的后端内容保真瓶颈；**目前只有用户观察，还不能认定前端一定正常或扩散后端一定造成幻觉**。既有 P3c 的 8 条 Whisper `tiny.en` 伪 WER 没有 Frontend-only 对照，不足以回答该问题。执行方案见 §3.8 与 §4 的 P8 行。
+>
+> **P9 混响作为第二优先级的条件式后续方向**：当前本地没有可用于规范训练/独立复验的真实 RIR 资源；仅有 DNS Ins20 官方 `with_reverb` 小型冻结测试集和 4 条临时 FIR smoke。已有 80k 权重的保存配置**未记录混响训练或明确的 RIR 增强**，需按现有证据将其视为非混响条件权重，不能声称所有历史 checkpoint 已逐一证明绝无混响样本。进入 P9 前须获得合法、来源清楚的 RIR，使用已有 train clean/noise **重新合成多房间混响训练/验证数据并进行匹配预算再训练**；不能拿官方测试语音或测试条件参与训练/调参，不能用 4 条人工 FIR 作为大规模训练依据。资源、目标定义、存储与停止条件见 §3.9。
+>
+> **证据来源限制**：以上修订根据用户现象陈述和本文件已记录的实验结果制订。当前会话未访问远端 `/data/coding/sgmse`、音频、checkpoint 或原始实验日志，未完成新的试听、转写、推理和训练；后续 Codex 必须先在实际仓库复核数据与记录，尤其不能将历史条目的时间戳或路径直接当作本次已核验事实。
+
+> **论文图表与 claim matrix（2026-10-20）：** 已基于冻结的 `final_eval_full_20261018` 输出完成只读后处理，不重新推理、不重算 bootstrap、不调阈值。归档目录为 `experiments/paper_figures_claim_matrix_20261020/`，包括 no-reverb/with-reverb paired delta、Router pooled CI、matched-file reverb interaction、SI-SDR/DNSMOS-OVRL 散点图（PNG/PDF）及逐条主张边界。这里的 `with_reverb` 仅指 DNS Ins20 官方测试目录 `test_set/synthetic/with_reverb`；另有 4 条语音的固定 FIR smoke，已单独标注为探索性且未复现官方模式，不能混入正式结论。
+
+> **最终指标算术复核（2026-10-20）：** 从冻结评测的 6 个逐句 CSV 重新计算所有 split/arm/metric 均值及 pooled Router−off 差值，和归档 `paired_bootstrap.pretty.json` 的最大绝对误差为 `4.0e-15`；每组 150 行且三臂 `utt` 顺序一致。记录见 `experiments/final_metrics_repro_audit_20261020/`。该审计未重算 bootstrap、未调参、未生成新音频。
+
+> **Rollout-aware backend adapter 最新修正（2026-10-18）：** matched-time x0 gap 已满足可干预候选门槛后，完成了冻结主干、仅训练 16,512 参数零初始化 late backend adapter 的 fresh-CV pilot。首个 `lr=1e-3`/200-step 设置不稳定（holdout NMSE `+113.2%`），已停止且不重复；`lr=1e-5`、100 steps、gradient clip=1.0 的 follow-up 将 2 条 utterance holdout NMSE 从 `0.49464` 降至 `0.28508`（`−42.4%`）。8 条音频包含 6 条 adapter 训练语音和 2 条 utterance holdout；总体 PESQ/STOI/SI-SDR 分别 `+0.0374/+0.0015/+0.174 dB`、DNSMOS-P808 `+0.0252`、DNSMOS-OVRL `−0.0055`，不能作为独立 CV 泛化证据；2 条 holdout 的 PESQ 一正一负、STOI/SI-SDR 为正但样本过少，DNSMOS-OVRL `+0.0049`。随后在完全独立的 4-speaker、8-utterance CV 子集上复现了 proxy 改善（holdout `−54.8%`），但 2 条 unseen-speaker 音频 holdout 的 DNSMOS-OVRL `−0.0347`，因此音频感知证据仍混合。这是“proxy 复现、感知泛化未确认”的候选机制，尚不是论文创新成立证据。独立复现已完成；不再扩大该 adapter 路线，除非提出新的监督或更明确的机制假设。记录见 `experiments/rollout_adapter_pilot_20261018/`。
+
+> **研究状态快照：2026-10-20（P7 主诊断本身未验证扩散机制；matched-time 诊断与 rollout-aware adapter 复现了一个可修正 proxy 瓶颈，但感知泛化未确认）。** P7-A 的单条容差阶梯未证明收敛，P7-C 未找到当前简单可观测特征可用的风险信号。新增的 P7-B 噪声功率 smoke 在 4 个 fresh-CV speaker、`M={0.5,0.75,1,1.25,1.5}` 上完成：输入 SNR 均值由 `−7.48` 降至 `−17.02 dB`，Router-off 的 PESQ/STOI/SI-SDR 随噪声平滑下降；最大曲率集中在首个 M 区间，且 frontend-only 与 PC 后端曲率相近，没有出现靠近 `M=1` 的可重复 predictor kink。因此不启动 mismatch-aware training 或新 controller，P7-B 仍不构成 Score 异常证据。64 位新 CV 说话人复核显示 Router 与 off 的 CAM++ 同人/AUC/EER 差异均未排除零；Router 相对 off 的 PESQ/STOI/SI-SDR 为 `+0.0109/+0.00115/+0.5115 dB`，但 DNSMOS-OVRL 为 `−0.0298`。8 条开发语音的 ASR 内容 smoke 也未显示 Router 相对 off 的内容收益（伪 WER 差 `+0.00516`，95% CI 跨零）。因此身份和内容两条 headroom 均没有支持新增辅助损失；P2b、phonological anchor 和 P7 扩展暂不启动。Harm Oracle 的 DNSMOS 补测也未显示可利用的感知 headroom，不训练 Harm Head。
+
+> **官方最终评测快照：2026-10-18。** 在锁定的 DNS Ins20 synthetic 测试 manifest（no-reverb/with-reverb 各 150 条）上，80k Router checkpoint、EMA、PC/N=30、seed=2026 的三臂推理已完成。Router 相对 off 的 pooled 300 条结果为 PESQ `+0.005834`（95% CI 跨零）、STOI `−0.000813`、SI-SDR `+0.241412 dB`、DNSMOS-SIG `−0.014882`、OVRL `−0.014472`；分 split 看，no-reverb 的 PESQ/STOI/SI-SDR 改善，而 with-reverb 的 PESQ/STOI/SIG/OVRL 下降。`t_cut=0.05` 未消除该 split-dependent trade-off。该 manifest 已冻结，不据此继续调阈值。完整逐句结果、bootstrap CI 和输入/输出哈希见 `experiments/final_eval_full_20261018/`。
+
+> **最终集 SNR 分层补充：** 对上述冻结结果的事后只读分析显示，with-reverb 的 Router DNSMOS-OVRL 下降在 SNR `<=6/7–12/>=13` 三组分别约 `−0.0425/−0.0272/−0.0116`；PESQ 下降约 `−0.0039/−0.0115/−0.0332`。因此退化不能由一个全局 SNR 阈值解释：低 SNR 更突出 OVRL 损失，高 SNR 更突出 PESQ 损失。该分析不用于测试集调参，也不能区分混响、条件利用、幅相误差或 DNSMOS 代理偏差。记录见 `experiments/final_eval_strata_20261018/`。
+
+> **匹配 file-id 的混响交互补充：** 对最终集 150 个相同 file-id 配对计算 `(Router−off)_with_reverb − (Router−off)_no_reverb`，Router 交互项为 PESQ `−0.04110`、STOI `−0.00267`、SI-SDR `−0.15524 dB`、DNSMOS-SIG `−0.02015`、OVRL `−0.02854`，各主要指标的 95% matched-file bootstrap CI 均排除零。该结果比 SNR 分层更直接地支持“Router 效果与混响条件交互”，但仍未区分前端条件、幅相重建或训练分布失配，不能直接推出 reverb gate。记录见 `experiments/final_eval_reverb_interaction_20261018/`。
+
+> **训练条件审计补充：** 80k checkpoint 的保存配置指向单一 `tr_synthetic`/`cv_synthetic` noisy SCP，未记录 with-reverb 配对训练项或混响增强开关；当前映射的训练/验证清单分别为 10,800/1,200 条，而最终评测另有 150 条 no-reverb 与 150 条 with-reverb。该事实使训练—测试条件失配成为可检验假设，但不是因果结论。审计记录见 `experiments/checkpoint_data_condition_audit_20261018/`。
+
+> **Fresh-CV 合成混响 smoke：** 在排除既有 manifest 的 4 个 CV speaker 上，用固定 identity/short/medium FIR 临时构造混响 pair，并以同一 80k checkpoint、EMA、PC/N=30、seed=2026 比较 off/Router。Router 相对 off 的 SI-SDR interaction 相对 identity 为 short `−0.0448 dB`、medium `−0.0714 dB`，但 PESQ interaction 为正，未复现官方最终集 PESQ 与 SI-SDR 同时变差的模式。样本仅 4 条且 FIR 不是实测房间 RIR；按停止条件不扩大该合成 FIR screen，不启动 reverb adapter 或 gate。记录见 `experiments/reverb_cv_smoke_20261018/`。
+
+> **本地 RIR 资源审计：** DNS Ins20 README 说明官方 `with_reverb` 使用内部录制 RIR，但当前配置引用的原机器 `/home/xyf/...` RIR 目录不存在；`/data/coding/sgmse`（排除环境目录）也没有可用 RIR 文件。因此当前无法把人工 FIR smoke 升级为独立真实 RIR fresh-CV。审计见 `experiments/reverb_resource_audit_20261018/`；在获得外部、固定且来源明确的 RIR 前，不扩展人工 FIR、不启动 reverb adapter 或混响训练。
+
+> **混响严重度事后分析：** 对冻结的 150 个 matched file-id，以 no-reverb/with-reverb clean 波形相对 L2、复谱相对 L2、log-magnitude STFT L1 和 RMS ratio 作为严重度代理，分析其与 `(Router-off)_with_reverb - (Router-off)_no_reverb` 的连续关系。DNSMOS-OVRL 交互相关均接近零且 CI 跨零（Router 的 rho 约 `−0.081/−0.081/−0.098/−0.102`）；仅 SI-SDR 与 log-magnitude/RMS 代理出现小到中等相关。该结果不支持用混响严重度解释感知退化或设计 severity gate；冻结测试集后处理停止。记录见 `experiments/reverb_severity_posthoc_20261018/`。
+
+> **Residual-Anchored OUVE 数学审计：** `residual_refine_enable` 的漂移、均值和先验代码满足 `beta(t)=(1-alpha(t))lambda(t)`、`a(t)=beta'(t)+theta beta(t)`；对固定条件 `y` 作 `U_t=X_t-beta(t)y` 后，过程还原为标准零中心 OUVE，扩散系数不变。该分支可能改变条件表示和有限容量 Score 学习，但不是新的随机动力学；不能把它作为独立新 SDE 创新。审计见 `experiments/residual_anchor_equivalence_audit_20261018/`。
+
+> **多轨迹一致性惩罚后处理 smoke：** 复用已保存的 16 条开发 + 16 条 held-out、每句 4 条轨迹，使用固定 `z(OVRL)-0.5 z(consistency)` 选择。held-out OVRL `+0.05875`（95% CI `[+0.03265,+0.08651]`），SI-SDR `+0.02107 dB`（CI 跨零），SI-SDR 负例由 6/16 降至 4/16。它说明一致性可作为风险排序信号，但没有达到可验证的感知—重建 Pareto 控制器标准；不做全量测试集推理或 learned verifier 训练。记录见 `experiments/multitrajectory_consistency_verifier_20261018/`。
+
+> **当前后端候选决策：** Anchor V2 clean Oracle 已失败感知 headroom 门；多轨迹无参考选择未获得 SI-SDR 保护的确认性结果；TR-0 adapter screen 的单步 proxy 为负，仍停止。随后 rollout-aware adapter 在完全独立 4-speaker 子集上复现了 `x0` NMSE 改善，但 2 条 unseen-speaker holdout 的 DNSMOS-OVRL 下降 `0.0347`，因此感知证据仍混合。独立复现已完成；不再扩大该 adapter 训练或评估官方测试集，除非提出新的监督或明确机制假设。记录见 `experiments/rollout_prediction_gap_20261018/`、`experiments/rollout_adapter_pilot_20261018/` 与 `experiments/rollout_adapter_replication_20261018/`。
+
+> **论文主张审计：** 2026-10-18 已对冻结最终评测、P7 诊断、Anchor、Speaker、ASR、感知表示和多轨迹结果做只读 claim audit，记录于 `experiments/paper_claim_audit_20261018/`。当前可安全主张的是“Future guidance 的条件性 Pareto 权衡及其混响交互”；P7 只能作为有界瓶颈诊断，不能写成已验证的新扩散机制或第二个独立算法创新。该审计没有新增训练、推理或测试集调参。
+
+> **Corrective Forcing 方向审计与查新（2026-10-20）：** 2026-10-18 对 4 条 P7 开发语音捕获了固定 PC/N=30 反向 rollout 的 30 个状态，并与 clean-conditioned forward OUVE 边缘分布做了离线对比。末步标准化功率偏离明显，但该比较本身不构成训练—推理失配证据：前向扰动边缘与学习到的反向轨迹不是同一分布。最新查到的 CoF 预印本（arXiv:2609.24651）已经明确提出 dynamic rollout correction（DRC）和 counterfactual transition consistency（CTC），因此“rollout-aware adapter/CoF”本身不能作为第二创新。该方向不触发 CoF 训练；若未来重开，必须实现与当前 OUVE PC solver 一致的递归 rollout、clean-`x0` score 转换、stop-gradient replay 和 matched no-loss control，而不是直接比较 forward marginal。查新记录见 `experiments/corrective_forcing_literature_audit_20261020/`，原始审计见 `experiments/corrective_forcing_rollout_audit4_20261018/`。
+
+> **Rollout x0 预测差异补充：** 使用 matched-time 对照，在 4 条 P7 语音和 8 条 fresh-CV 语音上比较同一 Score 模型对 reverse rollout 状态与解析 forward 状态的 clean `x0` NMSE。fresh-CV 中 rollout NMSE `0.5140`、forward NMSE `0.1356`，差值 `+0.3785`，8/8 语音为正；差异在 `t≈0.73–0.77` 最大，末步仍为正。该结果满足“可干预候选瓶颈”的诊断门槛，允许设计一个有界 rollout-aware backend pilot，但不能直接宣称 CoF 有效。记录见 `experiments/rollout_prediction_gap_20261018/`。
+>
+
+> **独立 rollout adapter replication（2026-10-18）：** 使用 `tr0_fresh_cv_manifest_20261018` 中未参与旧 pilot 的 4 个 speaker（8 条语音），保持 module 33、`lr=1e-5`、100 steps、clip=1.0、PC/N=30 的配置。2 条 unseen-speaker holdout 的 clean-x0 NMSE 从 `0.595017` 降至 `0.268770`（`−54.8%`），复现 proxy 改善方向；但同一 holdout 的 PESQ `+0.00157`、STOI `+0.00153`、SI-SDR `+0.164 dB`，DNSMOS-OVRL `−0.03465`，所以不能宣称感知泛化或综合收益。该结果不足以支持继续扩大训练；若未来重新开启，需先提出新的监督或预注册更大独立 holdout 方案，不使用官方测试集调参。记录见 `experiments/rollout_adapter_replication_20261018/`。
+
+> **Harm Oracle DNSMOS 补测（2026-10-19）：** 对已经生成的 4 条 `N=30` full/gated WAV 做只读 DNSMOS 评估，没有重新推理或训练。Gate−Full 的 P808/SIG/BAK/OVRL 分别为 `−0.000769/−0.000630/−0.000899/−0.000953`；四项的 10,000 次 utterance bootstrap 区间均跨零（BAK 上界仅为 `+0.000002`）。DNSMOS 运行请求了 `cuda:0`，但 ONNX Runtime 报告未注册 CUDA plugin，实际执行可能回退到 CPU。结合此前 4 条语音的 PESQ/STOI/SI-SDR 结果，当前 WavLM harm Oracle 没有显示感知 headroom；因此不训练 Harm Head、不扩大 Harm Oracle 推理。该样本量只能支持停止当前路线，不能证明所有可能的 harm 标签都无效。记录见 `experiments/rrsd_harm_oracle_n30_4_dnsmos_20261019/`。
+
+> 长期角色、权限、编码规范以 Codex 的 `/goal` 为准；详细历史结果请查阅 `RESEARCH_HISTORY_2026-10-17.md` 和仓库中的原始实验日志。**若本文件的早期技术假设与新实验冲突，以可复核的新证据为准。**
+
+### 当前 rollout-aware adapter 决策（2026-10-18）
+
+两次小规模 pilot 在不同 speaker 上都复现了 rollout-state clean-x0 proxy 的下降（`−42.4%` 与 `−54.8%`），说明该 proxy 现象稳定；但音频感知结果没有同步稳定：旧 pilot 的 2 条 holdout 太少且总体 DNSMOS-OVRL 混合，独立 4-speaker 子集的 2 条 unseen-speaker holdout 中 DNSMOS-OVRL 下降 `0.03465`。因此当前路线通过了“可修正 proxy”门槛，但没有通过“感知收益”门槛。除非出现新的独立监督或更明确的机制假设，不再扩大 adapter 训练、增加 adapter 容量或评估官方测试集；保留产物作为后端状态失配的诊断证据。
+
+> **Distill-MOS independent CV check（2026-10-20）：** 在独立的 64-speaker/128-utterance 已完成输出上重用真实 `off/` 与 `router/` WAV。Router 平均 Distill-MOS `−0.0279`，SI-SDR `+0.5115 dB`，DNSMOS-OVRL `−0.0298`；逐句 Distill-MOS delta 与 SI-SDR delta 的 Pearson/Spearman 为 `−0.304/−0.390`，与 OVRL 为 `+0.324/+0.450`。一次误读 inputs staging symlink 的无效运行已记录并排除。该结果仍不支持把 Distill-MOS 当作单独 reward；不启动 adapter。记录见 `experiments/distillmos_surrogate_independent64_20261020/`。
+
+> **Distill-MOS surrogate audit（2026-10-20）：** 在既有 32 条开发语音的 noisy/off/Router/t-cut/selective WAV 上只读评估官方 Distill-MOS v7。它与 STOI/SI-SDR 的 pair-delta Pearson 相关为 `0.917/0.945`，但与 DNSMOS-SIG/OVRL/BAK 仅 `0.030/0.111/0.072`；DNSMOS-OVRL 成对排序一致率 `0.635`，CI 跨 0.5。它更像重建/内容 proxy，不能单独作为解决当前感知—重建冲突的 reward；不启动 perceptual trust-region adapter。记录见 `experiments/distillmos_surrogate_audit_20261020/`。
+
+> **Frontend state representation probe（2026-10-20）：** 在 fresh-CV manifest 前 8 条（4 speakers、每 speaker 2 条）上，成功对冻结 StormFrontend 的 `act`、`output_layer`、`pyramid_upsample` 注册 hook，并复用已有 32 个 rollout states 得到每条语音的 4-state clean-x0 NMSE。4-speaker LOSO Ridge 的 combined hook summary + SNR/RMS/cosine MAE 为 `0.23319`，constant baseline 为 `0.33252`；但简单 SNR/RMS/cosine 已有 MAE `0.25186`，hook-only 为 `0.27217`。随后完成 16 个不同 speaker 的在线 PC/N=30 复核（不写 WAV/cache）：simple MAE `0.15479`，hook-only `0.16416`，combined `0.15619`。因此中间 hook 没有超越简单可观测特征的稳定增量解释力；该方向归档，不训练 state-conditioned adapter。记录见 `experiments/frontend_state_representation_probe_20261020/` 与 `experiments/frontend_state_representation_probe_20261020_online16/`。
+
+## 1. 研究问题与最终目标
+
+在现有 **StoRM 判别式前端 + NCSN++ v2 / OUVE 扩散后端** 上，首要目标是改善**无混响、低至极低 SNR 时真实词句的可懂度与内容忠实性**，同时尽可能改善语音清晰度、感知质量和重建保真。当前用户报告了若干最终增强语音难以听懂的案例；它是**必须优先复核的现象**，而非已量化的前端/后端因果结论。既有 Future-grad RRSD Router 提升部分重建指标，但与感知质量存在权衡；WavLM Harm Teacher、复杂门控和若干 Speaker Contrastive 实现未显示足够独立综合收益。
+
+**首要待证伪问题 P8（两种不同的内容失真）**：① H8-A：同一无混响低 SNR noisy 下，`Y_pre` 原本正确保留语音，但完整生成新增词/音素错误；② **H8-E（用户当前重点）**：前端已将真实音节过度抑制，后端只是修饰残余声学结构，没有恢复被吞音节。对 H8-E 必须回答 noisy 是否仍有**可辨识且音素特异的证据**、后端是否真实利用该证据以及 `Y_pre` 的扩散初始/漂移锚定是否阻碍内容纠错。若前端本身难懂，不得称为“后端破坏了前端正确内容”，但也**不能直接停止对后端补救能力的验证**。人耳难以听懂、ASR 错误、低客观指标和生成式幻觉是不同判定，均须与真实文本、人工音素事件区分。
+
+**第二优先级 P9**：真实混响/噪声组合下的前后端交互与域外鲁棒性。该问题有冻结测试集交互证据，但目前缺少训练所需 RIR 数据和明确的混响训练权重；在 P8 完成第一轮归因和数据/磁盘准备前，P9 不抢占计算预算。
+
+**当前执行优先级：先 P8 无训练内容归因，按证据决定是否启动内容恢复型后端干预；P9 混响数据准备为后置任务。** P7 已完成一轮有界瓶颈诊断但未定位机制；旧 P3c 的 8 条 ASR smoke 没有前端对照，而新上传版 P8 已在 8 条新语音上导出了前端/后端及局部代理，仍缺人工真值。64-speaker CV 复核中的 clean gap 只说明总体身份 headroom，Router 与 off 的身份差异没有实际改善；同时 Router 的 SI-SDR/PESQ/STOI 小幅改善伴随 DNSMOS-OVRL 下降。当前不启动 backend-only Speaker-loss，也不把新网络、GAN、SDE 调度或 Router alpha 训练列为默认下一步。补充记录：在本决策更新前已完成一个 500-step backend-only **no-loss control**，并在锁定的 64-speaker/128-utterance CV 集上完成只读评估。control−off CAM++ 同人异句 cosine 为 `+0.00262`（CI `[-0.00832,+0.01453]`），AUC 为 `+0.00852`（CI `[-0.00462,+0.02486]`），EER 为 `−0.01736`（CI `[-0.06253,+0.03046]`），均未排除零；paired-clean cosine 为 `+0.00146`（CI `[-0.00562,+0.00847]`）。PESQ `−0.00628`、STOI `−0.000474` 的 CI 均排除零，SI-SDR 约 `0`。没有启动 speaker-loss arm；DNSMOS 仅完成单条设备 smoke，未形成三臂全量结果。因此 control 不支持重启 P2b，详见 `experiments/speaker_backend_only_matched_500_20261018/`。
+
+**核心科学问题（P7 的研究目的）**：**当判别式前端已经完成部分语音恢复后，生成式后端应如何识别前端已可靠恢复的信息与仍需修复的失真，并据此完成剩余生成任务？** 研究关注的不是「更相信前端还是更相信后端」的融合比例，而是：**哪些前端结果应被保护、哪些遗漏或错误需要修复、哪些后端随机生成又可能引入新失真**。这三类情况目前尚未被证实能够可靠区分，不能直接视为已知标签或已确定的后端行为。
+
+**任务分解（概念定义，不是新增 SDE）**：在保持相同波形或同一可逆/一致的谱域表示的前提下，训练/诊断时可以用 `Δ_pre = X_clean − Y_pre` 描述前端相对于 clean 的剩余恢复目标；而推理时可用的条件只有 `c = (Y_noisy, Y_pre)` 以及从这些可观测量计算的特征，不能访问 `Δ_pre`、真实局部 SNR 或任何 clean-aware Oracle。`X_hat = Y_pre + Δ_hat` 仅是方便理解的恢复任务分解，**不意味着必须改成残差坐标扩散，也不自动构成新随机动力学**。如果 `Y_pre=F(Y_noisy)` 为确定性前端，它不会增加超出 noisy 的信息量；研究重点是其结构化表示能否让有限容量的 Score 网络更有效地利用条件信息。
+
+**待证伪的机制假设**：前端恢复的可靠性可能随时间、频带、语音结构及幅相关系变化；标准 StoRM/OUVE 虽然以 `Y_pre` 为条件或中心，仍可能未充分利用这种局部恢复状态，导致对正确内容的无必要改写或对前端遗漏的修复不足。**目前两种情况都没有经过 P7 的实证归因**。先从 P7-0 / P7-A / P7-B / P7-C 中识别系统特有的稳定现象，再决定是否修改 Score 训练、条件注入、观测约束、采样算法或 SDE；不可预设修改哪一项有效。文献上已有 StoRM、预测引导扩散、GALD-SE 与生成—判别融合方法，**「添加条件、局部 Mask/方差、残差坐标、动态锚点或输出融合」本身均不是论文创新**。
+
+**主要评价优先级**：P8 的首要终点是**基于独立真实文本的人类盲转写正确率/词错误率及具体内容损伤事件**；两个不同 ASR 体系的 WER/CER、音素错误、STOI/ESTOI 只作相互校验，不以 Whisper 对 clean 的伪参考或 DNSMOS 代替真值。同时保留 PESQ、STOI、SI-SDR、DNSMOS-SIG/OVRL/P808/BAK、必要的 speaker verification 和计算开销。P9 另按混响目标定义预注册质量指标与数据分层。
+
+**研究原则**：先识别瓶颈及可达提升空间，再提出机制、做最低成本反证，最后扩训。允许诚实的 Pareto 权衡；不允许用代理 loss、单指标微弱变化或跨预算聚合分数冒充综合提升。**不强制保留 A+B 两个原方案**。本轮 P7 不需要训练；每一阶段必须输出「证据／混杂因素／不能得出的结论／是否停止」，**不因已有算力空闲而自动开训**。
+
+### 1.1 文献先验证据库：已知结论、边界、对本项目的意义（截至 2026-10-17）
+
+> **目的与检索边界**：将与“判别式前端恢复状态—生成式后端剩余任务”直接相关的代表性论文结论内嵌于研究决策，而不是堆论文名字。本库综合本项目已有的《近两年 Speech Enhancement 研究进展（2024–2026）》调研报告、旧异方差文献审计和本轮可核查的原论文/官方摘要/公开代码。**不声称已穷尽全部论文、未公开工作或同期投稿**。对每条区分“作者已报告的结果”“对 StoRM 的推论”“尚须验证”；数字跨数据集、SNR、采样率、模型、评价器版本不得直接比较。更完整的历史测试仍以第 2–3 节和原实验日志为准。
+>
+> **证据分级**：`A` = 已核对论文正文/官方会议页面，`B` = 已核对作者摘要/预印本摘要，`C` = 跨任务的方法学类比；`A/B/C` 代表**来源与适用范围**，不是论文质量分。预印本不冒称已审稿；作者声称的改善不是本项目复现的结果。文献编号 `[L##]` 用于后文的先验—验证矩阵，链接指向可打开的原论文或官方出处。
+
+**当前阅读优先顺序**：为 P8 先核 `[L15] PASE`、`[L30]` 生成/判别低 SNR 幻觉比较、`[L31]` STOI 与真实可懂度分歧，再回到 `[L01] StoRM`、`[L05] GALD-SE` 和 `[L03]` 条件引导的先例。P9 混响数据建设先核 `[L01]`、已有训练配置与公开 RIR 资源。`[L06–L13]` 等在其对应机制触发时选读；**阅读不替代人类转写或受控实验**。
+
+#### A. 前端条件、扩散随机过程、可靠性与可辨识性：最高优先级
+
+| ID / 论文与来源 | 原文支持的关键结论 | 尚未证明 / 对 StoRM 的边界 | 本项目应吸收的先验与验证 |
+|---|---|---|---|
+| **[L01] [StoRM: A Diffusion-based Stochastic Regeneration Model for Speech Enhancement and Dereverberation](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/storm.html)**（Lemercier 等，TASLP 2023；A） | 判别式预恢复与基于扩散的随机再生可联合用于增强/去混响，前端估计已经是后端生成的条件与锚点。 | **“前端驱动后端”不是新方向**；StoRM 的既有路径不等于“已解释前端哪些地方正确/错误”。 | P7-0 核查 `Y_pre`/`Y_noisy` 真实入模、OUVE 锚点、NCSN++ Score、EMA；P7-C 寻找前端条件在**恢复行为**上的额外信息，而非再做输出融合。 |
+| **[L02] [Diffusion-based Generative Modeling with Discriminative Guidance for Streamable Speech Enhancement](https://arxiv.org/abs/2406.13471)**（Li 等，SLT 2024；B） | 在反向扩散的部分早期步使用判别式 Score 以降低运算量；判别式和生成式影响随替换步数变化。 | 改变“前几步用什么引导”、`t_cut` 或简单时间门控已有明确先例。 | 不恢复旧 Future Router 网格搜索；只有出现可归因的时段失败机制，才考虑具备不同数学作用的新路径。 |
+| **[L03] [An experimental study of diffusion-based general speech restoration with predictive-guided conditioning](https://doi.org/10.1016/j.csl.2026.101940)**（Yang & Chang，Computer Speech & Language 2026；A） | 将预测模型输出用于扩散训练条件及采样末端融合；作者报告客观指标与感知表现随融合比例存在权衡。 | 并不能证明“更接近前端一定更好”或“融合系数具有跨数据集通用性”；类似思想与你的 Router/Anchor 对照高度接近。 | 使用已有 Anchor V2 `SI-SDR↑、OVRL↓` 作为**冲突病例**，分解幅度、相位、频带及伪影来源；不把后处理权重作为论文机制。 |
+| **[L04] [DOSE: Diffusion Dropout with Adaptive Prior for Speech Enhancement](https://papers.neurips.cc/paper_files/paper/2023/hash/7e966a12c2d6307adb8809aaa9acf057-Abstract-Conference.html)**（NeurIPS 2023；A） | 通过条件 dropout 增强对条件的依赖，并使用信息性自适应先验改善生成与效率。 | 条件利用和终点先验已是研究对象；“增加自适应 prior/condition dropout”不是空白。 | 如果 P7 发现末端 prior / 条件不足，应先把 DOSE 列为对照，并检查训练分布与先验一致性。 |
+| **[L05] [GALD-SE: Guided Anisotropic Lightweight Diffusion for Efficient Speech Enhancement](https://arxiv.org/html/2409.15101)**（IEEE SPL 2025；**A，必须精读**） | 用轻量预测网络估计时频 Mask，并以其控制**逐时频对角扩散噪声协方差**；前向状态、采样先验、反向更新均体现该引导；作者主张保留 noisy 中可靠语音线索而减少无谓重建。作者[公开代码说明](https://github.com/wangchengzhong/GALDSE)还指出，更新实现撤去显式指导输入以避免网络过分依赖 guidance；**代码变更不是原论文主实验结论**。 | “前端 Mask→时频非各向同性噪声→正反向一致”已被覆盖；原论文的结构与 StoRM/OUVE 不完全相同，不能未经公式对照就宣称相同。 | **最强先验/竞争者**：探查“前端高置信但错误”与“前端低置信却可恢复”的条件失配；任何新异方差路径要给出 GALD-SE 不具备的可识别机制、以及匹配的前向/反向/先验。 |
+| **[L06] [An Analysis of the Variance of Diffusion-based Speech Enhancement](https://www.isca-archive.org/interspeech_2024/lay24_interspeech.html)**（Lay & Gerkmann，Interspeech 2024；A） | 在 SGMSE+ 类扩散 SE 中，方差尺度显著影响去噪与语音失真，并与函数评估次数/计算开销形成权衡。 | 调方差提高某一个指标本身不是创新；`variance↑` 也不意味着 StoRM 的所有频带都应增强随机性。 | P7-A 建立噪声尺度、步数与重建/感知/成本关系，作为后续设计的基础竞争基线。 |
+| **[L07] [SNR-Aligned Consistent Diffusion for Adaptive Speech Enhancement](https://www.isca-archive.org/interspeech_2025/jun25_interspeech.html)**（Jun 等，Interspeech 2025；A） | 使用估计的**输入 SNR**对齐扩散时间并调节高斯噪声，改善不同 SNR 条件下的感知表现，低 SNR 尤为明显。 | 仅将全局 SNR 换成一个局部置信数不是天然创新；需要证明其提供超过 SNR 的新增可用信息。 | 前端状态/可靠性先与全局 SNR、局部噪声代理、能量、简单 Mask 做增量解释能力对照。 |
+| **[L08] [Frequency-Dependent Scheduled Schrödinger Bridge for Underwater Acoustic Signal Denoising](https://ojs.aaai.org/index.php/AAAI/article/view/40150)**（AAAI 2026；**C：水声任务**） | 作者报告不同频带上理论前向与学习到的采样轨迹可能失配，采用频率相关调度改善一致性。 | 任务并非语音增强；只构成“频率异步调度/轨迹一致性”的方法学先例，不证明 StoRM 存在相同问题。 | 只有 P7-B/C 发现扩散时间×频带的系统性偏差时再考虑；变更 SDE 前要建立**方差方程和逆向采样的一致性**。 |
+| **[L09] [Investigating Training Objectives for Generative Speech Enhancement](https://arxiv.org/abs/2409.10753)**（Richter 等，ICASSP 2025；B） | 对比 Score-based SE 与 Schrödinger Bridge 的训练目标，报告不同学习行为及针对 SB 的感知损失效果。 | `loss` 改名或 PESQ loss 并非新贡献；与本地 OUVE `score_matching + sigma²` 的代码训练路径不可直接等价。 | P7-B 必须按真实 Score 参数化/权重解释 DSM 误差；单步 `x0_hat` 与最终 PC 输出的差异是**待检验**，不能预言必有严重失配。 |
+
+**必须保留的数学先验（本项目推导，不冒充上述论文共同定理）**：在固定条件 `c` 且 OUVE 漂移 `f=-θ(x-Y_pre)`、扩散协方差 `Q(t,c)` 不依赖当前状态的假设下，条件扰动协方差 `V` 满足 `dV/dt=-2θV+Q`；预设 `V=σ²ρ²` 时必须核查 `Q=dV/dt+2θV` 的半正定性，并使终点 prior、Score 训练目标和反向采样相匹配。**数学自洽≠新颖性已成立**。若 `Q` 依赖状态，需重新处理反向扩散的散度项与坐标/复谱表示。见既有异方差静态审计报告。
+
+#### B. 判别式—生成式互补、任务分工及混合系统：直接挑战“剩余任务”创新性
+
+| ID / 论文与来源 | 原文支持的关键结论 | 不能据此认定的结论 | 对 P7-C 的直接启发 |
+|---|---|---|---|
+| **[L10] [MDDM: A Multi-view Discriminative Enhanced Diffusion-based Model for Speech Enhancement](https://arxiv.org/abs/2505.13029)**（2025 预印本；B） | 判别式网络利用时域/频域/噪声域特征生成初步谱，再由短程扩散修复；作者报告少步可取得竞争性增强。 | “从预测结果开始生成”“把后端当 refinement”已有先例；无法由此保证任何残差路径都更快。 | 分析 StoRM 终点 prior 与前端修复程度/真实分布的偏差，作为 P7-A/C 基准。 |
+| **[L11] [GAP-URGENet: A Generative-Predictive Fusion Framework for Universal Speech Enhancement](https://arxiv.org/abs/2604.01832)**（2026 预印本，ICASSP URGENT 系统；B） | 生成式表征恢复与预测式谱增强提供互补信息，通过 PostNet 融合，作者报告在 URGENT 2026 客观评估领先。 | 不能简单说“生成高频、预测低频”是所有语音/失真的普遍规律；结果来自另一数据集/网络。 | 先测 StoRM 的**真实互补区域及可观测性**；幅相/子带混合和 PostNet 只是必须击败的对照，非创新本身。 |
+| **[L12] [Universal Speech Enhancement with Regression and Generative Mamba (USEMamba)](https://www.isca-archive.org/interspeech_2025/chao25b_interspeech.html)**（Interspeech 2025；A） | 作者发现回归对多数失真有效，但 packet loss、带宽缺失等需要推断丢失内容的任务更适合生成变体。 | “已知可观测信息 vs 缺失信息”不等于简单低频/高频切换，也不等于噪声增强任务中任意时频块均可判定可恢复性。 | **重要任务分工先验**：区分可由 noisy 直接支持的抑噪、前端错误修正与真正依赖先验的内容补全，而不强迫后端只预测逐点残差。 |
+| **[L13] [A Hybrid Discriminative and Generative System for Universal Speech Enhancement](https://arxiv.org/abs/2601.19113)**（2026 预印本；B） | 并行 TF-GridNet 与生成支路，学习自适应融合，作者报告 URGENT 2026 Track 1 第三名。 | 不能将“加入可学习融合网络”“比固定系数高维”作为未被研究过的方法。 | 若 P7-C 有互补证据，比较最简单的频带对照与已有 learnable fusion；新增参数必须证明独立作用。 |
+| **[L14] [UniPASE: A Generative Model for Universal Speech Enhancement with High Fidelity and Low Hallucinations](https://arxiv.org/abs/2604.14606)**（2026 预印本；B） | 利用经多失真监督的语音表征恢复、声学 Adapter/Vocoder 与采样率适配模块处理 universal SE，强调内容忠实和生成质量。 | “表征先修复、声学生成再补充”也已有先例；不能用编码器特征分数直接替代对实际输出的人工判断。 | 把恢复任务拆解为可观察的语音内容/说话人/细节风险，并与当前 NCSN++ 的输出做独立指标评估。 |
+
+#### C. 生成幻觉、说话人／音素可靠性与偏好优化：保留开放创新出口
+
+| ID / 论文与来源 | 原文支持的关键结论 | 边界 | 对本项目的先验 |
+|---|---|---|---|
+| **[L15] [PASE: Leveraging the Phonological Prior of WavLM for Low-Hallucination Generative Speech Enhancement](https://ojs.aaai.org/index.php/AAAI/article/view/40562)**（AAAI 2026；A） | 将 WavLM 音系先验蒸馏成去噪专家，并分离高层音素与低层声学表征，分别约束语言内容与说话人/韵律，作者报告减少生成幻觉。 | 添加 WavLM/CAM++、FiLM 或双流条件不自动成为原创；额外参考语音/干净条件推理的可用性需明确。 | P2b Speaker 主干方向**未被否定**；先用干净-增强同人异句验证与 WER/CER 区分身份损伤、编码器噪声敏感和内容错误，再决定是否需要结构化条件注入。 |
+| **[L16] [StuPASE: Towards Low-Hallucination Studio-Quality Generative Speech Enhancement](https://arxiv.org/abs/2603.09234)**（2026 预印本/Interspeech 2026；B） | 在 PASE 基础上，通过 dry-target 微调加强去混响，并以 Flow Matching 替代原 GAN 生成模块提高强噪声下的感知质量。 | 目标构造、训练数据和生成范式都有影响，不能归因于“更大的网络”或“更强随机性”单因子。 | 如将来 P7 发现特定伪影，要隔离训练目标、前端条件质量和生成后端结构的影响。 |
+| **[L17] [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](https://arxiv.org/abs/2610.06632)**（2026-10 预印本；B） | 同一句语音的最佳推理配置可能不同；作者用多目标奖励和在线偏好优化将候选信息纳入训练，部署为固定 10 步 ODE 而非逐句在线搜索。 | “多轨迹择优→偏好蒸馏→单轨部署”已有极接近先例；本项目的 DNSMOS 选高再以同一 DNSMOS 评分是构造性增益，不能证明人类偏好或蒸馏有效。 | TPO/IPO 暂缓；只有有**独立于训练奖励的真实偏好或干净信号证据**，并区别于 AuraSE，才设计后端偏好训练。 |
+| **[L18] [Speech Enhancement Based on Drifting Models (DriftSE)](https://arxiv.org/abs/2604.24199)**（2026 预印本；B） | 把增强转为分布平衡的 Drifting Field 问题，报告原生单步推理和配对/非配对设定。 | 速度、生成自然度与单样本忠实度不能混为一谈；不说明当前 StoRM 必须换框架。 | 保留对低 NFE 与真实性的长期关注，但当前不启动换范式。 |
+
+#### D. 扩散加速、采样时间与完整轨迹：避免误把加步或减步当创新
+
+| ID / 论文与来源 | 已有结论 | 启示与边界 |
+|---|---|---|
+| **[L19] [Schrödinger Bridge Mamba for One-Step Speech Enhancement](https://arxiv.org/abs/2510.16834)**（2025 预印本；B） | 用 SB + Mamba 训练/推理框架实现单步 SE；单步桥接与快速模型均非空白。若要提出 StoRM 特化加速，需说明为什么它的条件误差结构要求不同的路径。 |
+| **[L20] [Time-Unconditional Generative Speech Enhancement via Autonomous Rectified Flow](https://arxiv.org/abs/2606.20001)**（2026 预印本；B） | 作者基于线性样本路径提出不显含时间的速度监督和时间无条件网络，报告少步/一步生成；**样本对的速度常量不等于在所有条件下网络最优边缘速度必然与时间无关**，不得机械照搬其断言。 |
+| **[L21] [Teacher-Free Self-Distilled Consistency Trajectory Learning for Fast Speech Enhancement](https://arxiv.org/abs/2609.10392)**（2026 预印本；B） | 使用 EMA 学生自蒸馏和阶段式训练减少对外部教师的依赖；作者观察不同低步数调度会偏向感知或保真。若 P7-A 显示 NFE 是主要瓶颈，应将 consistency / trajectory learning 列为对照。 |
+
+**2026-10-18 查新补充：**
+
+| ID / 论文与来源 | 原文支持的关键结论 | 对本项目的边界与启发 |
+|---|---|---|
+| **[L28] [Corrective Forcing: Unified Post-Training for Diffusions and Flows in Generative Speech Enhancement](https://arxiv.org/abs/2609.24651)**（2026 预印本；B，提交 ICASSP 2027） | 作者用 dynamic rollout correction（DRC）在递归自生成状态上做 clean-speech prediction supervision，并用 EMA teacher 的 counterfactual transition consistency（CTC）约束局部演化；支持的对象包括 SB-VE/flow，且可将 score 转为 clean-`x0` 参数化。 | 这是与 P7 最接近且已占据 rollout-aware post-training 空间的新先例。它不证明本项目 OUVE/PC 一定有同样收益；本项目旧 smoke 直接比较 forward marginal 与 reverse rollout，方法上不足以触发 CoF。现有 16,512 参数 adapter 只能作为混合证据复现，不得称为独立 CoF。若重开，必须先做忠实 DRC baseline、matched no-loss control，再考虑 CTC；任何第二创新都需加入经过独立验证的 StoRM-specific 机制。查新记录见 `experiments/corrective_forcing_literature_audit_20261020/`。 |
+| **[L29] [AuraSE: Low-Hallucination Generative Speech Enhancement via Multimodal Flow Matching and Inference Policy Optimization](https://arxiv.org/abs/2610.06632)**（2026 预印本；B） | 作者报告不同 utterance 的 decoder guidance/temperature/step 配置偏好不同，并用多候选、多目标奖励和 on-policy preference optimization 学到固定部署策略。 | 它强化了“多轨迹/推理配置选择”已有先例；本项目已有多轨迹 headroom 但未得到 SI-SDR 保护的 verifier，因此不能把普通 multi-trajectory selector 作为新颖第二创新点。 |
+| **[L22] [FlowSE: Efficient and High-Quality Speech Enhancement via Flow Matching](https://arxiv.org/abs/2505.19476)**（2025 预印本；B） | Flow Matching 语音增强及质量—推理延迟平衡已有实例；不得把“用 flow 替换 OUVE”自身作为新贡献。 |
+
+#### E. 感知—保真与强判别式基线：判断“改善”是否真实
+
+| ID / 论文与来源 | 可信结论 | 对本项目的意义 |
+|---|---|---|
+| **[L23] [The Perception-Distortion Tradeoff](https://openaccess.thecvf.com/content_cvpr_2018/papers/Blau_The_Perception-Distortion_Tradeoff_CVPR_2018_paper.pdf)**（CVPR 2018，原任务为图像恢复；**C：理论类比**） | 在其形式化的分布性感知指标与期望失真定义下，存在不可达区域/权衡边界。**不意味着你的 Router 已在 Pareto 最优边界，也不等于 DNSMOS 与 SI-SDR 数值上必定此消彼长**。 |
+| **[L24] [CDPAM: Contrastive Learning for Perceptual Audio Similarity](https://arxiv.org/abs/2102.05109)**（ICASSP 2021；A/B） | 基于对比表征与有限人工偏好训练可微听觉相似性；现成感知距离有先例，不能把“训练 perceptual encoder”当作原创。 |
+| **[L25] [NOMAD: Unsupervised Learning of Perceptual Embeddings for Speech Enhancement and Non-Matching Reference Audio Quality Assessment](https://research.google/pubs/nomad-unsupervised-learning-of-perceptual-embeddings-for-speech-enhancement-and-non-matching-reference-audio-quality-assessment/)**（ICASSP 2024；A） | 支持使用非同句 clean 参考的感知嵌入和质量/失真排序；与 full-reference 设定不同，不可将 DNSMOS 或 NOMAD 直接当人类真值。 |
+| **[L26] [ZipEnhancer: Dual-Path Down-Up Sampling-based Zipformer for Monaural Speech Enhancement](https://arxiv.org/abs/2501.05183)**（ICASSP 2025；A/B） | 小型判别式模型仍能给出有竞争力的语音重建及效率（论文在自己的 DNS2020/VB+DEMAND 任务中报告 2.04M 参数及强 PESQ）；前端不能默认为弱模型，须报告 frontend-only。 |
+| **[L27] [Mamba-SEUNet: Mamba UNet for Monaural Speech Enhancement](https://arxiv.org/abs/2412.16626)**（2024 预印本；B） | 多尺度 Mamba 与 U-Net 取得强判别式性能；前端替换可能提升起点，但**更换 SEMamba/TF-GridNet 是强基线升级，不是当前 P7 归因的必要动作**，否则改变条件分布产生混杂。 |
+
+#### F. P8 低 SNR 可懂度、词句忠实性与幻觉：新增优先先验
+
+| ID / 原始来源 | 文献支持的结论 | 本项目不得越界推断 / P8 验证用途 |
+|---|---|---|
+| **[L30] [A Comparison of Generative and Discriminative Methods for Speech Enhancement: Robustness, Complexity, and Hallucination](https://arxiv.org/abs/2606.02913)**（2026 预印本；B） | 作者将生成与判别式增强在高/低 SNR、匹配与失配条件下作比较，并使用 WER、音素相似性研究幻觉特性；这是**比较研究的先例**，不是本 StoRM 的已复现规律。 | 不能把“生成式必然幻觉”当成结论。必须比较实际 `noisy / Y_pre / Router-off / Router` 的内容表现，并控制 SNR、噪声、ASR 偏差。 |
+| **[L31] [Subjective Intelligibility of Deep Neural Network-Based Speech Enhancement](https://www.isca-archive.org/interspeech_2017/gelderblom17_interspeech.html)**（Interspeech 2017；A） | 在其测试条件下，客观 STOI 没有可靠预测实际受试者的语音可懂度；这是评价方法局限的直接实证先例。 | 不把 STOI 上升、PESQ/DNSMOS 上升或某个 ASR 自身转写改善自动等同“人听得懂”。P8 需要盲法转写和明确的原句文本。 |
+| **[L15] [PASE: Leveraging the Phonological Prior of WavLM for Low-Hallucination Generative Speech Enhancement](https://ojs.aaai.org/index.php/AAAI/article/view/40562)**（AAAI 2026；A；见上文） | 已有利用 WavLM 音系先验抑制生成式增强幻觉的方法先例。 | 若 P8 最终证明内容损伤，也不能把“加入 WavLM/音素 loss/双流条件”本身称为创新；必须先与 PASE 和无辅助损失后端控制做实质比较。 |
+
+**与既有 P3c 的逻辑区分**：旧 P3c 的 8 条 `tiny.en` 结果仅显示所选开发样本上 Router 与 Router-off 的伪词编辑距离差异不确定；它**没有测试 Frontend-only**，也没有原始人工转写真值或多听者。因此旧 P3c 仍保持“已完成并退出”的历史判断，但**不能阻止由新观察和不同主要终点触发的 P8**。P8 不借用旧 32 条已反复筛选语音作为确认集。
+
+### 1.2 从文献结论到本项目创新：必须区分五个层次
+
+| 层次 | 已有证据与出处 | 当前在 StoRM 中的状态 | 下一步必要证据 / 反证 |
+|---|---|---|---|
+| **先验 P1：可靠的观测线索应尽可能保留** | [L01] StoRM、[L05] GALD-SE、[L12] USEMamba；其他系统也采用预测—生成任务分工。 | **跨文献有方法/实证支持，但本项目的具体正确区域尚未识别**。 | P7-C 比较 frontend-only / full StoRM 的 clean-aware 局部误差及独立最终质量，区分“正确→保留、正确→破坏、错误→修复、错误→继续失败”四类；不得预设前端高频一定不准。 |
+| **先验 P2：条件线索的质量、准确性与置信度可能不一致** | [L04] 条件增强、[L05] 引导 Mask/代码中的依赖风险、[L07] SNR 自适应。 | **这是待验证的跨文献综合推论，尚非某篇已证明的 StoRM 定理**。 | P7-C 先只读分析由 noisy / `Y_pre` 可观测的置信代理，对 clean-aware 前端错误及生成增益的新增预测力；控制能量、SNR、音素类型。若无增量解释力则退出。 |
+| **先验 P3：扩散时间、噪声协方差和求解精度会影响质量—失真—计算关系** | [L06] 方差、[L07] SNR 调度、[L08] 跨水声频率调度、[L21] 一致性轨迹。 | 当前 80k OUVE/PC 的**数值误差与前端条件失配尚未鉴别**。 | P7-0 先核真实 NFE；P7-A 区分确定性数值收敛与随机轨迹分布；P7-B 的单样本 DSM 残差不能叫真实 Score 误差。 |
+| **先验 P4：重建指标、感知代理、内容和身份不是同一个目标** | [L03]、[L09]、[L15–L17]、[L23–L25]。 | Anchor V2 的 SI-SDR↑/OVRL↓ 是**本项目实际观测**；24/24 tie 只对当前单听者/路由组合有效。 | 以 PESQ/STOI/SI-SDR/DNSMOS 多指标、CER/WER/身份指标和必要听感交叉验证；任何训练标签与最终指标尽量独立，避免 DNSMOS 自选自评。 |
+| **先验 P5：训练期利用可靠信息可能优于推理期额外昂贵选择** | [L17] AuraSE、[L19–L22] 少步/蒸馏；[L05] 已展示条件路径改造的先例。 | 4 seed 优选实验只能证明既有候选的分数变化，**没有证明单轨可蒸馏或人类偏好收益**。 | 首轮不启动 IPO/TPO 或 Flow；仅当出现独立偏好/真正风险标签，且与现有方法有机制差异，才形成可对比的训练研究。 |
+
+**核心科学问题（开放表述）**：判别式前端的恢复状态，如何影响后端的条件分布、Score 学习及生成行为？后端怎样利用**可观测**证据，保留已经可靠的语音结构、修正前端遗漏或错误的内容，并在必要时**降低对前端的信任**？“剩余生成任务”不是预设只能做残差、只能改 SDE，也不是事先假定前端的每一处错误都可辨识。前端若是 noisy 的确定性函数，它不增加 noisy 的信息量；其价值可能在有限模型的有效表示、优化路径与归纳偏置。
+
+### 1.3 对照文献的“已被占据空间”与仍待证伪的研究机会
+
+| 具体做法 | 文献是否已有相似机制 | 论文创新性初判 | 必须补充的证据 |
+|---|---|---|---|
+| 前端预测谱作为扩散锚点/条件；末端混合 | [L01–L03] 已有 | **不能单独声称新颖** | 出现超越基线的非平凡“保留/拒绝”机制，而非调 alpha |
+| 前端 Mask / SNR → 时频噪声与动态时间 | [L05–L08] 已有 | **高重合风险** | 区分“高置信但错误”与“低置信可修复”，及超越 GALD / SNR 的可靠增益 |
+| 改 SDE、残差坐标或固定/时间相关先验 | [L04–L09] 与现有 OUVE 推导 | **改写坐标或凑数学式不算创新** | 正反向一致 + 真实机制缺口 + 独立性能收益，逐公式查新 |
+| 直接加 FiLM / CAM++ / WavLM / Speaker InfoNCE | [L15–L16] 等 | **不是直接创新** | P2b 先证明 NCSN++ 后端 Speaker 主干微调独立有效，且改善的是真身份/内容而不只是 proxy |
+| 幅相分离或 learnable fusion/PostNet | [L03]、[L11]、[L13] 已有 | **不能把“更高维 Router”当原创** | P7-C 证明可观测的互补规律，且简单固定融合无法解释/利用该规律 |
+| 多轨迹偏好、在线策略优化、少步 Flow/Bridge | [L17]、[L19–L22] 已有 | **不宜直接立项为“第二创新”** | 条件错误机制特异、独立 reward/听感及公平预算对照 |
+
+**有条件可成为机制性研究的问题**（不是已获新颖性证明）：
+
+1. **前端高置信却错误：何时后端应主动拒绝其锚点？** 与只编码“语音比例”或 SNR 的 Mask 区分，尤其关注前端谐波伪影、缺失音素、错误相位、语音断续；需要从**推理时可见量**提取区别，并证明不是单纯噪声强度的重命名。
+2. **前端可靠信息被后端重新随机化的机制**：有多少“前端已正确但生成恶化”的事件，能分解到数值采样、Score 学习或条件交互？应允许后端生成合理的不同实现，不把与单条 clean 参考的不一致全判为 hallucination。
+3. **“待修复”任务的时间/频率/结构变化**：是否存在随扩散时间变化的恢复需求，并超出固定 SNR、Mask、相位交换或简单多分支融合？不能仅靠相关图和 clean-aware Oracle 宣称解决了可部署任务。
+4. **若 P7 失败，继续开放其他出口**：NCSN++ backend-only Speaker（当前未验证）、独立 Score 优化、数值求解器或具有真实内容风险证据的修复，不为了当前主题阻止新发现。
+
+### 1.4 让 Codex 实际使用文献先验的操作规则
+
+- **每次新实验之前**：先指明要验证的先验 ID（如 `[L05]`）、当前差异性假说、最强已有方法与最廉价负对照，以及**哪个结果会否定方案**；不能只写“论文还没做过”。
+- **每次 P7 报告必须有四栏**：`literature-supported conclusion` / `project-observed result` / `unverified hypothesis` / `confounder or alternative explanation`。任何从其他数据集借来的数值都不能被填成项目成果。
+- **只要有已提出的方法**（GALD-SE、predictive-guided、time guidance、GAP-URGENet、PASE、AuraSE 等），写出**具体公式或输入/训练/推理差异**，不能通过改名绕开先例。
+- **源头优先**：正式引用先读原 PDF/官方版；预印本状态按最新官网核实；官方仓库 README 中的实现改动单独标记，不能反写为原论文实验。
+- **每个研究门均允许退出**：未能在保留样本上稳定复现的相关性、只依赖 clean 的 Oracle、只提高自己优化的代理指标、无实际部署条件的“可靠性真值”，都不足以启动新的训练或算作第二创新。
+- **更新机制**：新增论文时，先补充 `[L##]` 结论及直接证据链接，再更新 1.2–1.3 的先验/查新边界，并同步 P7 决策表；本节是活的“研究事实库”，不是已完成的系统性文献综述。
+
+---
+
+## 2. 当前可靠证据与判定
+
+### 2.1 统一比较边界
+
+- 项目路径：`/data/coding/sgmse`，以现场代码、配置和数据划分为准。
+- 现有 Router 起点：`joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt`（80k EMA）。
+- 原始联合基线 `5ul7u03z` 约为 300k 训练步；与 80k Router 的历史总体指标**不构成匹配训练预算的因果对比**。
+- 优先使用同一 checkpoint、同一逐条 manifest、采样器/EMA/N/SNR/seed/evaluator 一致的 **paired** 比较。严格区分单步 `x0` 代理、完整轨迹的最终质量、整句策略 Oracle 与局部时频 Oracle。
+- 原先被称为“测试集”的 150 条数据已用于多轮路线筛选，**不能再视作未接触的最终测试集**；后续论文需要提前锁定未参与调参的独立最终评测集。
+
+### 2.2 A：Future Router 与 Harm/门控
+
+| 证据 | 已观察到的结果 | 当前解释 |
+|---|---|---|
+| WavLM/Future 梯度局部冲突 | 约 8.37% tile 冲突，涉及约 22.61% 的 alpha 预算；64 个有限差分样本双向符号一致率 59.4%，低时间段 71.4% | 仅是代理机制信号，不等于 DNSMOS harm |
+| WavLM Harm Oracle（4 条语音，N=30） | 相对 Router 的 PESQ/STOI/SI-SDR 变化接近零；补测 DNSMOS Gate−Full 的 P808/SIG/BAK/OVRL 为 `−0.000769/−0.000630/−0.000899/−0.000953`，区间均跨零 | **停止** Harm Prediction Head；当前样本没有显示可利用的感知 headroom，但不把小样本结果推广为所有 harm 标签均无效 |
+| `t_cut=0.05`，150 条 matched | OVRL +0.003873（CI 全正），SI-SDR −0.049719 dB，PESQ −0.002535 | 可信但极小的工程 Pareto 基线，不是学会的教师门控 |
+| `t_cut=0.05`，另一个低 SNR 151 条 split | OVRL +0.003221（CI 全正），SI-SDR −0.061079 dB，PESQ −0.003556 | 方向可迁移，重建代价更大 |
+| 150 条整句 Oracle（Router/t-cut/selective） | 在逐条 SI-SDR 容忍 0.05 dB 下，相比 Router 的 OVRL headroom +0.00361；无此约束的 OVRL 策略选择另有 +0.00501（相对最佳固定均值） | **仅限定候选整句策略**。不同约束/参照不能混用，更不是所有局部门控的理论上限 |
+| noisy 统计 selector / conflict-aware 1000-step / K=4 lookahead / explicit projection gate | 未显示稳定的、值得增加复杂度的综合收益；若干变体牺牲 SI-SDR | 不重复盲目扩训，保留负结果 |
+
+**A 决策**：保留原始 Router 与固定 `t_cut=0.05` 作为强对照；停止默认训练 WavLM Harm Head、复杂 utterance selector 和已失败 gate。只有提出不同的、可证伪的新机制且先证明真实增益空间，才重启训练。
+
+**范围说明（2026-10-17）**：上述负结果针对已测试的 Router/Future guidance 控制策略，不是“加入判别式前端必然损害感知质量”的证据。Router-off 通常仍然保留 StoRM 的判别式前端 `Y_pre` 及其 OUVE 条件作用；不可以用直接清零 `Y_pre` 冒充公平的无前端模型。后续感知/对抗训练若有效，优先归因到 NCSN++ 后端，而不是 Router。
+
+**审计特别项**：固定 `t_cut` 平均 OVRL 增量与“逐条 SI-SDR 容忍”的 Oracle 增量不应直接排序；Codex 应核查 per-file / aggregate 约束、候选集合、参照组和实际 manifest，避免误解为 Oracle 计算错误。
+
+### 2.3 B：Speaker–Content 方向
+
+- 训练数据已发现可信 speaker ID 和同人异句样本；曾发现 paired InfoNCE 把同 speaker 异句错误放进负样本分母，已增加可选 mask 并做单测。
+- 在 16-speaker / 32-utterance 诊断集中，**masked InfoNCE 1000-step**：相对 80k Router，独立 CAM++ enhanced–clean +0.001613（CI 为正），**但同人异句 CAM++ 从 0.842322 下降到 0.840694**，SI-SDR −0.144008 dB，PESQ −0.001500。不能概括为“所有身份分数都没有增加”，但**没有证实实质性的、跨语句身份保持收益**。
+- **Speaker prototype 1000-step**：独立 CAM++ enhanced–clean +0.001227，同人异句降至 0.840534，SI-SDR −0.128791 dB。当前变体的成本/收益不成立。
+- **参数审计已完成**：`experiments/speaker_parameter_audit_20261017/` 检查了五个历史 checkpoint、训练日志、optimizer 状态和逐张量差异。所有实验都设置 `rrsd_freeze_base: true`；271 个 `dnn.*` 张量和 267 个 `frontend.*` 张量与 80k EMA 初始值完全相同，只有 8 个 `rrsd_router.*` 张量改变。optimizer 只有一个参数组和 8 个状态条目。因此这些结果只测试了 **Router-only Speaker adaptation**，没有测试 backend-only 或联合 NCSN++ 微调。
+
+**B 决策**：停止现有 InfoNCE/prototype 仅通过加权重、换编码器或延长步数的重复实验。历史负结果已确认只对应 Router-only adaptation；先完成 **speaker headroom**：模型是否真的丢失身份信息，丢失是否集中于低 SNR/混响，训练编码器之外的 verifier 是否也能测到。若身份本来已接近 clean–clean 参考分布，考虑放弃 Speaker 作为主线。若 headroom 存在，冻结 StoRM 前端和 Router、只微调 NCSN++ 后端是下一项低成本候选，且必须配套同预算无辅助损失的 backend-only 对照。
+
+### 2.4 新候选：Anchor V2（真实 Oracle 已完成，控制器退出）
+
+仓库记录了两种可观测残差方向 `u_pre = Y_pre - x0_base`、`u_noisy = Y_noisy - Y_pre` 的 band–time 有界系数修正，零初始化时精确 no-op。合成复谱 smoke 和梯度检查通过，合成代理 MSE 从 0.0654149 降至 0.0003834。
+
+**32 条 N=30 clean-reference Oracle 已完成**：在同一 80k EMA checkpoint、PC sampler、seed 2026 下，对 `rrsd_cv_repeat32` 的重复说话人诊断 split 进行配对分析；Anchor Oracle 相对 Router 的 SI-SDR 为 `+0.448234 dB`（95% CI `[+0.359928,+0.540420]`），但 PESQ 为 `−0.011443`（CI 跨 0），DNSMOS-OVRL 为 `−0.070951`（95% CI `[-0.095116,-0.047702]`），SIG/P808/BAK 也下降。结果说明该二维 residual 子空间有重建 headroom，却没有感知 headroom；clean 仅供上限诊断，且该 split 不是独立最终测试。因此不训练 Anchor controller，归档该分支。完整记录：`experiments/anchor_v2_real_oracle_20261017/`。
+
+### 2.5 新候选：感知抽象与失真感知表征（**待证伪，非既有实证结果**）
+
+提出一个有待检验的科学问题：**逐点波形/谱 MSE 的误差权重与人耳对残余噪声、声色变化、金属伪影、短时断裂、瞬态/齿音损伤的敏感性是否不一致？** 对语音表征进行适度听觉抽象，可能过滤无关相位/尺度偏差；但过度降维也可能掩盖可闻细节、语音断裂和音素错误，不能预设「信息密度越低越感知友好」。
+
+已有 Router/SSL-MSE 的弱或负结果提示**需要改变监督假设并验证代理是否可信**，尚不能直接证明 MSE 是导致感知下降的根因。新增候选为三层递进路线：
+
+1. 简单、无需学习的感知抽象距离（log-Mel / ERB / 多分辨率谱 / 包络与调制等）；
+2. 对比现成感知空间 CDPAM / NOMAD，只有观察到本域特定伪影的识别缺口，才考虑训练带质量排序监督的失真感知特征空间；
+3. 感知表示可靠之后，尝试 **backend-only NCSN++ 的受约束训练/Adapter**，探索如何改变生成修正方向又不过度牺牲 SI-SDR、内容与音色。
+
+**P3a 首轮结果（2026-10-17，`experiments/perceptual_representation_probe_20261017/`）**：32 条已反复用于路线筛选的开发语音、5 个现存 arm（noisy/off/Router/t-cut/selective），复用现有逐条 PESQ/STOI/SI-SDR 和可用的 DNSMOS，不重新推理/评估。MR-STFT log-magnitude L1 对 DNSMOS-OVRL 的逐条候选 pair 排序一致率为 `0.802`（utterance-bootstrap 95% CI `[0.719,0.875]`），log-Mel/ERB 均为 `0.792`（CI `[0.698,0.875]`）；但对 PESQ/STOI/SI-SDR 的一致率仅约 `0.44–0.59`。相反，归一化 waveform/complex-STFT 距离对 SI-SDR 排序为 `1.000`，对 OVRL 仅 `0.208`（CI `[0.125,0.302]`，utterance Spearman `−0.625`）。DNSMOS-BAK 对所有简单表征都没有稳定排序能力。
+
+**判定**：该 probe 证实这些简单表示对不同指标有相反偏好，但没有盲听或独立人类偏好标签；DNSMOS 相关性不是感知有效性的独立证明。增益/时移 sanity 也显示简单距离对响度和对齐敏感。P3a 的无训练筛选已完成，结论为**不支持立即训练自建 encoder 或将该距离作为 P5a 训练目标**。要继续 P3b/P5a，先用小型盲听/独立偏好数据确定可复现的失真类型和目标排序；该 32 条 split 仅可作探索开发集，不是独立泛化集。
+
+**严禁把"感知空间"、"感知损失"、"Adapter"或几个加权 Loss 的拼接当作已成立的创新点。** 现有研究已有这些共性技术，需要以该 StoRM 具体失真机制及有独立指标支持的新约束区分文献。
+
+### 2.6 新候选：条件对抗监督用于生成式后端（**待验证，非已有实测成功**）
+
+**新判断**：感知—失真存在理论性权衡，但已有 Router 的 Pareto 结果仅说明当前受限修正策略的表现，不代表 StoRM 已达到感知—失真最优边界。引入 GAN/质量判别器**可能**使后端参数学习不同的 Score 恢复方向；也可能引发语音幻觉、噪声/音色捷径和 SI-SDR/PESQ 下降。**不继续把判别器输出用于训练 Router 的 `alpha` 或 Harm Gate**，除非另有全新、独立且可证伪的路由机制。
+
+- **优化对象**：首先固定前端 `Y_pre` 生成路径，关闭额外 Router Future 修正，训练 NCSN++ 少量参数/Adapter。后端效果单独成立后，才测冻结原 Router 的组合是否互补；要审核旧 Router 对新 Score 分布的适配性。
+- **表征与失真依据**：先开展 P3a/P3b 的听觉/感知特征诊断，再评估是否存在特定、跨样本可复现的语音染色、残余噪声、短时断裂、音乐噪声或语义伪影。当前**没有证据确认 Router 导致了具体哪类失真**；不能预先把 Router-on 标为“坏”、Router-off 标为“好”，以免学习方法身份捷径。
+- **研究定位**：普通 GAN、MetricGAN/CMGAN、感知损失与 diffusion-GAN 的概念已有先例；增加判别器、Adapter、加权 Loss 本身**不是创新**。只有证明针对 StoRM 的失真机制、监督粒度/条件及保真约束具备实质差异和独立收益，才能考虑论文贡献。
+
+### 2.7 旧 SDE / PathSim 机制审计与新颖性边界（已有理论判断，非性能实证）
+
+- **Residual-Anchored OUVE**：在残差先验 `R_p` 对单条条件固定、锚点调度可微的假设下，令 `β(t)=(1-exp(-θt))λ(t)`，作变换 `U_t=R_t-β(t)R_p` 可还原为标准零中心 OUVE。原漂移中的 `λ′(t)` 修正推导合理；**「新 SDE 随机动力学」不成立**，先验估计与数值实现可能仍有价值，但不能预设训练收益。终点初始化还应区分有限时间近似与必然重建损失，不得将 `exp(-θT)` 当成实际波形误差率。
+- **PathSim V-A**：历史轨迹标签为 `z_roll=(x_t^roll-μ_t(clean,Y_pre))/σ_t`，混合正常采样噪声、clean 参考与条件生成样本的差别及潜在采样误差；其二阶矩预测**不等于**真实生成错误或经校准的后验不确定性。原实现主要改变训练边缘扰动；反向 SDE/score 系数的一致闭环尚不可直接认定已完成。**暂停直接以其方差估计器改造 SDE。**
+- **文献重合风险**：GALD-SE 已研究判别式时频 Mask 控制各向异性扩散噪声及配套反向采样；自适应噪声、异方差或正反向一致性本身不能直接作为原创。参见历史静态审计及异方差文献报告；如需要正式论文结论，再做针对具体机制的查新。
+- **对 P7 的意义**：先判断 StoRM 当前错误是否确由采样近似、Score 学习或条件使用造成。多随机种子的质量差异只能说明候选输出存在变化，**不能直接认定采样器错误，也不能把 PathSim 的偏离量当作 P7 的真实误差标签**。
+
+## 3. 当前假设、可验证机制与执行顺序
+
+原 Router/t-cut、历史 Speaker Router-only、已归档 Anchor V2、随机多轨迹、P3a/P3b 感知筛选均保留为背景证据。**P7（§3.7）是已经进行过的数值/Score/前后端指标归因，当前不再作为执行入口；新入口为 P8（§3.8）无混响低 SNR 的实际词句可懂度验证。** P8 与旧 P3c 的差别是新增 `Y_pre`、原句真实转写和人类盲转写这一组此前缺失的关键对照，而不是重做 Router/t-cut 的微小差别。P9（§3.9）混响在真实 RIR 和重新合成训练数据可用之后顺序推进。P5a/P5b、P2b、P7 扩展均非当前默认执行项。
+
+### 3.1 P3a：感知抽象的无训练筛选（首轮已完成）
+
+**研究假设 H1**：与逐点波形/复谱 MSE 或裸 WavLM 特征 MSE 相比，某些听觉结构化表征能更可靠地区分「同一句 noisy 输入、不同增强版本」的质量差异，同时不忽略音素/瞬态关键细节。
+
+- **已完成输入/对照**：复用 32 条探索开发音频的 Noisy、Router-off、Router、`t_cut=0.05`、selective 和 clean reference；现有样本逐条配对，所有 160 个增强/reference 音频 lag audit 为 0。未找到 Frontend-only WAV，因此没有把它虚构成 arm。
+- **已完成特征**：归一化 waveform/complex STFT、log-Mel、ERB、MR-STFT log-magnitude/spectral convergence、包络与调制特征；与逐条 PESQ/STOI/SI-SDR 及现存 DNSMOS SIG/OVRL/BAK 排序比较。详情及 4 条 smoke 在 `experiments/perceptual_representation_probe_20261017/`。
+- **结果与限制**：MR-STFT log-magnitude L1 的 OVRL pairwise 一致率最高，为 `0.802 [0.719,0.875]`；log-Mel/ERB `0.792 [0.698,0.875]`。它们对 PESQ/STOI/SI-SDR 只有 `0.44–0.59` 一致率；wave/complex MSE 对 SI-SDR 为 `1.000`，对 OVRL 为 `0.208 [0.125,0.302]`。该 32 条 split 被反复用于筛选，没有人类偏好标注；只能得出 proxy 指标排序相冲突，不能证明哪个表示更符合听感。
+- **退出条件已触发**：本轮没有发现能同时稳定保留感知与保真排序的单一简单距离。停止基于此 probe 训练自建 encoder/perceptual loss；如后续要进入 P3b/P5a，须先做独立盲听或偏好标签，并在未参与表示选择的数据上复验。
+
+**阶段交付**：`experiments/perceptual_representation_probe_*/` 中保存语音清单、特征定义、每条分数、成对比较、误判病例、资源测量和结论，运行前按仓库实际命名。
+
+### 3.2 P3b：现成感知模型与自建表征的价值判断（条件式）
+
+**研究假设 H2**：现成 CDPAM/NOMAD 等感知表征可能无法区分本 StoRM 在强噪声下产生的特定失真。**先证明这个缺口，再考虑训练自己的 encoder**。
+
+**P3b 听感包结果（2026-10-17，首轮完成并退出）**：从现有 Router、`t_cut=0.05` 和 selective 的严格同名配对输出中，按四档名义 SNR 抽取 8 条开发语音，完成 24 个匿名 A/B 对比（每条语音的三个条件两两比较）。唯一听者对全部 24 项均报告 `tie`、无法辨别偏好；每种条件配对各 8 项全为 tie。听者补充说同一片段两种版本可能都清晰或都不清晰，整体听不出差别。完整记录见 `experiments/p3b_blind_listening_pilot_20261017/`。这说明在该听者、播放条件和 8 条已用于开发筛选的语音上，没有观察到可辨的主观优势或可重复失真线索；它不证明感知等价，也不能代表其他听者或新样本。该结果不支持把 Router/t-cut/selective 的微小自动指标变化描述为已证实的听感改善，也不提供训练特定感知损失/判别器的标签依据。**当前停止以这三种路由差异为动机的 P3b 扩展及 P5a/P5b 感知/对抗训练**；只有新的锁定语音集和多位独立听者复现一致偏好或具体失真时才重开。
+
+**P3b 文献—代码审计（2026-10-17）**：已核查 CDPAM、NOMAD 与 2025 年生成式语音增强目标论文，并对照本仓库实际训练路径，记录于 `experiments/p3b_literature_code_audit_20261017/`。结合首轮盲听全 tie 的结果，不启动基于该小样本的感知表征训练、PESQ 目标切换或条件 GAN。
+CDPAM/NOMAD、可微 PESQ、通用感知 Loss 和 Adapter 均已有公开先例；当前 80k Router checkpoint 内的参数经 CPU 读取确认使用 `OUVE + score_matching + sigma^2`、`pesq_weight=0`，而本地 PESQ 分支只在 `loss_type=data_prediction` 下启用，RRSD/no-regret 路径又强制 score matching，因此直接切换论文式 PESQ 目标会改变扩散训练目标。2025 论文在 SB-VE 上报告 PESQ 从 M5 的 `2.91` 升到 M6 的 `3.70` 时，SI-SDR 同时从 `19.4` 降到 `8.3 dB`；较低权重可折中，但指标和数据集与本项目不可直接比较。结论是把这些机制当作先验与 baseline，不能当作新贡献或预设有效。尚未下载感知模型权重或启动训练；需先取得 P3b 听感/失真证据，再设计匹配预算的 backend-only baseline probe。
+
+**P3c 内容 headroom smoke（2026-10-18，完成后退出）**：为判断 phonological/content anchor 是否对应真实瓶颈，在同一 P7 32 条开发 manifest 中按目标 SNR `[-20,-18,-16,-14,-11,-10,-8,-6]` 固定选取 8 条语音，用 CUDA Whisper `tiny.en` 对 clean、noisy、Router-off、Router 和 `t_cut=0.05` 各转写一次。以 clean 的转写作为伪参考计算归一化词编辑距离；这不是数据集 ground-truth WER，且样本仍是已筛选开发集。均值为 noisy `0.5932`、Router-off `0.4323`、Router `0.4375`、`t_cut` `0.4439`；Router 相对 off 增加 `0.00516`，5/8 条语音 Router 更好，但配对 utterance bootstrap 95% CI 为 `[-0.04344,+0.07571]`，跨零。该 smoke 不能证明 Router 造成内容损伤，也不能排除更强 ASR/独立文本标注下的差异；但当前没有支持训练 phonological anchor 的 headroom 证据，因此不启动该方向。完整转写、输入哈希、模型哈希及复现脚本见 `experiments/content_headroom_asr_smoke_20261018/`。
+
+- **已有相关工作（已核对公开题名/出处）**：
+  - [CDPAM: Contrastive Learning for Perceptual Audio Similarity, ICASSP 2021](https://arxiv.org/abs/2102.05109)：感知嵌入与人类成对判断、语音增强中的可微损失已有先例。
+  - [NOMAD: Unsupervised Learning of Perceptual Embeddings for Speech Enhancement and Non-Matching Reference Audio Quality Assessment, ICASSP 2024](https://research.google/pubs/nomad-unsupervised-learning-of-perceptual-embeddings-for-speech-enhancement-and-non-matching-reference-audio-quality-assessment/)：无人工 MOS 标签的感知特征与增强损失已有先例。
+  - [Investigating Training Objectives for Generative Speech Enhancement, ICASSP 2025](https://arxiv.org/abs/2409.10753)：生成式语音增强的感知训练目标已有先例；需详细阅读方法和代码，判断与 OUVE/NCSN++ 的差异。
+- **对照**：与 P3a 最优的简单特征、现成 CDPAM/NOMAD 和基础质量/失真指标公平比较，严格记录 reference 是同句 clean 还是 nonmatching clean，不能混淆 full-reference 与 nonmatching-reference 设置。
+- **若需要训练自己的特征空间**：先设计「同一语句、不同失真」的成对/三元偏好或等级标签，只从允许的训练 split 获取监督；覆盖残余噪声、音乐噪声/金属音、断续、音色/语音内容损伤，避免只学 SNR/响度捷径。可候选学习质量排序与失真分解嵌入，但**不预设低维 embedding 必然优越**，并应检验表征对音素/齿音/瞬态变化的敏感性。
+- **监督独立性**：DNSMOS/其他 MOS 预测器的分数最多作为弱标签/诊断；不以它们的自一致性取代盲听。尽量用少量 A/B 盲听以及未参与标签生成的模型做独立评价，明确标注数据规模、主观噪声与标注一致性。
+- **退出条件**：自建表征不优于现成感知空间和简单听觉特征，或只能提高代理质量排序而无法改善下游真实增强性能，则终止专用编码器研发。未经证明，不以「自己训练了一个网络」申报创新。
+
+### 3.3 P5a：条件式后端感知—保真受约束训练（暂停，不属于本轮执行项）
+
+**研究假设 H3**：当抽象/感知空间经独立偏好与失真诊断验证后，它可能用于修正 NCSN++ 训练中对人耳重要失真的梯度，同时保留原扩散 Score 匹配目标与内容/重建保真性。*该假设与 Router 的旧 Harm Teacher 不同，但目前尚无真实改进证据。*
+
+候选朴素基线如下（不是创新公式）：
+
+\[
+L = L_{\mathrm{score}} + \lambda_p d_\phi(\hat x_0,x_\mathrm{clean}) + \lambda_f L_{\mathrm{fidelity}}.
+\]
+
+其中 `d_phi` 为经评估的感知距离，`L_fidelity` 可以采用合理的时域/多尺度频谱/内容约束。未来是否引入 *质量敏感但保真可控的自适应梯度更新机制*，须取决于已测梯度冲突与完整采样误差，不能提前添加复杂 Gate/Projection。冻结感知编码器参数时要保留其对 enhanced 输入的梯度。
+
+- **优化位置**：优先冻结 StoRM 前端和 Router，训练 NCSN++ 的少量 Adapter / 分层参数；仓库已有 backend-only 一步 smoke 的记录，但使用前仍核查实际 trainable set、EMA、optimizer、谱到波形路径和显存。常规 Adapter/LoRA 本身非新贡献。
+- **公平对照**：相同初始化、训练数据、步数/采样器/seed/EMA 下比较 backend-only *无辅助 loss*、`+` 简单 log-Mel/MR-STFT 抽象、`+` 已有 CDPAM/NOMAD（可运行时）、`+` 自建感知表征（若必要）、`+` 保真约束。避免直接与 300k 不同预算 baseline 归因。
+- **训练路径风险**：当前 `sgmse/model.py` 相关辅助监督针对随机扩散时间的**单步 `x0` 重建**；它与完整 PC/N=30 采样输出不等价。先检查梯度、STFT/iSTFT、波形时间对齐、16k/模型采样率、冻结 teacher 的可微性；可用短程 full-sampling probe 验证趋势，无须一开始全采样反传。
+- **计算次序**：4 条/几步 CUDA smoke → 200-step 配对 screen → 有信号才到 500-step 和新的开发集复核，禁止立即长训。报告 GPU 时间、峰值 VRAM、额外参数、推理 NFE 与 latency；额外感知编码器仅在训练期运行时，需注明推理是否为零额外负担。
+- **成功 / 退出**：独立新开发集上 OVRL/SIG 或盲听有可重复的改善，且 SI-SDR/PESQ/STOI/内容变化在预注册允许范围内；相对于匹配预算无辅助 loss 和现成感知 loss 有可归因增益。仅代理 loss 下降、训练标签评分上升、MOS 估计器分数被优化而其他指标及听感不支持，则视为失败/metric gaming。
+
+**重要逻辑修正**：Anchor V2、Multi-trajectory 的 Oracle 只限制各自的控制/随机采样搜索空间，不能限制模型参数更新后能达到的结果。即使 P4 Oracle 不成功，也**不能据此否定**本阶段 backend-only 研究；是否进入训练由独立的感知失真缺口、表示有效性、风险预算来决定。
+
+### 3.4 P5b：条件式感知对抗学习（暂停，不属于本轮执行项）
+
+**研究假设 H4**：现有 NCSN++ 的 Score 匹配目标/单步重建辅助损失没有充分惩罚某些可听伪影；若存在经过独立盲听及诊断支持的失真维度，则在相同重建/内容约束下，**针对该失真的条件判别器**可能比简单 log-Mel/MR-STFT 感知损失和通用判别器，提供额外、有效的后端训练梯度。此为待证伪假设，**并未证明感知与 SI-SDR 可同时提高**。
+
+**H4 首轮失真诊断结果（2026-10-19）：** 复用 32 条已生成且严格配对的 `off/router/cut005` WAV，只读计算 spectral flatness、80–400 Hz autocorrelation harmonicity 和 2–20 Hz log-RMS modulation，并与已有 PESQ/STOI/SI-SDR 及 router−cut DNSMOS 变化做关联。最强的探索性结果是 harmonicity 与 `cut−router` SI-SDR（Spearman `r=0.457, p=0.0085`）以及 `router−off` STOI（`r=0.431, p=0.0139`）相关，但它与 `cut−router` DNSMOS-OVRL 不相关（`r=−0.168, p=0.359`）；没有任何代理在两个对比族和 DNSMOS 方向上重复且同向。该结果只说明存在指标相关的候选统计，不能给出可听失真标签或因果机制。按预设停止条件，**不启动 H4 GAN/判别器训练**；若未来重开，必须使用新锁定样本、预注册的失真定义和独立听感/偏好证据。记录见 `experiments/h4_distortion_diagnostic_20261018/`。
+
+**明确与 Router 区分**：本计划不是训练 `D -> alpha`、不更新 `rrsd_router.*`、不再搜索 Future 修正强度。冻结 StoRM 前端、关闭额外 Router guidance，从相同可比 checkpoint 出发训练 NCSN++ 的少量后端参数（或分层/Adapter）；Router-on/t-cut 只作为不参与训练的基准和后续互补性消融。必须核对 EMA、optimizer、`requires_grad` 与实际参数张量更新，不能把冻结 Router 写成已验证事实。
+
+**最简监督基线（非创新公式）**：
+
+\[
+L_G=L_{\mathrm{score}}+\lambda_{\mathrm{adv}}L_{\mathrm{adv}}
++\lambda_{\mathrm{per}}L_{\mathrm{per}}+\lambda_{\mathrm{fid}}L_{\mathrm{fid}}.
+\]
+
+其中 `D_ψ(y_noisy, Y_pre, x)` 可作为条件判别器候选；生成器以增强的 `x̂` 取得对抗梯度；`L_fid` 包括经证据支持的波形/多尺度谱/内容保持约束。**不能把调节几个 λ 或选一个现成 D 当作论文创新**；先把它们视作必须击败的简单基线。可以先采用稳定的 hinge/LSGAN 损失（依实现和显存选择），暂不引入复杂多判别器/长轨迹对抗。
+
+**失真诊断与标签设计（训练 D 之前）**：
+
+1. 在同句 `noisy / Y_pre / Router-off / Router-on / t-cut / clean` 的**实际存在且严格对齐**的音频上，做 SIG/BAK/OVRL、PESQ/SI-SDR、NISQA 可用维度、局部谱/谐波/瞬态检查和少量盲听 A/B；明确 NISQA 与 DNSMOS 都是代理，不等于金属音/音色染色的真值。
+2. 若某一可听失真在不同 utterance/SNR/speaker 上重现，再建立训练集内的配对样本；使用可控制的单因素合成失真与真实增强输出交叉验证，避免 D 只学习音量、噪声、算法身份、SNR 或 clean/source 差异。人工偏好/失真标签需记录分歧与样本量。
+3. 在未参与判别器训练的样本和基线上，检验 D 对**失真类型与偏好**的排序是否优于简单抽象距离、CDPAM/NOMAD（可运行时）、通用判别器和基本非侵入式质量模型；若没有可靠增益，就**不进入对抗后端训练**。
+
+**受控训练和公平对照**：同起点、同 train/validation split、相同可训练 NCSN++ 参数、batch/steps/EMA/seed/采样器，至少比较：① 冻结后端的 Router-off / Router-on / t-cut 参考；② backend-only 普通继续训练；③ backend + 简单感知抽象或可靠现成感知损失；④ backend + **通用判别器**；⑤ backend + **条件/失真感知判别器**（仅当第 2 步证实特定失真且 D 有泛化区分能力）。相同训练步数之外，应报告不同方案额外 D 计算和真实耗时，避免用更大预算制造收益；必要时增加与损失权重/参数规模匹配的控制。
+
+**生成目标与梯度风险**：现有 `sgmse/model.py` 辅助监督主要基于随机 `t` 的单步 `x̂_0`，不是完整 PC/N=30 最终输出。在任何 GAN 训练前检查 D 对**单步 x̂0 与完整采样结果**的失真排序/梯度方向是否一致，检查 iSTFT、时间对齐、响度、冻结 D 时增强输入可微、D/G 训练稳定性与 mode collapse。如果代理监督与最终质量不一致，停止单步对抗路线；多步反传需先单独评估成本，不自动启用。
+
+**成本与退出条件**：P0 磁盘安全后，先 4 条音频只读诊断与 D 前向/反传 smoke；再按预算 200-step、必要时 500-step 与约 32 条**未用于 D 选择**的 paired 验证。完整 N=30 指标包括 DNSMOS SIG/OVRL/BAK、PESQ、STOI、SI-SDR、WER/CER、speaker/伪影听感，记录逐条和 95% CI、最差样本、显存/耗时；禁止仅用 D loss 或训练用质量教师分数宣称成功。**只有对抗方案相对同预算 backend-only、简单感知抽象与通用判别器具有独立可复现优势，且 SI-SDR/PESQ/内容风险在事先约定范围内，才继续扩训**；若只是损失系数带来的 Pareto 移动、听感无改善、出现伪影/幻觉或推理额外 NFE 不可接受，则终止本分支。
+
+**推理预期**：判别器、感知评分器只在训练期使用，部署仍为单条扩散轨迹，原则上不增加 NFE；如用 Adapter，需单独报告新增参数量、推理延迟。不能把“理论上可移除 D”当作当前代码已实现的事实。
+
+**相关论文线索（引用前按原文核查具体机制）**：Blau & Michaeli *The Perception-Distortion Tradeoff*（CVPR 2018）；MetricGAN+（Interspeech 2021）；CMGAN（2022）；NISQA 多维感知质量预测（Interspeech 2021）；*Investigating Training Objectives for Generative Speech Enhancement*（ICASSP 2025）；扩散模型结合对抗训练的后续工作。既有工作已覆盖普通对抗、指标判别、感知 Loss 的大方向，故本任务**优先验证差异化机制而非复用框架**。
+
+### 3.5 并行与保留的其他研究候选
+
+1. **Anchor V2 clean-reference real-audio Oracle（已完成并归档）**：32 条完整 N=30 已确认 SI-SDR headroom `+0.448234 dB`，但 OVRL `−0.070951` 且 CI 全负；不训练 Anchor controller。该结果只约束已测二维 residual 控制搜索空间，不否定 backend-only 研究。
+2. **Multi-trajectory stochastic selector（已完成并暂归档）**：32 条开发/held-out 诊断、每条 4 个 seed、N=30 均已完成。held-out 固定 DNSMOS selector 的 OVRL 有增量，但仍有逐条 SI-SDR 风险，且每条输入需要 4 条轨迹（实际 NFE 待 P7-0 审计；同采样配置下约为单轨迹 4 倍 Score 计算）；风险保护只在牺牲大部分 OVRL 增益时才排除负 SI-SDR。当前不训练 verifier；除非找到计算更省的搜索/风险机制并经独立主观验证，否则不继续此部署分支。
+3. **Speaker backend-only（保留备选）**：Router-only Speaker 负实验不能外推到 NCSN++；已发现独立 CAM++ 低 SNR 身份缺口。只有与新感知主线存在明确独立价值时，才设计 matched no-loss / speaker-only / content-only 的短程比较，不重复 Router-only 1000-step 变体。
+4. **Preference distillation、diffusion-time-conditioned adapter 与音素锚点**：均为后置条件候选。须有独立偏好排序、时间相关梯度冲突或 WER/CER 真实内容缺口后才讨论训练；不能以热点或模块拼装定义创新点。
+5. **Gemini 提议的 TPO/IPO 多轨迹偏好、FiLM Speaker 条件注入与 Rectified Flow/少步 SB（统一暂缓）**：前者与已有偏好优化语音增强研究重合、原候选奖励可能将 `Y_pre` 相似度误用为 clean 保真，且现有 DNSMOS 自选自评不提供独立人类偏好；FiLM/时间门控不能仅由 CAM++ proxy gap 推出有效；Flow/SB 属较大生成过程替换且有先例。**本轮不并行启动任何一条训练分支**，相关想法只作论文查新与条件备选。
+
+6. **TR-0 backend adapter trust-region screen（已完成，fresh proxy 负结果，停止）**：P7 没有定位可部署瓶颈后，曾保留一个受限的后端机制筛选入口。假设是在冻结前端、Router 和大部分 NCSN++ 的条件下，中后部 zero-init residual adapter 配合相对 80k baseline 的 fidelity trust region，可能比普通 score-only adapter 更少引入冲突。该假设不是已成立创新；StoRM 条件后端、预测—生成融合、感知/保真损失和 adapter 均有先例。已锁定 32 speaker × 2 utterances 的新 CV manifest，排除旧 16-speaker、旧 64-speaker 和 `reader_10658`，manifest SHA256 为 `7143b210c35ec93eb15bd21766e2f6619e0a8a342410941c27bdb4ffa5b5b68c`；完成生产代码 no-op 与 adapter-only 梯度 smoke。随后完成 score-only/trust-region 两臂、两 seed、200 steps 的 CUDA screen，并在 fresh CV 上做同一 `t`/noise 的单步 `x0` proxy。四个 adapter 均使 clean-reference MSE 上升：`+2.118e-6` 至 `+6.178e-6`；两个 seed 的 trust-region 都没有优于对应 score-only，seed 20261019 的 trust-region CI `[+4.014e-6,+8.624e-6]` 全为正。该 proxy stop condition 已触发，**不继续 full PC/DNSMOS 评估，不扩大 adapter 训练**。记录见 `experiments/tr0_adapter_screen_20261018/`、`experiments/tr0_adapter_screen_scaled_20261018/` 和 `experiments/tr0_adapter_proxy_eval_20261018/`。adapter 代码保留为可复现实验基础，但不作为当前创新方向。
+
+### 3.6 Multi-trajectory 结果与决策
+
+16 条语音、4 个随机 seed、N=30 的 multi-trajectory 诊断已完成（`experiments/multitrajectory_oracle_20261017/`）。相对 seed 2026，clean-reference constrained Oracle 的 DNSMOS-OVRL 增量为 `+0.049741`，95% CI `[+0.025177,+0.077137]`，SI-SDR 增量 `+0.118659 dB`，说明四条候选中存在按 clean/指标选择的质量差异；这里的 Oracle 依赖 clean，不能视为部署可得的真实感知 headroom。
+
+更关键的是，无参考 DNSMOS-OVRL 直接选取四条候选中最高者，在同一 16 条开发集上取得 OVRL `+0.054821`（95% CI `[+0.027659,+0.085534]`）和 SI-SDR `+0.094852 dB`；它与 clean Oracle 的选择在 14/16 条上相同。这只是开发集 probe，不能当作泛化结果，也不能忽略逐条最差 SI-SDR `−0.3319 dB` 的风险。
+
+固定无参考 DNSMOS-OVRL selector 已应用于剩余 held-out 16 条：OVRL 增量 `+0.064555`（95% CI `[+0.039985,+0.090509]`），SIG `+0.048204`、BAK `+0.040022`；PESQ/STOI/SI-SDR 的整体 CI 包含 0。逐条 SI-SDR 从 `−0.154142` 到 `+0.173673 dB`，16 条中 6 条下降。该结果支持在该半集上按 DNSMOS 排序可以稳定选出 DNSMOS 更高的候选；由于使用同一评价器选择和评分，正增量具有构造性，**不是**独立的人类偏好或论文最终测试证据。
+
+开发半集的候选一致性与 held-out 一致性分别和 OVRL 呈 `−0.747` / `−0.634` 相关、和 SI-SDR 呈 `−0.952` / `−0.820` 相关；更一致的轨迹通常质量和重建都更好，但不能单独保证逐条风险。用开发集定阈值的 baseline-relative log-STFT fallback 在 held-out 最保守只保留 OVRL `+0.0033`；放宽阈值保留 `+0.0333~+0.0536`，仍会有 SI-SDR 负例。**简单风险保护无法同时留住 OVRL 增益并排除重建退化，故不训练 learned verifier，当前归档 selector 分支。** 此外四个 seed × `N=30` 代表四条采样轨迹，但 **`N=30` 不必等于 30 次 Score 调用**；需审计 predictor/corrector 与其内循环后报告实际 NFE。四轨迹相对单轨迹的主要 Score 计算量在相同设置下通常接近 4 倍，效率成本降低其部署优先级。此负结果只约束当前多轨迹 selector/风险 guard，不构成停止独立 NCSN++ 后端优化的理由。
+
+**两轨迹成本折中（2026-10-17，离线复用，无新增推理）**：对四条既有随机轨迹的六个 seed pair，逐句按 DNSMOS-OVRL 选较高者，再与固定 seed 2026 比较。held-out 16 条的 OVRL 增量为 `+0.027214` 至 `+0.047728`，六组 paired bootstrap 95% CI 均高于 0；SI-SDR 平均变化仅 `−0.006031` 至 `+0.019388 dB`，仍有每组 `2–8/16` 条 SI-SDR 下降。两条轨迹的总 Score 调用量约为单轨迹的 2 倍、四轨迹的一半，实际 NFE 须根据 sampler 统计；未解决逐条重建风险。由于是在同一 held-out 结果上比较六个 pair 且以 DNSMOS 作为选择指标，这些 OVRL 增益偏乐观并存在多重比较/选择偏差；结果仅说明低成本候选值得被记录，**不重启部署 selector、不过度解释为泛化改进**。详细记录：`experiments/multitrajectory_pair_subset_20261017/`。
+
+论文级创新的必要条件：与已有 CDPAM/NOMAD/感知扩散损失相比有**明确机制区别**、独立消融证明差异来自该机制、在未参与筛选的数据中有实际收益与合理计算开销。若找不到，宁可将这一方向作为诊断/负结果，而不把它硬凑成第二创新。
+
+### 3.7 **P7：固定 StoRM 的扩散误差来源分层归因（历史诊断计划；当前不再扩展）**
+
+> **状态说明**：下文保留 P7 当时的执行顺序、触发门槛与失败记录作为可追溯的历史协议；其中“第一步”“当前执行”仅代表旧 P7 内部次序，不再覆盖本文件的新优先级。现行入口是 §3.8 P8，P9 后置。P7 的单步代理、幅相互补和短 ASR smoke 不足以回答用户新提出的“前端可听懂、完整生成听不懂”问题。
+
+> **文献对照入口**：启动任何 P7 子任务前，先看 §1.1 的 `[L01–L27]` 关键结论与 §1.2–1.3 的“先验→可证伪命题→最强对照”。P7 是当前诊断主线，前端恢复状态假说是**非排他性的**优先研究问题，**不是预设要训练新 SDE 或新 Mask**。
+
+
+#### 3.7.1 核心问题与边界
+
+**研究问题**：在同一带噪语音及已训练 StoRM 下，最终增强质量的缺陷与跨 seed 变化，究竟有多少证据可归因于 **(A) 数值采样/求解近似、(B) Score 网络的去噪学习困难、(C) 前端条件表达或利用不足**？三者可能交互，**目前没有任何一项得到因果证实**。仅在找到可复核、可干预且与现有文献存在明确差异的系统瓶颈后，才进入新的机制设计。
+
+**统一机制主命题（贯穿 P7，而非新实验分支）**：把扩散后端视为对前端恢复状态的**条件化剩余修复**。诊断中分清（i）前端已相对可靠且后端应避免额外损伤的区域，（ii）前端确有遗漏/失真而后端可能有能力修复的区域，（iii）后端自身引入退化的区域，以及（iv）两者都失败的区域。以上划分必须根据实际 clean-reference 诊断与独立指标建立，**不能将一次离线 Oracle 的 clean-aware 分类原样用于推理**。优先确认类别是否具有可重复、可观测的条件特征，而不是提前设计可靠性 Router。
+
+**固定范围**：优先核查并使用 `joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt` 的实际存在性、EMA 与配置；主分析 **关闭额外 RRSD/Future correction、但保留判别式前端 `Y_pre` 和 noisy 条件**。Router-on、`t_cut` 可以作为历史输出参考而非 P7 主干预。不能把 Router-off 叫作「无前端」。若路径、前端运行状态、训练/推理 Score 参数化或 ckpt 状态与本文不一致，以服务器实际代码和日志为准，先报告差异。
+
+**研究类型**：首先是只读审计及固定模型推理诊断；**不修改模型结构、不训练新 loss/网络、不做参数搜索、不自动覆盖有效 checkpoint**。首轮使用 4 条 smoke，必要时扩大到约 8–16 条探索数据；32 条历史开发集已有筛选污染，不作为独立最终测试。只有在磁盘、数据和模型有效性确认后才生成少量新输出。
+
+#### 3.7.2 P7-0：采样调用链与数值定义审计（零训练、第一步）
+
+核对真实代码路径：`sgmse/sdes.py`、`sgmse/sampling/predictors.py`、`sgmse/sampling/correctors.py`、实际 PC/ODE 构造器、`joint_model.py` / `model.py` 的 enhance 分支。整理一张**真实调用图**，至少回答：
+
+- Score Network 使用哪一个条件 (`Y_pre`、`Y_noisy`、何种压缩/归一化/复数通道)，Router-off 对应哪条代码路径？实际使用 EMA 吗？
+- 使用的 SDE/reverse-SDE、predictor、corrector、corrector 的每步内循环和随机注入位置是什么？`N` 是否只是时间网格数？
+- 实际 **NFE（Score 网络前向调用次数）** 怎么计数？不要把 `N=30` 直接写作 30 NFE。计入 predictor、corrector、ODE 求解器额外调用及其他 Score 调用；单独报告 wall time。
+- 是否存在 probability-flow ODE 及其适用性；若有，其 drift、初始 prior 和 Score 缩放是否与当前 SDE 定义对应？随机 SDE 与确定性 ODE **可有相同的理想时间边缘分布，但单个样本不相同**。
+- 审核采样率、时长对齐、标准化、ISTFT、SDE 时间范围、EMA、随机数设备/操作，以及 evaluator 版本。将所有差异写进可复核配置；不伪称已经核查。
+
+**退出条件**：若未能可靠复现既有 N=30 Router-off 输出，或 `NFE/EMA/SDE` 调用链不明确，暂停后续归因，先修复基线识别问题；不准在不可靠基线上解释质量差异。
+
+#### 3.7.3 P7-A：数值求解与随机生成差异分离（零训练）
+
+**假设 A（窄范围）**：在可复现的同一 `x_T` 下，probability-flow ODE 的容差可能导致显著输出敏感性；本诊断不直接检验默认 PC sampler 的语音质量，也不预设 ODE 更准确。
+
+**已运行状态与结论（2026-10-17；部分 smoke 后停止）**：同一 80k checkpoint、30 秒首条语音、固定并复用同一个 `x_T`、probability-flow SciPy RK45、`denoise=False` 下，`1e-3` / `1e-5` / `1e-6` 分别需要 `26/92/464` 次 Score forward，耗时 `15.74/45.55/174.03 s`。`1e-3→1e-5` waveform / complex-STFT relative L2 为 `0.075646/0.075645`；`1e-5→1e-6` 为 `0.0039853/0.0039857`，仍高于预先定的 `1e-3` 阈值。`1e-7` 在约 14.5 分钟后仍未返回，按成本门槛中断；其余三条语音未运行。**没有计算 PESQ、STOI、SI-SDR 或 DNSMOS。** 因而本结果既未证明收敛，也未判断容差输出的准确性或质量优劣。逐次记录见 `experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/`。
+
+**实现审查与当前决定**：仓库 ODE callback 将 SciPy 状态转换为 `torch.complex64` 后再计算 drift，最终状态也转回 `complex64`；隔离检查显示 SciPy 1.15.3 内部会把 `complex64` 初始向量提升为 `complex128`，但这不能避免 callback 每次评估时的降精度。该路径可能形成误差地板、令更紧容差增加 NFE 而不带来相称的输出变化，但其对观测差异的贡献尚未量化。**停止原计划中其余 11 次 ODE 积分；不以当前结果给容差排准确性名次，也不把单条 ODE 求解器敏感性外推到默认 PC 推理质量。** 进一步实验前需先判断此 ODE 诊断是否仍能改变研究决策；若能，再设计一个限时、固定同一 `x_T`、与当前 `complex64` callback 作直接受控比较的实现精度试验。DNSMOS GPU 迁移已单独完成代码与 30 秒 smoke；没有全量重算，也与 P7-A 无关。
+
+**后续范围限制**：本轮已知 1e-3→1e-5 与 1e-5→1e-6 的状态差仍未达到预设数值平台，且 ODE callback 有 complex128→complex64 精度往返。因此不继续按原计划跑更多容差或语音；只有在确认“ODE 是否是实际部署路径/研究决策所需”后，才考虑单独的 callback 精度对照。PC 多 seed/不同 N 属于另一项随机路径问题，不能由当前 ODE 结果推导启动。
+
+**关键输出与解释边界**：当前 P7-A 仅报告 NFE、耗时、输出数值差和有限性；没有计算 PESQ、STOI、SI-SDR、DNSMOS，也没有做听感评价。未来若某个有界数值对照完成收敛验证，是否追加质量指标须由其研究问题决定。求解稳定不证明 Score 正确，也不代表语音质量正确；单个 ODE 与 PC 输出差异不能直接称为采样器错误。
+
+**停止门槛（当前已触发）**：严格容差成本显著增加但预设平台尚未达到，且当前 ODE 路径与主用 PC 配置不是同一采样设置；P7-A 暂停扩展，保留为数值敏感性负结果，不启动盲目容差或 N 扫描。小样本只作机制筛查，不作全局或质量结论。
+
+#### 3.7.4 P7-B：Score / 去噪目标的时间、频带与条件依赖诊断（零训练）
+
+**假设 B**：NCSN++ 的去噪目标在特定扩散时间、频带、SNR 或语音结构上存在稳定困难；现有单步目标对最终完整采样的某些错误解释不足。
+
+给定训练/诊断 split 的 `clean` 与实际条件 `c`，按**真实 checkpoint 的 OUVE、数据参数化**构造
+
+\[
+X_t=\mu_t(X_0,c)+\sigma_t Z, \qquad
+s_{\mathrm{kernel}}=-\frac{X_t-\mu_t(X_0,c)}{\sigma_t^2}.
+\]
+
+这是**单样本前向扰动核**的解析 score。它是去噪 Score Matching 的合法监督信号，但它**不等于**不可直接观测的真实条件边缘 score `∇log p_t(x_t|c)`。因此记录的 DSM 残差不能被命名为「真实 Score 预测误差」。
+
+**P7-B 触发门复核（2026-10-17）**：当时不触发 DSM 分层运算。P7-A 只测了主用 PC checkpoint 不使用的 probability-flow ODE 容差敏感，且单句结果未证明收敛；P7-C 的幅相/波形与感知代理指标差异只是系统输出取舍，简单局部风险 probe 也未预测出增益；这些都不是 Score 学习按 `t`/频带异常的证据。现有 P7 成果和训练日志中未找到 DSM 分层残差；历史 RRSD 运行大多冻结 Score backbone，无法用来代替这个信号。
+
+**P7-B 噪声功率 smoke（2026-10-20，完成后退出）**：为检验最新文献提出的 predictor-kink 假设，在锁定的 fresh-CV 4 speaker 上保持 clean 波形不变，仅构造 `y_M=clean+M(noisy-clean)`，`M=[0.5,0.75,1,1.25,1.5]`，并复用 80k EMA、StoRM frontend、Router-off、PC/N=30、seed=2026。平均输入 SNR 从 `−7.48` 降到 `−17.02 dB`；Router-off 的 PESQ/STOI/SI-SDR 分别从 `2.051/0.886/10.145 dB` 平滑降到 `1.508/0.776/4.869 dB`。最大 SI-SDR 二阶差分主要位于首个低噪声区间，frontend-only 与 diffusion 输出的曲率相近（均值最大绝对二阶差分 `19.56` 对 `16.96 dB/M²`），没有在 `M≈1` 附近出现可重复的后端 predictor kink。该结果支持“噪声功率敏感且响应平滑”的描述，不支持把现象归因于扩散 predictor，也不启动 mismatch-aware training、SNR controller 或更大 P7-B 分层。首次运行的 Ninja PATH 失败已单独记录，成功重跑未写 WAV、未改数据和 checkpoint。详见 `experiments/storm_noise_power_mismatch_probe_20261020/`。
+
+此前提议仅在未来出现新的、可重现的 Score 异常线索时再启动；不因 GPU 空闲或量化便宜而抽样测试。
+
+**若未来达到触发门槛，预设最小诊断方案（仅方案，未运行）**：使用新锁定的非测试语音及多说话人分组，8–16 条、四个预先确定的 `t` 点、每点两个扰动 seed；限于至多 64 次 Score 前向，不做反向采样、不导出音频、不训练，GPU 预算不超过 2 分钟。按真实目标统计每个复数 TF bin 的 `0.5*|std(t)*score+z|^2`，同时报告活动/静音、能量、局部 SNR 和有效 bin 数，并用 speaker-cluster bootstrap。只有在某个 `t×band` 组相对总体风险高至少 25%、speaker-cluster 95% CI 排除零、方向在至少两个 SNR 层和 8 条中至少 6 条语音重现，且能量/活动控制后依然存在时，才论证是否开启下一阶段。此门槛是未来探索性筛查标准，不是当前已观察结果。
+
+- 使用模型**实际输出参数化**（是否 score/noise/data-prediction、`σ²` 权重、复数通道、压缩谱）换算并计算与训练目标一致的误差；避免不加尺度处理地比较不同 `t`，因为 `1/σ_t` 本身会引入不公平差异。
+- 将 DSM 风险与误差病例按 `t`、SNR、频带、静音/元音/齿音/过渡区域分层，报告组样本数和不确定性；审查是否主要是数据本身更困难、前端误差与 SNR 混杂，而非把所有差异解释为架构缺陷。
+- 如可低成本记录反向轨迹上的 `x0_hat(t)`，它仅是模型**沿自身采样路径**的估计，不能与由同一 clean 构造的前向扰动标签随意混同；动态估计的不一致性只是现象，不直接是因果错误。
+
+**停止门槛**：若不同时间/区域的差异被噪声缩放、静音能量或对齐误差解释，或无法在不同探索样本稳定复现，则归档，不因此建立针对性 Score loss 或 Gate。
+
+#### 3.7.5 P7-C：前端—生成互补性与幅相／子带归因（零训练；吸收 Gemini 中合理的诊断建议）
+
+**重点对标先例**：`[L01]` StoRM、`[L03]` 预测条件融合、`[L05]` GALD-SE、`[L10–L13]` 预测/生成融合及任务分工。与它们的区别须被具体测量：**前端高置信但实际错误时是否误导 Score/采样，低置信但原始 noisy 仍支持语音时能否被后端修复**。Clean 只用于研究分析和监督，不能在部署期作为可靠性输入。
+
+
+**核心假设 C（待证伪）**：StoRM 判别式前端 `Y_pre` 和扩散后端 `X_gen` 可能在不同语音结构、频带以及幅度/相位上存在**可辨识的互补错误模式**；简单复谱修正曾提高 SI-SDR、却降低 OVRL，并不说明幅相分解或者结构化融合一定有效，更不能先断言其根因就是「Comb Filtering」。本阶段只解释已有系统，不预设 PostNet、Band Router 或新模型。
+
+**P7-C 在整条主线中的作用**：回答「前端哪些部分已经做对、哪些尚未做对；后端在哪些位置成功纠正、哪些位置反而破坏了正确内容」。因此，C1/C2 不仅比较两条输出谁更接近 clean，还要明确区分 **前端可靠且生成保持、前端可靠但生成恶化、前端不足而生成改善、前端不足且生成仍失败** 四类状态；这是对**已存在分析对象的重新组织**，不是要求 Codex 新增训练分支。此处的「可靠」只指相对于选定真值和诊断指标的表现，**不等于推理时已知或已经校准的可靠性概率**。
+
+**首轮配对归因（2026-10-17，已完成，探索性）**：同一 32 条已用于开发筛选的 manifest 上，Frontend-only `Y_pre`、Router-off 完整后端输出及 RRSD Router 输出均已按波形和 STFT 对齐；DNSMOS、PESQ/STOI、SI-SDR 及复谱幅相/子带误差均已计算，逐条结果与 bootstrap 记录见 `experiments/storm_error_attribution_p7_20261017/frontend_attribution/`。均值上，`Y_pre` / Router-off / Router 的 PESQ 为 `1.494 / 1.729 / 1.749`、STOI 为 `0.8216 / 0.8310 / 0.8319`、SI-SDR 为 `8.089 / 7.278 / 7.801 dB`、DNSMOS-OVRL 为 `2.996 / 3.206 / 3.185`。`Y_pre−Router-off` 的配对差在 SI-SDR 为 `+0.811 dB`（95% CI `[+0.614,+1.004]`），而 PESQ 为 `−0.236`（`[−0.309,−0.165]`）、STOI 为 `−0.00936`（`[−0.01420,−0.00419]`）、OVRL 为 `−0.211`（`[−0.283,−0.144]`）。同一 STFT 的 clean-aware 误差显示 `Y_pre` 相位误差与复谱误差较低，Router-off/Router 幅度误差较低；这构成测试两个预先固定幅相交叉组合的动机，**尚未验证交叉组合能否改善最终波形指标，不能据此认定因果互补或提出部署门控器**。该 split 不是独立测试集。
+
+**DNSMOS GPU 迁移（2026-10-17，已完成代码与单文件验证）**：`/data/coding/mymetrics/get_metrics_for_papertable_forDNS.py` 和本实验的 `frontend_attribution/evaluate_dnsmos.py` 现默认 `auto`，在 PyTorch CUDA 与 ONNX Runtime CUDA provider 可用时使用 CUDA，否则回退 CPU；均保留显式 CPU 选项，并记录/验证 session provider。mymetrics 环境单条 30 s 音频在同进程各预热一次后重复 3 次，DNSMOS 路径 CPU 平均 `3.213 s`、CUDA 平均 `0.199 s`（约 `16.2×`；**仅为这一音频与 DNSMOS 组件的 smoke，不代表整套指标的总体加速**）。ONNX profiling 显示两个 DNSMOS 模型节点分别由 CUDA provider 执行（41 与 21 个节点事件）。CPU/GPU 四项分数最大绝对差约 `1.31e-4`；各自设备上的三次重复无分数差异。已有 32 条 DNSMOS 结果仍是 CPU 计算且未覆盖；本次没有重跑全量评估、训练、修改数据或 checkpoint。记录见 `experiments/storm_error_attribution_p7_20261017/dnsmos_gpu_smoke_20261017/`。
+
+**可观测局部风险预测探测（2026-10-17，已完成，探索性负结果）**：复用已反复筛选的 32 条 P7-C 开发语音，对齐 noisy、Frontend-only `Y_pre`、Router-off 和 clean WAV；按 1 s 切分后共 960 个片段，clean RMS 门槛排除 5 个，剩余 955 段、30 个说话人。预先固定的 12 个 noisy/`Y_pre` RMS、频带能量和谱平坦度特征，用 speaker-grouped 5-fold OOF Ridge 预测 `logNRMSE(Y_pre, clean) − logNRMSE(Router-off, clean)`。Ridge 的 R²/MAE/Spearman 为 `−0.0258 / 0.1050 / 0.0719`，均值基线为 `−0.0056 / 0.0975 / −0.0918`；Ridge MAE 更差，Ridge-minus-mean MAE 的 speaker-cluster bootstrap 95% CI 为 `[0.0021,0.0149]`。Router-off 改善 200/955 段（20.94%）仅为描述统计。**当前简单可观测特征未表现出跨说话人的局部波形风险预测价值，因此暂停训练此风险预测器/门控器；这不是 DNSMOS/听感判断，也不能否定所有更丰富的可观测线索。** split 已反复用于开发，结果不独立、不确认；详细配置、指标、输入哈希、脚本及逐段预测在 `experiments/p7c_observable_repair_probe_20261017/`。该 CPU 离线分析耗时 4.31 s，没有训练、推理、数据或 checkpoint 修改。
+
+**C0 — 输入来源与强约束（优先复用现有结果）**：
+
+- 审计 `oracle_complementarity_analysis.py`、`pesq_snr_study.py` 等文件是否实际存在、用途、采样率与预处理，并优先定位同一 noisy 下的 `Y_pre`（Frontend-only）、Router-off/Full StoRM `X_gen`、clean 和对应音频；不存在的 arm 不得凭空补上，不能用 Router-off 冒充 Frontend-only。若缺少 `Y_pre` WAV，可在 P7-0 查清前端输出调用路径后申请**最小的确定性前端导出**，不得自动展开多轨迹推理。
+- 核对波形长度、采样率、复谱压缩/解压、STFT window/hop、模型内部归一化、延迟与 RMS；必须在**相同波形与相同 STFT 定义**下比较，最后经过 iSTFT/一致性检查才能用 PESQ、SI-SDR 或 DNSMOS 评价。禁止仅从单独复谱图的变化推断真实听感。
+
+**C1 — 判断谁在什么位置恢复得更好（原始误差归因）**：
+
+- 在已有探索数据上按频带（如低频/中频/高频，仅作分析分组，不预设最佳分界）、语音/静音、浊音/清音/瞬态、SNR 与说话人分层。分别比较 `Y_pre` 与 `X_gen` 的幅度误差、相位相关差异、复谱/波形重建误差、局部频谱包络和最终 PESQ、SI-SDR、DNSMOS；保存 **frontend 优于 generation**、**generation 优于 frontend** 和两者均失败的具体样本与局部波形。
+- 幅度和相位误差应在不同能量/SNR 下控制可比性；弱能量频点的相位差可能没有意义。所谓「低频前端必定更好」「高频生成必定更好」「局部 SNR < 0 dB 应切换生成」均是**Gemini 提出的假设，不是本项目已验证事实**；推理时真实局部 SNR/clean 也不可用。
+- 若 `Y_pre=F(Y_noisy)` 是确定性函数，前端不创造超出 noisy 的新信息。重点研究条件编码和有限模型对 noisy/前端的利用效率，而不是声称前端提供新信息或前端天然有害。前端误差与生成误差同变不证明因果关系，先控制输入 SNR、能量、语音类型和对齐。
+- **剩余修复任务判读**：在同一 clean 基准与时频对齐下，区别 `|Y_pre−X_clean|` 小而 `|X_gen−X_clean|` 增大（疑似不必要改写）、前端误差大而生成误差减小（可能的有效修复）、以及两者同时偏大（共同困难）。优先利用已计划的幅度、相位、语音结构和最终波形指标作交叉解释；不要使用单一复谱点的误差大小直接定义可听伪影。若这些类别无法稳定区分或不能由 noisy 与 `Y_pre` 的可观测特征预测，应明确归档为诊断现象，而非提出可部署控制器。
+
+**C2 — 幅度／相位互补与复谱相消机制诊断（只做 Oracle/归因，不做部署）**：
+
+- 基于同一 STFT 的 `P=STFT(Y_pre)` 与 `G=STFT(X_gen)`，分析每个时频位置的幅度、相位差 `Δφ=angle(P)-angle(G)` 和复谱混合的交叉项。对 `Z=αP+(1-α)G`，有
+
+  \[
+  |Z|^2=\alpha^2|P|^2+(1-\alpha)^2|G|^2+2\alpha(1-\alpha)|P||G|\cos(\Delta\phi).
+  \]
+
+  相位相消是**可能机制**，但单频点幅度抵消并不自动等于感知上的梳状滤波，也不能将 Anchor V2 的 OVRL `−0.070951` 直接归因于相位。
+- 在允许 clean 仅供**离线分析**的前提下，比较：Frontend-only、生成输出、原有复谱混合（若代码支持）、`|P|∠G` 与 `|G|∠P` 两种幅相交叉组合，以及简单的预先固定子带/幅相选择对照。交叉组合须转回可播放波形并检查 STFT 一致性和边界伪影；这只是机制诊断，不是最终可部署系统。
+- 如果需要 clean-reference 的逐频带/逐块最优选择，只能明确标记为 **non-deployable Oracle 上限**，不把它选出来后的同一指标最优值当作新模型的独立收益；不能在测试时调用 clean 或按 DNSMOS 选最大再用同一 DNSMOS 证明人类听感改善。
+- 特别区分「幅度更准但相位更差」「相位更稳但细节丢失」「复谱相消」「频带边界/iSTFT 引入新伪影」等可能现象。单个局部复杂度指标不足以证明某类伪影存在，应以可审听片段、独立质量维度与严格对齐的客观误差交叉佐证。
+
+**C3 — 归因结果如何决定后续研究（仍不启动训练）**：
+
+- 若有跨样本稳定的幅相/频带互补，且相对于最简单的固定幅相/子带对照仍有**独立可解释的改进空间**，才后续讨论「证据一致性约束」或「有限的结构化融合」；新颖性须进一步与 GAP-URGENet、既有子带增强、幅相解耦和生成—判别混合系统逐项比较。**更换 PostNet 或启用 Mask 本身不是创新**。
+- 若互补只体现在使用 clean 选择的 Oracle、对实际可观察条件缺乏稳定规律，或幅相交换提高某一重建指标却损伤 DNSMOS/内容，就保持为负结果并停止融合方向。不从旧 Anchor V2 的负结果推导出全体融合策略无空间。
+- **潜在机制选择原则**：只有在 P7 证据表明某类前端已正确成分被反复破坏、或某类前端遗留误差未被修复，并找到区别于纯 SNR/静态 Mask/后处理融合的可观测信号后，才讨论与该失败原因对应的最小干预。它可以是条件编码、Score 监督、观测一致性或采样过程，**不要求必须改变 SDE；必须先做相应先前工作的机制差异审查**。
+- 禁止仅凭 `Y_pre=0`、用 clean 替换前端输出等训练分布外操作，宣称验证条件的因果作用；要做严格条件消融须另立同预算训练项目，本轮不启动。
+
+**执行顺序和资源界限**：仍以 **P7-0 只读调用链与配对文件审计为第一步**。P7-C 的配对误差归因、固定幅相/子带检查及一次 noisy/`Y_pre` 简单特征预测探测均已完成；不在已反复筛选的 32 条开发集上继续调特征、阈值或训练部署门控。若将来有新锁定且未参与方案选择的数据，再检验不同类别的可观测风险信号；当前没有证据支持扩大此支线。缺少关键 WAV、谱域/采样率不一致或当前存储不足时先暂停，不自动重跑全模型。
+
+**停止门槛**：差异由能量/相位定义/对齐问题解释，或没有跨句稳定且可观察的互补证据，或只有 clean-aware Oracle 增益、真实听感/独立指标没有支持，则停止此分支；不训练子带融合网络、不修改 NCSN++、不宣称机制性原创。
+
+#### 3.7.6 P7-D：跨种子轨迹与旧 PathSim 的正确定位（现有材料优先）
+
+- 优先复用已保存的 32 条 × 4 seed 输出及逐条指标，**不重复制造更多 trajectory oracle / DNSMOS selector**。只有 P7-A 实际需要且现存文件不足时才提议补采。
+- 多 seed `Var_k(x0_hat^(k))` 衡量同一条件下采样结果**分歧**；分歧既可包含合理条件多样性，也可包含模型错误，**不等于真实重建误差**。
+- 旧 PathSim 的 `z_roll=(x_t^roll-μ_t(clean,c))/σ_t` 混合普通噪声与生成参考差异，不允许称其为校准后的 posterior uncertainty；拟合 `E(|z_roll|²|c,t)` 还可能混合均值偏移与方差。
+- 由于用 DNSMOS 在若干候选里选最高，再用同一 DNSMOS 评价，若 fixed baseline 属于候选集，分数不下降是构造性结果；开发/held-out 的这种增量只能支持「DNSMOS 分数的样本可选择性」，不能独立支持可闻改善。实际选择还需考虑最差 SI-SDR 与额外 NFE。
+
+#### 3.7.7 结果分类、决策门与最小交付
+
+| 观察（必须由 P7 新证据支持） | 最多能说明什么 | 不应得出的结论 | 后续研究方向（**仅候选**） |
+|---|---|---|---|
+| 固定 Score 提高求解精度后状态和输出稳定收敛，低精度结果确有差异 | 数值求解精度或采样设置值得优化 | Score 已正确 / 更换 SDE 必有效 | NFE 受控求解器、稳定性分析 |
+| 数值已收敛，但 DSM 验证风险在某类时间/频带稳定偏高 | 对应分层的去噪目标更困难 | 得到了真实条件 Score 的误差 | 与特定困难对应的训练/参数化约束 |
+| 前端局部误差与生成恶化存在独立于 SNR 的稳定关系 | 条件利用或任务困难可能构成瓶颈 | 前端必然有害 / 后端只依赖前端 | 观测一致性、条件证据约束 |
+| 同 seed/不同 seed 有质量差异但没有独立听感或结构证据 | 模型输出存在随机变化 | 这是采样器错误 / 可消除不确定性 | 暂存分歧诊断，不强推方案 |
+| 所有信号微弱、受混杂影响大或缺乏可干预性 | 当前难以识别主瓶颈 | 必须设计新模块来取得创新 | **停止 P7，保留诚实的诊断负结果** |
+
+**执行权限和规模**：先 P7-0（只读、0 GPU）；P7-A 仅在磁盘余量再次确认后做 **4 条 smoke → 8–16 条探索**，优先确定性 ODE 收敛和复用既有 PC 输出；P7-B 只在出现对应异常后启动；**P7-C 如已有严格同句 Frontend-only / Full StoRM WAV 可在 P7-0 后只读复用并独立开展，不能因缺音频擅自生成海量新结果**。避免机械执行全部矩阵。**首轮不设 TPO/IPO、FiLM Speaker、Rectified Flow/SB、PostNet、GAN、Adapter、时频异方差、新 SDE 或长训任务**。
+
+**报告最低要求**：在新目录（运行时按仓库实际路径命名，如 `experiments/storm_error_attribution_p7_*/`）保存 `README/experiment_report.md`、基线元数据、清单及文件 hash、实际 NFE、每句表格和必要音频、精度/尺度检查、失败样本、明确的证据等级、下一步/停止决策。不复制大批中间复谱、不覆盖原音频。文档中明确标注 **「已运行 / 仅方案 / 无法归因」**。
+
+**通向第二创新点的门槛**：至少有一个系统特有、可复现的失败机制，能够具体说明「前端已正确但后端破坏了什么」或「前端尚未修复而后端为什么未能补救」；该机制在部署可观测条件下具有可辨识信息，并存在区别于现有 StoRM/预测引导/GALD-SE/生成—判别融合方法的非平凡方法空间；能提出直接对应该失败机制的**最小干预**，且预期成本与风险合理。若仅发现 clean-aware Oracle 互补、普通方差调度或动态融合系数的收益，不应认定为独立创新。无此证据，不应把「P7 机制诊断」宣传为论文创新。
+
+### 3.8 P8：无混响极低 SNR 下的语音可懂度、前端吞音及后端内容恢复归因（**第一优先级；第一轮流程与局部代理诊断已有记录，人类转写未完成**）
+
+**问题来源和证据等级**：用户报告，在当前**无混响**的低 SNR 语音上，某些最终增强结果失真到听不懂原话；怀疑 Frontend-only 也许保留了这些原话。这是具体且值得检验的**现场观察 H8**，并非已验证的“后端幻觉”结论。既有 P7-C 表明前端/后端的 SI-SDR、PESQ、OVRL 存在不同取舍，但这些指标不能判定词句是否正确；P3c 的 8 条 `tiny.en` 伪 WER 也未包含 `Y_pre`。**第一项交付不是新模型，而是同句对照验证 H8 是否真实、重复且可归因。**
+
+**本次听感修正（用户新观察；尚无对应新实验）**：用户仔细对比了前端和最终增强，认为若 `Y_pre` 已吞掉音节，后端经常只是让残存音节更圆润、更像正常语音，**未恢复被吞掉的具体音节**。这与原先“前端可能完整保留词句、后端新增损伤”的 H8-A 不同，必须另设 **H8-E：前端发生内容伪阴性，后端声学自然化成功但内容纠错失败**。原因可能是前端结构锚定、`noisy` 中可辨识证据不足，或二者叠加；必须先找出真实音素事件，不能仅把局部 RMS 填补称为内容恢复。若只出现 H8-E 而非 H8-A，**仍然允许进入面向 noisy 证据可恢复性的后续验证**，不应按原停止条件错误退出整个 P8。
+
+**上传版本的既有 P8-0/P8-1 进展（2026-10-20；本次仅据用户提供文档转录）**：在 8 位此前未被旧筛选使用的 speaker 上，锁定 8 条无混响 CV（SNR `−16` 到 `−19 dB`），复用 80k EMA、PC `N=30`、seed `2026`，已成功导出 `Y_pre`/Router-off/Router 三臂和 clean/noisy 对照，制作同一中央 12 秒听感包。`Y_pre / off / Router` 的 PESQ 为 `1.2049/1.2474/1.2469`、STOI `0.6811/0.6804/0.6823`、SI-SDR `2.1413/0.9793/1.6286 dB`、DNSMOS-OVRL `2.5277/2.8893/2.8398`；这些整体指标不能判定缺失音节是否恢复。SCP 的 `text` 是 `dummy`，只有 Whisper `tiny.en` clean 伪参考；matched beam-search 的词距离排序还受到空转写影响，不能当原句真值。**配对数据、音频/ASR smoke 和 181 个窗口的局部诊断已有记录；人工核实原句、至少 2 人盲转写、48–64 条独立确认集仍未完成。**原始记录索引：`experiments/p8_frontend_backend_audit_20261020/`、`experiments/p8_local_content_probe_20261020/`，须在实际实验环境核验。
+
+**P8 文本来源审计（2026-10-18，完成；只读）**：对本地 `/data/datasets/dns_ins20` 树和 P8 八条 manifest 做了只读扫描；16 个可见 SCP `text` 文件的所有条目均为 `dummy`，没有发现可按 file-id 映射的本地原始书籍文本或非 dummy 转写。审计记录见 `experiments/p8_text_source_audit_20261020/`。因此现有 Whisper clean 文本只能作听音提示；正式人工内容结论仍需独立文本来源或盲转写后核实。
+
+**P8 外部文本来源审计（2026-10-18，完成；未恢复原句）**：对 clean 自动转写片段和 `book_*/reader_*` 标识进行只读公开检索；DuckDuckGo 返回验证页，Bing 精确短语无结果，Google Books API 配额耗尽，未得到可核实原句。该结果不证明原文不存在，只确认当前没有可引用来源；不把 Whisper 文本用于正式 WER/CER 或训练监督。记录见 `experiments/p8_text_source_external_audit_20261018/`。
+
+**P8 公开 DNS 清单交叉核验（2026-10-18，完成；未恢复原句）**：公开 DNS-2020 复现实验仓库 `IMYBo/SDDNet` 的 `data/clean_cv.lst` 能找到多个相同的 book/chapter/reader 文件名，但每行仅含 clean WAV 路径和 31 秒时长，没有 transcript 或逐句文本。该结果只确认文件身份，不能作为 P8 原句来源。记录见 `experiments/p8_text_source_repository_audit_20261018/`。
+
+**P8-M 首个反事实 smoke（2026-10-18，完成；OOD、单条、无训练）**：在 file-id 5243 的局部高线索窗口 `10.0–10.5 s` 对 `Y_pre` 做平滑衰减，保持 noisy 不变，用同一 80k EMA/PC `N=30`/seed 2026 生成 baseline、50% 和 0% 遮蔽结果，并加入低活动等长负对照。目标完全遮蔽使整句 SI-SDR 从 `−1.076` 降至 `−1.557 dB`，没有显示后端无代价恢复被遮蔽音节；Whisper 伪转写也只出现近音/缺词变化。该结果只说明冻结模型对局部 OOD 锚点破坏敏感，不能证明自然吞音不可恢复，也不能证明 noisy 利用或幻觉。记录见 `experiments/p8_y_pre_mask_counterfactual_20261020/`；按停止门暂不训练 P8-R/Harm/content loss。
+
+**P8-M 两个追加 seed（2026-10-18，完成；仍为 OOD、无训练）**：对同一目标窗口的完全抹除重复 seed `2027/2028`。相对各自 baseline，SI-SDR 分别下降 `−0.505/−0.467 dB`，STOI 分别下降 `−0.0141/−0.0147`；PESQ 方向不稳定（`−0.0088/+0.0075`）。这加强了局部 `Y_pre` 锚点被破坏会损害输出的重复性，但没有给出音素恢复证据；不升级到 P8-R 或训练。
+
+**P8-E1 候选窗口只读排序（2026-10-18，完成；不是内容证据）**：复用 `p8_local_content_probe_20261020` 的 181 个半秒窗口，使用 `fileid + start_s + end_s` 正确配对 `oracle_snr_windows.csv` 与 `noisy_cue_windows.csv`（CSV 内的 `index` 不是全局唯一键）。55 个 clean-aware 抑制窗口中，按 noisy-clean 波形/谱线索排序的前几项最高波形相关约 `0.33`、局部 SNR 约 `−8` 至 `−10 dB`；抑制组整体中位数仍为相关 `0.0985`、局部 SNR `−20.41 dB`，非抑制组为 `0.3557`、`−8.30 dB`。这只产生少量人工核实候选，不能证明存在音素特异 noisy 证据，也不能作为 P8-R 的启动依据。另制作了 4 位 speaker、20 个 2 秒配对片段的人工核实包，仍不产生统计结论。记录见 `experiments/p8_e1_candidate_ranking_20261018/` 与 `experiments/p8_e1_candidate_listening_20261018/`。
+
+**P8-E1 clean 时间戳自动提示（2026-10-18，完成；不是文本真值）**：对 4 个已有 clean 中央 12 秒片段用缓存 Whisper `tiny.en` beam-5 生成词级时间戳，将候选窗映射到附近自动词：file-id 5243=`Canadian by`、4812=`reconstitution of`、11999=`most perfect`、10720=`certainly will`。这些提示仅用于试听定位，不能用于 WER/CER 或音素恢复结论。记录见 `experiments/p8_e1_clean_timestamp_prompt_20261018/`。
+**P8-E1 音素模型诊断（2026-10-20，完成；辅助代理，不是音素真值）**：在修正时间轴后的 4 组×5 条件共 20 个片段上，使用 `facebook/wav2vec2-lv-60-espeak-cv-ft` 的 CUDA greedy CTC 解码。平均 argmax 后验/辅音 token 后验质量代理/辅音 token runs 分别为：clean `0.9513/0.2061/17.75`，noisy `0.9064/0.0579/0.75`，`Y_pre` `0.8815/0.1480/11.00`，Router-off `0.9038/0.1968/16.25`，Router `0.8983/0.1921/15.25`。这与用户听感一致地显示：后端（包括 Router-off 共享生成阶段）使辅音相关声学模型后验和连续性代理显著高于 Y_pre；但 Router 相比 Router-off 略低（辅音后验约 `−0.0047`、平均辅音 runs 少约 1），且 off/Router 的 IPA 序列仍与 clean 有大量替换，不能称为真实辅音恢复、WER 改善或内容纠错。补充的 clean-active 同时刻 argmax 一致率也很低（Y_pre `14.5%`、off `10.0%`、Router `12.0%`），但受 CTC 边界漂移影响，只能作为弱代理。clean-target 后验探针在 noisy/`Y_pre`/off/Router 上分别为 `0.0206/0.1150/0.0989/0.1055`，且 4 组中 3 组 noisy 近零，仅 file-id 11999 有中等例外；这更接近“当前样本多数处于 E2 竞争解释”，但不能排除少量局部 E1。该诊断仅支持“自然化/重建改善与内容保真可分离”的局部证据，不区分模型幻觉与声学模型误识别；不启动内容 loss、Harm Head 或 P8-R。记录见 `experiments/p8_phoneme_probe_20261020/`。
+**P8-E1 定点反例补探（2026-10-20，完成；仍为辅助代理）**：对既有 4 个 clean-aware 局部 SNR `−8.0` 至 `−9.8 dB`、且 `Y_pre` 被压低的候选窗口运行同一音素模型。四个窗口 noisy 在 clean-active 帧上的 clean-target 后验仅 `0.000–0.003`，target argmax 均为 `0`；对应 `Y_pre/off/Router` 后验分别为 `0.148/0.108/0.115`、`0.292/0.134/0.141`、`0.006/0.014/0.022`、`0.003/0.002/0.001`。即便在“更高线索”候选中也没有发现清晰的 E1 反例；当前证据进一步偏向 E2（输入音素证据弱），但四个窗口、同帧 CTC 伪目标仍不足以排除少量真实可恢复位置。记录见 `experiments/p8_counterexample_listening_pack_20261020/`；不启动 P8-R、noisy-centered 扩散或内容 loss。
+**P8-Q 11999 候选复核（2026-10-20，完成；仍非 E1 证据）**：独立复核认为 file-id 11999 的 noisy clean-target 后验 `0.0711` 仅比 `Y_pre` `0.0671` 高约 `+0.0040`，target top-1 均为 `2/32=0.0625`；Router-off/Router 的小幅上升不能排除 CTC blank/边界变化或生成伪影，IPA 解码也未与 clean 形成可验证的正确音素回补。因此 11999 只保留为弱候选，不得称为 noisy 可恢复反例。若要继续，最低成本是预先选定 3–5 个时间对齐的真实辅音窗口，做 noisy/Y_pre/Router-off/Router 的盲化强制选择；只有 noisy 高于机会、Y_pre 明显下降且后端在同一音素上恢复，才允许独立样本复核。若至少 3/5 窗不满足该链条，将其归为代理异常并停止 noisy-centered/content-recovery 分支。详见 `experiments/p8_phoneme_probe_20261020/experiment_report.md`。
+
+**研究假设与四种允许结论**：
+
+1. **H8-A（用户最关注）**：同一低 SNR noisy 下，人类能从 `Y_pre` 正确转写原句，但 Router-off 的完整生成结果出现新的词/音素替换、删除、插入或断续；如果 Router 与 off 相近，优先怀疑共享的扩散后端行为，而不是先归因 Router。
+2. **H8-B**：`Y_pre` 和完整增强均难懂，则问题可能已发生在前端、原始观测信息过少或声学任务本身难度过高；不能强行提出“保护已正确前端”机制。
+3. **H8-C**：`Y_pre` 内容保真但残余噪声明显，后端改善可懂度/质量，只是在部分局部引入伪影；需要量化收益与损伤共存，不把个别坏样本描述为总体退化。
+4. **H8-D**：仅某个 ASR 判前端较好，人类盲转写不支持，则优先调查 ASR 的模型偏差、训练域、响度/音色敏感性，不宣称实际可懂度提升。
+5. **H8-E（本轮主要新假设）**：`Y_pre` 明确吞音，Router-off/Router 把剩余音节平滑并增强听感但没有补回正确内容。必须进一步分为 **E1：noisy 有可利用、音素特异的证据但后端未利用**、**E2：noisy 本身证据高度模糊或弱到不可可靠辨识**、**E3：二者并存**。E1 才支持“条件利用/前端过锚定”机制研究；E2 则更接近输入不可辨识性问题，强行补音有语言幻觉风险。
+
+**P8-0：现成资源与配对调用链审计（只读；0 训练）**
+
+- 审计可用的**无混响**训练/CV 清单、说话人/噪声来源、目标 SNR、真实 clean 原句文本，逐项确认 Frontend-only `Y_pre`、noisy、Router-off、Router 的同句 WAV 是否已存在且可导出。旧 P3a 曾缺 `Y_pre` WAV；后来 P7-C 已有 32 条 `Y_pre`，但它们反复用于筛选，不能当独立确认集。先复用已有路径与导出实现，不把 Router-off 冒充前端输出。
+- 增加**训练分布覆盖只读审计**：不只看目录名或配置中声明的 SNR 范围；应追踪实际训练 manifest、数据加载器采样权重/在线混合与增强，统计各 SNR 档的 utterance/时长、speaker、noise source 覆盖，并在有可靠音素边界时估算弱辅音附近的局部 SNR 暴露。至少分层报告 `[-20,-18)`、`[-18,-15)`、`[-15,-10)`、`[-10,-5] dB`；标记实际值、名义值与不可核实项。此审计不读冻结测试集作为训练依据，不运行训练。若只看路径标签或合成范围，结论必须写“覆盖未知”，不能写“已覆盖”。
+- 核对采样率、长度、时延、响度、归一化、STFT/iSTFT 及 clean 对齐；区别“被噪声掩蔽”“被过度抑制”“音素变形”“凭空增加语音”“单纯音色/清晰度变化”。**不可用 clean 波形在推理时修正音频**。
+- 从用户指出的难懂实例中整理**发现集**（若实际文件可定位）；它可用于列举听感症状，不参与后续确认统计或超参数选择。缺原句真实文本时先恢复文本来源或由独立人工核对 clean，不能继续把 Whisper(clean) 当真值。
+
+**P8-1：分层独立内容验证（冻结模型，不改训练）**
+
+1. 从**未参与之前筛选**的无混响 CV 原始语音、新 speaker 和噪声条件中预先锁定确认样本；建议先 8–12 条可播放的配对烟测检查流程，再按预算形成约 **48–64 条**跨说话人确认集，覆盖至少三档低 SNR（如 `[-20,-15)`、`[-15,-10)`、`[-10,-5] dB`），同时记录噪声类型、语速、性别/说话人分布。实际数量在审计可用数据后冻结，不能挑出最坏样本后把它们当总体比例。
+2. 在同一 noisy 下固定 checkpoint、EMA、PC/N=30、seed、采样率，生成/复用严格配对的 `noisy / Y_pre / Router-off / Router`；clean 仅用于建立人工核实的真实转写和研究分析。若多随机 seed 对内容损伤成为必要解释，先冻结样本并另立短的多 seed 对照，不自动四轨迹择优。
+3. **主要验证采用盲转写而非偏好 A/B**：至少两名独立听者在不知道增强 arm、SNR、原句的情况下分别听随机顺序片段并逐词转写，记录不能辨认的词、错误音节和具体失真；分歧交第三人复核。禁止先播放 clean 使听者记住答案，固定播放设备/响度方案并保留原始转写。与已核实原句计算人工 WER/CER（必要时音素级编辑和词级删除/替换/插入），同时对每条记录“是否比 noisy 更能懂”。**内容判断须先于质量印象评分**：把自然度/清晰度/残余噪声/失真作为单独环节（尽量用独立听者组或分时段随机播放），不让听者先看 clean 或先给自然度高的版本建立答案预期；分别报告内容正确率、删除/插入/替换与自然度/音质，禁止合成一个综合主分数。
+4. 至少两个**不同体系**的 ASR 做辅助 WER/CER（明确模型、版本、语言和归一化），对 clean 也报告 ASR 基线错误；STOI/ESTOI、PESQ、SI-SDR、DNSMOS 和分段语音活动/断续指标均仅作为辅助。**内容保真与声音好听分别统计**，不得用 DNSMOS 或 Distill-MOS 推断具体词句正确。
+5. 对每个 speaker 聚类作 paired 差值和 95% CI，分 SNR/噪声/是否包含清音齿音与短时断裂复核，保留最差音频和转写。主比较为 `Y_pre` 对 `Router-off` 的**人工内容错误差异**，随后比较 Router 对 off，不能直接从 Router-vs-off 接近零推断前端和后端同样可懂。每档报告样本和听者一致性；在正式确认前**预注册最小有实际意义的差异**，而非事后根据结果选阈值。
+
+**P8-Q：低信噪比下音素声学信息的可恢复性研究（新增；排在 P8-1 之后、P8-N/P8-R 架构改动之前）**
+
+核心问题是：人耳听不到 `/k/`、`/d/` 等弱辅音，并不等于这些辅音的波形成分已经从 `noisy` 中消失。对加性噪声，原始语音分量通常仍参与混合，但单次观测是否包含足以区分正确音素的证据，必须通过音素身份和人工听感验证。P8-Q 必须严格拆开三个层次：
+
+1. 音素的波形成分在物理混合中存在；
+2. `noisy` 中存在足以区分正确音素的声学证据；
+3. 当前增强模型能够提取这些证据并恢复正确音素。
+
+三者不能互相替代。最新 wav2vec2 诊断显示 Router-off 的辅音结构代理高于 `Y_pre`，但 clean-target 后验并未同步提高；这提示“生成更多辅音结构”与“恢复正确辅音”可能分离。file-id 11999 虽是四组中 noisy clean-target 后验相对较高的例外，但后续复核发现其相对 `Y_pre` 的差异很小、top-1 相同，故目前仅为弱候选，不构成 E1 或真实可恢复证据；详见上方候选复核记录。
+
+**P8-Q-A：音素级信息损失定位**
+
+- 在严格对齐的 `clean / noisy / Y_pre / Router-off / Router` 上，定位 `/k/`、`/d/` 等弱辅音的瞬态、频谱过渡、发音边界和音素身份变化；同时保存原始局部 SNR、噪声类型、说话人和边界不确定性。
+- 对经过人工核实的 `3–5` 个短时目标事件补做 **10/20 ms 分辨率的局部时频诊断**（如 Hann 窗、5–10 ms hop，并报告频率分辨率）：查看爆破/摩擦/共振峰过渡附近 clean 与 noise 分量、noisy 及各输出在多频带上的线索。短窗和长窗结果须互补解释，不以单个显著频点、oracle-mask 或 clean-aware 热图替代音素判断；clean/noise 分解仅作离线机制分析，不是部署可用信号。
+- 结合 wav2vec2 音素后验、音素边界/瞬态代理和人工核实，分别标记“物理成分存在”“可区分证据存在”“模型输出身份正确”三类事件；不得用辅音能量、辅音 token 数或生成连续性直接替代音素身份。
+- 重点复核 file-id 11999，并保留至少一个 noisy 证据弱的负对照和一个候选证据较强的正对照。若没有可靠原句或音素身份，结果只能作为探索性代理，不能进入训练监督。
+
+**P8-Q-B：局部 SNR 恢复阈值**
+
+- 在诊断副本中保持噪声固定，仅提高 clean 中目标辅音的局部贡献，设置 `0/+3/+6/+9/+12 dB` 五档；原始数据集和原始 noisy 文件不得修改。
+- 分别观察人耳、Frontend-only `Y_pre`、Router-off 和 Router 何时能正确识别目标音素，报告音素正确率、删除率、错误新增率和音质变化；优先使用有真实音素身份的最小音素对或人工核实片段。
+- 该实验只测模型对受控证据强度的敏感性，不能证明未修改的原始 noisy 一定可恢复，也不能把提高 clean 贡献后的收益写成部署条件下的提升。
+
+**P8-Q-C：原始 Noisy 可恢复性验证**
+
+- 完全不修改原始 `noisy`，比较不同合法增强方法（至少 `Y_pre`、Router-off、Router，以及通过前置审计的强基线）能否恢复正确辅音。
+- 必须使用真实音素身份或经人工核实的原句，报告音素正确率、删除率、错误新增率/幻觉率，并将“生成了一个辅音结构”与“生成了正确辅音”分开统计。
+- 对每个事件同时记录“结构/自然化改善”和“身份/内容正确”两个轴：例如辅音结构代理、连续性、残余噪声与自然度评分单独列出，和真实音素正确率、删除/替换/错误新增率组成分离的配对表。结构增加但身份错误应计为**自然化但未恢复**，不能计入内容收益。
+- 语言模型猜测、单一 ASR 转写、clean-target CTC 同帧后验和 DNSMOS/PESQ 均不能单独证明恢复。若找不到可靠身份标签，P8-Q-C 只能停留在候选筛选，不能升级为方法结论。
+
+**P8-Q-D：固定噪声的最小音素对双重反事实（优先正控制；不等于自然样本证明）**
+
+- 先在真实录制语料中寻找同一说话人、尽量相同邻接音/语境、仅目标辅音身份不同且原句/音素经独立核实的自然最小对（例如 `/k/`–`/g/`）；先查可用数据，缺少合格材料时不得把自动转写、TTS 伪对或精挑失败样本冒充自然确认样本。必要时另行规划小型受控录音，不修改 DNS 原始数据。
+- 对每一对使用**同一噪声波形、同一目标局部 SNR、同一噪声起始偏移**分别混合两个 clean；另设同一音素跨不同噪声的条件。固定 checkpoint、EMA、seed、PC/NFE 和推理设置，比较 `noisy / Y_pre / Router-off / Router` 是否跟随真实音素变化、以及噪声变化是否错误改变音素身份。
+- 先由不知道文本和条件的听者对 `noisy` 做随机化 ABX/2AFC，确认该 SNR 下输入本身可区分目标音素；再盲评各输出，记录音素身份正确率、对音素变化的敏感度、对噪声变化的稳定度、删除率与错误新增率。单纯输出变化不算成功，必须跟随真实身份且不被噪声变化牵着走。
+- 最小 pilot 预注册约 `6–10` 对、1–2 档与自然候选相邻的 SNR；样本不足则报告探索性结果，不作总体推断。若 `noisy` 的听者正确率未高于机会水平，不能据输出不变指责模型忽略证据；若仅在更高人为 SNR 下通过，只能说明流程有效/模型对证据强度敏感，不能证明原始极低 SNR 样本可恢复。只有通过该正控制后，才在未修改的自然 `noisy` 上分别验证 `noisy` 可辨、`Y_pre` 丢失、后端是否恢复同一音素。
+
+**P8-Q 的停止与升级条件**：Q-A 若找不到可区分的音素身份事件，Q-B 仅显示随人为增能平滑改善，Q-C 没有在原始 noisy 上观察到真实音素收益，或 Q-D 的输入辨识率未高于机会，则停止内容恢复专用训练和 noisy-centered 架构改动；不把物理混合成分存在、时频能量峰或自然度改善当作可恢复性证据。只有在独立样本上同时发现“原始 noisy 可辨认、`Y_pre` 丢失、合法增强方法能降低真实音素删除率且错误新增率受控”，才允许进一步设计 P8-R 或 P8-N。P8-Q 首轮只做只读/诊断副本实验，不启动训练或大规模推理。
+
+**P8-2：从结果进入最小干预，而不是自动训练**
+
+| 观察到的独立证据 | 能够形成的假设 | 低成本下一步 / 禁止越界 |
+|---|---|---|
+| `Y_pre` 人工内容错误显著低于 Router-off，且多说话人/低 SNR 层稳定重现 | 完整生成存在**新增内容损伤**，可能与前端条件利用、Score 训练或采样恢复行为有关 | 先归因 off 与 Router 的共同/差异；设计一个有界的内容保真约束或条件证据利用干预，匹配无辅助 loss、简单谱/内容约束和 PASE 等强基线。不得先把 Router gate、Mask、WavLM loss 或新 SDE 宣称原创。 |
+| `Y_pre` 也不可懂或仅优于 noisy 很少 | 问题主要不是后端破坏已正确前端 | 转向前端/训练数据覆盖及信息可恢复性；不训练后端“内容保护器”。 |
+| `Y_pre` 更准但噪声重，后端质量明显更好且内容仅局部变差 | 存在内容保真—噪声/感知质量的非平凡任务权衡 | 设计保持清晰度的**训练期**内容约束对照，评价完整 PC 生成与人类转写；不直接拼接 clean-aware Oracle 或只提高 SI-SDR。 |
+| 只有 ASR 有差异、人类不支持 | 可能是识别器/评估代理偏差 | 暂停内容专用训练，扩充独立听者或检查录音与文本；不以伪 WER 驱动新损失。 |
+
+**若进入受控训练**：必须从相同 backend checkpoint/训练清单、同训练步数、相同可训练参数、EMA、seed 与 NFE 出发，对照 backend-only no-loss、简单可复现的内容/声学保真监督和针对性新机制。禁止拿此前 8 条 P3c 或 32 条开发集的结果包装为独立成功。训练时可用 train clean/文本监督，推理时不得依赖 clean、人工标签或未来信息；冻结原前端与 Router 与否必须核实际参数和 optimizer。输出完整 N=30 音频及盲转写、客观指标和计算成本；仅当**内容真实恢复、质量和 SI-SDR 风险受控，并超越最简单强基线**，才增加训练规模。
+
+**P8 停止/转向条件（按 H8-A 与 H8-E 分支区分）**：新确认集未复现可听内容差异，或差异由响度、对齐、文本和 ASR 偏差解释，则停止相应机制。`Y_pre` 同样难懂只是否定“后端新增损伤 H8-A”，**不自动否定“noisy 中尚有可用内容线索、后端未纠正前端吞音 H8-E”**；后者须经原始观测证据与反事实实验继续筛选。若找不到比基准更可辨识的局部 noisy 线索，或新方法只有单步 `x0`/Distill-MOS/ASR 代理收益、却不改善人类真实音素/词句识别，则停止内容专用训练。**不因用户单一难懂片段推断“整个 StoRM 会幻觉”。**
+
+#### 3.8.1 P8 新科学问题：noisy 内容证据可恢复性 × y_pre 锚定依赖（**全部为待证伪方案，不是新实验结果**）
+
+**基于原始 StoRM 论文的结构约束**（[L01]；[论文算法 1/2 与条件消融](https://arxiv.org/html/2212.11851v2)）：默认 Score 以 `[noisy, D(noisy)]` 双条件输入，故不能声称后端“看不到 noisy”。但反向采样初态为 `x_T=D(noisy)+σ(T)z`，OUVE 漂移中的中心也是 `D(noisy)=Y_pre`；`Y_pre` 同时是采样起点和动态锚点，而 noisy 主要以 Score 条件分支提供额外证据。原论文条件消融中 `Both` 在 WSJ0+Chime 上的 PESQ/ESTOI/SI-SDR 为 `2.53/0.88/15.1`，只用 PostDenoiser 为 `2.50/0.87/14.7`；这只支持 noisy **平均上有增量作用**，并不证明前端吞音的困难片段能从 noisy 纠错。由于 `Y_pre=F(noisy)` 是确定性映射，在同时保留 noisy 的系统中，`Y_pre` 理论上不删除原始输入所含信息；实际阻碍可能来自有限容量、训练目标、扩散锚定和原始局部证据的低可辨识性。不可将“noisy 里有真实语音成分”直接等价为“正确音素容易恢复”。
+
+**优先级为证据门而非算法门**：已上传的 55 个抑制窗口的局部 SNR 中位为 `−20.41 dB`，较非抑制区低约 `12.1 dB`；该现象更支持“困难位置本身难提取”，尚不支持“大量高可恢复证据被模型无故忽略”。优先在人类/音素标注支持下寻找 **noisy 尚可辨、`Y_pre` 却吞音**的少量明确反例；其是否真实存在以及出现比例比先提出门控网络更重要。过抑制是音素层判断，不能仅依据 `Y_pre`/clean 的局部 RMS 低或增能高自动下结论。
+
+| 候选 | 核心思路 | 先做的验证与关键风险 | 何时允许升级 |
+|---|---|---|---|
+| **P8-N：Noisy 中心扩散的第二视角／互补分支** | 另建以 noisy 为条件和扩散中心的有效生成模式（SGMSE+ 类），再与以 `Y_pre` 为中心的 StoRM 比较内容恢复。若错误具有互补性，探索分歧检测、局部证据交叉验证或受约束融合的“化学反应” | **不能在冻结 StoRM 上只把 OUVE 漂移中心/初态改为 noisy 就视为合法的第二模式**：Score 训练扰动核、终点 prior、反向过程与输入条件必须匹配；匹配训练的 SGMSE+ 或正确重训分支才是基准。先做现有合法 checkpoint/文献基线的盲听和音素错误互补矩阵，并匹配 NFE、计算、数据、质量；不同扩散过程的 seed 相同不代表同噪声路径，Score/轨迹更不能直接算术混合 | 仅当一个分支能在另一个分支吞音时可靠恢复**真实内容**，且不会大量新生错误音素/噪声时，再考虑局部融合；普通平均、提升某个 MOS 或语言先验编音不算通过 |
+| **P8-R：识别过抑制位置后定向增强 noisy 证据** | 用可部署的 `noisy` 与 `Y_pre` 不一致性、局部残差、语音/音素置信与跨时频一致性，决定何时降低 `Y_pre` 锚定影响或对 noisy 特征额外编码/注意，而保留其余可靠恢复区域 | 前端残差 `noisy−Y_pre` 也含大量噪声，不能把残差能量当遗失语音；先以 clean-aware 标签**离线评价**候选定位器的精确率/召回率，再用只从 noisy/Y_pre 计算的部署特征及强 SNR/能量基线评估增量。涉及 SDE/Score 的改动必须保证 forward/noise kernel/prior/reverse 相容 | 独立说话人上可识别 E1 反例、定位器能以可接受的误报率找到它们，且真实词/音素恢复超过简单双流/局部增强基线后，才允许最小匹配训练 |
+| **P8-M：抹除正确 y_pre 音节的反事实探针** | 选取前端已正确增强、人工能辨的音节，固定原 noisy，只在对应 `Y_pre` 局部作平滑衰减或抹除，再观察后端能否恢复正确音节，甚至是否优于未经遮蔽的 StoRM | 必须同时保留原始未遮蔽条件对照、非语音/随机位置负对照、不同掩码强度与范围、固定采样参数且多 seed。**同一位置抹平 y_pre 后，后端并不是“只能看 noisy”：它还可根据相邻 y_pre、上下文和语言先验猜音节**。此外局部人为遮蔽破坏 `Y_pre=F(noisy)` 的训练条件关系，属于 OOD 干预；本实验先作可恢复性的正控制，不能直接外推极低 SNR 真吞音 | 除了正确重建，必须做 noisy 的音素证据移除/置换负控制或最小音素对：若 noisy 中真实音素变了、输出仍照上下文猜，则说明是幻觉而非提取。若被遮蔽时反复比原始模式更忠实，也只能提出“锚点可能有害”的候选，须再用自然吞音区及匹配训练条件确认 |
+
+**P8-M 最小实验配对（从容易到困难）**：
+
+1. **正常片段正控制**：在现有新 speaker/无混响数据中人工定位 `Y_pre` 正确且 noisy 相对可辨的短音素窗口；保存原始 `noisy/Y_pre/off/Router/clean`，并制作 `Y_pre` 局部连续余弦淡出、软衰减（例如保留 50%/25% 幅值）与完全抹除的诊断版本，边界加缓变避免爆音。禁止修改原始源文件，确保时间与总体响度对齐。
+2. **相同条件多臂**：固定 noisy、主干权重、PC/NFE 与每次使用的噪声抽样；将局部修改后的 `Y_pre` **一致地**用于推理初态、OUVE 漂移中心和 Score 的对应条件通道，并记录原始前端输出不变；比较不遮蔽／目标音节遮蔽／邻近非语音或等长随机遮蔽，以及相同遮蔽下 noisy 的真实音素线索保留／受控去除。观察是否恢复正确的**音素身份、起止边界及词句**，不是只报告能量回填、听着“圆润”或谱相关。
+3. **避免猜词伪阳性**：至少包含易混淆音素、低语义可预测短语或最小音素对的对照；人工盲转写为主，原句需从 clean 独立核实，ASR 与 WavLM/ESTOI 仅辅助。尤其检验“遮掉后听起来更好但音素已经错了”的反例。若需要人为修改 noisy，只在诊断合成副本中进行，不能把 clean-aware 条件当部署输入。
+4. **从正控制到真实目标**：正控制若失败，只能说明当前冻结模型不擅长从破坏的 `Y_pre` 恢复；若成功，说明某种证据/上下文足以补音，却**尚不能证明** `−20 dB` 左右的自然吞音具有同样可恢复性。下一步必须在自然 H8-E 事件和局部 SNR/噪声类型分层中复制证据。若 OOD 效应显著，另设训练时按真实前端错误分布执行的条件 dropout/masking 对照，不能直接把手工遮蔽收益写成新算法。
+
+**执行次序与停止门**：先完成 P8-0 的训练/CV 覆盖与数据可用性只读审计，再用已有 8 条听感包完成人工事件标注、真实文本核对及 P8-1 盲听；随后优先做 P8-Q-D 最小音素对输入辨识正控制，并将 P8-Q-A 的 10/20 ms 时频诊断嵌入已核实事件，再执行 Q-B/Q-C，区分物理成分、可区分 noisy 证据和模型正确恢复。P8-M 已完成并为负，保留作历史反事实诊断，**不再列为待执行任务**。只有 Q-D/Q-C 在独立样本上发现原始 noisy 的真实音素可恢复性，才用现有合法 SGMSE+ 类基线做 P8-N 互补性诊断，或研究 P8-R 局部特征利用并考虑最小训练。**当前不启动第二模型重训、大规模推理、Router/锚点阈值扫参或官方冻结测试集上的选择**。所有新结果须保留“人类正确内容 / 音质 / 失真 / 风险 / NFE”分列，现有 P8 8 条及被反复分析的 181 窗口为探索集，不能当新方法最终显著性证明。
+
+#### P8-C：Noisy证据约束与条件冲突（2026-10-19备忘录审阅；仅归档，未执行）
+
+**已知与假说**：第5例保持锚点/物理噪声/尺度/RNG时，只移除原先VCV语音条件，clean支撑外相同输入仍产生不同高频尾部输出。支持跨时间条件敏感性；不区分H-C1真实语音上下文限制不可靠补全与H-C2锚点—条件冲突的OOD响应，两者也可共存。保留H-C3整段无语音/条件分布改变解释。用户最新频谱观察支持高频噪声样残留，不能把识别器/s/或/k/直接记成人工确认音素/语义幻觉。
+
+**当前缺口**：source/raw/PCM/HTTP对齐、clean支撑外精确为零及Score侧公共参考/normalized anchor哈希已核验；未知的是人工尾音准确起止、残噪/摩擦样感/真实内容插入的区分。CTC全局归一化和attention是后验解释的独立限制。不得把“clean非零能量较少”代替音素身份，也不把能量下降等同内容正确。
+
+**未来候选四格**：anchor=`F_native(S+N)`或`F_native(N)`，direct condition=`S+N`或`N`。只在新的预先冻结样本、独立来源/预算与no-op入口具备后另行设计，不重新运行已有五例或已分析说话人冒充独立确认。当前没有过门的独立确认manifest/F(N)缓存，故本轮不执行。
+
+- F(N),N只是结构匹配；纯噪声整段可能同样偏离训练域，不能当作已验证ID控制。
+- 换anchor改变OUVE先验中心/漂移；跨行共享基础Gaussian z和后续抽样、记录各xT，不强求同xT。行内同anchor才可保持相同初态，后续reverse轨迹允许变化。
+- 分别记录前端原生归一化、raw anchor和后端公共参考；公共尺度diagonal未必同时等价于各自原生diagonal，须声明/控制，不能隐藏尺度变化。
+- 冲突格缺少原生联合生成关系所确定的唯一目标；若按Noisy列指定S/0参考，须声明这是协议定义的符合程度，不等于自然增强准确率/幻觉率，另一锚点仍可能携带真实S。优先比较共同已核实clean零区中的能量/非语音或语音样伪影。纯噪声空参考不用普通WER分母。
+- 报告全四格主效应/交互和实际声响，不从“冲突格更差”直接证明H-C2，也不从语音条件降低能量直接证明音素特异声学否决。四格不是四个独立样本；种子/样本/噪声在输出前固定，不按结果追加。
+
+**未来评价/训练边界**：独立评价A前端删除/替换真实弱结构、B后端额外内容及非语音伪影；一次替换可同时涉及两者，unknown保留。两目标分开不等于立即实现两个Head；真实参考、可部署可观测信号与校准优势未成立前，不训练新的gate/检测器，不全局加Noisy权重或压高频。以真实内容、错误新增和听感为主，能量/CTC辅助。来源/许可和映射审计可独立推进，不能把DNS伪转写当真值。
+
+**记录**：`research_memos/p8_noisy_constraint_review_20261019.md`；完整原实验/用户原话留在各实验目录，不改冻结记录。5243预注册的后验方向未获支持；用户后续修正目标版/d/相对稍弱，构成有限的听感强度观察，但身份/删除及接近clean仍未知。保留与后验方向的区别，本事件局部删条件验证结束，不要求再听或触发训练。
+
+#### P8-V：反事实声学证据引导——候选级双向验证（新算法候选；仅计划，未实验）
+
+**核心问题与 P8-C/P8-Q-D 的差别**：P8-C 现有四格是改变条件并观察 *冻结模型的行为*，P8-Q-D 是固定噪声下检验真实辅音身份的输入／输出可辨识性；二者都**不是**“对模型打算生成的某个声学候选进行证据审查”的算法。P8-V 研究的是：给定原始混合信号 `X=noisy`、原生前端 `Y_pre=F(X)` 和候选语音 `S_hat`，能否判断候选包含的局部辅音/起止事件是否确有输入声学证据，从而在**真实事件被前端吞掉**时支持恢复，在**模型补出错误内容**时提出反证，并允许证据不足而不作强判。两方向是统一研究目标，但尚未证明可由同一验证器有效解决。
+
+**候选条件下的反事实比较（概念定义，不声称拥有真实似然）**：针对固定说话人、元音与时序上下文中的局部事件 `e`，构造尽量匹配的 `H1=候选存在` 与 `H0=候选不存在/近音替代`；理想有符号证据为 `Delta_e(X)=log p(X|H1)-log p(X|H0)`。实际单通道混合噪声的 `p(X|H)` 未知，只能通过学习的判别分数或近似噪声模型估计，**不得把网络分数直接称为校准对数似然比**。一种待比较的物理解释是计算两个候选的 `N_hat_i=X-S_i`，询问哪种剩余噪声与同段可观测噪声环境更一致；真实噪声 `N` 在部署时不可见，`X-S_i` 只是候选残差，不是噪声真值，非平稳噪声与低可辨识度必须显式建模。
+
+**三态而非二元门控**：只有在独立校准下，正向证据充分时才可支持此前被 `Y_pre` 删除的**正确**局部事件；反向证据充分时才可拒绝不被 `X` 支持的候选额外事件；两者均不充分时标记 `unknown/abstain`，保留可观测弱声学线索，不能简单静音、全局压制高频或任选最自然音素。三态阈值必须根据独立验证集和噪声条件设定，不能从测试真值、clean-aware SNR 或已筛选的异常案例推理时获取。即使 `X` 物理包含正确辅音，也未必能在极低局部 SNR 下区分 `/k/`、`/s/`、缺省及噪声；P8-V 不声称突破信息论不可辨识限制。
+
+**候选来源与训练监督边界**：候选初期可使用合法的现有增强输出、对齐的局部弱事件及固定近音/删除备选，不依赖部署期预训练音素识别器；音素标签可只作为研发时的身份/错误类别监督。将来如验证器训练获得许可，可在**训练 split** 中用已知 clean + noise 做成对 `X=S+N`，并用相同噪声、相近响度、声学时序和上下文构造真实事件删除、虚假事件插入、错误近音替换的平衡对；加入噪声改变/语音固定的负控制和不确定例。人工拼接、幅度、边界、说话人或合成器指纹必须消混杂，避免判别器只识别“修改痕迹”而非声学证据。真实听音、独立原文或可靠已知身份语料用于评价；现有 DNS `dummy`、CTC 假标签、clean-derived 强制对齐及旧 VCV 尾音均不能冒充人工事件真值或独立训练标签。
+
+**渐进方法空间（不是自动执行队列）**：
+
+1. **V0：假设与先例审计**。将输入证据验证与一般语音自然度、`Y_pre` 风险预测、扩散条件冲突和简单观测一致性分清；精确比较 GALD-SE 的 mask/异方差引导、PASE 的音系先验防幻觉、Grounded Decoding 的声学锚定、噪声模型引导扩散及生成后残差检查，**不宣称泛泛“Noisy 防幻觉”首次提出**。保留 H-C1（有效否决）、H-C2（条件 OOD）、H-C3（整体条件分布改变）作为竞争解释。
+2. **V1：候选级离线验证器或重排序**（须另行审批）。在冻结前端/后端的情况下，候选生成和声学证据打分分离，先证明“同一 `X` 下含真实事件的候选比分量缺失/错误的候选更可判别”；可以比较直接 `X`-候选判别器与 `X-S_hat` 噪声残差打分。不凭固定输出的重评分宣布语音已实际恢复。
+3. **V2：与 StoRM 扩散过程整合**（只有 V1 独立有效且重新授权训练时再设计）。候选证据可考虑采样后选择、局部修正或与 OUVE 匹配训练的引导；不能把冻结 80k Score 的 `x_T`、OUVE 锚点/漂移和条件任意重接当作数学正确的新采样器，也不能把不可微验证分数直接加进 Score 冒充已验证梯度。
+
+**独立判定指标与必要基线**：在未用于选择假说、听感筛选或校准的新说话人、噪声、内容上同时报告：①参考确有事件时的漏音/恢复率；②参考无该事件时的错误插入/近音替换率；③三态决策覆盖率与可靠性校准，尤其是低证据下的误否决；④独立人类内容判断、音质/失真、PESQ/STOI/SI-SDR、运行成本。基本对照包括原生 `Y_pre`/Router-off、仅使用 Noisy 的普通风险/谱/能量基线、简单残差或一般 data-consistency、只做过抑制定位、只做防补音以及同预算无验证器版本。验证器把所有微弱事件都拒绝即使“幻觉更少”，只要吞音恶化也判失败；只提高自然度/单一 ASR 或 CTC 分数不构成成功。不得用已有五例 VCV、5243 或 B 例直接估计总体率或定阈值，更不能接触冻结 DNS 官方测试集选择方法。
+
+**决策边界**：当前仅登记待证伪创新方向，**零新实验、零训练、零重下载、零修改冻结现有结果**。P8-Q-D 的固定噪声音素身份可辨识正控制、独立自然内容参考和 P8-C 条件失配风险是进入 V1 前应解决的证据条件；但 P8-C 原四格不是声学验证器的唯一实现方式，也不能要求已有极低 SNR 输入都可辨才研究可拒绝的候选验证。若独立候选验证不能超过简单噪声/条件一致性与风险门控基线，或正例恢复收益被假阳性/假阴性抵消，则不升级 V2。论文主张的潜在差异只能落在**候选级、有符号、双向、可拒绝的输入声学证据**，并以全面文献查重和实证对照为准，当前无已证实新颖性。
+
+### 3.9 P9：混响数据建设、重新训练与交互机制检验（**后续条件任务；当前缺 RIR**）
+
+**当前事实与限制**：冻结 DNS Ins20 synthetic 测试集有 `no_reverb/with_reverb` 各 150 条，Router 的 matched-file 混响交互在多指标上为负；但它是**测试数据，已分析冻结，绝不能用来合成训练或调整阈值**。仅有 4 条开发语音的人工 short/medium FIR smoke，没有复现官方的完整 PESQ/SI-SDR 交互模式。当前服务器审计**未找到可复用的真实 RIR**，80k checkpoint 的训练配置未记录 with-reverb 配对训练或 RIR 增强，故它不应被当成已经在真实混响域充分训练的权重。若对其他 checkpoint 作“未用混响训练”结论，必须逐一核 train manifest、合成器设置和日志，不能凭印象一概而论。
+
+**前置资源门**：P8 第一轮执行后，先只读核对实际存储容量、合法 RIR 许可、网络、checkpoint 备份和混响合成器能力。候选公开来源包括 [OpenSLR SLR28](https://www.openslr.org/28/) 的实测/模拟 RIR（16 kHz）与 [SLR26](https://www.openslr.org/26/) 的模拟 RIR；资源可用性不等于本地已经下载。**当前不下载、不清理数据、不启动批量生成或训练。** `/data` 历史仅余约 6.2 GB 可用，必须先给出增量磁盘计划及恢复余量。
+
+**数据合成规范**：复用训练 split 的 clean/noise 源，不需要先生成数十万条 WAV 占满磁盘；优先支持带 seed 和 manifest 的**在线卷积/混合**。覆盖足够多样的房间、RT60/DRR、源—麦距离、反射结构、SNR 和噪声类型。目标定义必须在合成前锁定：若仅降噪、允许保留混响，监督参考是 reverberant clean；若同时去混响，监督参考是 dry clean（并需对齐直达声延迟和处理尾音）。噪声是否带空间卷积、输入 RMS/SNR 的定义也要一致。**一个 RIR 搭配很多语音不等于独立房间泛化**，必须按房间/RIR、说话人和噪声来源隔离 train/dev/holdout，官方 DNS 测试 RIR 不可用于训练。
+
+**训练路径**：先用小规模**真实 RIR 的新开发集**复现 Frontend-only / Router-off / Router 与无混响的交互，再决定训练。若信号成立，设置相同架构、初始化/可训练集、步数和硬件预算的**无混响继续训练/混响增强训练**对照；如果主要瓶颈在前端，则需要匹配预算的前端或联合重新训练，不能只追加后端 gate。通过低成本干预后，再规划包含混响数据的完整再训练及对照，不将旧非混响权重直接称为“混响训练完成的基线”。报告完整 N=30 的 PESQ/STOI/SI-SDR、DNSMOS、低 SNR 人类内容转写、耗时/显存/NFE，并按房间、RIR、SNR 分层。
+
+**成功/退出**：独立真实 RIR 测试确实复现交互、训练数据域匹配后仍存在具体后端机制缺口，且候选方法在等训练预算、相同 RIR 覆盖及强基线上带来稳定内容/质量收益，才讨论新的条件/Score/SDE 机制。若普通混响数据增强已消除问题，应作为**训练分布修正**归档，不冒充新扩散机制；若独立 RIR 不能复现，则停止该优先级。文献中已有 StoRM、GALD-SE、预测引导和混响数据增强，不能把简单 RIR 卷积或 reverb gate 作为算法创新。
+
+## 4. 下一轮任务清单（按优先级和退出条件执行）
+
+**2026-10-19当前入口（覆盖下方历史队列）**：①VCV五例与5243听感（含目标版/d/稍弱的最新修正）已完成，不再重复请求或局部删条件搜索。②P8-C备忘录/2×2限制已归档，不执行新四格/训练。③VoiceBank官方训练文本来源/许可/ID映射已完成，11,572条含现有train/valid；下一项仅先设计/冻结小规模原始来源—本地clean一致性检查，再决定内容诊断。优先考虑有硬下载上限的官方原始WAV成员范围取回与固定重采样比对；若不支持范围或无法确认转换，报告限制，不取2.32GB大包，不用调参/多识别器结果反选样本。现有valid只有两位说话人，不能据小pilot宣称跨说话人总体泛化。test继续只核SCP/文件名，不读其音频/文本，不恢复DNS原句或默认独立于预训练。当前没有启动新模型/训练；原有架构候选继续遵守退出条件。
+
+**新执行入口（本次修订）**：先 P0 存储与 checkpoint 安全 → **P8-0 训练/CV 覆盖与文本/调用链只读审计** → **P8-1 已导出音频的内容听感/人工观察**（本机没有原始 DNS clean 语料或可信逐句文本，不能执行“真实文本核实”的完整版本）→ **不依赖音素标签的 Q-A 10/20 ms 时频诊断**；Q-B/C/Q-D 只有获得真实音素身份或有来源的原始语料后才可执行 → 仅在可恢复性证据成立后考虑 **P8-N noisy 中心模式互补性** → 仅在有部署可定位反例且存在增量收益时考虑 **P8-R 局部 noisy 证据定向利用/最小训练**。P8-M 已完成并归档，不再作为执行入口；`Y_pre` 本身吞音不再自动终止全部 P8，只改变科学问题从“后端新增删除”转为“后端未能纠正前端伪阴性”。**P9 混响须先获取真实 RIR、构造独立数据并匹配预算重新训练**，暂不下载/训练。历史 P7-0/A/B/C 已按原记录完成或停止，不机械重开。
+
+**P8-V 新候选不改变当前执行授权**：反事实声学证据引导已单列在 §3.8，当前仅是算法假设/可证伪目标。它既不是既有 P8-C 条件四格的别名，也不是马上运行的 P8-R 门控训练；后续 V1 离线候选比较、V2 与扩散整合均需独立数据来源和明确批准。
+
+
+**存储审计（2026-10-17，更新）**：初始 `/data` 可用约 `1.9 GB`。只读盘点显示 `/data` 总占用约 `204 GB`：DNS Ins20 原始数据约 `66 GB`，`/data/coding` 约 `73 GB`（SGMSE `67 GB`，其中 `joint_train_logs` `53 GB`、`experiment_logs` `1.2 GB`、SGMSE 环境 `12 GB`；mymetrics 环境 `6.5 GB`），另有用户目录下的网盘程序约 `47 GB`。识别到 `/data/.rootcache/pip/http-v2` 为 pip HTTP 下载缓存（pip 26.2.1 报告 1,540 个缓存文件、4,609.7 MB）；仅清理此可再下载缓存，未碰原始数据、checkpoint、实验输出或环境。清理后 `/data` 可用约 `6.2 GB`。这足以容纳一次有边界的短 smoke，但 P3b 听感/偏好证据仍未到位，故不启动 P5 训练；扩大训练前复查显存、输出量和磁盘余量，并保留 checkpoint 安全边界。
+
+| 优先级 | 任务 | 最小行动 / 对照 | 成功或停止判据 |
+|---|---|---|---|
+| P0 | **检查磁盘与 checkpoint 安全** | 只读 `df/du`、核对有效 checkpoint，先制定非破坏性归档与足够空闲空间方案 | `/data` 曾报 `Errno 28`；容量风险未排除前不运行批量推理或训练，不擅自删除有效记录 |
+| **P8-0（只读覆盖审计已完成）** | **train/CV 有名义 −20…−6 dB 覆盖；弱辅音与实际功率 SNR 覆盖未知；CV 有 1 位 speaker 与 train 重叠** | 汇总实际 train/CV manifest、音频头和 `joint_scp` 调用链；不读取冻结测试集、不训练/推理 | 不把文件名名义 SNR 当实际/辅音局部 SNR；现有计数不足以单独支持重训。复现与逐条记录见 `experiments/p8_training_coverage_audit_20261020/`；文本字段/原始语料限制见 `experiments/p8_text_source_audit_20261020/` |
+| **P8-1（内容听感观察，已完成探索性首轮）** | **已完成对齐音频导出和用户听感观察；没有原始 DNS 语料/逐句文本，不能形成真实 WER/CER 或 clean 真值核实** | 保留 `noisy/Y_pre/off/Router/clean` 的对齐音频和用户逐段观察，明确标注“内容症状线索”；若未来有合法原始文本，再做双听者盲转写。当前不把 Whisper(clean) 或 `dummy` 当真值 | 只报告“未观察到补回音节/后端平滑”等现象，不把它升级为后端新增删除或音素恢复结论；内容、音质和代理指标分开 |
+| **P8-Q（现有代理与独立 clean 校准完成；5243 d 有人工正候选）** | **固定时间代理未显示普遍恢复，但用户定点确认5243的前端丢d、后端有d；应保留具体例外，不以平均数否定事件** | 外部已知标称标签VCV主样本 clean校准16/16，补充集7/12；下一步仅在原冻结配对上做固定噪声辨识。外部录音不能充当DNS原句 | 物理成分、可辨识证据和正确恢复仍不可合并；不以clean门通过或一个人工正例启动内容loss、P8-N/P8-R |
+| **P8-Q-D（外部 VCV clean 正控制门通过；尚未进行带噪/增强）** | **f6/m2/f11/m4共8对k/g、t/d；主样本24类及二选一16/16、每对比8/8；另12条补充仅7/12与标签一致** | 在保持原16条样本和映射不变前提预注册噪声/SNR/seed，先测输入身份响应；所有原音频和代码/协议hash已核验 | 不把标称录音身份说成完美人工音素真值，不按模型结果换样；clean门只支持该受控子集上的诊断流程，不证明原始DNS极低SNR可恢复 |
+| **P8-V（新候选，仅概念设计）** | **反事实声学证据引导：候选存在/缺失/近音替代的有符号证据比较；支持补真音、否决伪音、允许 unknown** | 先 P8-V0 先例/混杂审计；独立有来源身份数据和预算具备后才考虑 V1 冻结后端的离线候选验证，再视收益决定 V2 OUVE 匹配整合；本轮 0 实验/训练 | 必须同时优于简单残差/能量、普通 Noisy 约束和过抑制门控；真实弱音恢复与错误新增受控，校准可靠，不能靠全拒绝降低幻觉；详见 §3.8 P8-V |
+| **P8-M（已完成，归档；不再待执行）** | **已完成 OOD 反事实 smoke（seed 2026/2027/2028）；未通过可恢复性门槛** | file-id 5243 的 `Y_pre` 局部抹除/50% 衰减，含低活动负对照；固定 noisy、80k EMA、PC `N=30`、多 seed | 目标抹除后 SI-SDR/STOI 反复下降，PESQ 不稳定；没有证据表明后端从 noisy 恢复正确音节。仅保留为锚点依赖诊断，不启动 P8-R/Harm/content loss；详细结果见 `experiments/p8_y_pre_mask_counterfactual_20261020/` |
+| **P8-N（条件）** | **独立 noisy 中心扩散的互补性，尚未运行** | 优先复用有效 SGMSE+ 类基线与现有 StoRM 比较逐音素正确/错误交叉矩阵，匹配数据与算力；第二训练模式如需开展须先单独批准 | 只有互补错误且真实词句/音素收益超过幻觉代价，才设计受约束双模式协作；绝不只改 StoRM 漂移中心或未经校准拼接 Score |
+| **P8-R（更后置，条件）** | **对过抑制区定向使用 noisy，尚未运行** | 先用可观测 noisy/`Y_pre` 特征定位真实伪阴性，与局部 SNR/能量/残差简单基线比较；再设计最小匹配训练 | 定位器增量解释能力、独立真实音节恢复与音质风险三门都过才扩大；不以 clean-aware SNR 或人工标签作为推理期 gate |
+| **P8-2（条件）** | **内容保真后端最小干预，不自动开训** | 固定前端/后端真实 trainable set、匹配步数/EMA/seed/NFE；比较 no-loss、简单内容/谱基线与有机制差异的候选；完整 PC + 人类转写评价 | 必须独立改善真实内容可懂度且不以质量/保真大幅下降换取，胜过已有简单/PASE 类先例，才扩大规模 |
+| **P9（第二，资源未就绪）** | **真实 RIR 混响合成数据与重新训练** | 先查磁盘和来源、获取许可 RIR；复用已有 train clean/noise 在线合成多房间混响 train/dev/holdout；核训练目标 dry/wet、房间划分，再与无混响训练做相同预算再训练对照 | 当前小型官方 `with_reverb` 是冻结测试集，4 条临时 FIR 非真实训练集；现有 80k 配置无混响训练记录。RIR、独立评估与容量条件未到位前不下载、不训练、不宣称混响算法结论；见 §3.9 |
+| **P7-0** | **历史 P7 主线：采样调用链/基线审计（已完成）** | 只读确认 80k ckpt、Router-off 仍保留前端、OUVE/PC/ODE、EMA、Score 参数化、NFE 与随机源；单文件复现 N=30 Router-off | PC 调用链和单文件输出已复现；ODE `z`/末端 denoise NFE 限制已记录；32 条开发 split 不作最终测试 |
+| **P7-A** | **数值求解与随机性分离（首个 smoke 部分完成；单条 1e-6 补测已完成）** | 同一条 30 秒语音与保存的 `x_T`：RK45 `1e-3`/`1e-5`/`1e-6` 分别需要 `nfev=26/92/464`，积分耗时 `15.74/45.55/174.03 s`；`1e-7` 活跃积分约 14.5 分钟仍未返回，按成本门槛中断；其余三条未运行。补测复用相同 80k checkpoint 和现存 `x_T`，文件见 `experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/` | `1e-3`→`1e-5` 的 waveform / complex-STFT relative L2 为 `0.075646/0.075645`；`1e-5`→`1e-6` 为 `0.0039853/0.0039857`，仍高于 `1e-3`。实用阶梯显示更严格容差的成本显著上升，且单条配对结果不构成收敛或准确性结论。停止扩展其余 11 次积分；不能将 ODE/PC 音频差称为同轨迹数值误差 |
+| **P7-B** | **DSM / Score 分层诊断（条件启动；noise-power smoke 已完成并退出）** | 已完成 4-speaker、5 个噪声缩放系数的低成本敏感性筛查；未进入 DSM 分层或训练 | 输出随噪声平滑变化，曲率在 frontend-only 与 PC 后端相近，未出现可归因于扩散 predictor 的稳定 kink；不启动 mismatch-aware controller。 |
+| **P7-C** | **前端恢复状态与后端剩余修复任务归因（已完成并归档）** | 已完成 32 条既有开发集的配对前端导出、PESQ/STOI/SI-SDR/DNSMOS、幅相/子带误差分析及两个预先固定的幅相交叉波形对照；另完成 noisy/`Y_pre` 简单可观测特征对局部 NRMSE 变化的 speaker-grouped OOF 探测；不做融合系数搜索、不训练 PostNet/风险门控器 | 该 split 已用于筛选，不是盲测。`|G|∠P` 相对 Router-off 的 PESQ/STOI/SI-SDR 分别为 `+0.0331/+0.0017/+0.6586 dB`，但 DNSMOS-OVRL 为 `−0.0732`；`|P|∠G` 的 PESQ/STOI/OVRL 均下降。12 个简单可观测特征上的 Ridge OOF R²/MAE 为 `−0.0258/0.1050`，差于均值基线 `−0.0056/0.0975`。当前没有跨指标稳定可部署互补，也没有可观测局部风险预测证据；暂停 P7-C 门控/融合训练，不外推为所有可能特征均无效 |
+| P1 | **B 实际可训练参数审计（已完成）** | 五组历史实验确认 Router-only；新增 `--rrsd_freeze_router` 后 backend-only 一步 smoke | 已核查约 42.6K Router-only；backend-only smoke 约 27.8M NCSN++ 可训练。见 `experiments/speaker_parameter_audit_20261017/`、`experiments/speaker_backend_only_smoke_20261017/`，无须无故重做 |
+| P2 | **Speaker headroom（64-speaker CV 复核完成，暂停）** | 固定 64 位、每位 2 句；同一 80k EMA checkpoint、PC `N=30`、seed 2026，CAM++ 按 speaker cluster bootstrap | clean 相对 Router 的 same deficit `0.2268`、AUC deficit `0.0916`、EER excess `0.1719`，但 Router 相对 off 的 same `+0.00235`（CI 跨 0）、AUC `−0.00529`（CI 跨 0）、EER `+0.01389`（CI 跨 0）。质量上 Router 相对 off 的 OVRL `−0.0298`。该 CV split 不是最终测试，不能据此证明 Speaker-loss 有效；详见 `experiments/speaker_headroom_replication_64_20261017/` |
+| P2b | **条件候选：Backend-only Speaker matched pilot（停止）** | 只有出现 Router 相对 off 的可重复身份损伤且质量代价可接受，才考虑 backend-only UniSpeech Speaker-loss；当前门槛未满足 | 500-step no-loss control 相对 off 的同人异句 cosine/AUC/EER 分别 `+0.00262/+0.00852/−0.01736`，三项 CI 均跨 0；paired-clean cosine `+0.00146` 也跨 0。PESQ/STOI 相对 off 分别 `−0.00628/−0.000474` 且 CI 排除零，SI-SDR 无变化。control 没有显示身份收益，反而出现质量退化，因此不启动 speaker-loss arm；clean gap 不能替代 Router-vs-off 增益证据 |
+| P3a | **感知抽象诊断（首轮已完成，当前退出）** | 4 条 smoke + 32 条现有探索集；wave/complex、log-Mel、ERB、MR-STFT、包络/调制的配对排序；详见 `experiments/perceptual_representation_probe_20261017/` | DNSMOS 与重建指标排序出现冲突，无独立人类偏好标签；不训练 encoder/loss，避免重复使用该探索集 |
+| **P3b** | **单听者盲听探索已完成，当前退出** | 8 条开发语音、24 个匿名 A/B trial；Router vs t-cut、Router vs selective、t-cut vs selective 各 8 项 | 单听者 24/24 选择 tie；未见可重复偏好或特定失真。停止当前 P3b 扩展与其驱动的 P5a/P5b；若未来有多听者和新锁定集则重新立项，当前结果不作等价或总体偏好推断 |
+| **P3c** | **旧内容 headroom ASR smoke 已完成并归档；不是 P8 的反证** | P7 开发 manifest 中按 SNR 固定选取 8 条；Whisper `tiny.en` CUDA；clean/noisy/off/Router/`t_cut` 伪转写比较，**没有 Frontend-only** | 归一化词编辑距离：noisy `0.5932`、off `0.4323`、Router `0.4375`、`t_cut` `0.4439`；Router−off `+0.00516`，8 条 paired bootstrap CI 跨零。仅伪 WER、非真实文本、非盲测；该结果不支持旧 phonological anchor，却不能回答 `Y_pre` 是否比 off 可懂，故转入 P8 新问题验证 |
+| **P6a** | **官方最终评测已完成并冻结** | 锁定 `test_set/synthetic` 的 `no_reverb`/`with_reverb` 各 150 条；同一 80k EMA checkpoint、PC `N=30`、seed 2026，对 off/Router/`t_cut=0.05` 完成三臂全量推理与逐句指标 | 900 条输出全部成功。Router 相对 off 的 pooled PESQ `+0.005834`（CI 跨零）、STOI `−0.000813`、SI-SDR `+0.241412 dB`、DNSMOS-OVRL `−0.014472`；no-reverb 有重建收益，with-reverb 出现感知退化。结果已冻结，不再用该测试集调阈值；详见 `experiments/final_eval_full_20261018/` |
+| P4a | **Anchor V2 真实 Oracle（已完成，归档）** | 重复说话人诊断 split 上 32 条 N=30；与 Router/`t_cut=0.05` 配对，记录全部主要指标 | SI-SDR `+0.448234 dB` 但 OVRL `−0.070951` 且 CI 全负；非独立测试集；停止 Anchor controller，不影响 backend-only P5 |
+| P4b | **Multi-trajectory stochastic headroom（已完成）** | 开发/held-out 共 32 条；每条 4 seeds、N=30；clean Oracle 只作诊断 | 开发 clean Oracle OVRL `+0.049741`，held-out 选择器也已完成；仅作 headroom/selector 诊断，非部署结论 |
+| P4c | **No-reference trajectory selector（已完成，暂归档）** | held-out 16 条固定四轨迹选择；离线补充六种两轨迹 seed-pair 分析，不重新推理 | 四轨迹 OVRL `+0.064555`，但 6/16 条 SI-SDR 下降；两轨迹 OVRL CI 为正但仍有 2–8/16 条 SI-SDR 下降，实际 NFE 待核查；两者均不解决逐条风险，当前归档 |
+| P4d | **Trajectory selector risk guard（已完成，负结果）** | dev 定阈值；held-out 测 baseline-relative log-STFT / consistency fallback | 保守值只留 OVRL `+0.0033`；较宽阈值仍有 SI-SDR 负例；不训练 learned verifier，归档当前分支 |
+| **P5a** | **暂停：NCSN++ 感知—保真训练** | 当前 P3a 没有独立偏好标签，P3b 单听者 24/24 tie；没有可信的特定失真目标 | 不基于当前证据启动。只有多位独立听者在新锁定语音集复现一致偏好/失真后，才重开 |
+| **P5b** | **暂停：后端条件感知对抗学习（非 Router 训练）** | 尚无独立支持的可听失真类型或可信判别标签；P3b 全 tie | 不启动判别器或 GAN 训练；仅在新锁定集的独立听感/失真证据出现后重新评估 |
+| **TR-0** | **已停止：backend adapter trust-region screen（fresh proxy 负结果）** | 已完成生产 no-op、梯度 smoke、两臂两 seed 200-step screen 和 fresh-CV 单步 proxy；adapter 只训练后端 `all_modules.33`，前端/Router/主干冻结 | 四个 adapter 的 fresh clean-reference `x0` MSE 均高于 baseline；trust-region 不优于 score-only，seed 20261019 的两个 arm CI 均为正。按停止条件不做 full PC/DNSMOS，不继续 adapter 训练。 |
+| P6 | **论文级机制选择** | 复核与 CDPAM/NOMAD、MetricGAN+/CMGAN、扩散感知训练/对抗训练文献的实质差异；选最多 1–2 个机制 | 创新性、独立质量增益、可复现性与成本任一无法满足则不扩训 |
+
+**近期禁止无依据重做**：WavLM Harm Head、K-step、固定 scale 扫描、Router-only Speaker InfoNCE/Prototype 长训、反复使用已筛选的 150 条结果调阈值。P3a 的表示距离 probe 已完成且不再重跑；P3b 首轮单听者结果为 24/24 tie，不能作为 perceptual equivalence 证据，但不支持按当前路由差异启动感知 Loss/GAN。未来只有独立听者在新锁定样本上给出一致偏好或具体可重复失真，才重新评估该分支。开始任何其他 P5 训练前仍需复查存储及 checkpoint 安全。
+
+**最终评测隔离审计（2026-10-18）**：已只读锁定官方 DNS Ins20 `test_set/synthetic/no_reverb` 与 `with_reverb`，各 150 条、共 300 条配对 noisy/clean。与现有 5 个实验 manifest 比较时，规范化路径重叠为 0；此前反复筛选的 150 条来自另一目录树 `synthetic_snr-20_-5_testset`，不能作为同一官方测试集。全部 300 对文件均存在、16 kHz 且样本数配对，未生成增强音频或指标。锁定产物见 `experiments/final_eval_manifest_20261018/`，manifest SHA256 为 `4c91782fb1459bd14f2b8581b1f4b537ca98bafd907ecc961226883213bcfa2b`。该 manifest 在方法、阈值、checkpoint、采样器和 evaluator 冻结前不得用于方案选择。
+
+## 5. 论文级评估与统计约束
+
+**P8/P9 新主线专用约束**：
+
+- **P8 新 H8-E 的三个证据层次必须拆开**：`noisy` 中包含被混合的真实波形成分、该成分在局部能够辨识其真实音素、当前生成模型确实从 noisy 而非上下文猜测恢复了音素，三者不等价。抑制区平均局部 SNR 较低是目前最强的竞争证据；不可由一段能量回填或 WavLM cosine 好转断言内容恢复。正常 `Y_pre` 片段的人为遮蔽仅是反事实正控制，并非自然吞音的统计分布；遮蔽后比原模式更好也需排除 OOD、爆音、随机采样和上下文补全。
+- **P8 双模式互补测试必须数学与训练条件一致**：SGMSE+ 型 noisy 中心过程若有独立参数、扰动分布及采样器，应作为单独匹配预算 baseline；StoRM 的 `[noisy,Y_pre]` Score 与 `Y_pre` 中心 OUVE 不能在推理时简单替换锚点且沿用原模型便称为可比新算法。任何模型协作都先看同一位置的人工音素正确/错误互补与幻觉率，再看 PESQ/OVRL，而不是先融合同一 time-frequency 单元的输出。
+- **P8 首要终点是人类是否听懂了正确词句**：使用有原始文本的独立无混响低 SNR 音频与盲转写；有可靠听觉内容错误但 PESQ/STOI/DNSMOS 仍提高时，应明确标为“客观质量改善但内容风险存在”，不能混成单一综合分数。若只凭某人说“不清楚”，仍只是线索，不是确认样本比例。
+- 盲转写与 A/B 音质偏好不同，P3b 的 24/24 tie 不能替代 P8 的真实词句识别任务。人工文本来源、clean 核实方式、每位听者转写、具体错误位置、听者分歧、盲法/随机化以及 ASR 版本必须保存；公开听感案例需遵守语料版权。
+- `Y_pre` 对 Router-off 是完整前后端的**流水线结果比较**，足以观察是否“新增内容损伤”，但不足以单独证明是哪一个 Score 梯度、OUVE 方差或采样步引起。Router-off 与 Router 的比较再隔离 guidance 效应，后续机制归因需要专门的受控干预。
+- P9 混响训练前先固定参考目标（dry/dereverberation 或 wet/denoising）、直达声/尾音对齐、RIR/房间分组与 train/dev/test 来源。不得把 DNS 官方 `with_reverb` 测试 WAV 用于生成训练标签；对于现有非混响权重，必须通过混响增强训练与匹配预算的无混响训练对照识别数据覆盖贡献。
+
+**新增 P7 特别约束**：
+
+- DNSMOS 用于选择四轨迹最高候选后再用同一 DNSMOS 评价属于自选自评，不能用其正增量证明人耳偏好；跨 seed 方差不等于随机数值离散误差。历史 32 条的后半「held-out」只是对某次阈值选择相对留出的半集，且后续又被用于多个 seed-pair/风险 guard 讨论，**不等于全研究流程未接触的最终 test**。
+- 同一 N/seed/`NFE` 不必代表同样的布朗噪声路径；PC 校正步和 ODE 求解器的实际 Score 前向次数必须 instrument，而非从步数臆测。
+- DSM 单样本 kernel target 与边缘条件 Score 不同；报告不同 `t` 的风险需审查 `σ_t` 和损失加权。任何声称“定位 Score 偏差”均需注明当前证据只能验证去噪监督风险。
+- 禁止在没有独立机理和文献差异时，把「时间变化噪声、异方差、正反向一致性、坐标残差」包装成新 SDE。
+- **P7-C 新增**：相位差在低能量单元中可能没有意义；复谱相消未必导致可听梳状滤波；分频固定选择、幅相交叉、clean-aware Oracle 均须输出 iSTFT 后真实波形并检查一致性。不能根据 clean 或质量评估器选择出最优候选后，再使用同一目标声称独立感知提升；严格标注分析用 Oracle 与可部署条件的界限。
+
+- 每个实验明确当前优化的主终点（例如 DNSMOS-OVRL）及不可接受的重建代价；同时报告 PESQ、STOI、SI-SDR、SIG/BAK/P808、身份与内容指标。指标的“统计显著”与“实际有意义”必须分开判断。
+- 相同 utterance、checkpoint、NFE、PC corrector、EMA、seed、采样率和 evaluator 版本做 paired 统计；保存 per-file CSV、bootstrap 95% CI、失败案例及硬件/显存/训练时长。
+- 不将不同损失/训练步数的 arm 混入纯路由上限；绝不把各单指标 Oracle 的最大值拼成同一个系统的成绩。
+- DNSMOS 是模型估计的感知指标；若声称人耳可察觉提升，需要听感评测或更充分的感知证据。感知表征的**教师质量标签、训练反馈、最终评价**须尽可能独立；若不能独立要标明 metric gaming 风险。
+- **对抗后端的独立消融**：固定前端/Router、明确 NCSN++ 实际更新张量，报告 D 与 G 的训练稳定性、是否发生内容/音色幻觉、推理是否额外增加 NFE；在无新 D 的 backend-only、简单感知损失、通用 D 之上证明独立贡献，不把 Loss 权重搜索称作创新。
+- **新感知实验要比较「清晰/噪声/伪影」与「身份/语义/瞬态」的独立维度**；不能仅凭 log-Mel 低维或全局质量分数宣称保留了所有关键信息。blind listening 记录样本数、配对方式、听音设备/规程与一致性。
+- 若某 split 已被反复选择阈值、比较新方法，则标记为开发/探索 split，**不得当作未碰过的论文最终 blind test**。对未知 speaker、未见噪声及 SNR 的泛化需分层验证。
+- 训练期可使用合法 train clean 构造老师标签和梯度；真实部署绝不能读 clean 或未来未知状态。复核 iSTFT、归一化、复数谱、时长与 SSL 输入采样率的一致性。
+
+## 6. 研究记录与协作协议
+
+- 本文件只记录**当前最高可信的研究判断和行动队列**。新实验后修改相应状态与决策，不再无限追加几十段时间戳日志。
+- 单次详细结果保存在 `experiments/<experiment>/experiment_report.md`（以现有仓库真实目录为准）；历史研究原文单独存入 `RESEARCH_HISTORY_2026-10-17.md`，保留所有路径、负结果与旧假设供追溯。
+- 每轮输出：**已查证的代码/原始记录 → 新发现与不确定性 → 1–3 个最值得做的验证 → 成本/成功/退出条件 → 记录更新位置**。
+- 大训练、源码大改和磁盘高风险操作先写计划、备份与回退方案，依照最新 `/goal` 的授权范围执行；不可逆删除、覆盖有效 checkpoint 或破坏原数据不得擅自进行。
+
+## 7. 核心原始记录索引（仅作路径指引，必须实际确认文件存在）
+
+- `experiments/rrsd_harm_oracle_n30_4_paired/`
+- `experiments/rrsd_tcut005_full_20261017/`
+- `experiments/rrsd_tcut005_alt15_full_20261017/`
+- `experiments/rrsd_utterance_oracle_150/`
+- `experiments/rrsd_observable_selector_probe_32/`
+- `experiments/rrsd_control1000_full_matched_20261017/`
+- `experiments/rrsd_cv_repeat32/`
+- `experiments/rrsd_speaker_svproto_masked_sw05_1000/`
+- `experiments/rrsd_projection_gate_1000/`
+- `experiments/rrsd_future_gate_1000/`
+- `experiments/anchor_v2_synthetic_smoke_20261017/`
+- `experiments/anchor_v2_real_oracle_20261017/`（32 条真实 Oracle 已完成，感知退出）
+- `experiments/speaker_parameter_audit_20261017/`
+- `experiments/speaker_backend_only_smoke_20261017/`
+- `experiments/speaker_headroom_20261017/`
+- `experiments/perceptual_representation_probe_20261017/`（P3a 已完成）
+- `experiments/p3b_literature_code_audit_20261017/`（见正文；路径以实际仓库为准）
+- `experiments/multitrajectory_oracle_20261017/`（16 条开发轨迹诊断）
+- `experiments/multitrajectory_pair_subset_20261017/`（历史两轨迹离线分析）
+- `experiments/storm_error_attribution_p7_20261017/`（P7-0 与 P7-C 固定幅相交叉诊断已完成并归档；DNSMOS GPU smoke 已完成）
+- `experiments/storm_noise_power_mismatch_probe_20261020/`（P7-B 噪声功率敏感性 smoke；平滑曲率，未复现 predictor kink，已退出）
+- `experiments/p7c_observable_repair_probe_20261017/`（noisy/`Y_pre` 简单特征预测局部波形 NRMSE 变化的探索性负结果；不支持训练当前风险门控器）
+- `experiments/p3b_blind_listening_pilot_20261017/`（单听者 8 条、24 次 A/B 均选 tie；已完成首轮，非感知等价证据）
+
+> **最新决策（2026-10-20，P7 核心科学问题进一步收敛；P7-0/P7-B/P7-C 完成，P7-A 保留为有界数值负结果）**：保留旧 Router/t-cut、Speaker、Anchor V2、感知表征、GAN、多轨迹全部真实记录，但不再因探索集上的微小指标或 GAN/Adapter 的可用性扩训。P3a/P3b 已首轮退出；P5a/P5b 当前暂停；**P2b backend-only Speaker 500-step pilot 也改为暂停候选，不再作为默认下一轮执行项**。**核心主命题是后端根据前端已经可靠恢复与仍需修复的部分，完成条件化剩余生成任务**；这只是待证伪的科研问题，不是已证实的前端可靠性标签、也不预设新的 SDE。固定 80k checkpoint 的 **P7-0 采样调用链与 Router-off 单文件重放已完成**：32 条开发 manifest 均为 16 kHz 且样本长度配对，PC 配置 `N=30/corrector=none` 的 Score forward 与 NFE 均为 30，单文件输出逐采样一致；Router-off 仍保留 StoRM 前端，32 条 split 已被用于路由筛选，不能作为最终盲测。ODE sampler 的共享 `x_T` 参数和 denoise NFE 有实现限制，P7-A 部分实测进一步发现 30 秒输入在 RK45 `1e-3`/`1e-5`/`1e-6` 下需要 26/92/464 次 Score forward（15.74/45.55/174.03 s）；同一条上 `1e-3`→`1e-5` 与 `1e-5`→`1e-6` 的 waveform / complex-STFT relative L2 分别为约 `7.56%` 与 `0.399%`。`1e-7` 单次积分运行约 14.5 分钟未返回，已中断；补测后仍没有达到 `1e-3` 的相邻容差差异，故尚无收敛结论。实用容差补测与原实验记录均在 `experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/`；不运行其余积分。**P7-C 的 32 条固定幅相交叉也已完成**：`|G|∠P` 相对 Router-off 提高 PESQ/STOI/SI-SDR，但 DNSMOS-OVRL 下降；`|P|∠G` 的 PESQ/STOI/OVRL 均下降。后续 955 个 1 s 开发片段的 noisy/`Y_pre` 线性风险 probe 中，12 个预设特征的 Ridge 在 speaker-grouped OOF 上没有超过均值基线（MAE `0.1050` 对 `0.0975`），所以停止当前可观测门控训练；此结论仅针对该重复筛选 split、简单特征和局部波形 NRMSE proxy，不排除其他独立机制。P7-C 的幅相结果只能确认指标间互补，不能推出可部署门控、因果机制或综合质量增益，当前停止融合训练。**P7-B 噪声功率 smoke 已完成**：4 个 fresh-CV speaker、5 个 `M` 上，输出随输入 SNR 平滑变化，frontend-only 与 PC 后端曲率相近，未出现可归因于扩散 predictor 的稳定 kink；因此不启动 mismatch-aware controller 或 Score 分层训练。前述 DNSMOS 全量结果在 CPU 上计算；评估脚本现默认 GPU-auto，并完成 1 条 30 s smoke（DNSMOS 组件热启动约 16.2×，ONNX 节点 profile 确认运行在 CUDA，分数跨设备偏差不超过 `1.31e-4`），没有重跑全量，旧结果未覆盖。P7-A 已完成单条 1e-6 实际容差补测；不自动启动其余积分，若后续判断需要再先明确规模与成本界限。TPO/IPO、FiLM Speaker、Rectified Flow/SB 仅作暂缓候选，不并行开训。不同随机种子产生不同 DNSMOS 结果，不足以证明数值采样器有错；DSM 残差不是真实条件 Score 的逐点误差；前端/生成误差相关也不构成因果归因。所有新推理前复核 `/data` 磁盘空间与 checkpoint 安全。
+
+> **补充决策（2026-10-18）**：已完成 500-step backend-only no-loss control 的 64-speaker/128-utterance 只读评估。相对原始 off，control 的 CAM++ paired-clean cosine 为 `+0.00146`，speaker-cluster CI `[-0.00562,+0.00847]`；PESQ/STOI 分别 `−0.00628/−0.000474` 且 CI 排除零，SI-SDR 差异约为零。control 没有提供身份改善证据，且普通 backend-only 微调已出现小幅感知质量退化；因此正式停止当前 P2b Speaker-loss、Harm Head 和 Router-only Speaker 扩展，不启动匹配 speaker arm。DNSMOS 只做了单条 smoke，因 CUDA provider 实际执行不确定而未做三臂全量。结果与完整产物见 `experiments/speaker_backend_only_matched_500_20261018/`。
+
+> **本次讨论的最新执行决定（覆盖上方历史状态；本次仅修改研究计划，不新增实验）**：已读取新的研究缺口分析。现有 8 条配对音频/181 个窗口仍只说明“前端抑制、后端增能但不一定恢复音素”的局部现象；抑制区局部 SNR 中位 `−20.41 dB`、WavLM/CTC 高层代理不稳定，不能武断解释为后端只信 `Y_pre`。新增四项证据补充：先做训练/CV 低 SNR 与弱辅音暴露的只读覆盖审计；在 P8-1 盲转写中把内容判断先于自然度评分并分开报告；在 P8-Q-A 对已核实音素事件增加 10/20 ms 时频线索诊断；以 P8-Q-D 固定噪声的自然最小音素对和双重反事实检验输入/输出是否跟随真实音素变化。Q-D 是辨识力正控制，不等于自然极低 SNR 的恢复证据；缺少合格自然最小对时不得凭空合成并宣称结论。P8-M 已完成且为负，仅保留为历史反事实诊断。只有 Q-C/Q-D 在独立样本上同时证明原始 noisy 可辨、`Y_pre` 丢失、合法增强降低真实音素删除率且错误新增受控，才考察 **P8-N noisy 中心扩散互补性**，再评估 **P8-R noisy 定向证据提取和最小重训**。屏蔽 `Y_pre` 并直接以 noisy 为中心运行旧 StoRM 在数学和训练分布上不等价，不能拿输出当有效比较。当前不下载 RIR、不启动重训/大规模推理、不在冻结 DNS 测试集调参。§3.9 的 **P9 混响仍为第二阶段**：训练 RIR 缺失，现有 80k 权重无明确混响训练记录，未来须获取合规 RIR、重新合成大规模训练样本并匹配预算重新训练。所有新科学主张待实际仓库、音频与独立实验核验。
+
+### P8-0 / P8-Q-D 实际审计更新（2026-10-18）
+
+P8-0 的只读训练/CV 覆盖审计已经完成，记录在 `coding/sgmse/experiments/p8_training_coverage_audit_20261020/`。审计读取实际 `tr_synthetic`/`cv_synthetic` 的 `wav.scp`、`spk1.scp`、`noise1.scp`、音频头和 `joint_scp` 调用链，没有读取冻结测试清单，没有训练、推理或修改原始数据。关键结果：train/CV 分别 10,800/1,200 条、90/10 小时，均为 16 kHz、30 秒；文件名名义 SNR 覆盖 −20 到 −6 dB，四个重点区间均有样本，但实际功率 SNR 和弱辅音级暴露仍为 unknown。`noise1.scp` 是预合成实例清单，当前 `WavePairsScp.__getitem__` 不做在线重混或 SNR 重采样。train/CV 的 file-id、utterance 和 noise basename 不重叠，但 speaker `10658` 跨 split（train 3 条、CV 7 条），所以 CV 不是严格 speaker-disjoint。文本审计另见 `experiments/p8_text_source_audit_20261020/`：本地 Kaldi `text` 字段为 `dummy`，没有可直接核实的逐句文本或音素边界。
+
+P8-Q-D 的自然最小音素对可行性审计也已完成。当前 DNS 数据只有按 reader/book/chapter/segment 组织的 clean/noisy 录音和 speaker 元数据，没有可信逐句文本、目标音素时间戳或独立音素标签；同一 reader/chapter 的相邻片段只能作为人工筛查池，不能据编号推断只改变一个辅音。因此目前**不能冻结 6–10 组自然最小音素对，也不能用自动转写、TTS 或伪造配对替代**。后续若继续 Q-D，先由人工从 clean 独立核对原句、目标音素和邻接语境，再由第二位听者复核；若小批筛查仍找不到合格配对，停止自然对方案，另行考虑受控录音。Q-D 材料不足不构成代码或权限阻塞，但在真实音素身份可核实前，不启动 Q-D 推理、P8-N、P8-R 或内容损失训练。
+
+**材料边界澄清（2026-10-18）**：本机的 `clean_fileid_*.wav` 仅是 DNS 合成任务的 clean 配对目标，不能视为已保留的 DNS 原始 clean 语料；对应原始语料文件、逐句转写和音素标注不在本机。因而 P8-Q-D 的自然最小对不能通过本地 clean 文件自动恢复或确认，现阶段应标记为“材料不可用”，不再安排本地筛选或基于文件编号的候选构造。若未来要继续，必须由用户提供有合法来源的原始语料/文本，或另行设计并记录受控录音；在此之前只保留 P8-1 的已导出音频内容审计和不依赖原始文本的声学机制分析。
+
+**clean-derived 音素伪标签补充（2026-10-18）**：虽然缺少原始 transcript，仍可把 clean 配对 WAV 输入现有 `facebook/wav2vec2-lv-60-espeak-cv-ft`，用 clean 的 CTC 序列和帧级后验生成探索性伪标签，再将同一固定序列对齐到 noisy/`Y_pre`/Router-off/Router。该方法只用于定位候选事件和比较“对同一 clean-derived 目标的支持度”，不能称为人工音素真值、自然最小对、WER/CER 或正确音素恢复。必须保存 clean 序列、每 token 后验/边界、不可对齐比例，并对高影响事件做人工抽查；低置信或边界不稳定的事件标记 unknown，不进入训练监督或方法结论。现有 4 组 CTC 探针已明确将 consonant posterior、同帧 agreement 和 clean-target posterior 定义为代理，后续可在相同 4 组上做固定目标强制对齐，避免各输出独立解码造成“模型猜测差异”混入结果。
+
+**P8-Q-A 固定 clean-target CTC 强制对齐（2026-10-20，完成；伪标签声学代理）**：在修正时间轴的 4 组×5 条、每条 2 秒片段上，以 clean 中平均 run posterior `>=0.50` 的非 blank CTC 序列作为组内固定伪目标，再对 noisy/`Y_pre`/Router-off/Router 求 CTC Viterbi 路径。20/20 条件成功找到路径；固定目标 posterior 均值为 clean `0.8936`、noisy `0.0267`、`Y_pre` `0.2220`、off `0.2662`、Router `0.2750`，Router 相对 off 仅 `+0.0087`。按辅音 token 子集（56 个 token 实例）均值为 clean `0.9377`、noisy `0.0494`、`Y_pre` `0.2531`、off `0.2187`、Router `0.2225`；这表明后端通常增加了声学模型对某些 clean-derived 目标的支持，但同一 token 级结果同时包含边界移动、近音和生成伪影，不能称为真实音素正确率或内容恢复。file-id 5243 的 `/d/`、file-id 10720 的一个 `/d/` 位置出现 off/Router 的较高目标后验，但其他 `/k/`、`/d/` 位置并未一致恢复，不能作为 E1 反例；11999 的异常仍弱；现有 token top-1 未预定义随机决策基线，不能据此判断高于或低于机会水平。后续边界审计还发现，noisy token 中位绝对时间漂移 `120 ms`、90 分位 `652 ms`，仅 `38.2%` 在 `±40 ms` 内；`Y_pre`/off/Router 仅 `66.3%/57.3%/57.3%` 在该范围内。因此 posterior 只能解释为整段序列的探索性声学响应，不能作为同一时刻的局部音素证据，所有逐 token 的 E1/正确恢复解释降级为 unknown。完整记录见 `experiments/p8_q_a_ctc_forced_alignment_20261020/` 和 `experiments/p8_q_a_ctc_boundary_audit_20261020/`。该结果不启动 content loss、Harm Head、P8-N 或 P8-R。
+
+**P8-Q-A 10/20 ms 短时局部线索诊断（2026-10-20，完成；clean-aware 机制代理）**：对同一 181 个窗口做 10 ms/20 ms、10 ms hop 的帧级分析。55 个 `Y_pre` 抑制窗口的 clean-active 局部 SNR 中位数分别为 `−20.38/−20.05 dB`，其达到 `−10 dB` 的 active 帧比例为 `9.1%/8.7%`；126 个其他窗口分别为 `−6.96/−6.83 dB` 和 `57.5%/58.5%`。抑制组中含有至少一个 `−10 dB` glimpse 的窗口为 `24/55`（10 ms）和 `19/55`（20 ms），说明少量短时线索可能与较宽的前端抑制共存；但这些统计使用 clean 分解，未绑定真实音素身份，不能证明 `/k/`、`/d/` 等线索可区分，也不能作为推理期 gate。完整结果见 `experiments/p8_q_a_shorttime_probe_20261020/`；不据此启动内容损失、P8-N 或 P8-R。
+
+### P8-Q 固定时间复核与研究重评（实际执行：2026-10-18）
+
+历史目录名中的 `20261020` 保留为产物标识，不当作本次执行日期。最初固定时间脚本经检查发现：浮点秒数 `floor/ceil` 转回帧号让 10/89 个目标多取一帧，影响 50/445 行、含两个 `/k/`；该版本保留原始文件并标为存在索引缺陷。`experiments/p8_q_a_ctc_fixed_time_v2_20261018/` 改用 clean 的整数帧区间及整数 ±10 帧邻域，复核同一 4×5 个已有片段；CUDA 前向约 1.40 秒，445 行、89 个目标，实际窗口长度错误为 0，clean posterior 与来源误差不超过 `4.77e-7`。缓存逐帧目标概率，后续分析不再需要重跑模型；没有训练或修改原始数据/checkpoint。
+
+按每组先平均 token、再四组等权的固定时间目标后验：
+
+| 目标子集 | Noisy | Y_pre | Router-off | Router |
+|---|---:|---:|---:|---:|
+| 全部 89 个伪目标 | 0.017640 | 0.116839 | 0.101753 | 0.108031 |
+| 56 个辅音伪目标 | 0.028557 | 0.141641 | 0.111785 | 0.122643 |
+| 7 个 k/d 伪目标 | 0.003813 | 0.003321 | 0.108883 | 0.109680 |
+
+这里 off−Y_pre 在全部/辅音目标分别为 `−0.015086/−0.029856`，与不约束时间的强制序列平均排序不同。k/d 的正增量主要来自 5243 的一个 d 目标（Y_pre/off/Router 为 `0.018755/0.869617/0.875637`）；其他三组 k/d 的 off−Y_pre 不为正，不能称为普遍弱辅音恢复。固定时间也不能直接解决 CTC spike 漂移：5243 的 k 在 Y_pre 的 clean 时间点约 `0.000294`，邻近 ±200 ms 最大却为 `0.985447`。所以低固定时间后验不等于删除，高邻域后验也不等于恢复同一个音素；没有真实身份标签、相似音竞争与独立样本，不能形成音素正确率或幻觉率。
+
+**Research Lead 重评与下一步**：连续多种同识别器代理没有稳定回答输入内容是否可恢复，停止在这四个反复分析的片段上继续换窗口、阈值或对齐法；不启动内容 loss、P8-N/P8-R 或冻结测试集调参。低 noisy 后验仅说明当前识别器支持弱，不能证明输入不可辨识或将 E2 认定为事实。保留 5243 d 等候选与负例。下一项可自主开展的是**小规模独立音素/词身份标注语料的来源、许可与容量审计**，用于诊断校准而非冒充 DNS 原始文本：优先真实录音和独立身份标注，确认可用之前不下载大语料或启动训练。原始 DNS 文本缺失只限制该数据上的真值结论，并不阻止小规模外部资源审计。伪标签可用于候选定位；本轮未验证其足以作为训练监督，不能据此一概断言伪标签监督永远不可用。
+
+**外部正控制资源候选（2026-10-18，已查作者页面；本段不是实验结果）**：[Consonant Challenge Corpus 作者发布记录](https://zenodo.org/records/3538223) 描述 24 位母语说话人、24 种辅音、9 种元音组合和两种重音位置的真实 VCV 录音，并单列 91 条人工分段资料；其余部分边界为自动分段，不能混称人工标注。这类受控同说话人/同元音/同重音、不同辅音录音可能支持 Q-D 的独立身份正控制，但仍需核实标签编码、许可和实际文件后才冻结配对，不能假定每对只存在辅音的波形差别。第一步仅获取元数据和小型说明/分段文件（上限 2 MB），不下载整套语料、不训练、不运行 StoRM。若后续可用，先在 clean 上检验音素识别器能否区分已知 VCV 身份，再比较相同噪声下的辨识率和前后端对身份变化的响应；VCV 与自然 DNS 句子有分布差异，结果只证明正控制或诊断流程，不能替代原始 DNS noisy 的可恢复性证据。备用 [L2-ARCTIC 官方页面](https://psi.engr.tamu.edu/l2-arctic-corpus/) 有人工纠正子集但完整访问需提交姓名、邮箱及单位；当前不代用户填表或发邮件。
+
+**外部资料现场核验完成（2026-10-18）**：`experiments/p8_q_external_corpus_audit_20261018/` 已保存作者官方 Zenodo JSON、README 和 91 条人工分段 MLF，总下载 `103,288 bytes`，三个请求均 HTTP 200、文档 MD5 校验通过。元数据明确标识 CC BY 4.0；录音为 25 kHz，使用时仅在派生目录重采样。MLF 的 k/g/d 分别为 3/3/4 条；尚未核出同说话人、同元音、同重音的 k/g 配对，不把这些计数冒充已拥有最小对。完整 train.zip 大小 `169,755,879 bytes`，本轮未下载任何音频。下一步先核 archive 成员与小样本可取性，再冻结身份标签独立于 wav2vec2 的 clean 校准集；若模型连 clean 的标称辅音都无法区分，则停止把它当作该材料的恢复裁判。该资源的存在解除“只能等待用户提供原始文本”的单一路径，尚未完成 Q-D 音频实验或确认 DNS 内容恢复。
+
+### 外部 VCV 小样本取回及 clean 校准完成（2026-10-18）
+
+`experiments/p8_q_vcv_clean_calibration_20261018/` 已用 HTTP Range 从 ZIP 取回冻结小样本，没有下载169.8MB完整归档。实际网络正文 `1,637,934 bytes`，28 条 raw WAV 共 `691,788 bytes`；CRC32、SHA256、采样率和配对条件检查通过。主样本为 f6/m2/f11/m4 四位说话人、每人 k/g 与 t/d 两对，共8对16条，均为 aCa、重音1；另有12条人工分段补充样本。标签/配对在识别器推理前冻结，未按模型结果筛选；所有 raw WAV 保持25kHz，校准时仅在内存重采样16kHz。
+
+使用现有冻结 wav2vec2，按固定元音和24个可能的中间辅音计算三token CTC 序列似然，另算 k/g 或 t/d 二选一。主样本按语料标称标签为24类 `16/16`、二选一 `16/16`，两个对比各 `8/8`，通过预设 `>=12/16、>=14/16、各对比>=6/8` 门。额外12条样本仅 `7/12` 与标称标签一致，必须保留；不据此断言识别器对所有口音/元音都可靠，也不能凭模型与标签不一致判断是发音偏离还是模型错误。该额外子集是描述性检查，不是正式独立确认集。
+
+完整进程8.99秒，脚本记录的加载/评分/写入总时长约3.53秒，CUDA纯前向时长未单独测量。保存logits离线重算28×24个CTC似然完全一致；原音频、manifest、protocol与脚本hash均未改变。实验目录约6.62MB，没有训练或StoRM推理。配置是准备阶段快照，已完成状态以顶层metrics及各阶段产物为准。
+
+**下一科学任务**：只在原来冻结的16条主样本上，先设计“相同噪声、真实辅音改变”与“辅音固定、噪声改变”的带噪辨识正控制，报告24类/二选一与错误身份、按说话人/对比分组；预先冻结噪声、SNR与seed，不从识别结果反选样本或改元音映射。尚未生成带噪VCV或运行增强，不把clean门通过当作极低SNR可辨性。结合5243 d人工正例，将问题从“后端从不补音”改成“何时补对，是否依赖输入的音素特异证据”。继续保留P8-M负结果；不因此开启内容损失或架构训练。

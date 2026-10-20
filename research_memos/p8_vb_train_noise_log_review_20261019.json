@@ -1,0 +1,59 @@
+{
+  "kind": "Root official training-log review plus separate README semantics supplement",
+  "utc": "2026-10-19T09:51:34.794469+00:00",
+  "Worker_original_metrics_sha256": "ca1ffd3055f8c98e6fd77e3d9c351d7e55c52a743a086324c4fcc5570a8849da",
+  "Worker_network_requests": 3,
+  "Worker_network_body_bytes": 136499,
+  "Worker_independent_validation_passed": true,
+  "Root_new_network_requests": 0,
+  "Root_separate_document_read": {
+    "entry": "log_readme.txt",
+    "bytes": 115,
+    "CRC32": "31dd03c1",
+    "sha256": "58d41e2a300445471342a1f236e0ed5f993cf0ab6c343228f17e354e20770319",
+    "raw_text": "The log files describe the noisy condition per wavfile for each of the datasets as follows:\n\nwavfile noise SNR(dB)\n",
+    "reader": "Root separate readonly document review after Worker fetch completed; not part of frozen Worker opened-payload count"
+  },
+  "Root_test_or_56_payloads_opened": 0,
+  "source_locks_verified": 6,
+  "selected_count": 12,
+  "nominal_SNR_counts": {
+    "0.0": 4,
+    "5.0": 2,
+    "10.0": 3,
+    "15.0": 3
+  },
+  "noise_labels": {
+    "cafeteria": 1,
+    "restaurant": 7,
+    "ssn": 1,
+    "station": 2,
+    "traffic": 1
+  },
+  "relation_component_sizes": [
+    10,
+    2
+  ],
+  "three_relation_disjoint_nonempty_splits_possible": false,
+  "still_unknown": [
+    "noise recordingID",
+    "segment offsets/channel/sourcehash",
+    "local16k and80ms actualSNR",
+    "noise-purity/true noise covariance"
+  ],
+  "raw_audit_null_semantics_fields_unchanged": true,
+  "supplement_sha256": "b589668e53a22d82a7656fb396924bdcc790fc01bd243d2318786cd657b53ea4",
+  "documents": {
+    "/data/coding/sgmse/research_memos/p8_vb_train_noise_provenance_interpretation_20261019.md": "64d7bdd525f22f0ffce52f8e3a3724565b038a22c1e3939aa722dc161225a590",
+    "/data/research_plan.md": "f434e90a64a3bec2cd13386c8d434537a9e91550a93471c1a9a2d4f87d45873d",
+    "/data/research/p8_noisy_identifiability.md": "040f6f3f69f2950442d661015bb70f871cc021c91b23cce3835a43bd2985be77",
+    "/data/research/evidence_summary.md": "9096aaf19649ebdb969e9f081b27e0d1f0cd7814c5dd639a1f81db283d2e7332"
+  },
+  "local_links_checked": 32,
+  "audio_reads": 0,
+  "models": 0,
+  "training": 0,
+  "source_or_ID_replacement": false,
+  "human_export_or_recruitment": false,
+  "goal_complete": false
+}

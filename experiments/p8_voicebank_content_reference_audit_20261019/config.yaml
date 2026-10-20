@@ -1,0 +1,28 @@
+{
+  "experiment_id": "p8_voicebank_content_reference_audit_20261019",
+  "status": "authorized_publisher_train_text_retrieval_and_mapping",
+  "dataset_root": "/data/datasets/vb/voicebank_demand",
+  "training": false,
+  "model_calls": false,
+  "network": true,
+  "waveform_decode": false,
+  "test_access": "SCP IDs/filenames/count only;no test audio headers/decode/transcript retrieval/content",
+  "train_access": "all train/valid-source WAV headers only",
+  "budget_seconds": 120,
+  "artifact_cap_bytes": 20000000,
+  "external_metadata_status": "Root verified official item and CC BY4.0 license; worker now verifies exact retrieval payloads",
+  "external_source_parent_reported": "https://datashare.ed.ac.uk/handle/10283/2791 -> item6ed35425-bf14-4d2b-93a1-0a4984952757; trainset_28spk_txt.zip6.19MB,testset_txt.zip429.96KB; not independently retrieved by this script",
+  "pretraining_exposure": "unknown for enhancement and ASR/SSL backbones; potential project-independent pilot is not strict pretraining holdout",
+  "speaker_selection": "none; no model-based split decisions",
+  "budget_seconds_local_inventory": 120,
+  "budget_seconds_network_stage": 180,
+  "download_cap_bytes": 9000000,
+  "allowed_downloads": [
+    "official item page",
+    "official license",
+    "official training text bitstream metadata JSON",
+    "official trainset_28spk_txt.zip only"
+  ],
+  "no_asr_labels": true,
+  "no_model_calls": true
+}

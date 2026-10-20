@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "environment": "/data/coding/sgmse/env/bin/python3.10",
+  "numpy_version": "2.2.6",
+  "pre_repair_numpy_float32_fails": true,
+  "post_repair_actual_recipe_source_guards": 4,
+  "post_repair_actual_normalized_row_guards": 8,
+  "guard_json_roundtrip": true,
+  "models_loaded": 0,
+  "forward_calls": 0,
+  "completed_driver_unchanged": true,
+  "driver_sha256": "b13d5cea556605f5a5734b92749713788749efb45185bb6ede84777a6ea3e106",
+  "note": "Requested expanded CPU smoke recorded after corrected worker run had already completed; no additional inference or live driver edits."
+}

@@ -1,0 +1,41 @@
+experiment_id: p8_10720_snr_control_20261018
+purpose: offline_paired_archived_noise_attenuation_positive_control
+hypothesis: Lower the paired archived noise while holding stored clean speech gain1 to test pipeline content preservation.
+interpretation_limit: This is an offline oracle control using clean reference; success does not establish original-low-SNR recoverability or deployable enhancement.
+fileid: 10720
+source_record: ../p8_10720_pairing_forensics_20261018/metrics.json
+checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+use_ema: true
+train_type: mode2
+sampler_type: pc
+predictor: reverse_diffusion
+N: 30
+corrector: none
+sampling_snr: 0.5
+base_seed: 2026
+effective_per_file_seed: 2997368683
+device: cuda:0
+sample_rate: 16000
+samples: 480000
+focus_samples: [220000, 252000]
+archived_noise_path: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_10720.wav
+archived_noise_sha256: d8d41901cdc778944175c452a8e55faa62fc36c4fa668143c21b20eeb43381f6
+control_formula: stored_clean + alpha * archived_paired_noise
+clean_gain: 1.0
+ratio_label: clean_to_scaled_archived_noise_snr_db
+amplitude_evidence: actual_noisy equals clean plus archived_noise within one PCM16 step; baseline retains actual noisy
+require_noise_additivity_max_pcm16_steps: 1.0
+historical_synthesis_script_linkage: unavailable
+controls:
+  noise_minus10dB: 0.31622776601683794
+  noise_minus20dB: 0.1
+baseline: reuse_verified_original_outputs_without_inference
+input_subtype: FLOAT
+frontend_output_subtype: PCM_16
+backend_output_subtype: PCM_16
+listening_clip_subtype: FLOAT
+listening_gain: 1.0
+listening_normalization: none
+max_output_bytes: 50000000
+excluded: [training, ASR, DNSMOS, other_quality_metrics]

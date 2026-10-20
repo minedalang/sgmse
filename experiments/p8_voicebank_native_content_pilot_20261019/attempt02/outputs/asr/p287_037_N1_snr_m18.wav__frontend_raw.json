@@ -1,0 +1,75 @@
+{
+  "request": {
+    "key": "p287_037_N1_snr_m18.wav__frontend",
+    "id": "p287_037",
+    "arm": "frontend",
+    "path": "outputs/frontend/p287_037_N1_snr_m18.wav",
+    "basename": "p287_037_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "f698abe0a4ce7a17e134ebbfd1314079b28c57a2629a9738dd147d5de8cd2970",
+      "samples": 60008,
+      "array_sha256": "d3bf1138ebec42092b6974c0975bf5160af3d2df04388d34d75364498c54eaed",
+      "peak": 0.0643310546875,
+      "rms": 0.004963436148210896
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_037",
+    "original_text": "But, after a dip in sales, growth was recorded.\n",
+    "raw_text_hex": "4275742c20616674657220612064697020696e2073616c65732c2067726f77746820776173207265636f726465642e0a",
+    "raw_text_sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+    "archive_entry": "trainset_28spk_txt/p287_037.txt"
+  },
+  "raw_result": {
+    "text": " We'll talk about the problem.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " We'll talk about the problem.",
+        "tokens": [
+          50363,
+          775,
+          1183,
+          1561,
+          546,
+          262,
+          1917,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.3990141868591308,
+        "compression_ratio": 0.7837837837837838,
+        "no_speech_prob": 0.802859365940094
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 31,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

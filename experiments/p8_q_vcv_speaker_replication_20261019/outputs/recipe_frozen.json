@@ -1,0 +1,2351 @@
+{
+  "rows": [
+    {
+      "basename": "f18aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 20505,
+      "consonant": "k",
+      "crc32": "6f507d64",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f18aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f18",
+        "speaker_number": 18,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f18_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f18aka1",
+      "sha256": "d5f08aec54e94870b6e2b9e83304d1ecaf9ca8f91b1dc6d9af09b312acd8ae1f",
+      "size": 24546,
+      "speaker": "f18",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18aka1.wav",
+      "resampled_samples": 7841,
+      "derived_gain": 0.4044021625739934,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f18aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 19479,
+      "consonant": "g",
+      "crc32": "141b67f5",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f18aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f18",
+        "speaker_number": 18,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f18_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f18aga1",
+      "sha256": "849e63a9dead2b69f7bee4de3dbac45db2fa3acbf9de14370804a09707e40fa8",
+      "size": 23046,
+      "speaker": "f18",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18aga1.wav",
+      "resampled_samples": 7361,
+      "derived_gain": 0.41724611423587854,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f18ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 20668,
+      "consonant": "t",
+      "crc32": "d54f733b",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f18ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f18",
+        "speaker_number": 18,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f18_td"
+      ],
+      "role": "primary",
+      "sample_id": "f18ata1",
+      "sha256": "550da1026f9d3f01626995cacf9d518613a7c0d14dfcd64a8d626062113671aa",
+      "size": 24546,
+      "speaker": "f18",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18ata1.wav",
+      "resampled_samples": 7841,
+      "derived_gain": 0.4144011849271698,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f18ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 18834,
+      "consonant": "d",
+      "crc32": "e403e916",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f18ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f18",
+        "speaker_number": 18,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f18_td"
+      ],
+      "role": "primary",
+      "sample_id": "f18ada1",
+      "sha256": "95991535bf57a1f334e8c7e79ad65026cd13b472cf659a9bd42135cc5144e2f4",
+      "size": 22546,
+      "speaker": "f18",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18ada1.wav",
+      "resampled_samples": 7201,
+      "derived_gain": 0.42148315606110387,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m5aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 21850,
+      "consonant": "k",
+      "crc32": "f83692f4",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m5aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m5",
+        "speaker_number": 5,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m5_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m5aka1",
+      "sha256": "aec80a0ba1fde570870fb0a330ff6c3a18a668ed0e9be003c89a425d0199c090",
+      "size": 27046,
+      "speaker": "m5",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5aka1.wav",
+      "resampled_samples": 8641,
+      "derived_gain": 0.3849129832239704,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m5aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 22792,
+      "consonant": "g",
+      "crc32": "801f4ce1",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m5aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m5",
+        "speaker_number": 5,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m5_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m5aga1",
+      "sha256": "a068ed22e1bcad5cfa9263eb6ed23d387147b8effd192b357dbab1a9ec528b5d",
+      "size": 27046,
+      "speaker": "m5",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5aga1.wav",
+      "resampled_samples": 8641,
+      "derived_gain": 0.38475785773943416,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m5ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 20138,
+      "consonant": "t",
+      "crc32": "58cbe42c",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m5ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m5",
+        "speaker_number": 5,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m5_td"
+      ],
+      "role": "primary",
+      "sample_id": "m5ata1",
+      "sha256": "97e8ff769ca5ccbdae02c3aefc9d075704cfbf9e805c5ed75aae696b419c97f0",
+      "size": 24546,
+      "speaker": "m5",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5ata1.wav",
+      "resampled_samples": 7841,
+      "derived_gain": 0.40439840429388085,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m5ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 23758,
+      "consonant": "d",
+      "crc32": "999afb92",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m5ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m5",
+        "speaker_number": 5,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m5_td"
+      ],
+      "role": "primary",
+      "sample_id": "m5ada1",
+      "sha256": "112a6884b1b960df14a8ae8cb31cfdc91b194da79a6dbab21c5d5341ea47ce17",
+      "size": 28046,
+      "speaker": "m5",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5ada1.wav",
+      "resampled_samples": 8961,
+      "derived_gain": 0.3778568996413623,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f20aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16542,
+      "consonant": "k",
+      "crc32": "dcd46f45",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f20aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f20",
+        "speaker_number": 20,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f20_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f20aka1",
+      "sha256": "2e3914bda6eb64c8c749531a4472b0082c1fc37de8c8de74d194eac1e5d6c44b",
+      "size": 21546,
+      "speaker": "f20",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aka1.wav",
+      "resampled_samples": 6881,
+      "derived_gain": 0.43128699444816204,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f20aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16275,
+      "consonant": "g",
+      "crc32": "91ef0204",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f20aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f20",
+        "speaker_number": 20,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f20_kg"
+      ],
+      "role": "primary",
+      "sample_id": "f20aga1",
+      "sha256": "3a87c0784a00f93baa1a104d3878835854fd9df726afd785fd6365559684e5c2",
+      "size": 20046,
+      "speaker": "f20",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aga1.wav",
+      "resampled_samples": 6401,
+      "derived_gain": 0.447071315509559,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f20ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 17426,
+      "consonant": "t",
+      "crc32": "29ed3997",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f20ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f20",
+        "speaker_number": 20,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f20_td"
+      ],
+      "role": "primary",
+      "sample_id": "f20ata1",
+      "sha256": "db9c984e32d50caec97043e6dc0845d1fc0c73ecfae1527e89f04934c7e7f5a0",
+      "size": 22046,
+      "speaker": "f20",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20ata1.wav",
+      "resampled_samples": 7041,
+      "derived_gain": 0.4274180138939853,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "f20ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 15988,
+      "consonant": "d",
+      "crc32": "a4f96879",
+      "gender": "f",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/f20ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "f",
+        "speaker": "f20",
+        "speaker_number": 20,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "f20_td"
+      ],
+      "role": "primary",
+      "sample_id": "f20ada1",
+      "sha256": "b8f482fe3b53e959eef0b8a39c108bd3964a4be8b9bd6a0cf092c6e5579eaa78",
+      "size": 20046,
+      "speaker": "f20",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20ada1.wav",
+      "resampled_samples": 6401,
+      "derived_gain": 0.4469195612958175,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m15aka1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16523,
+      "consonant": "k",
+      "crc32": "9d0848fa",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m15aka1.wav",
+      "nominal": {
+        "consonant": "k",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m15",
+        "speaker_number": 15,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m15_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m15aka1",
+      "sha256": "525e337cc31b66b113f5685dc34b4821dd202d5ea553cfb4c82eff0932a33fbd",
+      "size": 20546,
+      "speaker": "m15",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15aka1.wav",
+      "resampled_samples": 6561,
+      "derived_gain": 0.4420111363362178,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m15aga1.wav",
+      "boundary_source": "none",
+      "compressed_size": 18346,
+      "consonant": "g",
+      "crc32": "200114bc",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m15aga1.wav",
+      "nominal": {
+        "consonant": "g",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m15",
+        "speaker_number": 15,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m15_kg"
+      ],
+      "role": "primary",
+      "sample_id": "m15aga1",
+      "sha256": "bd61820362e3ae5d8b93b8729c2e6f260dca3d368c0d01a4c317436aaacd05a2",
+      "size": 22046,
+      "speaker": "m15",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15aga1.wav",
+      "resampled_samples": 7041,
+      "derived_gain": 0.426155527460235,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m15ata1.wav",
+      "boundary_source": "none",
+      "compressed_size": 18191,
+      "consonant": "t",
+      "crc32": "8aa81aeb",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m15ata1.wav",
+      "nominal": {
+        "consonant": "t",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m15",
+        "speaker_number": 15,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m15_td"
+      ],
+      "role": "primary",
+      "sample_id": "m15ata1",
+      "sha256": "c14ad5516766018ee198e452e02f36396e3a55e8d6469d9395da6b44ddac6cab",
+      "size": 22046,
+      "speaker": "m15",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15ata1.wav",
+      "resampled_samples": 7041,
+      "derived_gain": 0.4268658675488624,
+      "source_onset_sample": 8000
+    },
+    {
+      "basename": "m15ada1.wav",
+      "boundary_source": "none",
+      "compressed_size": 16366,
+      "consonant": "d",
+      "crc32": "566dd00b",
+      "gender": "m",
+      "is_primary": true,
+      "manual_boundaries": null,
+      "manual_end_s": null,
+      "manual_start_s": null,
+      "member": "train/m15ada1.wav",
+      "nominal": {
+        "consonant": "d",
+        "context": "aCa",
+        "sex": "m",
+        "speaker": "m15",
+        "speaker_number": 15,
+        "stress": "1",
+        "vowel1": "a",
+        "vowel2": "a"
+      },
+      "primary_pair_ids": [
+        "m15_td"
+      ],
+      "role": "primary",
+      "sample_id": "m15ada1",
+      "sha256": "2cd8d617b1833fd9aa509af2fcfda3a98b44b154c0763713848ac29e1daf1fde",
+      "size": 19546,
+      "speaker": "m15",
+      "split": "corpus_train",
+      "stress": "1",
+      "vowel_left": "a",
+      "vowel_right": "a",
+      "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15ada1.wav",
+      "resampled_samples": 6241,
+      "derived_gain": 0.4526459917919432,
+      "source_onset_sample": 8000
+    }
+  ],
+  "pairs": [
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "f18aka1.wav",
+        "f18aga1.wav"
+      ],
+      "pair_id": "f18_kg",
+      "speaker": "f18",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "f18ata1.wav",
+        "f18ada1.wav"
+      ],
+      "pair_id": "f18_td",
+      "speaker": "f18",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "m5aka1.wav",
+        "m5aga1.wav"
+      ],
+      "pair_id": "m5_kg",
+      "speaker": "m5",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "m5ata1.wav",
+        "m5ada1.wav"
+      ],
+      "pair_id": "m5_td",
+      "speaker": "m5",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "f20aka1.wav",
+        "f20aga1.wav"
+      ],
+      "pair_id": "f20_kg",
+      "speaker": "f20",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "f20ata1.wav",
+        "f20ada1.wav"
+      ],
+      "pair_id": "f20_td",
+      "speaker": "f20",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "k/g",
+      "members": [
+        "m15aka1.wav",
+        "m15aga1.wav"
+      ],
+      "pair_id": "m15_kg",
+      "speaker": "m15",
+      "stress": "1"
+    },
+    {
+      "context": "aCa",
+      "contrast": "t/d",
+      "members": [
+        "m15ata1.wav",
+        "m15ada1.wav"
+      ],
+      "pair_id": "m15_td",
+      "speaker": "m15",
+      "stress": "1"
+    }
+  ],
+  "recipes": [
+    {
+      "condition": "padded_clean",
+      "sample_id": "f18aka1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "db7c22c90984af25bc1be9c755b69276af62a03d563d35049ab19e0dded70416",
+      "model_input_float32_sha256": "dc9003e7d8d83a593192cf63a49fdc93133ec70af2f40c7213330fdab51c45c9",
+      "peak": 0.23137558836421518,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f18aga1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "7a45a1b1f66fabaa17d24f663cd8bea0cc7ed8c102555e46f0cf208ebc0bb0b9",
+      "model_input_float32_sha256": "c78872decd4eaf705c10c8fe239341a09902d9e1a76fda43c015f4cb442fc3a5",
+      "peak": 0.23940699335733567,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f18ata1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "db9684d098c17f7885d10b8dbbd3603eff106436d65d9738d6042af91fdd48ad",
+      "model_input_float32_sha256": "c0dc8a66c560862a5a8384f1e1d01757399d478f111b0a41ebca77f472822d23",
+      "peak": 0.20587308547538116,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f18ada1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "f97d5ba370989d04694d7e5f3b3fbbbd7c5167d37bb4745ba2cc6fe37ae0e439",
+      "model_input_float32_sha256": "58e284891882980927032cbbba43dbd484fc0b59f978f1a8c3e04274d6a6679e",
+      "peak": 0.13056409792554885,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m5aka1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "6054307b797e3a04dabd124f0d038119e048da756640558b24a11f02b720d667",
+      "model_input_float32_sha256": "189181777c93fafe08913e689f5b5152cde1e3011dce476f875349bc2705be98",
+      "peak": 0.17614828808499303,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m5aga1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "ab438fbcf00df6b424e31e7a96c30f2c14a7a90660861ad7d49ffcd8a5959d74",
+      "model_input_float32_sha256": "ac13f529a8bba22e472341627d71b743ce0e81f1f0c21a6a727b0c94949ec65f",
+      "peak": 0.13392704189705137,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m5ata1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "d6947f2356ab88f5ea119aa993e642f7d39ab612b78d925e3372dd739163798f",
+      "model_input_float32_sha256": "845cfd1421c7d4448ff431418c784f83bc15232a115395cf530859b1c8103704",
+      "peak": 0.14927896552910427,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m5ada1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "e514c20b5e4d07f691fcb7eebb8cfed16f4c2c44748500ade903d4e31b6e0747",
+      "model_input_float32_sha256": "bac6bd54aaf4ad3671217d13a02d4199b6df88d1ab42e80c4c61424cc961a0ad",
+      "peak": 0.12469182006962971,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f20aka1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "3da559f27dee875c0e74f8c6d7fe6060d953a87b1defb304781e9efb4fbfdb1a",
+      "model_input_float32_sha256": "32264c108a809c5b7b82a563242a7efa8041b24e4d58c8048429b4d6e0b8ff9b",
+      "peak": 0.2867657988320272,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f20aga1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "71e2f7bae106a27eb963a5960b57e9013452232a4820bfe091e19439c9d8252e",
+      "model_input_float32_sha256": "40f73654edf28b8ed1caaa470f2b27d81f8f0fc5f52014ca279f6e310a9a3a37",
+      "peak": 0.16774309003974677,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f20ata1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "dddc3609d6741eda39ae4e0a9819e6ce439bfc17cca6492184fb9dd89bcddb04",
+      "model_input_float32_sha256": "843e2b0b77324aeea63e1bfd73d46a4f9509fbd7ffd91e6af7e4b916dea1e645",
+      "peak": 0.24490753487099948,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "f20ada1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "8b8f9383b3cde6368b6c37278c62aee1ec2bae744d78709a3c391ba49241eba9",
+      "model_input_float32_sha256": "5b817e955921fb48fd990624b6ce18f036d8774e2bc795add42dea28c1c45cff",
+      "peak": 0.18426833268766116,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m15aka1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "e18534d403e67495c9c8f92fd86851e53d629dfb82b0ee3b7ee568f2917f1b4e",
+      "model_input_float32_sha256": "74b8b44bb39a01e8597bd692a080076503be5118627657fbf89b048e5bc47c56",
+      "peak": 0.19580742762530726,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m15aga1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "3d06e701eed0dc71560b2fe02f9147a98f265bc3938baa1d40ab3356363025e3",
+      "model_input_float32_sha256": "f7cea59330bc4ee583c7874ed98b0dc67ddb2a319ff44d85853f65d046d0968b",
+      "peak": 0.12507077037909056,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m15ata1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "1ef837547d6355a42917965812b9213d73d3ff4ac378811c13b2ce5a21bfc8ab",
+      "model_input_float32_sha256": "c0ab2aa4f31c524df7c826eba59479ba30a7c7afbac0e00bd12e52bcbbf8736e",
+      "peak": 0.16478456216240753,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "padded_clean",
+      "sample_id": "m15ada1",
+      "noise_id": null,
+      "snr_db": null,
+      "noise_gain": null,
+      "float64_sha256": "f6f04be5762607ac21d2e86020b35cb80b04a8255baabe7100d5889d8b83b5cf",
+      "model_input_float32_sha256": "9aafef4d5dd1cd607ebc5dcea99f5a02c84e6bbf2e84e2c44f0a2369fdaeefdf",
+      "peak": 0.16696874281836657,
+      "actual_carrier_snr_db": null
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18aka1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "51211e808fabe16eb7afb24b956fad014cdd333245353ac7e3626b26cab4f55e",
+      "model_input_float32_sha256": "b56fec0f8d599b48a5bfaef1d4731b51e14af981133502e960f280602dbb7305",
+      "peak": 0.22466484538066017,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18aga1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "ce7b7582ff1a2ab2cb67bcf23be458dc581e847486aec4392d9e56ed9d361b68",
+      "model_input_float32_sha256": "b58becd1bb160aa71940a28af9f71dea84b2a1df8dd0d3bcfd57d223cdce18f1",
+      "peak": 0.24853839720281587,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18ata1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "796ce30a8cfdaac94842ff790269f855670cd65a194db0fbe4d821dc8fcbf420",
+      "model_input_float32_sha256": "9d39985c9ee130c5e0e733f08af75b2086d55ddf1639e5f335eb34897d133d9e",
+      "peak": 0.19702928490062474,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18ada1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "2cbf08343402a280dea2dc7406ab7821ffb529c5759d9a3c103110f709482731",
+      "model_input_float32_sha256": "2c7bc194646c14a7f6654726f0e1de62c8b2a9e8fa04db4609610bb9c617b459",
+      "peak": 0.1405583115832004,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aka1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "49d0401a8deb2f58fd7ca39ce052a89a703668050dbe8db51aa79bee9675cf19",
+      "model_input_float32_sha256": "3c384f6fdf07ed0274e4d4bb9495569cc80ee7ff53a8f9b942373a48fb9aaec6",
+      "peak": 0.17226564393022192,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aga1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "4270c2e28a61b58a4f0fa19477380b4881d4dee725c2703e58ce78d254f5aea7",
+      "model_input_float32_sha256": "9a69b9b610265ba9e1dee6334a8c2ab7dec2e7c0aa6dd679291502400b5de721",
+      "peak": 0.13671318551713246,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5ata1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "2b58b21a52191f50a56df413450bf3597ce29662e41d951adcbf392ef8f3cde0",
+      "model_input_float32_sha256": "88469e932885d33afdbac8476db65b6da4dd07fc6489f3599801ff2739f0fd8f",
+      "peak": 0.14420106078831954,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5ada1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "7c8ff8e9791e3c6c290dbe5c34ca0e26366922eb55cf594e272d50a675d3d301",
+      "model_input_float32_sha256": "dcd8ee7405b69212204668e45b3a22dff2a0f54db434ee56385e126480f34185",
+      "peak": 0.12496526147965777,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20aka1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "9e8d654435e35faabf73938f973bcf38261b0b3d5f70959f1faa14f9655b2761",
+      "model_input_float32_sha256": "342ca04f0bd3104d5fb20fcfef22c0fb72bf12b664c3092e7def7f50bc1cefe8",
+      "peak": 0.26450368713782557,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20aga1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "5126117d3d927881f60e5abc991a748142d8d3a410499b8129928784ca794e04",
+      "model_input_float32_sha256": "d85f8b49a339259d40a168e8ba5048c0a3c4e00ffc6d6037730de13f25542259",
+      "peak": 0.15597532287929855,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20ata1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "6e341bc311a93649ac36ecbc08ffcbf8658d95f97ef6903c8de577659c60e8d8",
+      "model_input_float32_sha256": "4365682af3a8a5f440b0e937713aa68b0e528c9dcf3a816b3a687609c71ba07c",
+      "peak": 0.24926951781031023,
+      "actual_carrier_snr_db": -6.000000000000001
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20ada1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "fbb7b6a39758399a21213623b1a41fabab966d1578693dac7a0b77b84e419ec9",
+      "model_input_float32_sha256": "f2bc3d4a6977f188b37b491222d6ebe53d45adebbc1cb19aef25b2101e31cb6f",
+      "peak": 0.20281874364934535,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15aka1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "3c01754e5abcd74f449a0704155198160c4cddcbbf20775faa1e7e00f23ff185",
+      "model_input_float32_sha256": "83e750f44af99b882227e924961e4312586c7bafbd78156b2fcb27cb0c7ebc9d",
+      "peak": 0.18193056981288458,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15aga1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "7c1bf77f2c0ef8dae5412b91be7f351021dfce14c75deb39bfc0df6c92ff3747",
+      "model_input_float32_sha256": "0610a523d466f97f226e2781b14d1292c1fda27debdae9412abadd583a421113",
+      "peak": 0.1349914902132601,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15ata1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "107e796eba9c4bb5d599cf79a597f052e5136bbc30246a8c3a028097364d6b1f",
+      "model_input_float32_sha256": "a995f5602763587e3f0c783993235a09b4569f092434b65976ccf335b6f597ba",
+      "peak": 0.15045225905504206,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15ada1",
+      "noise_id": "N1",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "54d1e1902bab5669fd5997074b53cbd4d75509511d831fe3dc44a5cb72d5c1b9",
+      "model_input_float32_sha256": "8c4d47e8850ad631218e61b1f3fad8d0a71b8f7fb19a813ba5c4ff82a9dc6b56",
+      "peak": 0.18317064243655837,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18aka1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "fbec63a2f60543aad1bb6f472bfb611de0b5c2c021e289651c1c34b047c3906f",
+      "model_input_float32_sha256": "15ece657cb4fe95a179b229b5affabc046c79cbb3450b2b6e5eb3c63c09796ca",
+      "peak": 0.23394893518518595,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18aga1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "2f7da67eb8dabb7b4a588ea76b014ea21d1fc4031d1ca51f24c6db4af428ca87",
+      "model_input_float32_sha256": "b7c5801d59db1c4c10380fc89cae5edabe6bc732100ae1bd011d8fe35c4fb4ae",
+      "peak": 0.2389408001808182,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18ata1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "9c32312754d5fe9fae3eaa192541b36edc0f6d7ebab41ec1d5bc6bc1400b025b",
+      "model_input_float32_sha256": "a4c9acbcda77fb36080fdc6162d09bde878da2a1d4ac90ba5bccd94ff1c41359",
+      "peak": 0.22019453985799817,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18ada1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "b606bd557fbea04fcf1e57dff8d36cfbb085a1db66ea101b414ed6185764cc90",
+      "model_input_float32_sha256": "0d2ff2b5f0a1eb01bbc6073eb6879cf7f731c95a502aea481d565b27bcda49f7",
+      "peak": 0.1543994635332563,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aka1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "58823672d80f72c316c629274b6e1e89f3e0d4893e73ebcd2e84a55dfba1f29e",
+      "model_input_float32_sha256": "ca8d85ed93089d27c6a0f9e4ca32155ed42b48a31648c5f225fe2579107f3806",
+      "peak": 0.17840028207740755,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aga1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "318586567be4a7b56ff2489feaf7dde9dfa64638b06bde7c29f6c26df2a47faf",
+      "model_input_float32_sha256": "990b22aebd9a453a21ee003fac368a2f921d212ec9808144ac80fa8e48c6824a",
+      "peak": 0.1494797438491654,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5ata1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "e50f6c88ec50e546983da7983d5e135a32acd54122e34ed7468b581ff0ec897f",
+      "model_input_float32_sha256": "f6c77ba0488612936b9ac855c9743de112c427080272bc9d3e77f80af75d7b08",
+      "peak": 0.18606319947697564,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5ada1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "88f2e0901324d9d60bae1e74223a15a9a44a1090e2611865bb7ed9505bffdb4d",
+      "model_input_float32_sha256": "e2fafb8ab0962dd2d767c4e32f38d86cbff2c1055fd1e1bb8302db5817068119",
+      "peak": 0.1561066438656994,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20aka1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "5bcabdd31837ca913487960a04a349d89ec92bab9b561d4ee572c7f58dc1e1d0",
+      "model_input_float32_sha256": "0321de422a116ba2ba4682717137fe51f9b6483a33227ff03ca7d9d45ccd2c0e",
+      "peak": 0.2725002876305923,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20aga1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "f981be524677d253c37f9e6e783908044c60e4c84928dd23af26533ebe9c8e6d",
+      "model_input_float32_sha256": "4db03132869bd7cd5ef5ec19271bedba4bba63570ff8e10a8840dbd8b81364a1",
+      "peak": 0.17217653968231164,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20ata1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "c7092ed42c53b23f67b08127b4324aeb7ebc7091840bd07e225719142dd55ca0",
+      "model_input_float32_sha256": "98b39997025749b90487406c9e937996bcbd729e2d545b46e0a86b058903a6b4",
+      "peak": 0.24475835305451388,
+      "actual_carrier_snr_db": -6.000000000000001
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20ada1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "8a5c54083eac06642c70c111fc7dc5cb41b3ad8bfa689072fd72d620f7b7313e",
+      "model_input_float32_sha256": "5a4deb373393e092f2b95a67a3a920ec0b40ce70c0245edea7dcaf0dba90f702",
+      "peak": 0.17880572140465262,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15aka1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "6290347a0dbb2cef233349da50de5bc8d3627236f21e1fdacf423ea3765cb069",
+      "model_input_float32_sha256": "e51fa7c563003a15fcc449715b24abcd1132c1438842fcdfd343a86f4567e62d",
+      "peak": 0.20128985938115282,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15aga1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "d708853fde8dee5c13cee8a7d1879e43e9d519ece7666f7dcd42980709d79da2",
+      "model_input_float32_sha256": "b288897bf055657dcc21412727b7316ca91270d53036ac3b5a26627497770825",
+      "peak": 0.14522849834872548,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15ata1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "3a77417ac7e311fff58d0299b4c6d1588defcf0d30cb7ff20181ded5c47578ea",
+      "model_input_float32_sha256": "8b5e7b72858061f4b612631420755431821f25827e5cc721d511eaeb42c7caf6",
+      "peak": 0.19016411869201916,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15ada1",
+      "noise_id": "N2",
+      "snr_db": -6,
+      "noise_gain": 0.019952623149688795,
+      "float64_sha256": "d7d89714f0d4fd25f00f7b6f6be128cb13f01534f1a363bd6c6ad73560dc9a9f",
+      "model_input_float32_sha256": "c194e65cf22dfb25e53df8f65b9d0187a6285b74ce87c25a58bb92c8e016988d",
+      "peak": 0.15838173996392743,
+      "actual_carrier_snr_db": -5.999999999999998
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18aka1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "3455523fafc02dbd204a9e2d38834cf0dd08fc47ff39968a8d9fcc20609f752b",
+      "model_input_float32_sha256": "a28b973fc2776a2a45ae2d18e76c7989d8dc7e622282752f4b27bc2370b9224a",
+      "peak": 0.2296899259396412,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18aga1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "4d921aeb39f38b96052ae0f97c2f86db15d87eca90ef3ac1ff288cacb8cce5de",
+      "model_input_float32_sha256": "a4f237feac1279d2486e72475f433c9bd2fa14338a6df253d4bbc3f1369de5db",
+      "peak": 0.2417006982993453,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18ata1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "b8d444789b71c232783a138d3aa676297a0af8f70482b0d216a8ae3d769fc9a6",
+      "model_input_float32_sha256": "f9afbfddf50c8741416b359b1cc5399a5bf1f5b5857e8f094f3b07e90d60b235",
+      "peak": 0.20365162320871044,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18ada1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "fbe2f9ad16a2864c521f7878aee4b07a3151777d160fa54bb405ce10550292c3",
+      "model_input_float32_sha256": "17632e52a9d320d89d6c9f6e8068ae235daf2ab34ad3176163f0e56f11b9fc00",
+      "peak": 0.13307453089357513,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5aka1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "c5588fc51a4d62ed7eb2d1e222ccf28e825d427ed666c4492eaa41aaf3eb0b3d",
+      "model_input_float32_sha256": "7aab91706b56ceb2f2df3066f3578925907d737ce9c4d7861c71c4c8daa93f43",
+      "peak": 0.17517301196791807,
+      "actual_carrier_snr_db": 6.000000000000001
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5aga1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "46544e5ca9d4f96923441e2de973262ba4a13e20ecdb5c5adedf76a5c2ea55b6",
+      "model_input_float32_sha256": "08d69c59db361707421ce8363e11e426acf6ecef74563256be869afee5ba2d46",
+      "peak": 0.1292071871082442,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5ata1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "941463ef753c51f773055e0adb8d4b798c09bad0cee1e451206e1eff6571d840",
+      "model_input_float32_sha256": "cca06a643d552c9a023292a8d658670bf704fdee0d1a6162156bfab480ca8be0",
+      "peak": 0.14424605914716193,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5ada1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "68dfaee89986924aa60d9129f00e1a22893761ba8554e8244f8ef17e251dc44e",
+      "model_input_float32_sha256": "f95c8b80701ce7956e6048b2034ca049d31de3eda8bc5f53b09eead0d432b6ce",
+      "peak": 0.11964934180134784,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20aka1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "e10965f0af5e4ed3b31f0c71ce6612485f66acadde8ffc359de835d90c657802",
+      "model_input_float32_sha256": "6def4566447770ece1590354702ccde12aebb76804a8d266aefa0bbadc8d5468",
+      "peak": 0.2803482411727562,
+      "actual_carrier_snr_db": 6.000000000000001
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20aga1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "464543ee35d509827b222a99159f6423a034b76ebc7377d4907eeaeb0e1afd03",
+      "model_input_float32_sha256": "071c1673aa138e3e63bc31892f11fee7d307820cc27677d16d2f126b23c9761f",
+      "peak": 0.1647871605737974,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20ata1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "2946d43e8f9ff4a3ebdd7dbf3e36699df79dce69fbb47159b1985a0b4024683b",
+      "model_input_float32_sha256": "9f623a7bad191f9cc3c2437ec318a47160d7d4fcd8af0b528eb570bb3c7153ed",
+      "peak": 0.24600321544697257,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20ada1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "9792be0922ffc36eceedb4d9e8bb7f3d3acb8f7da91e9d124a29c5a3e733470a",
+      "model_input_float32_sha256": "70ba7d8a63ff5a0b4080877d6174ba03140630f8af481943e2aa8b4079584e2a",
+      "peak": 0.18892798524701926,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15aka1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "561aac39fba296277f16b42dc44f24a29f07e069cdf1c5f5eff4b8cf35502dfa",
+      "model_input_float32_sha256": "aa72ebe98d3d286b1f6304a112b32e20f5d272c18affd1b2045658aa89d71a60",
+      "peak": 0.19232171854020605,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15aga1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "5e797946b3e667a9498b7adec48827b15352ec7055edd0d304873caf79ca3651",
+      "model_input_float32_sha256": "5648614dd21dbbced61256d9f5f1ea46e68cef96d8bfb29a7d584ffff3ad1edd",
+      "peak": 0.12172350107556824,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15ata1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "05e4056ac267d60ef75817b76cf76a76644a015787d856b5cff6280034408dae",
+      "model_input_float32_sha256": "4d0ab1ce50aff1a6efb0f5f7f6c3b1b630f7c3c6b891814c2470a0822794b547",
+      "peak": 0.15996236358353694,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15ada1",
+      "noise_id": "N1",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "0e2096e9d9c27f54400c493346add109f2c7a813b24faf4496b4d42e29d522a9",
+      "model_input_float32_sha256": "19a4940b974416c7f201cdb11b9f6d4d9d1dd0fe49a8822641c47ef4da8ea428",
+      "peak": 0.17017150142505716,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18aka1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "4efd190f3bf65f6c072c1b37736448155487a7698ffde6268a7f6f51a8fe1bff",
+      "model_input_float32_sha256": "82943f2b4a28f98787ac14f128e7e3f8e517ddece66c9b0e2921d153dab9518f",
+      "peak": 0.23041613684516035,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18aga1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "3255f6cec00e89ed9791ec28c28194af5700c6518b162f3708dfec9729d36313",
+      "model_input_float32_sha256": "319ada3c47e9d1c33d9e06a14c5a36b7751687de7c646bb8b571646720aec7f7",
+      "peak": 0.23928989092588002,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18ata1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "87c5da9ce6020db27b7f30415816bd4c564c06fab5c6513bcaeb6689378f7329",
+      "model_input_float32_sha256": "4388b3b801223cd0524a694fbf4d7ed049dac69f62b655210c102b4ea4ae7dd4",
+      "peak": 0.20947047216969908,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18ada1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "17c8020e3402ce515af4658e1f151481fe76c2f975445feca4c79da7dce2de35",
+      "model_input_float32_sha256": "898699184aff28e9c96445b304a6e50a5b5be945596fb002d2f25adb5ba04a08",
+      "peak": 0.13539496337209084,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5aka1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "7ac997c2cdcf371b4dac99d13c669e176a3822257add87f288a7e851ace9fac7",
+      "model_input_float32_sha256": "39aceecde48d06008d1742f24b372de72e9f0837efdea2c28841983f32654a17",
+      "peak": 0.17119251318578946,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5aga1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "7efa605dcdeaf86e4b3125babd36e59751c75353da7d47e3c3355596c872f8da",
+      "model_input_float32_sha256": "3fd77e12e616741fee47eae2088f67979ec8c03069489fca39c24a81492c1f2f",
+      "peak": 0.12639501350582327,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5ata1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "c8751bf4a1e155daf0ebf5fb4cad2608c7a5d1f637eb23d97c55a55d02363a4f",
+      "model_input_float32_sha256": "dc30661edf5f4d6ba949f55f1e8dbbf14facb78cabc7a7d404472a27e47fe091",
+      "peak": 0.15289040451519686,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5ada1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "9f8dc76f83cd6a0f50c130d5860f57a895d0acafb969aa174cc941d561496380",
+      "model_input_float32_sha256": "8c16ec64d76277fc32253db145aafd25c3dfab254e62e4dd82bc23810ac1ba16",
+      "peak": 0.12801284502571225,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20aka1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "440d41f4f558a0c07a6f44ebc5e609ba37e8595de7f0e564b4477896e07cad65",
+      "model_input_float32_sha256": "d3165c2d1c494250cfa7d51b463a1274a3531be7c04f3366f19628b7e5a324f7",
+      "peak": 0.28318246442948397,
+      "actual_carrier_snr_db": 6.0
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20aga1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "6e6ad7dd9a4d6d3d1933ec7a79f782a1d0cb2d3d09c694b65771e5d75f072d6c",
+      "model_input_float32_sha256": "5f269f4b3b148dae217dafac27366a092a84fecca17578dc043765d41fa0ecfe",
+      "peak": 0.16624417891711432,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20ata1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "8245c614be053ccfcafa5d60ed20b6a53fb4ed18c75145f828d4bb2202a32d24",
+      "model_input_float32_sha256": "529e66f0ebc1d75f1eb05fe60addf97bd86fd9981d9b31def838bd769b616e09",
+      "peak": 0.24487006209293366,
+      "actual_carrier_snr_db": 5.9999999999999964
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20ada1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "5a4b4fb7910281c2c782f9d719fdc249be1e154587c13fc382018d32cd3d995b",
+      "model_input_float32_sha256": "ee6068a935187bb480b29ee809c114886890c8bd37468f669c7e5a9fe69915ff",
+      "peak": 0.18027190253391226,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15aka1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "7dd45ac8d5bce121390a00f5b2a0505b5f358983959316c7fefc38c72dd0eb98",
+      "model_input_float32_sha256": "89dee2183c7018fd53bf86eeedfe6d8c0ede953ab77ba9febcf3dfbc7f08fa18",
+      "peak": 0.19718455221922582,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15aga1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "7c94092a5a3a7feacd4cd23ec9c286e34f0a53ff3bd7c3cc8c3c970871e9ac92",
+      "model_input_float32_sha256": "39f93f417f9c20260dc8c32dbc11e7269bbf9ab9ba8718619224a6406445d951",
+      "peak": 0.12898199158970963,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15ata1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "1cbf754da34981dfe9e0267d51b7e0b5817ed66024897cb25be109aa551b8edd",
+      "model_input_float32_sha256": "e1e9efb63a0f55ec427f79fb8702f26599faebd07307ecefb1ea6a1459a9385e",
+      "peak": 0.1711596185308537,
+      "actual_carrier_snr_db": 5.999999999999997
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15ada1",
+      "noise_id": "N2",
+      "snr_db": 6,
+      "noise_gain": 0.005011872336272723,
+      "float64_sha256": "00bb79cd8411263f631d4e852a3e9cdb6c3cfc290c58adfba539ef676e2a130f",
+      "model_input_float32_sha256": "4bd9362bc346b3e6e395cc8d5390df53131499f5645c5a1a5ea494867d1ec1c1",
+      "peak": 0.16343224938840561,
+      "actual_carrier_snr_db": 5.999999999999997
+    }
+  ],
+  "source_sha256": {
+    "/data/coding/sgmse/experiments/p8_q_vcv_enhance_follow_20261018/run_follow.py": "22ac6d87c52b5c6bbbb9f513212e24073c97263516cbca2c7bab232ba7fcb735",
+    "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/fixed_noise.py": "8d5aff2abc613148ce5e15bdafa5643863889954cbbe0d02dab3667955f7a061",
+    "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/inputs/recipe_frozen.json": "8936e3edc3f337356cba7943745a9ed2a9939a76e7ce0da4afd21eb84749d769",
+    "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/calibrate_clean.py": "25b0cd0b8fef639894f15383f0d54a36abd19a4d28b18010125c72b32a6b469c",
+    "/data/coding/sgmse/experiments/p8_q_vcv_enhance_follow_20261018/metrics.json": "07e219d8aa024da017d86cbb7ddc67b9b98d48685f737b80c5e10e386009da6a",
+    "/data/coding/sgmse/experiments/p8_q_vcv_lowsnr_challenge_20261018/metrics.json": "e07b0baf40a2e93d42dca1eecaa36d2e6472065b0b763d9695bbc968563af790",
+    "/data/coding/sgmse/experiments/p8_10720_snr_control_20261018/metrics.json": "5481db0bbd0c94867423f741f95aca21ed1cd9e380d4c1812973767e65087af6",
+    "/data/coding/sgmse/joint_enhance_by_dir.py": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/config.yaml": "78d47f13a997a67cf705ab9b2cc860df80bf3ba05c47d0b810d14a6c6d7b55d7",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/run_replication.py": "bcd38044c17ee8d2a0c60b2b409dfe1006d01571a7f9e33bda92cdb890205464",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/selected_manifest_frozen.json": "31c4e4aa9abd9a2cae0cf8b2576942506e3f1cb18cfdb5d7ffd356ff24773ff2",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18aka1.wav": "d5f08aec54e94870b6e2b9e83304d1ecaf9ca8f91b1dc6d9af09b312acd8ae1f",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18aga1.wav": "849e63a9dead2b69f7bee4de3dbac45db2fa3acbf9de14370804a09707e40fa8",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18ata1.wav": "550da1026f9d3f01626995cacf9d518613a7c0d14dfcd64a8d626062113671aa",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18ada1.wav": "95991535bf57a1f334e8c7e79ad65026cd13b472cf659a9bd42135cc5144e2f4",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5aka1.wav": "aec80a0ba1fde570870fb0a330ff6c3a18a668ed0e9be003c89a425d0199c090",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5aga1.wav": "a068ed22e1bcad5cfa9263eb6ed23d387147b8effd192b357dbab1a9ec528b5d",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5ata1.wav": "97e8ff769ca5ccbdae02c3aefc9d075704cfbf9e805c5ed75aae696b419c97f0",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5ada1.wav": "112a6884b1b960df14a8ae8cb31cfdc91b194da79a6dbab21c5d5341ea47ce17",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aka1.wav": "2e3914bda6eb64c8c749531a4472b0082c1fc37de8c8de74d194eac1e5d6c44b",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aga1.wav": "3a87c0784a00f93baa1a104d3878835854fd9df726afd785fd6365559684e5c2",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20ata1.wav": "db9c984e32d50caec97043e6dc0845d1fc0c73ecfae1527e89f04934c7e7f5a0",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20ada1.wav": "b8f482fe3b53e959eef0b8a39c108bd3964a4be8b9bd6a0cf092c6e5579eaa78",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15aka1.wav": "525e337cc31b66b113f5685dc34b4821dd202d5ea553cfb4c82eff0932a33fbd",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15aga1.wav": "bd61820362e3ae5d8b93b8729c2e6f260dca3d368c0d01a4c317436aaacd05a2",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15ata1.wav": "c14ad5516766018ee198e452e02f36396e3a55e8d6469d9395da6b44ddac6cab",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15ada1.wav": "2cd8d617b1833fd9aa509af2fcfda3a98b44b154c0763713848ac29e1daf1fde",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/config.json": "4609fb49b7e1d28aecb2840da1926c40bd915bc6f1120a940afacf7159bbfb13",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/preprocessor_config.json": "a2254a5b58f72cd4de3632f8eee64f3f098b7c1402128d2f419e7d00ae13e335",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/pytorch_model.bin": "3173bde9e9ce490fa0f989e413c42f25bc1820c020adc1e6b9b87025b3cfcc5e",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/special_tokens_map.json": "bb7068de1150661a10b55f9e4b12a0e77af8bf91f5e45e1b58afaf1d0e17f675",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/tokenizer_config.json": "1273ec458332cc55226ec596904bae811420755ace7e5d69462b61c4f480b457",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/vocab.json": "d732ab2456c0c017930001dc9af0b41b3b93d25b2eb9740bf9d925508d7d87d0",
+    "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/inputs/N1.npz": "d57584b6fc6fce7d03b61b8a6d7ef5be3cc7d2e15984f9d02f058cb8946dddc8",
+    "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/inputs/N2.npz": "1234631ece97b70063629cdbba3dfcb81a3b1639033fd3c766fa2ce5a7d13740"
+  },
+  "seed_matrix": [
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18aka1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18aga1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18ata1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18ada1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aka1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aga1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5ata1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5ada1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20aka1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20aga1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20ata1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20ada1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15aka1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15aga1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15ata1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15ada1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18aka1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18aga1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18ata1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18ada1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aka1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aga1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5ata1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5ada1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20aka1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20aga1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20ata1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20ada1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15aka1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15aga1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15ata1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15ada1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18aka1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18aga1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18ata1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18ada1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5aka1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5aga1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5ata1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5ada1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20aka1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20aga1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20ata1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20ada1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15aka1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15aga1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15ata1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15ada1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18aka1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18aga1",
+      "pair_id": "f18_kg",
+      "seed": 3757595421,
+      "arms": {
+        "y_pre": 3757595421,
+        "off": 3757595421,
+        "router": 3757595421
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18ata1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18ada1",
+      "pair_id": "f18_td",
+      "seed": 2477991735,
+      "arms": {
+        "y_pre": 2477991735,
+        "off": 2477991735,
+        "router": 2477991735
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5aka1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5aga1",
+      "pair_id": "m5_kg",
+      "seed": 398702157,
+      "arms": {
+        "y_pre": 398702157,
+        "off": 398702157,
+        "router": 398702157
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5ata1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5ada1",
+      "pair_id": "m5_td",
+      "seed": 3801046734,
+      "arms": {
+        "y_pre": 3801046734,
+        "off": 3801046734,
+        "router": 3801046734
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20aka1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20aga1",
+      "pair_id": "f20_kg",
+      "seed": 592647303,
+      "arms": {
+        "y_pre": 592647303,
+        "off": 592647303,
+        "router": 592647303
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20ata1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20ada1",
+      "pair_id": "f20_td",
+      "seed": 1599441269,
+      "arms": {
+        "y_pre": 1599441269,
+        "off": 1599441269,
+        "router": 1599441269
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15aka1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15aga1",
+      "pair_id": "m15_kg",
+      "seed": 1893809126,
+      "arms": {
+        "y_pre": 1893809126,
+        "off": 1893809126,
+        "router": 1893809126
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15ata1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15ada1",
+      "pair_id": "m15_td",
+      "seed": 832324342,
+      "arms": {
+        "y_pre": 832324342,
+        "off": 832324342,
+        "router": 832324342
+      }
+    }
+  ],
+  "helper_module_sha256": "22ac6d87c52b5c6bbbb9f513212e24073c97263516cbca2c7bab232ba7fcb735",
+  "waveform_dtype": "float64_then_hashed_float32",
+  "snr_definition": "full_two_second_carrier_not_phoneme_local; quiet_fraction_differs_from_historical_30s_nominal_training_SNR"
+}

@@ -1,0 +1,26 @@
+{
+  "status": "authorized",
+  "purpose": "single bounded real-model preflight only; zero optimizer/EMA/parameter updates; no M/P training permission",
+  "preflight_config_sha256": "2a7d640883793bffd834f90b10d355700931cef8f23c6e988ed926b69521f7f4",
+  "pilot_config_sha256": "43da736cbaf52e7345fa47f47ceace6f46e23f74878ceb357f61d33cd57678de",
+  "code_sha256": {
+    "run_pilot.py": "9b02a84f540913802145ebcd39fa0b5dbe0e996179b6865cd7d51fb716570d86",
+    "loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "editing.py": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d",
+    "preflight_pilot.py": "e67835bdf22d9c148c4e07f698b15d6c260066be58b29c5f4770130a6e3efd39"
+  },
+  "registry_sha256": {
+    "train": "23e138517a3860695b44d8d99bd9f3bfa04d1b5f6366ab5ca517cdf2ebbdb2b3",
+    "dev": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc"
+  },
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "source_audio_limit": 6,
+  "max_seconds": 300,
+  "parameter_updates": 0,
+  "automatic_retry": false,
+  "attempt": 2,
+  "reason": "Explicit Root-reviewed environmental correction after failed attempt01: prepend already installed project env/bin to PATH, exactly the native PATH of prior successful baseline. No installs, code/data/loss/precision/sample/strict changes.",
+  "environment": {
+    "PATH": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin"
+  }
+}

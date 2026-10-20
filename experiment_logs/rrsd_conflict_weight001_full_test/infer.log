@@ -1,0 +1,8 @@
+Could not reach the Hub ([Errno 101] Network is unreachable). Using cached commit hash for 'microsoft/wavlm-base-plus'.
+Loading weights:   0%|          | 0/248 [00:00<?, ?it/s]Loading weights: 100%|██████████| 248/248 [00:00<00:00, 24937.96it/s]
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Eval] backend EMA enabled
+Found wavs: 150
+[RRSD-TCUT] t_cut=0.0 scale=1.0 enabled=True seed=2026 N=30
+Done. Output: experiment_logs/rrsd_conflict_weight001_full_test/infer

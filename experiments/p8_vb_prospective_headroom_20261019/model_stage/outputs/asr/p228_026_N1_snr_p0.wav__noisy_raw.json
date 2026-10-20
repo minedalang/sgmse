@@ -1,0 +1,83 @@
+{
+  "request": {
+    "key": "p228_026_N1_snr_p0.wav__noisy",
+    "id": "p228_026",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N1_snr_p0.wav",
+    "basename": "p228_026_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "f26fc0cd4b4c57c7d91afb8ac1f81ba07b0d8b6e810be8662c9851fbebbd16ab",
+      "samples": 73760,
+      "array_sha256": "a9c0615c567e323162741e8925f6940b09d37d4d563475f42777c9df4a3d9d95",
+      "peak": 0.0562744140625,
+      "rms": 0.009541131640601394
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_026",
+    "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+    "raw_text_hex": "536f2069662077652063616e2074616b6520616e797468696e672066726f6d20746f6e696768742c2069742077696c6c2062652066616e7461737469632e0a",
+    "raw_text_sha256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+    "archive_entry": "trainset_28spk_txt/p228_026.txt"
+  },
+  "raw_result": {
+    "text": " So if we can take any thing tonight it will be some doctor.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " So if we can take any thing tonight it will be some doctor.",
+        "tokens": [
+          50363,
+          1406,
+          611,
+          356,
+          460,
+          1011,
+          597,
+          1517,
+          9975,
+          340,
+          481,
+          307,
+          617,
+          6253,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8998627382166245,
+        "compression_ratio": 0.9516129032258065,
+        "no_speech_prob": 0.3932156562805176
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 36,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

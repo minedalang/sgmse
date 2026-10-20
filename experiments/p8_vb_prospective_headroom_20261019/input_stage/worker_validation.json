@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "source_locks": 32,
+  "preparation_locks": 7,
+  "original_runtime_artifacts_checked": 94,
+  "metadata_and_old_metrics_unchanged": true,
+  "git_outside_current_experiment_unchanged": true,
+  "parallel_model_stage_changes_excluded": "Engineer drafts permitted; not authored or executed by Worker",
+  "metrics_sha256": "8cccf8085e97417894800621d77c8950be7cba6f615a8949730344197f708df2",
+  "registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "stats": {
+    "maximum_component_snr_error_db": 3.552713678800501e-15,
+    "maximum_float32_residual_snr_difference_db": 7.610481134179281e-09,
+    "maximum_pcm_residual_snr_difference_db": 7.630831746808616e-05,
+    "maximum_quantization_error": 3.051755239760756e-05,
+    "saturation_count": 0
+  }
+}

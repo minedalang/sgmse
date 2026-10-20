@@ -1,0 +1,135 @@
+{
+  "status": "passed",
+  "actual_RangeReader_get": true,
+  "AST_parse": true,
+  "safe_import": true,
+  "network_calls": 0,
+  "models": 0,
+  "audio_decodes": 0,
+  "resample_calls": 0,
+  "scenarios": [
+    {
+      "name": "absent_first",
+      "passed": true,
+      "responses": 1,
+      "actual_body_reads": [
+        0
+      ]
+    },
+    {
+      "name": "blank_first",
+      "passed": true,
+      "responses": 1,
+      "actual_body_reads": [
+        0
+      ]
+    },
+    {
+      "name": "empty_first",
+      "passed": true,
+      "responses": 1,
+      "actual_body_reads": [
+        0
+      ]
+    },
+    {
+      "name": "etag_only_stable",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "last_modified_only_stable",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "both_stable",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "blank_secondary_not_version",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        1
+      ]
+    },
+    {
+      "name": "etag_changed",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "modified_changed",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "both_then_one_missing",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "etag_then_missing_with_other",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "all_missing_later",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "blank_later",
+      "passed": true,
+      "responses": 2,
+      "actual_body_reads": [
+        1,
+        0
+      ]
+    },
+    {
+      "name": "status200_no_body",
+      "passed": true,
+      "responses": 1,
+      "actual_body_reads": [
+        0
+      ]
+    }
+  ],
+  "driver_SHA256": "d7114eee7128bd61496926f8b692fc403514583a68cf6babbcfd9a43dfb49664"
+}

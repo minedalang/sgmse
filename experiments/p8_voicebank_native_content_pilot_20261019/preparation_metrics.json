@@ -1,0 +1,28 @@
+{
+  "status": "implementation_prepared_only",
+  "actual_input_preparation_executed": false,
+  "actual_audio_decodes": 0,
+  "model_loads": 0,
+  "network_bytes": 0,
+  "synthetic_tests": {
+    "status": "passed",
+    "synthetic_pcm_outputs": 4,
+    "guards": [
+      "socket",
+      "DNS",
+      "torch",
+      "whisper",
+      "zero_power",
+      "nonfinite",
+      "saturation",
+      "length"
+    ],
+    "real_audio_decodes": 0,
+    "model_loads": 0,
+    "network_bytes": 0
+  },
+  "provider": "codex_tools_compat",
+  "thread_id": "01a15231-e46a-7e02-8578-c7417767c607",
+  "known_test_failure_fixed": "Initial syntax error duplicated noise key; separated noise_id and sample payload before successful tests.",
+  "model_phase_authorized": false
+}

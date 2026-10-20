@@ -1,0 +1,44 @@
+{
+  "action": "user-approved replacement of old root research entry",
+  "recorded_at_utc": "2026-10-19T05:06:42.219342+00:00",
+  "canonical_entry": "/data/research_plan.md",
+  "removed_entry": "/data/RESEARCH_PLAN.md",
+  "removed_entry_sha256": "a6255932109675a1882625aa5c4269b59286c05a3bdd3f001abec1febc29126b",
+  "exact_original_archive": "/data/research/archive/research_plan_retired_root_20261019.md",
+  "exact_original_archive_sha256": "a6255932109675a1882625aa5c4269b59286c05a3bdd3f001abec1febc29126b",
+  "uploaded_archive_normalized_content_equal": true,
+  "uploaded_archive_diff": "CRLF/LF only",
+  "changed_documents": [
+    {
+      "path": "/data/AGENTS.md",
+      "before_sha256": "5acd868b52b810779278d0e05a80a4f17252e3e812c74b433ff995134a218010",
+      "after_sha256": "8188b0bbaadf1fb9ce301a16444a56604e1d7228a742da67973f9a898ecaf4ad"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "before_sha256": "95fc0d6d15688eb6847c36986ee3e82de565fce1f0560b801209442dcc43adba",
+      "after_sha256": "81cdd9a6072f8b5719c818a3f0102e1927e56b1ec27401f9e8691f7e17698648"
+    },
+    {
+      "path": "/data/SESSION_RECOVERY_2026-10-19.md",
+      "before_sha256": "f48ab9d3e3b851367a3447a39c5cc1fdcc6b4576fcfc22b8b850deaaca132393",
+      "after_sha256": "060117cac9427530fd198301f7be68bccfae4829fb1a4391627accf53fceecc7"
+    },
+    {
+      "path": "/data/coding/sgmse/research_status_brief_2026-10-18.md",
+      "before_sha256": "cb3481ee1d4f02714a96dc672b2299ecaa5e72a18d1434f5e8f260a69b4e38e5",
+      "after_sha256": "a50de6679848b31b0d19622ca37411593e9fb311223a6279ff4412011a38f011"
+    },
+    {
+      "path": "/data/research/archive.md",
+      "before_sha256": "33540f753d548b6d72f48448b0fc37532bd9a65e6e446ff14751928ac9c571bf",
+      "after_sha256": "3432275e32d39671c60944953b0f688f3a9eb1a8376cde23d3a2e60658742608"
+    }
+  ],
+  "backup_directory": "/data/research/archive/entry_migration_20261019_before",
+  "goal_status_changed": false,
+  "experiments_started": false,
+  "frozen_experiment_files_changed": false,
+  "sessions_or_attachments_changed": false,
+  "no_uppercase_compatibility_stub_or_symlink": true
+}

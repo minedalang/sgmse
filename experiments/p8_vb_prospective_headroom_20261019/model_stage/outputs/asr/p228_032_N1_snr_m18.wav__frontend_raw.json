@@ -1,0 +1,73 @@
+{
+  "request": {
+    "key": "p228_032_N1_snr_m18.wav__frontend",
+    "id": "p228_032",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p228_032_N1_snr_m18.wav",
+    "basename": "p228_032_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "0e725fc5e2bd5a2305b654f2fe22a7d304db738805f80b2a3a6d3be19afec7bd",
+      "samples": 67141,
+      "array_sha256": "780d7b53dc03a0c05e1168b1deb530f7d99064a1239778d8855362a39f09719f",
+      "peak": 0.025299072265625,
+      "rms": 0.002216155123361246
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " We will work.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " We will work.",
+        "tokens": [
+          50363,
+          775,
+          481,
+          670,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2751340866088867,
+        "compression_ratio": 0.6190476190476191,
+        "no_speech_prob": 0.5078667402267456
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 46,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

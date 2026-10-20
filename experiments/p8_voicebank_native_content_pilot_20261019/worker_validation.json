@@ -1,0 +1,199 @@
+{
+  "status": "passed",
+  "source_locks": 12,
+  "preparation_locks": 8,
+  "source_pre_post_current_equal": true,
+  "preparation_pre_post_current_equal": true,
+  "publisher_references": [
+    {
+      "id": "p226_027",
+      "bytes": 64,
+      "sha256": "4c89a690f064039006e014051fd9c1520256f1fc8a454a312412600e13d8cbb3",
+      "archive_entry": "trainset_28spk_txt/p226_027.txt"
+    },
+    {
+      "id": "p226_028",
+      "bytes": 61,
+      "sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+      "archive_entry": "trainset_28spk_txt/p226_028.txt"
+    },
+    {
+      "id": "p287_037",
+      "bytes": 48,
+      "sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+      "archive_entry": "trainset_28spk_txt/p287_037.txt"
+    },
+    {
+      "id": "p287_054",
+      "bytes": 50,
+      "sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+      "archive_entry": "trainset_28spk_txt/p287_054.txt"
+    }
+  ],
+  "guard_artifacts": [
+    {
+      "wav": "inputs/p226_027_scaledclean.wav",
+      "peak": 0.09142088333438897,
+      "pcm_peak": 0.091400146484375,
+      "max_quantization_error": 3.0513273023892798e-05,
+      "max_float32_rounding_error": 3.6628806376892697e-09,
+      "max_pcm_vs_float32_error": 3.051338717341423e-05
+    },
+    {
+      "wav": "inputs/p226_027_N1_snr_m18.wav",
+      "peak": 0.3765297810828083,
+      "pcm_peak": 0.37652587890625,
+      "max_quantization_error": 3.0516716207983074e-05,
+      "max_float32_rounding_error": 1.4745345555677858e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_027_N1_snr_p0.wav",
+      "peak": 0.09922789067360109,
+      "pcm_peak": 0.099212646484375,
+      "max_quantization_error": 3.051666931391285e-05,
+      "max_float32_rounding_error": 3.5930664415984026e-09,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_027_N2_snr_m18.wav",
+      "peak": 0.9,
+      "pcm_peak": 0.899993896484375,
+      "max_quantization_error": 3.0517374827974952e-05,
+      "max_float32_rounding_error": 2.9315396776752323e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_027_N2_snr_p0.wav",
+      "peak": 0.12341576949207445,
+      "pcm_peak": 0.1234130859375,
+      "max_quantization_error": 3.0517468202544314e-05,
+      "max_float32_rounding_error": 3.71358978290548e-09,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_028_scaledclean.wav",
+      "peak": 0.06168502682327032,
+      "pcm_peak": 0.061676025390625,
+      "max_quantization_error": 3.05153588960657e-05,
+      "max_float32_rounding_error": 1.8592011333251612e-09,
+      "max_pcm_vs_float32_error": 3.051524981856346e-05
+    },
+    {
+      "wav": "inputs/p226_028_N1_snr_m18.wav",
+      "peak": 0.20862420031216808,
+      "pcm_peak": 0.2086181640625,
+      "max_quantization_error": 3.051628032034806e-05,
+      "max_float32_rounding_error": 7.448331756920723e-09,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_028_N1_snr_p0.wav",
+      "peak": 0.062294774371055725,
+      "pcm_peak": 0.062286376953125,
+      "max_quantization_error": 3.0517165167770824e-05,
+      "max_float32_rounding_error": 1.846437322483574e-09,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_028_N2_snr_m18.wav",
+      "peak": 0.9,
+      "pcm_peak": 0.899993896484375,
+      "max_quantization_error": 3.0517104356201502e-05,
+      "max_float32_rounding_error": 2.9751431984692545e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p226_028_N2_snr_p0.wav",
+      "peak": 0.11354857084528514,
+      "pcm_peak": 0.113525390625,
+      "max_quantization_error": 3.0517570538721173e-05,
+      "max_float32_rounding_error": 3.66001617901901e-09,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p287_037_scaledclean.wav",
+      "peak": 0.11874426051924551,
+      "pcm_peak": 0.1187744140625,
+      "max_quantization_error": 3.051604585259382e-05,
+      "max_float32_rounding_error": 3.6721647250770317e-09,
+      "max_pcm_vs_float32_error": 3.051571547985077e-05
+    },
+    {
+      "wav": "inputs/p287_037_N1_snr_m18.wav",
+      "peak": 0.3759739069325485,
+      "pcm_peak": 0.375946044921875,
+      "max_quantization_error": 3.0516937559958452e-05,
+      "max_float32_rounding_error": 1.4875737919251009e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p287_037_N1_snr_p0.wav",
+      "peak": 0.1366474346974374,
+      "pcm_peak": 0.13665771484375,
+      "max_quantization_error": 3.0516462250218535e-05,
+      "max_float32_rounding_error": 3.7036789884981047e-09,
+      "max_pcm_vs_float32_error": 3.051641397178173e-05
+    },
+    {
+      "wav": "inputs/p287_037_N2_snr_m18.wav",
+      "peak": 0.9,
+      "pcm_peak": 0.899993896484375,
+      "max_quantization_error": 3.0517053032247735e-05,
+      "max_float32_rounding_error": 2.9690713776453492e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p287_037_N2_snr_p0.wav",
+      "peak": 0.12576432902241436,
+      "pcm_peak": 0.125762939453125,
+      "max_quantization_error": 3.051642199962119e-05,
+      "max_float32_rounding_error": 3.7612983283530355e-09,
+      "max_pcm_vs_float32_error": 3.051641397178173e-05
+    },
+    {
+      "wav": "inputs/p287_054_scaledclean.wav",
+      "peak": 0.09396570523260964,
+      "pcm_peak": 0.093994140625,
+      "max_quantization_error": 3.051266668879088e-05,
+      "max_float32_rounding_error": 3.721557825797639e-09,
+      "max_pcm_vs_float32_error": 3.0511990189552307e-05
+    },
+    {
+      "wav": "inputs/p287_054_N1_snr_m18.wav",
+      "peak": 0.3924509712891881,
+      "pcm_peak": 0.392425537109375,
+      "max_quantization_error": 3.05159179834558e-05,
+      "max_float32_rounding_error": 1.443465064143723e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p287_054_N1_snr_p0.wav",
+      "peak": 0.0976773989268886,
+      "pcm_peak": 0.097686767578125,
+      "max_quantization_error": 3.051743186867947e-05,
+      "max_float32_rounding_error": 3.6993821339592614e-09,
+      "max_pcm_vs_float32_error": 3.051740350201726e-05
+    },
+    {
+      "wav": "inputs/p287_054_N2_snr_m18.wav",
+      "peak": 0.8959602219171865,
+      "pcm_peak": 0.89593505859375,
+      "max_quantization_error": 3.051748994083517e-05,
+      "max_float32_rounding_error": 2.946100607914559e-08,
+      "max_pcm_vs_float32_error": 3.0517578125e-05
+    },
+    {
+      "wav": "inputs/p287_054_N2_snr_p0.wav",
+      "peak": 0.11738729074126954,
+      "pcm_peak": 0.11737060546875,
+      "max_quantization_error": 3.051730048593288e-05,
+      "max_float32_rounding_error": 3.7229201943489443e-09,
+      "max_pcm_vs_float32_error": 3.0517345294356346e-05
+    }
+  ],
+  "input_metrics_sha256": "59f41885a76e611c1aef6b71b17d10adc00a22e74565af3f7af8d24ece13d209",
+  "input_registry_sha256": "0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13",
+  "model_loads": 0,
+  "network_bytes": 0
+}

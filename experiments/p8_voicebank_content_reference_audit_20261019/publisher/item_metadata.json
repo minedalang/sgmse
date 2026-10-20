@@ -1,0 +1,239 @@
+{
+  "id" : "6ed35425-bf14-4d2b-93a1-0a4984952757",
+  "uuid" : "6ed35425-bf14-4d2b-93a1-0a4984952757",
+  "name" : "Noisy speech database for training speech enhancement algorithms and TTS models",
+  "handle" : "10283/2791",
+  "metadata" : {
+    "dc.contributor.other" : [ {
+      "value" : "EPSRC - Engineering and Physical Sciences Research Council",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.coverage.spatial" : [ {
+      "value" : "UNITED KINGDOM",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    }, {
+      "value" : "UK",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 1
+    } ],
+    "dc.coverage.temporal" : [ {
+      "value" : "start=2016-01; end=2016-06; scheme=W3C-DTF",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    }, {
+      "value" : "start=2016-01; end=2016-06; scheme=W3C-DTF",
+      "language" : "en",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 1
+    } ],
+    "dc.creator" : [ {
+      "value" : "Valentini-Botinhao, Cassia",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.date.accessioned" : [ {
+      "value" : "2017-08-21T11:03:20Z",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.date.available" : [ {
+      "value" : "2017-08-21T11:03:20Z",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.description.abstract" : [ {
+      "value" : "Clean and noisy parallel speech database. The database was designed to train and test speech enhancement methods that operate at 48kHz.  A more detailed description can be found in the papers associated with the database. For the 28 speaker dataset, details can be found in: C. Valentini-Botinhao, X. Wang, S. Takaki & J. Yamagishi, \"Speech Enhancement for a Noise-Robust Text-to-Speech Synthesis System using Deep Recurrent Neural Networks\", In Proc. Interspeech 2016. For the 56 speaker dataset: C. Valentini-Botinhao, X. Wang, S. Takaki & J. Yamagishi,  \"Investigating RNN-based speech enhancement methods for noise-robust Text-to-Speech”, In Proc. SSW 2016. Some of the noises used to create the noisy speech were obtained from the Demand database, available here: http://parole.loria.fr/DEMAND/ . The speech database was obtained from the CSTR VCTK Corpus, available here: https://doi.org/10.7488/ds/1994. The speech-shaped and babble noise files that were used to create this dataset are available here: http://homepages.inf.ed.ac.uk/cvbotinh/se/noises/.",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.identifier.citation" : [ {
+      "value" : "Valentini-Botinhao, Cassia. (2017). Noisy speech database for training speech enhancement algorithms and TTS models, 2016 [sound]. University of Edinburgh. School of Informatics. Centre for Speech Technology Research (CSTR). https://doi.org/10.7488/ds/2117.",
+      "language" : "en",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.identifier.uri" : [ {
+      "value" : "https://hdl.handle.net/10283/2791",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    }, {
+      "value" : "https://doi.org/10.7488/ds/2117",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 1
+    } ],
+    "dc.language.iso" : [ {
+      "value" : "eng",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.publisher" : [ {
+      "value" : "University of Edinburgh. School of Informatics. Centre for Speech Technology Research (CSTR)",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.relation.isreferencedby" : [ {
+      "value" : "http://www.research.ed.ac.uk/portal/en/publications/speech-enhancement-for-a-noiserobust-texttospeech-synthesis-system-using-deep-recurrent-neural-networks(08deb6fd-79c0-490f-ae46-f37034b6bfb4).html",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    }, {
+      "value" : "Valentini Botinhao, C, Wang, X, Takaki, S and Yamagishi, J 2016, Speech Enhancement for a Noise-Robust Text-to-Speech Synthesis System using Deep Recurrent Neural Networks. in Proceedings of Interspeech 2016. pp. 352-356. DOI: 10.21437/Interspeech.2016-159",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 1
+    }, {
+      "value" : "https://doi.org/10.1109/TASLP.2018.2828980",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 2
+    }, {
+      "value" : "Cassia Valentini-Botinhao ; Junichi Yamagishi. Speech Enhancement of Noisy and Reverberant Speech for Text-to-Speech. IEEE/ACM Transactions on Audio, Speech, and Language Processing ( Volume: 26, Issue: 8, Aug. 2018 ) .https://doi.org/10.1109/TASLP.2018.2828980.",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 3
+    } ],
+    "dc.relation.replaces" : [ {
+      "value" : "http://datashare.is.ed.ac.uk/handle/10283/1942",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.rights" : [ {
+      "value" : "Creative Commons Attribution 4.0 International Public License",
+      "language" : "en",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.source" : [ {
+      "value" : "http://parole.loria.fr/DEMAND/",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    }, {
+      "value" : "The CSTR VCTK Corpus (https://doi.org/10.7488/ds/1994)",
+      "language" : "",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 1
+    } ],
+    "dc.subject" : [ {
+      "value" : "noisy speech",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    }, {
+      "value" : "speech enhancement",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 1
+    }, {
+      "value" : "speech synthesis",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 2
+    }, {
+      "value" : "VCTK",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 3
+    } ],
+    "dc.subject.classification" : [ {
+      "value" : "Mathematical and Computer Sciences::Speech and Natural Language Processing",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.title" : [ {
+      "value" : "Noisy speech database for training speech enhancement algorithms and TTS models",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ],
+    "dc.type" : [ {
+      "value" : "sound",
+      "language" : "en_UK",
+      "authority" : null,
+      "confidence" : -1,
+      "place" : 0
+    } ]
+  },
+  "inArchive" : true,
+  "discoverable" : true,
+  "withdrawn" : false,
+  "lastModified" : "2018-09-07T11:34:09.545+00:00",
+  "entityType" : null,
+  "type" : "item",
+  "_links" : {
+    "accessStatus" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/accessStatus"
+    },
+    "bundles" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/bundles"
+    },
+    "identifiers" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/identifiers"
+    },
+    "mappedCollections" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/mappedCollections"
+    },
+    "owningCollection" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/owningCollection"
+    },
+    "relationships" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/relationships"
+    },
+    "version" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/version"
+    },
+    "templateItemOf" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/templateItemOf"
+    },
+    "thumbnail" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/thumbnail"
+    },
+    "self" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757"
+    }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "fixed_cases": 11,
+  "scalar_values_checked": 126,
+  "max_abs_error": 1.7763568394002505e-15,
+  "scope": "independent scalar arithmetic for saved fixed cases and OUVE; does not independently establish gradients or acoustic validity"
+}

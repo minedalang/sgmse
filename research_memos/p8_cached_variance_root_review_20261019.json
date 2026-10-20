@@ -1,0 +1,46 @@
+{
+  "kind": "root_cached_finite_ensemble_review_not_true_posterior_estimation",
+  "utc": "2026-10-19T07:32:15.117261+00:00",
+  "status": "finite_cache_identity_accepted_scope_limited",
+  "metrics_sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e",
+  "report_sha256": "3e7e6dd6ab6208aaf56f639a72d484e673e0cedbf57736f44aad55319419b592",
+  "frozen_artifacts_verified": 16,
+  "current_source_WAV_hashes_verified": 80,
+  "metadata_code_locks_verified": 9,
+  "historical_generation_WAV_byte_identity_proven": false,
+  "cached_regime": "oldDNS_CV_Router/manualprepare_specs_NOT_currentVBnativeOFF",
+  "decomposition": {
+    "files": 16,
+    "mean_normalized": {
+      "E_average": 0.2490557394592479,
+      "E_mean": 0.21742523996883262,
+      "V_population4": 0.03163049949041527,
+      "V_unbiased_under_IID": 0.04217399932055369,
+      "finite4_bias2_est_raw_under_IID": 0.2068817401386942
+    },
+    "mean_identity_residual": 0.0,
+    "mean_file_variance_fraction": 0.13567428415425775,
+    "pooled_normalized_variance_fraction": 0.127001688694634,
+    "negative_bias2_est_count": 0
+  },
+  "new_generation_mean_audio_quality_ASR_training_authorized": false,
+  "root_audio_decodes_or_model_calls": 0,
+  "literature_browsing": "Songetal2011.13456v2probabilityflowframework; read-only web, unmetered transport, no datasets/weights",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_cached_variance_interpretation_20261019.md",
+      "bytes": 5783,
+      "sha256": "8a1f772cb1b3f0bf6d64ff5e25e99a91ace7b8d1ed95d34735f2cacbf2e27008"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 11276,
+      "sha256": "5d6cfe342ba88cc4d60457a6168d0e089d4bb9d409b833eb67becfa97f460f99"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 18064,
+      "sha256": "2cf44f48a7fe5cf8d39e1eb5e9aad0a27b5ca4544405c1eb9f09fea140e22f44"
+    }
+  ]
+}

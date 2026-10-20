@@ -1,0 +1,245 @@
+{
+  "experiment_id": "p8_cpel_native_pair_ablation_20261020",
+  "status": "prepared_native_DSM_pair_question_not_executed",
+  "root_authorization_required": true,
+  "authorization_file": "root_execution_authorization.json",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "initialization": "source_model EMA materialized once; same frozen frontend and same initial dnn for M/P",
+    "source_checkpoint_writes": false,
+    "save_final": "backend dnn EMA state only, no frontend copy or optimizer checkpoint"
+  },
+  "registries": {
+    "train": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/train_registry.jsonl",
+      "sha256": "23e138517a3860695b44d8d99bd9f3bfa04d1b5f6366ab5ca517cdf2ebbdb2b3",
+      "records": 256
+    },
+    "dev": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+      "sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+      "records": 64
+    },
+    "receipt": "registry_receipt.json",
+    "limitations": "Existing pretraining CV is development, not independent confirmation; noise recording/category identity unknown"
+  },
+  "seed": 20261019,
+  "device": "cuda:0",
+  "arms": [
+    "N",
+    "D"
+  ],
+  "trainable": "existing originally learnable dnn parameters only; intrinsic GaussianFourierProjection.W remains fixed; frontend and all other modules frozen/eval; dnn eval mode retains parameter gradients",
+  "disable": [
+    "rrsd",
+    "anchor_v2",
+    "score_calibration",
+    "residual_refine",
+    "pathsim",
+    "ctm",
+    "contrastive",
+    "speaker_losses",
+    "other_auxiliary_hooks"
+  ],
+  "data": {
+    "sample_rate": 16000,
+    "expected_num_frames": 256,
+    "expected_n_fft": 510,
+    "expected_hop_length": 128,
+    "crop_samples": 32640,
+    "train_crop": "seeded random common clean/noisy crop, matched across M/P",
+    "dev_crop": "center crop fixed, no content-based recropping",
+    "normalization": "single original Noisy crop peak for both counterfactual arms, clamp_min 1e-12",
+    "edit_domain": "waveform before STFT and compression",
+    "expected_spec_transform": "exponent",
+    "expected_spec_abs_exponent": 0.5,
+    "expected_spec_factor": 0.15,
+    "additivity_relative_rms_tolerance": 0.001,
+    "noise_control": "v2 engineering interpretation: compute strict, nearest and general codec columns separately; codec-compatible zero-lag triplets may describe recorded noise-instance edit response, not noise purity/FPR; no gain fitting, no threshold replacement"
+  },
+  "editing": {
+    "attenuation": 0.5,
+    "duration_samples": 1280,
+    "train_window": "Hann",
+    "heldout_window": "Tukey with 160-sample edges, same duration",
+    "band_edges_hz": [
+      1500,
+      2500,
+      6500,
+      7500
+    ],
+    "band_operator": "real FFT, cosine rise/fall, plateau, inverse real FFT",
+    "center_selection": "maximum 80ms high-band clean energy; candidate centers at least 0.25s from crop edges; fixed tie rule first",
+    "event_center_edge_margin_samples": 4000,
+    "response_soft_window_samples": 3072,
+    "response_soft_window": "time Hann centered on event, all model frequency bins; overlapping inside/outside weights, not orthogonal projections"
+  },
+  "optimization": {
+    "optimizer": "Adam",
+    "learning_rate": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "max_steps_per_arm": 500,
+    "original_pairs_per_step": 1,
+    "gradient_clip_norm": 1.0,
+    "backend_ema_decay": 0.999,
+    "precision": "float32 and complex64; no AMP",
+    "native_time_range": [
+      0.03,
+      1.0
+    ],
+    "aux_time_range": [
+      0.3,
+      0.7
+    ],
+    "common_parent": "uniform random 0 or 1; detached frontend/state",
+    "score_sample_equivalents_per_step": 4,
+    "native_noise": "shared Gaussian draw across the two legal native states; not claimed as fixed-state isolation",
+    "aux_noise": "independent Gaussian draw for selected parent at common aux time",
+    "native_loss": "0.5 mean |sigma*q + epsilon|^2 over both valid native branches and all coordinates",
+    "aux_clean_weight": 0.0,
+    "aux_clean_loss": "absent: common_point is not called; no zero-multiplied auxiliary target",
+    "pair_lower_margin": 0.1,
+    "pair_upper_margin": 1.5,
+    "pair_component_weights": {
+      "lower": 1.0,
+      "upper": 1.0,
+      "orthogonal": 0.25,
+      "outside": 0.2
+    },
+    "pair_min_raw_target_mean_energy": 1e-12,
+    "pair_definition": "energy-scaled phase-aware response in whitened Score coordinates; see analysis_plan; not stage0 ratio objective copied unchanged",
+    "invalid_pair": "skip pair term; retain native DSM only; no common-point clean regression; report coverage",
+    "M_control": "not applicable; old M/P retained as separate historical aux=1 comparison",
+    "selection": "one new scientific contrast only, 500 updates each; no change to old M/P verdict",
+    "intrinsic_fixed_parameters": [
+      "GaussianFourierProjection.W"
+    ],
+    "backend_ema_parameter_scope": "requires_grad=True dnn parameters only; intrinsic fixed parameters and buffers saved unchanged",
+    "reverse_traversals_per_step": 2,
+    "update_rule": {
+      "name": "stop_gradient_raw_gradient_budget",
+      "target_norm_fraction": 0.01,
+      "max_coefficient": 100.0,
+      "min_coefficient": 0.0,
+      "zero_or_inactive": "eta=0; preserve coverage",
+      "nonfinite": "terminal failure, not silent zero",
+      "unused": "both None -> param.grad=None; pair nonNone with M None -> assert graph-subset violation; M nonNone/pair None -> M gradient",
+      "clipping": "global grad norm1 after composition, same optimizer in M/P",
+      "interpretation": "clip/Adam-preceding current-parameter-vector norm budget only; not Adam updates or fixed global scalar loss derivative",
+      "N": "same native/pair gradient computation; applied pair coefficient zero",
+      "D": "eta=min(100,.01*norm(grad_native)/norm(grad_pair)); pair is sole common-state training objective",
+      "meaning": "native gradient is budget denominator; not comparable to old native+aux budget denominator; not Adam bound"
+    },
+    "scalar_logging": "native DSM + detached applied eta*pair is a logged surrogate, not a fixed-lambda objective fully differentiated",
+    "pair_weight_N": 0.0,
+    "pair_weight_D": null,
+    "N_control": "same 4Score/two gradients and budget computation, apply native gradient only"
+  },
+  "evaluation": {
+    "records": 64,
+    "baseline": "explicit historical source baseline provenance; both N/D reuse frozen source initial64 without new inference",
+    "normal": "unedited center crop; original frontend and OUVE PC reverse_diffusion corrector none; N=30; no RRSD/calibrator",
+    "normal_metrics": [
+      "normalized_waveform_MSE",
+      "SI_SDR",
+      "STOI",
+      "PESQ"
+    ],
+    "normal_missing": "retain every record; report missing/undefined/errors per arm and matched coverage, no replacement or silent exclusion",
+    "controlled_types": [
+      "speech_Hann",
+      "speech_heldout_Tukey",
+      "noise_instance_heldout_Tukey",
+      "speech_precision_matched_Tukey"
+    ],
+    "controlled_time": 0.5,
+    "controlled_parents": [
+      0,
+      1
+    ],
+    "controlled_metrics": [
+      "projection_gain",
+      "response_energy",
+      "zero_response",
+      "reverse_direction",
+      "overgain",
+      "outside_change",
+      "pair_components",
+      "coverage"
+    ],
+    "noise_only": "zero clean delta; report projection onto observed compressed Noisy endpoint difference, not clean gain; interpretation is recorded noise-instance perturbation response",
+    "audio_exports": false,
+    "ASR_calls": false,
+    "DNSMOS_calls": false,
+    "identity_or_phone_claims": false,
+    "codec_rule": {
+      "strict_relative_rms": 0.001,
+      "per_source_quantization_step": "2^(1-bits), integer PCM16/24/32 only",
+      "nearest_bound": ".5*sum(q_i), explicit nearest-rounding assumption",
+      "general_bound": "sum(q_i), explicit per-source <=1LSB error assumption",
+      "numerical_tolerance": 1e-12,
+      "engineering_eligible": "known integer PCM, no crop endpoint, general per-sample bound compatible",
+      "processing_chain_verified": false,
+      "meaning": "conditional codec consistency, not verified additive provenance or true no-speech negative"
+    },
+    "precision_control": {
+      "quantizer": "PCM16 nearest ties-to-even in physical-amplitude float64, q=1/32768; no saturated endpoint silently clipped",
+      "arms": "same quantizer on both clean/noisy endpoints, then same original X1 peak normalization",
+      "target": "recompute actual quantized endpoint clean spectra difference",
+      "randomness": "same Gaussian/t/parent as raw speech_heldout_Tukey",
+      "event_location": "same original heldout event center, never reselect after quantization",
+      "record": [
+        "quantizer",
+        "saturation_or_unknown_coverage",
+        "actual_target_relative_change",
+        "branch_residual_change"
+      ],
+      "residual": "not strictly identical after quantization; record change, no exact-common-noise claim",
+      "source_writes": false
+    }
+  },
+  "limits": {
+    "seconds_per_arm_including_evaluation": 900,
+    "total_gpu_seconds": 1800,
+    "max_directory_bytes": 335544320,
+    "minimum_free_disk_bytes": 1073741824,
+    "primary_comparison_requires_both_arms_steps": 500,
+    "failed_or_budget_limited_runs": "record terminal partial evidence, no automatic retry or hyperparameter rescue",
+    "network_access": false,
+    "install_packages": false,
+    "original_data_or_checkpoint_writes": false,
+    "frozen_test_access": false
+  },
+  "screening_only": {
+    "meaning": "single-seed development mechanism screen, not independent enhancement confirmation",
+    "candidate_signal": "for both raw Tukey and precision-matched packets: matched-coverage N pair mean>1e-12 and D<=.9N, no zero-response degeneration",
+    "noise_input_gain_mean_increase_tolerance": 0.02,
+    "tolerance_scope": "preregistered engineering screening bounds, not perceptual thresholds or guarantees",
+    "missing_content": "DNS dummy text and acoustic proxies do not establish correct phoneme recovery or hallucination reduction",
+    "noise_control_scope": "engineering codec-compatible group and strict subgroup both reported, same fixed64 records; no semantic false-positive/hallucination rate claim",
+    "additional_artifact_exit": "raw-only gain disappearing on precision-matched controls does not establish acoustic evidence; stop expanding this configuration",
+    "parameter_choice": "all pair/margin/update/500/EMA scientific choices unchanged; only common pointwise clean regression removed; no tuning to observed N/D",
+    "normal_mean_D_minus_N_lower_tolerances": {
+      "PESQ": -0.03,
+      "STOI": -0.005,
+      "SI_SDR_dB": -0.2
+    }
+  },
+  "protocol_version": "native_DSM_without_common_point_pair_ablation_v1",
+  "native_path": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "history": {
+    "old_experiment": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019",
+    "old_config_sha256": "20f750545ff249238dc2e012d474d0ee1f3137abc8218a93cfea9891894864e5",
+    "old_verdict": "M/P failed its declared candidate screen and remains closed",
+    "baseline_provenance_file": "baseline_provenance.json",
+    "question_fidelity_memo": "/data/coding/sgmse/research_memos/p8_cpel_question_fidelity_20261020.md",
+    "development_reuse": "same previously evaluated CV, exploratory not independent confirmation",
+    "not_tested": "original A->B ordinary augmentation gain; real phone recovery/false-speech rejection"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "authorized",
+  "purpose": "single train-only gradient scale measurement; 8 records/16 probes; 0 optimizer/EMA/parameter updates; proposal not applied",
+  "calibration_config_sha256": "a11afbbf9cd8bef70f301e99cb81916b9af8a0777efa146eaf8f08ba75cee0ef",
+  "code_sha256": "965929560943b62543af4060f20d8de1f25bb7bcef71dc13fb4f45161f44c829",
+  "registry_sha256": "b4dddc93ed1471e25f6bc7e06180b178a4aebb77255519898b57e4ca58217a31",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "parent_helpers_sha256": {
+    "run_pilot.py": "fff9adb4ab1da2e5c8735778e3df6e1b3202717354230cb416b211f7294aa74c",
+    "loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "editing.py": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d"
+  },
+  "max_seconds": 300,
+  "source_audio_limit": 16,
+  "automatic_retry": false
+}

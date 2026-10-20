@@ -1,0 +1,52 @@
+{
+  "status": "failed_technical",
+  "items": [],
+  "http": {
+    "requests": 1,
+    "body_bytes": 11534336,
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/zip",
+      "X-GUploader-UploadID": "AP6rU81ZI206S_SXIre8Iq3E5ZOuDjpvdp0r1c2Wjdu--M6ZFUzvJl0HJTOIkp1OSF89GbSzbp1CKZR7GdQ-BQ",
+      "Expires": "Mon, 19 Oct 2026 17:55:03 GMT",
+      "Date": "Mon, 19 Oct 2026 16:55:03 GMT",
+      "Cache-Control": "public, max-age=3600",
+      "Last-Modified": "Thu, 20 Aug 2020 21:34:32 GMT",
+      "ETag": "\"4b8a67bae2973844e84fa7ac988d1a44\"",
+      "x-goog-generation": "1597959272054507",
+      "x-goog-metageneration": "2",
+      "x-goog-stored-content-encoding": "identity",
+      "x-goog-stored-content-length": "182082353",
+      "x-goog-hash": "crc32c=cJYbSQ==",
+      "x-goog-storage-class": "STANDARD",
+      "Accept-Ranges": "bytes",
+      "Content-Length": "182082353",
+      "Access-Control-Allow-Origin": "*",
+      "Access-Control-Expose-Headers": "Content-Type",
+      "Server": "UploadServer",
+      "Alt-Svc": "h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000",
+      "Connection": "close"
+    },
+    "url": "https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip"
+  },
+  "transcribe_calls": 0,
+  "internal_decode_calls": 0,
+  "asr_model_loads": 0,
+  "frontend_calls": 0,
+  "backend_calls": 0,
+  "optimizer_steps": 0,
+  "network_after_archive": [],
+  "failures": [
+    {
+      "error": "TimeoutError('Authorized download/total wall-clock cap')",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/readout.py\", line 96, in execute\n    block=response.read(min(1048576,182082353-result['http']['body_bytes']))\n  File \"/data/coding/sgmse/env/lib/python3.10/http/client.py\", line 481, in read\n    s = self.fp.read(amt)\n  File \"/data/coding/sgmse/env/lib/python3.10/socket.py\", line 717, in readinto\n    return self._sock.recv_into(b)\n  File \"/data/coding/sgmse/env/lib/python3.10/ssl.py\", line 1320, in recv_into\n    return self.read(nbytes, buffer)\n  File \"/data/coding/sgmse/env/lib/python3.10/ssl.py\", line 1176, in read\n    return self._sslobj.read(len, buffer)\n  File \"/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/readout.py\", line 76, in timeout\n    def timeout(signum,frame):raise TimeoutError('Authorized download/total wall-clock cap')\nTimeoutError: Authorized download/total wall-clock cap\n"
+    }
+  ],
+  "extracted_members": 0,
+  "member_read_attempts": 0,
+  "selected_audio_bytes": 0,
+  "header_checked": 0,
+  "artifact_bytes": 11601794,
+  "disk_free_bytes": 1604825088,
+  "seconds": 120.01842079404742
+}

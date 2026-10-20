@@ -1,0 +1,51 @@
+{
+  "command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/run_pilot.py",
+  "exec_session": 33718,
+  "supervisor_pid": 14679,
+  "child_pid": 14680,
+  "pid_evidence": "actually observed both by Worker ps; also Root independently observed and supervisor metrics agree",
+  "started": {
+    "utc": "2026-10-19T06:47:45.930133+00:00",
+    "execution_manifest_sha256": "2712227ee867458d64a8a544a5de28a95d8b509913acff7931dbc1df972d4bc4",
+    "scope": "model phase only; prior CPU preparation preserved"
+  },
+  "supervisor_seconds": 97.64469638606533,
+  "exit_code": 0,
+  "unique_run": true,
+  "smokes": 0,
+  "retries": 0,
+  "validator_command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/validate_model_run.py",
+  "validator_session": 50900,
+  "validator_exit": 0,
+  "unique_validator": true,
+  "validator_elapsed": "not separately timed; no fabricated duration",
+  "validator_scope": {
+    "endpoint_verification": {
+      "headroom": {
+        "strata": 21,
+        "bootstrap_replicates": 10000
+      },
+      "quality": {
+        "cases": 32,
+        "arms": 96,
+        "STOI_PESQ": "recomputed same frozen official libraries, independent bookkeeping; not independent algorithms",
+        "SI_SDR": "independent centered dot-product implementation"
+      }
+    },
+    "status": "passed",
+    "serialization_pairs": 64,
+    "scoring_items": 104,
+    "native_cases": 32,
+    "metrics_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+    "model_loads": 0,
+    "network_bytes": 0,
+    "source_locks": 413,
+    "blocked_local_ipv6_probe_refusals": 1,
+    "unknown_network_refusals": 0,
+    "all_socket_creation_still_refused": true
+  },
+  "metrics_original_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "input_registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "root_authorization_sha256": "6030425c904d0d2d0f5e9cd4797228a899ea355de90321d4e99235a237e99b3d",
+  "utc_report": "2026-10-19T06:51:12.729432+00:00"
+}

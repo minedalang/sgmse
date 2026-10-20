@@ -1,0 +1,79 @@
+{
+  "request": {
+    "key": "p230_027_N1_snr_p0.wav__noisy",
+    "id": "p230_027",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_027_N1_snr_p0.wav",
+    "basename": "p230_027_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "8a1d7d45dea499c10fb38f402aa8d293f52ce6874029cc5a144eceb4862aff5f",
+      "samples": 51162,
+      "array_sha256": "b0ed634ceceb3f5e02e3b4cefe70baec812ecf58bc6df4c292dc46f8e2f2093a",
+      "peak": 0.105621337890625,
+      "rms": 0.016952184667801493
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " He has the courage of that on the right.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " He has the courage of that on the right.",
+        "tokens": [
+          50363,
+          679,
+          468,
+          262,
+          11917,
+          286,
+          326,
+          319,
+          262,
+          826,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.6675046774057242,
+        "compression_ratio": 0.9302325581395349,
+        "no_speech_prob": 0.14331242442131042
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 60,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "inference_executed": false,
+  "checks": [
+    "mask deterministic symmetric internal raised cosine",
+    "strict unchanged outside support",
+    "tensor shape dtype and deterministic interpolation",
+    "no-op identity",
+    "Parseval highband calibration"
+  ],
+  "source_hashes_match": true,
+  "seed": 513132500,
+  "basename": "06_book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+  "run_count": 2,
+  "driver_sha256": "73509d46db953b70802cc3df213d51bc3a187726e9287cb36e2d53019e6844cc",
+  "config_sha256": "02331b5b52eae59f9cbe6c2fdf693bc8c8b74e758016f3f827a861b760b72e56",
+  "core_code_matches_successful_control": true
+}

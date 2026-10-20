@@ -1,0 +1,6571 @@
+[
+  {
+    "basename": "f6aka1.wav",
+    "boundary_source": "none",
+    "compressed_size": 19330,
+    "consonant": "k",
+    "crc32": "91f37789",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f6aka1.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f6",
+      "speaker_number": 6,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f6_kg"
+    ],
+    "role": "primary",
+    "sample_id": "f6aka1",
+    "sha256": "519babe8e11c32cf034e464acee302132eaa3f9511a0358368a04782c3f02536",
+    "size": 23546,
+    "speaker": "f6",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6aka1.wav",
+    "source_sha256": "519babe8e11c32cf034e464acee302132eaa3f9511a0358368a04782c3f02536",
+    "derived_16k_float32_sha256": "70c76dc3ceb67f86757b46d568133b201e1a1aee11ebb7a91a578f6c1480b94b",
+    "source_samples": 11751,
+    "derived_samples": 7521,
+    "ctc_frames": 23,
+    "all24_loglikelihoods": {
+      "b": -24.64013671875,
+      "d": -23.89569854736328,
+      "g": -20.1170711517334,
+      "p": -22.975400924682617,
+      "t": -21.63010025024414,
+      "k": -16.497915267944336,
+      "s": -24.754230499267578,
+      "sh": -25.308229446411133,
+      "f": -24.942947387695312,
+      "v": -26.45265769958496,
+      "dh": -25.975566864013672,
+      "th": -25.755277633666992,
+      "ch": -23.794540405273438,
+      "z": -26.05945587158203,
+      "zh": -28.054292678833008,
+      "h": -24.506120681762695,
+      "dj": -25.229225158691406,
+      "m": -24.30565071105957,
+      "n": -24.94769859313965,
+      "ng": -24.983285903930664,
+      "w": -26.01953887939453,
+      "r": -28.287580490112305,
+      "y": -24.92708969116211,
+      "l": -25.170122146606445
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 3.6191558837890625,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a k a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.8427119255065918
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 11,
+        "end_frame_exclusive": 12,
+        "mean_posterior": 0.9371207356452942
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 16,
+        "end_frame_exclusive": 17,
+        "mean_posterior": 0.5931025147438049
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f6aka1.npz",
+    "array_sha256": "5890bf5e744e3b11bf90e590e78c6f9884f04d5358f87de55231793bcaa30694"
+  },
+  {
+    "basename": "f6aga1.wav",
+    "boundary_source": "none",
+    "compressed_size": 15945,
+    "consonant": "g",
+    "crc32": "04e6fce4",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f6aga1.wav",
+    "nominal": {
+      "consonant": "g",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f6",
+      "speaker_number": 6,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f6_kg"
+    ],
+    "role": "primary",
+    "sample_id": "f6aga1",
+    "sha256": "0127df08b74ec2cc077e383feacf735bc1f541d916434ca01b4c466e95645346",
+    "size": 19546,
+    "speaker": "f6",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6aga1.wav",
+    "source_sha256": "0127df08b74ec2cc077e383feacf735bc1f541d916434ca01b4c466e95645346",
+    "derived_16k_float32_sha256": "22531ef5283242fd5f963230763c633b3d6b0cf8f4d81d8f57ff002915a87cd6",
+    "source_samples": 9751,
+    "derived_samples": 6241,
+    "ctc_frames": 19,
+    "all24_loglikelihoods": {
+      "b": -21.606924057006836,
+      "d": -20.1656494140625,
+      "g": -15.205596923828125,
+      "p": -24.29266357421875,
+      "t": -22.488300323486328,
+      "k": -18.423704147338867,
+      "s": -24.607864379882812,
+      "sh": -25.093469619750977,
+      "f": -25.1538028717041,
+      "v": -23.02430534362793,
+      "dh": -22.608598709106445,
+      "th": -25.478649139404297,
+      "ch": -25.737289428710938,
+      "z": -23.732481002807617,
+      "zh": -25.83588981628418,
+      "h": -23.336883544921875,
+      "dj": -23.60675048828125,
+      "m": -23.235618591308594,
+      "n": -22.740966796875,
+      "ng": -21.6141357421875,
+      "w": -22.772663116455078,
+      "r": -25.85072135925293,
+      "y": -21.859010696411133,
+      "l": -23.301603317260742
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "g",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "k",
+    "binary_loglikelihood_margin": 3.218107223510742,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a ɡ a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.8209306001663208
+      },
+      {
+        "token": "ɡ",
+        "token_id": 35,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.9359195828437805
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 12,
+        "end_frame_exclusive": 13,
+        "mean_posterior": 0.46104896068573
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f6aga1.npz",
+    "array_sha256": "dc3302ea2a72db4439e96b68c9557b3d9a3cf083d74b1e1ca1520dee1f0ea7c8"
+  },
+  {
+    "basename": "f6ata1.wav",
+    "boundary_source": "none",
+    "compressed_size": 20020,
+    "consonant": "t",
+    "crc32": "82ee7702",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f6ata1.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f6",
+      "speaker_number": 6,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f6_td"
+    ],
+    "role": "primary",
+    "sample_id": "f6ata1",
+    "sha256": "948d78aea7864caeda30287ed384bb4ddfb53cb7c575ea10a9945e8516666433",
+    "size": 24046,
+    "speaker": "f6",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6ata1.wav",
+    "source_sha256": "948d78aea7864caeda30287ed384bb4ddfb53cb7c575ea10a9945e8516666433",
+    "derived_16k_float32_sha256": "16d95428bec75c80c102c731d763778508df4bedfd5c64e87b0b5e8dccba8ccf",
+    "source_samples": 12001,
+    "derived_samples": 7681,
+    "ctc_frames": 23,
+    "all24_loglikelihoods": {
+      "b": -26.371944427490234,
+      "d": -22.133800506591797,
+      "g": -25.949342727661133,
+      "p": -25.409435272216797,
+      "t": -17.49126434326172,
+      "k": -22.863643646240234,
+      "s": -23.44788932800293,
+      "sh": -27.010242462158203,
+      "f": -25.883848190307617,
+      "v": -27.689983367919922,
+      "dh": -26.122894287109375,
+      "th": -25.03554344177246,
+      "ch": -24.666776657104492,
+      "z": -25.609251022338867,
+      "zh": -31.04909324645996,
+      "h": -22.317012786865234,
+      "dj": -26.16284942626953,
+      "m": -27.468103408813477,
+      "n": -25.447845458984375,
+      "ng": -28.864307403564453,
+      "w": -27.81694793701172,
+      "r": -28.28230857849121,
+      "y": -26.819963455200195,
+      "l": -25.531648635864258
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 4.642536163330078,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a t a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.9099916815757751
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 11,
+        "end_frame_exclusive": 12,
+        "mean_posterior": 0.9529961943626404
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.6870407462120056
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f6ata1.npz",
+    "array_sha256": "9f0cef913a78bf7d264949e025d90aaccd950853bdb9693fdbfe29d0cb7fd76e"
+  },
+  {
+    "basename": "f6ada1.wav",
+    "boundary_source": "none",
+    "compressed_size": 16749,
+    "consonant": "d",
+    "crc32": "5ee64061",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f6ada1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f6",
+      "speaker_number": 6,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f6_td"
+    ],
+    "role": "primary",
+    "sample_id": "f6ada1",
+    "sha256": "4869074b9a990300dbb4a5c086c2842776288fb3562a32f5372063f179652996",
+    "size": 20546,
+    "speaker": "f6",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6ada1.wav",
+    "source_sha256": "4869074b9a990300dbb4a5c086c2842776288fb3562a32f5372063f179652996",
+    "derived_16k_float32_sha256": "48b0a32d5662a6d256dc33764fa57111d8a4e59d5a1466258930c90b35900c97",
+    "source_samples": 10251,
+    "derived_samples": 6561,
+    "ctc_frames": 20,
+    "all24_loglikelihoods": {
+      "b": -23.589942932128906,
+      "d": -15.761942863464355,
+      "g": -23.504098892211914,
+      "p": -26.62944984436035,
+      "t": -19.876195907592773,
+      "k": -26.077810287475586,
+      "s": -25.855487823486328,
+      "sh": -27.747583389282227,
+      "f": -27.967262268066406,
+      "v": -25.179494857788086,
+      "dh": -22.773311614990234,
+      "th": -27.21245765686035,
+      "ch": -27.121305465698242,
+      "z": -24.3393497467041,
+      "zh": -28.438114166259766,
+      "h": -26.34733009338379,
+      "dj": -23.30674171447754,
+      "m": -27.35614013671875,
+      "n": -23.816102981567383,
+      "ng": -27.012699127197266,
+      "w": -26.85230255126953,
+      "r": -26.85768699645996,
+      "y": -25.41783905029297,
+      "l": -23.955110549926758
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "d",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": 4.114253044128418,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a d a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.8762023448944092
+      },
+      {
+        "token": "d",
+        "token_id": 12,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.9755057692527771
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 12,
+        "end_frame_exclusive": 13,
+        "mean_posterior": 0.7969501614570618
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f6ada1.npz",
+    "array_sha256": "91d4b47156c682f42f69f08541dcb269d07027895e3e865913850e63cdb15f4e"
+  },
+  {
+    "basename": "m2aka1.wav",
+    "boundary_source": "none",
+    "compressed_size": 19707,
+    "consonant": "k",
+    "crc32": "7f61a1a0",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m2aka1.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m2",
+      "speaker_number": 2,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m2_kg"
+    ],
+    "role": "primary",
+    "sample_id": "m2aka1",
+    "sha256": "61a2f98a2478301ea4d1e4658af6982e9780e474568090c419ed4e3d3d66e9d4",
+    "size": 24546,
+    "speaker": "m2",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2aka1.wav",
+    "source_sha256": "61a2f98a2478301ea4d1e4658af6982e9780e474568090c419ed4e3d3d66e9d4",
+    "derived_16k_float32_sha256": "5a0c372eb6092723d5472f155f0960ce1bff12742d6c7d6af9ad85743f98ece1",
+    "source_samples": 12251,
+    "derived_samples": 7841,
+    "ctc_frames": 24,
+    "all24_loglikelihoods": {
+      "b": -22.793987274169922,
+      "d": -21.87411117553711,
+      "g": -17.648225784301758,
+      "p": -22.324951171875,
+      "t": -20.17091941833496,
+      "k": -14.557308197021484,
+      "s": -22.80976104736328,
+      "sh": -23.52741241455078,
+      "f": -23.695777893066406,
+      "v": -24.887310028076172,
+      "dh": -24.208654403686523,
+      "th": -23.89763832092285,
+      "ch": -21.566984176635742,
+      "z": -24.031471252441406,
+      "zh": -25.923017501831055,
+      "h": -22.507232666015625,
+      "dj": -22.83925437927246,
+      "m": -22.594135284423828,
+      "n": -23.363039016723633,
+      "ng": -22.902658462524414,
+      "w": -24.214645385742188,
+      "r": -25.847942352294922,
+      "y": -22.153247833251953,
+      "l": -23.04907989501953
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 3.0909175872802734,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a k a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.8211545944213867
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 14,
+        "end_frame_exclusive": 15,
+        "mean_posterior": 0.8911311626434326
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 17,
+        "end_frame_exclusive": 18,
+        "mean_posterior": 0.40431666374206543
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m2aka1.npz",
+    "array_sha256": "893218175447ca3943f1337aac8605168de74966a2ea8720403cf9dda7900310"
+  },
+  {
+    "basename": "m2aga1.wav",
+    "boundary_source": "none",
+    "compressed_size": 19488,
+    "consonant": "g",
+    "crc32": "0393ac5a",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m2aga1.wav",
+    "nominal": {
+      "consonant": "g",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m2",
+      "speaker_number": 2,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m2_kg"
+    ],
+    "role": "primary",
+    "sample_id": "m2aga1",
+    "sha256": "1dce6ec9cee454415a33852a403ea91678cadedcc6464feae077a1559e388d7d",
+    "size": 24546,
+    "speaker": "m2",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2aga1.wav",
+    "source_sha256": "1dce6ec9cee454415a33852a403ea91678cadedcc6464feae077a1559e388d7d",
+    "derived_16k_float32_sha256": "5eeeab9b30ed472ef15bc62aacfcf7c1dc938b94fe3239ddcc649073702c93ac",
+    "source_samples": 12251,
+    "derived_samples": 7841,
+    "ctc_frames": 24,
+    "all24_loglikelihoods": {
+      "b": -20.07328987121582,
+      "d": -17.65366554260254,
+      "g": -13.866861343383789,
+      "p": -21.86640167236328,
+      "t": -19.26350212097168,
+      "k": -15.574053764343262,
+      "s": -22.619491577148438,
+      "sh": -22.99358367919922,
+      "f": -23.782001495361328,
+      "v": -21.6213436126709,
+      "dh": -21.203044891357422,
+      "th": -23.23480987548828,
+      "ch": -21.639671325683594,
+      "z": -21.154449462890625,
+      "zh": -23.682636260986328,
+      "h": -21.185745239257812,
+      "dj": -19.822139739990234,
+      "m": -21.766761779785156,
+      "n": -21.083866119384766,
+      "ng": -20.247081756591797,
+      "w": -21.88034439086914,
+      "r": -23.50421142578125,
+      "y": -19.233850479125977,
+      "l": -20.601987838745117
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "g",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "k",
+    "binary_loglikelihood_margin": 1.7071924209594727,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a ɡ a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.7287349700927734
+      },
+      {
+        "token": "ɡ",
+        "token_id": 35,
+        "start_frame": 14,
+        "end_frame_exclusive": 15,
+        "mean_posterior": 0.7749904990196228
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 17,
+        "end_frame_exclusive": 18,
+        "mean_posterior": 0.6136296391487122
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m2aga1.npz",
+    "array_sha256": "362863e8e5905b6a33bbcd587a98a2f174b001a52a0c5806ef2bccfcfdd1a69f"
+  },
+  {
+    "basename": "m2ata1.wav",
+    "boundary_source": "none",
+    "compressed_size": 20452,
+    "consonant": "t",
+    "crc32": "da4c6bda",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m2ata1.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m2",
+      "speaker_number": 2,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m2_td"
+    ],
+    "role": "primary",
+    "sample_id": "m2ata1",
+    "sha256": "485adf590aade0fc1f158049a3ec50f872acdfa6e70d205f55067b97caefb08e",
+    "size": 25546,
+    "speaker": "m2",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ata1.wav",
+    "source_sha256": "485adf590aade0fc1f158049a3ec50f872acdfa6e70d205f55067b97caefb08e",
+    "derived_16k_float32_sha256": "a9d9567ed41328159a7c4e384488c5c5b12f7528add50a5d7e64b2968b8563af",
+    "source_samples": 12751,
+    "derived_samples": 8161,
+    "ctc_frames": 25,
+    "all24_loglikelihoods": {
+      "b": -27.474035263061523,
+      "d": -22.870981216430664,
+      "g": -28.24349594116211,
+      "p": -26.084814071655273,
+      "t": -18.440265655517578,
+      "k": -24.762935638427734,
+      "s": -24.55588150024414,
+      "sh": -27.2265567779541,
+      "f": -26.557601928710938,
+      "v": -28.302248001098633,
+      "dh": -28.0105037689209,
+      "th": -27.025747299194336,
+      "ch": -25.731462478637695,
+      "z": -26.313587188720703,
+      "zh": -31.057571411132812,
+      "h": -21.7365779876709,
+      "dj": -26.988033294677734,
+      "m": -28.160621643066406,
+      "n": -26.968915939331055,
+      "ng": -30.31169891357422,
+      "w": -28.692651748657227,
+      "r": -28.63673210144043,
+      "y": -28.612600326538086,
+      "l": -26.19022560119629
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 4.430715560913086,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a h t a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.6952274441719055
+      },
+      {
+        "token": "h",
+        "token_id": 39,
+        "start_frame": 8,
+        "end_frame_exclusive": 9,
+        "mean_posterior": 0.5077348947525024
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.9648471474647522
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 19,
+        "end_frame_exclusive": 20,
+        "mean_posterior": 0.4669852554798126
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m2ata1.npz",
+    "array_sha256": "ce09c81b9421652a1521ef70eb1c02450b23d634e3ded1e37244f4c8e5fb50af"
+  },
+  {
+    "basename": "m2ada1.wav",
+    "boundary_source": "none",
+    "compressed_size": 17692,
+    "consonant": "d",
+    "crc32": "8f831d55",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m2ada1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m2",
+      "speaker_number": 2,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m2_td"
+    ],
+    "role": "primary",
+    "sample_id": "m2ada1",
+    "sha256": "6bf6ce3f47d7238ff86daf255a061ed114363535b980e4f25e21f17314e4a29c",
+    "size": 22546,
+    "speaker": "m2",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ada1.wav",
+    "source_sha256": "6bf6ce3f47d7238ff86daf255a061ed114363535b980e4f25e21f17314e4a29c",
+    "derived_16k_float32_sha256": "41148a1c552da5e8b13647663a4cf00707888ce630faccc4471f7b96380c838c",
+    "source_samples": 11251,
+    "derived_samples": 7201,
+    "ctc_frames": 22,
+    "all24_loglikelihoods": {
+      "b": -22.22954750061035,
+      "d": -15.424623489379883,
+      "g": -22.542959213256836,
+      "p": -24.33994483947754,
+      "t": -18.407922744750977,
+      "k": -23.75169563293457,
+      "s": -25.452495574951172,
+      "sh": -26.32521629333496,
+      "f": -26.66702651977539,
+      "v": -24.774700164794922,
+      "dh": -22.483789443969727,
+      "th": -26.15479278564453,
+      "ch": -25.04351806640625,
+      "z": -24.3043212890625,
+      "zh": -27.452774047851562,
+      "h": -25.065771102905273,
+      "dj": -21.717226028442383,
+      "m": -25.489437103271484,
+      "n": -22.894136428833008,
+      "ng": -25.65347671508789,
+      "w": -25.013511657714844,
+      "r": -24.860994338989258,
+      "y": -24.038240432739258,
+      "l": -22.160877227783203
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "d",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": 2.9832992553710938,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a d a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.8244052529335022
+      },
+      {
+        "token": "d",
+        "token_id": 12,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.9292537569999695
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 17,
+        "end_frame_exclusive": 18,
+        "mean_posterior": 0.6437772512435913
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m2ada1.npz",
+    "array_sha256": "d10d2d29926166aa45ee8cb9fe4bc1204b39c564c4360635b8c2b73de0bc9e38"
+  },
+  {
+    "basename": "f11aka1.wav",
+    "boundary_source": "none",
+    "compressed_size": 17119,
+    "consonant": "k",
+    "crc32": "13c14d4a",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f11aka1.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f11",
+      "speaker_number": 11,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f11_kg"
+    ],
+    "role": "primary",
+    "sample_id": "f11aka1",
+    "sha256": "8c21d64d7b2e2cb18c105a8506d04242c2ba24a3bd51bd8b11068791bbd2a684",
+    "size": 21046,
+    "speaker": "f11",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11aka1.wav",
+    "source_sha256": "8c21d64d7b2e2cb18c105a8506d04242c2ba24a3bd51bd8b11068791bbd2a684",
+    "derived_16k_float32_sha256": "bd2fc099c2b212c28cdc81bae8545d36d9f312b6144d8e109e4ccc9298e75d41",
+    "source_samples": 10501,
+    "derived_samples": 6721,
+    "ctc_frames": 20,
+    "all24_loglikelihoods": {
+      "b": -23.677967071533203,
+      "d": -23.37652587890625,
+      "g": -18.95931053161621,
+      "p": -21.729068756103516,
+      "t": -20.24882698059082,
+      "k": -14.075993537902832,
+      "s": -22.67074966430664,
+      "sh": -23.53986930847168,
+      "f": -23.633119583129883,
+      "v": -25.480920791625977,
+      "dh": -25.032367706298828,
+      "th": -24.3597469329834,
+      "ch": -21.751544952392578,
+      "z": -24.452938079833984,
+      "zh": -26.315759658813477,
+      "h": -23.8062801361084,
+      "dj": -24.123685836791992,
+      "m": -22.432884216308594,
+      "n": -23.61939811706543,
+      "ng": -23.237728118896484,
+      "w": -24.878934860229492,
+      "r": -26.48172378540039,
+      "y": -23.830656051635742,
+      "l": -23.420013427734375
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 4.883316993713379,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a k a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.7671598792076111
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.9690800309181213
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.6438403725624084
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f11aka1.npz",
+    "array_sha256": "f04a01bd29915adb3a7b9d2191521d4f11f2de4ba3013cb19b430d8168773bd3"
+  },
+  {
+    "basename": "f11aga1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 14637,
+    "consonant": "g",
+    "crc32": "99513ac8",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": [
+      {
+        "end_htk": 100000,
+        "end_seconds": 0.01,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1200000,
+        "end_seconds": 0.12,
+        "label": "aa1",
+        "start_htk": 100000,
+        "start_seconds": 0.01
+      },
+      {
+        "end_htk": 1900000,
+        "end_seconds": 0.19,
+        "label": "g",
+        "start_htk": 1200000,
+        "start_seconds": 0.12
+      },
+      {
+        "end_htk": 3200000,
+        "end_seconds": 0.32,
+        "label": "aa2",
+        "start_htk": 1900000,
+        "start_seconds": 0.19
+      }
+    ],
+    "manual_end_s": 0.19,
+    "manual_start_s": 0.12,
+    "member": "train/f11aga1.wav",
+    "nominal": {
+      "consonant": "g",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f11",
+      "speaker_number": 11,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f11_kg"
+    ],
+    "role": "primary",
+    "sample_id": "f11aga1",
+    "sha256": "2c22bbc1ecfa7c446c3179f2d48f19667b22625f1e8149bf18bf96c68633cd41",
+    "size": 17046,
+    "speaker": "f11",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11aga1.wav",
+    "source_sha256": "2c22bbc1ecfa7c446c3179f2d48f19667b22625f1e8149bf18bf96c68633cd41",
+    "derived_16k_float32_sha256": "5bd928682b920b70640a59b3813fb2f2b408ce0dffdf83700df98de4854d30ac",
+    "source_samples": 8501,
+    "derived_samples": 5441,
+    "ctc_frames": 16,
+    "all24_loglikelihoods": {
+      "b": -20.356521606445312,
+      "d": -18.971406936645508,
+      "g": -13.845328330993652,
+      "p": -23.154006958007812,
+      "t": -21.328414916992188,
+      "k": -17.25349235534668,
+      "s": -23.37093162536621,
+      "sh": -23.201663970947266,
+      "f": -23.841711044311523,
+      "v": -21.22382926940918,
+      "dh": -21.214874267578125,
+      "th": -23.85788345336914,
+      "ch": -24.23540496826172,
+      "z": -22.606639862060547,
+      "zh": -24.45864486694336,
+      "h": -21.786651611328125,
+      "dj": -21.873510360717773,
+      "m": -22.290998458862305,
+      "n": -21.53951072692871,
+      "ng": -20.647714614868164,
+      "w": -21.765106201171875,
+      "r": -23.78558349609375,
+      "y": -20.066448211669922,
+      "l": -21.86768341064453
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "g",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "k",
+    "binary_loglikelihood_margin": 3.4081640243530273,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a ɡ a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 2,
+        "end_frame_exclusive": 3,
+        "mean_posterior": 0.6947422623634338
+      },
+      {
+        "token": "ɡ",
+        "token_id": 35,
+        "start_frame": 8,
+        "end_frame_exclusive": 9,
+        "mean_posterior": 0.9398589730262756
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.6556071043014526
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f11aga1.npz",
+    "array_sha256": "57b0b0055f6a45e62392b039d1e017bc742ac70e860b913c02b1d67537139cb9"
+  },
+  {
+    "basename": "f11ata1.wav",
+    "boundary_source": "none",
+    "compressed_size": 16335,
+    "consonant": "t",
+    "crc32": "b655c7a6",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f11ata1.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f11",
+      "speaker_number": 11,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f11_td"
+    ],
+    "role": "primary",
+    "sample_id": "f11ata1",
+    "sha256": "56c839ef855fba8ebde60e16b5b619274a60e987972b3c5ea0f2d2db1bff563e",
+    "size": 20546,
+    "speaker": "f11",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11ata1.wav",
+    "source_sha256": "56c839ef855fba8ebde60e16b5b619274a60e987972b3c5ea0f2d2db1bff563e",
+    "derived_16k_float32_sha256": "cd98ac4b17b59a417845179897473aaf0c337e7b5d2877d09ba3df71822c8e5e",
+    "source_samples": 10251,
+    "derived_samples": 6561,
+    "ctc_frames": 20,
+    "all24_loglikelihoods": {
+      "b": -23.392087936401367,
+      "d": -20.003448486328125,
+      "g": -23.044736862182617,
+      "p": -21.383420944213867,
+      "t": -15.2979736328125,
+      "k": -19.500207901000977,
+      "s": -22.198890686035156,
+      "sh": -24.938600540161133,
+      "f": -22.50034523010254,
+      "v": -24.967084884643555,
+      "dh": -22.36018943786621,
+      "th": -21.406932830810547,
+      "ch": -22.121103286743164,
+      "z": -24.674903869628906,
+      "zh": -28.963403701782227,
+      "h": -22.475969314575195,
+      "dj": -23.901288986206055,
+      "m": -24.371999740600586,
+      "n": -22.815763473510742,
+      "ng": -25.398712158203125,
+      "w": -24.090862274169922,
+      "r": -25.90613555908203,
+      "y": -24.13755989074707,
+      "l": -22.55256462097168
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 4.705474853515625,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a t ə",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.6165103316307068
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.9264093637466431
+      },
+      {
+        "token": "ə",
+        "token_id": 7,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.43084558844566345
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f11ata1.npz",
+    "array_sha256": "df1072ee63de0877f87c83cfe8201fbee27c7b20a27c6d75fe1352855461838b"
+  },
+  {
+    "basename": "f11ada1.wav",
+    "boundary_source": "none",
+    "compressed_size": 16001,
+    "consonant": "d",
+    "crc32": "6a0f95db",
+    "gender": "f",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/f11ada1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "aCa",
+      "sex": "f",
+      "speaker": "f11",
+      "speaker_number": 11,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "f11_td"
+    ],
+    "role": "primary",
+    "sample_id": "f11ada1",
+    "sha256": "a95582c030774eda18af9ea49cc48f382ba4fbfc3f7763be4208c29155cc2d1e",
+    "size": 19046,
+    "speaker": "f11",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11ada1.wav",
+    "source_sha256": "a95582c030774eda18af9ea49cc48f382ba4fbfc3f7763be4208c29155cc2d1e",
+    "derived_16k_float32_sha256": "563aee02fb2c5b01c8c9e56144af57355ffc553a5aaafbc5058f57d90fcb1c00",
+    "source_samples": 9501,
+    "derived_samples": 6081,
+    "ctc_frames": 18,
+    "all24_loglikelihoods": {
+      "b": -19.79507064819336,
+      "d": -14.085171699523926,
+      "g": -20.74283218383789,
+      "p": -23.02288246154785,
+      "t": -16.93126678466797,
+      "k": -22.92911720275879,
+      "s": -22.708568572998047,
+      "sh": -24.559934616088867,
+      "f": -23.671432495117188,
+      "v": -21.885807037353516,
+      "dh": -17.332529067993164,
+      "th": -21.90808868408203,
+      "ch": -24.238582611083984,
+      "z": -21.25901222229004,
+      "zh": -25.79047203063965,
+      "h": -23.56194305419922,
+      "dj": -20.672054290771484,
+      "m": -23.263710021972656,
+      "n": -20.998207092285156,
+      "ng": -23.524600982666016,
+      "w": -22.338226318359375,
+      "r": -23.316091537475586,
+      "y": -22.80023765563965,
+      "l": -20.790273666381836
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "d",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": 2.846095085144043,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a d a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.826904833316803
+      },
+      {
+        "token": "d",
+        "token_id": 12,
+        "start_frame": 8,
+        "end_frame_exclusive": 9,
+        "mean_posterior": 0.8848466277122498
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 11,
+        "end_frame_exclusive": 12,
+        "mean_posterior": 0.6089011430740356
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f11ada1.npz",
+    "array_sha256": "a29685126fe9098a7b84f2dcb85b7d25bdeb79e3a55b3d570def4057f147c05b"
+  },
+  {
+    "basename": "m4aka1.wav",
+    "boundary_source": "none",
+    "compressed_size": 18684,
+    "consonant": "k",
+    "crc32": "64c87c28",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m4aka1.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m4",
+      "speaker_number": 4,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m4_kg"
+    ],
+    "role": "primary",
+    "sample_id": "m4aka1",
+    "sha256": "1a4dc49cc9dc1d8b07a3369a555929ae466e0c99a0fcff7ed04b83997a94e816",
+    "size": 22546,
+    "speaker": "m4",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4aka1.wav",
+    "source_sha256": "1a4dc49cc9dc1d8b07a3369a555929ae466e0c99a0fcff7ed04b83997a94e816",
+    "derived_16k_float32_sha256": "04c1ce205456ea3e723d6c2cbc58032133a9c39bded6e62f90b6b8eaac07e111",
+    "source_samples": 11251,
+    "derived_samples": 7201,
+    "ctc_frames": 22,
+    "all24_loglikelihoods": {
+      "b": -26.573381423950195,
+      "d": -26.477813720703125,
+      "g": -23.413389205932617,
+      "p": -25.70384407043457,
+      "t": -23.299575805664062,
+      "k": -18.36582374572754,
+      "s": -26.604583740234375,
+      "sh": -27.68640899658203,
+      "f": -27.003816604614258,
+      "v": -28.94471549987793,
+      "dh": -28.2258243560791,
+      "th": -28.36035919189453,
+      "ch": -26.39189910888672,
+      "z": -27.626436233520508,
+      "zh": -30.299448013305664,
+      "h": -25.293169021606445,
+      "dj": -27.338037490844727,
+      "m": -27.073278427124023,
+      "n": -26.974281311035156,
+      "ng": -28.046472549438477,
+      "w": -27.694318771362305,
+      "r": -28.339771270751953,
+      "y": -28.254091262817383,
+      "l": -26.388608932495117
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 5.047565460205078,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a k a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.793773353099823
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 12,
+        "end_frame_exclusive": 13,
+        "mean_posterior": 0.9545976519584656
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.4645039141178131
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m4aka1.npz",
+    "array_sha256": "af4cc71703fd2e9973affb6c2f3f7598ea773d88e382c2e024b3ee6b8542a5da"
+  },
+  {
+    "basename": "m4aga1.wav",
+    "boundary_source": "none",
+    "compressed_size": 17893,
+    "consonant": "g",
+    "crc32": "7e239967",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m4aga1.wav",
+    "nominal": {
+      "consonant": "g",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m4",
+      "speaker_number": 4,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m4_kg"
+    ],
+    "role": "primary",
+    "sample_id": "m4aga1",
+    "sha256": "5bd6bb5fc0353b12c7699f1099398f12f58cc66e2d00e23bf3b805e2788cc37d",
+    "size": 21546,
+    "speaker": "m4",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4aga1.wav",
+    "source_sha256": "5bd6bb5fc0353b12c7699f1099398f12f58cc66e2d00e23bf3b805e2788cc37d",
+    "derived_16k_float32_sha256": "3d2eb54da1e6fa58a414b71ffb741f44c2d454083382854c0e7925cf75cb2150",
+    "source_samples": 10751,
+    "derived_samples": 6881,
+    "ctc_frames": 21,
+    "all24_loglikelihoods": {
+      "b": -20.151968002319336,
+      "d": -19.295686721801758,
+      "g": -13.989251136779785,
+      "p": -22.5250186920166,
+      "t": -21.27992820739746,
+      "k": -16.12824058532715,
+      "s": -23.73317527770996,
+      "sh": -23.45046615600586,
+      "f": -24.24030876159668,
+      "v": -22.129575729370117,
+      "dh": -22.430782318115234,
+      "th": -24.829376220703125,
+      "ch": -24.08420181274414,
+      "z": -22.752521514892578,
+      "zh": -23.931535720825195,
+      "h": -22.002540588378906,
+      "dj": -22.222686767578125,
+      "m": -22.134178161621094,
+      "n": -22.349781036376953,
+      "ng": -20.909753799438477,
+      "w": -22.3988037109375,
+      "r": -23.261850357055664,
+      "y": -21.54911994934082,
+      "l": -21.740270614624023
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "g",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "k",
+    "binary_loglikelihood_margin": 2.1389894485473633,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a ɡ a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.8932999968528748
+      },
+      {
+        "token": "ɡ",
+        "token_id": 35,
+        "start_frame": 11,
+        "end_frame_exclusive": 12,
+        "mean_posterior": 0.8602241277694702
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.5349830985069275
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m4aga1.npz",
+    "array_sha256": "fad5ff46aa99636d72bc49b5eafcb6818ab2e562e3c62710399148d78b350ef6"
+  },
+  {
+    "basename": "m4ata1.wav",
+    "boundary_source": "none",
+    "compressed_size": 18148,
+    "consonant": "t",
+    "crc32": "1e27e3ea",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m4ata1.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m4",
+      "speaker_number": 4,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m4_td"
+    ],
+    "role": "primary",
+    "sample_id": "m4ata1",
+    "sha256": "70ff3809ea432c5eeefdc8f6ea65e59fb82f2d0e246f3a4dd48f18f0d4f8068f",
+    "size": 22046,
+    "speaker": "m4",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4ata1.wav",
+    "source_sha256": "70ff3809ea432c5eeefdc8f6ea65e59fb82f2d0e246f3a4dd48f18f0d4f8068f",
+    "derived_16k_float32_sha256": "2b93b7b45ad3f0c4918a0d5cf5a287edb45b91b2a813a0ee020518b3a1c9f256",
+    "source_samples": 11001,
+    "derived_samples": 7041,
+    "ctc_frames": 21,
+    "all24_loglikelihoods": {
+      "b": -24.969194412231445,
+      "d": -20.831411361694336,
+      "g": -25.22077751159668,
+      "p": -23.94406509399414,
+      "t": -16.273563385009766,
+      "k": -21.45269775390625,
+      "s": -23.5909423828125,
+      "sh": -25.194862365722656,
+      "f": -24.431800842285156,
+      "v": -26.557401657104492,
+      "dh": -24.774019241333008,
+      "th": -24.124067306518555,
+      "ch": -23.486114501953125,
+      "z": -25.599252700805664,
+      "zh": -29.902170181274414,
+      "h": -23.332571029663086,
+      "dj": -24.809724807739258,
+      "m": -26.181406021118164,
+      "n": -24.080059051513672,
+      "ng": -27.787721633911133,
+      "w": -26.846664428710938,
+      "r": -26.762836456298828,
+      "y": -26.179807662963867,
+      "l": -23.650005340576172
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 4.55784797668457,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a t a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.7790920734405518
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 11,
+        "end_frame_exclusive": 12,
+        "mean_posterior": 0.9616094827651978
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.4281131625175476
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m4ata1.npz",
+    "array_sha256": "1ded572c7d242b24382986ce2ace55ef272b411c774508dcf68778eeeec235bb"
+  },
+  {
+    "basename": "m4ada1.wav",
+    "boundary_source": "none",
+    "compressed_size": 18005,
+    "consonant": "d",
+    "crc32": "2a2a5147",
+    "gender": "m",
+    "is_primary": true,
+    "manual_boundaries": null,
+    "manual_end_s": null,
+    "manual_start_s": null,
+    "member": "train/m4ada1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m4",
+      "speaker_number": 4,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [
+      "m4_td"
+    ],
+    "role": "primary",
+    "sample_id": "m4ada1",
+    "sha256": "0621f46b3efff33e339a1957a73df3271b4ee00b408f48a7e785c8e7d95b8f6a",
+    "size": 21546,
+    "speaker": "m4",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4ada1.wav",
+    "source_sha256": "0621f46b3efff33e339a1957a73df3271b4ee00b408f48a7e785c8e7d95b8f6a",
+    "derived_16k_float32_sha256": "982276339191b4024ae3be1d0e3d5bd25ff7b760c4a5db355e998ca0f9c5a99e",
+    "source_samples": 10751,
+    "derived_samples": 6881,
+    "ctc_frames": 21,
+    "all24_loglikelihoods": {
+      "b": -21.625442504882812,
+      "d": -14.273954391479492,
+      "g": -22.166170120239258,
+      "p": -25.484312057495117,
+      "t": -19.011934280395508,
+      "k": -24.880334854125977,
+      "s": -24.634443283081055,
+      "sh": -25.093338012695312,
+      "f": -25.79958724975586,
+      "v": -22.5814266204834,
+      "dh": -20.502819061279297,
+      "th": -25.156482696533203,
+      "ch": -25.54079246520996,
+      "z": -22.370948791503906,
+      "zh": -25.684757232666016,
+      "h": -23.962173461914062,
+      "dj": -20.952632904052734,
+      "m": -25.273103713989258,
+      "n": -21.801898956298828,
+      "ng": -24.996231079101562,
+      "w": -25.181102752685547,
+      "r": -22.762062072753906,
+      "y": -23.861665725708008,
+      "l": -20.900814056396484
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "d",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": 4.737979888916016,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a d a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.7520685195922852
+      },
+      {
+        "token": "d",
+        "token_id": 12,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.974787712097168
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.6092095971107483
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m4ada1.npz",
+    "array_sha256": "da8fb19a2ce9fb0b558d2bf75164e58fb64288c4eb7be952c3e35f01a47baf48"
+  },
+  {
+    "basename": "f22idi1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 26968,
+    "consonant": "d",
+    "crc32": "25840bc8",
+    "gender": "f",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 400000,
+        "end_seconds": 0.04,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 2100000,
+        "end_seconds": 0.21,
+        "label": "iy1",
+        "start_htk": 400000,
+        "start_seconds": 0.04
+      },
+      {
+        "end_htk": 3100000,
+        "end_seconds": 0.31,
+        "label": "d",
+        "start_htk": 2100000,
+        "start_seconds": 0.21
+      },
+      {
+        "end_htk": 6200000,
+        "end_seconds": 0.62,
+        "label": "iy2",
+        "start_htk": 3100000,
+        "start_seconds": 0.31
+      }
+    ],
+    "manual_end_s": 0.31,
+    "manual_start_s": 0.21,
+    "member": "train/f22idi1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "iCi",
+      "sex": "f",
+      "speaker": "f22",
+      "speaker_number": 22,
+      "stress": "1",
+      "vowel1": "i",
+      "vowel2": "i"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "f22idi1",
+    "sha256": "7672f904462bbacea3134a5524a02c3fefc1f0c062a73d71f5e00e7a309fb021",
+    "size": 32046,
+    "speaker": "f22",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "i",
+    "vowel_right": "i",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f22idi1.wav",
+    "source_sha256": "7672f904462bbacea3134a5524a02c3fefc1f0c062a73d71f5e00e7a309fb021",
+    "derived_16k_float32_sha256": "6a305ea3ef2b0369be1746624bf0dc6325613b61ece43240cd6551d4ec8bde8a",
+    "source_samples": 16001,
+    "derived_samples": 10241,
+    "ctc_frames": 31,
+    "all24_loglikelihoods": {
+      "b": -11.321942329406738,
+      "d": -4.573976993560791,
+      "g": -10.67381763458252,
+      "p": -13.454493522644043,
+      "t": -8.72777271270752,
+      "k": -13.673383712768555,
+      "s": -14.369213104248047,
+      "sh": -15.92873477935791,
+      "f": -15.457839965820312,
+      "v": -12.015762329101562,
+      "dh": -10.424166679382324,
+      "th": -13.70786190032959,
+      "ch": -14.731542587280273,
+      "z": -14.218315124511719,
+      "zh": -15.980473518371582,
+      "h": -14.515161514282227,
+      "dj": -11.64953327178955,
+      "m": -14.998846054077148,
+      "n": -11.737979888916016,
+      "ng": -14.754772186279297,
+      "w": -14.510963439941406,
+      "r": -12.402313232421875,
+      "y": -13.352169036865234,
+      "l": -11.328180313110352
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "iː",
+        "b",
+        "iː"
+      ],
+      "d": [
+        "iː",
+        "d",
+        "iː"
+      ],
+      "g": [
+        "iː",
+        "ɡ",
+        "iː"
+      ],
+      "p": [
+        "iː",
+        "p",
+        "iː"
+      ],
+      "t": [
+        "iː",
+        "t",
+        "iː"
+      ],
+      "k": [
+        "iː",
+        "k",
+        "iː"
+      ],
+      "s": [
+        "iː",
+        "s",
+        "iː"
+      ],
+      "sh": [
+        "iː",
+        "ʃ",
+        "iː"
+      ],
+      "f": [
+        "iː",
+        "f",
+        "iː"
+      ],
+      "v": [
+        "iː",
+        "v",
+        "iː"
+      ],
+      "dh": [
+        "iː",
+        "ð",
+        "iː"
+      ],
+      "th": [
+        "iː",
+        "θ",
+        "iː"
+      ],
+      "ch": [
+        "iː",
+        "tʃ",
+        "iː"
+      ],
+      "z": [
+        "iː",
+        "z",
+        "iː"
+      ],
+      "zh": [
+        "iː",
+        "ʒ",
+        "iː"
+      ],
+      "h": [
+        "iː",
+        "h",
+        "iː"
+      ],
+      "dj": [
+        "iː",
+        "dʒ",
+        "iː"
+      ],
+      "m": [
+        "iː",
+        "m",
+        "iː"
+      ],
+      "n": [
+        "iː",
+        "n",
+        "iː"
+      ],
+      "ng": [
+        "iː",
+        "ŋ",
+        "iː"
+      ],
+      "w": [
+        "iː",
+        "w",
+        "iː"
+      ],
+      "r": [
+        "iː",
+        "ɹ",
+        "iː"
+      ],
+      "y": [
+        "iː",
+        "j",
+        "iː"
+      ],
+      "l": [
+        "iː",
+        "l",
+        "iː"
+      ]
+    },
+    "top1_prediction": "d",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": 4.1537957191467285,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "i d i",
+    "greedy_runs_descriptive": [
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.6750497817993164
+      },
+      {
+        "token": "d",
+        "token_id": 12,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.9556517601013184
+      },
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 17,
+        "end_frame_exclusive": 18,
+        "mean_posterior": 0.5966501832008362
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f22idi1.npz",
+    "array_sha256": "4b450ff42478fdb5361517a6ff193e55dde60e91b19798884e659ae9068a1da7"
+  },
+  {
+    "basename": "f23iki1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 20128,
+    "consonant": "k",
+    "crc32": "90cb005e",
+    "gender": "f",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 400000,
+        "end_seconds": 0.04,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1300000,
+        "end_seconds": 0.13,
+        "label": "iy1",
+        "start_htk": 400000,
+        "start_seconds": 0.04
+      },
+      {
+        "end_htk": 3000000,
+        "end_seconds": 0.3,
+        "label": "k",
+        "start_htk": 1300000,
+        "start_seconds": 0.13
+      },
+      {
+        "end_htk": 4800000,
+        "end_seconds": 0.48,
+        "label": "iy2",
+        "start_htk": 3000000,
+        "start_seconds": 0.3
+      }
+    ],
+    "manual_end_s": 0.3,
+    "manual_start_s": 0.13,
+    "member": "train/f23iki1.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "iCi",
+      "sex": "f",
+      "speaker": "f23",
+      "speaker_number": 23,
+      "stress": "1",
+      "vowel1": "i",
+      "vowel2": "i"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "f23iki1",
+    "sha256": "f95db453d9ab1ed002ff754180b2935ae48bb597099ea32c25fef8654b1d3d61",
+    "size": 25046,
+    "speaker": "f23",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "i",
+    "vowel_right": "i",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f23iki1.wav",
+    "source_sha256": "f95db453d9ab1ed002ff754180b2935ae48bb597099ea32c25fef8654b1d3d61",
+    "derived_16k_float32_sha256": "7189844228d33fd63cdb4151845d0ccf4bb51c0693cc854a0ab4f063df48cf64",
+    "source_samples": 12501,
+    "derived_samples": 8001,
+    "ctc_frames": 24,
+    "all24_loglikelihoods": {
+      "b": -17.881834030151367,
+      "d": -17.997766494750977,
+      "g": -13.553062438964844,
+      "p": -14.364757537841797,
+      "t": -13.843290328979492,
+      "k": -7.945417881011963,
+      "s": -16.018512725830078,
+      "sh": -17.959705352783203,
+      "f": -16.128576278686523,
+      "v": -18.779640197753906,
+      "dh": -18.194868087768555,
+      "th": -16.022445678710938,
+      "ch": -14.552274703979492,
+      "z": -18.877443313598633,
+      "zh": -19.880300521850586,
+      "h": -17.416011810302734,
+      "dj": -17.74030876159668,
+      "m": -16.057085037231445,
+      "n": -17.605783462524414,
+      "ng": -16.897720336914062,
+      "w": -16.697702407836914,
+      "r": -17.803096771240234,
+      "y": -17.127124786376953,
+      "l": -16.24250030517578
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "iː",
+        "b",
+        "iː"
+      ],
+      "d": [
+        "iː",
+        "d",
+        "iː"
+      ],
+      "g": [
+        "iː",
+        "ɡ",
+        "iː"
+      ],
+      "p": [
+        "iː",
+        "p",
+        "iː"
+      ],
+      "t": [
+        "iː",
+        "t",
+        "iː"
+      ],
+      "k": [
+        "iː",
+        "k",
+        "iː"
+      ],
+      "s": [
+        "iː",
+        "s",
+        "iː"
+      ],
+      "sh": [
+        "iː",
+        "ʃ",
+        "iː"
+      ],
+      "f": [
+        "iː",
+        "f",
+        "iː"
+      ],
+      "v": [
+        "iː",
+        "v",
+        "iː"
+      ],
+      "dh": [
+        "iː",
+        "ð",
+        "iː"
+      ],
+      "th": [
+        "iː",
+        "θ",
+        "iː"
+      ],
+      "ch": [
+        "iː",
+        "tʃ",
+        "iː"
+      ],
+      "z": [
+        "iː",
+        "z",
+        "iː"
+      ],
+      "zh": [
+        "iː",
+        "ʒ",
+        "iː"
+      ],
+      "h": [
+        "iː",
+        "h",
+        "iː"
+      ],
+      "dj": [
+        "iː",
+        "dʒ",
+        "iː"
+      ],
+      "m": [
+        "iː",
+        "m",
+        "iː"
+      ],
+      "n": [
+        "iː",
+        "n",
+        "iː"
+      ],
+      "ng": [
+        "iː",
+        "ŋ",
+        "iː"
+      ],
+      "w": [
+        "iː",
+        "w",
+        "iː"
+      ],
+      "r": [
+        "iː",
+        "ɹ",
+        "iː"
+      ],
+      "y": [
+        "iː",
+        "j",
+        "iː"
+      ],
+      "l": [
+        "iː",
+        "l",
+        "iː"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 5.607644557952881,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "i k i",
+    "greedy_runs_descriptive": [
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.7536171078681946
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 12,
+        "end_frame_exclusive": 13,
+        "mean_posterior": 0.9301900267601013
+      },
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 16,
+        "end_frame_exclusive": 17,
+        "mean_posterior": 0.7983124852180481
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f23iki1.npz",
+    "array_sha256": "b4adbc0b4d1a5937031a88f9bccd820bbcc9c6e5a1462c3bdc35cd673bc2ec2e"
+  },
+  {
+    "basename": "f6iti1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 24001,
+    "consonant": "t",
+    "crc32": "398bdb80",
+    "gender": "f",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 200000,
+        "end_seconds": 0.02,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 2000000,
+        "end_seconds": 0.2,
+        "label": "iy1",
+        "start_htk": 200000,
+        "start_seconds": 0.02
+      },
+      {
+        "end_htk": 3600000,
+        "end_seconds": 0.36,
+        "label": "t",
+        "start_htk": 2000000,
+        "start_seconds": 0.2
+      },
+      {
+        "end_htk": 5500000,
+        "end_seconds": 0.55,
+        "label": "iy2",
+        "start_htk": 3600000,
+        "start_seconds": 0.36
+      }
+    ],
+    "manual_end_s": 0.36,
+    "manual_start_s": 0.2,
+    "member": "train/f6iti1.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "iCi",
+      "sex": "f",
+      "speaker": "f6",
+      "speaker_number": 6,
+      "stress": "1",
+      "vowel1": "i",
+      "vowel2": "i"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "f6iti1",
+    "sha256": "ea8f1f436010a6ca90ef75ea27f9565f73c8932ebdb1df2a80e349ae97857bb3",
+    "size": 28546,
+    "speaker": "f6",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "i",
+    "vowel_right": "i",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6iti1.wav",
+    "source_sha256": "ea8f1f436010a6ca90ef75ea27f9565f73c8932ebdb1df2a80e349ae97857bb3",
+    "derived_16k_float32_sha256": "1e56c63c480c2b1243bd5538d4d0941cf1d88a8ea2ce65337116b59fa780d922",
+    "source_samples": 14251,
+    "derived_samples": 9121,
+    "ctc_frames": 28,
+    "all24_loglikelihoods": {
+      "b": -14.11648941040039,
+      "d": -10.33299446105957,
+      "g": -14.121949195861816,
+      "p": -9.946898460388184,
+      "t": -3.965764284133911,
+      "k": -9.197571754455566,
+      "s": -9.102306365966797,
+      "sh": -12.912039756774902,
+      "f": -10.369613647460938,
+      "v": -14.159470558166504,
+      "dh": -12.158158302307129,
+      "th": -8.768391609191895,
+      "ch": -9.021071434020996,
+      "z": -12.767181396484375,
+      "zh": -15.905719757080078,
+      "h": -13.620139122009277,
+      "dj": -12.428470611572266,
+      "m": -13.480219841003418,
+      "n": -11.554658889770508,
+      "ng": -13.61242961883545,
+      "w": -13.689577102661133,
+      "r": -12.981781959533691,
+      "y": -13.519292831420898,
+      "l": -10.933516502380371
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "iː",
+        "b",
+        "iː"
+      ],
+      "d": [
+        "iː",
+        "d",
+        "iː"
+      ],
+      "g": [
+        "iː",
+        "ɡ",
+        "iː"
+      ],
+      "p": [
+        "iː",
+        "p",
+        "iː"
+      ],
+      "t": [
+        "iː",
+        "t",
+        "iː"
+      ],
+      "k": [
+        "iː",
+        "k",
+        "iː"
+      ],
+      "s": [
+        "iː",
+        "s",
+        "iː"
+      ],
+      "sh": [
+        "iː",
+        "ʃ",
+        "iː"
+      ],
+      "f": [
+        "iː",
+        "f",
+        "iː"
+      ],
+      "v": [
+        "iː",
+        "v",
+        "iː"
+      ],
+      "dh": [
+        "iː",
+        "ð",
+        "iː"
+      ],
+      "th": [
+        "iː",
+        "θ",
+        "iː"
+      ],
+      "ch": [
+        "iː",
+        "tʃ",
+        "iː"
+      ],
+      "z": [
+        "iː",
+        "z",
+        "iː"
+      ],
+      "zh": [
+        "iː",
+        "ʒ",
+        "iː"
+      ],
+      "h": [
+        "iː",
+        "h",
+        "iː"
+      ],
+      "dj": [
+        "iː",
+        "dʒ",
+        "iː"
+      ],
+      "m": [
+        "iː",
+        "m",
+        "iː"
+      ],
+      "n": [
+        "iː",
+        "n",
+        "iː"
+      ],
+      "ng": [
+        "iː",
+        "ŋ",
+        "iː"
+      ],
+      "w": [
+        "iː",
+        "w",
+        "iː"
+      ],
+      "r": [
+        "iː",
+        "ɹ",
+        "iː"
+      ],
+      "y": [
+        "iː",
+        "j",
+        "iː"
+      ],
+      "l": [
+        "iː",
+        "l",
+        "iː"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 6.367230415344238,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "iː t i",
+    "greedy_runs_descriptive": [
+      {
+        "token": "iː",
+        "token_id": 30,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.6165460348129272
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 14,
+        "end_frame_exclusive": 15,
+        "mean_posterior": 0.9185556173324585
+      },
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 18,
+        "end_frame_exclusive": 19,
+        "mean_posterior": 0.6314268708229065
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/f6iti1.npz",
+    "array_sha256": "9ea306064452568d85c5500d55d95f0ce13c1d4d0a26b596f5db4e275c38c1e6"
+  },
+  {
+    "basename": "m10uku2.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 27332,
+    "consonant": "k",
+    "crc32": "61e4295b",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 400000,
+        "end_seconds": 0.04,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 2000000,
+        "end_seconds": 0.2,
+        "label": "uw1",
+        "start_htk": 400000,
+        "start_seconds": 0.04
+      },
+      {
+        "end_htk": 3800000,
+        "end_seconds": 0.38,
+        "label": "k",
+        "start_htk": 2000000,
+        "start_seconds": 0.2
+      },
+      {
+        "end_htk": 6800000,
+        "end_seconds": 0.68,
+        "label": "uw2",
+        "start_htk": 3800000,
+        "start_seconds": 0.38
+      }
+    ],
+    "manual_end_s": 0.38,
+    "manual_start_s": 0.2,
+    "member": "train/m10uku2.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "uCu",
+      "sex": "m",
+      "speaker": "m10",
+      "speaker_number": 10,
+      "stress": "2",
+      "vowel1": "u",
+      "vowel2": "u"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m10uku2",
+    "sha256": "45b9043c8cb28be49c148a7c421ee517b3e42806536ca2aafe2c9e67633b1868",
+    "size": 34046,
+    "speaker": "m10",
+    "split": "corpus_train",
+    "stress": "2",
+    "vowel_left": "u",
+    "vowel_right": "u",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m10uku2.wav",
+    "source_sha256": "45b9043c8cb28be49c148a7c421ee517b3e42806536ca2aafe2c9e67633b1868",
+    "derived_16k_float32_sha256": "f7dfac1ee346987964299f5992f6d3cbfee35e2f5c492a099941b56d5f3dbd41",
+    "source_samples": 17001,
+    "derived_samples": 10881,
+    "ctc_frames": 33,
+    "all24_loglikelihoods": {
+      "b": -14.693910598754883,
+      "d": -15.544964790344238,
+      "g": -10.682950019836426,
+      "p": -11.837963104248047,
+      "t": -11.094926834106445,
+      "k": -4.599010944366455,
+      "s": -12.284466743469238,
+      "sh": -13.725236892700195,
+      "f": -13.186372756958008,
+      "v": -15.728435516357422,
+      "dh": -15.093101501464844,
+      "th": -12.652229309082031,
+      "ch": -10.48210334777832,
+      "z": -14.639738082885742,
+      "zh": -15.747456550598145,
+      "h": -13.414530754089355,
+      "dj": -13.80451488494873,
+      "m": -12.454586029052734,
+      "n": -13.632925033569336,
+      "ng": -12.624340057373047,
+      "w": -14.082634925842285,
+      "r": -14.585068702697754,
+      "y": -14.379366874694824,
+      "l": -13.335846900939941
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "uː",
+        "b",
+        "uː"
+      ],
+      "d": [
+        "uː",
+        "d",
+        "uː"
+      ],
+      "g": [
+        "uː",
+        "ɡ",
+        "uː"
+      ],
+      "p": [
+        "uː",
+        "p",
+        "uː"
+      ],
+      "t": [
+        "uː",
+        "t",
+        "uː"
+      ],
+      "k": [
+        "uː",
+        "k",
+        "uː"
+      ],
+      "s": [
+        "uː",
+        "s",
+        "uː"
+      ],
+      "sh": [
+        "uː",
+        "ʃ",
+        "uː"
+      ],
+      "f": [
+        "uː",
+        "f",
+        "uː"
+      ],
+      "v": [
+        "uː",
+        "v",
+        "uː"
+      ],
+      "dh": [
+        "uː",
+        "ð",
+        "uː"
+      ],
+      "th": [
+        "uː",
+        "θ",
+        "uː"
+      ],
+      "ch": [
+        "uː",
+        "tʃ",
+        "uː"
+      ],
+      "z": [
+        "uː",
+        "z",
+        "uː"
+      ],
+      "zh": [
+        "uː",
+        "ʒ",
+        "uː"
+      ],
+      "h": [
+        "uː",
+        "h",
+        "uː"
+      ],
+      "dj": [
+        "uː",
+        "dʒ",
+        "uː"
+      ],
+      "m": [
+        "uː",
+        "m",
+        "uː"
+      ],
+      "n": [
+        "uː",
+        "n",
+        "uː"
+      ],
+      "ng": [
+        "uː",
+        "ŋ",
+        "uː"
+      ],
+      "w": [
+        "uː",
+        "w",
+        "uː"
+      ],
+      "r": [
+        "uː",
+        "ɹ",
+        "uː"
+      ],
+      "y": [
+        "uː",
+        "j",
+        "uː"
+      ],
+      "l": [
+        "uː",
+        "l",
+        "uː"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 6.083939075469971,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "ʉ k ʉ",
+    "greedy_runs_descriptive": [
+      {
+        "token": "ʉ",
+        "token_id": 136,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.21237318217754364
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.8074792623519897
+      },
+      {
+        "token": "ʉ",
+        "token_id": 136,
+        "start_frame": 20,
+        "end_frame_exclusive": 21,
+        "mean_posterior": 0.24260708689689636
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m10uku2.npz",
+    "array_sha256": "0bfa390be3f083405f1eb2d0f7ba64004a291dd57f746f2c4019cc13c7c3dd63"
+  },
+  {
+    "basename": "m2ata2.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 22130,
+    "consonant": "t",
+    "crc32": "2458211b",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 300000,
+        "end_seconds": 0.03,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1200000,
+        "end_seconds": 0.12,
+        "label": "aa1",
+        "start_htk": 300000,
+        "start_seconds": 0.03
+      },
+      {
+        "end_htk": 3000000,
+        "end_seconds": 0.3,
+        "label": "t",
+        "start_htk": 1200000,
+        "start_seconds": 0.12
+      },
+      {
+        "end_htk": 5300000,
+        "end_seconds": 0.53,
+        "label": "aa2",
+        "start_htk": 3000000,
+        "start_seconds": 0.3
+      }
+    ],
+    "manual_end_s": 0.3,
+    "manual_start_s": 0.12,
+    "member": "train/m2ata2.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m2",
+      "speaker_number": 2,
+      "stress": "2",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m2ata2",
+    "sha256": "98903cdce9269c41d441bbe1f24c863a9432105e876b12f4730c32cb99749569",
+    "size": 26546,
+    "speaker": "m2",
+    "split": "corpus_train",
+    "stress": "2",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ata2.wav",
+    "source_sha256": "98903cdce9269c41d441bbe1f24c863a9432105e876b12f4730c32cb99749569",
+    "derived_16k_float32_sha256": "b589f18e69eb00e029b8f358cb14a7938fdc4ab0fbaf181bd78912a1a7545282",
+    "source_samples": 13251,
+    "derived_samples": 8481,
+    "ctc_frames": 26,
+    "all24_loglikelihoods": {
+      "b": -24.17037010192871,
+      "d": -21.061887741088867,
+      "g": -24.1005802154541,
+      "p": -21.80556297302246,
+      "t": -16.506912231445312,
+      "k": -20.116456985473633,
+      "s": -19.41481590270996,
+      "sh": -22.897302627563477,
+      "f": -23.616226196289062,
+      "v": -24.712060928344727,
+      "dh": -25.329988479614258,
+      "th": -22.6885986328125,
+      "ch": -19.344728469848633,
+      "z": -21.17767333984375,
+      "zh": -26.004573822021484,
+      "h": -21.50067901611328,
+      "dj": -21.724079132080078,
+      "m": -24.06055450439453,
+      "n": -22.413360595703125,
+      "ng": -24.755098342895508,
+      "w": -24.561098098754883,
+      "r": -25.638553619384766,
+      "y": -22.30941390991211,
+      "l": -22.451101303100586
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 4.554975509643555,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a t a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.8165445327758789
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.6189073920249939
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 16,
+        "end_frame_exclusive": 17,
+        "mean_posterior": 0.7799928784370422
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m2ata2.npz",
+    "array_sha256": "f74e7218ebb41fb5f22b5673d6ff4c0105ef92f20f5c4556197e390e46bb31f9"
+  },
+  {
+    "basename": "m2ugu1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 29102,
+    "consonant": "g",
+    "crc32": "9010ec02",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 400000,
+        "end_seconds": 0.04,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 2500000,
+        "end_seconds": 0.25,
+        "label": "uw1",
+        "start_htk": 400000,
+        "start_seconds": 0.04
+      },
+      {
+        "end_htk": 3600000,
+        "end_seconds": 0.36,
+        "label": "g",
+        "start_htk": 2500000,
+        "start_seconds": 0.25
+      },
+      {
+        "end_htk": 6800000,
+        "end_seconds": 0.68,
+        "label": "uw2",
+        "start_htk": 3600000,
+        "start_seconds": 0.36
+      }
+    ],
+    "manual_end_s": 0.36,
+    "manual_start_s": 0.25,
+    "member": "train/m2ugu1.wav",
+    "nominal": {
+      "consonant": "g",
+      "context": "uCu",
+      "sex": "m",
+      "speaker": "m2",
+      "speaker_number": 2,
+      "stress": "1",
+      "vowel1": "u",
+      "vowel2": "u"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m2ugu1",
+    "sha256": "47c221a201b6290edabb94f7dfd3a2920e31a53013d0c44f08aa4fd82c7d57ae",
+    "size": 35046,
+    "speaker": "m2",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "u",
+    "vowel_right": "u",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ugu1.wav",
+    "source_sha256": "47c221a201b6290edabb94f7dfd3a2920e31a53013d0c44f08aa4fd82c7d57ae",
+    "derived_16k_float32_sha256": "960b2acf0e45292eca785b2fd83e539fe2fecda25259a99f786f4dad53e89453",
+    "source_samples": 17501,
+    "derived_samples": 11201,
+    "ctc_frames": 34,
+    "all24_loglikelihoods": {
+      "b": -18.70722007751465,
+      "d": -18.835792541503906,
+      "g": -12.266916275024414,
+      "p": -17.747926712036133,
+      "t": -17.193157196044922,
+      "k": -10.273642539978027,
+      "s": -19.055194854736328,
+      "sh": -20.623483657836914,
+      "f": -19.56519317626953,
+      "v": -18.98381233215332,
+      "dh": -19.930688858032227,
+      "th": -19.61526107788086,
+      "ch": -19.18256187438965,
+      "z": -20.06105613708496,
+      "zh": -21.526477813720703,
+      "h": -18.954025268554688,
+      "dj": -19.843082427978516,
+      "m": -19.71672821044922,
+      "n": -20.222938537597656,
+      "ng": -18.698413848876953,
+      "w": -19.00885581970215,
+      "r": -19.757064819335938,
+      "y": -19.187597274780273,
+      "l": -18.947633743286133
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "uː",
+        "b",
+        "uː"
+      ],
+      "d": [
+        "uː",
+        "d",
+        "uː"
+      ],
+      "g": [
+        "uː",
+        "ɡ",
+        "uː"
+      ],
+      "p": [
+        "uː",
+        "p",
+        "uː"
+      ],
+      "t": [
+        "uː",
+        "t",
+        "uː"
+      ],
+      "k": [
+        "uː",
+        "k",
+        "uː"
+      ],
+      "s": [
+        "uː",
+        "s",
+        "uː"
+      ],
+      "sh": [
+        "uː",
+        "ʃ",
+        "uː"
+      ],
+      "f": [
+        "uː",
+        "f",
+        "uː"
+      ],
+      "v": [
+        "uː",
+        "v",
+        "uː"
+      ],
+      "dh": [
+        "uː",
+        "ð",
+        "uː"
+      ],
+      "th": [
+        "uː",
+        "θ",
+        "uː"
+      ],
+      "ch": [
+        "uː",
+        "tʃ",
+        "uː"
+      ],
+      "z": [
+        "uː",
+        "z",
+        "uː"
+      ],
+      "zh": [
+        "uː",
+        "ʒ",
+        "uː"
+      ],
+      "h": [
+        "uː",
+        "h",
+        "uː"
+      ],
+      "dj": [
+        "uː",
+        "dʒ",
+        "uː"
+      ],
+      "m": [
+        "uː",
+        "m",
+        "uː"
+      ],
+      "n": [
+        "uː",
+        "n",
+        "uː"
+      ],
+      "ng": [
+        "uː",
+        "ŋ",
+        "uː"
+      ],
+      "w": [
+        "uː",
+        "w",
+        "uː"
+      ],
+      "r": [
+        "uː",
+        "ɹ",
+        "uː"
+      ],
+      "y": [
+        "uː",
+        "j",
+        "uː"
+      ],
+      "l": [
+        "uː",
+        "l",
+        "uː"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": false,
+    "binary_competitor": "k",
+    "binary_loglikelihood_margin": -1.9932737350463867,
+    "binary_correct": false,
+    "binary_tie": false,
+    "greedy_ipa": "k i",
+    "greedy_runs_descriptive": [
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.864247739315033
+      },
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 19,
+        "end_frame_exclusive": 20,
+        "mean_posterior": 0.14726462960243225
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m2ugu1.npz",
+    "array_sha256": "1a629c9fd08caa1bb9ca4324cc3d0d708a5b1a10065953f56bbf17b131e4caaa"
+  },
+  {
+    "basename": "m4udu1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 19965,
+    "consonant": "d",
+    "crc32": "b4ef9a7d",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 500000,
+        "end_seconds": 0.05,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1500000,
+        "end_seconds": 0.15,
+        "label": "uw1",
+        "start_htk": 500000,
+        "start_seconds": 0.05
+      },
+      {
+        "end_htk": 2300000,
+        "end_seconds": 0.23,
+        "label": "d",
+        "start_htk": 1500000,
+        "start_seconds": 0.15
+      },
+      {
+        "end_htk": 4600000,
+        "end_seconds": 0.46,
+        "label": "uw2",
+        "start_htk": 2300000,
+        "start_seconds": 0.23
+      }
+    ],
+    "manual_end_s": 0.23,
+    "manual_start_s": 0.15,
+    "member": "train/m4udu1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "uCu",
+      "sex": "m",
+      "speaker": "m4",
+      "speaker_number": 4,
+      "stress": "1",
+      "vowel1": "u",
+      "vowel2": "u"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m4udu1",
+    "sha256": "21b2551fbb0452d0c4bbb2f6d1c12cdf2cdf3cbe0ef90935163b2d02e5e98b77",
+    "size": 24046,
+    "speaker": "m4",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "u",
+    "vowel_right": "u",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4udu1.wav",
+    "source_sha256": "21b2551fbb0452d0c4bbb2f6d1c12cdf2cdf3cbe0ef90935163b2d02e5e98b77",
+    "derived_16k_float32_sha256": "4c12fae157ef4f74afd0e1d3b06c1f39f8143d69651ba2119c42fbc2194a5e99",
+    "source_samples": 12001,
+    "derived_samples": 7681,
+    "ctc_frames": 23,
+    "all24_loglikelihoods": {
+      "b": -17.004375457763672,
+      "d": -12.34918212890625,
+      "g": -17.115739822387695,
+      "p": -15.518510818481445,
+      "t": -10.010379791259766,
+      "k": -15.257969856262207,
+      "s": -18.30678939819336,
+      "sh": -19.434553146362305,
+      "f": -18.824016571044922,
+      "v": -18.68781089782715,
+      "dh": -17.477174758911133,
+      "th": -18.12275505065918,
+      "ch": -16.08362579345703,
+      "z": -18.491060256958008,
+      "zh": -19.9510440826416,
+      "h": -19.387794494628906,
+      "dj": -14.946833610534668,
+      "m": -19.379920959472656,
+      "n": -16.00967788696289,
+      "ng": -17.983327865600586,
+      "w": -16.596296310424805,
+      "r": -15.315079689025879,
+      "y": -16.13812828063965,
+      "l": -12.726655006408691
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "uː",
+        "b",
+        "uː"
+      ],
+      "d": [
+        "uː",
+        "d",
+        "uː"
+      ],
+      "g": [
+        "uː",
+        "ɡ",
+        "uː"
+      ],
+      "p": [
+        "uː",
+        "p",
+        "uː"
+      ],
+      "t": [
+        "uː",
+        "t",
+        "uː"
+      ],
+      "k": [
+        "uː",
+        "k",
+        "uː"
+      ],
+      "s": [
+        "uː",
+        "s",
+        "uː"
+      ],
+      "sh": [
+        "uː",
+        "ʃ",
+        "uː"
+      ],
+      "f": [
+        "uː",
+        "f",
+        "uː"
+      ],
+      "v": [
+        "uː",
+        "v",
+        "uː"
+      ],
+      "dh": [
+        "uː",
+        "ð",
+        "uː"
+      ],
+      "th": [
+        "uː",
+        "θ",
+        "uː"
+      ],
+      "ch": [
+        "uː",
+        "tʃ",
+        "uː"
+      ],
+      "z": [
+        "uː",
+        "z",
+        "uː"
+      ],
+      "zh": [
+        "uː",
+        "ʒ",
+        "uː"
+      ],
+      "h": [
+        "uː",
+        "h",
+        "uː"
+      ],
+      "dj": [
+        "uː",
+        "dʒ",
+        "uː"
+      ],
+      "m": [
+        "uː",
+        "m",
+        "uː"
+      ],
+      "n": [
+        "uː",
+        "n",
+        "uː"
+      ],
+      "ng": [
+        "uː",
+        "ŋ",
+        "uː"
+      ],
+      "w": [
+        "uː",
+        "w",
+        "uː"
+      ],
+      "r": [
+        "uː",
+        "ɹ",
+        "uː"
+      ],
+      "y": [
+        "uː",
+        "j",
+        "uː"
+      ],
+      "l": [
+        "uː",
+        "l",
+        "uː"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": false,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": -2.3388023376464844,
+    "binary_correct": false,
+    "binary_tie": false,
+    "greedy_ipa": "y5 t ʉ",
+    "greedy_runs_descriptive": [
+      {
+        "token": "y5",
+        "token_id": 148,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.11751025915145874
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.5582476258277893
+      },
+      {
+        "token": "ʉ",
+        "token_id": 136,
+        "start_frame": 12,
+        "end_frame_exclusive": 13,
+        "mean_posterior": 0.09613728523254395
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m4udu1.npz",
+    "array_sha256": "04f8b511d32af85f49508ca1584166261e93fbeb5846c44f6f64839ee89526d6"
+  },
+  {
+    "basename": "m4udu2.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 21925,
+    "consonant": "d",
+    "crc32": "47816d44",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 400000,
+        "end_seconds": 0.04,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1300000,
+        "end_seconds": 0.13,
+        "label": "uw1",
+        "start_htk": 400000,
+        "start_seconds": 0.04
+      },
+      {
+        "end_htk": 2300000,
+        "end_seconds": 0.23,
+        "label": "d",
+        "start_htk": 1300000,
+        "start_seconds": 0.13
+      },
+      {
+        "end_htk": 5100000,
+        "end_seconds": 0.51,
+        "label": "uw2",
+        "start_htk": 2300000,
+        "start_seconds": 0.23
+      }
+    ],
+    "manual_end_s": 0.23,
+    "manual_start_s": 0.13,
+    "member": "train/m4udu2.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "uCu",
+      "sex": "m",
+      "speaker": "m4",
+      "speaker_number": 4,
+      "stress": "2",
+      "vowel1": "u",
+      "vowel2": "u"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m4udu2",
+    "sha256": "8b522bb0111eb08c2ab53460d54b7692d90cde7a9a30b149ea090ae366ec3a55",
+    "size": 26546,
+    "speaker": "m4",
+    "split": "corpus_train",
+    "stress": "2",
+    "vowel_left": "u",
+    "vowel_right": "u",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4udu2.wav",
+    "source_sha256": "8b522bb0111eb08c2ab53460d54b7692d90cde7a9a30b149ea090ae366ec3a55",
+    "derived_16k_float32_sha256": "2eb1b93f58aa5beaec1f9c2632740521f87b5ea331daf20a9e035d3557098a54",
+    "source_samples": 13251,
+    "derived_samples": 8481,
+    "ctc_frames": 26,
+    "all24_loglikelihoods": {
+      "b": -15.830878257751465,
+      "d": -8.94338607788086,
+      "g": -14.832171440124512,
+      "p": -15.265885353088379,
+      "t": -8.703344345092773,
+      "k": -14.761133193969727,
+      "s": -16.54585075378418,
+      "sh": -18.991287231445312,
+      "f": -17.921335220336914,
+      "v": -16.396007537841797,
+      "dh": -13.79041862487793,
+      "th": -15.679144859313965,
+      "ch": -15.986166954040527,
+      "z": -16.751062393188477,
+      "zh": -19.861581802368164,
+      "h": -18.019973754882812,
+      "dj": -14.43604564666748,
+      "m": -18.665964126586914,
+      "n": -15.285297393798828,
+      "ng": -17.908466339111328,
+      "w": -16.559175491333008,
+      "r": -15.458017349243164,
+      "y": -15.859848976135254,
+      "l": -12.783662796020508
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "uː",
+        "b",
+        "uː"
+      ],
+      "d": [
+        "uː",
+        "d",
+        "uː"
+      ],
+      "g": [
+        "uː",
+        "ɡ",
+        "uː"
+      ],
+      "p": [
+        "uː",
+        "p",
+        "uː"
+      ],
+      "t": [
+        "uː",
+        "t",
+        "uː"
+      ],
+      "k": [
+        "uː",
+        "k",
+        "uː"
+      ],
+      "s": [
+        "uː",
+        "s",
+        "uː"
+      ],
+      "sh": [
+        "uː",
+        "ʃ",
+        "uː"
+      ],
+      "f": [
+        "uː",
+        "f",
+        "uː"
+      ],
+      "v": [
+        "uː",
+        "v",
+        "uː"
+      ],
+      "dh": [
+        "uː",
+        "ð",
+        "uː"
+      ],
+      "th": [
+        "uː",
+        "θ",
+        "uː"
+      ],
+      "ch": [
+        "uː",
+        "tʃ",
+        "uː"
+      ],
+      "z": [
+        "uː",
+        "z",
+        "uː"
+      ],
+      "zh": [
+        "uː",
+        "ʒ",
+        "uː"
+      ],
+      "h": [
+        "uː",
+        "h",
+        "uː"
+      ],
+      "dj": [
+        "uː",
+        "dʒ",
+        "uː"
+      ],
+      "m": [
+        "uː",
+        "m",
+        "uː"
+      ],
+      "n": [
+        "uː",
+        "n",
+        "uː"
+      ],
+      "ng": [
+        "uː",
+        "ŋ",
+        "uː"
+      ],
+      "w": [
+        "uː",
+        "w",
+        "uː"
+      ],
+      "r": [
+        "uː",
+        "ɹ",
+        "uː"
+      ],
+      "y": [
+        "uː",
+        "j",
+        "uː"
+      ],
+      "l": [
+        "uː",
+        "l",
+        "uː"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": false,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": -0.24004173278808594,
+    "binary_correct": false,
+    "binary_tie": false,
+    "greedy_ipa": "ʉ t ʉ",
+    "greedy_runs_descriptive": [
+      {
+        "token": "ʉ",
+        "token_id": 136,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.09005842357873917
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 10,
+        "end_frame_exclusive": 11,
+        "mean_posterior": 0.5172827839851379
+      },
+      {
+        "token": "ʉ",
+        "token_id": 136,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.11427894979715347
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m4udu2.npz",
+    "array_sha256": "7125a67b5dad416ed81bfb30aeb751e7cec57cc6cdf05b29b996716eb0657e00"
+  },
+  {
+    "basename": "m8ada1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 17207,
+    "consonant": "d",
+    "crc32": "c6e36d8e",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 300000,
+        "end_seconds": 0.03,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1600000,
+        "end_seconds": 0.16,
+        "label": "aa1",
+        "start_htk": 300000,
+        "start_seconds": 0.03
+      },
+      {
+        "end_htk": 3000000,
+        "end_seconds": 0.3,
+        "label": "d",
+        "start_htk": 1600000,
+        "start_seconds": 0.16
+      },
+      {
+        "end_htk": 4500000,
+        "end_seconds": 0.45,
+        "label": "aa2",
+        "start_htk": 3000000,
+        "start_seconds": 0.3
+      }
+    ],
+    "manual_end_s": 0.3,
+    "manual_start_s": 0.16,
+    "member": "train/m8ada1.wav",
+    "nominal": {
+      "consonant": "d",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m8",
+      "speaker_number": 8,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m8ada1",
+    "sha256": "70e84b412a94a86c15a9af83aa7c9f2df9bdf7cb08bfbb9b3114327fc8489f80",
+    "size": 23546,
+    "speaker": "m8",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8ada1.wav",
+    "source_sha256": "70e84b412a94a86c15a9af83aa7c9f2df9bdf7cb08bfbb9b3114327fc8489f80",
+    "derived_16k_float32_sha256": "836ad0f31fb627039cb1f0cdb44ae36e3bd7370cb582e876a298387104c97575",
+    "source_samples": 11751,
+    "derived_samples": 7521,
+    "ctc_frames": 23,
+    "all24_loglikelihoods": {
+      "b": -24.532506942749023,
+      "d": -19.102148056030273,
+      "g": -25.419002532958984,
+      "p": -24.852386474609375,
+      "t": -17.556087493896484,
+      "k": -23.736467361450195,
+      "s": -24.592092514038086,
+      "sh": -26.475645065307617,
+      "f": -25.998199462890625,
+      "v": -26.51943016052246,
+      "dh": -23.853809356689453,
+      "th": -25.137849807739258,
+      "ch": -24.814929962158203,
+      "z": -25.263145446777344,
+      "zh": -29.497377395629883,
+      "h": -25.74752426147461,
+      "dj": -23.782981872558594,
+      "m": -26.726343154907227,
+      "n": -25.0369873046875,
+      "ng": -28.515146255493164,
+      "w": -26.819255828857422,
+      "r": -26.174646377563477,
+      "y": -27.22607421875,
+      "l": -24.404563903808594
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": false,
+    "binary_competitor": "t",
+    "binary_loglikelihood_margin": -1.546060562133789,
+    "binary_correct": false,
+    "binary_tie": false,
+    "greedy_ipa": "a t a",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.7328585386276245
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 13,
+        "end_frame_exclusive": 14,
+        "mean_posterior": 0.7827935218811035
+      },
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 16,
+        "end_frame_exclusive": 17,
+        "mean_posterior": 0.6504412293434143
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m8ada1.npz",
+    "array_sha256": "a3be24a5068ba7b0b3b7095db721676bfc1a10a3b1c8978d72b0b98e3d442277"
+  },
+  {
+    "basename": "m8igi1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 26124,
+    "consonant": "g",
+    "crc32": "729230a0",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 300000,
+        "end_seconds": 0.03,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 2200000,
+        "end_seconds": 0.22,
+        "label": "iy1",
+        "start_htk": 300000,
+        "start_seconds": 0.03
+      },
+      {
+        "end_htk": 3800000,
+        "end_seconds": 0.38,
+        "label": "g",
+        "start_htk": 2200000,
+        "start_seconds": 0.22
+      },
+      {
+        "end_htk": 6300000,
+        "end_seconds": 0.63,
+        "label": "iy2",
+        "start_htk": 3800000,
+        "start_seconds": 0.38
+      }
+    ],
+    "manual_end_s": 0.38,
+    "manual_start_s": 0.22,
+    "member": "train/m8igi1.wav",
+    "nominal": {
+      "consonant": "g",
+      "context": "iCi",
+      "sex": "m",
+      "speaker": "m8",
+      "speaker_number": 8,
+      "stress": "1",
+      "vowel1": "i",
+      "vowel2": "i"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m8igi1",
+    "sha256": "cea6389e8713495d50ea6146e560457d3ce9e58fc29623faa5d15c315fc3aac0",
+    "size": 32546,
+    "speaker": "m8",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "i",
+    "vowel_right": "i",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8igi1.wav",
+    "source_sha256": "cea6389e8713495d50ea6146e560457d3ce9e58fc29623faa5d15c315fc3aac0",
+    "derived_16k_float32_sha256": "099fc409840278cebd567293c0483c9a498379dd40029ac90367b2067fdc0298",
+    "source_samples": 16251,
+    "derived_samples": 10401,
+    "ctc_frames": 32,
+    "all24_loglikelihoods": {
+      "b": -15.410977363586426,
+      "d": -10.34030532836914,
+      "g": -12.93393325805664,
+      "p": -14.797147750854492,
+      "t": -11.000542640686035,
+      "k": -12.783683776855469,
+      "s": -15.925982475280762,
+      "sh": -18.013032913208008,
+      "f": -17.540925979614258,
+      "v": -15.987293243408203,
+      "dh": -15.802563667297363,
+      "th": -15.66385555267334,
+      "ch": -14.945014953613281,
+      "z": -16.51043701171875,
+      "zh": -17.5960636138916,
+      "h": -17.14847183227539,
+      "dj": -13.28420639038086,
+      "m": -16.861204147338867,
+      "n": -15.725708961486816,
+      "ng": -17.447925567626953,
+      "w": -17.07259178161621,
+      "r": -16.152240753173828,
+      "y": -15.00062084197998,
+      "l": -14.194247245788574
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "iː",
+        "b",
+        "iː"
+      ],
+      "d": [
+        "iː",
+        "d",
+        "iː"
+      ],
+      "g": [
+        "iː",
+        "ɡ",
+        "iː"
+      ],
+      "p": [
+        "iː",
+        "p",
+        "iː"
+      ],
+      "t": [
+        "iː",
+        "t",
+        "iː"
+      ],
+      "k": [
+        "iː",
+        "k",
+        "iː"
+      ],
+      "s": [
+        "iː",
+        "s",
+        "iː"
+      ],
+      "sh": [
+        "iː",
+        "ʃ",
+        "iː"
+      ],
+      "f": [
+        "iː",
+        "f",
+        "iː"
+      ],
+      "v": [
+        "iː",
+        "v",
+        "iː"
+      ],
+      "dh": [
+        "iː",
+        "ð",
+        "iː"
+      ],
+      "th": [
+        "iː",
+        "θ",
+        "iː"
+      ],
+      "ch": [
+        "iː",
+        "tʃ",
+        "iː"
+      ],
+      "z": [
+        "iː",
+        "z",
+        "iː"
+      ],
+      "zh": [
+        "iː",
+        "ʒ",
+        "iː"
+      ],
+      "h": [
+        "iː",
+        "h",
+        "iː"
+      ],
+      "dj": [
+        "iː",
+        "dʒ",
+        "iː"
+      ],
+      "m": [
+        "iː",
+        "m",
+        "iː"
+      ],
+      "n": [
+        "iː",
+        "n",
+        "iː"
+      ],
+      "ng": [
+        "iː",
+        "ŋ",
+        "iː"
+      ],
+      "w": [
+        "iː",
+        "w",
+        "iː"
+      ],
+      "r": [
+        "iː",
+        "ɹ",
+        "iː"
+      ],
+      "y": [
+        "iː",
+        "j",
+        "iː"
+      ],
+      "l": [
+        "iː",
+        "l",
+        "iː"
+      ]
+    },
+    "top1_prediction": "d",
+    "top1_tied_labels": [],
+    "top1_correct": false,
+    "binary_competitor": "k",
+    "binary_loglikelihood_margin": -0.15024948120117188,
+    "binary_correct": false,
+    "binary_tie": false,
+    "greedy_ipa": "i d i",
+    "greedy_runs_descriptive": [
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.7737513184547424
+      },
+      {
+        "token": "d",
+        "token_id": 12,
+        "start_frame": 16,
+        "end_frame_exclusive": 17,
+        "mean_posterior": 0.3082180321216583
+      },
+      {
+        "token": "i",
+        "token_id": 10,
+        "start_frame": 20,
+        "end_frame_exclusive": 21,
+        "mean_posterior": 0.8461413979530334
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m8igi1.npz",
+    "array_sha256": "bf25266a48d1efce8d6738f846cb1e10f19a52b252a63dfb4d4843a5bc6a1589"
+  },
+  {
+    "basename": "m8utu1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 25548,
+    "consonant": "t",
+    "crc32": "21167286",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 400000,
+        "end_seconds": 0.04,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 2000000,
+        "end_seconds": 0.2,
+        "label": "uw1",
+        "start_htk": 400000,
+        "start_seconds": 0.04
+      },
+      {
+        "end_htk": 3600000,
+        "end_seconds": 0.36,
+        "label": "t",
+        "start_htk": 2000000,
+        "start_seconds": 0.2
+      },
+      {
+        "end_htk": 6200000,
+        "end_seconds": 0.62,
+        "label": "uw2",
+        "start_htk": 3600000,
+        "start_seconds": 0.36
+      }
+    ],
+    "manual_end_s": 0.36,
+    "manual_start_s": 0.2,
+    "member": "train/m8utu1.wav",
+    "nominal": {
+      "consonant": "t",
+      "context": "uCu",
+      "sex": "m",
+      "speaker": "m8",
+      "speaker_number": 8,
+      "stress": "1",
+      "vowel1": "u",
+      "vowel2": "u"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m8utu1",
+    "sha256": "4addec665537d56255c84209079b4a2370929923bf83837d0aa1c7854a44339d",
+    "size": 32046,
+    "speaker": "m8",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "u",
+    "vowel_right": "u",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8utu1.wav",
+    "source_sha256": "4addec665537d56255c84209079b4a2370929923bf83837d0aa1c7854a44339d",
+    "derived_16k_float32_sha256": "4a09ec06fc3bf0616e073e409ccb58c86bb57cdbed0f48bc5a6f77ad9eb5b6af",
+    "source_samples": 16001,
+    "derived_samples": 10241,
+    "ctc_frames": 31,
+    "all24_loglikelihoods": {
+      "b": -13.168566703796387,
+      "d": -9.470778465270996,
+      "g": -12.803428649902344,
+      "p": -10.1400146484375,
+      "t": -4.264156341552734,
+      "k": -8.923073768615723,
+      "s": -9.81626033782959,
+      "sh": -12.123937606811523,
+      "f": -12.504446983337402,
+      "v": -13.871503829956055,
+      "dh": -12.45241641998291,
+      "th": -10.379477500915527,
+      "ch": -7.750390529632568,
+      "z": -12.216577529907227,
+      "zh": -13.62601375579834,
+      "h": -12.212394714355469,
+      "dj": -9.880033493041992,
+      "m": -12.853668212890625,
+      "n": -11.27170181274414,
+      "ng": -13.57589340209961,
+      "w": -12.6658296585083,
+      "r": -10.6049165725708,
+      "y": -12.339973449707031,
+      "l": -9.947248458862305
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "uː",
+        "b",
+        "uː"
+      ],
+      "d": [
+        "uː",
+        "d",
+        "uː"
+      ],
+      "g": [
+        "uː",
+        "ɡ",
+        "uː"
+      ],
+      "p": [
+        "uː",
+        "p",
+        "uː"
+      ],
+      "t": [
+        "uː",
+        "t",
+        "uː"
+      ],
+      "k": [
+        "uː",
+        "k",
+        "uː"
+      ],
+      "s": [
+        "uː",
+        "s",
+        "uː"
+      ],
+      "sh": [
+        "uː",
+        "ʃ",
+        "uː"
+      ],
+      "f": [
+        "uː",
+        "f",
+        "uː"
+      ],
+      "v": [
+        "uː",
+        "v",
+        "uː"
+      ],
+      "dh": [
+        "uː",
+        "ð",
+        "uː"
+      ],
+      "th": [
+        "uː",
+        "θ",
+        "uː"
+      ],
+      "ch": [
+        "uː",
+        "tʃ",
+        "uː"
+      ],
+      "z": [
+        "uː",
+        "z",
+        "uː"
+      ],
+      "zh": [
+        "uː",
+        "ʒ",
+        "uː"
+      ],
+      "h": [
+        "uː",
+        "h",
+        "uː"
+      ],
+      "dj": [
+        "uː",
+        "dʒ",
+        "uː"
+      ],
+      "m": [
+        "uː",
+        "m",
+        "uː"
+      ],
+      "n": [
+        "uː",
+        "n",
+        "uː"
+      ],
+      "ng": [
+        "uː",
+        "ŋ",
+        "uː"
+      ],
+      "w": [
+        "uː",
+        "w",
+        "uː"
+      ],
+      "r": [
+        "uː",
+        "ɹ",
+        "uː"
+      ],
+      "y": [
+        "uː",
+        "j",
+        "uː"
+      ],
+      "l": [
+        "uː",
+        "l",
+        "uː"
+      ]
+    },
+    "top1_prediction": "t",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "d",
+    "binary_loglikelihood_margin": 5.206622123718262,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "u t u",
+    "greedy_runs_descriptive": [
+      {
+        "token": "u",
+        "token_id": 34,
+        "start_frame": 4,
+        "end_frame_exclusive": 5,
+        "mean_posterior": 0.2671706974506378
+      },
+      {
+        "token": "t",
+        "token_id": 6,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.6790017485618591
+      },
+      {
+        "token": "u",
+        "token_id": 34,
+        "start_frame": 19,
+        "end_frame_exclusive": 20,
+        "mean_posterior": 0.2904863655567169
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m8utu1.npz",
+    "array_sha256": "ade3ba2a7fdc38d6dbdebc940392b36d7c45ea70d24e9d36b793615581676659"
+  },
+  {
+    "basename": "m9aka1.wav",
+    "boundary_source": "manual_mlf",
+    "compressed_size": 17666,
+    "consonant": "k",
+    "crc32": "d4009973",
+    "gender": "m",
+    "is_primary": false,
+    "manual_boundaries": [
+      {
+        "end_htk": 100000,
+        "end_seconds": 0.01,
+        "label": "sil",
+        "start_htk": 0,
+        "start_seconds": 0.0
+      },
+      {
+        "end_htk": 1400000,
+        "end_seconds": 0.14,
+        "label": "aa1",
+        "start_htk": 100000,
+        "start_seconds": 0.01
+      },
+      {
+        "end_htk": 2900000,
+        "end_seconds": 0.29,
+        "label": "k",
+        "start_htk": 1400000,
+        "start_seconds": 0.14
+      },
+      {
+        "end_htk": 4100000,
+        "end_seconds": 0.41,
+        "label": "aa2",
+        "start_htk": 2900000,
+        "start_seconds": 0.29
+      }
+    ],
+    "manual_end_s": 0.29,
+    "manual_start_s": 0.14,
+    "member": "train/m9aka1.wav",
+    "nominal": {
+      "consonant": "k",
+      "context": "aCa",
+      "sex": "m",
+      "speaker": "m9",
+      "speaker_number": 9,
+      "stress": "1",
+      "vowel1": "a",
+      "vowel2": "a"
+    },
+    "primary_pair_ids": [],
+    "role": "supplementary_manual",
+    "sample_id": "m9aka1",
+    "sha256": "f6ad1b858b7a2382d405274db1910f1b5f240b162df18abf7d4433130eb8681c",
+    "size": 21546,
+    "speaker": "m9",
+    "split": "corpus_train",
+    "stress": "1",
+    "vowel_left": "a",
+    "vowel_right": "a",
+    "wav_path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m9aka1.wav",
+    "source_sha256": "f6ad1b858b7a2382d405274db1910f1b5f240b162df18abf7d4433130eb8681c",
+    "derived_16k_float32_sha256": "295f655f456e436fdb283689a9a44c390e9fde89a76158c2971ada79ede5582e",
+    "source_samples": 10751,
+    "derived_samples": 6881,
+    "ctc_frames": 21,
+    "all24_loglikelihoods": {
+      "b": -24.065805435180664,
+      "d": -23.335981369018555,
+      "g": -18.28406524658203,
+      "p": -22.622983932495117,
+      "t": -20.98426628112793,
+      "k": -14.093502044677734,
+      "s": -23.712787628173828,
+      "sh": -23.741079330444336,
+      "f": -24.404939651489258,
+      "v": -25.114805221557617,
+      "dh": -25.756322860717773,
+      "th": -25.203344345092773,
+      "ch": -22.21592903137207,
+      "z": -24.427141189575195,
+      "zh": -25.501220703125,
+      "h": -24.50666618347168,
+      "dj": -23.757892608642578,
+      "m": -23.833711624145508,
+      "n": -24.885988235473633,
+      "ng": -23.424381256103516,
+      "w": -24.883861541748047,
+      "r": -25.379505157470703,
+      "y": -24.43706512451172,
+      "l": -24.168212890625
+    },
+    "all24_candidate_ipa_tokens": {
+      "b": [
+        "æ",
+        "b",
+        "æ"
+      ],
+      "d": [
+        "æ",
+        "d",
+        "æ"
+      ],
+      "g": [
+        "æ",
+        "ɡ",
+        "æ"
+      ],
+      "p": [
+        "æ",
+        "p",
+        "æ"
+      ],
+      "t": [
+        "æ",
+        "t",
+        "æ"
+      ],
+      "k": [
+        "æ",
+        "k",
+        "æ"
+      ],
+      "s": [
+        "æ",
+        "s",
+        "æ"
+      ],
+      "sh": [
+        "æ",
+        "ʃ",
+        "æ"
+      ],
+      "f": [
+        "æ",
+        "f",
+        "æ"
+      ],
+      "v": [
+        "æ",
+        "v",
+        "æ"
+      ],
+      "dh": [
+        "æ",
+        "ð",
+        "æ"
+      ],
+      "th": [
+        "æ",
+        "θ",
+        "æ"
+      ],
+      "ch": [
+        "æ",
+        "tʃ",
+        "æ"
+      ],
+      "z": [
+        "æ",
+        "z",
+        "æ"
+      ],
+      "zh": [
+        "æ",
+        "ʒ",
+        "æ"
+      ],
+      "h": [
+        "æ",
+        "h",
+        "æ"
+      ],
+      "dj": [
+        "æ",
+        "dʒ",
+        "æ"
+      ],
+      "m": [
+        "æ",
+        "m",
+        "æ"
+      ],
+      "n": [
+        "æ",
+        "n",
+        "æ"
+      ],
+      "ng": [
+        "æ",
+        "ŋ",
+        "æ"
+      ],
+      "w": [
+        "æ",
+        "w",
+        "æ"
+      ],
+      "r": [
+        "æ",
+        "ɹ",
+        "æ"
+      ],
+      "y": [
+        "æ",
+        "j",
+        "æ"
+      ],
+      "l": [
+        "æ",
+        "l",
+        "æ"
+      ]
+    },
+    "top1_prediction": "k",
+    "top1_tied_labels": [],
+    "top1_correct": true,
+    "binary_competitor": "g",
+    "binary_loglikelihood_margin": 4.190563201904297,
+    "binary_correct": true,
+    "binary_tie": false,
+    "greedy_ipa": "a k ə",
+    "greedy_runs_descriptive": [
+      {
+        "token": "a",
+        "token_id": 9,
+        "start_frame": 3,
+        "end_frame_exclusive": 4,
+        "mean_posterior": 0.9288726449012756
+      },
+      {
+        "token": "k",
+        "token_id": 11,
+        "start_frame": 12,
+        "end_frame_exclusive": 13,
+        "mean_posterior": 0.9658370018005371
+      },
+      {
+        "token": "ə",
+        "token_id": 7,
+        "start_frame": 15,
+        "end_frame_exclusive": 16,
+        "mean_posterior": 0.3391501307487488
+      }
+    ],
+    "array_path": "calibration_outputs/arrays/m9aka1.npz",
+    "array_sha256": "84f54e7d95f0b4db8c9d6635910c82b51c5c0e17d9457f40907117282e04de23"
+  }
+]

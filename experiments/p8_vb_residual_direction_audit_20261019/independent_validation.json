@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "cases": 32,
+  "strata": 21,
+  "additional_original_PCM_decodes": 72,
+  "main_PCM_decodes": 72,
+  "total_real_PCM_decodes": 144,
+  "direct_residual_and_projection_reconstruction": true,
+  "seconds": 11.701257313950919,
+  "metrics_sha256": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17",
+  "validator_sha256": "a1c7d63290d5045f757222e9bacaae2e93566bc1de051f2145e7c701ca4fafc2",
+  "preserved_files": 497,
+  "models": 0,
+  "ASR": 0,
+  "quality_recomputations": 0,
+  "audio_outputs": 0,
+  "network": 0
+}

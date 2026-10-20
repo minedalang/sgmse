@@ -1,0 +1,21 @@
+schema_version: 1
+experiment_id: p8_q_vcv_fixed_noise_20261018
+status: prepared
+design_approved_by: 'Research Lead fixed-noise diagnostic design 2026-10-18'
+source_input_group: controlled_corpus_train_VCV_plus_DNS_source_noise_not_official_test
+training: false
+enhancement_inference: false
+new_downloads: false
+snrs_db: [-12, -6, 0, 6]
+source_manifest: ../p8_q_vcv_clean_calibration_20261018/retrieval/selected_manifest_frozen.json
+selection: frozen_primary_16_only_no_replacement
+clean: {sample_rate: 16000, samples: 32000, onset_sample: 8000, maximum_vcv_samples: 24000, rms: 0.01, resample_up: 16, resample_down: 25, dtype: float64}
+noise: {N1: noise_fileid_5243.wav, N2: noise_fileid_6339.wav, source_samples: 480000, sample_rate: 16000, start_sample: 80000, end_sample_exclusive: 112000, rms: 1.0}
+noise_gain: '0.01 * 10 ** (-snr_db / 20), identical for all 16 tokens'
+model_input_dtype: float32
+scoring: identical_all24_exact_three_token_CTC_as_prior_clean_module
+padded_clean_gate: {minimum_24way: 12, minimum_binary: 14, minimum_each_contrast_24way: 6, failure_action: STOP_noisy_no_tuning_no_sample_removal}
+later_pilot_eligibility_per_condition: {minimum_24way: 12, minimum_binary: 14, minimum_each_contrast_24way: 6, minimum_both_correct_binary_pairs: 6}
+maximum_recognizer_forwards: 144
+artifact_cap_bytes: 75000000
+post_gate_execution: all_8_conditions_no_early_stopping_or_selection

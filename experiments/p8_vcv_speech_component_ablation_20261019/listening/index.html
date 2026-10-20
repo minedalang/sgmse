@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>五例可选试听</title>
+<style>body{font:17px/1.65 system-ui,sans-serif;max-width:880px;margin:32px auto;padding:0 18px;color:#172432;background:#f6f8fa}section{background:white;padding:18px;margin:18px 0;border:1px solid #ccd4dc;border-radius:10px}button,select{font:inherit;margin:5px;padding:8px 12px}audio{width:100%}#playerbox{position:sticky;top:0;background:#e8eff7;padding:12px;border-radius:8px;z-index:1}small{color:#4d5b69}</style>
+<h1>五例可选试听</h1>
+<p>本轮五例试听已完成并通过聊天确认。比较聚焦中间辅音是否接近干净参考，不以整体清晰度或噪声大小替代该判断；具体听到的尾音另列于备注。无需再次试听或提交。若日后自愿更新网页选项，按“保存选择”并收到服务器确认后，该次网页更新才算保存。</p>
+<p><strong>仍保留原始 Y_pre 前端语音作为扩散锚点；只移除另一路 noisy 条件中的语音成分，保留原噪声。因此输出仍可有清晰语音，noise-only 不是输出内容。</strong>这是诊断消融，不是正常增强设置。模型类别只是代理判断，不等于听感真值。</p>
+<p>全部为对齐的完整 2 秒，16 kHz；默认原幅度，无逐条归一化。请保持系统音量一致。可先听干净参考，再比较另外三版。</p>
+<div id="playerbox"><div id="current" role="status" aria-live="polite">当前片段：尚未选择</div><audio id="player" controls preload="none"></audio><button id="stop" type="button">停止</button></div>
+<p><strong>五例试听反馈均已按聊天回复单独记录，本轮试听已完成，无需重听或重新填写。页面保留已有音频与保存功能，便于日后自愿更新。</strong>本页共五例来自既有前后端类别正确性转换，仍是选定诊断样本，不代表随机抽样或总体收益。聊天记录与本页保存记录分别保留来源。</p>
+<main id="cases"></main>
+<section><h2>日后自愿更新（本轮无需操作）</h2><label for="feedback-note">备注（可选，最多 2000 字）</label><br><textarea id="feedback-note" maxlength="2000" rows="3" style="width:95%"></textarea><br><button id="save-feedback" type="button">保存选择</button><p id="feedback-status" role="status" aria-live="polite">网页更新尚未保存；已确认的聊天反馈不受影响。</p><small>选项变化会保留在本浏览器草稿中。只有显示“已保存到服务器”才表示已提交；失败时可重试。记录按提示后、非盲、单人试听反馈保存。<a href="validation.json">来源与校验记录</a></small></section>
+<script>
+const cases = [{"case_id": "original__N1_snr-6__m2ada1", "manual_chat_choice": "两者差不多", "proxy_native_label": "d", "proxy_ablated_label": "t", "clips": [{"name": "original__N1_snr-6__m2ada1 · 干净参考", "label": "干净参考", "file": "original__N1_snr-6__m2ada1__clean.wav"}, {"name": "original__N1_snr-6__m2ada1 · 前端 Y_pre", "label": "前端 Y_pre", "file": "original__N1_snr-6__m2ada1__y_pre.wav"}, {"name": "original__N1_snr-6__m2ada1 · 原始后端 native", "label": "原始后端 native", "file": "original__N1_snr-6__m2ada1__native.wav"}, {"name": "original__N1_snr-6__m2ada1 · 后端（移除 noisy 条件中的语音）", "label": "后端（移除 noisy 条件中的语音）", "file": "original__N1_snr-6__m2ada1__ablated.wav"}], "manual_chat_comment": ""}, {"case_id": "fresh__N1_snr-6__f20aka1", "manual_chat_choice": "原始后端更接近", "proxy_native_label": "k", "proxy_ablated_label": "n", "clips": [{"name": "fresh__N1_snr-6__f20aka1 · 干净参考", "label": "干净参考", "file": "fresh__N1_snr-6__f20aka1__clean.wav"}, {"name": "fresh__N1_snr-6__f20aka1 · 前端 Y_pre", "label": "前端 Y_pre", "file": "fresh__N1_snr-6__f20aka1__y_pre.wav"}, {"name": "fresh__N1_snr-6__f20aka1 · 原始后端 native", "label": "原始后端 native", "file": "fresh__N1_snr-6__f20aka1__native.wav"}, {"name": "fresh__N1_snr-6__f20aka1 · 后端（移除 noisy 条件中的语音）", "label": "后端（移除 noisy 条件中的语音）", "file": "fresh__N1_snr-6__f20aka1__ablated.wav"}], "manual_chat_comment": ""}, {"case_id": "original__N2_snr-6__m2aga1", "manual_chat_choice": "两者差不多", "proxy_native_label": "k", "proxy_ablated_label": "g", "clips": [{"name": "original__N2_snr-6__m2aga1 · 干净参考", "label": "干净参考", "file": "original__N2_snr-6__m2aga1__clean.wav"}, {"name": "original__N2_snr-6__m2aga1 · 前端 Y_pre", "label": "前端 Y_pre", "file": "original__N2_snr-6__m2aga1__y_pre.wav"}, {"name": "original__N2_snr-6__m2aga1 · 原始后端 native", "label": "原始后端 native", "file": "original__N2_snr-6__m2aga1__native.wav"}, {"name": "original__N2_snr-6__m2aga1 · 后端（移除 noisy 条件中的语音）", "label": "后端（移除 noisy 条件中的语音）", "file": "original__N2_snr-6__m2aga1__ablated.wav"}], "manual_chat_comment": ""}, {"case_id": "original__N1_snr-6__f11ata1", "manual_chat_choice": "两者差不多", "proxy_native_label": "k", "proxy_ablated_label": "k", "clips": [{"name": "original__N1_snr-6__f11ata1 · 干净参考", "label": "干净参考", "file": "original__N1_snr-6__f11ata1__clean.wav"}, {"name": "original__N1_snr-6__f11ata1 · 前端 Y_pre", "label": "前端 Y_pre", "file": "original__N1_snr-6__f11ata1__y_pre.wav"}, {"name": "original__N1_snr-6__f11ata1 · 原始后端 native", "label": "原始后端 native", "file": "original__N1_snr-6__f11ata1__native.wav"}, {"name": "original__N1_snr-6__f11ata1 · 后端（移除 noisy 条件中的语音）", "label": "后端（移除 noisy 条件中的语音）", "file": "original__N1_snr-6__f11ata1__ablated.wav"}], "manual_chat_comment": "原始后端和消融后端都把原来的t,变成k了。"}, {"case_id": "fresh__N2_snr-6__f20aka1", "manual_chat_choice": "两者差不多", "proxy_native_label": "ch", "proxy_ablated_label": "ch", "clips": [{"name": "fresh__N2_snr-6__f20aka1 · 干净参考", "label": "干净参考", "file": "fresh__N2_snr-6__f20aka1__clean.wav"}, {"name": "fresh__N2_snr-6__f20aka1 · 前端 Y_pre", "label": "前端 Y_pre", "file": "fresh__N2_snr-6__f20aka1__y_pre.wav"}, {"name": "fresh__N2_snr-6__f20aka1 · 原始后端 native", "label": "原始后端 native", "file": "fresh__N2_snr-6__f20aka1__native.wav"}, {"name": "fresh__N2_snr-6__f20aka1 · 后端（移除 noisy 条件中的语音）", "label": "后端（移除 noisy 条件中的语音）", "file": "fresh__N2_snr-6__f20aka1__ablated.wav"}], "manual_chat_comment": "消融后端语音末尾加了个明显的/s/辅音，y_pre末尾没有一点声音，原始后端末尾有相对轻微的声音，但不似人声。"}];
+const player = document.getElementById('player');
+const current = document.getElementById('current');
+let generation = 0, request = null, objectURL = null;
+function stopPlayback() {
+  generation++;
+  if (request) request.abort();
+  request = null;
+  player.pause();
+  player.removeAttribute('src');
+  player.load();
+  if (objectURL) URL.revokeObjectURL(objectURL);
+  objectURL = null;
+}
+async function selectClip(clip) {
+  stopPlayback();
+  const ticket = generation;
+  const controller = new AbortController();
+  request = controller;
+  current.textContent = '正在载入：' + clip.name;
+  try {
+    const response = await fetch(clip.file, {signal: controller.signal});
+    if (!response.ok) throw new Error('HTTP ' + response.status);
+    const blob = await response.blob();
+    if (ticket !== generation || controller.signal.aborted) return;
+    objectURL = URL.createObjectURL(blob);
+    player.src = objectURL;
+    current.textContent = '当前片段：' + clip.name;
+    await player.play();
+  } catch (error) {
+    if (ticket !== generation || controller.signal.aborted) return;
+    current.textContent = '当前片段：' + clip.name + '（未自动播放，可按播放器播放；若未载入请重试）';
+  } finally {
+    if (ticket === generation) request = null;
+  }
+}
+document.getElementById('stop').onclick = () => { stopPlayback(); current.textContent = '已停止，请选择片段'; };
+cases.forEach((item, i) => {
+  const section = document.createElement('section');
+  const title = document.createElement('h2'); title.textContent = (i+1) + '. ' + item.case_id; section.append(title);
+  if (item.manual_chat_choice) { const recorded = document.createElement('p'); recorded.textContent = '聊天记录确认：' + item.manual_chat_choice + '（已单独保存，无需重听或重复填写）'; section.append(recorded); }
+  if (item.manual_chat_comment) { const comment = document.createElement('p'); comment.textContent = '聊天备注（原话）：' + item.manual_chat_comment; section.append(comment); }
+  item.clips.forEach(clip => { const b = document.createElement('button'); b.type = 'button'; b.textContent = clip.label; b.onclick = () => selectClip(clip); section.append(b); });
+  const question = document.createElement('p'); question.textContent = '中间辅音哪一版更接近干净参考（不比较噪声大小或整体清晰度）？'; section.append(question);
+  const answer = document.createElement('select'); answer.setAttribute('aria-label', item.case_id + ' 试听判断'); answer.setAttribute('data-case-id', item.case_id);
+  [['unrated','可选：暂不判断'],['native','原始后端更接近'],['ablated','移除条件语音的后端更接近'],['similar','两者差不多'],['uncertain','听不清／不确定']].forEach(([value,text]) => { const option = document.createElement('option'); option.value = value; option.textContent = value === 'unrated' && item.manual_chat_choice ? '聊天已记录，无需重复填写' : text; answer.append(option); }); section.append(answer);
+  const details = document.createElement('details'); const summary = document.createElement('summary'); summary.textContent = '查看模型代理标签（可先听再展开）'; details.append(summary); const p = document.createElement('p'); p.textContent = '原始后端 ' + item.proxy_native_label + ' → 移除条件语音的后端 ' + item.proxy_ablated_label + '；仅模型代理，非听感结论。'; details.append(p); section.append(details);
+  document.getElementById('cases').append(section);
+});
+window.addEventListener('pagehide', stopPlayback);
+</script><script src="feedback.js"></script></html>

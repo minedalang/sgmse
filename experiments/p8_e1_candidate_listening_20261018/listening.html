@@ -1,0 +1,23 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>已作废：P8-E1 候选窗口听感包</title>
+<style>
+body{font-family:system-ui,sans-serif;max-width:900px;margin:2rem auto;padding:0 1rem;line-height:1.5}
+section{border:1px solid #ccc;border-radius:8px;padding:1rem;margin:1rem 0}
+audio{width:min(100%,520px);display:block;margin:.25rem 0 1rem}
+small{color:#555}.hint{background:#f6f6f6;padding:.6rem;border-radius:6px}
+</style>
+<h1>⚠️ 已作废：P8-E1 候选窗口听感包</h1>
+<p style="color:#b00020;font-weight:700">时间轴错误：旧包的 noisy 截取在约 9.75–11.75 秒，而其它 arm 对应约 18.75–20.75 秒。不要使用本页进行试听或内容判断。请转发服务器的 8766 端口，再打开 <a href="http://127.0.0.1:8766/p8_e1_candidate_listening_aligned_20261020/listening.html">原候选修复听感包</a>。</p>
+<p>先随机听 noisy / Y_pre / Router-off / Router，再展开 clean 参考。文本是 Whisper 自动转写提示，不是真实标注。</p>
+<div id="app"></div>
+<script>
+const rows=[
+ {id:'5243',time:'19.5–20.0 s',text:'...had caught the war fever, gone to Canada and enlisted. Mrs. McGuire herself was Canadian by birth...'},
+ {id:'4812',time:'12.5–13.0 s',text:'Although I was handicapped in my reconstitution of their friendship by lack of the Archbishop\'s letters...'},
+ {id:'11999',time:'19.5–20.0 s',text:'But there are no sharp lines in nature, from the homicidal lunatic to the same man of violent passions...'},
+ {id:'10720',time:'14.5–15.0 s',text:'...anything is better than the present condition of things. God forbid that you should ever have...'}
+];
+const arms=[['noisy','noisy'],['y_pre','Y_pre'],['off','Router-off'],['router','Router'],['clean','clean']];
+document.querySelector('#app').innerHTML=rows.map(r=>`<section><h2>file-id ${r.id}（原始 ${r.time}）</h2>${arms.map(([f,n])=>`<label>${n}<audio controls preload="none" src="clips/fileid_${r.id}_`+(r.id==='5243'?'19.50_20.00':r.id==='4812'?'12.50_13.00':r.id==='11999'?'19.50_20.00':'14.50_15.00')+`_${f}.wav"></audio></label>`).join('')}<details><summary>展开 clean 自动转写提示</summary><p class="hint">${r.text}</p></details></section>`).join('');
+</script>

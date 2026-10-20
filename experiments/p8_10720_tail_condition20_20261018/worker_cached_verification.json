@@ -1,0 +1,68 @@
+{
+  "status": "passed_with_documented_precision_limit",
+  "cached_only_no_inference": true,
+  "hashes_and_exact_input_checks_passed": true,
+  "two_NFE30": true,
+  "float_frontend_globally_held": true,
+  "independent_highband_method": "SciPy periodogram boxcar density integrated 4\u20137.5kHz",
+  "L2_note": "Original driver reference norms are float32; independent L2 below uses float64 norms. Original precision exactly reproduces metrics.",
+  "maximum_relative_L2_precision_difference": 2.910345918336589e-05,
+  "runs": [
+    {
+      "tail_rms": 0.000238707576650123,
+      "tail_rms_dbfs": -72.44267592274565,
+      "tail_highband_mean_square_4k_7p5k": 5.2087399461480186e-08,
+      "tail_delta_from_no_op_rms": 0.0,
+      "full_clean_speech_active_rmse_vs_clean": 0.0008129272481246481,
+      "outside_window_relative_l2_vs_no_op": 0.0,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.21888546792007854,
+      "run": "no_op",
+      "representation": "raw",
+      "tail_rms_delta_db": 0.0,
+      "tail_highband_delta_db": -4.821637332766436e-16
+    },
+    {
+      "tail_rms": 0.00023992890587629448,
+      "tail_rms_dbfs": -72.39834852906972,
+      "tail_highband_mean_square_4k_7p5k": 5.212911782466544e-08,
+      "tail_delta_from_no_op_rms": 0.0,
+      "full_clean_speech_active_rmse_vs_clean": 0.0008130106004835813,
+      "outside_window_relative_l2_vs_no_op": 0.0,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.2189079110457969,
+      "run": "no_op",
+      "representation": "pcm16_reference",
+      "tail_rms_delta_db": 0.0,
+      "tail_highband_delta_db": 0.0
+    },
+    {
+      "tail_rms": 8.114257038520206e-06,
+      "tail_rms_dbfs": -101.81502478192431,
+      "tail_highband_mean_square_4k_7p5k": 9.107598923431332e-12,
+      "tail_delta_from_no_op_rms": 0.00023797609873891227,
+      "full_clean_speech_active_rmse_vs_clean": 0.0008112344321921174,
+      "outside_window_relative_l2_vs_no_op": 0.002207403041808574,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.0020943783180531876,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.21842966726873966,
+      "run": "condition_tail_clean",
+      "representation": "raw",
+      "tail_rms_delta_db": -29.372348859178658,
+      "tail_highband_delta_db": -37.57328778107275
+    },
+    {
+      "tail_rms": 2.8609139557921988e-05,
+      "tail_rms_dbfs": -90.86990407483908,
+      "tail_highband_mean_square_4k_7p5k": 3.937884258474773e-11,
+      "tail_delta_from_no_op_rms": 0.0002372093269785823,
+      "full_clean_speech_active_rmse_vs_clean": 0.0008113290251787012,
+      "outside_window_relative_l2_vs_no_op": 0.0036655807040583336,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.0034394322603548085,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.21845513695276716,
+      "run": "condition_tail_clean",
+      "representation": "pcm16_reference",
+      "tail_rms_delta_db": -18.471555545769363,
+      "tail_highband_delta_db": -31.218174281803247
+    }
+  ]
+}

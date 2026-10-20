@@ -1,0 +1,68 @@
+{
+  "files": {
+    "analysis_plan.md": {
+      "bytes": 5403,
+      "sha256": "4c27754b41772cf0ccfd3e0422c8677264d70db1b06fbdbfc45ecbdf131a4216"
+    },
+    "config.yaml": {
+      "bytes": 878,
+      "sha256": "c8c872e737d7616c1f8a9239c1d3874986a229b028a4c5753ceec3f88dd817ae"
+    },
+    "run_audit.py": {
+      "bytes": 8155,
+      "sha256": "3515e7b6a683c4728bc311428cf782c035d013632a950ae9de59b9ca1bffc151"
+    },
+    "worker_preflight.json": {
+      "bytes": 300584,
+      "sha256": "9ff1ffc1cbdcc914816604cb7f0ce676f46d2a81e3717e6718c77809d2cfa15b"
+    },
+    "validate_audit.py": {
+      "bytes": 6488,
+      "sha256": "a1c7d63290d5045f757222e9bacaae2e93566bc1de051f2145e7c701ca4fafc2"
+    },
+    "STARTED.json": {
+      "bytes": 142,
+      "sha256": "86a16e82f9d06cd2b74d9b4024614f06ca53e4632ac1836e180fd1fec0f16f0b"
+    },
+    "source_preservation_pre.json": {
+      "bytes": 96358,
+      "sha256": "9746c40ce5961acb04ae7a7dc06e28cac2e648104371acd52475aebf54d905d6"
+    },
+    "source_pcm_locks.json": {
+      "bytes": 26226,
+      "sha256": "e6f92d206ff21b965edcf3a4123c80b114b69c3b95f69c6088788db5a9e3436b"
+    },
+    "source_preservation_post.json": {
+      "bytes": 96358,
+      "sha256": "9746c40ce5961acb04ae7a7dc06e28cac2e648104371acd52475aebf54d905d6"
+    },
+    "metrics.json": {
+      "bytes": 80051,
+      "sha256": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17"
+    },
+    "independent_validation.json": {
+      "bytes": 545,
+      "sha256": "150c9b98cae247b6dbe16c41103fe1e3f4f7906b464c83a3588a2912c80eaaa8"
+    },
+    "finalize_report.py": {
+      "bytes": 10229,
+      "sha256": "59b4f3524105658cf58ac7e155b387616f597ed7e8c658540c7e24d9e1e8462c"
+    },
+    "execution_provenance.json": {
+      "bytes": 973,
+      "sha256": "9eb494806176080b774ac7f00302690b1ccc5b07156dbc0559a41dd95bdff57e"
+    },
+    "experiment_report.md": {
+      "bytes": 16119,
+      "sha256": "312541907832bc47b44bfbf6ea1aa4426c4c07cce0fea65b9b7b26ca5b2e5d3c"
+    },
+    "worker_final_validation.json": {
+      "bytes": 676,
+      "sha256": "07c295e4919790946e1164dba7716a77c514e6127d46faa36c3749c12c334051"
+    }
+  },
+  "bytes_excluding_freeze_receipt": 649185,
+  "budget": 2097152,
+  "scope": "completed CPU audit, no new audio/model/selector",
+  "original32generation_closed": true
+}

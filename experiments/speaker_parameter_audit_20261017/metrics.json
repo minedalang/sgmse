@@ -1,0 +1,15 @@
+{
+  "base_checkpoint": "joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "arms": {
+    "pair": {"rrsd_freeze_base": true, "frontend_trainable": true, "optimizer_state_entries": 8, "optimizer_param_groups": 1, "lr": 3e-5, "dnn_changed_tensors": 0, "frontend_changed_tensors": 0, "router_changed_tensors": 8},
+    "masked": {"rrsd_freeze_base": true, "frontend_trainable": true, "optimizer_state_entries": 8, "optimizer_param_groups": 1, "lr": 3e-5, "dnn_changed_tensors": 0, "frontend_changed_tensors": 0, "router_changed_tensors": 8},
+    "prototype": {"rrsd_freeze_base": true, "frontend_trainable": true, "optimizer_state_entries": 8, "optimizer_param_groups": 1, "lr": 3e-5, "dnn_changed_tensors": 0, "frontend_changed_tensors": 0, "router_changed_tensors": 8},
+    "prototype_cw1": {"rrsd_freeze_base": true, "frontend_trainable": true, "optimizer_state_entries": 8, "optimizer_param_groups": 1, "lr": 3e-5, "dnn_changed_tensors": 0, "frontend_changed_tensors": 0, "router_changed_tensors": 8},
+    "svprototype": {"rrsd_freeze_base": true, "frontend_trainable": true, "optimizer_state_entries": 8, "optimizer_param_groups": 1, "lr": 3e-5, "dnn_changed_tensors": 0, "frontend_changed_tensors": 0, "router_changed_tensors": 8}
+  },
+  "all_runs_logged_trainable_params": 42600,
+  "all_runs_logged_non_trainable_params": 156000000,
+  "base_dnn_diff_norm": 0.0,
+  "base_frontend_diff_norm": 0.0,
+  "interpretation": "Historical Speaker runs updated only the 42.6K-parameter RRSD router. They did not test backend-only or joint NCSN++ adaptation."
+}

@@ -1,0 +1,81 @@
+{
+  "request": {
+    "key": "p230_027_N1_snr_m18.wav__off",
+    "id": "p230_027",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N1_snr_m18.wav",
+    "basename": "p230_027_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "ed9ee4ba67d7b472ed52a54fc28a013c71ecf4341cbb96896a5a75f1f304cc31",
+      "samples": 51162,
+      "array_sha256": "b877684986b0f82562c5526617d6fc384477aeb451cfd18d5544eebbe1a3b94b",
+      "peak": 0.092498779296875,
+      "rms": 0.0099247132447515
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " the rose matte platter. It could help match through.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 7.0,
+        "text": " the rose matte platter. It could help match through.",
+        "tokens": [
+          50363,
+          262,
+          8278,
+          36908,
+          458,
+          1436,
+          13,
+          632,
+          714,
+          1037,
+          2872,
+          832,
+          13,
+          50713
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.301691182454427,
+        "compression_ratio": 0.9454545454545454,
+        "no_speech_prob": 0.05539609491825104
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 59,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,188 @@
+{
+  "experiment_id": "p8_cpel_mp_pilot_20261019",
+  "status": "prepared_not_executed; no-update integration reached, loss scale/noise premise unresolved; M/P not authorized",
+  "root_authorization_required": true,
+  "authorization_file": "root_execution_authorization.json",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "initialization": "source_model EMA materialized once; same frozen frontend and same initial dnn for M/P",
+    "source_checkpoint_writes": false,
+    "save_final": "backend dnn EMA state only, no frontend copy or optimizer checkpoint"
+  },
+  "registries": {
+    "train": {
+      "path": "train_registry.jsonl",
+      "sha256": "23e138517a3860695b44d8d99bd9f3bfa04d1b5f6366ab5ca517cdf2ebbdb2b3",
+      "records": 256
+    },
+    "dev": {
+      "path": "dev_registry.jsonl",
+      "sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+      "records": 64
+    },
+    "receipt": "registry_receipt.json",
+    "limitations": "Existing pretraining CV is development, not independent confirmation; noise recording/category identity unknown"
+  },
+  "seed": 20261019,
+  "device": "cuda:0",
+  "arms": [
+    "M",
+    "P"
+  ],
+  "trainable": "existing originally learnable dnn parameters only; intrinsic GaussianFourierProjection.W remains fixed; frontend and all other modules frozen/eval; dnn eval mode retains parameter gradients",
+  "disable": [
+    "rrsd",
+    "anchor_v2",
+    "score_calibration",
+    "residual_refine",
+    "pathsim",
+    "ctm",
+    "contrastive",
+    "speaker_losses",
+    "other_auxiliary_hooks"
+  ],
+  "data": {
+    "sample_rate": 16000,
+    "expected_num_frames": 256,
+    "expected_n_fft": 510,
+    "expected_hop_length": 128,
+    "crop_samples": 32640,
+    "train_crop": "seeded random common clean/noisy crop, matched across M/P",
+    "dev_crop": "center crop fixed, no content-based recropping",
+    "normalization": "single original Noisy crop peak for both counterfactual arms, clamp_min 1e-12",
+    "edit_domain": "waveform before STFT and compression",
+    "expected_spec_transform": "exponent",
+    "expected_spec_abs_exponent": 0.5,
+    "expected_spec_factor": 0.15,
+    "additivity_relative_rms_tolerance": 0.001,
+    "noise_control": "Verify stored noise additive consistency on evaluated crop; no lag/gain fit. Noise edit shares speech-heldout center/window/filter and is scaled down to equal heldout speech-edit waveform energy. If raw noise edit energy is insufficient/zero or additive check fails, report unmatched/unknown, never amplify or replace."
+  },
+  "editing": {
+    "attenuation": 0.5,
+    "duration_samples": 1280,
+    "train_window": "Hann",
+    "heldout_window": "Tukey with 160-sample edges, same duration",
+    "band_edges_hz": [
+      1500,
+      2500,
+      6500,
+      7500
+    ],
+    "band_operator": "real FFT, cosine rise/fall, plateau, inverse real FFT",
+    "center_selection": "maximum 80ms high-band clean energy; candidate centers at least 0.25s from crop edges; fixed tie rule first",
+    "event_center_edge_margin_samples": 4000,
+    "response_soft_window_samples": 3072,
+    "response_soft_window": "time Hann centered on event, all model frequency bins; overlapping inside/outside weights, not orthogonal projections"
+  },
+  "optimization": {
+    "optimizer": "Adam",
+    "learning_rate": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "max_steps_per_arm": 500,
+    "original_pairs_per_step": 1,
+    "gradient_clip_norm": 1.0,
+    "backend_ema_decay": 0.999,
+    "precision": "float32 and complex64; no AMP",
+    "native_time_range": [
+      0.03,
+      1.0
+    ],
+    "aux_time_range": [
+      0.3,
+      0.7
+    ],
+    "common_parent": "uniform random 0 or 1; detached frontend/state",
+    "score_sample_equivalents_per_step": 4,
+    "native_noise": "shared Gaussian draw across the two legal native states; not claimed as fixed-state isolation",
+    "aux_noise": "independent Gaussian draw for selected parent at common aux time",
+    "native_loss": "0.5 mean |sigma*q + epsilon|^2 over both valid native branches and all coordinates",
+    "aux_clean_weight": 1.0,
+    "aux_clean_loss": "0.5 mean |sigma*q_h + (u-a*c_h-(1-a)*A)/sigma|^2; auxiliary regression on shared proposal, not unbiased native DSM",
+    "pair_weight_M": 0.0,
+    "pair_weight_P": 0.1,
+    "pair_lower_margin": 0.1,
+    "pair_upper_margin": 1.5,
+    "pair_component_weights": {
+      "lower": 1.0,
+      "upper": 1.0,
+      "orthogonal": 0.25,
+      "outside": 0.2
+    },
+    "pair_min_raw_target_mean_energy": 1e-12,
+    "pair_definition": "energy-scaled phase-aware response in whitened Score coordinates; see analysis_plan; not stage0 ratio objective copied unchanged",
+    "invalid_pair": "skip entire pair term; retain native and pointwise auxiliary tasks; report coverage",
+    "M_control": "compute same pair diagnostics and same Score calls as P, pair weight zero",
+    "selection": "terminal fixed-step EMA only; no development checkpoint or hyperparameter selection",
+    "intrinsic_fixed_parameters": [
+      "GaussianFourierProjection.W"
+    ],
+    "backend_ema_parameter_scope": "requires_grad=True dnn parameters only; intrinsic fixed parameters and buffers saved unchanged"
+  },
+  "evaluation": {
+    "records": 64,
+    "baseline": "initial source backend once, reused only if hashes/config match",
+    "normal": "unedited center crop; original frontend and OUVE PC reverse_diffusion corrector none; N=30; no RRSD/calibrator",
+    "normal_metrics": [
+      "normalized_waveform_MSE",
+      "SI_SDR",
+      "STOI",
+      "PESQ"
+    ],
+    "normal_missing": "retain every record; report missing/undefined/errors per arm and matched coverage, no replacement or silent exclusion",
+    "controlled_types": [
+      "speech_Hann",
+      "speech_heldout_Tukey",
+      "noise_only_heldout_Tukey"
+    ],
+    "controlled_time": 0.5,
+    "controlled_parents": [
+      0,
+      1
+    ],
+    "controlled_metrics": [
+      "projection_gain",
+      "response_energy",
+      "zero_response",
+      "reverse_direction",
+      "overgain",
+      "outside_change",
+      "pair_components",
+      "coverage"
+    ],
+    "noise_only": "zero clean delta; diagnostic d=(sigma^2/a)*(q1-q0) projected on observed compressed Noisy difference Phi(X1/r)-Phi(X0/r), not clean target and not Phi(waveform noise edit)",
+    "audio_exports": false,
+    "ASR_calls": false,
+    "DNSMOS_calls": false,
+    "identity_or_phone_claims": false
+  },
+  "limits": {
+    "seconds_per_arm_including_evaluation": 3600,
+    "total_gpu_seconds": 7200,
+    "max_directory_bytes": 536870912,
+    "minimum_free_disk_bytes": 1073741824,
+    "primary_comparison_requires_both_arms_steps": 500,
+    "failed_or_budget_limited_runs": "record terminal partial evidence, no automatic retry or hyperparameter rescue",
+    "network_access": false,
+    "install_packages": false,
+    "original_data_or_checkpoint_writes": false,
+    "frozen_test_access": false
+  },
+  "screening_only": {
+    "meaning": "single-seed development mechanism screen, not independent enhancement confirmation",
+    "candidate_signal": "M heldout-edit pair mean must be >1e-12 and P <=0.9*M with matched coverage; no degenerate zero-response explanation. Otherwise no demonstrated incremental signal.",
+    "noise_input_gain_mean_increase_tolerance": 0.02,
+    "normal_mean_P_minus_M_lower_tolerances": {
+      "PESQ": -0.03,
+      "STOI": -0.005,
+      "SI_SDR_dB": -0.2
+    },
+    "tolerance_scope": "preregistered engineering screening bounds, not perceptual thresholds or guarantees",
+    "missing_content": "DNS dummy text and acoustic proxies do not establish correct phoneme recovery or hallucination reduction"
+  }
+}

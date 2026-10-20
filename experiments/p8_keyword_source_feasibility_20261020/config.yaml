@@ -1,0 +1,36 @@
+{
+  "scope": "official ZIP central-directory metadata only; no member or audio read/extraction",
+  "source_url": "https://storage.googleapis.com/download.tensorflow.org/data/mini_speech_commands.zip",
+  "official_tutorial_url": "https://www.tensorflow.org/tutorials/audio/simple_audio",
+  "official_which_set_source_url": "https://raw.githubusercontent.com/tensorflow/tensorflow/master/tensorflow/examples/speech_commands/input_data.py",
+  "max_HTTP_requests": 3,
+  "request_timeout_seconds": 20,
+  "max_total_seconds": 60,
+  "max_response_body_bytes": 3145728,
+  "max_directory_bytes": 4194304,
+  "minimum_free_disk_bytes": 1073741824,
+  "tail_bytes": 65557,
+  "range_requirements": "206 and exact Content-Range; on200 do not read body; no redirect/retry/mirror/ZIP64 fallback",
+  "word_labels_expected": [
+    "down",
+    "go",
+    "left",
+    "no",
+    "right",
+    "stop",
+    "up",
+    "yes"
+  ],
+  "validation_percentage": 10,
+  "testing_percentage": 10,
+  "nohash_group": "basename prefix before _nohash_, grouping identifier only; speaker identity unverified",
+  "license": "CC BY per official documentation supplied by Root; archive README not accessed",
+  "documented_metadata_from_Root": {
+    "word_classes": 8,
+    "recordings": 8000,
+    "sample_rate": 16000,
+    "maximum_seconds": 1,
+    "example_archive_bytes": 182082353
+  },
+  "postcheck_no_download_or_classifier_training": true
+}

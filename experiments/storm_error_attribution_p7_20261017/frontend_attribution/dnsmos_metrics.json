@@ -1,0 +1,237 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_frontend_dnsmos",
+  "n": 32,
+  "sample_rate_hz": 16000,
+  "personalized": false,
+  "device": "cpu",
+  "input_normalization": "same as mymetrics.calc_dnsmos: divide peak if >1",
+  "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "arms": {
+    "frontend": "frontend_only",
+    "off": "experiment_logs/rrsd_tcut_screen/off",
+    "router": "experiment_logs/rrsd_tcut_screen/router"
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261019,
+    "scope": "exploratory; previously screened development split"
+  },
+  "torchmetrics": "1.9.0",
+  "metrics": {
+    "per_arm": {
+      "p808": {
+        "frontend": {
+          "mean": 3.682830198534897,
+          "std": 0.3615358747792708,
+          "median": 3.8293862002236505
+        },
+        "off": {
+          "mean": 4.044658004173211,
+          "std": 0.12418854621919283,
+          "median": 4.0741758687155585
+        },
+        "router": {
+          "mean": 4.02186114766768,
+          "std": 0.13016159707019187,
+          "median": 4.051253284726824
+        }
+      },
+      "sig": {
+        "frontend": {
+          "mean": 3.3062043766655984,
+          "std": 0.25222587415907827,
+          "median": 3.385030029763044
+        },
+        "off": {
+          "mean": 3.498033467620569,
+          "std": 0.13307266598467155,
+          "median": 3.542369975419909
+        },
+        "router": {
+          "mean": 3.477706405063389,
+          "std": 0.1402426764050654,
+          "median": 3.5182943947276026
+        }
+      },
+      "bak": {
+        "frontend": {
+          "mean": 4.075477233264704,
+          "std": 0.14682924378077647,
+          "median": 4.121352672633284
+        },
+        "off": {
+          "mean": 4.143862075987066,
+          "std": 0.06504351072770448,
+          "median": 4.156976554764448
+        },
+        "router": {
+          "mean": 4.142771640669107,
+          "std": 0.05894503441970521,
+          "median": 4.1555630035130875
+        }
+      },
+      "ovrl": {
+        "frontend": {
+          "mean": 2.995755647875332,
+          "std": 0.28977963804880086,
+          "median": 3.0870260105708303
+        },
+        "off": {
+          "mean": 3.20649023582346,
+          "std": 0.1639218222496462,
+          "median": 3.271806515575965
+        },
+        "router": {
+          "mean": 3.185399381446362,
+          "std": 0.17386947080642187,
+          "median": 3.251981910352402
+        }
+      }
+    },
+    "paired": {
+      "p808": {
+        "frontend_minus_off": {
+          "mean_delta": -0.3618278056383133,
+          "median_delta": -0.24077837807791602,
+          "bootstrap_95ci": [
+            -0.46194551430110414,
+            -0.26788491779672247
+          ],
+          "a_wins": 0,
+          "b_wins": 32,
+          "ties": 0
+        },
+        "router_minus_off": {
+          "mean_delta": -0.02279685650553015,
+          "median_delta": -0.01935023920876633,
+          "bootstrap_95ci": [
+            -0.03192641934646018,
+            -0.014586211820798174
+          ],
+          "a_wins": 6,
+          "b_wins": 26,
+          "ties": 0
+        },
+        "router_minus_frontend": {
+          "mean_delta": 0.3390309491327831,
+          "median_delta": 0.21744033268519813,
+          "bootstrap_95ci": [
+            0.2497334334467139,
+            0.43489431267870327
+          ],
+          "a_wins": 32,
+          "b_wins": 0,
+          "ties": 0
+        }
+      },
+      "sig": {
+        "frontend_minus_off": {
+          "mean_delta": -0.19182909095497042,
+          "median_delta": -0.10652811001579421,
+          "bootstrap_95ci": [
+            -0.2577065062281693,
+            -0.13137446537080466
+          ],
+          "a_wins": 0,
+          "b_wins": 32,
+          "ties": 0
+        },
+        "router_minus_off": {
+          "mean_delta": -0.02032706255717974,
+          "median_delta": -0.015228403288684467,
+          "bootstrap_95ci": [
+            -0.027745767818920745,
+            -0.013422728730717065
+          ],
+          "a_wins": 2,
+          "b_wins": 30,
+          "ties": 0
+        },
+        "router_minus_frontend": {
+          "mean_delta": 0.1715020283977907,
+          "median_delta": 0.08756233281016756,
+          "bootstrap_95ci": [
+            0.11490814029065595,
+            0.23417562368288616
+          ],
+          "a_wins": 32,
+          "b_wins": 0,
+          "ties": 0
+        }
+      },
+      "bak": {
+        "frontend_minus_off": {
+          "mean_delta": -0.06838484272236292,
+          "median_delta": -0.017893881313278293,
+          "bootstrap_95ci": [
+            -0.10447951991637011,
+            -0.03755996030375749
+          ],
+          "a_wins": 6,
+          "b_wins": 26,
+          "ties": 0
+        },
+        "router_minus_off": {
+          "mean_delta": -0.0010904353179603116,
+          "median_delta": -0.00011525394744094086,
+          "bootstrap_95ci": [
+            -0.0052542890801255265,
+            0.0035822223288717895
+          ],
+          "a_wins": 16,
+          "b_wins": 16,
+          "ties": 0
+        },
+        "router_minus_frontend": {
+          "mean_delta": 0.06729440740440261,
+          "median_delta": 0.017541704458202467,
+          "bootstrap_95ci": [
+            0.036130522389465854,
+            0.10544913008284693
+          ],
+          "a_wins": 26,
+          "b_wins": 6,
+          "ties": 0
+        }
+      },
+      "ovrl": {
+        "frontend_minus_off": {
+          "mean_delta": -0.2107345879481279,
+          "median_delta": -0.12003409611727411,
+          "bootstrap_95ci": [
+            -0.28349622514944667,
+            -0.1437104208573603
+          ],
+          "a_wins": 2,
+          "b_wins": 30,
+          "ties": 0
+        },
+        "router_minus_off": {
+          "mean_delta": -0.021090854377097956,
+          "median_delta": -0.01703763272158798,
+          "bootstrap_95ci": [
+            -0.030129362089174973,
+            -0.012754816191096356
+          ],
+          "a_wins": 6,
+          "b_wins": 26,
+          "ties": 0
+        },
+        "router_minus_frontend": {
+          "mean_delta": 0.18964373357102995,
+          "median_delta": 0.0950975731524839,
+          "bootstrap_95ci": [
+            0.12766869883195894,
+            0.25866879289426714
+          ],
+          "a_wins": 32,
+          "b_wins": 0,
+          "ties": 0
+        }
+      }
+    }
+  },
+  "runtime_seconds": 303.40577936172485,
+  "training": false,
+  "audio_written_or_modified": false
+}

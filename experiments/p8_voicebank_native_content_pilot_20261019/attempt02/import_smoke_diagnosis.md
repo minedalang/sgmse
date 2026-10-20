@@ -1,0 +1,7 @@
+Single authorized dependency import smoke failed in4.216148884s;3253 log bytes. Torch2.14.1+cu130 imported successfully, exact /sbin/ldconfig -p read-only query passed revised guard. No checkpoint load, model forward or scientific call occurred. Full joint_enhance/Whisper imports were not reached.
+
+The diagnostic nn.Module.__init__ deny hook was too broad: transformers.activations.py:79 constructs parameterless GELUActivation at import (:361), which invoked nn.Module.__init__ and incremented model_load_attempts=1 before denial. This counter is a blocked import-time activation object attempt, not a loaded enhancement/ASR model. That wrapper caused WavLMModel import to raise ModuleNotFoundError. This is an avoidable diagnostic implementation bug; it does not establish missing dependencies. No automatic retry. All smoke logs/metrics/source remain preserved.
+
+Minimal further diagnostic proposal (not run): keep torch.load/serialization.load/jit.load denied, intercept known enhancement/ASR/transformer model constructors and loader entries; allow parameterless activation class initialization, still reject all Module forward calls. No change to scientific model driver, which never installed this diagnostic constructor deny hook. Another real import smoke requires separate Root authorization.
+
+All78 preexisting pilot files including original failed metrics,173-code-lock manifest, inputs, registry and failure audits were checked byte-identical after smoke.

@@ -1,0 +1,80 @@
+{
+  "request": {
+    "key": "p227_030_N2_snr_m18.wav__frontend",
+    "id": "p227_030",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_030_N2_snr_m18.wav",
+    "basename": "p227_030_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "754c25ba1c4076bc1a4ea7ff2f5b49444831fefb12ca4f3daa6459c2be312494",
+      "samples": 52810,
+      "array_sha256": "1f4e997eabad651888ca6dc23476543cce69eea8a6f5a7b76f2b81fa0a0f788c",
+      "peak": 0.101318359375,
+      "rms": 0.009399273651900764
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " One, the last of the overall future to establish.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " One, the last of the overall future to establish.",
+        "tokens": [
+          50363,
+          1881,
+          11,
+          262,
+          938,
+          286,
+          262,
+          4045,
+          2003,
+          284,
+          4474,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9901479312351772,
+        "compression_ratio": 0.9245283018867925,
+        "no_speech_prob": 0.40144413709640503
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 16,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "selected_speakers": 4,
+  "arms_per_candidate": 5,
+  "clip_count": 20,
+  "sample_rate_hz": 16000,
+  "clip_duration_seconds": 2.0,
+  "all_clips_readable": true,
+  "all_clips_same_duration": true,
+  "model_inference": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "interpretation": "Listening aid only; no content or WER result"
+}

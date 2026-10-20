@@ -1,0 +1,31 @@
+{
+  "main_command": "python3 -B /data/coding/sgmse/experiments/p8_cached_multiseed_variance_audit_20261019/run_audit.py",
+  "main_exec_session": 66911,
+  "main_pid": 22326,
+  "pid_evidence": "exclusive STARTED records actual process PID; not independently ps-observed",
+  "started": {
+    "pid": 22326,
+    "utc": "2026-10-19T07:27:08.529883+00:00",
+    "driver_sha256": "d3f9ed855aa66511c8cd9c86ab26902cd28bbc83fb5b43ee55a68b7dc6d55d67"
+  },
+  "main_exit": 0,
+  "main_seconds": 11.891850347979926,
+  "validation_command": "python3 -B /data/coding/sgmse/experiments/p8_cached_multiseed_variance_audit_20261019/validate_audit.py",
+  "validator_exec_session": 89363,
+  "validator_exit": 0,
+  "validator_seconds": 12.374187082983553,
+  "main_decodes": 80,
+  "additional_validator_decodes": 80,
+  "total_actual_decodes": 160,
+  "unique_WAVs": 80,
+  "retries": 0,
+  "new_inference": 0,
+  "new_audio_outputs": 0,
+  "ASR": 0,
+  "quality_recomputations": 0,
+  "training": 0,
+  "network": 0,
+  "metrics_sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e",
+  "no_old_file_modified": true,
+  "final_report_utc": "2026-10-19T07:28:47.797989+00:00"
+}

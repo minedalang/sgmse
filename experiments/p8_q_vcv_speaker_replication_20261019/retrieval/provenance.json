@@ -1,0 +1,21 @@
+{
+  "archive_checksum_verified": false,
+  "archive_metadata": {
+    "checksum": "md5:53a9ede7b84cfb61e4189ccd3149a744",
+    "id": "105cd005-714b-4b5f-a743-0c3d69dbaca5",
+    "key": "train.zip",
+    "links": {
+      "self": "https://zenodo.org/api/records/3538223/files/train.zip/content"
+    },
+    "size": 169755879
+  },
+  "checksum_note": "Full archive MD5 is metadata only; each extracted WAV CRC32 is verified",
+  "doi": "10.5281/zenodo.3538223",
+  "license": {
+    "id": "cc-by-4.0"
+  },
+  "manual_mlf_sha256": "f373fbfa6c065b85ea98ac0be86644ea108a35c0189fca061aebe1420cf1e646",
+  "record_id": 3538223,
+  "record_sha256": "b581f11dd6418902349d5913bfa3d9e81bc1dd6d611e60aad22ec6257c18f4ad",
+  "source_url": "https://zenodo.org/api/records/3538223/files/train.zip/content"
+}

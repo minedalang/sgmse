@@ -1,0 +1,14 @@
+experiment_id: rrsd_speaker_pair_masked1000
+hypothesis: masking_same_speaker_off_diagonal_negatives_improves_cross_utterance_identity_without_extra_reconstruction_loss
+base_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+steps: 1000
+batch_size: 8
+contrastive_weight: 10.0
+contrastive_speaker_weight: 0.0
+contrastive_mask_same_speaker_negatives: true
+plm_type: unispeech_sat
+seed: 2026
+lr: 3e-5
+mutates_dataset: false
+output_checkpoint: joint_train_logs/rrsd_speaker_pair_masked1000/epoch=0-step=1000.ckpt
+comparison: joint_train_logs/ftyjnqu1-rrsd_speaker_pair1000/epoch=0-step=1000.ckpt

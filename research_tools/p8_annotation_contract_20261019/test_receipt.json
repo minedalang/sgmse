@@ -1,0 +1,20 @@
+{
+  "scope": "synthetic_only_software_preparation",
+  "real_data_approved": false,
+  "hard_identity_eligible": false,
+  "command": "python3 -B -m unittest -v test_annotation_contract",
+  "receipt_run_command": "python3 -B - <standard-library unittest receipt harness>",
+  "python": "3.10.12 (main, Feb  4 2025, 14:57:36) [GCC 11.4.0]",
+  "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.35",
+  "test_methods_run": 14,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "success": true,
+  "elapsed_seconds": 0.0017657110001891851,
+  "limit_seconds": 60,
+  "ast_parse_passed": true,
+  "actual_corpus_imported": false,
+  "audio_or_model_code_imported": false,
+  "note": "Test methods include fixed literal subcases; no empirical accuracy or population claims."
+}

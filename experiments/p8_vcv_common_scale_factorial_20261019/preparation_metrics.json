@@ -1,0 +1,17 @@
+{
+  "status": "prepared_no_inference",
+  "syntax_valid": true,
+  "source_locks_valid": true,
+  "source_lock_count": 156,
+  "helper_unchanged": true,
+  "helper_sha256": "66f61a892e5b4ffc37c1069e3692618a07fb09efc3717c106c1d18c212ddbb82",
+  "eight_cpu_recipe_hash_checks_passed": true,
+  "four_k_peak_reference_gates_valid": true,
+  "all_condition_peaks_at_most_one": true,
+  "json_numpy_scalar_roundtrip": true,
+  "json_nonfinite_rejected": true,
+  "frontend_forwards": 0,
+  "backend_forwards": 0,
+  "recognizer_forwards": 0,
+  "driver_sha256": "0d3f1b265b1c65fc91a1af9381a1e0cf4ac9cf26b84d508595c2c7f5a6114cc3"
+}

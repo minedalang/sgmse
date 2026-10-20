@@ -1,0 +1,17 @@
+{
+  "kind": "Root completed-I1a evidence review, not identifiability or enhancement proof",
+  "utc": "2026-10-19T08:57:35.560506+00:00",
+  "metrics_sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6",
+  "main_seconds": 3.054512817063369,
+  "independent_seconds": 7.332283942960203,
+  "pairs": 12,
+  "lag_rows": 3852,
+  "frame_rows": 4330,
+  "source_record_locks_checked": 20,
+  "prepared_files_checked": 11,
+  "Root_source_audio_reads": 0,
+  "actual_decoder_calls_worker_main_and_validator": 48,
+  "decision": "keep source gain1/zero-lag; no automatic OLS gain correction, pair rejection, noise-purity claim or scientific gate promotion",
+  "next_scope": "design only of original-observation event-edit/sham controls; no classifier or actual waveform construction yet",
+  "goal_complete": false
+}

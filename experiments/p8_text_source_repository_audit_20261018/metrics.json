@@ -1,0 +1,7 @@
+{
+  "public_manifest_match": true,
+  "matched_manifest_format": "absolute_clean_wav_path plus duration_seconds",
+  "transcript_fields_present": false,
+  "matched_candidate_text_present": false,
+  "interpretation": "The public manifest corroborates file identity only; it does not provide original utterance text"
+}

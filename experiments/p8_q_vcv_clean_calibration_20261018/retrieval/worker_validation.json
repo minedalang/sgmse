@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "checks": "All saved WAV SHA256/CRC32/size/rate/channels/frame length; nominal labels; matched pair speaker/context/stress; manifest CSV and frozen plan; source metadata hashes; network and output caps",
+  "speakers": [
+    "f6",
+    "m2",
+    "f11",
+    "m4"
+  ],
+  "pairs": 8,
+  "primary_wavs": 16,
+  "selected_wavs": 28,
+  "supplementary_wavs": 12,
+  "raw_audio_bytes": 691788,
+  "network_body_bytes": 1637934,
+  "network_attempts": 115,
+  "proxy_fallback_used": false,
+  "elapsed_seconds": 123.504,
+  "output_bytes_before_validation": 4403981
+}

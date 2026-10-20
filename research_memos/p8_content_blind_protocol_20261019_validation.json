@@ -1,0 +1,40 @@
+{
+  "kind": "Research_Lead_allocation_design_check_not_human_evaluation",
+  "utc": "2026-10-19T06:59:35.251155+00:00",
+  "status": "design_constraints_passed_not_executed",
+  "lists": 6,
+  "planned_people": 12,
+  "unique_audio_versions_byte_hash_checked": 48,
+  "planned_judgments": 96,
+  "pure_playback_seconds_onepass_all_people": 343.21500000000003,
+  "pure_playback_seconds_threepasses_all_people": 1029.645,
+  "human_responses": 0,
+  "new_audio_sample_decodes": 0,
+  "new_audio_exports": 0,
+  "new_model_calls": 0,
+  "recruitment_or_ui_authorized": false,
+  "source_metrics_unchanged": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "note": "No participant independence, listening quality, reference correctness, statistical power or method effectiveness inferred. Literature web browsing occurred; no corpus/model download; transport unmetered.",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_content_blind_allocation_20261019.json",
+      "bytes": 23647,
+      "sha256": "8a0f33d2ef052123c104cf1e6d040b73d8940b2c2a463bb92459c45d855ea22c"
+    },
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_content_blind_protocol_20261019.md",
+      "bytes": 8434,
+      "sha256": "9df42f62d33df5c47d5b21940947ba677e8b77c19f00660c6555d84580f61826"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 9644,
+      "sha256": "7abc1547329ea21b5f29b8145ab6d7d6e5f141c67216b60fb537693c4e16c935"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 14907,
+      "sha256": "943e8751efbb4c1856ae009fffbb7e60a3859332cca185342125c9895e26d16e"
+    }
+  ]
+}

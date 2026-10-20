@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "count": 5,
+  "checks": [
+    "gathermeans vsindependentbincount sums alldraws",
+    "pairedsplit arithmetic preservesmeans historicalCI",
+    "constantpairedcontrast interval endpoints",
+    "terminalnumericfileID independentjoin numericordering",
+    "duplicate malformedterminal nonfinite insufficientrows failboth"
+  ],
+  "true_final_bootstrap_runs": 0,
+  "real_CSV_values_analyzed": 0,
+  "audio_reads": 0,
+  "model_calls": 0
+}

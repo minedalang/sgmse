@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p226_028_N2_snr_p0.wav__off",
+    "id": "p226_028",
+    "arm": "off",
+    "path": "outputs/off/p226_028_N2_snr_p0.wav",
+    "basename": "p226_028_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "input": {
+      "wav_sha256": "a00645555e52df1505d4b458a0cb851e8a9890c77ef0a0a0e05b65cb0c433298",
+      "samples": 67653,
+      "array_sha256": "ff8c7d4bf4156023f868e67678ab474040083f86517ba6107b0eefa26966b0fc",
+      "peak": 0.061859130859375,
+      "rms": 0.006265146882670513
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " suggestions of the action being a punishment were dismissed.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " suggestions of the action being a punishment were dismissed.",
+        "tokens": [
+          50363,
+          11776,
+          286,
+          262,
+          2223,
+          852,
+          257,
+          9837,
+          547,
+          11126,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5284010813786433,
+        "compression_ratio": 0.9836065573770492,
+        "no_speech_prob": 0.12091440707445145
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 29,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

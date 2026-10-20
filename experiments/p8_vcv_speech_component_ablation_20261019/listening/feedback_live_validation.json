@@ -1,0 +1,155 @@
+{
+  "range_semantics": "unchanged SimpleHTTPRequestHandler200/fullbody",
+  "head_passed": true,
+  "missing_static404": true,
+  "no_live_test_feedback_submitted": true,
+  "status": "passed",
+  "old_pid": 15841,
+  "new_pid": 16022,
+  "verified_static_files": 26,
+  "verified_bytes": 1473189,
+  "all_http_byte_equal": true,
+  "endpoint_get_passed": true,
+  "rollback_argv": [
+    "/data/coding/sgmse/env/bin/python",
+    "-m",
+    "http.server",
+    "8766",
+    "--bind",
+    "127.0.0.1",
+    "--directory",
+    "/data/coding/sgmse/experiments"
+  ],
+  "files": [
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/index.html",
+      "sha256": "5bc24cfee045df55fd7abcfa1e093b1a297b56afdab89dd5518e456696ad82bc",
+      "bytes": 9905
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/feedback.js",
+      "sha256": "c60c8d3821ad991c16631537c7d2bc7a423b73b7804823a17626b8e1d778d90f",
+      "bytes": 5241
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__m2ada1__clean.wav",
+      "sha256": "2fb4f230a0b57d8155cc0083c509ad1e92e3390941fb0c31d82070f7fa1bfd24",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__m2ada1__y_pre.wav",
+      "sha256": "c8f01b130980ba2a358615fde69f07aa2942fdf825a8f0619a1dad75632739ff",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__m2ada1__native.wav",
+      "sha256": "c2a81bd2300112d60c8bd2f5d0fc32de494db51cbbe44f948f670c7e0dcc5c90",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__m2ada1__ablated.wav",
+      "sha256": "5c98d3f4cc46afbafd8c2fd208c123efe588b6169b98834ee5360e1da9cd7485",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N1_snr-6__f20aka1__clean.wav",
+      "sha256": "db053e3e526540ebd456e1f99f2efc29d4fba8acb6cb5d34e6f547158b3beea4",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N1_snr-6__f20aka1__y_pre.wav",
+      "sha256": "3be5e14f608ea8367f2c377c51c22cf131431bc48ac8c5e306d69f9daaef8529",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N1_snr-6__f20aka1__native.wav",
+      "sha256": "97b11d7618fe6aa07cae641bc9eaf58fb17eb5c6bc422f46a28fd3d377d11cbe",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N1_snr-6__f20aka1__ablated.wav",
+      "sha256": "4eda376aed131345cacc683a7ff713e530472d5d5bdd55e3af2f088eef15c00b",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N2_snr-6__m2aga1__clean.wav",
+      "sha256": "7272e23f52b4d69400a50071b8f5d1b9232845f42185d74bead35264e61adc5f",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N2_snr-6__m2aga1__y_pre.wav",
+      "sha256": "7d8e4a46b8aa05572491a9270b456397fe7c6c5dcf68ef335b4447baa0bf73bb",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N2_snr-6__m2aga1__native.wav",
+      "sha256": "81b20ee7ff1ad18a271bb7d90aa2518122d64a54c0856b3802074a7f9ad2b38a",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N2_snr-6__m2aga1__ablated.wav",
+      "sha256": "218f36c1b5af5fdf1df471bb670bd9fbd667cc0e7089690ac67766f20d20917b",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__f11ata1__clean.wav",
+      "sha256": "25387b9442703025a5de629e314ba901ca30b4444966464e953d88c865aa247a",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__f11ata1__y_pre.wav",
+      "sha256": "a56473b7d05db07d85fae9cac0fb57e251314bfb4677280bd168599d018ba3f1",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__f11ata1__native.wav",
+      "sha256": "62b4a9d011a9d43868ccef11f8fe32c8fce9df7f1decd43a1d60b3167ef80351",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/original__N1_snr-6__f11ata1__ablated.wav",
+      "sha256": "fa643113c739b4c1aa5f7cdc3b0e72e2651a9bbc79f9214890bb074a5b899fed",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N2_snr-6__f20aka1__clean.wav",
+      "sha256": "db053e3e526540ebd456e1f99f2efc29d4fba8acb6cb5d34e6f547158b3beea4",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N2_snr-6__f20aka1__y_pre.wav",
+      "sha256": "8db6bdd8668e6325454ea9de76bace9cf52d225cf25a406000210ea5fdc6c15d",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N2_snr-6__f20aka1__native.wav",
+      "sha256": "e5f5b7dcc3ea73e73a55ccea1d931249c24d497c36e0e713e88991aff58a8241",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_vcv_speech_component_ablation_20261019/listening/fresh__N2_snr-6__f20aka1__ablated.wav",
+      "sha256": "69ca60d62a6a72017ed88286d8a5e9a5e0e8d05cddb1278da96c895c64e37f83",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_10720_content_identity_audit_20261018/listening.html",
+      "sha256": "9f2e4a34f4254818202652cb4f5703f2139c4aad83295dee1f6e51674c5fc4fc",
+      "bytes": 9251
+    },
+    {
+      "path": "p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_clean.wav",
+      "sha256": "10435d243635f7b4135fbca220d6de45d2e501e6cdd0770abd209652ec85204c",
+      "bytes": 64044
+    },
+    {
+      "path": "p8_q_vcv_lowsnr_challenge_20261018/listening.html",
+      "sha256": "1cce6f5c98a16fcd4683cb4da6a65277a70d7fd097df0460e4cee7950cb96fac",
+      "bytes": 39824
+    },
+    {
+      "path": "p8_q_vcv_lowsnr_challenge_20261018/outputs/audio/N1_snr-6/m2ada1/clean/listening.wav",
+      "sha256": "2fb4f230a0b57d8155cc0083c509ad1e92e3390941fb0c31d82070f7fa1bfd24",
+      "bytes": 64044
+    }
+  ]
+}

@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p287_054_N1_snr_p0.wav__frontend",
+    "id": "p287_054",
+    "arm": "frontend",
+    "path": "outputs/frontend/p287_054_N1_snr_p0.wav",
+    "basename": "p287_054_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "input": {
+      "wav_sha256": "3096a926666a3a008fced515fc8597d879009ba8e7d4c9b1b3c0286bc964ff8f",
+      "samples": 51089,
+      "array_sha256": "2e1bfe73fd9b0655be0904888ff3de1058525de2ffa2d073daea1cbcc4ef22aa",
+      "peak": 0.0887451171875,
+      "rms": 0.011350905011257928
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " In time, first minister will grow his stature.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " In time, first minister will grow his stature.",
+        "tokens": [
+          50363,
+          554,
+          640,
+          11,
+          717,
+          5342,
+          481,
+          1663,
+          465,
+          32600,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5915688367990347,
+        "compression_ratio": 0.8518518518518519,
+        "no_speech_prob": 0.06996547430753708
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 46,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

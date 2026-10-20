@@ -1,0 +1,20 @@
+P7-C frontend-only export
+checkpoint=joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest=experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv
+output=experiments/storm_error_attribution_p7_20261017/frontend_only
+model=JointSemambaSgmseModel.load_from_checkpoint(strict=True,dummy JointWaveDataModule)
+eval=model.eval(no_ema=False).to(cuda)
+frontend=storm; frontend_state_entries=267; missing=0; extra=0; mismatched=0; ema_shadow_params=8
+preprocessing=soundfile read -> mono if needed -> 16k -> y[1,1,T] -> norm=abs(y).amax(-1,keepdim=True).clamp_min(1e-12) -> model._frontend_forward(y/norm)*norm -> exact center crop/zero-pad match_length
+input_manifest_rows=32
+outputs=32
+input_samples=480000 each; output_samples=480000 each; output_sr=16000; subtype=FLOAT
+setup_seconds=4.52884807693772
+forward_write_seconds=10.177334007923491
+total_seconds=14.706182084861211
+checkpoint_sha256=ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+manifest_sha256=77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e
+quality_evaluation=not performed
+training=not performed
+data_or_checkpoint_modified=no
+note=tee could not open the target log before the Python process created its output directory; this file records the observed run summary, while per-file timing/hashes are in metrics.json

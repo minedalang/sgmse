@@ -1,0 +1,73 @@
+schema_version: 1
+experiment_id: p8_q_vcv_clean_calibration_20261018
+status: prepared_requires_research_lead_review_before_inference
+scope: clean_only_controlled_corpus_diagnostic_calibration
+training: false
+new_model_or_dataset_downloads: false
+selection:
+  manifest: retrieval/selected_manifest_frozen.json
+  nominal_identity_source: corpus_filename_not_model
+  freeze_labels_pairs_before_audio_reads: true
+  freeze_manifest_with_audio_sha256_before_inference: true
+  primary: {clips: 16, speakers: 4, contrasts: [k/g, t/d], identities_per_contrast: 2}
+  primary_matching: same_speaker_vowels_and_stress_within_each_pair
+  supplementary: {maximum: 13, identities: [k, g, t, d], manual_boundaries: true, descriptive_only: true}
+model:
+  identity: facebook/wav2vec2-lv-60-espeak-cv-ft
+  local_path: ../p8_phoneme_probe_20261020/local_model
+  local_files_only: true
+  mode: eval_and_torch_inference_mode
+waveform:
+  original: unchanged_mono_25000Hz_WAV
+  derived: in_memory_scipy.signal.resample_poly_up16_down25_float32
+  normalization: existing_local_model_feature_extractor_configuration
+  analysis_region: entire_VCV_waveform_no_manual_boundary_crop
+  record_original_sha256: true
+  record_derived_float32_sha256: true
+scoring:
+  vowel_map: {a: æ, i: iː, u: uː}
+  consonant_map: {b: b, d: d, g: ɡ, p: p, t: t, k: k, s: s, sh: ʃ, f: f, v: v, dh: ð, th: θ, ch: tʃ, z: z, zh: ʒ, h: h, dj: dʒ, m: m, n: n, ng: ŋ, w: w, r: ɹ, y: j, l: l}
+  candidates: all_24_central_consonants_with_fixed_manifest_left_and_right_vowels
+  exact_tokens_per_candidate: 3
+  blank_token_id: 0
+  computation: negative_torch.nn.functional.ctc_loss
+  reduction: none
+  zero_infinity: false
+  score_domain: natural_log_unnormalized_sequence_likelihood
+  binary_competitors: {k: g, g: k, t: d, d: t}
+  binary_margin: nominal_loglikelihood_minus_preset_competitor_loglikelihood
+  ties: count_incorrect_and_record
+  free_greedy_IPA_runs: descriptive_only
+  mapping_tuning_or_post_result_sample_selection: forbidden
+metrics:
+  primary: [24way_top1_identity_accuracy, binary_forced_choice_accuracy, binary_loglikelihood_margin]
+  grouping: [speaker, contrast, speaker_and_contrast]
+  confusion_matrix: primary_24way_with_tie_column
+  supplement: descriptive_only_excluded_from_gate
+  confidence_intervals: none
+  independence_assumptions: none
+preset_gate:
+  primary_24way_minimum_correct: 12
+  primary_binary_minimum_correct: 14
+  each_contrast_24way_minimum_correct: 6
+  each_contrast_denominator: 8
+  primary_denominator: 16
+  on_failure: stop_noisy_and_enhancement_stage
+  on_pass: research_lead_review_required_for_next_scientific_decision
+artifacts:
+  directory: calibration_outputs
+  exclusive_creation: true
+  run_markers: [RUNNING.json, COMPLETED.json, FAILED.json]
+  files: [frozen_inputs.json, per_sample.json, metrics.json]
+  per_sample_npz: [float32_logits, float32_probabilities, all24_loglikelihoods, candidate_labels, candidate_token_ids]
+  total_experiment_bytes_maximum: 25000000
+  model_weights: remain_in_existing_external_local_model_directory
+  environment: [python, platform, torch, CUDA_build, cuDNN, device, device_name, numpy, scipy, soundfile, transformers, seed]
+interpretation:
+  validates_only: diagnostic_calibration_within_controlled_clean_corpus
+  human_recoverability_claims: forbidden
+  noisy_discrimination_or_generalization_guarantees: forbidden
+execution:
+  approval_argument: --design-approved-by
+  command_after_approval: python3 calibrate_clean.py --device cuda --design-approved-by RESEARCH_LEAD_APPROVAL_REFERENCE
+  preparation_checks: syntax_only_no_model_initialization_or_inference

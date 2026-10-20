@@ -1,0 +1,17 @@
+{
+  "experiment_id": "p8_e1_clean_timestamp_prompt_20261018",
+  "model": "whisper-tiny.en",
+  "device": "cuda",
+  "beam_size": 5,
+  "word_timestamps": true,
+  "rows": 4,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "interpretation": "automatic listening prompt only; not ground-truth transcript",
+  "candidate_word_hints": {
+    "5243": "Canadian by",
+    "4812": "reconstitution of",
+    "11999": "most perfect",
+    "10720": "certainly will,"
+  }
+}

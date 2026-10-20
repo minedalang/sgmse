@@ -1,0 +1,25 @@
+experiment_id: p8_q_a_ctc_fixed_time_probe_20261020
+date: 2026-10-20
+type: read_only_clean_timestamp_ctc_posterior_probe
+purpose: >-
+  Evaluate clean-derived CTC token posterior at the same clean timestamp in
+  every condition, alongside a +/-200 ms neighborhood, without per-condition
+  Viterbi time relocation.
+source_experiment: experiments/p8_q_a_ctc_forced_alignment_20261020
+source_clips: experiments/p8_e1_candidate_listening_aligned_20261020/clips
+groups: [00_fileid_5243, 01_fileid_4812, 02_fileid_11999, 03_fileid_10720]
+conditions: [clean, noisy, y_pre, off, router]
+model:
+  name: facebook/wav2vec2-lv-60-espeak-cv-ft
+  local_dir: experiments/p8_phoneme_probe_20261020/local_model
+  local_files_only: true
+  clean_target_source: p8_q_a_ctc_forced_alignment_20261020/metrics.json
+  frame_step_seconds: 0.02
+  neighborhood_each_side_seconds: 0.20
+execution:
+  device: cuda_if_available
+  seed: 0
+  training: false
+  dataset_modified: false
+  checkpoint_modified: false
+interpretation: exploratory pseudo-label acoustic support only

@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "enhancement_and_recognizer_forwards": 0,
+  "raw_audio_arrays_verified": 160,
+  "regenerated_input_hashes_verified": 32,
+  "enhanced_cached_ctc_scores_verified": 2304,
+  "reused_baseline_cached_ctc_scores_verified": 1152,
+  "max_ctc_score_error": 0.0,
+  "max_probability_error": 0.0,
+  "source_checkpoint_protocol_unchanged": true,
+  "matched_noise_waveform_and_gain_per_pair": true,
+  "shared_8_pair_seeds_across_both_identities_noises_arms": true,
+  "all_32_frontends_rng_unchanged": true,
+  "true_clean_padding_zeros_verified": true,
+  "quiet_padding_stats_exact": true,
+  "actual_snr64_min_db": 5.9999999999999964,
+  "actual_snr64_max_db": 6.000000000000001,
+  "pcm16_conversion_max_error": 3.0517333021701232e-05,
+  "pcm_clipping_count_total": 0,
+  "pcm16_quantization_step": 3.0517578125e-05,
+  "pcm16_one_lsb_dbfs": -90.30899869919436,
+  "padding_db_floor_policy": "Store linear RMS/mean-square. Exact zero dBFS is negative infinity; no finite surrogate floor inserted. PCM16 listening quantization may produce zero for very small raw samples. Primary scores use unclipped raw float32.",
+  "arm_comparisons": {
+    "N1_snr+6": {
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0,
+          "correct_to_correct": 15,
+          "wrong_to_wrong": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0,
+          "correct_to_correct": 15,
+          "wrong_to_wrong": 1
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1,
+          "correct_to_correct": 15,
+          "wrong_to_wrong": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1,
+          "correct_to_correct": 15,
+          "wrong_to_wrong": 0
+        }
+      }
+    },
+    "N2_snr+6": {
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0,
+          "correct_to_correct": 16,
+          "wrong_to_wrong": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0,
+          "correct_to_correct": 16,
+          "wrong_to_wrong": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0,
+          "correct_to_correct": 16,
+          "wrong_to_wrong": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0,
+          "correct_to_correct": 16,
+          "wrong_to_wrong": 0
+        }
+      }
+    }
+  },
+  "noise_stability": {
+    "y_pre": {
+      "24way": {
+        "n": 16,
+        "same_prediction": 15,
+        "both_correct": 15,
+        "stable_incorrect": 0
+      },
+      "binary": {
+        "n": 16,
+        "same_prediction": 15,
+        "both_correct": 15,
+        "stable_incorrect": 0
+      }
+    },
+    "off": {
+      "24way": {
+        "n": 16,
+        "same_prediction": 15,
+        "both_correct": 15,
+        "stable_incorrect": 0
+      },
+      "binary": {
+        "n": 16,
+        "same_prediction": 15,
+        "both_correct": 15,
+        "stable_incorrect": 0
+      }
+    },
+    "router": {
+      "24way": {
+        "n": 16,
+        "same_prediction": 16,
+        "both_correct": 16,
+        "stable_incorrect": 0
+      },
+      "binary": {
+        "n": 16,
+        "same_prediction": 16,
+        "both_correct": 16,
+        "stable_incorrect": 0
+      }
+    }
+  },
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.35",
+    "torch": "2.14.1+cu130",
+    "cuda_build": "13.0",
+    "cudnn": 92400,
+    "gpu": "NVIDIA L40S"
+  },
+  "disk_free_bytes": 2680991744
+}

@@ -1,0 +1,21 @@
+experiment_id: dnsmos_gpu_smoke_20261017
+purpose: Verify default CUDA execution and score stability for DNSMOS on one existing paired utterance
+input:
+  path: experiments/storm_error_attribution_p7_20261017/frontend_only/000_fileid_2673.wav
+  sample_rate_hz: 16000
+  duration_seconds: 30.0
+  split_status: previously screened development split; smoke only
+runtime:
+  environment: /data/coding/mymetrics/env
+  torch: 2.14.1+cu130
+  onnxruntime: 1.31.0
+  gpu: NVIDIA L40S
+  metric: TorchMetrics 1.9.0 DNSMOS, personalized=false
+  device_policy: auto prefers CUDA when PyTorch CUDA and both ONNX sessions support CUDA; falls back to CPU
+  warmup_calls_per_device: 1
+  timed_calls_per_device: 3
+  feature_extraction: librosa mel features remain on CPU
+  full_dataset_evaluation: false
+  training: false
+  dataset_modified: false
+  checkpoint_modified: false

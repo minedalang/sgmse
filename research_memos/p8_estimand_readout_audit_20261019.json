@@ -1,0 +1,229 @@
+{
+  "kind": "static_source_math_literature_audit_not_experiment",
+  "utc": "2026-10-19T08:06:30.140075+00:00",
+  "goal_completion_claim": false,
+  "models_executed": 0,
+  "audio_decodes": 0,
+  "asr_calls": 0,
+  "jacobian_evaluations": 0,
+  "training_calls": 0,
+  "network_scope": "web tool primary literature reads only; no model or data acquisition",
+  "source_pre_post_expected_match": true,
+  "sources": {
+    "sgmse/model.py": {
+      "bytes": 73461,
+      "sha256": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d"
+    },
+    "sgmse/sampling/__init__.py": {
+      "bytes": 16454,
+      "sha256": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd"
+    },
+    "sgmse/sampling/predictors.py": {
+      "bytes": 2309,
+      "sha256": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1"
+    },
+    "sgmse/sdes.py": {
+      "bytes": 26791,
+      "sha256": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+    },
+    "sgmse/data_module.py": {
+      "bytes": 43617,
+      "sha256": "693cc2b85c8e6c816d82ecc8dcfac4ef084b2f4bea810d1e6dca9e0f07842895"
+    },
+    "joint_enhance_by_dir.py": {
+      "bytes": 13956,
+      "sha256": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108"
+    },
+    "experiments/p8_vb_prospective_headroom_20261019/model_stage/run_pilot.py": {
+      "bytes": 23911,
+      "sha256": "f9f8b694ae099296ae5f6aa1c853fe06db674f05c2eb05efbdee959467d748dd"
+    }
+  },
+  "documents": {
+    "/data/research_plan.md": {
+      "bytes": 11938,
+      "sha256": "989f67e5481d05670fb672158b48023b33418cda69c4ecdddf9edf742e14fb8e"
+    },
+    "/data/research/evidence_summary.md": {
+      "bytes": 20367,
+      "sha256": "c183a9eb283ff67b9fea51045b62b65bff9fee80297f876dbf428d2bc31ae90c"
+    },
+    "/data/research/p8_low_snr.md": {
+      "bytes": 8700,
+      "sha256": "aa317de24a42dfc93579b2ba2b106f140b26c071b8b34872f4ae1d93d15ed680"
+    },
+    "/data/coding/sgmse/research_memos/p8_estimand_readout_audit_20261019.md": {
+      "bytes": 8271,
+      "sha256": "d318ecbb426960fdd1a73db8f8b0649b593a87126f8e60bb1037486a325956ff"
+    }
+  },
+  "local_link_checks": [
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/p8_low_snr.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/p8_v_counterfactual.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/evidence_summary.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/evidence_summary.md#听感记录直达",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/p9_reverb.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/archive.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "coding/sgmse/research_memos/p8_estimand_readout_audit_20261019.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research_plan.md",
+      "target": "research/evidence_summary.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "archive/research_plan_full_20261019_044238.txt",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "../coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listener_assessment_20261019.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "../coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/listener_assessment_20261019.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "../coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/user_feedback_20261019.json",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "archive.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "../research_plan.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/evidence_summary.md",
+      "target": "../coding/sgmse/research_memos/p8_estimand_readout_audit_20261019.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "evidence_summary.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "../research_plan.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "p8_v_counterfactual.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "evidence_summary.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "../coding/sgmse/research_memos/p8_estimand_readout_audit_20261019.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "evidence_summary.md",
+      "exists": true
+    },
+    {
+      "document": "/data/research/p8_low_snr.md",
+      "target": "archive/research_plan_full_20261019_044238.txt",
+      "exists": true
+    }
+  ],
+  "protected_current_hashes": {
+    "experiments/p8_vb_prospective_headroom_20261019/model_stage/metrics.json": {
+      "bytes": 2227266,
+      "sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04"
+    },
+    "experiments/p8_vb_residual_direction_audit_20261019/metrics.json": {
+      "bytes": 80051,
+      "sha256": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17"
+    },
+    "experiments/p8_cached_multiseed_variance_audit_20261019/metrics.json": {
+      "bytes": 21702,
+      "sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e"
+    },
+    "experiments/p8_vcv_speech_component_ablation_20261019/listening/manual_listener_feedback_20261019.json": {
+      "bytes": 1641,
+      "sha256": "bf8052b4341a4e853e7fa8570be2a5716f635ef4b0167fd0fb9f802fd0e55a2b"
+    },
+    "experiments/p8_vcv_speech_component_ablation_20261019/listening/manual_listener_feedback_completion_20261019.json": {
+      "bytes": 2089,
+      "sha256": "7b55f1c21efb291c67908f623366e5dc64856d85e6e8d7fa9dfb41cb923196fb"
+    },
+    "experiments/p8_5243_local_condition_necessity_20261019/listening/user_feedback_amendment_20261019.json": {
+      "bytes": 1213,
+      "sha256": "96d883c9a64e409f65913c04399b8b8e4f829ea3cfc0dc549b11d0e92a71499e"
+    }
+  },
+  "protection_scope": "sources compared with actual readonly pre-edit SHA this turn; protected record hashes captured now, not a revalidation of every historical artifact",
+  "checkpoint_scope": "existing static opcode receipt read; no new unpickle, torch.load or full checkpoint rehash",
+  "literature": [
+    {
+      "url": "https://arxiv.org/html/2409.10753v1",
+      "sections": "II-A, II-B, IV"
+    },
+    {
+      "url": "https://arxiv.org/pdf/2312.00852",
+      "sections": "2-4, Eq3/Eq5 and covariance Proposition A.1"
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.randn.html",
+      "section": "complex normal real/imag variance"
+    },
+    {
+      "url": "https://docs.pytorch.org/docs/2.14/generated/torch.randn_like.html",
+      "section": "same dtype / randn reference"
+    }
+  ],
+  "git_status_sha256_after_doc_edits": "dd8ad2850e12b7728fe6997ba07b6497a4211d96c37778904181f7aad7b3b6f2",
+  "git_status_entries": 159,
+  "independent_readonly_review": {
+    "agent": "/root/research_gate_critic",
+    "provider_reported": "codex_tools_compat",
+    "result": "no substantive mathematical error found; supports not escalating generic moment correction",
+    "clarification": "transition mean denotes discrete algorithm Gaussian update, not exact reverse transition or whole-path posterior mean",
+    "file_writes": 0,
+    "network_calls": 0,
+    "experiments": 0
+  }
+}

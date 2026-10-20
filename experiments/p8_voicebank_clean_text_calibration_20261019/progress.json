@@ -1,0 +1,1949 @@
+{
+  "status": "running",
+  "failures": [],
+  "network_attempts": [],
+  "network_bytes": 0,
+  "transcribe_api_calls": 4,
+  "internal_decode_api_calls": 4,
+  "neural_forward_count": "not_measured_not_equal_to_transcribe_calls",
+  "audio_decodes": 4,
+  "enhancement_calls": 0,
+  "training_calls": 0,
+  "test_content_accessed": false,
+  "model_loads": 1,
+  "samples": {
+    "p226_027": {
+      "input": {
+        "array_SHA256": "cbd4e4a21eb090be8be4bc1e6134f2f990d382608cc6a63264661ebe95fb8e93",
+        "frames": 63447,
+        "sample_rate": 16000,
+        "dtype": "float32",
+        "peak": 0.474365234375,
+        "rms": 0.056775835901382674,
+        "input_WAV_SHA256": "edfd0f5b4d41591c5ca78edf00ae1a1253c63238e071dbb7db033623d70adb54"
+      },
+      "score": {
+        "original_reference": "They should have a major rethink about the event for next year.\n",
+        "original_hypothesis": " They should have a major rethink about the event for next year.",
+        "reference_word_tokens": [
+          "they",
+          "should",
+          "have",
+          "a",
+          "major",
+          "rethink",
+          "about",
+          "the",
+          "event",
+          "for",
+          "next",
+          "year"
+        ],
+        "hypothesis_word_tokens": [
+          "they",
+          "should",
+          "have",
+          "a",
+          "major",
+          "rethink",
+          "about",
+          "the",
+          "event",
+          "for",
+          "next",
+          "year"
+        ],
+        "reference_scoring_words": "they should have a major rethink about the event for next year",
+        "hypothesis_scoring_words": "they should have a major rethink about the event for next year",
+        "reference_scoring_chars": "theyshouldhaveamajorrethinkabouttheeventfornextyear",
+        "hypothesis_scoring_chars": "theyshouldhaveamajorrethinkabouttheeventfornextyear",
+        "word": {
+          "H": 12,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 12,
+          "N_hyp": 12,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "they",
+              "hypothesis": "they"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "should",
+              "hypothesis": "should"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "have",
+              "hypothesis": "have"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "major",
+              "hypothesis": "major"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "rethink",
+              "hypothesis": "rethink"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "about",
+              "hypothesis": "about"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "the",
+              "hypothesis": "the"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "event",
+              "hypothesis": "event"
+            },
+            {
+              "op": "H",
+              "reference_index": 9,
+              "hypothesis_index": 9,
+              "reference": "for",
+              "hypothesis": "for"
+            },
+            {
+              "op": "H",
+              "reference_index": 10,
+              "hypothesis_index": 10,
+              "reference": "next",
+              "hypothesis": "next"
+            },
+            {
+              "op": "H",
+              "reference_index": 11,
+              "hypothesis_index": 11,
+              "reference": "year",
+              "hypothesis": "year"
+            }
+          ]
+        },
+        "character": {
+          "H": 51,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 51,
+          "N_hyp": 51,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "y",
+              "hypothesis": "y"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "u",
+              "hypothesis": "u"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "l",
+              "hypothesis": "l"
+            },
+            {
+              "op": "H",
+              "reference_index": 9,
+              "hypothesis_index": 9,
+              "reference": "d",
+              "hypothesis": "d"
+            },
+            {
+              "op": "H",
+              "reference_index": 10,
+              "hypothesis_index": 10,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 11,
+              "hypothesis_index": 11,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 12,
+              "hypothesis_index": 12,
+              "reference": "v",
+              "hypothesis": "v"
+            },
+            {
+              "op": "H",
+              "reference_index": 13,
+              "hypothesis_index": 13,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 14,
+              "hypothesis_index": 14,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 15,
+              "hypothesis_index": 15,
+              "reference": "m",
+              "hypothesis": "m"
+            },
+            {
+              "op": "H",
+              "reference_index": 16,
+              "hypothesis_index": 16,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 17,
+              "hypothesis_index": 17,
+              "reference": "j",
+              "hypothesis": "j"
+            },
+            {
+              "op": "H",
+              "reference_index": 18,
+              "hypothesis_index": 18,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 19,
+              "hypothesis_index": 19,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 20,
+              "hypothesis_index": 20,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 21,
+              "hypothesis_index": 21,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 22,
+              "hypothesis_index": 22,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 23,
+              "hypothesis_index": 23,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 24,
+              "hypothesis_index": 24,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 25,
+              "hypothesis_index": 25,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 26,
+              "hypothesis_index": 26,
+              "reference": "k",
+              "hypothesis": "k"
+            },
+            {
+              "op": "H",
+              "reference_index": 27,
+              "hypothesis_index": 27,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 28,
+              "hypothesis_index": 28,
+              "reference": "b",
+              "hypothesis": "b"
+            },
+            {
+              "op": "H",
+              "reference_index": 29,
+              "hypothesis_index": 29,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 30,
+              "hypothesis_index": 30,
+              "reference": "u",
+              "hypothesis": "u"
+            },
+            {
+              "op": "H",
+              "reference_index": 31,
+              "hypothesis_index": 31,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 32,
+              "hypothesis_index": 32,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 33,
+              "hypothesis_index": 33,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 34,
+              "hypothesis_index": 34,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 35,
+              "hypothesis_index": 35,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 36,
+              "hypothesis_index": 36,
+              "reference": "v",
+              "hypothesis": "v"
+            },
+            {
+              "op": "H",
+              "reference_index": 37,
+              "hypothesis_index": 37,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 38,
+              "hypothesis_index": 38,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 39,
+              "hypothesis_index": 39,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 40,
+              "hypothesis_index": 40,
+              "reference": "f",
+              "hypothesis": "f"
+            },
+            {
+              "op": "H",
+              "reference_index": 41,
+              "hypothesis_index": 41,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 42,
+              "hypothesis_index": 42,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 43,
+              "hypothesis_index": 43,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 44,
+              "hypothesis_index": 44,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 45,
+              "hypothesis_index": 45,
+              "reference": "x",
+              "hypothesis": "x"
+            },
+            {
+              "op": "H",
+              "reference_index": 46,
+              "hypothesis_index": 46,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 47,
+              "hypothesis_index": 47,
+              "reference": "y",
+              "hypothesis": "y"
+            },
+            {
+              "op": "H",
+              "reference_index": 48,
+              "hypothesis_index": 48,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 49,
+              "hypothesis_index": 49,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 50,
+              "hypothesis_index": 50,
+              "reference": "r",
+              "hypothesis": "r"
+            }
+          ]
+        }
+      },
+      "raw_file": "outputs/p226_027_raw.json",
+      "decode_api_calls": 1
+    },
+    "p226_028": {
+      "input": {
+        "array_SHA256": "89b3a1dedc7d56ab1b62bb1c7bb344373cb3d71eafeb68b9e5c956b6da5e2a31",
+        "frames": 67653,
+        "sample_rate": 16000,
+        "dtype": "float32",
+        "peak": 0.496429443359375,
+        "rms": 0.051305585827789865,
+        "input_WAV_SHA256": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e"
+      },
+      "score": {
+        "original_reference": "Suggestions of the action being a punishment were dismissed.\n",
+        "original_hypothesis": " Suggestions of the action being a punishment were dismissed.",
+        "reference_word_tokens": [
+          "suggestions",
+          "of",
+          "the",
+          "action",
+          "being",
+          "a",
+          "punishment",
+          "were",
+          "dismissed"
+        ],
+        "hypothesis_word_tokens": [
+          "suggestions",
+          "of",
+          "the",
+          "action",
+          "being",
+          "a",
+          "punishment",
+          "were",
+          "dismissed"
+        ],
+        "reference_scoring_words": "suggestions of the action being a punishment were dismissed",
+        "hypothesis_scoring_words": "suggestions of the action being a punishment were dismissed",
+        "reference_scoring_chars": "suggestionsoftheactionbeingapunishmentweredismissed",
+        "hypothesis_scoring_chars": "suggestionsoftheactionbeingapunishmentweredismissed",
+        "word": {
+          "H": 9,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 9,
+          "N_hyp": 9,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "suggestions",
+              "hypothesis": "suggestions"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "of",
+              "hypothesis": "of"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "the",
+              "hypothesis": "the"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "action",
+              "hypothesis": "action"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "being",
+              "hypothesis": "being"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "punishment",
+              "hypothesis": "punishment"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "were",
+              "hypothesis": "were"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "dismissed",
+              "hypothesis": "dismissed"
+            }
+          ]
+        },
+        "character": {
+          "H": 51,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 51,
+          "N_hyp": 51,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "u",
+              "hypothesis": "u"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "g",
+              "hypothesis": "g"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "g",
+              "hypothesis": "g"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 9,
+              "hypothesis_index": 9,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 10,
+              "hypothesis_index": 10,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 11,
+              "hypothesis_index": 11,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 12,
+              "hypothesis_index": 12,
+              "reference": "f",
+              "hypothesis": "f"
+            },
+            {
+              "op": "H",
+              "reference_index": 13,
+              "hypothesis_index": 13,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 14,
+              "hypothesis_index": 14,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 15,
+              "hypothesis_index": 15,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 16,
+              "hypothesis_index": 16,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 17,
+              "hypothesis_index": 17,
+              "reference": "c",
+              "hypothesis": "c"
+            },
+            {
+              "op": "H",
+              "reference_index": 18,
+              "hypothesis_index": 18,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 19,
+              "hypothesis_index": 19,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 20,
+              "hypothesis_index": 20,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 21,
+              "hypothesis_index": 21,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 22,
+              "hypothesis_index": 22,
+              "reference": "b",
+              "hypothesis": "b"
+            },
+            {
+              "op": "H",
+              "reference_index": 23,
+              "hypothesis_index": 23,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 24,
+              "hypothesis_index": 24,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 25,
+              "hypothesis_index": 25,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 26,
+              "hypothesis_index": 26,
+              "reference": "g",
+              "hypothesis": "g"
+            },
+            {
+              "op": "H",
+              "reference_index": 27,
+              "hypothesis_index": 27,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 28,
+              "hypothesis_index": 28,
+              "reference": "p",
+              "hypothesis": "p"
+            },
+            {
+              "op": "H",
+              "reference_index": 29,
+              "hypothesis_index": 29,
+              "reference": "u",
+              "hypothesis": "u"
+            },
+            {
+              "op": "H",
+              "reference_index": 30,
+              "hypothesis_index": 30,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 31,
+              "hypothesis_index": 31,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 32,
+              "hypothesis_index": 32,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 33,
+              "hypothesis_index": 33,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 34,
+              "hypothesis_index": 34,
+              "reference": "m",
+              "hypothesis": "m"
+            },
+            {
+              "op": "H",
+              "reference_index": 35,
+              "hypothesis_index": 35,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 36,
+              "hypothesis_index": 36,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 37,
+              "hypothesis_index": 37,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 38,
+              "hypothesis_index": 38,
+              "reference": "w",
+              "hypothesis": "w"
+            },
+            {
+              "op": "H",
+              "reference_index": 39,
+              "hypothesis_index": 39,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 40,
+              "hypothesis_index": 40,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 41,
+              "hypothesis_index": 41,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 42,
+              "hypothesis_index": 42,
+              "reference": "d",
+              "hypothesis": "d"
+            },
+            {
+              "op": "H",
+              "reference_index": 43,
+              "hypothesis_index": 43,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 44,
+              "hypothesis_index": 44,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 45,
+              "hypothesis_index": 45,
+              "reference": "m",
+              "hypothesis": "m"
+            },
+            {
+              "op": "H",
+              "reference_index": 46,
+              "hypothesis_index": 46,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 47,
+              "hypothesis_index": 47,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 48,
+              "hypothesis_index": 48,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 49,
+              "hypothesis_index": 49,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 50,
+              "hypothesis_index": 50,
+              "reference": "d",
+              "hypothesis": "d"
+            }
+          ]
+        }
+      },
+      "raw_file": "outputs/p226_028_raw.json",
+      "decode_api_calls": 1
+    },
+    "p287_037": {
+      "input": {
+        "array_SHA256": "28b18e809d0daf7e83d1cf83a6f97dceeac10ec5ce3c3b8aab51ad20614a34fe",
+        "frames": 60008,
+        "sample_rate": 16000,
+        "dtype": "float32",
+        "peak": 0.504180908203125,
+        "rms": 0.04746119710817913,
+        "input_WAV_SHA256": "5a3625b3f85b01dafc0ee5ed82c62f7ef25753ebddc5b8663e9e55ec9dbefb90"
+      },
+      "score": {
+        "original_reference": "But, after a dip in sales, growth was recorded.\n",
+        "original_hypothesis": " But, after a dip in sales, growth was recorded.",
+        "reference_word_tokens": [
+          "but",
+          "after",
+          "a",
+          "dip",
+          "in",
+          "sales",
+          "growth",
+          "was",
+          "recorded"
+        ],
+        "hypothesis_word_tokens": [
+          "but",
+          "after",
+          "a",
+          "dip",
+          "in",
+          "sales",
+          "growth",
+          "was",
+          "recorded"
+        ],
+        "reference_scoring_words": "but after a dip in sales growth was recorded",
+        "hypothesis_scoring_words": "but after a dip in sales growth was recorded",
+        "reference_scoring_chars": "butafteradipinsalesgrowthwasrecorded",
+        "hypothesis_scoring_chars": "butafteradipinsalesgrowthwasrecorded",
+        "word": {
+          "H": 9,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 9,
+          "N_hyp": 9,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "but",
+              "hypothesis": "but"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "after",
+              "hypothesis": "after"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "dip",
+              "hypothesis": "dip"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "in",
+              "hypothesis": "in"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "sales",
+              "hypothesis": "sales"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "growth",
+              "hypothesis": "growth"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "was",
+              "hypothesis": "was"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "recorded",
+              "hypothesis": "recorded"
+            }
+          ]
+        },
+        "character": {
+          "H": 36,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 36,
+          "N_hyp": 36,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "b",
+              "hypothesis": "b"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "u",
+              "hypothesis": "u"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "f",
+              "hypothesis": "f"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 9,
+              "hypothesis_index": 9,
+              "reference": "d",
+              "hypothesis": "d"
+            },
+            {
+              "op": "H",
+              "reference_index": 10,
+              "hypothesis_index": 10,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 11,
+              "hypothesis_index": 11,
+              "reference": "p",
+              "hypothesis": "p"
+            },
+            {
+              "op": "H",
+              "reference_index": 12,
+              "hypothesis_index": 12,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 13,
+              "hypothesis_index": 13,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 14,
+              "hypothesis_index": 14,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 15,
+              "hypothesis_index": 15,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 16,
+              "hypothesis_index": 16,
+              "reference": "l",
+              "hypothesis": "l"
+            },
+            {
+              "op": "H",
+              "reference_index": 17,
+              "hypothesis_index": 17,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 18,
+              "hypothesis_index": 18,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 19,
+              "hypothesis_index": 19,
+              "reference": "g",
+              "hypothesis": "g"
+            },
+            {
+              "op": "H",
+              "reference_index": 20,
+              "hypothesis_index": 20,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 21,
+              "hypothesis_index": 21,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 22,
+              "hypothesis_index": 22,
+              "reference": "w",
+              "hypothesis": "w"
+            },
+            {
+              "op": "H",
+              "reference_index": 23,
+              "hypothesis_index": 23,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 24,
+              "hypothesis_index": 24,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 25,
+              "hypothesis_index": 25,
+              "reference": "w",
+              "hypothesis": "w"
+            },
+            {
+              "op": "H",
+              "reference_index": 26,
+              "hypothesis_index": 26,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 27,
+              "hypothesis_index": 27,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 28,
+              "hypothesis_index": 28,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 29,
+              "hypothesis_index": 29,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 30,
+              "hypothesis_index": 30,
+              "reference": "c",
+              "hypothesis": "c"
+            },
+            {
+              "op": "H",
+              "reference_index": 31,
+              "hypothesis_index": 31,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 32,
+              "hypothesis_index": 32,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 33,
+              "hypothesis_index": 33,
+              "reference": "d",
+              "hypothesis": "d"
+            },
+            {
+              "op": "H",
+              "reference_index": 34,
+              "hypothesis_index": 34,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 35,
+              "hypothesis_index": 35,
+              "reference": "d",
+              "hypothesis": "d"
+            }
+          ]
+        }
+      },
+      "raw_file": "outputs/p287_037_raw.json",
+      "decode_api_calls": 1
+    },
+    "p287_054": {
+      "input": {
+        "array_SHA256": "df4a838a61877ed2cf2d65a360e85a83801c1e30031f02643b19d531695f8b53",
+        "frames": 51089,
+        "sample_rate": 16000,
+        "dtype": "float32",
+        "peak": 0.4912109375,
+        "rms": 0.06308332295288398,
+        "input_WAV_SHA256": "bf9cbee7cd93e04df4b7a8651246fb0d8becb85b94caeddb6abcdb753196d681"
+      },
+      "score": {
+        "original_reference": "In time, the First Minister will grow in stature.\n",
+        "original_hypothesis": " In time, the first minister will grow in stature.",
+        "reference_word_tokens": [
+          "in",
+          "time",
+          "the",
+          "first",
+          "minister",
+          "will",
+          "grow",
+          "in",
+          "stature"
+        ],
+        "hypothesis_word_tokens": [
+          "in",
+          "time",
+          "the",
+          "first",
+          "minister",
+          "will",
+          "grow",
+          "in",
+          "stature"
+        ],
+        "reference_scoring_words": "in time the first minister will grow in stature",
+        "hypothesis_scoring_words": "in time the first minister will grow in stature",
+        "reference_scoring_chars": "intimethefirstministerwillgrowinstature",
+        "hypothesis_scoring_chars": "intimethefirstministerwillgrowinstature",
+        "word": {
+          "H": 9,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 9,
+          "N_hyp": 9,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "in",
+              "hypothesis": "in"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "time",
+              "hypothesis": "time"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "the",
+              "hypothesis": "the"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "first",
+              "hypothesis": "first"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "minister",
+              "hypothesis": "minister"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "will",
+              "hypothesis": "will"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "grow",
+              "hypothesis": "grow"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "in",
+              "hypothesis": "in"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "stature",
+              "hypothesis": "stature"
+            }
+          ]
+        },
+        "character": {
+          "H": 39,
+          "S": 0,
+          "D": 0,
+          "I": 0,
+          "N": 39,
+          "N_hyp": 39,
+          "edit_distance": 0,
+          "rate": 0.0,
+          "rate_status": "defined",
+          "alignment": [
+            {
+              "op": "H",
+              "reference_index": 0,
+              "hypothesis_index": 0,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 1,
+              "hypothesis_index": 1,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 2,
+              "hypothesis_index": 2,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 3,
+              "hypothesis_index": 3,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 4,
+              "hypothesis_index": 4,
+              "reference": "m",
+              "hypothesis": "m"
+            },
+            {
+              "op": "H",
+              "reference_index": 5,
+              "hypothesis_index": 5,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 6,
+              "hypothesis_index": 6,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 7,
+              "hypothesis_index": 7,
+              "reference": "h",
+              "hypothesis": "h"
+            },
+            {
+              "op": "H",
+              "reference_index": 8,
+              "hypothesis_index": 8,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 9,
+              "hypothesis_index": 9,
+              "reference": "f",
+              "hypothesis": "f"
+            },
+            {
+              "op": "H",
+              "reference_index": 10,
+              "hypothesis_index": 10,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 11,
+              "hypothesis_index": 11,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 12,
+              "hypothesis_index": 12,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 13,
+              "hypothesis_index": 13,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 14,
+              "hypothesis_index": 14,
+              "reference": "m",
+              "hypothesis": "m"
+            },
+            {
+              "op": "H",
+              "reference_index": 15,
+              "hypothesis_index": 15,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 16,
+              "hypothesis_index": 16,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 17,
+              "hypothesis_index": 17,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 18,
+              "hypothesis_index": 18,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 19,
+              "hypothesis_index": 19,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 20,
+              "hypothesis_index": 20,
+              "reference": "e",
+              "hypothesis": "e"
+            },
+            {
+              "op": "H",
+              "reference_index": 21,
+              "hypothesis_index": 21,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 22,
+              "hypothesis_index": 22,
+              "reference": "w",
+              "hypothesis": "w"
+            },
+            {
+              "op": "H",
+              "reference_index": 23,
+              "hypothesis_index": 23,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 24,
+              "hypothesis_index": 24,
+              "reference": "l",
+              "hypothesis": "l"
+            },
+            {
+              "op": "H",
+              "reference_index": 25,
+              "hypothesis_index": 25,
+              "reference": "l",
+              "hypothesis": "l"
+            },
+            {
+              "op": "H",
+              "reference_index": 26,
+              "hypothesis_index": 26,
+              "reference": "g",
+              "hypothesis": "g"
+            },
+            {
+              "op": "H",
+              "reference_index": 27,
+              "hypothesis_index": 27,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 28,
+              "hypothesis_index": 28,
+              "reference": "o",
+              "hypothesis": "o"
+            },
+            {
+              "op": "H",
+              "reference_index": 29,
+              "hypothesis_index": 29,
+              "reference": "w",
+              "hypothesis": "w"
+            },
+            {
+              "op": "H",
+              "reference_index": 30,
+              "hypothesis_index": 30,
+              "reference": "i",
+              "hypothesis": "i"
+            },
+            {
+              "op": "H",
+              "reference_index": 31,
+              "hypothesis_index": 31,
+              "reference": "n",
+              "hypothesis": "n"
+            },
+            {
+              "op": "H",
+              "reference_index": 32,
+              "hypothesis_index": 32,
+              "reference": "s",
+              "hypothesis": "s"
+            },
+            {
+              "op": "H",
+              "reference_index": 33,
+              "hypothesis_index": 33,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 34,
+              "hypothesis_index": 34,
+              "reference": "a",
+              "hypothesis": "a"
+            },
+            {
+              "op": "H",
+              "reference_index": 35,
+              "hypothesis_index": 35,
+              "reference": "t",
+              "hypothesis": "t"
+            },
+            {
+              "op": "H",
+              "reference_index": 36,
+              "hypothesis_index": 36,
+              "reference": "u",
+              "hypothesis": "u"
+            },
+            {
+              "op": "H",
+              "reference_index": 37,
+              "hypothesis_index": 37,
+              "reference": "r",
+              "hypothesis": "r"
+            },
+            {
+              "op": "H",
+              "reference_index": 38,
+              "hypothesis_index": 38,
+              "reference": "e",
+              "hypothesis": "e"
+            }
+          ]
+        }
+      },
+      "raw_file": "outputs/p287_054_raw.json",
+      "decode_api_calls": 1
+    }
+  },
+  "source_hashes_pre": {
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/metrics.json": "3f25d3a8180cab6533bc987dc070fe01f86c96e5242053c4f32300f864f9f742",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/independent_validation.json": "2c816120472fcaced65de03215c9259950eb32635d44305abf027523d4936789",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/config.yaml": "110a9242b724ad0a28e3f77ff8f88b2f7163ffd7acbd2370464337d270deb68a",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/frozen_selection.json": "60b69d1a39271e3514f5c423233e0b9ab0ce1e8d8ac3545db91095dc85568a0c",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/run_gate.py": "d7114eee7128bd61496926f8b692fc403514583a68cf6babbcfd9a43dfb49664",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8",
+    "/data/.rootcache/whisper/tiny.en.pt": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/__init__.py": "79ecbed714783b6230931a3dba6d5da6d386e2d44f9fc27256e4fc72751e1f62",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/__main__.py": "c519d586c3a6b639f64e59d2d6fd6b591a67ecd739f9727492911fc4ce4d545a",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/audio.py": "36ed287b2de3eaf40207cd2a44a8d45d57ea5c212a39df07401d4fcb4d5a5a1a",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/decoding.py": "94084fedc5af74cabf8e1883a85552700057081f00ea669ad49435ecb29039db",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/model.py": "473491a97554ad1d0beaaef6fe91d965f12785b466b93ebb61024307b50ad683",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/normalizers/__init__.py": "f18fcdce4caee7f2e80e4c01ab0457d3a080a872a29489542c6d23c4b0bba572",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/normalizers/basic.py": "4742eaa040e0657fa1247a1361e0d856c62317a43326ea59a40c2e9edd8d2c38",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/normalizers/english.py": "2898e4672aeefc9f44cb4de38c115cdf286f5b35ae321433467a7674ce8841d0",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/timing.py": "bb091c973c428697012f0f8d1b4f5f3a605cd93c5d1c129957f712a6a878a59c",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/tokenizer.py": "3b48e361a7e95b4ec0356ca6d72bba635778aa10269153136ee7bc34cae30b85",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/transcribe.py": "848b82877500d6fb8f0b91bee7a08ac67ef670a113591d11b494848d263ad0f6",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/triton_ops.py": "26c5082f029bbd2b7ae77ecf5a3f7f196f220e5850e2c9d0ec42961caf0dde4c",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/utils.py": "c25990446ab7dd5ba30bd52bd4f0e6537f11b5e361a015f02c21355d41027b05",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/version.py": "c4d27ecccdd52a9cded762f1a82da3152db12cbc0aa6ea781f945446a143cfaf",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/assets/gpt2.tiktoken": "306cd27f03c1a714eca7108e03d66b7dc042abe8c258b44c199a7ed9838dd930",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/assets/mel_filters.npz": "7450ae70723a5ef9d341e3cee628c7cb0177f36ce42c44b7ed2bf3325f0f6d4c",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/assets/multilingual.tiktoken": "b34b360dbb493e781e479794586d661700670d65564001f23024971d1f2fa126",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k.wav": "edfd0f5b4d41591c5ca78edf00ae1a1253c63238e071dbb7db033623d70adb54",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k_float32.npy": "5f61b4ca91ea0b24d459abb99619b88def0077c31fea732fc1e0d23709714e44",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_official48k.wav": "ad17535744a1353363bfcea4f022cadeed76281dff8e57a6ccd28dce31b763a9",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k_float32.npy": "741422159dae1906c1b1affc57ec10a88445bbd67002032680d2a7096650b7a5",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_official48k.wav": "8ff2ffbf13f231d707652ddb5b7b55381a5159ea4d5bc09e4aca4ac0189b063f",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k.wav": "5a3625b3f85b01dafc0ee5ed82c62f7ef25753ebddc5b8663e9e55ec9dbefb90",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k_float32.npy": "38ca306e7e8eaec13d60a24235921c368eb5f688d5b07964286500f23ed72373",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_official48k.wav": "621597bfea6417286305aefab985c6940dc2f7cd82b9215a52123e1bb2ff3402",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav": "bf9cbee7cd93e04df4b7a8651246fb0d8becb85b94caeddb6abcdb753196d681",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k_float32.npy": "c865d28d9b97634264fb0198b4b99441515c76fed1fbee71c95c2fcd61adc99e",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_official48k.wav": "a5c405008a21adb42e7ed4ca68118c38f5ea336cf927a3fa6c1107b5ddd872ff"
+  },
+  "prepared_hashes_pre": {
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/analysis_plan.md": "3d99b9a7d5806e98f504e5dc0ab68df63caa0fa15e0bd417ad412b74858a5f40",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/config.yaml": "f6ff1db0f615b0b62ee28e751a40422aeae45d836c0766c270270f3e5a4dad19",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/preparation_git_snapshot.txt": "873fe8ac32f03dce983f6a985574727031e70c9e1ff6fd4846681f892275dfe5",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/preparation_metrics.json": "6a1c520b76df0204e1912a085a512917bd1fb20685cd3f868336430ba15ff234",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/preparation_report.md": "eacd51b794988b34a794543c5d4a03a8769a42f0f8075d729220e2f6414b4950",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/preparation_test_results.json": "b03f0c411564abbad53c4d7932f2d3ecda58e1865094f1c51724a9130d13e9b6",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/run_calibration.py": "74f838ffbf2004136e440943989c188d5f9a563f0097e0861ea35130a9b65bcf",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/test_preparation.py": "88f7171a9f15d082c37f2110816effc8b5ebc7f0eaabc349b04ad63fac0088f5",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/validate_completed_run.py": "209152f29f37c026a59fb16b56ee7e5b8dedabaea1c444559f2bf3a82881b303"
+  },
+  "git_head": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status_before": " M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? RESEARCH_BRIEF_2026-10-18_TAIL.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_3321_tail_condition_20261018/\n?? experiments/p8_5243_local_condition_necessity_20261019/\n?? experiments/p8_5243_native_replay_gate_20261019/\n?? experiments/p8_5243_natural_evidence_feasibility_20261019/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_evidence_prior_audit_20261019/\n?? experiments/p8_noisy_condition_path_audit_20261018/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_q_vcv_enhance_follow_20261018/\n?? experiments/p8_q_vcv_fixed_noise_20261018/\n?? experiments/p8_q_vcv_lowsnr_challenge_20261018/\n?? experiments/p8_q_vcv_speaker_replication_20261019/\n?? experiments/p8_silent_gap_screen8_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_vcv_common_scale_factorial_20261019/\n?? experiments/p8_vcv_f20_noise_correspondence_20261019/\n?? experiments/p8_vcv_f20_tail_existing_audit_20261019/\n?? experiments/p8_vcv_fixed_norm_condition_swap_20261019/\n?? experiments/p8_vcv_speech_component_ablation_20261019/\n?? experiments/p8_voicebank_clean_text_calibration_20261019/\n?? experiments/p8_voicebank_content_reference_audit_20261019/\n?? experiments/p8_voicebank_source_waveform_gate_20261019/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? research_memos/\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py\n",
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "executable": "/data/coding/sgmse/env/bin/python",
+    "whisper": "20250625",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.2.6",
+    "soundfile": "0.14.0",
+    "cuda": "13.0",
+    "device": "cuda:0",
+    "gpu_name": "NVIDIA L40S",
+    "seed": 20261019,
+    "seeded": [
+      "python",
+      "numpy",
+      "torch_cpu",
+      "torch_cuda_all"
+    ],
+    "cudnn_deterministic": true,
+    "cudnn_benchmark": false,
+    "offline_env": {
+      "HF_HUB_OFFLINE": "1",
+      "TRANSFORMERS_OFFLINE": "1",
+      "HF_DATASETS_OFFLINE": "1"
+    },
+    "openai-whisper": "20250625",
+    "tiktoken": "0.14.0",
+    "numba": "0.68.0",
+    "llvmlite": "0.50.0"
+  },
+  "transcribe_installed_defaults": {
+    "verbose": null,
+    "temperature": [
+      0.0,
+      0.2,
+      0.4,
+      0.6,
+      0.8,
+      1.0
+    ],
+    "compression_ratio_threshold": 2.4,
+    "logprob_threshold": -1.0,
+    "no_speech_threshold": 0.6,
+    "condition_on_previous_text": true,
+    "initial_prompt": null,
+    "carry_initial_prompt": false,
+    "word_timestamps": false,
+    "prepend_punctuations": "\"'“¿([{-",
+    "append_punctuations": "\"'.。,，!！?？:：”)]}、",
+    "clip_timestamps": "0",
+    "hallucination_silence_threshold": null
+  },
+  "transcribe_passed_options": {
+    "language": "en",
+    "task": "transcribe",
+    "temperature": [
+      0.0
+    ],
+    "beam_size": 1,
+    "best_of": 1,
+    "condition_on_previous_text": false,
+    "initial_prompt": null,
+    "no_speech_threshold": null,
+    "verbose": false,
+    "word_timestamps": false,
+    "fp16": false
+  },
+  "effective_decoding_options_before_inference": {
+    "task": "transcribe",
+    "language": "en",
+    "temperature": 0.0,
+    "sample_len": null,
+    "best_of": null,
+    "beam_size": 1,
+    "patience": null,
+    "length_penalty": null,
+    "prompt": [],
+    "prefix": null,
+    "suppress_tokens": "-1",
+    "suppress_blank": true,
+    "without_timestamps": false,
+    "max_initial_timestamp": 1.0,
+    "fp16": false
+  },
+  "temperature_attempts": 1,
+  "best_of_zero_temperature_note": "transcribe receives best_of=1; installed code removes it at t=0, effective DecodingOptions.best_of=None",
+  "input_processing": "Full stored PCM16 divided by32768, float32; no gain/trim/resample/VAD. Whisper internal fixed log-mel and padding permitted.",
+  "current_id": "p287_054"
+}

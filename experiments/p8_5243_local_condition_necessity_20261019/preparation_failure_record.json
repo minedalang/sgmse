@@ -1,0 +1,10 @@
+{
+  "stage": "preparation_metrics JSON serialization",
+  "error": "numpy.float32 noise roundoff bound is not default JSON serializable",
+  "inference_calls": 0,
+  "selection_and_config_already_frozen": {
+    "selection_frozen.json": "f59cff9bdfc80a32c4a5b2959ddde0f3b295b7ecf2c5b8eb67736ac76f43ca6d",
+    "config.yaml": "5d1e8d00bb4a666c4c41758d1183893b2daa5d11dda4e6c6297bc3567747e39e"
+  },
+  "diagnosed_repair": "JSON default .item() for numpy scalars; resume only missing preparation metrics with existing selection/config exact byte checks"
+}

@@ -1,0 +1,20 @@
+{
+  "experiment_id": "p8_5243_natural_evidence_feasibility_20261019",
+  "status": "frozen_cpu_audit",
+  "fileid": 5243,
+  "clip_seconds": [
+    18.75,
+    20.75
+  ],
+  "target_neighborhood_seconds": [
+    19.35,
+    19.55
+  ],
+  "target_interval_is_human_boundary": false,
+  "budget_seconds": 180,
+  "artifact_cap_bytes": 5000000,
+  "inference": false,
+  "training": false,
+  "downloads": false,
+  "output_audio": false
+}

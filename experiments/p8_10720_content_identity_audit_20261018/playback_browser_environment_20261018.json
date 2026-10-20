@@ -1,0 +1,21 @@
+{
+  "status": "blocked_before_browser_tests",
+  "reason": "Chromium headless-shell cannot launch because required shared libraries are absent",
+  "missing_libraries": [
+    "libnspr4.so",
+    "libnss3.so",
+    "libnssutil3.so",
+    "libatk-1.0.so.0",
+    "libatk-bridge-2.0.so.0",
+    "libXcomposite.so.1",
+    "libXdamage.so.1",
+    "libatspi.so.0"
+  ],
+  "browser": "Chrome Headless Shell 156.0.8078.4 playwright v1248",
+  "installation_root": "/data/codex-state/tmp/audio-paircheck-browser-20261018",
+  "scratch_bytes_approx": 341835776,
+  "download": "direct attempt aborted after ~30MB stalled; one proxy7890 retry succeeded for120MiB headless shell and2.2MiB FFmpeg",
+  "system_changes": false,
+  "tests_executed": false,
+  "mocked_js_regression_status": "all7after_fix_pass;6of7before_fix_fail"
+}

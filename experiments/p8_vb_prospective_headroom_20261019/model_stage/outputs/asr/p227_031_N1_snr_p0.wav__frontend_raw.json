@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p227_031_N1_snr_p0.wav__frontend",
+    "id": "p227_031",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N1_snr_p0.wav",
+    "basename": "p227_031_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "233bf5b64bb6ac624a2067647e0317501376d9fc915e0728e75173c321f7bed9",
+      "samples": 51005,
+      "array_sha256": "535cc1cf5288d0592ac22a17c5e4881ad073363fcc5417a722dfa64c9d95b9b6",
+      "peak": 0.178192138671875,
+      "rms": 0.011504044012059945
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " Promised lead has been a huge success.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Promised lead has been a huge success.",
+        "tokens": [
+          50363,
+          10335,
+          1417,
+          1085,
+          468,
+          587,
+          257,
+          3236,
+          1943,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.7820766766866049,
+        "compression_ratio": 0.8260869565217391,
+        "no_speech_prob": 0.084081269800663
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 25,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

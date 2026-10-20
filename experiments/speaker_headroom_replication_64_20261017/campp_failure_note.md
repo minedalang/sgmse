@@ -1,0 +1,1 @@
+CAM++ launch 1 failed before loading audio: `ModuleNotFoundError: No module named sgmse` because PYTHONPATH was not set. No outputs or source data were modified. Retry sets `PYTHONPATH=/data/coding/sgmse`.

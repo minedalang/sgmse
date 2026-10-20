@@ -1,0 +1,130 @@
+{
+  "source_path": "../../experiments/final_eval_full_20261018/metrics.json",
+  "source_sha256": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa",
+  "field_path": "paired_bootstrap.splits.{no_reverb,with_reverb}.router_vs_off",
+  "contrast": "Router minus off",
+  "paired_cases_per_condition": 150,
+  "metric_order": [
+    "PESQ_e",
+    "STOI_e",
+    "SI-SDR_e",
+    "DNSMOS_SIG_e",
+    "DNSMOS_OVRL_e",
+    "DNSMOS_P808_e",
+    "DNSMOS_BAK_e"
+  ],
+  "data": {
+    "no_reverb": {
+      "PESQ_e": {
+        "mean_delta": 0.026383116245269775,
+        "ci95": [
+          0.02314677321910858,
+          0.029633592526117962
+        ]
+      },
+      "STOI_e": {
+        "mean_delta": 0.0005220523778750492,
+        "ci95": [
+          0.00039333887059610955,
+          0.0006611942274032251
+        ]
+      },
+      "SI-SDR_e": {
+        "mean_delta": 0.3190334288279216,
+        "ci95": [
+          0.30218893694877624,
+          0.3355603752930959
+        ]
+      },
+      "DNSMOS_SIG_e": {
+        "mean_delta": -0.004804869043389418,
+        "ci95": [
+          -0.007128985322648134,
+          -0.0025200857849098164
+        ]
+      },
+      "DNSMOS_OVRL_e": {
+        "mean_delta": -0.00020400208862304462,
+        "ci95": [
+          -0.0032405898492755573,
+          0.003023502483560905
+        ]
+      },
+      "DNSMOS_P808_e": {
+        "mean_delta": 0.0022244898478190104,
+        "ci95": [
+          -0.0011555340687433879,
+          0.005458112438519795
+        ]
+      },
+      "DNSMOS_BAK_e": {
+        "mean_delta": 0.007422555265165336,
+        "ci95": [
+          0.004207748112800128,
+          0.011057672772724765
+        ]
+      }
+    },
+    "with_reverb": {
+      "PESQ_e": {
+        "mean_delta": -0.014714380105336508,
+        "ci95": [
+          -0.03680933258930842,
+          0.0035921072562535576
+        ]
+      },
+      "STOI_e": {
+        "mean_delta": -0.0021485522209755805,
+        "ci95": [
+          -0.0031416871950297152,
+          -0.0011670385493987875
+        ]
+      },
+      "SI-SDR_e": {
+        "mean_delta": 0.16379071931044262,
+        "ci95": [
+          0.0855367393543323,
+          0.24433984014391896
+        ]
+      },
+      "DNSMOS_SIG_e": {
+        "mean_delta": -0.02495929402254233,
+        "ci95": [
+          -0.0366542625825601,
+          -0.01298972652304295
+        ]
+      },
+      "DNSMOS_OVRL_e": {
+        "mean_delta": -0.028740988648249737,
+        "ci95": [
+          -0.04236921763888494,
+          -0.015839858277021984
+        ]
+      },
+      "DNSMOS_P808_e": {
+        "mean_delta": -0.023009559313456218,
+        "ci95": [
+          -0.03630326696236928,
+          -0.009909194827079776
+        ]
+      },
+      "DNSMOS_BAK_e": {
+        "mean_delta": 0.01665881543442888,
+        "ci95": [
+          0.004037942446728519,
+          0.02946847893209437
+        ]
+      }
+    }
+  },
+  "note": "冻结原始逐条件区间，非speaker聚类/多重校正；不是新实验，DNSMOS非人耳MOS。每个metric独立轴；不含pooled，不排名或合成分数。JSON保留源浮点值，图中数字17位有效数字。",
+  "static_checks": {
+    "static_xml_parses": true,
+    "fourteen_mean_points": true,
+    "title_and_desc": true,
+    "no_external_references": true,
+    "no_script": true,
+    "source_bytes_unchanged": true,
+    "all_14_exact_value_records": true
+  }
+}

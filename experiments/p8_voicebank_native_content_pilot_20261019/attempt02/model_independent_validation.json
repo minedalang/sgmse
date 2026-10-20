@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "serialization_pairs": 32,
+  "scoring_items": 52,
+  "native_cases": 16,
+  "metrics_sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+  "model_loads": 0,
+  "network_bytes": 0,
+  "source_locks": 260,
+  "blocked_local_ipv6_probe_refusals": 1,
+  "unknown_network_refusals": 0,
+  "all_socket_creation_still_refused": true
+}

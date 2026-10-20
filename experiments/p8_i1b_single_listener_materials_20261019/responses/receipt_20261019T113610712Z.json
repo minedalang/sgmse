@@ -1,0 +1,27 @@
+{
+  "source": "user_explicit_pasted_browser_JSON_in_chat",
+  "storage": "structured_transcription_of_all_supplied_fields_not_verbatim_chat_bytes",
+  "response_file": "user_chat_export_20261019T113610712Z.json",
+  "sha256": "a8bcc1d9845e07c0b7b17160d0d88daa45f8195f0b5396734864d51d1c4ccdb3",
+  "schema_and_material_and_all94_trialIDs_match": true,
+  "stage1_locked": 47,
+  "stage2_locked": 0,
+  "stage1_counts": {
+    "structure": 41,
+    "non_speech": 2,
+    "unknown": 4
+  },
+  "stage1_confidence_counts": {
+    "4": 30,
+    "3": 14,
+    "2": 2,
+    "None": 1
+  },
+  "stage1_successful_playbacks": 86,
+  "failed_playbacks": 0,
+  "volume_change_events": 0,
+  "scope": "single_listener_structure_judgments_only; no_clean_reference_yet; no_accuracy_or_phoneme_claim",
+  "protocol_risk": "User previously asked how to locate yellow80ms; page timing UI was corrected. Export does not record UI revision or confirm instruction understanding per trial; preserve all rows and do not silently exclude early responses.",
+  "browser_automatic_server_upload": false,
+  "chat_submission_now_archived": true
+}

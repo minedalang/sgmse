@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "timeout_seconds": 60,
+  "command": "timeout 60s bash -c 'OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/audit.py && OPENBLAS_NUM_THREADS=1 OMP_NUM_THREADS=1 /data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/validate_cpu.py'",
+  "audit_seconds": 0.3414850420085713,
+  "independent_validation_seconds": 0.8549614270450547,
+  "retries": 0,
+  "failed_attempts": 0,
+  "model_loads": 0,
+  "ASR_calls": 0,
+  "training_calls": 0,
+  "network_bytes": 0,
+  "audio_outputs": 0
+}

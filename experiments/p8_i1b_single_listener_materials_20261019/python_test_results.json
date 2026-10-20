@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "checks": [
+    "PCM crop exact original bytes amplitude",
+    "7680 PCM16 header+payload roundtrip",
+    "47Noisy then47Clean independent fixedhash order",
+    "94opaque unique trialIDs",
+    "AST"
+  ],
+  "real_wav_reads": 0,
+  "real_exports": 0,
+  "models": 0
+}

@@ -1,0 +1,17 @@
+experiment_id: speaker_parameter_audit_20261017
+purpose: audit_parameter_updates_in_historical_speaker_runs
+mutates_dataset: false
+mutates_checkpoint: false
+base_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+arms:
+  pair: joint_train_logs/ftyjnqu1-rrsd_speaker_pair1000/epoch=0-step=1000.ckpt
+  masked: joint_train_logs/5l5cb2a0-rrsd_speaker_pair_masked1000/epoch=0-step=1000.ckpt
+  prototype: joint_train_logs/qpf32q6y-rrsd_speaker_proto01_1000/epoch=0-step=1000.ckpt
+  prototype_cw1: joint_train_logs/q2ilpruq-rrsd_speaker_proto01_cw1_1000/epoch=0-step=1000.ckpt
+  svprototype: joint_train_logs/kn1hgnni-rrsd_speaker_svproto_masked_sw05_1000/epoch=0-step=1000.ckpt
+checks:
+  - checkpoint hyperparameters and freeze flags
+  - optimizer state count and learning rate
+  - exact tensor differences against the 80k base checkpoint
+  - trainable parameter summary from original logs
+data_modified: false

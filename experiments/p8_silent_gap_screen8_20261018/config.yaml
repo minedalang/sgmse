@@ -1,0 +1,18 @@
+experiment_id: p8_silent_gap_screen8_20261018
+manifest: ../p8_frontend_backend_audit_20261020/manifest.csv
+sample_rate: 16000
+samples: 480000
+frame_ms: 20
+hop_ms: 20
+window: rectangular_disjoint
+boundary_exclusion_seconds: 0.2
+clean_quiet_max_rms: 0.000091552734375
+minimum_gap_seconds: 0.3
+clean_active_min_dbfs: -70
+backend_rank_min_dbfs_exclusive: -60
+backend_rank_min_gain_vs_ypre_db: 10
+highband_hz: [4000, 7500]
+discovery_fileid: '10720'
+max_total_bytes: 5000000
+interpretation: Exploratory ranking only; no speech or hallucination labels, no learned gate. Other seven are held out with respect to this tail hypothesis, but were used in previous global audits and are not confirmation or virgin cross-validation.
+threshold_note: Quiet threshold (three PCM16 steps), minimum run duration (300ms), and backend ranking thresholds (-60dBFS and 10dB above Y_pre) are fixed exploratory choices, not tuned on these results. The active complementary threshold is separately fixed at -70dBFS.

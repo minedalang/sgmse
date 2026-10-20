@@ -1,0 +1,60 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_frontend_attribution",
+  "purpose": "Clean-aware diagnostic comparison of frontend-only, Router-off and RRSD Router outputs",
+  "source_manifest": "experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv",
+  "source_manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "n": 32,
+  "split_warning": "Previously used development split; not an independent blind test.",
+  "arms": {
+    "frontend": "experiments/storm_error_attribution_p7_20261017/frontend_only",
+    "off": "experiment_logs/rrsd_tcut_screen/off",
+    "router": "experiment_logs/rrsd_tcut_screen/router"
+  },
+  "stft": {
+    "sample_rate_hz": 16000,
+    "n_fft": 510,
+    "hop_length": 128,
+    "window": "periodic Hann",
+    "center": true
+  },
+  "bands_hz": [
+    [
+      0,
+      1000
+    ],
+    [
+      1000,
+      4000
+    ],
+    [
+      4000,
+      8000
+    ]
+  ],
+  "phase_mask": "per utterance clean magnitude >= 1% of its 99.5th percentile; clean-aware diagnostic only",
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261017,
+    "interpretation": "exploratory paired interval; not a confirmatory test"
+  },
+  "metrics": [
+    "si_sdr",
+    "waveform_nrmse",
+    "mag_l1_rel",
+    "complex_l1_rel",
+    "phase_cos_error_clean_active",
+    "low_0_1k_mag_l1_rel",
+    "mid_1_4k_mag_l1_rel",
+    "high_4_8k_mag_l1_rel"
+  ],
+  "quality_evaluators": "PESQ/STOI/DNSMOS not run in this diagnostic stage",
+  "training": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "runtime_seconds": 20.193246364593506,
+  "software": {
+    "python_torch": "2.14.1+cu130",
+    "numpy": "2.2.6",
+    "soundfile": "0.14.0"
+  }
+}

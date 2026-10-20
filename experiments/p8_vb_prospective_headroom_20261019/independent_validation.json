@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "scope": "independent metadata selection/source field/raw-file hash/publisher raw and normalized reference checks; NOT audio alignment, actual phone identity or use-history completeness",
+  "ids": [
+    "p227_030",
+    "p227_031",
+    "p228_026",
+    "p228_032",
+    "p230_027",
+    "p230_029",
+    "p231_029",
+    "p231_032"
+  ],
+  "elapsed_seconds": 0.27249831706285477,
+  "validator_sha256": "55e029302c50390d756658589cff89c67644eafb536bfba8a4b3b54793e4f8d5",
+  "registry_sha256": "6c929a2c2c66e00b0bdf7c15172200f7c37eec522c5adeda29190845362bb6eb",
+  "audio_decode": 0,
+  "models": 0,
+  "network": 0
+}

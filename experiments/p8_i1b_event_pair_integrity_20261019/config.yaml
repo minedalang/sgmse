@@ -1,0 +1,388 @@
+{
+  "experiment_id": "p8_i1b_event_pair_integrity_20261019",
+  "phase": "I1b selection and in-memory operation integrity; software_preparation_only",
+  "registry": "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/registry.json",
+  "registry_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6",
+  "ids": [
+    "p233_027",
+    "p233_028",
+    "p236_036",
+    "p236_040",
+    "p239_026",
+    "p239_028",
+    "p243_026",
+    "p243_027",
+    "p244_028",
+    "p244_034",
+    "p250_038",
+    "p250_050"
+  ],
+  "source_record_locks": {
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/registry.json": {
+      "bytes": 24065,
+      "sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/metrics.json": {
+      "bytes": 561,
+      "sha256": "9df573afc59542872c20545f2f3e1bdc3ed9a3b87f448860f43c709a54101ce7"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/independent_validation.json": {
+      "bytes": 270,
+      "sha256": "aebd1becca187f2f8506d1afb74c5bae0b2264bce5154ff5507268827ff30d25"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/worker_final_freeze.json": {
+      "bytes": 2843,
+      "sha256": "6605d5d7aeac26fbfe9d7708065a05ff78128f4e9d31a3fd0ea38ab6162318cb"
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/config.yaml": {
+      "bytes": 14804,
+      "sha256": "c0ce3be4b9f6c788fadaad1e3a5924717707e283fdb42b4c0303e6a82181bd5e"
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/metrics.json": {
+      "bytes": 52921,
+      "sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6"
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/independent_validation.json": {
+      "bytes": 572,
+      "sha256": "7abc9c3446d6692e4eb3ba8612ae27889f327356b7146532ec1e7ad7125303ac"
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/worker_final_freeze.json": {
+      "bytes": 3809,
+      "sha256": "e9001842b1d37125c3227b9d6c6aa964b4f29177c0ab8da7c3bde557f6d4a19f"
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/experiment_report.md": {
+      "bytes": 6949,
+      "sha256": "71ad84fbaed9e9060b232d053dbeedec0db16e383c8a1c8ab26cc0f11eb39621"
+    },
+    "/data/coding/sgmse/research_memos/p8_i1b_event_edit_protocol_20261019.md": {
+      "bytes": 7439,
+      "sha256": "51a9ed5406e2006dfd880102dd8d9a68aee6111d5be8788d9016b8053a5d2934"
+    }
+  },
+  "inherited_audio_locks": {
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav": {
+      "bytes": 124458,
+      "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 62207,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav": {
+      "bytes": 124458,
+      "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 62207,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav": {
+      "bytes": 110728,
+      "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 55342,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav": {
+      "bytes": 110728,
+      "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 55342,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav": {
+      "bytes": 109434,
+      "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54695,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav": {
+      "bytes": 109434,
+      "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54695,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav": {
+      "bytes": 120044,
+      "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 60000,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav": {
+      "bytes": 120044,
+      "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 60000,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav": {
+      "bytes": 110024,
+      "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54990,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav": {
+      "bytes": 110024,
+      "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54990,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav": {
+      "bytes": 103976,
+      "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51966,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav": {
+      "bytes": 103976,
+      "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51966,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav": {
+      "bytes": 142124,
+      "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 71040,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav": {
+      "bytes": 142124,
+      "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 71040,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_027.wav": {
+      "bytes": 130604,
+      "sha256": "c0972ae9cd32e002892881677824dbb306c7774bbe89bcf186a4d5d2931353ac",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 65280,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_027.wav": {
+      "bytes": 130604,
+      "sha256": "f887f3c7459e108c757129b75c7c3dbb6f3803774e0412de58a2abe248df13fb",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 65280,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav": {
+      "bytes": 102988,
+      "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51472,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav": {
+      "bytes": 102988,
+      "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51472,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav": {
+      "bytes": 104498,
+      "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 52227,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav": {
+      "bytes": 104498,
+      "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 52227,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav": {
+      "bytes": 113902,
+      "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56929,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav": {
+      "bytes": 113902,
+      "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56929,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav": {
+      "bytes": 112582,
+      "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56269,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav": {
+      "bytes": 112582,
+      "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56269,
+        "subtype": "PCM_16"
+      }
+    }
+  },
+  "sample_rate": 16000,
+  "decode": "int16 littleendian /32768 float64, no gain/lag/DC preprocessing",
+  "feature_frames": {
+    "length": 320,
+    "hop": 160,
+    "fft_length": 512,
+    "window": "symmetric Hann h[n]=0.5-0.5*cos(2*pi*n/319), n=0..319",
+    "padding": "only zero-pad320 analysis samples to512 for rfft; no waveform/tail padding",
+    "frequency_bins": "rfft k=0..256, P=abs(rfft)^2, Q=P/sum(P) if positive finite sum else null",
+    "high_bins_inclusive": [
+      64,
+      240
+    ],
+    "frame_start": "range(0,L-320+1,160)",
+    "F_j": "sum_high max(Q_j-Q_(j-1),0); null if j=0 or eitherQ undefined",
+    "R_j": "sum_high Q_j; null if Q undefined"
+  },
+  "selection": {
+    "operator_window_samples": 1280,
+    "boundary_margin_samples": 3200,
+    "position_gap_samples": 160,
+    "grid": 160,
+    "tie_tolerance_absolute": 1e-12,
+    "tie": "within tolerance of optimum choose smallest window start",
+    "transient": "for frame j, targetstart=160*j-480, targetend=start+1280; require start>=3200 and end<=L-3200, scoreF_j finite>0; choose highestF; no F>0 =>unavailable",
+    "sustained": "candidate start in range(3200,L-3200-1280+1,160); score mean R_j over7 analysisframes starting at start+160*k,k=0..6; all7 defined, score>0; must not overlap transient plus160samplegap; choose highest, elseunavailable",
+    "position_control": "same80ms candidate grid and margins; exclude all selected target intervals with160samplegap; minimize abs(sum(S_control^2)-sum(S_target^2)); ties absolute energy1e-12 then earliest; unknown or absent control=>unavailable no replacement",
+    "order": "transient first then sustained, control windows chosen after both target windows; same control may serve different target groups and is recorded as dependent",
+    "maximum_target_events": 24,
+    "no_outcome_selection": true
+  },
+  "operator": {
+    "length": 1280,
+    "ramp": 160,
+    "attenuated_plateau_amplitude": 0.25,
+    "mask_linear": "concat(arange160/159,ones960,reverse(arange160/159))",
+    "mask_cosine": "concat(0.5*(1-cos(pi*arange160/159)),ones960,reverse(0.5*(1-cos(pi*arange160/159))))",
+    "delta": "-0.75*mask*S at chosen interval; zero outside",
+    "families": [
+      "cosine",
+      "linear"
+    ],
+    "sites": [
+      "target",
+      "position_control"
+    ],
+    "raw_original": "X1=X and S1=S unchanged; preserve originalWAV SHA and bytecopy identity in-memory only",
+    "sham": "delta0; original/noisy raw file bytes used as byte-identical result, not reencoded",
+    "edited": "S0=S+delta and X0=X+delta; do not reconstruct or renormalize X1",
+    "max_edit_operations": 96,
+    "no_noise_reuse_across_utterances": true
+  },
+  "representations": {
+    "internal": "float64",
+    "pcm16": "q=round_nearest_ties_even(y*32768); if y outside[-1,32767/32768] or q outside[-32768,32767], record unsafe and noPCM serialization for that arm; no clipping",
+    "safe_quantization_bound": 1.52587890625e-05,
+    "exact_raw_checks": "original/shamWAV SHA equality; mask-outside source samples exact; originalPCM reconstruct from source int16 exactly",
+    "floating_checks": "max abs(S0+(X-S)-X0), max abs((X0-X)-delta), maskoutside equality; bound descriptive not pure-noise proof",
+    "pcm_checks": "safeedited PCM payload SHA and quantizationmaxerr; residualshared-domain reconstruction before/after quantization reported separately; noWAV/NPY/payload outputfiles"
+  },
+  "records": "candidate/frame scores all retained; events registry; all96-or-unavailable operation rows with status and energy mismatch; no classifiers or accuracy/AUC",
+  "numeric_tolerance": {
+    "absolute": 1e-12,
+    "relative": 1e-09,
+    "purpose": "independent technical arithmetic only, not science threshold"
+  },
+  "budgets": {
+    "main_seconds": 120,
+    "validator_seconds": 120,
+    "artifact_bytes": 8388608,
+    "max_main_pcm_decodes": 24,
+    "max_validator_pcm_decodes": 24,
+    "network_bytes": 0,
+    "new_audio_files": 0
+  },
+  "gates": {
+    "scientific_ready": false,
+    "noise_disjoint_ready": false,
+    "split_frozen": false,
+    "probe_training_authorized": false,
+    "model_calls_authorized": false,
+    "real_run_authorized": false
+  },
+  "unavailable_policy": "retain all12 and all requested slots with explicitreason; do not lower score/range rules, swap sources or cherry-picksafe subset; technical completion may include unavailable/unsafeoperations, never scientific success"
+}

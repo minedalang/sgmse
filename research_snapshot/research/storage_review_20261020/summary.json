@@ -1,0 +1,400 @@
+{
+  "status": "REVIEW_ONLY_NO_DELETION_AUTHORIZED",
+  "created_utc": "2026-10-20T01:50:09.826918+00:00",
+  "scope": "Only /data; metadata and existing reports, no weight/PCM load or file-content hashing",
+  "free_bytes": 1339305984,
+  "groups": [
+    {
+      "id": "A01",
+      "level": "A_优先审查",
+      "title": "rrsd_speaker额外10份last保存件",
+      "count": 10,
+      "logical_bytes": 6258868526,
+      "allocated_bytes": 6258892800,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "各目录不带-last的epoch=0-step=<步数>.ckpt及全部config/log/CSV/report保留。",
+      "evidence": [
+        "/data/research/archive.md",
+        "/data/coding/sgmse/experiments/speaker_parameter_audit_20261017/experiment_report.md",
+        "/data/coding/sgmse/experiments/rrsd_cv_repeat32/experiment_report.md"
+      ]
+    },
+    {
+      "id": "A02",
+      "level": "A_优先审查",
+      "title": "SSL/WavLM旧小试额外保存件",
+      "count": 10,
+      "logical_bytes": 5989532630,
+      "allocated_bytes": 5989539840,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "各目录不带-last的epoch=0-step=<步数>.ckpt及全部config/log/CSV/report保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "A03",
+      "level": "A_优先审查",
+      "title": "旧conflict/gradient probe额外保存件",
+      "count": 4,
+      "logical_bytes": 2396036244,
+      "allocated_bytes": 2396045312,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "各目录不带-last的epoch=0-step=<步数>.ckpt及全部config/log/CSV/report保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "A04",
+      "level": "A_优先审查",
+      "title": "旧projection smoke/gate额外保存件",
+      "count": 4,
+      "logical_bytes": 885531460,
+      "allocated_bytes": 885538816,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "各目录不带-last的epoch=0-step=<步数>.ckpt及全部config/log/CSV/report保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "A05",
+      "level": "A_优先审查",
+      "title": "旧k-step/debug额外保存件",
+      "count": 6,
+      "logical_bytes": 1328274430,
+      "allocated_bytes": 1328283648,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "各目录不带-last的epoch=0-step=<步数>.ckpt及全部config/log/CSV/report保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "A06",
+      "level": "A_优先审查",
+      "title": "旧control1000额外保存件",
+      "count": 2,
+      "logical_bytes": 442757930,
+      "allocated_bytes": 442761216,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "各目录不带-last的epoch=0-step=<步数>.ckpt及全部config/log/CSV/report保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "A07",
+      "level": "A_优先审查",
+      "title": "Anchor V2旧小试额外保存件",
+      "count": 2,
+      "logical_bytes": 442084690,
+      "allocated_bytes": 442089472,
+      "reason": "已结束的旧短试额外保存件；没有当前CPEL依赖。未核张量等价，不能称字节相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "/data/coding/sgmse/joint_train_logs/anchor_v2_controller100/0hduhemo-anchor_v2_controller100/epoch=0-step=100.ckpt保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "A08",
+      "level": "A_优先审查",
+      "title": "旧speaker backend-only对照额外last",
+      "count": 1,
+      "logical_bytes": 554475194,
+      "allocated_bytes": 554475520,
+      "reason": "报告引用另一epoch文件；既有SHA记录表明两件不同，不能称相同副本。",
+      "deletion_cost": "删除该保存件后不能用它精确恢复；即便保留同一步代表权重，也未证明二者恢复状态相同。",
+      "keep": "/data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/logs/None-speaker_backend_only_matched500_control/epoch=0-step=500-last.ckpt及checkpoint_sha256.txt保留。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/experiment_report.md"
+      ]
+    },
+    {
+      "id": "W01",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_speaker_eval：仅WAV",
+      "count": 96,
+      "logical_bytes": 92164224,
+      "allocated_bytes": 92405760,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W02",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_speaker_eval_svproto_masked_sw05_1000：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W03",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_ssl_mse_eval：仅WAV",
+      "count": 96,
+      "logical_bytes": 92164224,
+      "allocated_bytes": 92405760,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W04",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_ssl_rel_eval：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W05",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_kstep_k4_eval：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W06",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_tcut005_scale075_screen_20261017：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W07",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_tcut005_scale05_screen_20261017：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W08",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_tcut005_scale025_screen_20261017：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W09",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_scale05_screen_20261017：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "W10",
+      "level": "A_旧验证WAV候选",
+      "title": "rrsd_scale025_screen_20261017：仅WAV",
+      "count": 32,
+      "logical_bytes": 30721408,
+      "allocated_bytes": 30801920,
+      "reason": "旧loss/scale开发小试已经结束或暂停，不是当前CPEL训练源或正式final输出。",
+      "deletion_cost": "丢失直接试听、重算新指标和波形级追查能力；未证明可逐字节再生成。",
+      "keep": "只选清单中的.wav，保留目录内CSV/config/log/report及基座off/router输出。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "T01",
+      "level": "A_低收益临时文件",
+      "title": "超时失败的不完整下载包",
+      "count": 1,
+      "logical_bytes": 11534336,
+      "allocated_bytes": 11534336,
+      "reason": "完整包下载超时，只保存11.53MB；实际64条后来通过独立Range取得，此partial不用于模型。",
+      "deletion_cost": "丢失失败下载的原始partial字节；失败报告、SHA、receipt及已取得64条保留。",
+      "keep": "保留同目录报告/指标/代码与transport_attempt02全部材料。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/p8_keyword_clean_readout_20261020/experiment_report.md"
+      ]
+    },
+    {
+      "id": "B01",
+      "level": "B_放弃直接复评才考虑",
+      "title": "rrsd_speaker每组保留的代表权重",
+      "count": 5,
+      "logical_bytes": 3129433495,
+      "allocated_bytes": 3129446400,
+      "reason": "若用户决定不再直接复评这5条旧speaker路线，可单独审查。",
+      "deletion_cost": "若连A01也删除，则5组共15份权重全消失；旧路线不能直接模型复评或恢复。",
+      "keep": "建议本轮先保留；A01已足够释放长训所需空间。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "B02",
+      "level": "B_放弃直接复评才考虑",
+      "title": "Anchor retry全部两份权重",
+      "count": 2,
+      "logical_bytes": 442084498,
+      "allocated_bytes": 442089472,
+      "reason": "旧路线已退出，但这里只剩两件，不是保留代表后的额外件。",
+      "deletion_cost": "删除后此retry运行没有任何权重可供直接复评/恢复。",
+      "keep": "建议先保留。",
+      "evidence": [
+        "/data/research/archive.md"
+      ]
+    },
+    {
+      "id": "B03",
+      "level": "B_放弃直接复评才考虑",
+      "title": "speaker backend-only报告所用权重",
+      "count": 1,
+      "logical_bytes": 554475066,
+      "allocated_bytes": 554475520,
+      "reason": "旧500步控制已结束，只有明确放弃直接复评时才考虑。",
+      "deletion_cost": "与A08一起删除会失去该完整控制的全部权重。",
+      "keep": "建议本轮先保留。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/experiment_report.md"
+      ]
+    },
+    {
+      "id": "V01",
+      "level": "B_可再生成但证据有损",
+      "title": "旧speaker no-loss控制64-speaker输出：仅WAV",
+      "count": 128,
+      "logical_bytes": 122885632,
+      "allocated_bytes": 123207680,
+      "reason": "已结束旧实验；V05原报告明确是从保留源输出复制的试听副本。",
+      "deletion_cost": "丢失对应直接试听/指标复评；V05会使历史盲听页面音频链接失效。",
+      "keep": "保留报告、答卷、answer_key、CSV、代码和源基线。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/experiment_report.md"
+      ]
+    },
+    {
+      "id": "V02",
+      "level": "B_可再生成但证据有损",
+      "title": "旧rollout pilot输出：仅WAV",
+      "count": 16,
+      "logical_bytes": 15360704,
+      "allocated_bytes": 15400960,
+      "reason": "已结束旧实验；V05原报告明确是从保留源输出复制的试听副本。",
+      "deletion_cost": "丢失对应直接试听/指标复评；V05会使历史盲听页面音频链接失效。",
+      "keep": "保留报告、答卷、answer_key、CSV、代码和源基线。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/rollout_adapter_pilot_20261018/experiment_report.md"
+      ]
+    },
+    {
+      "id": "V03",
+      "level": "B_可再生成但证据有损",
+      "title": "旧rollout复验输出：仅WAV",
+      "count": 16,
+      "logical_bytes": 15360704,
+      "allocated_bytes": 15400960,
+      "reason": "已结束旧实验；V05原报告明确是从保留源输出复制的试听副本。",
+      "deletion_cost": "丢失对应直接试听/指标复评；V05会使历史盲听页面音频链接失效。",
+      "keep": "保留报告、答卷、answer_key、CSV、代码和源基线。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/rollout_adapter_replication_20261018/experiment_report.md"
+      ]
+    },
+    {
+      "id": "V04",
+      "level": "B_可再生成但证据有损",
+      "title": "旧混响smoke临时生成及输出：仅WAV",
+      "count": 48,
+      "logical_bytes": 46082112,
+      "allocated_bytes": 46202880,
+      "reason": "已结束旧实验；V05原报告明确是从保留源输出复制的试听副本。",
+      "deletion_cost": "丢失对应直接试听/指标复评；V05会使历史盲听页面音频链接失效。",
+      "keep": "保留报告、答卷、answer_key、CSV、代码和源基线。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/reverb_cv_smoke_20261018/experiment_report.md"
+      ]
+    },
+    {
+      "id": "V05",
+      "level": "B_可再生成但证据有损",
+      "title": "已完成P3b盲听匿名副本：仅WAV",
+      "count": 48,
+      "logical_bytes": 46082112,
+      "allocated_bytes": 46202880,
+      "reason": "已结束旧实验；V05原报告明确是从保留源输出复制的试听副本。",
+      "deletion_cost": "丢失对应直接试听/指标复评；V05会使历史盲听页面音频链接失效。",
+      "keep": "保留报告、答卷、answer_key、CSV、代码和源基线。",
+      "evidence": [
+        "/data/coding/sgmse/experiments/p3b_blind_listening_pilot_20261017/experiment_report.md"
+      ]
+    }
+  ],
+  "candidate_files": 752,
+  "candidate_logical_bytes": 23110959475,
+  "candidate_allocated_bytes": 23112814592,
+  "primary_A_allocated_bytes": 18740387840,
+  "secondary_B_allocated_bytes": 4372426752,
+  "caveats": [
+    "Not proved weight-state or byte duplicates",
+    "Allocated bytes are static st_blocks estimate; df may differ due to snapshots/COW/open handles",
+    "No directory-recursive deletion approval implied",
+    "No original data/current source/CPEL/final-test outputs included",
+    "User must approve exact groups/files before any deletion"
+  ]
+}

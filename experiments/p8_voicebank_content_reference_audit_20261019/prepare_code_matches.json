@@ -1,0 +1,82 @@
+[
+  {
+    "line": 5,
+    "text": "Download and resample, use ``download_vctk`` below."
+  },
+  {
+    "line": 21,
+    "text": "from torchaudio.transforms import Resample"
+  },
+  {
+    "line": 23,
+    "text": "from speechbrain.dataio.dataio import read_audio"
+  },
+  {
+    "line": 32,
+    "text": "SAMPLERATE = 16000"
+  },
+  {
+    "line": 232,
+    "text": "    valid_speakers = TRAIN_SPEAKERS[:valid_speaker_count]"
+  },
+  {
+    "line": 236,
+    "text": "    wav_lst_valid = get_all_files("
+  },
+  {
+    "line": 246,
+    "text": "        wav_lst_valid, save_json_valid, train_clean_folder, train_txts, lexicon"
+  },
+  {
+    "line": 275,
+    "text": "def remove_punctuation(a_string):"
+  },
+  {
+    "line": 307,
+    "text": "        clean_word = remove_punctuation(line[0])"
+  },
+  {
+    "line": 351,
+    "text": "        signal = read_audio(wav_file)"
+  },
+  {
+    "line": 358,
+    "text": "        word_string = remove_punctuation(word_string).strip().upper()"
+  },
+  {
+    "line": 359,
+    "text": "        phones = ["
+  },
+  {
+    "line": 363,
+    "text": "        # Remove duplicate phones"
+  },
+  {
+    "line": 364,
+    "text": "        phones = [i for i, j in zip(phones, phones[1:] + [None]) if i != j]"
+  },
+  {
+    "line": 393,
+    "text": "    \"\"\"Download dataset and perform resample to 16000 Hz."
+  },
+  {
+    "line": 454,
+    "text": "    downsampler = Resample(orig_freq=48000, new_freq=16000).to(device)"
+  },
+  {
+    "line": 468,
+    "text": "            downsampled_signal = downsampler(signal.view(1, -1).to(device))"
+  },
+  {
+    "line": 471,
+    "text": "            torchaudio.save("
+  },
+  {
+    "line": 472,
+    "text": "                os.path.join(dirname_16k, filename[-12:]),"
+  },
+  {
+    "line": 474,
+    "text": "                sample_rate=16000,"
+  }
+]

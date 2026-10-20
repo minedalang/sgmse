@@ -1,0 +1,26 @@
+{
+  "kind": "I1b concrete software-preparation design freeze not actual selection",
+  "utc": "2026-10-19T09:05:55.193991+00:00",
+  "analysis_plan_sha256": "e0cbb8a064a827be6b7f68bdc6811cc3ff97b4418c55cd686e6b7b39611b7b7d",
+  "config_sha256": "37483cc6080fad042ed25ed43f45014ca5b9386c71613ad36dc50893b0f548e5",
+  "source_record_locks_verified": 10,
+  "inherited_audio_locks_not_read": 24,
+  "real_audio_reads": 0,
+  "real_event_selection": false,
+  "real_editing": false,
+  "model_calls": 0,
+  "training": 0,
+  "future_limits": {
+    "main_seconds": 120,
+    "validator_seconds": 120,
+    "artifact_bytes": 8388608,
+    "max_main_pcm_decodes": 24,
+    "max_validator_pcm_decodes": 24,
+    "network_bytes": 0,
+    "new_audio_files": 0
+  },
+  "real_run_authorized": false,
+  "current_assignment": "Engineer implements only in new directory and uses synthetic tests; no sourcePCM",
+  "document_links_checked": 23,
+  "goal_complete": false
+}

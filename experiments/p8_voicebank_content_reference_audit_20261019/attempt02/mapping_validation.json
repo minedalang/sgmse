@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "manifest_rows_verified": 11572,
+  "unique_train_ids": 11572,
+  "train_partition_rows": 10802,
+  "valid_partition_rows": 770,
+  "speakers": 28,
+  "test_content_opened": false,
+  "audio_or_header_opens": 0,
+  "network_requests": 0,
+  "model_calls": 0,
+  "archive_MD5_SHA_verified": true,
+  "expected_train_member_CRC_recomputed": 11572,
+  "all_manifest_raw_text_hashes_and_normalized_text_verified": true,
+  "all_existing_header_metadata_joins_verified": true,
+  "parent_snapshot_files_unchanged": true,
+  "original_local_source_hashes_unchanged": true,
+  "all_train_ids_covered_once": true,
+  "spoken_alignment_verified": false
+}

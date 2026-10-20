@@ -1,0 +1,22 @@
+experiment_id: rrsd_cv_repeat32
+purpose: speaker_disjoint_repeated_speaker_diagnostic
+source_split: cv_synthetic
+excluded_overlap_speaker: reader_10658
+speakers: 16
+utterances: 32
+utterances_per_speaker: 2
+selection: first_two_sorted_utterances_per_speaker
+input_symlink_dir: /tmp/rrsd_cv_repeat32/noisy
+manifest: /tmp/rrsd_cv_repeat32/manifest.csv
+mutates_dataset: false
+arms: [off, router, pair, proto01, proto01_cw1, masked]
+checkpoint_off_router: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_pair: joint_train_logs/ftyjnqu1-rrsd_speaker_pair1000/epoch=0-step=1000.ckpt
+checkpoint_proto01: joint_train_logs/qpf32q6y-rrsd_speaker_proto01_1000/epoch=0-step=1000.ckpt
+checkpoint_proto01_cw1: joint_train_logs/q2ilpruq-rrsd_speaker_proto01_cw1_1000/epoch=0-step=1000.ckpt
+checkpoint_masked: joint_train_logs/5l5cb2a0-rrsd_speaker_pair_masked1000/epoch=0-step=1000.ckpt
+inference: {device: cuda, use_ema: true, N: 30, snr: 0.5, seed: 2026}
+independent_encoder: /data/coding/sgmse/pre_models/wespeaker-voxceleb-campplus/avg_model.pt
+metrics: [CAM++_cosine, PESQ, STOI, SI-SDR]
+bootstrap_replicates: 20000
+bootstrap_seed: 2026

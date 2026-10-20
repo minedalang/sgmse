@@ -1,0 +1,105 @@
+# 旧 Codex 会话恢复记录（2026-10-19）
+
+本记录用于新会话快速接续。依据旧会话全文的角色/消息扫描、实质研究阶段的回复，以及当前磁盘上的计划和实验报告交叉核对。旧会话后段重复的“缺少工具”回复不是实验记录。本文只恢复上下文，不表示已恢复旧 /goal 调度或修复宿主故障，也未启动新实验。
+
+## 工程位置与约束
+
+- 主仓库：`/data/coding/sgmse`；模型环境：`/data/coding/sgmse/env/bin/python`。
+- 指标工程：`/data/coding/mymetrics`；环境：`/data/coding/mymetrics/env/bin/python`。
+- 数据：`/data/datasets/dns_ins20`。禁止修改原始数据、覆盖有效 checkpoint；允许本地 git commit，禁止 push。
+- 当前研究计划：`/data/RESEARCH_PLAN.md`；历史：`/data/RESEARCH_HISTORY_2026-10-17.md`。
+- 指标总表：`/data/coding/mymetrics/dns_and_vb_result/result_new.md`。
+- 原始恢复来源：`/data/codex-session-01a15187-2b57-73f2-9e49-4d1a0ceeb8ab.md`（约31 MB，391829行）。
+- 各实验优先查看真实目录内容和状态，不按文件名日期排序推断先后：旧记录中部分目录使用20261020标签，实际执行时间更早。
+- 遵守 `/data/AGENTS.md`：root为Research Lead；实现/调试交Engineer；常规训练/推理/评估必须交Experiment Worker。当前角色模型要求GPT-6.1 Sol；Lead high，Engineer medium；Worker未指定思考深度。
+- 历史明确授权：必要长训练无需反复批准，但应由科学证据决定，不能因为GPU空闲便自动开训。当前P8阶段的具体决策仍是不直接开启新loss、gate或架构训练。
+- 必要人耳核验主动提醒，作为可选待办；提供clean参考和少量具体片段，不要求复杂逐条表格，不阻塞其他独立任务，不将未答复视为认可。
+- 每项完成实验保留 `config.yaml`、`metrics.json`、`experiment_report.md`；先检查既有实验、git状态和最新结果，不重复已完成配置。
+- 用户提供过mihomo代理端口7890；需要网络时再核实是否仍有效。
+
+## 当前研究目标
+
+原始任务是优化硕士论文的两个创新点：Future-gradient RRSD Router与对比/说话人表征约束。多轮验证后不再强制保留这两条原方案。
+
+当前优先P8：无混响、低至极低SNR下的真实内容与弱辅音保真。区分前端吞音、后端正确补音、后端把残余结构变自然、后端产生错误/额外发音；研究何时利用原始noisy中的有效声学证据，何时受到噪声诱发结构影响。P9混响训练为后置任务。
+
+必须分别验证：①语音分量在物理混合中存在；②noisy有足以辨别身份的证据；③模型真正提取并恢复正确身份。能量增加、CTC后验、ASR伪文本、DNSMOS均不能替代独立真实音素标签或人工内容判断。
+
+## 已有主要结论及退出决定
+
+1. 主权重为 `joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt`，EMA、OUVE、PC、N=30、snr=0.5、seed=2026。审计确认 `rrsd_teacher=future_grad`、base冻结、`rrsd_use_gate=false`、`contrastive_weight=0`，Router约42577参数。不能把该主结果描述为SSL/说话人对比学习模型。
+2. 冻结官方DNS评测是150条no_reverb+150条with_reverb，三臂off/Router/tcut005。Router相对off pooled SI-SDR约+0.2414dB，DNSMOS-OVRL约−0.01447；无混响重建有收益、混响下感知受损。属于条件性权衡，尚无第二个经过感知泛化验证的独立算法创新。详见 `experiments/final_eval_full_20261018/experiment_report.md`。不能与早先开发/其他150条集合的PESQ约1.68混用。
+3. selective窗口0.15≤t≤0.75曾完成150条，PESQ=1.673025、OVRL约3.232；不能据小样本提升声称全面超过基线。对应 `experiments/rrsd_selective_full_test/`。
+4. WavLM/SSL/Speaker辅助损失、Harm Teacher、Anchor V2 controller、简单可观测gate、多轨迹选择、rollout adapter等未形成稳定综合感知收益。各负结果保留，不默认重开。P7是有界瓶颈诊断，不是已经证明的新扩散机制；rollout x0 proxy改善不等于听感改善。
+5. P8-M遮蔽Y_pre反事实已完成且为负，不再列为待执行。DNS原始语料/真实逐句文本不在本机，不能把clean配对WAV或自动识别输出视为独立真值。
+
+## 音频配对排查与人耳反馈
+
+- 旧试听包确有noisy裁剪9秒偏移，以及播放器叠播/过期异步请求竞争，均已有修复记录。不能把所有内容差异都归为文件配错。
+- 当前10720的正确来源、裁剪、HTTP音频以及off/Router逐字节重放已核验。用户修复后仍听到前后端内容差异；同一句降低noise 10/20dB后整体内容可对应，支持原始极低SNR存在真实模型内容偏离候选。
+- 用户确认5243的一处/d/被Y_pre删除、后端保留。这是具体正例，不能说后端从不补音。
+- 用户在10720降低noise组听到off/Router新增s样尾音；不能只因整体匹配就忽略局部伪影。
+- 固定前端、归一化参考和随机数，仅用clean替换局部近静音noisy条件，10720输出RMS下降约26–29dB；3321约30dB。表明noisy条件能推动额外结构，仍是clean-aware/OOD诊断，不是可部署方法或真实幻觉率。
+- 80k实际使用直接noisy实/虚部拼接：状态2通道+noisy2通道+anchor2通道，并有progressive input skip；未启用cross-attention、FiLM或selector。不能归因到未启用模块。
+
+## 最近完成的VCV机制实验
+
+外部真实录音为The Consonant Challenge Corpus，DOI `10.5281/zenodo.3538223`，记录许可CC BY 4.0。选同元音aCa、重音1的k/g、t/d，固定两条噪声，标签来自语料名义身份。已有识别器只是裁判代理。
+
+- 原四说话人−6dB载体条件：N1的Y_pre/off/Router 24类一致数12/13/15（每项16）；N2为12/12/12。不能只报告正例。
+- 新四说话人f18/m5/f20/m15复验：N1−6为14/15/14，N1+6为16/16/15；N2 Router相对off无变化。原收益未复现，停止“Router稳定改善辅音身份”的扩验/扩训，不继续换seed或speaker挑正例。记录 `experiments/p8_q_vcv_speaker_replication_20261019/`。
+- −6dB指含静音padding的完整2秒carrier，实际VCV支撑区间SNR平均约+0.87dB，不是极低局部辅音SNR。
+- 固定归一化条件互换完成；统一共同尺度2×2补充也完成：f6/m5两组k/g×两噪声，16次off N30，4格原输出精确复现。8个冲突条件的g/k二选一仍跟随anchor来源名义身份，另有2个24类第三类输出。condition效应方向不一致。它是冲突条件的OOD诊断，不能证明自然noisy证据被忽略。停止在这两对上继续换归一化/seed。记录 `experiments/p8_vcv_common_scale_factorial_20261019/`。
+
+## 真正的续接断点：五例语音分量必要性诊断
+
+目录：`/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/`。
+
+已冻结5例，排除f6/m5：
+
+| 来源/噪声 | 录音 | 名义身份 | Y_pre→off | 类型 |
+|---|---|---|---|---|
+| 原N1 | f11ata1 | t | t→k | 损伤 |
+| 原N1 | m2ada1 | d | t→d | 修正 |
+| 原N2 | m2aga1 | g | g→k | 损伤 |
+| 新N1 | f20aka1 | k | t→k | 修正 |
+| 新N2 | f20aka1 | k | k→ch | 损伤 |
+
+固定缓存float前端、native归一化参考、原pair seed/初始xT和物理噪声幅度。先全部精确重放5个原off；任一不匹配则停止。通过后，仅从noisy条件移除已知整段VCV语音分量，保留相同噪声，执行5个消融与5次新CTC。总计10次off N30、0次前端、5次识别器；无Router/训练/扫参，600秒/30MB界限。
+
+这只能回答已有修正/损伤是否依赖noisy语音分量；整段语音移除是OOD，不能证明单辅音机制、信息论可恢复性或部署收益。
+
+**当前核验状态：prepared_no_inference。** `config.yaml`、`selection_frozen.json`、`run_ablation.py`、`preparation_report.md`和准备检查存在；`preparation_metrics.json`记录163个锁通过、backend/recognizer forwards均为0。最终 `metrics.json`、`experiment_report.md`、`outputs/`均不存在。旧会话先说进入Worker，随即纠正“没有实际启动Worker”；不要重复继承“正在运行”的错误状态。
+
+用户明确要求继续实验时，先核查无新增进程/结果，再由Experiment Worker执行既定方案，不重跑已完成VCV实验。
+
+## 本次恢复时的实时状态
+
+- 本会话已实际调用终端并成功读取/data。旧会话接口故障根因尚未核定，不声称已修复其宿主。
+- 未见研究训练/推理进程；L40S显存0 MiB、GPU利用率0%。8766端口的本地Python试听HTTP服务仍有进程。
+- `/data`余量约1.97GiB，根分区约11.25GiB；后续运行前重新检查。尽量将产物置于/data，不擅自清理可复现记录。
+- 仓库最新本地commit为 `4ff1564`；工作区已有大量未提交实验产物，且 `joint_train.py`、`sgmse/joint_data_module.py`、`sgmse/joint_model.py`等存在修改。恢复期间未改它们，不回滚、覆盖或混入提交。
+- 本次只读取、核查并新增本文；未训练、推理、删除、覆盖checkpoint或push，也未创建/恢复长期自动目标。
+
+## 恢复后的用户目标更新
+
+上述状态为恢复核验时的快照。随后用户将当前goal置为active，并要求先读附件：
+`/data/codex-state/attachments/79890d49-e736-4581-ae97-f0eef07a9baa/pasted-text-1.txt`。
+该附件已实际读取，正文是长期StoRM/SGMSE科研指导，要求主动验证瓶颈、及时更新动态计划、避免重启已否定路线；重大改动记录计划/成本/风险后无需逐次等待批准。
+
+按这一更新，已派发 `experiment_worker` 执行上述唯一的五例消融（先复查状态，再执行冻结方案）。派发本身不代表实验已经成功；以该目录后续真实metrics/report为准。本文不将长期科研目标标记为完成。
+
+## 恢复后首次实验已完成（同日追加；覆盖上方prepared快照）
+
+五例消融已完成且通过独立缓存/产物核验：19.22秒、0/10/5次前端/后端/新CTC，约3.85MB（不含后续试听包）。两例原有修正均消失（m2ada1 d→t、f20aka1 k→n）；三例损伤中m2aga1 k→名义g，另外两例仍为原错误。166个不可变锁、10对原float/PCM音频、15份缓存的24类CTC似然重算均通过，无额外模型调用或推理重试。
+
+最终报告：`/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/experiment_report.md`；`metrics.json`与`artifact_validation.json`现已存在。
+研究计划首段已更新。结论限于整段已知语音移除的OOD机制诊断及单识别器代理，不是人耳正确率、独立noisy可恢复性或部署收益。停止当前推理迭代；三例标签变化的可选试听由Engineer基于已有音频准备，不等待用户答复才继续其他独立工作。
+
+## 随后的实质进展（同日）
+
+- 五例听感已全部完成：原始后端更接近1例、其余4例差不多；用户明确第4例两后端都/t/→/k/，第5例消融有/s/样高频尾声，并认为更多高频噪声残留导致人声样感。原话/源身份在五例实验 `listening/manual_listener_feedback*.json` 与 `manual_listener_spectral_followup_20261019.json`，不要求重听。
+- 旧页面下拉框没有保存接口，前三项由用户聊天补回；已实现实际POST/GET、草稿恢复/回执与局部提交合并，测试与真实反馈分开，当前8766兼容静态服务仍保持。不要声称从旧浏览器恢复了选择；全部20条音频来源/采样/HTTP字节已核验，页面显示五例完成。
+- 第5例已有缓存复核：固定尾部区间消融4–7.5kHz能量约31–34倍，旧CTC自由解码有/s/响应，中心24类却均ch。tail条件与anchor/RNG均不变，变化可来自前文条件移除的非局部响应。固定零延迟噪声投影很小，但不能排除非线性/相位改变的残噪，不能直接称语义幻觉。两项新CPU审计目录 `p8_vcv_f20_tail_existing_audit_20261019/`、`p8_vcv_f20_noise_correspondence_20261019/`，无新模型调用。
+- 先例审计 `p8_evidence_prior_audit_20261019/` 固定四篇原始论文及GALDSE commit：其两通道主干之前仍有mask预缩放，不能把README所说删显式输入理解为完全没有引导。普通mask保护/多候选一致性/观测grounding本身均已有先例。
+- 5243自然正例CPU源/成分审计通过，原真实seed369124093；随后 `p8_5243_native_replay_gate_20261019/attempt02/` 在保留失败记录后，以正确env/bin PATH精确重放原frontend/full30sOFF/2sclip。22.32秒，仅1frontend+1backendN30，新raw前/后端与before_sampler随机状态已恢复，17锁/独立序列化核验通过。首次只因Ninja不在PATH而在模型初始化前失败，0模型调用；不得盲目重跑父目录或删除STARTED。未运行任何自然5243局部语音移除，下一步先设计局部证据/位置对照。

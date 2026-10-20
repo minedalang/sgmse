@@ -1,0 +1,19 @@
+{
+  "core_five_hashes_match_successful10720_and_audit": true,
+  "sources_and_clip_rehashed": true,
+  "checkpoint_hash_inherited_not_read_or_loaded_in_preparation": true,
+  "effective_seed_verified": 369124093,
+  "driver_ast_parse": true,
+  "no_model_imports_or_initialization_or_checkpoint_loads": true,
+  "inference_calls": 0,
+  "training_calls": 0,
+  "numpy_scalar_json_synthetic_check": true,
+  "synthetic_in_memory_pcm_serialization_check": true,
+  "driver_import_via_runpy_no_heavy_imports": true,
+  "match_hook_actual_ast_cpu_mock_passed": true,
+  "match_hook_noisy_peak_verified": 0.75,
+  "match_hook_frontend_peak_distinct": 0.25,
+  "match_hook_progress_json_roundtrip_passed": true,
+  "match_hook_corrupt_historical_bytes_refused": true,
+  "pre_run_shadowing_bug_corrected": true
+}

@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p231_032_N1_snr_m18.wav__frontend",
+    "id": "p231_032",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N1_snr_m18.wav",
+    "basename": "p231_032_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "8da66d4a63a4a41c927c6938e9ee5df2504fce0eb927b5fb156c3b92b4007da8",
+      "samples": 55680,
+      "array_sha256": "493e83535e39a0e7f34911a51a7142c5c870129d413209d4528afe9cdd317a37",
+      "peak": 0.07196044921875,
+      "rms": 0.004923175711069862
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " Now it's good, it was right.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Now it's good, it was right.",
+        "tokens": [
+          50363,
+          2735,
+          340,
+          338,
+          922,
+          11,
+          340,
+          373,
+          826,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0036568641662598,
+        "compression_ratio": 0.8235294117647058,
+        "no_speech_prob": 0.44325682520866394
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 94,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

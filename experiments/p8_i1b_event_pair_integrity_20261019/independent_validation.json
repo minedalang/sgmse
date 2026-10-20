@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "failures": [],
+  "pcm_file_decodes": 24,
+  "pcm_samples_decoded": 1384834,
+  "pcm_payload_bytes_decoded": 2769668,
+  "decode_precheck_wav_hash_bytes": 2770724,
+  "identity_original_wav_bytes_read": 2770724,
+  "forbidden_attempts": [],
+  "network_bytes": 0,
+  "network_accounting": "all sockets refused, not packet capture",
+  "model_calls": 0,
+  "new_audio_files": 0,
+  "gates": {
+    "scientific_ready": false,
+    "noise_disjoint_ready": false,
+    "split_frozen": false,
+    "probe_training_authorized": false,
+    "model_calls_authorized": false,
+    "real_run_authorized": false
+  },
+  "target_slots": 24,
+  "operation_slots": 96,
+  "protected_metrics_sha256": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c",
+  "seconds": 3.4745484710438177,
+  "source_postcheck_hash_bytes": 2770724,
+  "pid": 43036
+}

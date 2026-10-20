@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "verified_crops": 94,
+  "source_containers": 24,
+  "pcm_bytes_exact": true,
+  "normalization": "none",
+  "human_responses": 0,
+  "real_browser_playback_tested": false,
+  "metrics_sha256": "aa2443321cf4a23b0a3b988c4ccf915a1f5b46d9eb115511b9b69c0bd6142d4e"
+}

@@ -1,0 +1,58 @@
+[
+  {
+    "name": "log_readme.txt",
+    "size": 115,
+    "compressed_size": 95,
+    "CRC32": "31dd03c1",
+    "compression": 8
+  },
+  {
+    "name": "log_testset.txt",
+    "size": 23242,
+    "compressed_size": 2547,
+    "CRC32": "7b8bc35c",
+    "compression": 8
+  },
+  {
+    "name": "__MACOSX/",
+    "size": 0,
+    "compressed_size": 0,
+    "CRC32": "00000000",
+    "compression": 0
+  },
+  {
+    "name": "__MACOSX/._log_testset.txt",
+    "size": 171,
+    "compressed_size": 93,
+    "CRC32": "c08d1a70",
+    "compression": 8
+  },
+  {
+    "name": "log_trainset_28spk.txt",
+    "size": 218659,
+    "compressed_size": 37852,
+    "CRC32": "faa471b6",
+    "compression": 8
+  },
+  {
+    "name": "__MACOSX/._log_trainset_28spk.txt",
+    "size": 171,
+    "compressed_size": 93,
+    "CRC32": "c08d1a70",
+    "compression": 8
+  },
+  {
+    "name": "log_trainset_56spk.txt",
+    "size": 436144,
+    "compressed_size": 73845,
+    "CRC32": "df7cfdc5",
+    "compression": 8
+  },
+  {
+    "name": "__MACOSX/._log_trainset_56spk.txt",
+    "size": 171,
+    "compressed_size": 93,
+    "CRC32": "c08d1a70",
+    "compression": 8
+  }
+]

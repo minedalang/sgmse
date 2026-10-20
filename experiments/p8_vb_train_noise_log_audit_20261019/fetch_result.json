@@ -1,0 +1,22 @@
+{
+  "status": "fetched_training_entry_only",
+  "seconds": 7.985741622978821,
+  "requests": 3,
+  "network_body_bytes": 136499,
+  "archive_bytes": 115932,
+  "archive_md5": "0d16f5b6afe12d64238d1e4a0e6ff6e8",
+  "archive_sha256": "ab37c41f31bc2b6c204cc10c8e5bb8bde800307fdb49f277e366d986fefc9e39",
+  "train_entry": "log_trainset_28spk.txt",
+  "train_bytes": 218659,
+  "train_crc32": "faa471b6",
+  "train_sha256": "462e42fbd0ab30f77cc5ad54fa97620aabe8cab9a8cd6eff3697708c5c01014e",
+  "opened_zip_payloads": [
+    "log_trainset_28spk.txt"
+  ],
+  "test_or_56_payloads_opened": 0,
+  "audio_decodes": 0,
+  "models": 0,
+  "ASR": 0,
+  "training": 0,
+  "retries": 0
+}

@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-19T01:49:57.752541+00:00",
+  "command": [
+    "/data/coding/sgmse/env/bin/python",
+    "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/run_local.py"
+  ],
+  "frozen_execution_manifest_sha256": "1a10f55dcf08bde0ff86b89055752d9f19c45be5c6b015fb5d5a1e6777df7934"
+}

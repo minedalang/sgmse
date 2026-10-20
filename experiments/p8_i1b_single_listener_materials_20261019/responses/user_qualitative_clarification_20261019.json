@@ -1,0 +1,20 @@
+{
+  "source": "user_chat_after_completed_94_trial_export",
+  "feedback_verbatim": "主要你黄色范围挺小的，一下就过去了，有几个我没反应过来，我就写的不确定。基本我确定有语音结构的肯定95%正确",
+  "interpretation": {
+    "target_localization_difficulty": "user reports the short yellow interval passed before they could react on some trials",
+    "some_unknown_reason": "temporal localization/reaction difficulty; not proof of acoustically absent speech",
+    "unknown_trial_IDs_specified": false,
+    "reported_high_confidence": "user self-estimate of approximately95percent correctness for positive structure judgments",
+    "empirically_validated_accuracy": null,
+    "no_specific_phoneme_claim": true,
+    "no_answer_relabeling": true,
+    "no_automatic_relisten_request": true
+  },
+  "limits": [
+    "Do not turn unknown into non_speech or a definite information-absence label",
+    "Do not assign this explanation to particular trials when the user did not identify them",
+    "Self-assessed95percent is not an independently measured accuracy or calibrated probability",
+    "Preserve all original trial answers, timestamps and previous protocol limitations"
+  ]
+}

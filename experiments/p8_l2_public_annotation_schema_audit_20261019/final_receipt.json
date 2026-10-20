@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-19T06:17:05.463222+00:00",
+  "measured_directory_bytes_before_this_receipt": 66412,
+  "limit_bytes": 2000000,
+  "protected_hashes_current_match": true,
+  "metrics_sha256": "852a893d0eec57d89a487570a8419f0292c57a24ee88aa684dd4bef67499e88d",
+  "report_sha256": "9789f85c901a41d6983dbc993bfd845b537560bb9ddb1027c9d4ff2f94a72cfd"
+}

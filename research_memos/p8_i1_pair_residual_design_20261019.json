@@ -1,0 +1,16 @@
+{
+  "kind": "I1a design freeze not execution",
+  "utc": "2026-10-19T08:46:41.033805+00:00",
+  "config_sha256": "c0ce3be4b9f6c788fadaad1e3a5924717707e283fdb42b4c0303e6a82181bd5e",
+  "plan_sha256": "dcbd2f096065f802e7d22147090f0942c331ca53a2e62c164e91a406794def29",
+  "I0_record_locks_verified": 20,
+  "audio_locks_inherited_from_I0": 24,
+  "real_audio_reads": 0,
+  "real_audio_decodes": 0,
+  "models": 0,
+  "training": 0,
+  "launch_authorized": false,
+  "critic_review": "no fatal design issues; common support/lag sign, degenerate/null/tail definitions and OLS-vs-physical-evidence distinctions incorporated",
+  "current_task": "Engineer software preparation and synthetic arrays only",
+  "goal_complete": false
+}

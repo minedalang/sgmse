@@ -1,0 +1,799 @@
+{
+  "status": "passed",
+  "scope": "CPU synthetic arithmetic and gradients only; no model, audio, fitting, or optimizer",
+  "check_count": 18,
+  "checks": [
+    "aligned finite zero",
+    "reverse penalized",
+    "overgain upper",
+    "positive margin zero response penalized",
+    "zero margin permits zero",
+    "cosine tiny perfect yet amplitude penalized",
+    "orthogonal energy",
+    "soft mask nonidempotent outside",
+    "complex Hermitian projection",
+    "zero tiny skipped finite zero gradient",
+    "valid only batch mean",
+    "common offset invisible",
+    "Noisy passthrough noise target skipped not rejected",
+    "common state distinct kernel targets read exact clean",
+    "native shared epsilon states differ",
+    "Score grad with caller detached state anchor",
+    "tiny autograd finite difference gradcheck",
+    "complex gradcheck"
+  ],
+  "fixed_cases": [
+    {
+      "name": "aligned",
+      "d": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.0,
+        "per_sample": [
+          0.0
+        ],
+        "gain": [
+          1.0
+        ],
+        "lower": [
+          0.0
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "reverse",
+      "d": [
+        [
+          [
+            -1.0,
+            0.0
+          ],
+          [
+            -0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 1.2100000000000002,
+        "per_sample": [
+          1.2100000000000002
+        ],
+        "gain": [
+          -1.0
+        ],
+        "lower": [
+          1.2100000000000002
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "overgain",
+      "d": [
+        [
+          [
+            3.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 2.25,
+        "per_sample": [
+          2.25
+        ],
+        "gain": [
+          3.0
+        ],
+        "lower": [
+          0.0
+        ],
+        "upper": [
+          2.25
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "zero",
+      "d": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.010000000000000002,
+        "per_sample": [
+          0.010000000000000002
+        ],
+        "gain": [
+          0.0
+        ],
+        "lower": [
+          0.010000000000000002
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "tiny aligned cosine cheat",
+      "d": [
+        [
+          [
+            1e-09,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.009999999800000003,
+        "per_sample": [
+          0.009999999800000003
+        ],
+        "gain": [
+          1e-09
+        ],
+        "lower": [
+          0.009999999800000003
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "orthogonal",
+      "d": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.26,
+        "per_sample": [
+          0.26
+        ],
+        "gain": [
+          0.0
+        ],
+        "lower": [
+          0.010000000000000002
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          1.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "soft outside",
+      "d": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            2.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          0.5
+        ]
+      ],
+      "expected": {
+        "total": 0.45,
+        "per_sample": [
+          0.45
+        ],
+        "gain": [
+          1.0
+        ],
+        "lower": [
+          0.0
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          1.0
+        ],
+        "outside": [
+          1.0
+        ],
+        "delta_energy": [
+          1.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "complex",
+      "d": [
+        [
+          [
+            0.5,
+            0.5
+          ],
+          [
+            1.0,
+            -0.5
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            1.0
+          ],
+          [
+            2.0,
+            -1.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.0,
+        "per_sample": [
+          0.0
+        ],
+        "gain": [
+          0.5
+        ],
+        "lower": [
+          0.0
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          7.0
+        ],
+        "valid": [
+          true
+        ],
+        "skipped": 0
+      }
+    },
+    {
+      "name": "invalid zero tiny",
+      "d": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            1.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            1e-10,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.0,
+        "per_sample": [
+          0.0,
+          0.0
+        ],
+        "gain": [
+          0.0,
+          0.0
+        ],
+        "lower": [
+          0.0,
+          0.0
+        ],
+        "upper": [
+          0.0,
+          0.0
+        ],
+        "orthogonal": [
+          0.0,
+          0.0
+        ],
+        "outside": [
+          0.0,
+          0.0
+        ],
+        "delta_energy": [
+          0.0,
+          1.0000000000000001e-20
+        ],
+        "valid": [
+          false,
+          false
+        ],
+        "skipped": 2
+      }
+    },
+    {
+      "name": "mixed valid invalid",
+      "d": [
+        [
+          [
+            -1.0,
+            0.0
+          ],
+          [
+            -0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ],
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ],
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 1.2100000000000002,
+        "per_sample": [
+          1.2100000000000002,
+          0.0
+        ],
+        "gain": [
+          -1.0,
+          0.0
+        ],
+        "lower": [
+          1.2100000000000002,
+          0.0
+        ],
+        "upper": [
+          0.0,
+          0.0
+        ],
+        "orthogonal": [
+          0.0,
+          0.0
+        ],
+        "outside": [
+          0.0,
+          0.0
+        ],
+        "delta_energy": [
+          1.0,
+          0.0
+        ],
+        "valid": [
+          true,
+          false
+        ],
+        "skipped": 1
+      }
+    },
+    {
+      "name": "noise passthrough zero clean target",
+      "d": [
+        [
+          [
+            1.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "delta": [
+        [
+          [
+            0.0,
+            0.0
+          ],
+          [
+            0.0,
+            0.0
+          ]
+        ]
+      ],
+      "mask": [
+        [
+          1.0,
+          1.0
+        ]
+      ],
+      "expected": {
+        "total": 0.0,
+        "per_sample": [
+          0.0
+        ],
+        "gain": [
+          0.0
+        ],
+        "lower": [
+          0.0
+        ],
+        "upper": [
+          0.0
+        ],
+        "orthogonal": [
+          0.0
+        ],
+        "outside": [
+          0.0
+        ],
+        "delta_energy": [
+          0.0
+        ],
+        "valid": [
+          false
+        ],
+        "skipped": 1
+      }
+    }
+  ],
+  "ouve": {
+    "a": 0.6,
+    "sigma": 0.4,
+    "anchor": 0.3,
+    "u": 0.7,
+    "c0": 0.8,
+    "c1": 1.0,
+    "q0": -0.6249999999999998,
+    "q1": 0.12500000000000008,
+    "readout": [
+      [
+        0.8,
+        1.0
+      ]
+    ]
+  },
+  "noise_passthrough_diagnostic": {
+    "input_direction_gain": 1.0,
+    "response_energy": 1.0,
+    "clean_direction_undefined": true,
+    "interpretation": "diagnostic along noise input, NOT clean gain; zero clean target skipped, so noise response is not penalized"
+  },
+  "limitations": [
+    "zero edit with identical inputs and RNG is consistency, not learned evidence",
+    "not identifiability or enhancement evidence",
+    "positive margin enforces amplitude",
+    "zero margin admits zero",
+    "common error cancels",
+    "Noisy passthrough follows noise too",
+    "no optimizer, model, source data or audio"
+  ],
+  "code_sha256": {
+    "config.yaml": "213ec701eb6c12fb931993fb3e10db933c31d8f4cff6efeb40a029aa7f53b4b0",
+    "objective.py": "9bdbc99dd8094f184385058a2f955085b5749521a45262e5eac20f58ae028522",
+    "synthetic_check.py": "fa49c6d4795d993cd85c27c2ec69b1261198dcc0fc7dfe553167712de369ec31",
+    "reference_check.py": "55a340c3bf0f0561a3d49ce8c031d25ed332cc11969765c3ed0e8220e6892daa"
+  }
+}

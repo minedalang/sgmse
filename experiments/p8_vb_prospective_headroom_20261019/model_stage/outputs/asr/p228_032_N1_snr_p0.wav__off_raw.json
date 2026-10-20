@@ -1,0 +1,82 @@
+{
+  "request": {
+    "key": "p228_032_N1_snr_p0.wav__off",
+    "id": "p228_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_p0.wav",
+    "basename": "p228_032_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "b9832b943acd891955b84510f36aba74ffdc32e34cac32e7358be650d133adff",
+      "samples": 67141,
+      "array_sha256": "c15e350820d06026824b1b819de01cad88a96f934e1f16d356be8efb87b2e912",
+      "peak": 0.040496826171875,
+      "rms": 0.006130356634006632
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " We must provide a long-term solution to tackle this attitude.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " We must provide a long-term solution to tackle this attitude.",
+        "tokens": [
+          50363,
+          775,
+          1276,
+          2148,
+          257,
+          890,
+          12,
+          4354,
+          4610,
+          284,
+          9761,
+          428,
+          9408,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.2959764003753662,
+        "compression_ratio": 0.9682539682539683,
+        "no_speech_prob": 0.035085517913103104
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 50,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

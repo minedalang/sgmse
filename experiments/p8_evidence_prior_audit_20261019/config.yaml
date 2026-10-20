@@ -1,0 +1,17 @@
+{
+  "status": "retrieving",
+  "budget_seconds": 300,
+  "saved_payload_cap_bytes": 5000000,
+  "essential_code_cap_bytes": 500000,
+  "training": false,
+  "inference": false,
+  "downloads": "public primary HTML/docs/targeted code only",
+  "source_identifiers": [
+    "2509.19495v1",
+    "2511.13300v1",
+    "2609.04245v1",
+    "2409.15101 latest",
+    "wangchengzhong/GALDSE master"
+  ],
+  "started_utc": "2026-10-19T00:59:08.512557+00:00"
+}

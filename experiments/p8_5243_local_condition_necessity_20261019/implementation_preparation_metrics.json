@@ -1,0 +1,35 @@
+{
+  "status": "prepared_only",
+  "frontend_calls": 0,
+  "backend_calls": 0,
+  "recognizer_calls": 0,
+  "model_imports": 0,
+  "checkpoint_loads": 0,
+  "ast_parse_passed": true,
+  "safe_import_without_torch_or_transformers": true,
+  "actual_frozen_recipe_cpu_reconstruction_passed": true,
+  "condition_hashes": {
+    "target": "6025ed7d4d8efe4e66b9c712a2c64401cc0e345b50a841a45cf1d46567a267bc",
+    "left": "d176ae29dddbbc9cadadb199a638f3d5dfd3205627e8399409f6efe800c3ad5b",
+    "right": "fb812416d567cddefe1e8ed5bded323da40acfc9a4051407d76cf711713bb2ef"
+  },
+  "peak_bitwise_guards_passed": true,
+  "outside_and_noise_and_energy_guards_passed": true,
+  "frozen_worker_files_unchanged": {
+    "selection_frozen.json": "f59cff9bdfc80a32c4a5b2959ddde0f3b295b7ecf2c5b8eb67736ac76f43ca6d",
+    "config.yaml": "5d1e8d00bb4a666c4c41758d1183893b2daa5d11dda4e6c6297bc3567747e39e",
+    "preparation_metrics.json": "cad453314e40546c18bf52ee8ad63facc3ff118167bd55843ad2831ac5070125",
+    "preparation_report.md": "e850c36f1ae4fbcbff111205e05399fe10abbbe504b3b588ca0b2ff396ee8247"
+  },
+  "numpy_scalar_json_passed": true,
+  "synthetic_fixed_and_neighborhood_bookkeeping_passed": true,
+  "synthetic_native_measurement_gate_pass_and_fail_passed": true,
+  "synthetic_frame_geometry_refusal_passed": true,
+  "nonweight_source_locks_rehashed": 56,
+  "backend_and_classifier_weight_hashes_inherited_not_loaded": true,
+  "actual_native_and_classifier_proof_reserved_for_worker": true,
+  "driver_sha256": "d6c161c34c844addfb2141e1e0ac55045795367e5a1330478d317a58998ee373",
+  "end_backend_rng_hashes_compared_against_native_and_across_four": true,
+  "clip_and_processor_mean_rms_std_recorded": true,
+  "final_ast_and_safe_import_passed": true
+}

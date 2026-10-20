@@ -1,0 +1,81 @@
+{
+  "request": {
+    "key": "p231_029_N1_snr_m18.wav__off",
+    "id": "p231_029",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N1_snr_m18.wav",
+    "basename": "p231_029_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "e25e4e2e43fcb2cbedae6b9e49a105fd4a6e38e6dee7d39a255b02981ccec14b",
+      "samples": 49851,
+      "array_sha256": "04c3df8339848ede11fa9897e1222ea472cfdb3138b1a30ee57264cbb04e05ab",
+      "peak": 0.116363525390625,
+      "rms": 0.00836465673257005
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_029",
+    "original_text": "Last night, Mr Robertson said he was delighted.\n",
+    "raw_text_hex": "4c617374206e696768742c204d7220526f62657274736f6e2073616964206865207761732064656c6967687465642e0a",
+    "raw_text_sha256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+    "archive_entry": "trainset_28spk_txt/p231_029.txt"
+  },
+  "raw_result": {
+    "text": " stuff from it because what I'm doing is bring stuff.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 7.0,
+        "text": " stuff from it because what I'm doing is bring stuff.",
+        "tokens": [
+          50363,
+          3404,
+          422,
+          340,
+          780,
+          644,
+          314,
+          1101,
+          1804,
+          318,
+          2222,
+          3404,
+          13,
+          50713
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8306984583536784,
+        "compression_ratio": 0.9454545454545454,
+        "no_speech_prob": 0.12073294073343277
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 83,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

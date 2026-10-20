@@ -1,0 +1,175 @@
+{
+  "kind": "Lead separate source-document semantic supplement; does not overwrite frozen Worker audit",
+  "utc": "2026-10-19T09:48:45.607712+00:00",
+  "original_worker_metrics_sha256": "ca1ffd3055f8c98e6fd77e3d9c351d7e55c52a743a086324c4fcc5570a8849da",
+  "original_worker_nominal_SNR_null_preserved": true,
+  "source_archive_sha256": "ab37c41f31bc2b6c204cc10c8e5bb8bde800307fdb49f277e366d986fefc9e39",
+  "documentation_read": {
+    "entry": "log_readme.txt",
+    "bytes": 115,
+    "CRC32": "31dd03c1",
+    "sha256": "58d41e2a300445471342a1f236e0ed5f993cf0ab6c343228f17e354e20770319",
+    "raw_text": "The log files describe the noisy condition per wavfile for each of the datasets as follows:\n\nwavfile noise SNR(dB)\n",
+    "reader": "Root separate readonly document review after Worker fetch completed; not part of frozen Worker opened-payload count"
+  },
+  "selected": [
+    {
+      "id": "p233_027",
+      "speaker": "p233",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 10.0,
+      "source_line_number": 4202,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p233_028",
+      "speaker": "p233",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 5.0,
+      "source_line_number": 4203,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p236_036",
+      "speaker": "p236",
+      "publisher_noise_label": "ssn",
+      "publisher_nominal_SNR_dB": 0.0,
+      "source_line_number": 32,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p236_040",
+      "speaker": "p236",
+      "publisher_noise_label": "station",
+      "publisher_nominal_SNR_dB": 0.0,
+      "source_line_number": 36,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p239_026",
+      "speaker": "p239",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 10.0,
+      "source_line_number": 4966,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p239_028",
+      "speaker": "p239",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 0.0,
+      "source_line_number": 4968,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p243_026",
+      "speaker": "p243",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 15.0,
+      "source_line_number": 7844,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p243_027",
+      "speaker": "p243",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 10.0,
+      "source_line_number": 7845,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p244_028",
+      "speaker": "p244",
+      "publisher_noise_label": "restaurant",
+      "publisher_nominal_SNR_dB": 5.0,
+      "source_line_number": 513,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p244_034",
+      "speaker": "p244",
+      "publisher_noise_label": "station",
+      "publisher_nominal_SNR_dB": 15.0,
+      "source_line_number": 519,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p250_038",
+      "speaker": "p250",
+      "publisher_noise_label": "traffic",
+      "publisher_nominal_SNR_dB": 15.0,
+      "source_line_number": 2516,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    },
+    {
+      "id": "p250_050",
+      "speaker": "p250",
+      "publisher_noise_label": "cafeteria",
+      "publisher_nominal_SNR_dB": 0.0,
+      "source_line_number": 2527,
+      "noise_recording_id": "unknown",
+      "local_or_event_SNR_verified": false
+    }
+  ],
+  "publisher_nominal_SNR_counts": {
+    "0.0": 4,
+    "5.0": 2,
+    "10.0": 3,
+    "15.0": 3
+  },
+  "publisher_noise_label_counts": {
+    "cafeteria": 1,
+    "restaurant": 7,
+    "ssn": 1,
+    "station": 2,
+    "traffic": 1
+  },
+  "components_speaker_or_same_literal_label": [
+    [
+      "p233_027",
+      "p233_028",
+      "p236_036",
+      "p236_040",
+      "p239_026",
+      "p239_028",
+      "p243_026",
+      "p243_027",
+      "p244_028",
+      "p244_034"
+    ],
+    [
+      "p250_038",
+      "p250_050"
+    ]
+  ],
+  "split_feasibility_under_this_relation": {
+    "nonempty_components": 2,
+    "three_nonempty_relation_disjoint_splits_possible": false,
+    "not_a_claim_about_true_recording_identity": true
+  },
+  "source_scope_limits": [
+    "nominal publisher SNR does not certify local16k waveform or80ms eventSNR",
+    "noise labels do not provide recording ID,offset,channel or noise-sourcehash",
+    "I0/I1a/I1b technical data preparation is not extreme-low-SNR content validation",
+    "no ID replacements, gain/lag changes, audio or model work"
+  ],
+  "Root_new_network_requests": 0,
+  "Root_documentation_payloads_read": 1,
+  "Root_test_or_56_payloads_read": 0,
+  "audio_reads": 0,
+  "models": 0,
+  "training": 0,
+  "scientific_gate_ready": false,
+  "goal_complete": false
+}

@@ -1,0 +1,62 @@
+{
+  "experiment_id": "p8_l2_public_annotation_schema_audit_20261019",
+  "status": "completed_public_single_example_metadata_audit",
+  "fetch": {
+    "requests": 1,
+    "http_status": 200,
+    "curl_exit_code": 0,
+    "elapsed_seconds": 1.289304605918005,
+    "body_bytes": 3579,
+    "body_sha256": "bb2e198e06fb6646f7f60f6548e5ed7d6d558987bad52c4d0e9a278190d88573",
+    "redirects": 0,
+    "retries": 0,
+    "wire_bytes_measured": false
+  },
+  "structure": {
+    "global_xmin": "0",
+    "global_xmax": "1.6214965986394558",
+    "tier_counts": {
+      "words": 7,
+      "phones": 16,
+      "IPA": 7
+    },
+    "empty_counts": {
+      "words": 2,
+      "phones": 1,
+      "IPA": 4
+    },
+    "phone_label_counts": {
+      "empty": 1,
+      "no_comma": 12,
+      "triple_s": 3,
+      "triple_a": 0,
+      "triple_d": 0,
+      "unknown": 0
+    },
+    "all_Decimal_times_ranges_continuity_counts_passed": true
+  },
+  "independent_validation": "passed",
+  "protected_hashes_post_match": true,
+  "protected_count": 11,
+  "git_porcelain_before_sha256": "914cd99fc5fcae53b60a8f5c362676bc1f1e07c3375006ed47a7d010eaea3464",
+  "git_porcelain_after_sha256": "914cd99fc5fcae53b60a8f5c362676bc1f1e07c3375006ed47a7d010eaea3464",
+  "git_porcelain_same": true,
+  "calls": {
+    "audio_download": 0,
+    "audio_decode": 0,
+    "resample": 0,
+    "models": 0,
+    "ASR": 0,
+    "training": 0,
+    "annotation_contract_on_actual_labels": 0
+  },
+  "limitations": [
+    "public single annotation example only, not registered corpus access",
+    "publisher annotation assertions not verified against audio",
+    "no phonetic truth, candidate coverage, calibration or enhancement hypothesis validated",
+    "sp and empty labels preserve raw markers; no silence/speech semantic inference",
+    "a/d absent only in this sample; no corpus-wide inference",
+    "business and independent parser implemented by same Worker, separate algorithms and no shared parsing functions",
+    "prior Root web rendition exposed expected structure before fetch; not blinded independent sample selection"
+  ]
+}

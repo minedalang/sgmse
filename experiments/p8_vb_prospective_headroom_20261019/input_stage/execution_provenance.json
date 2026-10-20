@@ -1,0 +1,28 @@
+{
+  "preparation_command": "python3 -B /data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/prepare_inputs.py",
+  "preparation_exec_session": 8975,
+  "supervisor_pid": 13285,
+  "child_pid": 13286,
+  "pid_evidence": "real frozen supervisor metrics; first ps call found already terminal, so not claimed independently observed",
+  "started_marker": {
+    "utc": "2026-10-19T06:42:38.226921+00:00",
+    "manifest_sha256": "cddd9b95f661bc26658a417238983b0ca677727221088ad3358cb982a199e117"
+  },
+  "preparation_seconds": 4.34754569910001,
+  "preparation_exit": 0,
+  "validator_command": "python3 -B /data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/validate_inputs.py",
+  "validator_exec_session": 28813,
+  "validator_exit": 0,
+  "validator_duration": "not measured by frozen validator; no fabricated elapsed time",
+  "one_preparation": true,
+  "one_validator": true,
+  "retries": 0,
+  "models": 0,
+  "ASR": 0,
+  "training": 0,
+  "network_bytes": 0,
+  "resample": 0,
+  "source_pcm_decodes": 10,
+  "model_stage_authorized": false,
+  "written_utc": "2026-10-19T06:43:53.941188+00:00"
+}

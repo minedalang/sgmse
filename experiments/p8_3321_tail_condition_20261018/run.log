@@ -1,0 +1,14 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/run_pilot.py", line 112, in main
+    assert rec['sha256']==expected[k]
+KeyError: 'off'
+{
+  "status": "failed",
+  "failures": [
+    {
+      "error": "KeyError('off')",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/run_pilot.py\", line 112, in main\n    assert rec['sha256']==expected[k]\nKeyError: 'off'\n"
+    }
+  ],
+  "wall_seconds": 5.914555791998282
+}

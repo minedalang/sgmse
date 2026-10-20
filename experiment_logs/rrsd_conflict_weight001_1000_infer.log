@@ -38,3 +38,4 @@ Running NCSN++ as discriminative backbone
 [Eval] backend EMA enabled
 Found wavs: 32
 [RRSD-TCUT] t_cut=0.0 scale=1.0 enabled=True seed=2026 N=30
+Done. Output: experiment_logs/rrsd_conflict_weight001_1000/infer

@@ -1,0 +1,73 @@
+{
+  "request": {
+    "key": "p231_029_N1_snr_m18.wav__frontend",
+    "id": "p231_029",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_029_N1_snr_m18.wav",
+    "basename": "p231_029_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "91389721720610847313df7a38f9e4e572fe8bf2ea095fd10a889d0378b47fde",
+      "samples": 49851,
+      "array_sha256": "4a79533d83e084ab97ccfdeabd15c86cfcb7b99c3422fe672a444f64c9095d2f",
+      "peak": 0.117156982421875,
+      "rms": 0.007130968792981642
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_029",
+    "original_text": "Last night, Mr Robertson said he was delighted.\n",
+    "raw_text_hex": "4c617374206e696768742c204d7220526f62657274736f6e2073616964206865207761732064656c6967687465642e0a",
+    "raw_text_sha256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+    "archive_entry": "trainset_28spk_txt/p231_029.txt"
+  },
+  "raw_result": {
+    "text": " of my support.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " of my support.",
+        "tokens": [
+          50363,
+          286,
+          616,
+          1104,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.5608916963849748,
+        "compression_ratio": 0.6363636363636364,
+        "no_speech_prob": 0.7717456817626953
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 82,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

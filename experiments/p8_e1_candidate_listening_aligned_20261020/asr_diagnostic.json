@@ -1,0 +1,275 @@
+{
+  "experiment_id": "p8_e1_candidate_listening_aligned_20261020",
+  "purpose": "same-decoder ASR alignment/content diagnostic; not ground-truth WER",
+  "model": "whisper tiny.en",
+  "device": "cuda",
+  "decode": {
+    "beam_size": 5,
+    "temperature": 0,
+    "condition_on_previous_text": false
+  },
+  "runtime_s": 3.1225228309631348,
+  "rows": [
+    {
+      "fileid": 5243,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "clean",
+      "text": "was Canadian by birth.",
+      "normalized_edit_distance_to_clean_prompt": 0.7142857142857143,
+      "runtime_s": 1.0462260246276855,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_clean.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 5243,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "noisy",
+      "text": "",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.08405017852783203,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_noisy.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 5243,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "off",
+      "text": "self is to make you my birth.",
+      "normalized_edit_distance_to_clean_prompt": 0.9285714285714286,
+      "runtime_s": 0.11358213424682617,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_off.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 5243,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "router",
+      "text": "self is to make you my birth.",
+      "normalized_edit_distance_to_clean_prompt": 0.9285714285714286,
+      "runtime_s": 0.10757803916931152,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_router.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 5243,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "y_pre",
+      "text": "self as community by birth.",
+      "normalized_edit_distance_to_clean_prompt": 0.8571428571428571,
+      "runtime_s": 0.09161853790283203,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/00_fileid_5243_19.50-20.00s_context_y_pre.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 4812,
+      "target_window_s": [
+        12.5,
+        13.0
+      ],
+      "arm": "clean",
+      "text": "to my reconstitution of their friendship.",
+      "normalized_edit_distance_to_clean_prompt": 0.7058823529411765,
+      "runtime_s": 0.10617280006408691,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/01_fileid_4812_12.50-13.00s_context_clean.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 4812,
+      "target_window_s": [
+        12.5,
+        13.0
+      ],
+      "arm": "noisy",
+      "text": "",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.09212207794189453,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/01_fileid_4812_12.50-13.00s_context_noisy.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 4812,
+      "target_window_s": [
+        12.5,
+        13.0
+      ],
+      "arm": "off",
+      "text": "capper that I even want to cook in your love, Bensha.",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.16363978385925293,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/01_fileid_4812_12.50-13.00s_context_off.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 4812,
+      "target_window_s": [
+        12.5,
+        13.0
+      ],
+      "arm": "router",
+      "text": "cap for that even while the cooking you love, Bensha.",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.1489882469177246,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/01_fileid_4812_12.50-13.00s_context_router.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 4812,
+      "target_window_s": [
+        12.5,
+        13.0
+      ],
+      "arm": "y_pre",
+      "text": "cat but I need my attention to the work, won't you?",
+      "normalized_edit_distance_to_clean_prompt": 0.9411764705882353,
+      "runtime_s": 0.14649534225463867,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/01_fileid_4812_12.50-13.00s_context_y_pre.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 11999,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "clean",
+      "text": "even in the most perfect community.",
+      "normalized_edit_distance_to_clean_prompt": 0.5384615384615384,
+      "runtime_s": 0.09755229949951172,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/02_fileid_11999_19.50-20.00s_context_clean.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 11999,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "noisy",
+      "text": "",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.08236193656921387,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/02_fileid_11999_19.50-20.00s_context_noisy.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 11999,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "off",
+      "text": "So I'm gonna have to pray it in minute",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.12369632720947266,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/02_fileid_11999_19.50-20.00s_context_off.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 11999,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "router",
+      "text": "Some dead preyed in minute",
+      "normalized_edit_distance_to_clean_prompt": 0.9230769230769231,
+      "runtime_s": 0.09107255935668945,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/02_fileid_11999_19.50-20.00s_context_router.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 11999,
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "arm": "y_pre",
+      "text": "of those points. You mean it?",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.11500406265258789,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/02_fileid_11999_19.50-20.00s_context_y_pre.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 10720,
+      "target_window_s": [
+        14.5,
+        15.0
+      ],
+      "arm": "clean",
+      "text": "indeed certainly will.",
+      "normalized_edit_distance_to_clean_prompt": 0.8,
+      "runtime_s": 0.0772545337677002,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_clean.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 10720,
+      "target_window_s": [
+        14.5,
+        15.0
+      ],
+      "arm": "noisy",
+      "text": "Thank you.",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.0561985969543457,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_noisy.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 10720,
+      "target_window_s": [
+        14.5,
+        15.0
+      ],
+      "arm": "off",
+      "text": "on there into the old Albreedus.",
+      "normalized_edit_distance_to_clean_prompt": 0.9333333333333333,
+      "runtime_s": 0.11851906776428223,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_off.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 10720,
+      "target_window_s": [
+        14.5,
+        15.0
+      ],
+      "arm": "router",
+      "text": "on the old Albreedus.",
+      "normalized_edit_distance_to_clean_prompt": 0.9333333333333333,
+      "runtime_s": 0.11875295639038086,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_router.wav",
+      "device": "cuda"
+    },
+    {
+      "fileid": 10720,
+      "target_window_s": [
+        14.5,
+        15.0
+      ],
+      "arm": "y_pre",
+      "text": "Make it back as well with this.",
+      "normalized_edit_distance_to_clean_prompt": 1.0,
+      "runtime_s": 0.13129472732543945,
+      "clip": "experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_y_pre.wav",
+      "device": "cuda"
+    }
+  ],
+  "clean_prompt_status": "automatic prompt only"
+}

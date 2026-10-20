@@ -1,0 +1,10 @@
+{
+  "count": 32,
+  "means": {
+    "DNSMOS_P808": 3.9217402594430104,
+    "DNSMOS_SIG": 3.4287579802679415,
+    "DNSMOS_BAK": 4.117883233794178,
+    "DNSMOS_OVRL": 3.1114205677254976
+  },
+  "paired_comparison": "unavailable: matching DNSMOS per-utterance outputs absent for rrsd_cv_repeat32/router and masked_pair32; existing speaker DNSMOS CSV uses different manifest filenames"
+}

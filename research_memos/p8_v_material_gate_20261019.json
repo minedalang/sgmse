@@ -1,0 +1,607 @@
+{
+  "kind": "read_only_material_provenance_review_not_acoustic_experiment",
+  "utc": "2026-10-19T06:00:06.061114+00:00",
+  "status": "review_completed_full_V1_material_gate_not_met",
+  "source_locks": [
+    {
+      "path": "/data/coding/sgmse/experiments/p8_q_external_corpus_audit_20261018/record.json",
+      "bytes": 8852,
+      "sha256": "b581f11dd6418902349d5913bfa3d9e81bc1dd6d611e60aad22ec6257c18f4ad"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_q_external_corpus_audit_20261018/readme_extracted.txt",
+      "bytes": 8278,
+      "sha256": "600d668605a9039ab49b685de322e212389c381d0d699f58737b8dd9c0483fd1"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_q_external_corpus_audit_20261018/handsegm.91.mlf.txt",
+      "bytes": 8036,
+      "sha256": "f373fbfa6c065b85ea98ac0be86644ea108a35c0189fca061aebe1420cf1e646"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/central_directory_inventory.json",
+      "bytes": 3526281,
+      "sha256": "15738d82ec6812104d70c0a0ef26d45ade2c3a126af6c813e28b120277350542"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/selected_manifest_frozen.json",
+      "bytes": 40301,
+      "sha256": "ffe3d9372646269c6df48bbaafd7d13b30d4d331c7507113df59dec55a71f578"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/selected_manifest_frozen.json",
+      "bytes": 19580,
+      "sha256": "31c4e4aa9abd9a2cae0cf8b2576942506e3f1cb18cfdb5d7ffd356ff24773ff2"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl",
+      "bytes": 12544390,
+      "sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json",
+      "bytes": 1038290,
+      "sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/metrics.json",
+      "bytes": 57176,
+      "sha256": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7"
+    }
+  ],
+  "source_locks_pre_post_equal": true,
+  "git_porcelain_snapshot_pre_post_equal": true,
+  "git_sha256": "0086d160751ab67e6ec0059ecc2dc7e9bfde772770f4914a778b853bc1832fed",
+  "scope": "Existing CCC train inventory, two retrieved source manifests, published 91-item MLF, VoiceBank train/valid label manifest; no new corpus request or raw test contents. Remaining speaker identities are only relative to these two cached manifests, not a global unseen/pretraining assertion.",
+  "ccc": {
+    "archive_entries": 13328,
+    "audio_nominal_entries": 6664,
+    "appledouble_entries": 6664,
+    "speakers": {
+      "f11": 429,
+      "f13": 415,
+      "f18": 418,
+      "f20": 432,
+      "f22": 411,
+      "f23": 425,
+      "f24": 407,
+      "f6": 428,
+      "m10": 403,
+      "m15": 414,
+      "m17": 419,
+      "m2": 422,
+      "m4": 419,
+      "m5": 417,
+      "m8": 416,
+      "m9": 389
+    },
+    "consonants": {
+      "b": 283,
+      "ch": 281,
+      "d": 284,
+      "dh": 243,
+      "dj": 276,
+      "f": 281,
+      "g": 264,
+      "h": 284,
+      "k": 285,
+      "l": 286,
+      "m": 286,
+      "n": 286,
+      "ng": 276,
+      "p": 283,
+      "r": 277,
+      "s": 286,
+      "sh": 287,
+      "t": 281,
+      "th": 257,
+      "v": 285,
+      "w": 285,
+      "y": 284,
+      "z": 283,
+      "zh": 241
+    },
+    "same_speaker_context_stress_groups": 288,
+    "kg_groups": 262,
+    "td_groups": 277,
+    "kgtd_groups": 254,
+    "manual_files": 91,
+    "manual_files_in_train": 91,
+    "manual_matched_kg_groups": 0,
+    "manual_matched_td_groups": 0,
+    "cached_manifests": [
+      {
+        "manifest": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/selected_manifest_frozen.json",
+        "files": 28,
+        "primary": 16,
+        "speakers": [
+          "f11",
+          "f22",
+          "f23",
+          "f6",
+          "m10",
+          "m2",
+          "m4",
+          "m8",
+          "m9"
+        ],
+        "manual_boundaries": 13
+      },
+      {
+        "manifest": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/selected_manifest_frozen.json",
+        "files": 16,
+        "primary": 16,
+        "speakers": [
+          "f18",
+          "f20",
+          "m15",
+          "m5"
+        ],
+        "manual_boundaries": 0
+      }
+    ],
+    "cached_source_files": 44,
+    "cached_unique_basenames": 44,
+    "cached_speakers": [
+      "f11",
+      "f18",
+      "f20",
+      "f22",
+      "f23",
+      "f6",
+      "m10",
+      "m15",
+      "m2",
+      "m4",
+      "m5",
+      "m8",
+      "m9"
+    ],
+    "cached_manual_files": 13,
+    "inventory_only_speakers_relative_to_two_manifests": [
+      "f13",
+      "f24",
+      "m17"
+    ],
+    "inventory_only_speaker_stats": {
+      "f13": {
+        "audio_entries": 415,
+        "kgtd_groups": 16
+      },
+      "f24": {
+        "audio_entries": 407,
+        "kgtd_groups": 15
+      },
+      "m17": {
+        "audio_entries": 419,
+        "kgtd_groups": 17
+      }
+    },
+    "no_absent_event_class_in_nominal_inventory": true,
+    "cached_files": [
+      {
+        "basename": "f6aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6aka1.wav",
+        "speaker": "f6",
+        "bytes": 23546,
+        "sha256": "519babe8e11c32cf034e464acee302132eaa3f9511a0358368a04782c3f02536",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f6aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6aga1.wav",
+        "speaker": "f6",
+        "bytes": 19546,
+        "sha256": "0127df08b74ec2cc077e383feacf735bc1f541d916434ca01b4c466e95645346",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f6ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6ata1.wav",
+        "speaker": "f6",
+        "bytes": 24046,
+        "sha256": "948d78aea7864caeda30287ed384bb4ddfb53cb7c575ea10a9945e8516666433",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f6ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6ada1.wav",
+        "speaker": "f6",
+        "bytes": 20546,
+        "sha256": "4869074b9a990300dbb4a5c086c2842776288fb3562a32f5372063f179652996",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m2aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2aka1.wav",
+        "speaker": "m2",
+        "bytes": 24546,
+        "sha256": "61a2f98a2478301ea4d1e4658af6982e9780e474568090c419ed4e3d3d66e9d4",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m2aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2aga1.wav",
+        "speaker": "m2",
+        "bytes": 24546,
+        "sha256": "1dce6ec9cee454415a33852a403ea91678cadedcc6464feae077a1559e388d7d",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m2ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ata1.wav",
+        "speaker": "m2",
+        "bytes": 25546,
+        "sha256": "485adf590aade0fc1f158049a3ec50f872acdfa6e70d205f55067b97caefb08e",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m2ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ada1.wav",
+        "speaker": "m2",
+        "bytes": 22546,
+        "sha256": "6bf6ce3f47d7238ff86daf255a061ed114363535b980e4f25e21f17314e4a29c",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f11aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11aka1.wav",
+        "speaker": "f11",
+        "bytes": 21046,
+        "sha256": "8c21d64d7b2e2cb18c105a8506d04242c2ba24a3bd51bd8b11068791bbd2a684",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f11aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11aga1.wav",
+        "speaker": "f11",
+        "bytes": 17046,
+        "sha256": "2c22bbc1ecfa7c446c3179f2d48f19667b22625f1e8149bf18bf96c68633cd41",
+        "manual_boundary": true
+      },
+      {
+        "basename": "f11ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11ata1.wav",
+        "speaker": "f11",
+        "bytes": 20546,
+        "sha256": "56c839ef855fba8ebde60e16b5b619274a60e987972b3c5ea0f2d2db1bff563e",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f11ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f11ada1.wav",
+        "speaker": "f11",
+        "bytes": 19046,
+        "sha256": "a95582c030774eda18af9ea49cc48f382ba4fbfc3f7763be4208c29155cc2d1e",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m4aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4aka1.wav",
+        "speaker": "m4",
+        "bytes": 22546,
+        "sha256": "1a4dc49cc9dc1d8b07a3369a555929ae466e0c99a0fcff7ed04b83997a94e816",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m4aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4aga1.wav",
+        "speaker": "m4",
+        "bytes": 21546,
+        "sha256": "5bd6bb5fc0353b12c7699f1099398f12f58cc66e2d00e23bf3b805e2788cc37d",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m4ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4ata1.wav",
+        "speaker": "m4",
+        "bytes": 22046,
+        "sha256": "70ff3809ea432c5eeefdc8f6ea65e59fb82f2d0e246f3a4dd48f18f0d4f8068f",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m4ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4ada1.wav",
+        "speaker": "m4",
+        "bytes": 21546,
+        "sha256": "0621f46b3efff33e339a1957a73df3271b4ee00b408f48a7e785c8e7d95b8f6a",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f22idi1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f22idi1.wav",
+        "speaker": "f22",
+        "bytes": 32046,
+        "sha256": "7672f904462bbacea3134a5524a02c3fefc1f0c062a73d71f5e00e7a309fb021",
+        "manual_boundary": true
+      },
+      {
+        "basename": "f23iki1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f23iki1.wav",
+        "speaker": "f23",
+        "bytes": 25046,
+        "sha256": "f95db453d9ab1ed002ff754180b2935ae48bb597099ea32c25fef8654b1d3d61",
+        "manual_boundary": true
+      },
+      {
+        "basename": "f6iti1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/f6iti1.wav",
+        "speaker": "f6",
+        "bytes": 28546,
+        "sha256": "ea8f1f436010a6ca90ef75ea27f9565f73c8932ebdb1df2a80e349ae97857bb3",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m10uku2.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m10uku2.wav",
+        "speaker": "m10",
+        "bytes": 34046,
+        "sha256": "45b9043c8cb28be49c148a7c421ee517b3e42806536ca2aafe2c9e67633b1868",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m2ata2.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ata2.wav",
+        "speaker": "m2",
+        "bytes": 26546,
+        "sha256": "98903cdce9269c41d441bbe1f24c863a9432105e876b12f4730c32cb99749569",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m2ugu1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m2ugu1.wav",
+        "speaker": "m2",
+        "bytes": 35046,
+        "sha256": "47c221a201b6290edabb94f7dfd3a2920e31a53013d0c44f08aa4fd82c7d57ae",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m4udu1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4udu1.wav",
+        "speaker": "m4",
+        "bytes": 24046,
+        "sha256": "21b2551fbb0452d0c4bbb2f6d1c12cdf2cdf3cbe0ef90935163b2d02e5e98b77",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m4udu2.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m4udu2.wav",
+        "speaker": "m4",
+        "bytes": 26546,
+        "sha256": "8b522bb0111eb08c2ab53460d54b7692d90cde7a9a30b149ea090ae366ec3a55",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m8ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8ada1.wav",
+        "speaker": "m8",
+        "bytes": 23546,
+        "sha256": "70e84b412a94a86c15a9af83aa7c9f2df9bdf7cb08bfbb9b3114327fc8489f80",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m8igi1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8igi1.wav",
+        "speaker": "m8",
+        "bytes": 32546,
+        "sha256": "cea6389e8713495d50ea6146e560457d3ce9e58fc29623faa5d15c315fc3aac0",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m8utu1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m8utu1.wav",
+        "speaker": "m8",
+        "bytes": 32046,
+        "sha256": "4addec665537d56255c84209079b4a2370929923bf83837d0aa1c7854a44339d",
+        "manual_boundary": true
+      },
+      {
+        "basename": "m9aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_clean_calibration_20261018/retrieval/raw_audio/m9aka1.wav",
+        "speaker": "m9",
+        "bytes": 21546,
+        "sha256": "f6ad1b858b7a2382d405274db1910f1b5f240b162df18abf7d4433130eb8681c",
+        "manual_boundary": true
+      },
+      {
+        "basename": "f18aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18aka1.wav",
+        "speaker": "f18",
+        "bytes": 24546,
+        "sha256": "d5f08aec54e94870b6e2b9e83304d1ecaf9ca8f91b1dc6d9af09b312acd8ae1f",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f18aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18aga1.wav",
+        "speaker": "f18",
+        "bytes": 23046,
+        "sha256": "849e63a9dead2b69f7bee4de3dbac45db2fa3acbf9de14370804a09707e40fa8",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f18ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18ata1.wav",
+        "speaker": "f18",
+        "bytes": 24546,
+        "sha256": "550da1026f9d3f01626995cacf9d518613a7c0d14dfcd64a8d626062113671aa",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f18ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f18ada1.wav",
+        "speaker": "f18",
+        "bytes": 22546,
+        "sha256": "95991535bf57a1f334e8c7e79ad65026cd13b472cf659a9bd42135cc5144e2f4",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m5aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5aka1.wav",
+        "speaker": "m5",
+        "bytes": 27046,
+        "sha256": "aec80a0ba1fde570870fb0a330ff6c3a18a668ed0e9be003c89a425d0199c090",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m5aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5aga1.wav",
+        "speaker": "m5",
+        "bytes": 27046,
+        "sha256": "a068ed22e1bcad5cfa9263eb6ed23d387147b8effd192b357dbab1a9ec528b5d",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m5ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5ata1.wav",
+        "speaker": "m5",
+        "bytes": 24546,
+        "sha256": "97e8ff769ca5ccbdae02c3aefc9d075704cfbf9e805c5ed75aae696b419c97f0",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m5ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m5ada1.wav",
+        "speaker": "m5",
+        "bytes": 28046,
+        "sha256": "112a6884b1b960df14a8ae8cb31cfdc91b194da79a6dbab21c5d5341ea47ce17",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f20aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aka1.wav",
+        "speaker": "f20",
+        "bytes": 21546,
+        "sha256": "2e3914bda6eb64c8c749531a4472b0082c1fc37de8c8de74d194eac1e5d6c44b",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f20aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aga1.wav",
+        "speaker": "f20",
+        "bytes": 20046,
+        "sha256": "3a87c0784a00f93baa1a104d3878835854fd9df726afd785fd6365559684e5c2",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f20ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20ata1.wav",
+        "speaker": "f20",
+        "bytes": 22046,
+        "sha256": "db9c984e32d50caec97043e6dc0845d1fc0c73ecfae1527e89f04934c7e7f5a0",
+        "manual_boundary": false
+      },
+      {
+        "basename": "f20ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20ada1.wav",
+        "speaker": "f20",
+        "bytes": 20046,
+        "sha256": "b8f482fe3b53e959eef0b8a39c108bd3964a4be8b9bd6a0cf092c6e5579eaa78",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m15aka1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15aka1.wav",
+        "speaker": "m15",
+        "bytes": 20546,
+        "sha256": "525e337cc31b66b113f5685dc34b4821dd202d5ea553cfb4c82eff0932a33fbd",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m15aga1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15aga1.wav",
+        "speaker": "m15",
+        "bytes": 22046,
+        "sha256": "bd61820362e3ae5d8b93b8729c2e6f260dca3d368c0d01a4c317436aaacd05a2",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m15ata1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15ata1.wav",
+        "speaker": "m15",
+        "bytes": 22046,
+        "sha256": "c14ad5516766018ee198e452e02f36396e3a55e8d6469d9395da6b44ddac6cab",
+        "manual_boundary": false
+      },
+      {
+        "basename": "m15ada1.wav",
+        "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/m15ada1.wav",
+        "speaker": "m15",
+        "bytes": 19546,
+        "sha256": "2cd8d617b1833fd9aa509af2fcfda3a98b44b154c0763713848ac29e1daf1fde",
+        "manual_boundary": false
+      }
+    ]
+  },
+  "voicebank": {
+    "rows": 11572,
+    "partitions": {
+      "valid": 770,
+      "train": 10802
+    },
+    "speakers": 28,
+    "top_level_schema_variants": 1,
+    "top_level_fields": [
+      "clean_header",
+      "clean_path",
+      "id",
+      "local_partition",
+      "noisy_header",
+      "noisy_path",
+      "pretraining_exposure",
+      "publisher_partition",
+      "reference_status",
+      "speaker",
+      "transcript"
+    ],
+    "transcript_schema_variants": 1,
+    "transcript_fields": [
+      "CRC32",
+      "archive_entry",
+      "normalization",
+      "normalized_text",
+      "normalized_text_SHA256",
+      "original_text",
+      "raw_encoding",
+      "raw_text_SHA256",
+      "raw_text_bytes"
+    ],
+    "phoneme_event_boundaries_provided_by_manifest": false,
+    "scope_limit": "Transcript schema audit does not inspect unlisted external annotation resources or prove spoken alignment."
+  },
+  "errors_and_corrections": [
+    {
+      "stage": "initial_readonly_console_query",
+      "error": "TypeError: nominal=None on AppleDouble sidecars",
+      "effect": "aborted before producing counts or writing artifacts; no audio/model/network",
+      "correction": "separate parsed nominal audio entries from None sidecars and assert sidecar paths; no experiment rerun"
+    }
+  ],
+  "new_calls": {
+    "network": 0,
+    "audio_sample_decode": 0,
+    "resample": 0,
+    "model": 0,
+    "training": 0,
+    "new_audio_outputs": 0
+  },
+  "query_definition": {
+    "audio_filter": "isinstance(entry.nominal, dict); other entries checked as AppleDouble",
+    "pair_key": [
+      "speaker",
+      "context",
+      "stress"
+    ],
+    "pair_test": "consonant-set containment kg/td/kgtd",
+    "manual_join": "MLF basename .lab to .wav exact archive basename",
+    "cached_scope": "union of two selected_manifest_frozen.json files",
+    "raw_integrity": "44 path existence,size,SHA256 vs frozen manifest; manifest CRC vs saved archive inventory; not a fresh ZIP integrity run",
+    "voicebank": "stream all manifest JSON lines, count local_partition/speaker/schema keys, no audio read"
+  },
+  "result_limitations": [
+    "Nominal consonant identity is source label, not independently adjudicated human phoneme truth.",
+    "Same speaker/context/stress is not identical phase, duration or coarticulation.",
+    "No complete presence/absence/near-phone candidate bundle or deployment proposal/unknown action is approved.",
+    "No candidate was selected or registered; no calibration/test speaker split was created."
+  ]
+}

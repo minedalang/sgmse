@@ -1,0 +1,60 @@
+{
+  "status": "passed",
+  "http_gets": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "94e2ddace0ba2b55bb860672fed508fd037365ce37ee789ab5c8d94e6b2c015a",
+      "bytes": 4807
+    },
+    {
+      "path": "player.js",
+      "status": 200,
+      "sha256": "c0d6997cb07fc6b16f6fb11ac807519654bbfb6d18626ccf9901aa7436e57ac8",
+      "bytes": 9658
+    },
+    {
+      "path": "cases.json",
+      "status": 200,
+      "sha256": "d665b24904839e4655cd57aac4139289d3a6c52c4f005b9b68565f30b14620b0",
+      "bytes": 17944
+    },
+    {
+      "path": "audio/8254e4d7b2acf26bfb1927091b1f1001892cdc60f1d8e9bbfd4cd6c0daf7a65a.wav",
+      "status": 200,
+      "sha256": "926606c1b05b2212cd177f87a5156e8c24cd803e8d603cf2fbc937804f3ea898",
+      "bytes": 102054
+    },
+    {
+      "path": "audio/bac8d5989c0a7dd0dda4c23cfac82df8b23d5b5af32142426f1023a3a85fa82d.wav",
+      "status": 200,
+      "sha256": "517756d1e8662b79e467c4b6dcf71feaa5b224c44a9ec46d857a6dec88eef170",
+      "bytes": 102054
+    },
+    {
+      "path": "audio/1d24a144d8005cd93631efe6cc907437e04297c35a86859afd686aca9479dc85.wav",
+      "status": 200,
+      "sha256": "8340fd9505373c691f8029a664ea4574b6d861ff803a313a3de63ea7af693016",
+      "bytes": 102054
+    },
+    {
+      "path": "audio/9fc35d4737a4a3685e84fc9fa5bf7bf50c54bbc2b14884531aaf279a17f15d9e.wav",
+      "status": 200,
+      "sha256": "75407bf0f890edff7c45c63ae79f620c7b7d62339d7a7ef9c88627b4f1cc5d6b",
+      "bytes": 102054
+    }
+  ],
+  "http_bytes": 440625,
+  "source_files_unchanged": 104,
+  "protected_old_metrics_unchanged": 8,
+  "archived_user_exports_unchanged": 2,
+  "archived_clarification_unchanged": true,
+  "code_config_metadata_unchanged": true,
+  "server_pid": 16022,
+  "bridge_pid": 39452,
+  "PCM_sample_decodes": 0,
+  "audio_playbacks": 0,
+  "post_requests": 0,
+  "external_requests": 0,
+  "actual_browser_playback_tested": false
+}

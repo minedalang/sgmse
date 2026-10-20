@@ -1,0 +1,16 @@
+experiment_id: p8_q_a_ctc_boundary_audit_20261020
+date: 2026-10-20
+type: read_only_ctc_alignment_boundary_audit
+purpose: >-
+  Quantify whether clean-derived CTC target tokens remain at comparable time
+  positions across conditions before interpreting forced-target posteriors.
+source_experiment: experiments/p8_q_a_ctc_forced_alignment_20261020
+source_file: experiments/p8_q_a_ctc_forced_alignment_20261020/token_alignments.csv
+rows: 445
+shift_definition: absolute midpoint displacement from clean forced path in ms
+same_time_tolerance_ms: 40
+consonant_subset: IPA token whitelist in boundary_audit.py
+model_inference: false
+training: false
+dataset_modified: false
+checkpoint_modified: false

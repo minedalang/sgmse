@@ -1,0 +1,65 @@
+{
+  "experiment_id": "dnsmos_gpu_smoke_20261017",
+  "n_utterances": 1,
+  "duration_seconds": 30.0,
+  "timing": {
+    "cpu_first_call_seconds": 3.8274265009677038,
+    "cpu_warm_repeats_seconds": [
+      3.1933052309323102,
+      3.201988967950456,
+      3.243716944940388
+    ],
+    "cpu_warm_mean_seconds": 3.213003714607718,
+    "cuda_first_call_seconds": 0.8611452770419419,
+    "cuda_warm_repeats_seconds": [
+      0.19804854202084243,
+      0.19921804196201265,
+      0.19850793306250125
+    ],
+    "cuda_warm_mean_seconds": 0.19859150568178544,
+    "cuda_speedup_for_this_dns_mos_component_only": 16.17895842814193
+  },
+  "scores": {
+    "labels": ["p808", "sig", "bak", "ovrl"],
+    "cpu": [
+      3.9374632835388184,
+      3.0270412333705607,
+      4.116621272073027,
+      2.6957967935308913
+    ],
+    "cuda": [
+      3.9374138627733504,
+      3.026910257992893,
+      4.116622423579355,
+      2.6957110108678215
+    ],
+    "cuda_minus_cpu": [
+      -0.00004942068453295841,
+      -0.000130975267667752,
+      0.000001151506328196219,
+      -0.00008578266306979484
+    ],
+    "max_absolute_difference": 0.000130975267667752,
+    "within_device_repeat_max_difference": 0.0
+  },
+  "onnx_execution": {
+    "requested_device": "cuda:0",
+    "session_providers": {
+      "sig_bak_ovr": ["CUDAExecutionProvider", "CPUExecutionProvider"],
+      "model_v8": ["CUDAExecutionProvider", "CPUExecutionProvider"]
+    },
+    "profiled_cuda_node_events": {
+      "sig_bak_ovr": 41,
+      "model_v8": 21
+    },
+    "profiled_cpu_fallback_node_events": 0,
+    "runtime_warning": "ORT printed a plugin-device warning, but inference completed and profiling showed DNSMOS graph nodes executing with CUDAExecutionProvider."
+  },
+  "scope_limits": [
+    "This is one 30-second utterance in a previously screened development split, not an independent benchmark set.",
+    "The timing is for the DNSMOS component only; audio loading, non-DNSMOS metrics, and full corpus throughput were not benchmarked.",
+    "The existing 32-utterance DNSMOS results remain CPU-computed and were not overwritten or rerun."
+  ],
+  "audio_written_or_modified": false,
+  "training": false
+}

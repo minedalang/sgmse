@@ -1,0 +1,91 @@
+{
+  "request": {
+    "key": "p230_029_N2_snr_m18.wav__off",
+    "id": "p230_029",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N2_snr_m18.wav",
+    "basename": "p230_029_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "974bdeae21a52a2d37b74f9bc37abfd7816e4827a39a8cc6221de3fffee24cda",
+      "samples": 56211,
+      "array_sha256": "3e2f39c49f3041c2118a614d2af14628071db29c8561ea5c3cd362e7c91c260f",
+      "peak": 0.080810546875,
+      "rms": 0.010827124215305602
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_029",
+    "original_text": "It shouldn't come as a surprise, but it does.\n",
+    "raw_text_hex": "49742073686f756c646e277420636f6d6520617320612073757270726973652c2062757420697420646f65732e0a",
+    "raw_text_sha256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+    "archive_entry": "trainset_28spk_txt/p230_029.txt"
+  },
+  "raw_result": {
+    "text": " You know, it's still a clums of time, it's all for a vibe to record soon.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.2,
+        "text": " You know, it's still a clums of time, it's all for a vibe to record soon.",
+        "tokens": [
+          50363,
+          921,
+          760,
+          11,
+          340,
+          338,
+          991,
+          257,
+          537,
+          5700,
+          286,
+          640,
+          11,
+          340,
+          338,
+          477,
+          329,
+          257,
+          27426,
+          284,
+          1700,
+          2582,
+          13,
+          50523
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.07751953125,
+        "compression_ratio": 1.028169014084507,
+        "no_speech_prob": 0.05959615483880043
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 77,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

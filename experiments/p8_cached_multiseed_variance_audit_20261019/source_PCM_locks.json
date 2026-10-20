@@ -1,0 +1,882 @@
+{
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10167.wav": {
+    "bytes": 960044,
+    "sha256": "1b201cc2e6f2d6d40f84725ba5735494c27e5d12211528b27d21519ae2a4aae2",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10269.wav": {
+    "bytes": 960044,
+    "sha256": "1233c98e2ed1f24268ae970c6fd9e74364f473e6733f070b713bce64fe21de74",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10314.wav": {
+    "bytes": 960044,
+    "sha256": "1559e9ba579c25137a4b4e45d081ceccf9443657057e7a5a1f45600107019421",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10483.wav": {
+    "bytes": 960044,
+    "sha256": "142b976cbc57a304721d7442636ff7282a2c26e72f3ffa477876b47f80cc1280",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10788.wav": {
+    "bytes": 960044,
+    "sha256": "50a2ff56df7f15605355f649b87c98d0a3494598ec7a625f16775ba129b50b55",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11779.wav": {
+    "bytes": 960044,
+    "sha256": "f997aab12bc3e9649dbc9a51a2d60eb0c49d93d298ca1ab3690069d61c28ef4c",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11915.wav": {
+    "bytes": 960044,
+    "sha256": "05fbd044ca5599927d073c864a6060dd20451c851877b6d1cbd25c9e97539f2a",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11974.wav": {
+    "bytes": 960044,
+    "sha256": "6813399e422866da1e58309110db39a90c62bbc50670f22baa734b2f268cb186",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1341.wav": {
+    "bytes": 960044,
+    "sha256": "c99b4592a9ce067444f3b421c0165ba0dec870845a82be6902a0dce72588e674",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2142.wav": {
+    "bytes": 960044,
+    "sha256": "4a9d779c58609b6105ceb5bf1d03c78194305e1773a03e08e46ca3b3628ddce6",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2306.wav": {
+    "bytes": 960044,
+    "sha256": "71a73a4476cc9f6f9fbf41672581e081d4ac4b7d555cf3ffbb0d47053bf18aa5",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2839.wav": {
+    "bytes": 960044,
+    "sha256": "4112601e7a6f70612036a5d785c655520784571092c18c5af1e1c785458d4178",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2971.wav": {
+    "bytes": 960044,
+    "sha256": "341749a42c84b3318ed2860e5b5714b8be7023f8b99795f1fee2b67ab1e2e9c3",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3627.wav": {
+    "bytes": 960044,
+    "sha256": "5654e5dce4d3c708b2b46b2f185309831171bada3ad373fd4928ed6a43f1cfc3",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7471.wav": {
+    "bytes": 960044,
+    "sha256": "8f4e3cc8ffc9ee9e37bf8b72932f206546a65416d087f7b47320dff587ff574c",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7534.wav": {
+    "bytes": 960044,
+    "sha256": "5a11c3a94a021fb9cc67b8e2ff0023aa854e3dad61f6d14d967786078dfe66a5",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/016_reader_10741_fileid_10167_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "345aaacfc4e2af1706dd2968f2861c25603ce81139bb14171599c46380ed2d54",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/016_reader_10741_fileid_10167_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "4ac1a01ccee459c0f10181e0f335169ac2d4594ea0b72c05d2e1d78dc73b6aa2",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/016_reader_10741_fileid_10167_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "436006be6619cd1600e7ce7a96e6343d56d3a171c49d6652f4ec573539685305",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/016_reader_10741_fileid_10167_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "de60f8f52133f55b93f7e18daf1a8cd95f87f9f70af7228254fc9f24b207567a",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/017_reader_10741_fileid_10788_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "28735cd3bea965c3f63e585c750a93c2e442755a3c12b732ceb8f1ccda475e36",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/017_reader_10741_fileid_10788_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "ba99d68468d81be411ca1bed8be436d229ae3091771e76392e387f556f7b59d9",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/017_reader_10741_fileid_10788_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "e4dc9c270cbc456b6e3e098857ac796e5d5742d0bf9c3af9fdca07fb24d962cb",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/017_reader_10741_fileid_10788_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "6551a8775bb961088f5f08a4673ef1ac67752d023fbed00420ffa8815c228c80",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/018_reader_10774_fileid_11915_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "1f96fcddf303708a8d2a7bb0ce1a95b7cb5f807bb4acadd180eea4272cbc4454",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/018_reader_10774_fileid_11915_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "45f4c684ac7ee86f8243f2e788b92af2364a318079e2206e0d457cc8c14e0867",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/018_reader_10774_fileid_11915_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "e17286d77e11b1e05d7f38caf8cdaf342104e166ef4e622256b88bc0817d7c95",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/018_reader_10774_fileid_11915_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "f1d042bc586719e7865e5ef933ebe15cbdc88197305f4f6e8e642a1c4fa73139",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/019_reader_10774_fileid_3627_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "6fb4f9baccfce91c63ed6a8695dec5630933c9ed50984876ffc87c98dc5e2fcb",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/019_reader_10774_fileid_3627_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "8db2895a5ae1d91d1b7384ac9cfb9ef9ede29dc601f080fb4c8009b216389d00",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/019_reader_10774_fileid_3627_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "7cc7b0fc1d60c4eedc99b3c5b480c855c703007f38edfd078549fc9e92b9495e",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/019_reader_10774_fileid_3627_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "07b375658fa3f81964d469a53e2023fccf9ca8b19c31db532e5623561125a73f",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/020_reader_10786_fileid_10314_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "fa27e317a38d830dee5e212c5d2b8bf1eac302b22f175990a4acd38072b1ba78",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/020_reader_10786_fileid_10314_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "9346596ecc48722cba1d3d64aece95154f75a1583831d4db6ab85047974c7a22",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/020_reader_10786_fileid_10314_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "7f965ca28bdf3c8a94fab49adfcda26db0152c6a7e50042514a22cce826bfe98",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/020_reader_10786_fileid_10314_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "faac6eb50943d9512d058ad196167083bcee2def643dd024f11111529106c9a1",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/021_reader_10786_fileid_2142_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "89643f45aa45cfc3203ed99bbcb89b99246c3b2780baeebfd73851d790e214df",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/021_reader_10786_fileid_2142_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "94ac7256de13641e58d5e558446d75d87daefebf23a4560c40e8fd5de13faf23",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/021_reader_10786_fileid_2142_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "be7d126dbb8abf954fb1aec43e1a1a96e0af819369594f527f4aa30d77945e59",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/021_reader_10786_fileid_2142_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "7b68dae6d4db2b9df16a745645c674fad859c6c230baccb3190c26c997dc6a08",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/022_reader_10811_fileid_1341_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "9a5221ba2365b2e0c5ce77f360fd260334c379b697fb5b6cb7e6dfd903be1524",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/022_reader_10811_fileid_1341_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "8b85af812c5e3f9879246225602ec1e63f79159807a4bc7af3d84e67d6c6d5aa",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/022_reader_10811_fileid_1341_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "88237d5411c1c226cb44ba74ccac2d99e094fb5d1c2453efb9f2d5c0ad561900",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/022_reader_10811_fileid_1341_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "ba1136fb89eff21a90b7f3b021e3b1d0b5aa4f7444eb1446446520ec6cdd054d",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/023_reader_10811_fileid_2306_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "5f644e0396c98430695cb6c25305be031cb169331f64506374391f831dd76923",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/023_reader_10811_fileid_2306_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "c710f5a21547599f03a3b6e3ac66a83e8f1054eb2611aa2c6ce80767a3db30f4",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/023_reader_10811_fileid_2306_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "201ea32a922233c6201c11581ce6831ff9712dc06eb6d3c9e14e88cb02a86f49",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/023_reader_10811_fileid_2306_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "ab8eb0e31b913bf73b6285ad78ab3136f71e926c1bb2fce6f1566945ff4ad5cc",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/024_reader_10820_fileid_2971_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "d44ff4fda03dd629b64930b340b9a3e309a2d64f4ce66e90ef53955a074eb47f",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/024_reader_10820_fileid_2971_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "e798c0643ced0926c529978700385b0003b0477ee8f747301c747463c80315ba",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/024_reader_10820_fileid_2971_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "2afc08d3375562b518938b5d3c493101f0de452cc0530d89efc048efca479e0f",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/024_reader_10820_fileid_2971_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "4e20c8c1723a57ca419a8d4733c3e1584d78d7ef6e18078e2c67c201cd736229",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/025_reader_10820_fileid_7471_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "09b794fea07ee02ec450997d93b3167a5ab06c880914e39a885d3dcf9129c221",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/025_reader_10820_fileid_7471_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "0e5acaf3e8018afd9ca94ff950fbdb354ba5487df03f4b1f6885a0fd3fc1de7d",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/025_reader_10820_fileid_7471_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "1f65d07874e3fe0ef83dd0079844ad21f6012277a8998a198976b1875cf54eed",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/025_reader_10820_fileid_7471_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "a14bbcf0eb5a48f1bf3f93248b64addb63620a7bcfb5a3a2607f568d701435bf",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/026_reader_10855_fileid_10269_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "5c07392bd2e6de0c93fbfebb57b88d880b79bee00c396f5918ec746ff3b8166c",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/026_reader_10855_fileid_10269_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "6d7d00e8a9cb5612cf3dab651cc1293d87d1bae7a68d1a2a6aefa1e36c057812",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/026_reader_10855_fileid_10269_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "e776710db2aad330f25fba784d220ccaeb48d90e730a9ee6f2cf71bb28ff7628",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/026_reader_10855_fileid_10269_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "6f950ae3953342929a72fdffc5197eaf7a0012c184cb2db0f8fc6c853575b17d",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/027_reader_10855_fileid_11779_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "17436d42d7204e8098341818b04189ca9369f8ca8bf6538508fd8da500a3b60b",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/027_reader_10855_fileid_11779_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "a5d042a64d8196dc048beb0f250fb1f44d394009996b0dbcee19b2f3888f4058",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/027_reader_10855_fileid_11779_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "e61c4304934e7585a24ac41967cb1ca59a9103a09e68b949b41a39a0037b2fc4",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/027_reader_10855_fileid_11779_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "482f9fd23a772f1fed52d364f8eeabc40abbb42781b7ed52afb181758cd4e7ad",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/028_reader_10891_fileid_10483_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "2eaf221123a2133f74544f8903bb7a5fcd26ff18dbe071b2fef26dee75a017f2",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/028_reader_10891_fileid_10483_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "15bec012028b8d6406946b42b5c8d9e11d012ddfe01bc2739cf1fc3249a4742f",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/028_reader_10891_fileid_10483_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "68cf5e3a84d4b9d021b146f4d9d450bab49cd9a73ad43271b7eea0ce6a65539b",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/028_reader_10891_fileid_10483_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "9d273196b89dc062efee786bebd143d72dea482e532fffbfc4220fdb6aa7d4bd",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/029_reader_10891_fileid_7534_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "98818c4f40674e393e1c31c9391ade40f75882085152f982d3e40e4c57e83ee4",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/029_reader_10891_fileid_7534_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "485b4e1f28ab26827c4871f9190bc9216015ca2b5ebf90a56459e346dc08c6c7",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/029_reader_10891_fileid_7534_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "8055ab4cad32fc5a6a5cfe540f9b0cbb28cffd9bba5614663c82c5dae93fe4f1",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/029_reader_10891_fileid_7534_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "1346c1415209b45197e8d05a78d3caa845f7d468cf7a8df06c737b007753b4c8",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/030_reader_10907_fileid_11974_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "ff7774272752031c1de9fe2d208d45bb03a674f06f00898a87b74e3736dd082b",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/030_reader_10907_fileid_11974_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "47fe42f54d922b03b6f94830f045cbd9d318cab5933d4aae93df303e2118a018",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/030_reader_10907_fileid_11974_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "4b491c2a3e389f82038e6fc5c62f488c64eee527977de23030215ab1ee55f28f",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/030_reader_10907_fileid_11974_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "4b85e4e8ec741de45c366515bb0a29755b552c9196c58620c4ec04e13326fe7f",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/031_reader_10907_fileid_2839_seed2026.wav": {
+    "bytes": 960044,
+    "sha256": "9dbf9b543d74efdda74aba2aa604a1942965be3970d4434c279dcb06557fcce7",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/031_reader_10907_fileid_2839_seed2027.wav": {
+    "bytes": 960044,
+    "sha256": "13e2b65d421c04bc690b3066b673a4f1a7f37d449fea2fcdce712c7c9afaa150",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/031_reader_10907_fileid_2839_seed2028.wav": {
+    "bytes": 960044,
+    "sha256": "6755b393cb90ad64c852b491255a9329cce6370e3e8d7cd80c1be9a2ff6a2978",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  },
+  "/dev/shm/multitraj_router_wavs_heldout16/031_reader_10907_fileid_2839_seed2029.wav": {
+    "bytes": 960044,
+    "sha256": "31e917e6be70ed1e63c3c3299d2f18d8c557c56babaedc29c42e81cf7a84ae99",
+    "header": {
+      "rate": 16000,
+      "channels": 1,
+      "width": 2,
+      "frames": 480000,
+      "compression": "NONE"
+    }
+  }
+}

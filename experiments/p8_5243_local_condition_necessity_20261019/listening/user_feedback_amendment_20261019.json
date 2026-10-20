@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-19",
+  "source": "explicit_user_chat_amending_prior_listening_assessment",
+  "verbatim": "稍等 我需要改一下我刚刚的听感评估 4.中/d/比3原后端相对弱一点。",
+  "amends": "user_feedback_20261019.json",
+  "same_listener": true,
+  "new_listener_or_sample": false,
+  "clip_mapping": {"3": "native", "4": "target"},
+  "updated_dimension": "relative_audible_d_strength",
+  "relative_d_strength": "target_slightly_weaker_than_native",
+  "closeness_to_clean": "not_newly_judged",
+  "phoneme_deletion_or_identity_error": "not_established",
+  "control_5_6_assessment": "prior_feedback_unchanged_no_new_judgment",
+  "interpretation": "Use this latest relative-strength judgment for clips3/4. Preserve the original uncertain report as history; do not upgrade slight weakening into deletion, incorrect identity or a closer-to-clean ranking. Higher classifier P(d) in target is not an audibility/intensity measurement.",
+  "protocol": "Same prompted, nonblind, single-listener event; amendment is not an additional independent vote.",
+  "task_status": "completed_with_directional_strength_amendment",
+  "no_repeat_listening_requested": true,
+  "no_new_inference_authorized": true
+}

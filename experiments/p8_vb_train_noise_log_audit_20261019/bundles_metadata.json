@@ -1,0 +1,72 @@
+{
+  "_embedded" : {
+    "bundles" : [ {
+      "uuid" : "bdb21ae9-97ad-46dc-89b6-c1884783df6a",
+      "name" : "ORIGINAL",
+      "handle" : null,
+      "metadata" : {
+        "dc.title" : [ {
+          "value" : "ORIGINAL",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "type" : "bundle",
+      "_links" : {
+        "item" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/bdb21ae9-97ad-46dc-89b6-c1884783df6a/item"
+        },
+        "bitstreams" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/bdb21ae9-97ad-46dc-89b6-c1884783df6a/bitstreams"
+        },
+        "primaryBitstream" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/bdb21ae9-97ad-46dc-89b6-c1884783df6a/primaryBitstream"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/bdb21ae9-97ad-46dc-89b6-c1884783df6a"
+        }
+      }
+    }, {
+      "uuid" : "fa42d6b3-a95c-4496-8f3e-28308bd2e00f",
+      "name" : "CC-LICENSE",
+      "handle" : null,
+      "metadata" : {
+        "dc.title" : [ {
+          "value" : "CC-LICENSE",
+          "language" : null,
+          "authority" : null,
+          "confidence" : -1,
+          "place" : 0
+        } ]
+      },
+      "type" : "bundle",
+      "_links" : {
+        "item" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/fa42d6b3-a95c-4496-8f3e-28308bd2e00f/item"
+        },
+        "bitstreams" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/fa42d6b3-a95c-4496-8f3e-28308bd2e00f/bitstreams"
+        },
+        "primaryBitstream" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/fa42d6b3-a95c-4496-8f3e-28308bd2e00f/primaryBitstream"
+        },
+        "self" : {
+          "href" : "https://datashare.ed.ac.uk/server/api/core/bundles/fa42d6b3-a95c-4496-8f3e-28308bd2e00f"
+        }
+      }
+    } ]
+  },
+  "page" : {
+    "number" : 0,
+    "size" : 20,
+    "totalPages" : 1,
+    "totalElements" : 2
+  },
+  "_links" : {
+    "self" : {
+      "href" : "https://datashare.ed.ac.uk/server/api/core/items/6ed35425-bf14-4d2b-93a1-0a4984952757/bundles?size=20"
+    }
+  }
+}

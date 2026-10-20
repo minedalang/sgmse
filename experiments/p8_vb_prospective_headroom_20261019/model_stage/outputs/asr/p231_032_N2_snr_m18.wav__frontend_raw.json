@@ -1,0 +1,84 @@
+{
+  "request": {
+    "key": "p231_032_N2_snr_m18.wav__frontend",
+    "id": "p231_032",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p231_032_N2_snr_m18.wav",
+    "basename": "p231_032_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "174a63c705a9d99f9c5852541c4b11ff425e53e511f3b74fa3aa883161a68717",
+      "samples": 55680,
+      "array_sha256": "9c5e406582ad7aa7812f72af029a60179459fd8e86c0ef570dfc1d5121838834",
+      "peak": 0.09698486328125,
+      "rms": 0.009391476377937585
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " So you cannot see if the lesson does that, it's over here.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " So you cannot see if the lesson does that, it's over here.",
+        "tokens": [
+          50363,
+          1406,
+          345,
+          2314,
+          766,
+          611,
+          262,
+          11483,
+          857,
+          326,
+          11,
+          340,
+          338,
+          625,
+          994,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8954803678724501,
+        "compression_ratio": 0.90625,
+        "no_speech_prob": 0.14914000034332275
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 100,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

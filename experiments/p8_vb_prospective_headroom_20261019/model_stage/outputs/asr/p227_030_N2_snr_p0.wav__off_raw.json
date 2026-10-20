@@ -1,0 +1,79 @@
+{
+  "request": {
+    "key": "p227_030_N2_snr_p0.wav__off",
+    "id": "p227_030",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N2_snr_p0.wav",
+    "basename": "p227_030_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "577cfc375c3bf0a8017fbdd4c9b2efa7a3d37d9af0a82b83012f660e62991b6a",
+      "samples": 52810,
+      "array_sha256": "316135d203ea322381c02ea27589b2e198595e8b07c645f22a0ac64db12e4e2a",
+      "peak": 0.140533447265625,
+      "rms": 0.011432277585365596
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " Nonetheless, the overall picture is telephused.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " Nonetheless, the overall picture is telephused.",
+        "tokens": [
+          50363,
+          27251,
+          11,
+          262,
+          4045,
+          4286,
+          318,
+          5735,
+          746,
+          1484,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8741168975830078,
+        "compression_ratio": 0.9038461538461539,
+        "no_speech_prob": 0.04460533335804939
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 20,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,227 @@
+{
+  "experiment_id": "p8_counterexample_phoneme_probe_20261020",
+  "model": "facebook/wav2vec2-lv-60-espeak-cv-ft",
+  "device": "cuda",
+  "rows": [
+    {
+      "group": "00_fileid_5243_19.50-20.00s",
+      "condition": "clean",
+      "frames": 24,
+      "decoded": "n d b aɪ b ɚ",
+      "mean_top1_conf": 0.8673834800720215,
+      "clean_active_target_posterior": 0.6877365112304688,
+      "clean_active_target_top1": 1.0,
+      "consonant_mass": 0.2652486562728882,
+      "consonant_runs": 5
+    },
+    {
+      "group": "00_fileid_5243_19.50-20.00s",
+      "condition": "noisy",
+      "frames": 24,
+      "decoded": "",
+      "mean_top1_conf": 0.9341392517089844,
+      "clean_active_target_posterior": 0.0009807921014726162,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.03952376917004585,
+      "consonant_runs": 0
+    },
+    {
+      "group": "00_fileid_5243_19.50-20.00s",
+      "condition": "y_pre",
+      "frames": 24,
+      "decoded": "i m aɪ k ɔ",
+      "mean_top1_conf": 0.8830227255821228,
+      "clean_active_target_posterior": 0.1477123349905014,
+      "clean_active_target_top1": 0.16666666666666666,
+      "consonant_mass": 0.15961050987243652,
+      "consonant_runs": 3
+    },
+    {
+      "group": "00_fileid_5243_19.50-20.00s",
+      "condition": "off",
+      "frames": 24,
+      "decoded": "iː n d m ɛ θ",
+      "mean_top1_conf": 0.8757081031799316,
+      "clean_active_target_posterior": 0.10784786194562912,
+      "clean_active_target_top1": 0.16666666666666666,
+      "consonant_mass": 0.21983365714550018,
+      "consonant_runs": 5
+    },
+    {
+      "group": "00_fileid_5243_19.50-20.00s",
+      "condition": "router",
+      "frames": 24,
+      "decoded": "iː n d m ɛ θ",
+      "mean_top1_conf": 0.8792374730110168,
+      "clean_active_target_posterior": 0.1152125671505928,
+      "clean_active_target_top1": 0.16666666666666666,
+      "consonant_mass": 0.2120865136384964,
+      "consonant_runs": 5
+    },
+    {
+      "group": "01_fileid_4812_12.50-13.00s",
+      "condition": "clean",
+      "frames": 24,
+      "decoded": "s t ɪ t uː ʃ ə n",
+      "mean_top1_conf": 0.9104039072990417,
+      "clean_active_target_posterior": 0.8362041115760803,
+      "clean_active_target_top1": 1.0,
+      "consonant_mass": 0.2739996016025543,
+      "consonant_runs": 6
+    },
+    {
+      "group": "01_fileid_4812_12.50-13.00s",
+      "condition": "noisy",
+      "frames": 24,
+      "decoded": "",
+      "mean_top1_conf": 0.9519268870353699,
+      "clean_active_target_posterior": 0.0017360859783366323,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.028322041034698486,
+      "consonant_runs": 0
+    },
+    {
+      "group": "01_fileid_4812_12.50-13.00s",
+      "condition": "y_pre",
+      "frames": 24,
+      "decoded": "e t e f y n o",
+      "mean_top1_conf": 0.8070907592773438,
+      "clean_active_target_posterior": 0.2922065854072571,
+      "clean_active_target_top1": 0.3333333333333333,
+      "consonant_mass": 0.24400125443935394,
+      "consonant_runs": 3
+    },
+    {
+      "group": "01_fileid_4812_12.50-13.00s",
+      "condition": "off",
+      "frames": 24,
+      "decoded": "t e k y f i n y",
+      "mean_top1_conf": 0.7913253903388977,
+      "clean_active_target_posterior": 0.1341467648744583,
+      "clean_active_target_top1": 0.2222222222222222,
+      "consonant_mass": 0.25235438346862793,
+      "consonant_runs": 4
+    },
+    {
+      "group": "01_fileid_4812_12.50-13.00s",
+      "condition": "router",
+      "frames": 24,
+      "decoded": "t e k y f i n o",
+      "mean_top1_conf": 0.7507925033569336,
+      "clean_active_target_posterior": 0.14073702692985535,
+      "clean_active_target_top1": 0.2222222222222222,
+      "consonant_mass": 0.2638615369796753,
+      "consonant_runs": 4
+    },
+    {
+      "group": "02_fileid_4812_15.00-15.50s",
+      "condition": "clean",
+      "frames": 24,
+      "decoded": "ʌ ð ɚ z",
+      "mean_top1_conf": 0.9459891319274902,
+      "clean_active_target_posterior": 0.7170873880386353,
+      "clean_active_target_top1": 1.0,
+      "consonant_mass": 0.09961813688278198,
+      "consonant_runs": 2
+    },
+    {
+      "group": "02_fileid_4812_15.00-15.50s",
+      "condition": "noisy",
+      "frames": 24,
+      "decoded": "",
+      "mean_top1_conf": 0.9227948784828186,
+      "clean_active_target_posterior": 0.00019557971972972155,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.04342520236968994,
+      "consonant_runs": 0
+    },
+    {
+      "group": "02_fileid_4812_15.00-15.50s",
+      "condition": "y_pre",
+      "frames": 24,
+      "decoded": "a d a s",
+      "mean_top1_conf": 0.8990138173103333,
+      "clean_active_target_posterior": 0.005556967109441757,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.11472178250551224,
+      "consonant_runs": 2
+    },
+    {
+      "group": "02_fileid_4812_15.00-15.50s",
+      "condition": "off",
+      "frames": 24,
+      "decoded": "a d e s",
+      "mean_top1_conf": 0.9256576895713806,
+      "clean_active_target_posterior": 0.014297960326075554,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.10723033547401428,
+      "consonant_runs": 2
+    },
+    {
+      "group": "02_fileid_4812_15.00-15.50s",
+      "condition": "router",
+      "frames": 24,
+      "decoded": "a d e s",
+      "mean_top1_conf": 0.9150845408439636,
+      "clean_active_target_posterior": 0.022168228402733803,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.10201048105955124,
+      "consonant_runs": 2
+    },
+    {
+      "group": "03_fileid_4812_20.50-20.97s",
+      "condition": "clean",
+      "frames": 23,
+      "decoded": "t ð ə l ɛ ɾ ɚ z",
+      "mean_top1_conf": 0.8465858697891235,
+      "clean_active_target_posterior": 0.7165042161941528,
+      "clean_active_target_top1": 1.0,
+      "consonant_mass": 0.25889652967453003,
+      "consonant_runs": 5
+    },
+    {
+      "group": "03_fileid_4812_20.50-20.97s",
+      "condition": "noisy",
+      "frames": 23,
+      "decoded": "",
+      "mean_top1_conf": 0.9024563431739807,
+      "clean_active_target_posterior": 0.0026881592348217964,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.054656535387039185,
+      "consonant_runs": 0
+    },
+    {
+      "group": "03_fileid_4812_20.50-20.97s",
+      "condition": "y_pre",
+      "frames": 23,
+      "decoded": "t ei5",
+      "mean_top1_conf": 0.8919830322265625,
+      "clean_active_target_posterior": 0.003143856767565012,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.12696526944637299,
+      "consonant_runs": 2
+    },
+    {
+      "group": "03_fileid_4812_20.50-20.97s",
+      "condition": "off",
+      "frames": 23,
+      "decoded": "t ɛ d",
+      "mean_top1_conf": 0.8461616635322571,
+      "clean_active_target_posterior": 0.001916139735840261,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.15925559401512146,
+      "consonant_runs": 2
+    },
+    {
+      "group": "03_fileid_4812_20.50-20.97s",
+      "condition": "router",
+      "frames": 23,
+      "decoded": "tʃ ɛ n",
+      "mean_top1_conf": 0.8752850890159607,
+      "clean_active_target_posterior": 0.0013646562583744526,
+      "clean_active_target_top1": 0.0,
+      "consonant_mass": 0.14924758672714233,
+      "consonant_runs": 2
+    }
+  ]
+}

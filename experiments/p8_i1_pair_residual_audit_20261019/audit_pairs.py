@@ -1,0 +1,123 @@
+"""I1a description only. Inert import; actual source PCM reading is Worker-only."""
+from pathlib import Path
+import csv,hashlib,importlib.abc,json,math,os,signal,sys,time,traceback,wave
+for name in ['OPENBLAS_NUM_THREADS','OMP_NUM_THREADS','MKL_NUM_THREADS','NUMEXPR_NUM_THREADS']:os.environ[name]='1'
+OUT=Path(__file__).resolve().parent
+
+def require(ok,msg):
+    if not ok:raise RuntimeError(msg)
+def sha(p):
+    h=hashlib.sha256()
+    with Path(p).open('rb') as f:
+        for b in iter(lambda:f.read(1048576),b''):h.update(b)
+    return h.hexdigest()
+def read(p):return json.loads(Path(p).read_text())
+def write(p,x):Path(p).write_text(json.dumps(x,indent=2,allow_nan=False)+'\n')
+def size(root):return sum(p.stat().st_size for p in root.rglob('*') if p.is_file() and not p.is_symlink())
+def verify(locks):
+    for p,r in locks.items():require(Path(p).is_file() and Path(p).stat().st_size==r['bytes'] and sha(p)==r['sha256'],'Source lock mismatch '+str(p))
+def guard(root,allowed,events):
+    class Block(importlib.abc.MetaPathFinder):
+        def find_spec(self,name,path=None,target=None):
+            if name.split('.')[0] in {'torch','soundfile','librosa','whisper','torchaudio','transformers','pystoi','pesq'}:
+                events.append(dict(kind='forbidden_import',name=name));raise RuntimeError('Forbidden model/audio import '+name)
+    sys.meta_path.insert(0,Block())
+    def audit(event,args):
+        if event.startswith('socket.') or event in ['subprocess.Popen','os.system','os.posix_spawn','os.fork']:
+            events.append(dict(kind='forbidden_network_process',event=event));raise RuntimeError('Forbidden network/process')
+        if event=='open' and isinstance(args[0],(str,bytes,os.PathLike)):
+            p=Path(os.fsdecode(args[0])).resolve();mode=args[1];flags=args[2];writing=(isinstance(mode,str) and any(c in mode for c in 'wax+')) or bool(flags&(os.O_WRONLY|os.O_RDWR|os.O_CREAT|os.O_TRUNC|os.O_APPEND))
+            if writing:require(p.is_relative_to(root.resolve()),'Write outside audit root')
+            elif p.suffix.lower()=='.wav' or str(p).startswith('/data/datasets/'):require(str(p) in allowed,'Unapproved source read')
+    sys.addaudithook(audit)
+def begin(kind,cfg):
+    marker=OUT/('STARTED.json' if kind=='main' else 'VALIDATION_STARTED.json');require(not marker.exists(),'Existing marker '+str(marker))
+    start=time.monotonic();limit=cfg['budgets']['main_seconds' if kind=='main' else 'validation_seconds']
+    def hard(*args):
+        try:write(OUT/(kind+'_hard_timeout.json'),dict(status='failed',reason='absolute120sdeadline',pid=os.getpid()))
+        finally:os._exit(124)
+    def soft(*args):raise TimeoutError('118s work deadline')
+    signal.signal(signal.SIGALRM,soft);signal.setitimer(signal.ITIMER_REAL,limit-2)
+    with marker.open('x') as f:json.dump(dict(pid=os.getpid(),monotonic=start,kind=kind),f)
+    def finalizing():signal.signal(signal.SIGALRM,hard);signal.setitimer(signal.ITIMER_REAL,max(.000001,start+limit-time.monotonic()))
+    def check():require(time.monotonic()-start<limit-2,'Work deadline');require(size(OUT)<cfg['budgets']['artifact_bytes']-131072,'8MiB reserve')
+    return start,finalizing,check
+
+def decode(p,lock,counters):
+    import numpy as np
+    p=Path(p);role=p.parent.name;anchor=Path('/data/datasets/vb/voicebank_demand/16k/train')/role
+    require(role in ['clean','noisy'] and p.parent==anchor and p.resolve().parent==anchor and not p.is_symlink(),'Audio path escape')
+    return decode_locked_pcm(p,lock,counters)
+
+def decode_locked_pcm(p,lock,counters):
+    import numpy as np
+    require(p.stat().st_size==lock['bytes'] and sha(p)==lock['sha256'],'Audio lock mismatch')
+    with wave.open(str(p),'rb') as w:
+        require((w.getframerate(),w.getnchannels(),w.getsampwidth(),w.getcomptype(),w.getnframes())==(16000,1,2,'NONE',lock['header']['frames']),'Header changed')
+        b=w.readframes(w.getnframes());require(len(b)==lock['header']['frames']*2,'Truncated PCM')
+    counters['pcm_file_decodes']+=1;counters['pcm_samples_decoded']+=len(b)//2;counters['pcm_payload_bytes_decoded']+=len(b);counters['full_wav_hash_bytes']+=lock['bytes'];require(counters['pcm_file_decodes']<=24,'24 decode cap')
+    return np.frombuffer(b,dtype='<i2').astype(np.float64)/32768
+
+def signal_stats(a):
+    import numpy as np
+    if not np.isfinite(a).all():return dict(n=len(a),minimum=None,maximum=None,abspeak=None,mean=None,power=None,rms=None,exact_zero=None,negative_pcm_endpoint=None,positive_pcm_endpoint=None,numeric_reason='nonfinite samples')
+    return dict(numeric_reason=None,n=len(a),minimum=float(a.min()),maximum=float(a.max()),abspeak=float(np.abs(a).max()),mean=float(a.mean()),power=float(np.mean(a*a)),rms=float(np.sqrt(np.mean(a*a))),exact_zero=int(np.sum(a==0)),negative_pcm_endpoint=int(np.sum(a==-1)),positive_pcm_endpoint=int(np.sum(a==32767/32768)))
+def relation(s,x):
+    """Direct centered dot Pearson and no-intercept OLS; no epsilons."""
+    import numpy as np
+    if not np.isfinite(s).all() or not np.isfinite(x).all():return dict(n=len(s),s_mean=None,x_mean=None,s_power=None,x_power=None,inner_product=None,pearson=None,pearson_reason='nonfinite samples',ols_gain=None,ols_reason='nonfinite samples',fit_residual_power=None,fit_residual_s_inner_product=None,fit_residual_pearson=None,fit_residual_pearson_reason='nonfinite samples',fit_residual_mean=None,numeric_reason='nonfinite samples')
+    n=len(s);ss=float(np.dot(s,s));sx=float(np.dot(s,x));xx=float(np.dot(x,x));sc=s-s.mean();xc=x-x.mean();den_s=float(np.dot(sc,sc));den_x=float(np.dot(xc,xc));corr=None;cr=None;g=None;gr=None;mse=None
+    if np.all(s==s[0]) or np.all(x==x[0]) or den_s<=0 or den_x<=0:cr='zero centered energy'
+    else:corr=float(np.dot(sc,xc)/math.sqrt(den_s*den_x))
+    if ss<=0:gr='zero reference energy'
+    else:g=sx/ss;res=x-g*s;mse=float(np.mean(res*res))
+    fit_inner=fit_corr=fit_mean=None;fit_reason='zero reference energy' if g is None else None
+    if g is not None:
+        fit_inner=float(np.dot(s,res));fit_mean=float(res.mean());rc=res-res.mean();re=float(np.dot(rc,rc))
+        if not np.all(s==s[0]) and not np.all(res==res[0]) and den_s>0 and re>0:fit_corr=float(np.dot(sc,rc)/math.sqrt(den_s*re))
+        else:fit_reason='zero centered energy'
+    return dict(numeric_reason=None,fit_residual_s_inner_product=fit_inner,fit_residual_pearson=fit_corr,fit_residual_pearson_reason=fit_reason,fit_residual_mean=fit_mean,n=n,s_mean=float(s.mean()),x_mean=float(x.mean()),s_power=ss/n,x_power=xx/n,inner_product=sx,pearson=corr,pearson_reason=cr,ols_gain=g,ols_reason=gr,fit_residual_power=mse)
+def best(rows):
+    defined=[r for r in rows if r['pearson'] is not None]
+    if not defined:return None
+    maximum=max(r['pearson'] for r in defined);return min((r for r in defined if maximum-r['pearson']<=1e-12),key=lambda r:(abs(r['lag']),r['lag']))
+def compute(s,x,sid):
+    import numpy as np
+    require(len(s)==len(x)>320,'Pair geometry');L=len(s);common=s[160:L-160];lags=[]
+    for lag in range(-160,161):lags.append(dict(id=sid,lag=lag,**relation(common,x[160+lag:L-160+lag])))
+    chosen=best(lags);raw=x-s;rr=relation(s,raw);full=relation(s,x);frames=[]
+    for start in range(0,L,160):
+        stop=min(start+320,L);a=s[start:stop];b=x[start:stop];r=raw[start:stop];fit=relation(a,b);nr=relation(a,r)
+        fitted=b-fit['ols_gain']*a if fit['ols_gain'] is not None else None
+        frames.append(dict(id=sid,start=start,stop=stop,n=stop-start,s_mean=float(a.mean()),s_power=float(np.mean(a*a)),s_rms=float(np.sqrt(np.mean(a*a))),x_mean=float(b.mean()),x_power=float(np.mean(b*b)),x_rms=float(np.sqrt(np.mean(b*b))),raw_mean=float(r.mean()),raw_power=float(np.mean(r*r)),raw_rms=float(np.sqrt(np.mean(r*r))),ols_gain=fit['ols_gain'],ols_reason=fit['ols_reason'],raw_s_inner_product=nr['inner_product'],raw_s_pearson=nr['pearson'],raw_s_pearson_reason=nr['pearson_reason'],fit_residual_power=fit['fit_residual_power'],fit_residual_s_inner_product=float(np.dot(a,fitted)) if fitted is not None else None))
+    summary=dict(id=sid,clean=signal_stats(s),noisy=signal_stats(x),raw_residual=signal_stats(raw),raw_residual_relation=rr,reconstruction_max_abs_error=float(np.max(np.abs((s+raw)-x))),X1_equals_X=True,full_zero_lag_OLS=full,common_zero_lag_OLS=lags[160],best_lag=chosen,best_at_boundary=chosen is not None and abs(chosen['lag'])==160,frame_count=len(frames))
+    return summary,lags,frames
+
+def write_csv(path,rows):
+    with Path(path).open('x',newline='') as f:
+        w=csv.DictWriter(f,fieldnames=list(rows[0]));w.writeheader();w.writerows(rows)
+def descriptive(summaries):
+    import statistics
+    result={}
+    for key,values in [('best_lag',[r['best_lag']['lag'] if r['best_lag'] else None for r in summaries]),('full_zero_gain',[r['full_zero_lag_OLS']['ols_gain'] for r in summaries]),('raw_residual_power',[r['raw_residual']['power'] for r in summaries])]:
+        a=[v for v in values if v is not None];result[key]=dict(valid_n=len(a),missing_n=len(values)-len(a),minimum=min(a) if a else None,maximum=max(a) if a else None,median=statistics.median(a) if a else None)
+    return result
+
+def run():
+    cfg=read(OUT/'config.yaml');prep=read(OUT/'preparation_manifest.json');verify(prep['preparation_locks']);start,finalizing,check=begin('main',cfg);d=dict(status='running',failures=[],pairs=[],pcm_file_decodes=0,pcm_samples_decoded=0,pcm_payload_bytes_decoded=0,full_wav_hash_bytes=0,network_bytes=0,model_calls=0,forbidden_attempts=[],network_policy='all sockets refused; network_bytes0 is blocked-policy accounting, not packet capture',noise_identity='unknown',noise_disjoint_ready=False,scientific_gate_ready=False,split_frozen=False)
+    try:
+        guard(OUT,set(cfg['audio_locks_from_I0']),d['forbidden_attempts']);verify(cfg['source_record_locks']);reg=read(cfg['registry']);require(sha(cfg['registry'])==cfg['registry_sha256'],'Registry changed');require([r['id'] for r in reg['records']]==cfg['ids'],'Registry IDs changed');lags=[];frames=[]
+        for r in reg['records']:
+            check();arrays=[decode(r['files'][role]['path'],cfg['audio_locks_from_I0'][r['files'][role]['path']],d) for role in ['clean','noisy']];summary,lr,fr=compute(*arrays,r['id']);d['pairs'].append(summary);lags.extend(lr);frames.extend(fr)
+        require(not d['forbidden_attempts'],'Forbidden attempt even if caught');require(len(d['pairs'])==12 and len(lags)==12*321 and d['pcm_file_decodes']==24,'Incomplete scope')
+        write_csv(OUT/'lag_curve.csv',lags);write_csv(OUT/'frames.csv',frames)
+        write_csv(OUT/'summary_all_pairs.csv',[dict(id=r['id'],n=r['clean']['n'],best_lag=r['best_lag']['lag'] if r['best_lag'] else None,best_corr=r['best_lag']['pearson'] if r['best_lag'] else None,zero_corr=r['common_zero_lag_OLS']['pearson'],full_zero_gain=r['full_zero_lag_OLS']['ols_gain'],raw_power=r['raw_residual']['power'],raw_corr=r['raw_residual_relation']['pearson'],reconstruction_max_abs_error=r['reconstruction_max_abs_error'],frame_count=r['frame_count']) for r in d['pairs']]);d.update(status='completed',lag_rows=len(lags),frame_rows=len(frames),descriptive=descriptive(d['pairs']))
+    except BaseException as e:d['status']='failed';d['failures'].append(dict(error=repr(e),traceback=traceback.format_exc()))
+    finally:finalizing()
+    try:require(not d['forbidden_attempts'],'Forbidden attempt recorded');verify(cfg['source_record_locks']);verify(cfg['audio_locks_from_I0']);verify(prep['preparation_locks']);check_final=size(OUT)<cfg['budgets']['artifact_bytes']-65536;require(check_final,'Final byte reserve')
+    except BaseException as e:d['status']='failed';d['failures'].append(dict(final=repr(e)))
+    d.update(seconds=time.monotonic()-start,source_records_unchanged=True if not d['failures'] else None,audio_hash_bytes_postcheck=sum(r['bytes'] for r in cfg['audio_locks_from_I0'].values()),pid=os.getpid())
+    write(OUT/'metrics.json',d);(OUT/'experiment_report.md').write_text('# I1a pair residual audit: '+d['status']+'\n\nAll12pairs retained; gain/lag fits descriptive only. X-S algebraic reconstruction is not pure noise proof. OLS orthogonality is enforced on its support, not centered independence or per-frame noise purity. Best-of321 correlation has selection bias; range never expanded. No new audio/model/ASR/training. Scientific/noise/split gates remain false. Full summaries and all lag/frame rows retained.\n')
+    require(size(OUT)<=cfg['budgets']['artifact_bytes'] and time.monotonic()-start<=120,'Final cap');signal.setitimer(signal.ITIMER_REAL,0);print(json.dumps(dict(status=d['status'],seconds=d['seconds'])));return 0 if d['status']=='completed' else 1
+if __name__=='__main__':
+    require(sys.argv[1:]==['--execute-after-root-review'],'Worker-only explicit invocation');sys.exit(run())

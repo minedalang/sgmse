@@ -1,0 +1,170 @@
+{
+  "seed": 20261020,
+  "trials": [
+    {
+      "trial_id": "W02_C2",
+      "window_id": "W02",
+      "comparison_conditions": [
+        "y_pre",
+        "off"
+      ],
+      "A_condition": "off",
+      "B_condition": "y_pre",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W04_C1",
+      "window_id": "W04",
+      "comparison_conditions": [
+        "noisy",
+        "y_pre"
+      ],
+      "A_condition": "noisy",
+      "B_condition": "y_pre",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W02_C3",
+      "window_id": "W02",
+      "comparison_conditions": [
+        "off",
+        "router"
+      ],
+      "A_condition": "off",
+      "B_condition": "router",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W04_C3",
+      "window_id": "W04",
+      "comparison_conditions": [
+        "off",
+        "router"
+      ],
+      "A_condition": "router",
+      "B_condition": "off",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W03_C1",
+      "window_id": "W03",
+      "comparison_conditions": [
+        "noisy",
+        "y_pre"
+      ],
+      "A_condition": "y_pre",
+      "B_condition": "noisy",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W01_C2",
+      "window_id": "W01",
+      "comparison_conditions": [
+        "y_pre",
+        "off"
+      ],
+      "A_condition": "y_pre",
+      "B_condition": "off",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W03_C2",
+      "window_id": "W03",
+      "comparison_conditions": [
+        "y_pre",
+        "off"
+      ],
+      "A_condition": "off",
+      "B_condition": "y_pre",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W01_C1",
+      "window_id": "W01",
+      "comparison_conditions": [
+        "noisy",
+        "y_pre"
+      ],
+      "A_condition": "noisy",
+      "B_condition": "y_pre",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W01_C3",
+      "window_id": "W01",
+      "comparison_conditions": [
+        "off",
+        "router"
+      ],
+      "A_condition": "router",
+      "B_condition": "off",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W05_C2",
+      "window_id": "W05",
+      "comparison_conditions": [
+        "y_pre",
+        "off"
+      ],
+      "A_condition": "y_pre",
+      "B_condition": "off",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W05_C3",
+      "window_id": "W05",
+      "comparison_conditions": [
+        "off",
+        "router"
+      ],
+      "A_condition": "router",
+      "B_condition": "off",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W05_C1",
+      "window_id": "W05",
+      "comparison_conditions": [
+        "noisy",
+        "y_pre"
+      ],
+      "A_condition": "y_pre",
+      "B_condition": "noisy",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W04_C2",
+      "window_id": "W04",
+      "comparison_conditions": [
+        "y_pre",
+        "off"
+      ],
+      "A_condition": "off",
+      "B_condition": "y_pre",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W02_C1",
+      "window_id": "W02",
+      "comparison_conditions": [
+        "noisy",
+        "y_pre"
+      ],
+      "A_condition": "noisy",
+      "B_condition": "y_pre",
+      "better_condition_not_prespecified": true
+    },
+    {
+      "trial_id": "W03_C3",
+      "window_id": "W03",
+      "comparison_conditions": [
+        "off",
+        "router"
+      ],
+      "A_condition": "router",
+      "B_condition": "off",
+      "better_condition_not_prespecified": true
+    }
+  ]
+}

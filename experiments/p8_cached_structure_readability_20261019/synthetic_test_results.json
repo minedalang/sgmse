@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "count": 10,
+  "checks": [
+    "zero targets dimensions fullframes tail and powerfloor",
+    "independent FFT feature bookkeeping",
+    "firstflux0 edgeframecontext repetition",
+    "onesided DC Nyquist weights and power normalization",
+    "normalEq versus weightedaugmentedlstsq and exactconstant std1",
+    "caseequal frameequal targetmean not pooledframe mean",
+    "weight sum1 lambda invariant to within-case duplicateframes",
+    "intercept unpenalized predictions unclipped",
+    "16dualoutputfits32cases OOF independent scope",
+    "LOSO train-only standardization coefficients constant isolate heldouttargets"
+  ],
+  "actual_cache_pcm_reads": 0,
+  "real_probe_fits": 0,
+  "synthetic_probe_fits": "smallarrays only",
+  "enhancement_training_calls": 0,
+  "network_bytes": 0
+}

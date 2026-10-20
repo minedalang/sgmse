@@ -1,0 +1,2474 @@
+{
+  "schema_version": 1,
+  "experiment_id": "p8_phoneme_probe_20261020",
+  "status": "completed",
+  "model": "facebook/wav2vec2-lv-60-espeak-cv-ft",
+  "model_snapshot": "/data/.rootcache/huggingface/hub/models--facebook--wav2vec2-lv-60-espeak-cv-ft/snapshots/ae45363bf3413b374fecd9dc8bc1df0e24c3b7f4",
+  "model_weight_sha256": "3173bde9e9ce490fa0f989e413c42f25bc1820c020adc1e6b9b87025b3cfcc5e",
+  "device": "cuda",
+  "seed": 0,
+  "decoder": "greedy CTC argmax, tokenizer grouped runs",
+  "phoneme_consonant_proxy": "mean frame posterior mass over IPA consonant tokens; supplementary proxy, not phoneme ground truth",
+  "n_clips": 20,
+  "runtime_seconds": 1.8072757720947266,
+  "rows": [
+    {
+      "file": "00_fileid_5243_19.50-20.00s_context_clean.wav",
+      "group": "00",
+      "condition": "clean",
+      "sha256": "68ac516f4bb79c02cb80cf37c804246cdbd0c9fba9ca1f7bb4c2afb064163b62",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "s ɛ l f w ʌ z k ə n eɪ d i ə n b aɪ b ɜː θ",
+      "token_runs": [
+        {
+          "token": "s",
+          "posterior_mean": 0.7737129330635071,
+          "posterior_max": 0.7737129330635071,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.8963775038719177,
+          "posterior_max": 0.8963775038719177,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.8989385962486267,
+          "posterior_max": 0.8989385962486267,
+          "frames": 1
+        },
+        {
+          "token": "f",
+          "posterior_mean": 0.9743788838386536,
+          "posterior_max": 0.9743788838386536,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.9637831449508667,
+          "posterior_max": 0.9807037115097046,
+          "frames": 2
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.9525365233421326,
+          "posterior_max": 0.9525365233421326,
+          "frames": 1
+        },
+        {
+          "token": "z",
+          "posterior_mean": 0.9579588174819946,
+          "posterior_max": 0.9579588174819946,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.9897290468215942,
+          "posterior_max": 0.9897290468215942,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.8934425711631775,
+          "posterior_max": 0.8934425711631775,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.997918426990509,
+          "posterior_max": 0.997918426990509,
+          "frames": 1
+        },
+        {
+          "token": "eɪ",
+          "posterior_mean": 0.908493161201477,
+          "posterior_max": 0.908493161201477,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.9426919221878052,
+          "posterior_max": 0.9426919221878052,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.8105188012123108,
+          "posterior_max": 0.8105188012123108,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.8161179423332214,
+          "posterior_max": 0.8161179423332214,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9975280165672302,
+          "posterior_max": 0.9975280165672302,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.9796766638755798,
+          "posterior_max": 0.9796766638755798,
+          "frames": 1
+        },
+        {
+          "token": "aɪ",
+          "posterior_mean": 0.9177489280700684,
+          "posterior_max": 0.9177489280700684,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.9685091972351074,
+          "posterior_max": 0.9685091972351074,
+          "frames": 1
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.34035730361938477,
+          "posterior_max": 0.34035730361938477,
+          "frames": 1
+        },
+        {
+          "token": "θ",
+          "posterior_mean": 0.9420341849327087,
+          "posterior_max": 0.9420341849327087,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9591475312757973,
+      "mean_consonant_posterior_mass": 0.17010919817084869,
+      "emitted_consonant_runs": 15,
+      "emitted_consonant_posterior_mean": 0.9035639484723409
+    },
+    {
+      "file": "00_fileid_5243_19.50-20.00s_context_noisy.wav",
+      "group": "00",
+      "condition": "noisy",
+      "sha256": "4407479f207508562cad545fb0241de65d2bbdb2c534a1ef8f685f19bff35b88",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "t ɛ",
+      "token_runs": [
+        {
+          "token": "t",
+          "posterior_mean": 0.5906550884246826,
+          "posterior_max": 0.5906550884246826,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.2469024360179901,
+          "posterior_max": 0.2469024360179901,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9646693495186892,
+      "mean_consonant_posterior_mass": 0.0330653878260283,
+      "emitted_consonant_runs": 1,
+      "emitted_consonant_posterior_mean": 0.5906550884246826
+    },
+    {
+      "file": "00_fileid_5243_19.50-20.00s_context_off.wav",
+      "group": "00",
+      "condition": "off",
+      "sha256": "bce51cca6ff679913fc41af4645826ba2266d09c334734479305e14450c6cce0",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ɛ l f ɛ s t ɪ m eɪ d ɪ ŋ d m aɪ w ɜː θ",
+      "token_runs": [
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.9312348365783691,
+          "posterior_max": 0.9312348365783691,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.8229317367076874,
+          "posterior_max": 0.8237033486366272,
+          "frames": 2
+        },
+        {
+          "token": "f",
+          "posterior_mean": 0.9723629355430603,
+          "posterior_max": 0.9723629355430603,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.9093947410583496,
+          "posterior_max": 0.9093947410583496,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9894388318061829,
+          "posterior_max": 0.9894388318061829,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9812988638877869,
+          "posterior_max": 0.9812988638877869,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.5578927397727966,
+          "posterior_max": 0.5578927397727966,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9911437034606934,
+          "posterior_max": 0.9911437034606934,
+          "frames": 1
+        },
+        {
+          "token": "eɪ",
+          "posterior_mean": 0.9333006739616394,
+          "posterior_max": 0.9333006739616394,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.8696174025535583,
+          "posterior_max": 0.8696174025535583,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.7832770943641663,
+          "posterior_max": 0.7832770943641663,
+          "frames": 1
+        },
+        {
+          "token": "ŋ",
+          "posterior_mean": 0.653204083442688,
+          "posterior_max": 0.653204083442688,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.9826623201370239,
+          "posterior_max": 0.9826623201370239,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9965649247169495,
+          "posterior_max": 0.9965649247169495,
+          "frames": 1
+        },
+        {
+          "token": "aɪ",
+          "posterior_mean": 0.7848519682884216,
+          "posterior_max": 0.7848519682884216,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.709507405757904,
+          "posterior_max": 0.7944527864456177,
+          "frames": 2
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.5529024004936218,
+          "posterior_max": 0.5529024004936218,
+          "frames": 1
+        },
+        {
+          "token": "θ",
+          "posterior_mean": 0.9472103118896484,
+          "posterior_max": 0.9472103118896484,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.955525785383552,
+      "mean_consonant_posterior_mass": 0.16781422228055476,
+      "emitted_consonant_runs": 14,
+      "emitted_consonant_posterior_mean": 0.8704998259033475
+    },
+    {
+      "file": "00_fileid_5243_19.50-20.00s_context_router.wav",
+      "group": "00",
+      "condition": "router",
+      "sha256": "0e19df412ed36e4520d7cf0d24e1b132fbb79a016d51eb13d0f27cc46ec8f87c",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ɛ l f ɛ z s t ɪ m eɪ d ɪ ŋ d m aɪ w ɜː θ",
+      "token_runs": [
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.9355473518371582,
+          "posterior_max": 0.9355473518371582,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.8279175162315369,
+          "posterior_max": 0.8434834480285645,
+          "frames": 2
+        },
+        {
+          "token": "f",
+          "posterior_mean": 0.9778851866722107,
+          "posterior_max": 0.9778851866722107,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.6839483380317688,
+          "posterior_max": 0.6839483380317688,
+          "frames": 1
+        },
+        {
+          "token": "z",
+          "posterior_mean": 0.45972296595573425,
+          "posterior_max": 0.45972296595573425,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.5001711845397949,
+          "posterior_max": 0.5001711845397949,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.737075686454773,
+          "posterior_max": 0.737075686454773,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.31261712312698364,
+          "posterior_max": 0.31261712312698364,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9879587888717651,
+          "posterior_max": 0.9879587888717651,
+          "frames": 1
+        },
+        {
+          "token": "eɪ",
+          "posterior_mean": 0.9366928339004517,
+          "posterior_max": 0.9366928339004517,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.8756371140480042,
+          "posterior_max": 0.8756371140480042,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.8303803205490112,
+          "posterior_max": 0.8303803205490112,
+          "frames": 1
+        },
+        {
+          "token": "ŋ",
+          "posterior_mean": 0.942789614200592,
+          "posterior_max": 0.942789614200592,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.8697811961174011,
+          "posterior_max": 0.8697811961174011,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.99553382396698,
+          "posterior_max": 0.99553382396698,
+          "frames": 1
+        },
+        {
+          "token": "aɪ",
+          "posterior_mean": 0.7912148833274841,
+          "posterior_max": 0.7912148833274841,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.7860572338104248,
+          "posterior_max": 0.7860572338104248,
+          "frames": 1
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.546671450138092,
+          "posterior_max": 0.546671450138092,
+          "frames": 1
+        },
+        {
+          "token": "θ",
+          "posterior_mean": 0.9491822719573975,
+          "posterior_max": 0.9491822719573975,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.948318689459502,
+      "mean_consonant_posterior_mass": 0.16398082755313226,
+      "emitted_consonant_runs": 15,
+      "emitted_consonant_posterior_mean": 0.8122861166795095
+    },
+    {
+      "file": "00_fileid_5243_19.50-20.00s_context_y_pre.wav",
+      "group": "00",
+      "condition": "y_pre",
+      "sha256": "8605439d964067279155d2820ac5f340ed5a899f6fad966392db7883fb97db38",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ɛ l f w ʌ z k ə m j uː ɾ i b aɪ b ɜː θ",
+      "token_runs": [
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.5551899671554565,
+          "posterior_max": 0.5551899671554565,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.8100295662879944,
+          "posterior_max": 0.8100295662879944,
+          "frames": 1
+        },
+        {
+          "token": "f",
+          "posterior_mean": 0.9084203839302063,
+          "posterior_max": 0.9084203839302063,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.4563840925693512,
+          "posterior_max": 0.4563840925693512,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.42048412561416626,
+          "posterior_max": 0.42048412561416626,
+          "frames": 1
+        },
+        {
+          "token": "z",
+          "posterior_mean": 0.8580194115638733,
+          "posterior_max": 0.8580194115638733,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.9854468107223511,
+          "posterior_max": 0.9854468107223511,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.7495149970054626,
+          "posterior_max": 0.7495149970054626,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9876678586006165,
+          "posterior_max": 0.9876678586006165,
+          "frames": 1
+        },
+        {
+          "token": "j",
+          "posterior_mean": 0.6832606792449951,
+          "posterior_max": 0.6832606792449951,
+          "frames": 1
+        },
+        {
+          "token": "uː",
+          "posterior_mean": 0.8542824983596802,
+          "posterior_max": 0.8542824983596802,
+          "frames": 1
+        },
+        {
+          "token": "ɾ",
+          "posterior_mean": 0.8447394371032715,
+          "posterior_max": 0.8447394371032715,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.893547534942627,
+          "posterior_max": 0.893547534942627,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.5399240851402283,
+          "posterior_max": 0.5399240851402283,
+          "frames": 1
+        },
+        {
+          "token": "aɪ",
+          "posterior_mean": 0.8582572340965271,
+          "posterior_max": 0.8582572340965271,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.5975365042686462,
+          "posterior_max": 0.5975365042686462,
+          "frames": 1
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.5163885354995728,
+          "posterior_max": 0.5163885354995728,
+          "frames": 1
+        },
+        {
+          "token": "θ",
+          "posterior_mean": 0.7788102626800537,
+          "posterior_max": 0.7788102626800537,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9261388670314442,
+      "mean_consonant_posterior_mass": 0.15414311929887958,
+      "emitted_consonant_runs": 14,
+      "emitted_consonant_posterior_mean": 0.7627976685762405
+    },
+    {
+      "file": "01_fileid_4812_12.50-13.00s_context_clean.wav",
+      "group": "01",
+      "condition": "clean",
+      "sha256": "31896331036a8cbe64f1b9ae1a71f65313e5491e98904c78004235d11ea32988",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "k æ p t ɪ m aɪ ɹ iː k ɑː n s t ɪ t uː ʃ ə n ʌ v ð ɜː f ɹ ɛ n ʃ ɪ p",
+      "token_runs": [
+        {
+          "token": "k",
+          "posterior_mean": 0.48833954334259033,
+          "posterior_max": 0.48833954334259033,
+          "frames": 1
+        },
+        {
+          "token": "æ",
+          "posterior_mean": 0.9319078922271729,
+          "posterior_max": 0.9319078922271729,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.976219117641449,
+          "posterior_max": 0.976219117641449,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.912921667098999,
+          "posterior_max": 0.912921667098999,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.41890957951545715,
+          "posterior_max": 0.41890957951545715,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9974243640899658,
+          "posterior_max": 0.9974243640899658,
+          "frames": 1
+        },
+        {
+          "token": "aɪ",
+          "posterior_mean": 0.9463179707527161,
+          "posterior_max": 0.9463179707527161,
+          "frames": 1
+        },
+        {
+          "token": "ɹ",
+          "posterior_mean": 0.9886844754219055,
+          "posterior_max": 0.9886844754219055,
+          "frames": 1
+        },
+        {
+          "token": "iː",
+          "posterior_mean": 0.631444126367569,
+          "posterior_max": 0.6656097173690796,
+          "frames": 2
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.9887492656707764,
+          "posterior_max": 0.9887492656707764,
+          "frames": 1
+        },
+        {
+          "token": "ɑː",
+          "posterior_mean": 0.5598794221878052,
+          "posterior_max": 0.5598794221878052,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9925773739814758,
+          "posterior_max": 0.9925773739814758,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9864198565483093,
+          "posterior_max": 0.9864198565483093,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9138476848602295,
+          "posterior_max": 0.9138476848602295,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.6318478584289551,
+          "posterior_max": 0.6318478584289551,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9690353870391846,
+          "posterior_max": 0.9690353870391846,
+          "frames": 1
+        },
+        {
+          "token": "uː",
+          "posterior_mean": 0.9318246841430664,
+          "posterior_max": 0.9318246841430664,
+          "frames": 1
+        },
+        {
+          "token": "ʃ",
+          "posterior_mean": 0.9615623950958252,
+          "posterior_max": 0.9615623950958252,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.977886438369751,
+          "posterior_max": 0.977886438369751,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.7890134155750275,
+          "posterior_max": 0.9953989386558533,
+          "frames": 2
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.8664231896400452,
+          "posterior_max": 0.8664231896400452,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.6954444646835327,
+          "posterior_max": 0.6954444646835327,
+          "frames": 1
+        },
+        {
+          "token": "ð",
+          "posterior_mean": 0.9895249605178833,
+          "posterior_max": 0.9895249605178833,
+          "frames": 1
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.2545636296272278,
+          "posterior_max": 0.2545636296272278,
+          "frames": 1
+        },
+        {
+          "token": "f",
+          "posterior_mean": 0.990809440612793,
+          "posterior_max": 0.990809440612793,
+          "frames": 1
+        },
+        {
+          "token": "ɹ",
+          "posterior_mean": 0.7408445775508881,
+          "posterior_max": 0.8169683218002319,
+          "frames": 2
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.9374499917030334,
+          "posterior_max": 0.9374499917030334,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.933949887752533,
+          "posterior_max": 0.933949887752533,
+          "frames": 1
+        },
+        {
+          "token": "ʃ",
+          "posterior_mean": 0.924325704574585,
+          "posterior_max": 0.924325704574585,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.9556567668914795,
+          "posterior_max": 0.9556567668914795,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.9781036376953125,
+          "posterior_max": 0.9781036376953125,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9280792146620124,
+      "mean_consonant_posterior_mass": 0.2618116695018671,
+      "emitted_consonant_runs": 24,
+      "emitted_consonant_posterior_mean": 0.8559094605346521
+    },
+    {
+      "file": "01_fileid_4812_12.50-13.00s_context_noisy.wav",
+      "group": "01",
+      "condition": "noisy",
+      "sha256": "7a7cddcfa44cc1197d200bccaeefee1751ce9e50eac6408c101bd9531f15e591",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "",
+      "token_runs": [],
+      "mean_argmax_posterior": 0.8733875342089721,
+      "mean_consonant_posterior_mass": 0.06526278092836435,
+      "emitted_consonant_runs": 0,
+      "emitted_consonant_posterior_mean": null
+    },
+    {
+      "file": "01_fileid_4812_12.50-13.00s_context_off.wav",
+      "group": "01",
+      "condition": "off",
+      "sha256": "aa42e055efe54289f6aea92f9cf3b24ddc30e15c55199b227a4d1076d7426a7b",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ɛ t p e d a j iː b m a t i k r y k i ɲ o v ɑ b e tʃ e",
+      "token_runs": [
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.3559524118900299,
+          "posterior_max": 0.3559524118900299,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.4163563847541809,
+          "posterior_max": 0.4163563847541809,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.7849591374397278,
+          "posterior_max": 0.7849591374397278,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.45416975021362305,
+          "posterior_max": 0.45416975021362305,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.8862813711166382,
+          "posterior_max": 0.8862813711166382,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.6835185885429382,
+          "posterior_max": 0.6835185885429382,
+          "frames": 1
+        },
+        {
+          "token": "j",
+          "posterior_mean": 0.7196535468101501,
+          "posterior_max": 0.7196535468101501,
+          "frames": 1
+        },
+        {
+          "token": "iː",
+          "posterior_mean": 0.8042439818382263,
+          "posterior_max": 0.8042439818382263,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.35769885778427124,
+          "posterior_max": 0.35769885778427124,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9939594268798828,
+          "posterior_max": 0.9939594268798828,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.8977065682411194,
+          "posterior_max": 0.8977065682411194,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.8562580943107605,
+          "posterior_max": 0.8562580943107605,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.6474032700061798,
+          "posterior_max": 0.7893235087394714,
+          "frames": 2
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.9344318509101868,
+          "posterior_max": 0.9344318509101868,
+          "frames": 1
+        },
+        {
+          "token": "r",
+          "posterior_mean": 0.8385747075080872,
+          "posterior_max": 0.8385747075080872,
+          "frames": 1
+        },
+        {
+          "token": "y",
+          "posterior_mean": 0.4628576338291168,
+          "posterior_max": 0.4628576338291168,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.2621627748012543,
+          "posterior_max": 0.2621627748012543,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.48282304406166077,
+          "posterior_max": 0.48282304406166077,
+          "frames": 1
+        },
+        {
+          "token": "ɲ",
+          "posterior_mean": 0.8670879602432251,
+          "posterior_max": 0.8670879602432251,
+          "frames": 1
+        },
+        {
+          "token": "o",
+          "posterior_mean": 0.2063533514738083,
+          "posterior_max": 0.2063533514738083,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.9560710787773132,
+          "posterior_max": 0.9560710787773132,
+          "frames": 1
+        },
+        {
+          "token": "ɑ",
+          "posterior_mean": 0.37971702218055725,
+          "posterior_max": 0.37971702218055725,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.8688036799430847,
+          "posterior_max": 0.8688036799430847,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.46322858333587646,
+          "posterior_max": 0.46322858333587646,
+          "frames": 1
+        },
+        {
+          "token": "tʃ",
+          "posterior_mean": 0.5027517676353455,
+          "posterior_max": 0.5027517676353455,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.5179080367088318,
+          "posterior_max": 0.5179080367088318,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.8635630768657935,
+      "mean_consonant_posterior_mass": 0.19456232649119443,
+      "emitted_consonant_runs": 15,
+      "emitted_consonant_posterior_mean": 0.736619641383489
+    },
+    {
+      "file": "01_fileid_4812_12.50-13.00s_context_router.wav",
+      "group": "01",
+      "condition": "router",
+      "sha256": "ac5089839fb0ee9e57456f190e8f9dd68ea17d45f1eecb22bd063144007302f4",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "k a t b e d a j iː b m a t i k r y k i ɲ o v ɑ b e tʃ e",
+      "token_runs": [
+        {
+          "token": "k",
+          "posterior_mean": 0.4779317378997803,
+          "posterior_max": 0.4779317378997803,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.32881617546081543,
+          "posterior_max": 0.32881617546081543,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.6709179878234863,
+          "posterior_max": 0.6709179878234863,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.6339685320854187,
+          "posterior_max": 0.6339685320854187,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.46279779076576233,
+          "posterior_max": 0.46279779076576233,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.8278383612632751,
+          "posterior_max": 0.8278383612632751,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.687847375869751,
+          "posterior_max": 0.6940858364105225,
+          "frames": 2
+        },
+        {
+          "token": "j",
+          "posterior_mean": 0.7047686576843262,
+          "posterior_max": 0.7047686576843262,
+          "frames": 1
+        },
+        {
+          "token": "iː",
+          "posterior_mean": 0.7908893823623657,
+          "posterior_max": 0.7908893823623657,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.3330625891685486,
+          "posterior_max": 0.3330625891685486,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9938648343086243,
+          "posterior_max": 0.9938648343086243,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.9016678333282471,
+          "posterior_max": 0.9016678333282471,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.8552294373512268,
+          "posterior_max": 0.8552294373512268,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.8723548650741577,
+          "posterior_max": 0.8723548650741577,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.939368724822998,
+          "posterior_max": 0.939368724822998,
+          "frames": 1
+        },
+        {
+          "token": "r",
+          "posterior_mean": 0.503721296787262,
+          "posterior_max": 0.503721296787262,
+          "frames": 1
+        },
+        {
+          "token": "y",
+          "posterior_mean": 0.41733500361442566,
+          "posterior_max": 0.41733500361442566,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.3494783937931061,
+          "posterior_max": 0.3494783937931061,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.5053839683532715,
+          "posterior_max": 0.5053839683532715,
+          "frames": 1
+        },
+        {
+          "token": "ɲ",
+          "posterior_mean": 0.8750612735748291,
+          "posterior_max": 0.8750612735748291,
+          "frames": 1
+        },
+        {
+          "token": "o",
+          "posterior_mean": 0.20143839716911316,
+          "posterior_max": 0.20143839716911316,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.942805290222168,
+          "posterior_max": 0.942805290222168,
+          "frames": 1
+        },
+        {
+          "token": "ɑ",
+          "posterior_mean": 0.4668208956718445,
+          "posterior_max": 0.4668208956718445,
+          "frames": 1
+        },
+        {
+          "token": "b",
+          "posterior_mean": 0.7989754676818848,
+          "posterior_max": 0.7989754676818848,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.5113980174064636,
+          "posterior_max": 0.5113980174064636,
+          "frames": 1
+        },
+        {
+          "token": "tʃ",
+          "posterior_mean": 0.48144906759262085,
+          "posterior_max": 0.48144906759262085,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.5931081771850586,
+          "posterior_max": 0.5931081771850586,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.8667359394256515,
+      "mean_consonant_posterior_mass": 0.19183419964471682,
+      "emitted_consonant_runs": 16,
+      "emitted_consonant_posterior_mean": 0.69870818965137
+    },
+    {
+      "file": "01_fileid_4812_12.50-13.00s_context_y_pre.wav",
+      "group": "01",
+      "condition": "y_pre",
+      "sha256": "7cfeffa49d3b1dcae8037beed108420fd306729bbfcbf35865cfa88602ffdd16",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "a p e v a v i d m a t i t i s u n u v o r p o n ʃ e",
+      "token_runs": [
+        {
+          "token": "a",
+          "posterior_mean": 0.895991861820221,
+          "posterior_max": 0.895991861820221,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.6786255836486816,
+          "posterior_max": 0.6786255836486816,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.2521566152572632,
+          "posterior_max": 0.2521566152572632,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.8452979326248169,
+          "posterior_max": 0.8452979326248169,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.8335620760917664,
+          "posterior_max": 0.8335620760917664,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.2919480800628662,
+          "posterior_max": 0.2919480800628662,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.6956634521484375,
+          "posterior_max": 0.6956634521484375,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.8121750950813293,
+          "posterior_max": 0.8121750950813293,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9301947355270386,
+          "posterior_max": 0.9301947355270386,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.9444493055343628,
+          "posterior_max": 0.9444493055343628,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.4178735017776489,
+          "posterior_max": 0.48374050855636597,
+          "frames": 2
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.7585972547531128,
+          "posterior_max": 0.7585972547531128,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.5842893719673157,
+          "posterior_max": 0.5842893719673157,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.3522946536540985,
+          "posterior_max": 0.3522946536540985,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.8572621941566467,
+          "posterior_max": 0.8572621941566467,
+          "frames": 1
+        },
+        {
+          "token": "u",
+          "posterior_mean": 0.27092379331588745,
+          "posterior_max": 0.27092379331588745,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.8989289402961731,
+          "posterior_max": 0.8989289402961731,
+          "frames": 1
+        },
+        {
+          "token": "u",
+          "posterior_mean": 0.5122681856155396,
+          "posterior_max": 0.5122681856155396,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.3845651149749756,
+          "posterior_max": 0.3845651149749756,
+          "frames": 1
+        },
+        {
+          "token": "o",
+          "posterior_mean": 0.39489951729774475,
+          "posterior_max": 0.39489951729774475,
+          "frames": 1
+        },
+        {
+          "token": "r",
+          "posterior_mean": 0.8661689162254333,
+          "posterior_max": 0.8661689162254333,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.5474376082420349,
+          "posterior_max": 0.5474376082420349,
+          "frames": 1
+        },
+        {
+          "token": "o",
+          "posterior_mean": 0.7513637542724609,
+          "posterior_max": 0.7513637542724609,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.8141731023788452,
+          "posterior_max": 0.8141731023788452,
+          "frames": 1
+        },
+        {
+          "token": "ʃ",
+          "posterior_mean": 0.41265636682510376,
+          "posterior_max": 0.41265636682510376,
+          "frames": 1
+        },
+        {
+          "token": "e",
+          "posterior_mean": 0.7022219896316528,
+          "posterior_max": 0.7022219896316528,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.8559907415900567,
+      "mean_consonant_posterior_mass": 0.1850914658521674,
+      "emitted_consonant_runs": 14,
+      "emitted_consonant_posterior_mean": 0.6672568959849221
+    },
+    {
+      "file": "02_fileid_11999_19.50-20.00s_context_clean.wav",
+      "group": "02",
+      "condition": "clean",
+      "sha256": "1fc5f6859c751d5c923af4cb57acf2373d4f9c4db3633274d1dd1a51e66417eb",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "iː v ə n ɪ n ð ə m oʊ s t p ɜː f ɪ k t k ə m j uː n ɪ ɾ i ð",
+      "token_runs": [
+        {
+          "token": "iː",
+          "posterior_mean": 0.8389853835105896,
+          "posterior_max": 0.8389853835105896,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.9859356880187988,
+          "posterior_max": 0.9859356880187988,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.827014148235321,
+          "posterior_max": 0.827014148235321,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9968457818031311,
+          "posterior_max": 0.9968457818031311,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.9640769362449646,
+          "posterior_max": 0.9640769362449646,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9633751213550568,
+          "posterior_max": 0.9695432186126709,
+          "frames": 2
+        },
+        {
+          "token": "ð",
+          "posterior_mean": 0.9669703245162964,
+          "posterior_max": 0.9669703245162964,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.9452400803565979,
+          "posterior_max": 0.9452400803565979,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9979475140571594,
+          "posterior_max": 0.9979475140571594,
+          "frames": 1
+        },
+        {
+          "token": "oʊ",
+          "posterior_mean": 0.7025513648986816,
+          "posterior_max": 0.7025513648986816,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9906822443008423,
+          "posterior_max": 0.9906822443008423,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.7572103440761566,
+          "posterior_max": 0.9827800989151001,
+          "frames": 2
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.9911105632781982,
+          "posterior_max": 0.9911105632781982,
+          "frames": 1
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.504682719707489,
+          "posterior_max": 0.504682719707489,
+          "frames": 1
+        },
+        {
+          "token": "f",
+          "posterior_mean": 0.9831234216690063,
+          "posterior_max": 0.9831234216690063,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.5743497014045715,
+          "posterior_max": 0.5743497014045715,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.9613367915153503,
+          "posterior_max": 0.9716584086418152,
+          "frames": 2
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9803050756454468,
+          "posterior_max": 0.9803050756454468,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.9883545637130737,
+          "posterior_max": 0.9883545637130737,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.5901901125907898,
+          "posterior_max": 0.5901901125907898,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9251764118671417,
+          "posterior_max": 0.9485659599304199,
+          "frames": 2
+        },
+        {
+          "token": "j",
+          "posterior_mean": 0.8307635188102722,
+          "posterior_max": 0.8307635188102722,
+          "frames": 1
+        },
+        {
+          "token": "uː",
+          "posterior_mean": 0.8676267862319946,
+          "posterior_max": 0.8676267862319946,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9949230551719666,
+          "posterior_max": 0.9949230551719666,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.7632227540016174,
+          "posterior_max": 0.7632227540016174,
+          "frames": 1
+        },
+        {
+          "token": "ɾ",
+          "posterior_mean": 0.920602560043335,
+          "posterior_max": 0.920602560043335,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.990605890750885,
+          "posterior_max": 0.990605890750885,
+          "frames": 1
+        },
+        {
+          "token": "ð",
+          "posterior_mean": 0.9797468185424805,
+          "posterior_max": 0.9797468185424805,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9532548273452605,
+      "mean_consonant_posterior_mass": 0.25038007344414837,
+      "emitted_consonant_runs": 21,
+      "emitted_consonant_posterior_mean": 0.9108693358444032
+    },
+    {
+      "file": "02_fileid_11999_19.50-20.00s_context_noisy.wav",
+      "group": "02",
+      "condition": "noisy",
+      "sha256": "9b420eae2feb5534e706794cadcdd063508e729355d73c1b319d0cfbb10d30e2",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "i a m i n",
+      "token_runs": [
+        {
+          "token": "i",
+          "posterior_mean": 0.3491767644882202,
+          "posterior_max": 0.3491767644882202,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.4309089481830597,
+          "posterior_max": 0.4309089481830597,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9878005981445312,
+          "posterior_max": 0.9878005981445312,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.841839075088501,
+          "posterior_max": 0.841839075088501,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9538378715515137,
+          "posterior_max": 0.9538378715515137,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9038972610777075,
+      "mean_consonant_posterior_mass": 0.07531109267269898,
+      "emitted_consonant_runs": 2,
+      "emitted_consonant_posterior_mean": 0.9708192348480225
+    },
+    {
+      "file": "02_fileid_11999_19.50-20.00s_context_off.wav",
+      "group": "02",
+      "condition": "off",
+      "sha256": "cdd774b9aeb9c18e6127318860c852e1324c81cdae6dc17adc7d038694de63d1",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ʃ l a m d ɛ ɾ d ə p ɹ eɪ t ɛ m iː n uː t",
+      "token_runs": [
+        {
+          "token": "ʃ",
+          "posterior_mean": 0.6977322101593018,
+          "posterior_max": 0.6977322101593018,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.22848458588123322,
+          "posterior_max": 0.22848458588123322,
+          "frames": 1
+        },
+        {
+          "token": "a",
+          "posterior_mean": 0.2874141037464142,
+          "posterior_max": 0.2874141037464142,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.6602513790130615,
+          "posterior_max": 0.6602513790130615,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.7175531983375549,
+          "posterior_max": 0.7175531983375549,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.7782014608383179,
+          "posterior_max": 0.7782014608383179,
+          "frames": 1
+        },
+        {
+          "token": "ɾ",
+          "posterior_mean": 0.5108903646469116,
+          "posterior_max": 0.5108903646469116,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.7990171909332275,
+          "posterior_max": 0.7990171909332275,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.8954142928123474,
+          "posterior_max": 0.8954142928123474,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.9067036211490631,
+          "posterior_max": 0.9588140845298767,
+          "frames": 2
+        },
+        {
+          "token": "ɹ",
+          "posterior_mean": 0.913779079914093,
+          "posterior_max": 0.913779079914093,
+          "frames": 1
+        },
+        {
+          "token": "eɪ",
+          "posterior_mean": 0.37744101881980896,
+          "posterior_max": 0.37744101881980896,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.7762401103973389,
+          "posterior_max": 0.7762401103973389,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.3211492896080017,
+          "posterior_max": 0.3211492896080017,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9906226992607117,
+          "posterior_max": 0.9906226992607117,
+          "frames": 1
+        },
+        {
+          "token": "iː",
+          "posterior_mean": 0.7221750617027283,
+          "posterior_max": 0.7221750617027283,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9905973076820374,
+          "posterior_max": 0.9905973076820374,
+          "frames": 1
+        },
+        {
+          "token": "uː",
+          "posterior_mean": 0.40093833208084106,
+          "posterior_max": 0.40093833208084106,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.4741995334625244,
+          "posterior_max": 0.4741995334625244,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9091401113705202,
+      "mean_consonant_posterior_mass": 0.1711018185608708,
+      "emitted_consonant_runs": 15,
+      "emitted_consonant_posterior_mean": 0.6777750462293625
+    },
+    {
+      "file": "02_fileid_11999_19.50-20.00s_context_router.wav",
+      "group": "02",
+      "condition": "router",
+      "sha256": "eda4fb279cc7c1b87923a5d4d639fc1f42d13b2e09746c0368803e311aa7ce7d",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ʃ ʌ m d ɛ d ə p ɹ eɪ t ɪ m ɪ n ɪ",
+      "token_runs": [
+        {
+          "token": "ʃ",
+          "posterior_mean": 0.6398184299468994,
+          "posterior_max": 0.6398184299468994,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.37297359108924866,
+          "posterior_max": 0.37297359108924866,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.6761037111282349,
+          "posterior_max": 0.6761037111282349,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.7095592021942139,
+          "posterior_max": 0.7095592021942139,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.7854491472244263,
+          "posterior_max": 0.7854491472244263,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.7775411605834961,
+          "posterior_max": 0.7775411605834961,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.862018346786499,
+          "posterior_max": 0.862018346786499,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.9098402559757233,
+          "posterior_max": 0.9403994083404541,
+          "frames": 2
+        },
+        {
+          "token": "ɹ",
+          "posterior_mean": 0.9294816255569458,
+          "posterior_max": 0.9294816255569458,
+          "frames": 1
+        },
+        {
+          "token": "eɪ",
+          "posterior_mean": 0.5324869751930237,
+          "posterior_max": 0.5324869751930237,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.7525203227996826,
+          "posterior_max": 0.7525203227996826,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.48156028985977173,
+          "posterior_max": 0.48156028985977173,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9905089139938354,
+          "posterior_max": 0.9905089139938354,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.5224265456199646,
+          "posterior_max": 0.5224265456199646,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9812012314796448,
+          "posterior_max": 0.9812012314796448,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.3027331829071045,
+          "posterior_max": 0.3027331829071045,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9094846423226174,
+      "mean_consonant_posterior_mass": 0.1585903236050541,
+      "emitted_consonant_runs": 10,
+      "emitted_consonant_posterior_mean": 0.78990618288517
+    },
+    {
+      "file": "02_fileid_11999_19.50-20.00s_context_y_pre.wav",
+      "group": "02",
+      "condition": "y_pre",
+      "sha256": "adb4e65a6dcc2f938b3bab6e862c2666d1b9920b60577836b2c20aaca1767ecd",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "ɐ m o z i i m i n k ə",
+      "token_runs": [
+        {
+          "token": "ɐ",
+          "posterior_mean": 0.5094290375709534,
+          "posterior_max": 0.5094290375709534,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.6664707064628601,
+          "posterior_max": 0.6664707064628601,
+          "frames": 1
+        },
+        {
+          "token": "o",
+          "posterior_mean": 0.486401230096817,
+          "posterior_max": 0.486401230096817,
+          "frames": 1
+        },
+        {
+          "token": "z",
+          "posterior_mean": 0.7870983481407166,
+          "posterior_max": 0.7870983481407166,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.2526559829711914,
+          "posterior_max": 0.2526559829711914,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.6038535833358765,
+          "posterior_max": 0.6038535833358765,
+          "frames": 1
+        },
+        {
+          "token": "m",
+          "posterior_mean": 0.9827978610992432,
+          "posterior_max": 0.9827978610992432,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.8868650197982788,
+          "posterior_max": 0.8868650197982788,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.8988662362098694,
+          "posterior_max": 0.8988662362098694,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.425155371427536,
+          "posterior_max": 0.425155371427536,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.22497066855430603,
+          "posterior_max": 0.22497066855430603,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.9197035428851542,
+      "mean_consonant_posterior_mass": 0.07834330294215164,
+      "emitted_consonant_runs": 5,
+      "emitted_consonant_posterior_mean": 0.752077704668045
+    },
+    {
+      "file": "03_fileid_10720_14.50-15.00s_context_clean.wav",
+      "group": "03",
+      "condition": "clean",
+      "sha256": "10435d243635f7b4135fbca220d6de45d2e501e6cdd0770abd209652ec85204c",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "n d iː d s ɜː t ə n l i w ɪ l",
+      "token_runs": [
+        {
+          "token": "n",
+          "posterior_mean": 0.9709955453872681,
+          "posterior_max": 0.9709955453872681,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.9927688837051392,
+          "posterior_max": 0.9927688837051392,
+          "frames": 1
+        },
+        {
+          "token": "iː",
+          "posterior_mean": 0.9094823598861694,
+          "posterior_max": 0.9094823598861694,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.9253696501255035,
+          "posterior_max": 0.9645253419876099,
+          "frames": 2
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9889853000640869,
+          "posterior_max": 0.9889853000640869,
+          "frames": 1
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.6029205322265625,
+          "posterior_max": 0.6029205322265625,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.7154368758201599,
+          "posterior_max": 0.8568722605705261,
+          "frames": 2
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.9254827499389648,
+          "posterior_max": 0.9254827499389648,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.9656399488449097,
+          "posterior_max": 0.9656399488449097,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.9688342809677124,
+          "posterior_max": 0.9688342809677124,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.9806070327758789,
+          "posterior_max": 0.9806070327758789,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.7737424671649933,
+          "posterior_max": 0.9666152596473694,
+          "frames": 2
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.9519909024238586,
+          "posterior_max": 0.9519909024238586,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.8803902268409729,
+          "posterior_max": 0.8803902268409729,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.964894732441565,
+      "mean_consonant_posterior_mass": 0.14206039766014555,
+      "emitted_consonant_runs": 11,
+      "emitted_consonant_posterior_mean": 0.8813241882757707
+    },
+    {
+      "file": "03_fileid_10720_14.50-15.00s_context_noisy.wav",
+      "group": "03",
+      "condition": "noisy",
+      "sha256": "284b279d34a6a76b742fffc41e6cd90a1c96682426c36d166362b3e652b50ad7",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "",
+      "token_runs": [],
+      "mean_argmax_posterior": 0.8836162216735609,
+      "mean_consonant_posterior_mass": 0.05808256076906204,
+      "emitted_consonant_runs": 0,
+      "emitted_consonant_posterior_mean": null
+    },
+    {
+      "file": "03_fileid_10720_14.50-15.00s_context_off.wav",
+      "group": "03",
+      "condition": "off",
+      "sha256": "368283fb95df9f7e569fde71d11cfc4fc04a967176667a3b14082bb75c70c8bb",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "s ɪ ɾ i p ʌ n ɜː n t ə ð oʊ l d æ l v ɚ ɹ i d ə s ɪ s t ɚ w s k",
+      "token_runs": [
+        {
+          "token": "s",
+          "posterior_mean": 0.9101070761680603,
+          "posterior_max": 0.9101070761680603,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.7708097696304321,
+          "posterior_max": 0.7708097696304321,
+          "frames": 1
+        },
+        {
+          "token": "ɾ",
+          "posterior_mean": 0.9307097792625427,
+          "posterior_max": 0.9307097792625427,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.9854458570480347,
+          "posterior_max": 0.9854458570480347,
+          "frames": 1
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.9848715662956238,
+          "posterior_max": 0.9848715662956238,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.8240602016448975,
+          "posterior_max": 0.8240602016448975,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.780942440032959,
+          "posterior_max": 0.9424660801887512,
+          "frames": 2
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.4695981442928314,
+          "posterior_max": 0.4695981442928314,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.751915454864502,
+          "posterior_max": 0.8457443118095398,
+          "frames": 2
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.946380615234375,
+          "posterior_max": 0.946380615234375,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.8665136694908142,
+          "posterior_max": 0.8665136694908142,
+          "frames": 1
+        },
+        {
+          "token": "ð",
+          "posterior_mean": 0.9823557734489441,
+          "posterior_max": 0.9823557734489441,
+          "frames": 1
+        },
+        {
+          "token": "oʊ",
+          "posterior_mean": 0.6327286958694458,
+          "posterior_max": 0.6327286958694458,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.604629397392273,
+          "posterior_max": 0.604629397392273,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.6459175944328308,
+          "posterior_max": 0.6459175944328308,
+          "frames": 1
+        },
+        {
+          "token": "æ",
+          "posterior_mean": 0.7513077259063721,
+          "posterior_max": 0.7513077259063721,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.9758208990097046,
+          "posterior_max": 0.9758208990097046,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.8181470632553101,
+          "posterior_max": 0.8181470632553101,
+          "frames": 1
+        },
+        {
+          "token": "ɚ",
+          "posterior_mean": 0.6548904776573181,
+          "posterior_max": 0.6548904776573181,
+          "frames": 1
+        },
+        {
+          "token": "ɹ",
+          "posterior_mean": 0.7706174850463867,
+          "posterior_max": 0.9776924252510071,
+          "frames": 2
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.9783993363380432,
+          "posterior_max": 0.9783993363380432,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.47224119305610657,
+          "posterior_max": 0.47224119305610657,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.5001761317253113,
+          "posterior_max": 0.5001761317253113,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9905844330787659,
+          "posterior_max": 0.9905844330787659,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.9500035047531128,
+          "posterior_max": 0.9500035047531128,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9749290347099304,
+          "posterior_max": 0.9749290347099304,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9755017757415771,
+          "posterior_max": 0.9755017757415771,
+          "frames": 1
+        },
+        {
+          "token": "ɚ",
+          "posterior_mean": 0.5090891122817993,
+          "posterior_max": 0.5090891122817993,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.8634864091873169,
+          "posterior_max": 0.8634864091873169,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.3548698425292969,
+          "posterior_max": 0.3548698425292969,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.4844014048576355,
+          "posterior_max": 0.4844014048576355,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.8869013235424504,
+      "mean_consonant_posterior_mass": 0.2539131309318634,
+      "emitted_consonant_runs": 21,
+      "emitted_consonant_posterior_mean": 0.77717886084602
+    },
+    {
+      "file": "03_fileid_10720_14.50-15.00s_context_router.wav",
+      "group": "03",
+      "condition": "router",
+      "sha256": "e841bd82429671c6c7b33768e39d5d3bbcb8884ce989ec6ad9d491e47b4b7c51",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "s ɪ ɾ i p ʌ n ɜː n t ə ð oʊ l d æ l v ɚ ɹ i n ə s ɪ s t ɚ w ɪ ð",
+      "token_runs": [
+        {
+          "token": "s",
+          "posterior_mean": 0.9056231379508972,
+          "posterior_max": 0.9056231379508972,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.6597794890403748,
+          "posterior_max": 0.6597794890403748,
+          "frames": 1
+        },
+        {
+          "token": "ɾ",
+          "posterior_mean": 0.9335991740226746,
+          "posterior_max": 0.9335991740226746,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.8483759164810181,
+          "posterior_max": 0.8931919932365417,
+          "frames": 2
+        },
+        {
+          "token": "p",
+          "posterior_mean": 0.9610481858253479,
+          "posterior_max": 0.9610481858253479,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.8080480098724365,
+          "posterior_max": 0.8080480098724365,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.6963647603988647,
+          "posterior_max": 0.945824384689331,
+          "frames": 2
+        },
+        {
+          "token": "ɜː",
+          "posterior_mean": 0.47069111466407776,
+          "posterior_max": 0.47069111466407776,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.5550516098737717,
+          "posterior_max": 0.6365598440170288,
+          "frames": 2
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9447096586227417,
+          "posterior_max": 0.9447096586227417,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.8922256231307983,
+          "posterior_max": 0.8922256231307983,
+          "frames": 1
+        },
+        {
+          "token": "ð",
+          "posterior_mean": 0.990209698677063,
+          "posterior_max": 0.990209698677063,
+          "frames": 1
+        },
+        {
+          "token": "oʊ",
+          "posterior_mean": 0.5853418111801147,
+          "posterior_max": 0.5853418111801147,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.5909554362297058,
+          "posterior_max": 0.5909554362297058,
+          "frames": 1
+        },
+        {
+          "token": "d",
+          "posterior_mean": 0.4903639554977417,
+          "posterior_max": 0.4903639554977417,
+          "frames": 1
+        },
+        {
+          "token": "æ",
+          "posterior_mean": 0.7279642820358276,
+          "posterior_max": 0.7279642820358276,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.977679431438446,
+          "posterior_max": 0.977679431438446,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.9437210559844971,
+          "posterior_max": 0.9437210559844971,
+          "frames": 1
+        },
+        {
+          "token": "ɚ",
+          "posterior_mean": 0.6452743411064148,
+          "posterior_max": 0.6452743411064148,
+          "frames": 1
+        },
+        {
+          "token": "ɹ",
+          "posterior_mean": 0.9817284941673279,
+          "posterior_max": 0.9817284941673279,
+          "frames": 1
+        },
+        {
+          "token": "i",
+          "posterior_mean": 0.9795132279396057,
+          "posterior_max": 0.9795132279396057,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.59360671043396,
+          "posterior_max": 0.59360671043396,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.54756760597229,
+          "posterior_max": 0.54756760597229,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9905058741569519,
+          "posterior_max": 0.9905058741569519,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.9479967355728149,
+          "posterior_max": 0.9479967355728149,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.9716182351112366,
+          "posterior_max": 0.9716182351112366,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.9670128226280212,
+          "posterior_max": 0.9670128226280212,
+          "frames": 1
+        },
+        {
+          "token": "ɚ",
+          "posterior_mean": 0.5136316418647766,
+          "posterior_max": 0.5136316418647766,
+          "frames": 1
+        },
+        {
+          "token": "w",
+          "posterior_mean": 0.8913098573684692,
+          "posterior_max": 0.8913098573684692,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.32369205355644226,
+          "posterior_max": 0.32369205355644226,
+          "frames": 1
+        },
+        {
+          "token": "ð",
+          "posterior_mean": 0.34560155868530273,
+          "posterior_max": 0.34560155868530273,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.8684869604279296,
+      "mean_consonant_posterior_mass": 0.25418114926645785,
+      "emitted_consonant_runs": 20,
+      "emitted_consonant_posterior_mean": 0.7893371291458606
+    },
+    {
+      "file": "03_fileid_10720_14.50-15.00s_context_y_pre.wav",
+      "group": "03",
+      "condition": "y_pre",
+      "sha256": "559ec2a43e8ad6c694df307023a3e2454a13536c165b29a2cb63e19dbe126c0e",
+      "sample_rate": 16000,
+      "num_frames": 99,
+      "decoded_phonemes": "m eɪ k ə t æ n t ʌ s v ɛ l k ɪ ʌ s ʌ",
+      "token_runs": [
+        {
+          "token": "m",
+          "posterior_mean": 0.5208032131195068,
+          "posterior_max": 0.5208032131195068,
+          "frames": 1
+        },
+        {
+          "token": "eɪ",
+          "posterior_mean": 0.47258442640304565,
+          "posterior_max": 0.47258442640304565,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.7210889458656311,
+          "posterior_max": 0.7210889458656311,
+          "frames": 1
+        },
+        {
+          "token": "ə",
+          "posterior_mean": 0.20006334781646729,
+          "posterior_max": 0.20006334781646729,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.5532591342926025,
+          "posterior_max": 0.5532591342926025,
+          "frames": 1
+        },
+        {
+          "token": "æ",
+          "posterior_mean": 0.30396565794944763,
+          "posterior_max": 0.30396565794944763,
+          "frames": 1
+        },
+        {
+          "token": "n",
+          "posterior_mean": 0.8586350679397583,
+          "posterior_max": 0.8586350679397583,
+          "frames": 1
+        },
+        {
+          "token": "t",
+          "posterior_mean": 0.3075042963027954,
+          "posterior_max": 0.3075042963027954,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.19237126410007477,
+          "posterior_max": 0.19237126410007477,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.3483402132987976,
+          "posterior_max": 0.3483402132987976,
+          "frames": 1
+        },
+        {
+          "token": "v",
+          "posterior_mean": 0.20921793580055237,
+          "posterior_max": 0.20921793580055237,
+          "frames": 1
+        },
+        {
+          "token": "ɛ",
+          "posterior_mean": 0.46015387773513794,
+          "posterior_max": 0.46015387773513794,
+          "frames": 1
+        },
+        {
+          "token": "l",
+          "posterior_mean": 0.7646603584289551,
+          "posterior_max": 0.7646603584289551,
+          "frames": 1
+        },
+        {
+          "token": "k",
+          "posterior_mean": 0.3134637773036957,
+          "posterior_max": 0.3134637773036957,
+          "frames": 1
+        },
+        {
+          "token": "ɪ",
+          "posterior_mean": 0.21747452020645142,
+          "posterior_max": 0.21747452020645142,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.23998059332370758,
+          "posterior_max": 0.23998059332370758,
+          "frames": 1
+        },
+        {
+          "token": "s",
+          "posterior_mean": 0.8684540390968323,
+          "posterior_max": 0.8684540390968323,
+          "frames": 1
+        },
+        {
+          "token": "ʌ",
+          "posterior_mean": 0.10418587177991867,
+          "posterior_max": 0.10418587177991867,
+          "frames": 1
+        }
+      ],
+      "mean_argmax_posterior": 0.824110437146943,
+      "mean_consonant_posterior_mass": 0.17429476105451158,
+      "emitted_consonant_runs": 11,
+      "emitted_consonant_posterior_mean": 0.5398192188956521
+    }
+  ]
+}

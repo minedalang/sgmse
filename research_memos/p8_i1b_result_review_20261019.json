@@ -1,0 +1,23 @@
+{
+  "kind": "Root I1b completed technical data-preparation review not scientific success",
+  "utc": "2026-10-19T09:18:41.530893+00:00",
+  "metrics_sha256": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c",
+  "main_seconds": 1.0632867510430515,
+  "validator_seconds": 3.4745484710438177,
+  "event_slots": 24,
+  "operation_slots": 96,
+  "Root_audio_reads": 0,
+  "worker_main_validator_pcm_decodes": 48,
+  "posthoc_control_delta_energy_relative_difference": {
+    "n_correlated_comparisons": 48,
+    "median": 0.1285562295567545,
+    "maximum": 0.8277770635004515,
+    "not_preregistered_endpoint": true,
+    "not_independent_n": true
+  },
+  "source_records_verified": 10,
+  "preparation_files_verified": 11,
+  "decision": "close technical preparation; no control reselection/attenuation sweep or operator classifier; identify independent natural-structure evaluation next",
+  "listener_resources": "asynchronous question sent; unconfirmed; no recruitment/export permission",
+  "goal_complete": false
+}

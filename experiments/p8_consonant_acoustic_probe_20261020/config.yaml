@@ -1,0 +1,7 @@
+experiment_id: p8_consonant_acoustic_probe_20261020
+source: ../p8_e1_candidate_listening_aligned_20261020
+window: exact 0.5 s target windows
+features: RMS dBFS, low/mid/high band power, high-to-mid power, spectral flatness, centroid, envelope variation, transient peak rate
+no_training: true
+no_inference: true
+interpretation: acoustic proxies only; no phoneme labels or content recovery claim

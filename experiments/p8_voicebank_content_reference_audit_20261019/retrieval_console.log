@@ -1,0 +1,25 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/retrieve_and_map.py", line 35, in <module>
+    if r['status']!='saved':raise RuntimeError('Official source unavailable after one authorized fallback:'+name)
+RuntimeError: Official source unavailable after one authorized fallback:publisher/trainset_28spk_txt.zip
+{
+  "status": "failed",
+  "failures": [
+    {
+      "error": "RuntimeError('Official source unavailable after one authorized fallback:publisher/trainset_28spk_txt.zip')",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/retrieve_and_map.py\", line 35, in <module>\n    if r['status']!='saved':raise RuntimeError('Official source unavailable after one authorized fallback:'+name)\nRuntimeError: Official source unavailable after one authorized fallback:publisher/trainset_28spk_txt.zip\n"
+    }
+  ],
+  "model_calls": 0,
+  "training_calls": 0,
+  "waveform_decodes": 0,
+  "test_transcript_fetches": 0,
+  "test_content_opened": false,
+  "retrieval_finished_utc": "2026-10-19T02:20:58.403849+00:00",
+  "cumulative_download_bytes": 4534750,
+  "network_and_mapping_wall_seconds": 181.18207600165624,
+  "local_inventory_metrics_sha256": "9a5d6ffa30889942ad4d17761d08b28282f2e8fdf8fc71cd9f947facd7ab6d08",
+  "driver_sha256": "1ed654625e5f6413d764770a33cbe5ec4ec86572ea03fd1750277610ce86b67f",
+  "all_original_local_source_locks_unchanged": true,
+  "artifact_bytes_before_final_report": 1581287
+}

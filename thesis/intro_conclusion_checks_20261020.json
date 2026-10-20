@@ -1,0 +1,114 @@
+{
+  "kind": "documentation_checks_not_scientific_validation",
+  "checks": {
+    "protected_original_sources_bib_figure_and_evidence_unchanged": true,
+    "generator_and_readme_backup_sha_match": true,
+    "all_seven_source_bodies_preserved_with_only_heading_and_link_transforms": true,
+    "display_math_verbatim_in_md_and_unescaped_html": true,
+    "unique_heading_ids_and_toc_targets_exist": true,
+    "toc_covers_all_level_1_to_3_headings": true,
+    "source_local_path_links_exist": true,
+    "required_source_order": true
+  },
+  "math_blocks": 13,
+  "toc_entries": 54,
+  "protected_files": [
+    {
+      "path": "THESIS_FRAMING_DRAFT_20261019.md",
+      "bytes": 5506,
+      "sha256": "d7e288641419c519ef569a586b5165a31e3cf700dea3bb830c462d86142efc5a"
+    },
+    {
+      "path": "P8_RELATED_WORK_DRAFT_20261019.md",
+      "bytes": 7544,
+      "sha256": "0b1840025c139b3158c37a17187ff4c54036dfa6bd4253c1b2ff85455d65bc42"
+    },
+    {
+      "path": "METHODS_RRSD_IMPLEMENTED_DRAFT_20261019.md",
+      "bytes": 9958,
+      "sha256": "13b43bb2f5ec7059b142d8c6820341e547919543e2a7c517862c10b5dd5e5e89"
+    },
+    {
+      "path": "THESIS_EXPERIMENTS_CHAPTER_DRAFT_20261019.md",
+      "bytes": 18714,
+      "sha256": "56c62af5048af4a0590cd581791752813c426016424fd0ab7ae18d8ccf5531d9"
+    },
+    {
+      "path": "P8_EVIDENCE_DISCUSSION_DRAFT_20261019.md",
+      "bytes": 14447,
+      "sha256": "58a6417698f74ba32594bf76de3c8ae5801b4273fd70fcfb6339ee84c4c5eec4"
+    },
+    {
+      "path": "P8_RELATED_WORK_REFERENCES_20261019.bib",
+      "bytes": 3388,
+      "sha256": "aec80cc27f884de432f4aef8a05de52c3b71aa20a070b4704c1599e081122836"
+    },
+    {
+      "path": "thesis/figures/router_condition_tradeoffs.svg",
+      "bytes": 16753,
+      "sha256": "49e2be6c0692155948122951fdd4fea96b6e95086daf4515756145e918df19e7"
+    },
+    {
+      "path": "thesis/figures/router_condition_tradeoffs.data.json",
+      "bytes": 3366,
+      "sha256": "5b200f4bc8161226e2e5dbd260831d924b911ebb576a16128dd2b46870349ea8"
+    },
+    {
+      "path": "thesis/generate_figures.py",
+      "bytes": 5479,
+      "sha256": "7cc1fa65c1642cc2300fb57bb4b38b15e0a057b5e0fab79f8c6570cd4908ffef"
+    },
+    {
+      "path": "experiments/final_eval_full_20261018/metrics.json",
+      "bytes": 18188,
+      "sha256": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "THESIS_INTRODUCTION_DRAFT_20261020.md",
+      "bytes": 7753,
+      "sha256": "4ba380b2d86790deec2b12bcc4f2a9c773ac074a94f95c910f36aa99c5145c89",
+      "cjk_characters": 2128
+    },
+    {
+      "path": "THESIS_CONCLUSION_DRAFT_20261020.md",
+      "bytes": 6485,
+      "sha256": "e8c758258e6abca03bf9095ca149975c1e2d6a424305b0a21f80546c8334d766",
+      "cjk_characters": 1622
+    },
+    {
+      "path": "thesis/generate_reader.py",
+      "bytes": 13027,
+      "sha256": "602d253c76e173415cf0fad5b2d458ce6bc623b9b56d32013c812d8386bbdd94"
+    },
+    {
+      "path": "thesis/README.md",
+      "bytes": 4557,
+      "sha256": "a2e1a4c52c2d57687e23326251eb72565d5401206fa173896b58daf8c74b6cd4"
+    },
+    {
+      "path": "thesis/manuscript.md",
+      "bytes": 76521,
+      "sha256": "4d46bd6299a22cc256882a9936d07d66d1bb2704fe7a861b864f8b7a693ea796"
+    },
+    {
+      "path": "thesis/manuscript.html",
+      "bytes": 89963,
+      "sha256": "cecd20a26aa9057d19b74831f2a93f071d46d86e15fce445bbfabf73b143535b"
+    },
+    {
+      "path": "thesis/sources_manifest.json",
+      "bytes": 4310,
+      "sha256": "5f2f1ec40034f83fd0ec486db442711c149232f6e7c359d12cff09edf2518881"
+    }
+  ],
+  "unverified": [
+    "Real browser/mobile/print rendering",
+    "Mathematical typesetting",
+    "BibTeX/TeX compilation",
+    "School template compliance or thesis submission completeness",
+    "Historical scientific validity, audio, checkpoint or model outputs"
+  ],
+  "verification_note": "Initial runpy invocation lacked generator sibling import path and failed before checks; corrected sys.path to existing thesis directory; no package installed."
+}

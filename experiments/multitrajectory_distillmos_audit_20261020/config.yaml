@@ -1,0 +1,11 @@
+experiment_id: multitrajectory_distillmos_audit_20261020
+purpose: independent learned-quality audit of existing multi-trajectory selections
+source_audio: /dev/shm/multitraj_router_wavs_{16,heldout16}
+source_selection: experiments/multitrajectory_oracle_heldout16/consistency_probe.json
+model: distillmos.ConvTransformerSQAModel variant 7
+device: cuda-auto
+new_inference: false
+new_training: false
+audio_copied: false
+dataset_modified: false
+checkpoint_modified: false

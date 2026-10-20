@@ -1,0 +1,12 @@
+{
+  "repair": "serialization only: two recorded error bounds explicitly cast to Python float",
+  "original_driver_sha256": "1e68ff97624cd68109518d5e19f66b864eadd5f11cae4d645ddb41108f2f95e6",
+  "corrected_driver_sha256": "b13d5cea556605f5a5734b92749713788749efb45185bb6ede84777a6ea3e106",
+  "helper_sha256": "66f61a892e5b4ffc37c1069e3692618a07fb09efc3717c106c1d18c212ddbb82",
+  "numpy_version": "1.26.4",
+  "syntax_valid": true,
+  "numpy_float32_json_regression_passed": true,
+  "inference_executed_by_repair": false,
+  "failed_artifacts_preserved": "failed_attempt_01",
+  "outputs_absent": true
+}

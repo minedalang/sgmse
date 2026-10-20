@@ -1,0 +1,10 @@
+[
+  {
+    "attempt": 1,
+    "operation": "torch.load trusted local checkpoint on CPU, weights_only=False",
+    "outcome": "failed before returning checkpoint",
+    "exception": "ModuleNotFoundError: No module named 'sgmse'",
+    "diagnosis": "Running a script inside experiment directory sets sys.path[0] to that directory; repo root missing from import path for serialized sgmse object references.",
+    "retry_status": "Research Lead authorized corrected import launcher; second attempt succeeded; preserved failure record"
+  }
+]

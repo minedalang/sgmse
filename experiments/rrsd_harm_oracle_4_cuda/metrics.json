@@ -1,0 +1,74 @@
+[
+  {
+    "file": "book_00000_chp_0009_reader_06709_16_OfdoLzrAwa4-typing_Freesound_validated_399603_74-trKqRxC0mhk_snr-10_fileid_10823.wav",
+    "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10823.wav",
+    "harm_steps": 1,
+    "steps": 4,
+    "mse_base": [
+      0.11341072618961334,
+      0.08590882271528244,
+      0.08574068546295166,
+      0.08679462969303131
+    ],
+    "mse_route": [
+      0.11341072618961334,
+      0.085910364985466,
+      0.08573810756206512,
+      0.08678695559501648
+    ]
+  },
+  {
+    "file": "book_00000_chp_0009_reader_06709_18_door_Freesound_validated_436568_1-fan_Freesound_validated_185875_0-r7QTf2hje7M_snr-10_fileid_3430.wav",
+    "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3430.wav",
+    "harm_steps": 1,
+    "steps": 4,
+    "mse_base": [
+      0.11032307893037796,
+      0.090005062520504,
+      0.08843851834535599,
+      0.0897541344165802
+    ],
+    "mse_route": [
+      0.11032307893037796,
+      0.09000495821237564,
+      0.08843742311000824,
+      0.08975616842508316
+    ]
+  },
+  {
+    "file": "book_00000_chp_0009_reader_06709_23_i_rQfvOrtrY-ISnD-0t4pu4-door_Freesound_validated_362807_12_snr-19_fileid_2421.wav",
+    "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2421.wav",
+    "harm_steps": 1,
+    "steps": 4,
+    "mse_base": [
+      0.11044608801603317,
+      0.08810944110155106,
+      0.08676286041736603,
+      0.08658137917518616
+    ],
+    "mse_route": [
+      0.11044608801603317,
+      0.08810893446207047,
+      0.08676636219024658,
+      0.08658034354448318
+    ]
+  },
+  {
+    "file": "book_00007_chp_0008_reader_01326_11_6i58yVZdSvA-door_Freesound_validated_186517_0-door_Freesound_validated_344379_3_snr-10_fileid_2360.wav",
+    "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_2360.wav",
+    "harm_steps": 1,
+    "steps": 4,
+    "mse_base": [
+      0.10605203360319138,
+      0.0881660208106041,
+      0.08572555333375931,
+      0.08634336292743683
+    ],
+    "mse_route": [
+      0.10605203360319138,
+      0.08816521614789963,
+      0.08572608232498169,
+      0.08633589744567871
+    ]
+  }
+]

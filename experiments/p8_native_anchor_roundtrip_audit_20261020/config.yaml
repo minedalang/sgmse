@@ -1,0 +1,98 @@
+{
+  "schema_version": 1,
+  "experiment_id": "p8_native_anchor_roundtrip_audit_20261020",
+  "status": "prepared_not_executed",
+  "authorization_file": "root_execution_authorization.json",
+  "manifest_file": "selected8_manifest.json",
+  "manifest_sha256": "aad118341d0dfab83f13d0221e87699ec090d0ad81005102adf5c141d5029631",
+  "selection": {
+    "tag": "native-anchor-roundtrip-v1",
+    "source_dev_registry_path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+    "source_dev_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+    "groups": 4,
+    "per_group": 2,
+    "ordering": "sha256(tag+|+utt) within fixed priority bins; metadata only",
+    "retain_original_dev_index": true
+  },
+  "source": {
+    "checkpoint_path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "loader": "JointSemambaSgmseModel strict=True, weights_only=False, JointWaveScpDataModule; eval(no_ema=False) once; all params frozen",
+    "code_sha256": {
+      "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+      "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+      "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+      "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+      "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+      "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+      "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+      "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+    },
+    "historical_training_code": "not established by current source; no claim about original300k training interface"
+  },
+  "device": "cuda:0",
+  "geometry": {
+    "samples": 32640,
+    "sample_rate": 16000,
+    "n_fft": 510,
+    "hop_length": 128,
+    "frames": 256,
+    "transform_type": "exponent",
+    "spec_abs_exponent": 0.5,
+    "spec_factor": 0.15,
+    "center": true,
+    "normalization": "same physical Noisy crop peak for raw/public; model/frontend tensors and windows must match"
+  },
+  "sampler": {
+    "N": 30,
+    "predictor": "reverse_diffusion",
+    "corrector": "none",
+    "corrector_steps": 1,
+    "snr": 0.5,
+    "rrsd": false,
+    "regeneration_strength": null,
+    "seed": "20261019+100000+original_dev_index; reset before each branch"
+  },
+  "comparisons": {
+    "raw_branch": "original CPEL native PC with raw predicted transformed spectrum as anchor",
+    "public_branch": "original model.enhance(physical_frontend_wave[1,L], y_cond=physical_noisy[1,L]); observe actual get_pc_sampler anchor and conditioning",
+    "expected_roundtrip": "pad_spec(model._sgmse_stft(frontend.spec_to_waveform(raw_anchor,L)))",
+    "same_noisy_condition": true,
+    "quality_or_content_claim": false,
+    "waveform_export": false,
+    "spectrogram_export": false
+  },
+  "baseline": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/initial_base_metrics.json",
+    "sha256": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388",
+    "metric": "normalized_wave_mse",
+    "compare_by": "original dev_index and utt",
+    "sanity_absolute_tolerance": 1e-08,
+    "sanity_relative_tolerance": 0.0001,
+    "sanity_failure_action": "record mismatch, no retry or sample substitution; not a method failure"
+  },
+  "numerical": {
+    "denominator_floor": 1e-20,
+    "roundtrip_relative_l2_tolerance": 1e-05,
+    "scope": "check actual public interfaces; nonzero raw/public difference is measured outcome, not success gate; compression eps prevents assumed exact inverse"
+  },
+  "limits": {
+    "source_model_loads": 1,
+    "source_pcm_reads": 16,
+    "frontend_calls": 8,
+    "backend_calls": 16,
+    "score_calls": 480,
+    "seconds": 180,
+    "artifact_bytes": 2097152,
+    "free_disk_reserve_bytes": 1073741824,
+    "network_access": false,
+    "install_packages": false,
+    "training_steps": 0,
+    "test_access": false,
+    "source_checkpoint_writes": false,
+    "audio_exports": false,
+    "weight_copies": false,
+    "new_quality_or_ASR_metrics": false
+  },
+  "native_path": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin"
+}

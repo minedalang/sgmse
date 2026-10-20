@@ -1,0 +1,102 @@
+{
+  "request": {
+    "key": "p228_032_N1_snr_m18.wav__off",
+    "id": "p228_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N1_snr_m18.wav",
+    "basename": "p228_032_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "7ebacf598638b93ef865ff904fa73c565bec2db8e7e6c5156a72da3edf4af742",
+      "samples": 67141,
+      "array_sha256": "35bd4715bf48ce48bedd9031c658095468cf11ba39e5ece7bc5211d454495f2c",
+      "peak": 0.03802490234375,
+      "rms": 0.0044061859902939215
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " I'm actually going to be one key in the whole video. Have a good day.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.64,
+        "text": " I'm actually going to be one key in the whole video.",
+        "tokens": [
+          50363,
+          314,
+          1101,
+          1682,
+          1016,
+          284,
+          307,
+          530,
+          1994,
+          287,
+          262,
+          2187,
+          2008,
+          13,
+          50495
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1441163602082625,
+        "compression_ratio": 0.9857142857142858,
+        "no_speech_prob": 0.28669121861457825
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 2.64,
+        "end": 3.96,
+        "text": " Have a good day.",
+        "tokens": [
+          50495,
+          8192,
+          257,
+          922,
+          1110,
+          13,
+          50561
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1441163602082625,
+        "compression_ratio": 0.9857142857142858,
+        "no_speech_prob": 0.28669121861457825
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 47,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

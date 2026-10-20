@@ -1,0 +1,138 @@
+{
+  "status": "prepared_only",
+  "selection_status": "feasible",
+  "candidate_count": 91,
+  "eligible_left": 4,
+  "eligible_right": 10,
+  "selected_controls": {
+    "left": {
+      "start_sample": 300960,
+      "end_sample_exclusive": 304160,
+      "start_s": 18.81,
+      "end_s": 19.01,
+      "side": "left",
+      "weighted_clean_energy": 0.1914797933834989,
+      "energy_eligible": true,
+      "position_eligible": true,
+      "eligible": true,
+      "distance_to_target_interval_samples": 5440,
+      "alpha_if_energy_eligible": 0.8688384058650895
+    },
+    "right": {
+      "start_sample": 317280,
+      "end_sample_exclusive": 320480,
+      "start_s": 19.83,
+      "end_s": 20.03,
+      "side": "right",
+      "weighted_clean_energy": 0.15468734229601858,
+      "energy_eligible": true,
+      "position_eligible": true,
+      "eligible": true,
+      "distance_to_target_interval_samples": 4480,
+      "alpha_if_energy_eligible": 0.9666585492603262
+    }
+  },
+  "target_weighted_clean_energy": 0.14454430003522467,
+  "dry_checks": {
+    "target": {
+      "window_samples": [
+        309600,
+        312800
+      ],
+      "window_seconds": [
+        19.35,
+        19.55
+      ],
+      "alpha": 1.0,
+      "ideal_edit_energy": 0.14454430003522467,
+      "target_energy": 0.14454430003522467,
+      "ideal_energy_absolute_error": 0.0,
+      "float32_actual_edit_energy": 0.14454429979059966,
+      "float32_energy_absolute_error": 2.4462501468924813e-10,
+      "float32_energy_relative_error": 1.6923878328625504e-09,
+      "all_finite": true,
+      "outside_window_bitwise_identical": true,
+      "global_peak_bitwise_value_unchanged": true,
+      "condition_float32_sha256": "6025ed7d4d8efe4e66b9c712a2c64401cc0e345b50a841a45cf1d46567a267bc",
+      "maximum_removed_clean_contribution": 0.021697998046875,
+      "noise_residual_change_max": 1.8170137061623848e-09,
+      "noise_residual_float32_roundoff_bound": 5.141555448062718e-08,
+      "physical_noise_hash": "ac57aface13f4aecb287ff2b95f4580164f86056594ddefca8b57050f7c2b744",
+      "mixture_residual_max": 3.051939513870616e-05,
+      "mixture_quantization_bound": 9.1552734375e-05,
+      "mixture_bound_plus_roundoff": 9.160414629150182e-05
+    },
+    "left": {
+      "window_samples": [
+        300960,
+        304160
+      ],
+      "window_seconds": [
+        18.81,
+        19.01
+      ],
+      "alpha": 0.8688384058650895,
+      "ideal_edit_energy": 0.14454430003522456,
+      "target_energy": 0.14454430003522467,
+      "ideal_energy_absolute_error": 1.1102230246251565e-16,
+      "float32_actual_edit_energy": 0.14454429995648496,
+      "float32_energy_absolute_error": 7.873970919725082e-11,
+      "float32_energy_relative_error": 5.447444774927989e-10,
+      "all_finite": true,
+      "outside_window_bitwise_identical": true,
+      "global_peak_bitwise_value_unchanged": true,
+      "condition_float32_sha256": "d176ae29dddbbc9cadadb199a638f3d5dfd3205627e8399409f6efe800c3ad5b",
+      "maximum_removed_clean_contribution": 0.03348824788231226,
+      "noise_residual_change_max": 1.8563400885907022e-09,
+      "noise_residual_float32_roundoff_bound": 5.141555448062718e-08,
+      "physical_noise_hash": "ac57aface13f4aecb287ff2b95f4580164f86056594ddefca8b57050f7c2b744",
+      "mixture_residual_max": 3.051943446508859e-05,
+      "mixture_quantization_bound": 9.1552734375e-05,
+      "mixture_bound_plus_roundoff": 9.160414629150182e-05
+    },
+    "right": {
+      "window_samples": [
+        317280,
+        320480
+      ],
+      "window_seconds": [
+        19.83,
+        20.03
+      ],
+      "alpha": 0.9666585492603262,
+      "ideal_edit_energy": 0.14454430003522467,
+      "target_energy": 0.14454430003522467,
+      "ideal_energy_absolute_error": 0.0,
+      "float32_actual_edit_energy": 0.14454429955184261,
+      "float32_energy_absolute_error": 4.833820566041425e-10,
+      "float32_energy_relative_error": 3.344179303413174e-09,
+      "all_finite": true,
+      "outside_window_bitwise_identical": true,
+      "global_peak_bitwise_value_unchanged": true,
+      "condition_float32_sha256": "fb812416d567cddefe1e8ed5bded323da40acfc9a4051407d76cf711713bb2ef",
+      "maximum_removed_clean_contribution": 0.030319528747422168,
+      "noise_residual_change_max": 1.8353508851598477e-09,
+      "noise_residual_float32_roundoff_bound": 5.141555448062718e-08,
+      "physical_noise_hash": "ac57aface13f4aecb287ff2b95f4580164f86056594ddefca8b57050f7c2b744",
+      "mixture_residual_max": 3.051933104403909e-05,
+      "mixture_quantization_bound": 9.1552734375e-05,
+      "mixture_bound_plus_roundoff": 9.160414629150182e-05
+    }
+  },
+  "source_locks_valid_before_after": true,
+  "source_lock_count": 42,
+  "checkpoint_loaded": false,
+  "checkpoint_hash_inherited": true,
+  "model_imports": 0,
+  "frontend_calls": 0,
+  "backend_calls": 0,
+  "recognizer_calls": 0,
+  "audio_variants_written": false,
+  "git_status_unchanged": true,
+  "wall_seconds": 0.13032418605871499,
+  "driver_sha256": "1c37c348e896b8c4a76efd204a4cad85a6a097ec8ede312a4a447080a0b5e170",
+  "selection_sha256": "f59cff9bdfc80a32c4a5b2959ddde0f3b295b7ecf2c5b8eb67736ac76f43ca6d",
+  "config_sha256": "5d1e8d00bb4a666c4c41758d1183893b2daa5d11dda4e6c6297bc3567747e39e",
+  "serialization_diagnostic": "NumPy scalar affected preparation_metrics dumper then terminal summary; both serialization sites corrected. Missing metadata recovered once while existing selection/config bytes matched; terminal-only failure after valid metrics did not repeat scientific selection.",
+  "preparation_return_code_after_metrics_write": 1
+}

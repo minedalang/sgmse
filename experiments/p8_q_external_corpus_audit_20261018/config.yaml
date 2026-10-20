@@ -1,0 +1,16 @@
+experiment_id: p8_q_external_corpus_audit_20261018
+type: bounded_official_metadata_audit
+record: https://zenodo.org/records/3538223
+allowed_urls:
+  - https://zenodo.org/api/records/3538223
+  - https://zenodo.org/records/3538223/files/readme.pdf?download=1
+  - https://zenodo.org/records/3538223/files/handsegm.91.mlf.txt?download=1
+network_body_cap_bytes: 2000000
+experiment_directory_cap_bytes: 2000000
+request_timeout_seconds: 30
+proxy_fallback: http://127.0.0.1:7890
+proxy_fallback_max_attempts_total: 1
+audio_downloads: false
+training: false
+inference: false
+source_data_modified: false

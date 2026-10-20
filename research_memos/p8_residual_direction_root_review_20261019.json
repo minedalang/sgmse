@@ -1,0 +1,53 @@
+{
+  "kind": "Research_Lead_root_audit_of_new_CPU_geometry_not_new_enhancement",
+  "utc": "2026-10-19T07:21:38.040895+00:00",
+  "status": "technical_results_accepted_bounded_MSE_claim_only",
+  "source_metrics_sha256": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17",
+  "source_report_sha256": "312541907832bc47b44bfbf6ea1aa4426c4c07cce0fea65b9b7b26ca5b2e5d3c",
+  "source_independent_validation_sha256": "150c9b98cae247b6dbe16c41103fe1e3f4f7906b464c83a3588a2912c80eaaa8",
+  "preserved_files_verified": 497,
+  "frozen_audit_artifacts_verified": 15,
+  "case_count": 32,
+  "OFF_MSE_worse_count": 31,
+  "all_case_alpha_interior": true,
+  "common_alpha": 0.26110846819461736,
+  "relative_mean_normalized_MSE_oracle_gains": {
+    "common": 0.02915415762441287,
+    "case_specific": 0.03789964201190621
+  },
+  "no_new_waveform_or_method_deployment": true,
+  "no_new_training_or_selector_authorized": true,
+  "limitations": [
+    "MSE and gain decomposition are not actual phoneme labels or SI-SDR proof.",
+    "Reference-aware alpha not deployable or independently validated.",
+    "Ideal posterior sampling risk is analytic competing explanation, not proof StoRM calibrated.",
+    "Perception-distortion literature defines perceptual distributional quality, not identical to PESQ/human content."
+  ],
+  "primary_literature": [
+    {
+      "url": "https://arxiv.org/html/1711.06077",
+      "version": "v4",
+      "scope": "Primary abstract/introduction/framework only; no numerical benchmark transfer",
+      "retrieval_note": "CVF direct page403; publicly available arXiv read, no access-control bypass."
+    }
+  ],
+  "Root_new_model_ASR_audio_decode_calls": 0,
+  "network_note": "Read-only literature browsing took place, not transport-metered. Worker CPU audit network0.",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_residual_direction_interpretation_20261019.md",
+      "bytes": 5334,
+      "sha256": "b01d423d4af9c30dcad1b487ce5e0a2a7eba064f2444959344c01fb75756a02a"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 10698,
+      "sha256": "512df1e38feab9440f49207f62a7ff4477227f6534e30b599ebd41a2723b2679"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 17193,
+      "sha256": "1ab5fdbe14d6245178da1d4771dc8ba7091e8b19ea6f9edb256b8abf4b5f2b45"
+    }
+  ]
+}

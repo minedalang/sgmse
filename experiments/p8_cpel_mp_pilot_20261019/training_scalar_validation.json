@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scope": "saved JSON scalar bookkeeping only; no independent gradients/model/audio",
+  "protected_input_json_sha256": {
+    "metrics_M.json": "e50f682208921de8cbe557a7781e14c46a4c9be1ec68133a3850bf16b71ac48a",
+    "metrics_P.json": "79ec90e6cc369d25b64a2b2f89ccf9877f2d75845175be16e1076513e15dedf2",
+    "initial_base_metrics.json": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388"
+  },
+  "paired_steps": 500,
+  "validated_gradient_steps": 1000,
+  "max_effective_budget_reconstruction_error": 0.0,
+  "baseline_reuse_sha_verified": true,
+  "raw_and_precision_pair_means": "parent-average within each file, then equal files; weighted lower+upper+.25orth+.2outside",
+  "no_resampling": true
+}

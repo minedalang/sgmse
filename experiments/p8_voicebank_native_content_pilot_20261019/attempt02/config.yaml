@@ -1,0 +1,121 @@
+{
+  "experiment_id": "p8_voicebank_native_content_pilot_20261019",
+  "status": "prepared_only_no_actual_inputs",
+  "samples": [
+    {
+      "id": "p226_027",
+      "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k.wav",
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 63447,
+        "compression": "NONE"
+      }
+    },
+    {
+      "id": "p226_028",
+      "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav",
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 67653,
+        "compression": "NONE"
+      }
+    },
+    {
+      "id": "p287_037",
+      "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k.wav",
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 60008,
+        "compression": "NONE"
+      }
+    },
+    {
+      "id": "p287_054",
+      "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav",
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 51089,
+        "compression": "NONE"
+      }
+    }
+  ],
+  "noises": [
+    {
+      "id": "N1",
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_5243.wav",
+      "sha256": "2528de81b56c9f1ea11081e5bca604f80c27bb8d34bd36617148b7c2e31ca6a2",
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 480000,
+        "compression": "NONE"
+      },
+      "historical_float64_sha256": "ac57aface13f4aecb287ff2b95f4580164f86056594ddefca8b57050f7c2b744"
+    },
+    {
+      "id": "N2",
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_6339.wav",
+      "sha256": "0d3c94f92842e485a578a07d44fe7ee9068112b0729a1cce63c8d1ef9cb2575c",
+      "header": {
+        "rate": 16000,
+        "channels": 1,
+        "width": 2,
+        "frames": 480000,
+        "compression": "NONE"
+      },
+      "historical_float64_sha256": "eb4b05b2ebc3c0f34161273b7727ddf23026e765d98db774a1a9b31651f6f294"
+    }
+  ],
+  "historical_recipe": "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/inputs/recipe_frozen.json",
+  "text_manifest": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl",
+  "text_zip": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip",
+  "source_locks": {
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k.wav": "edfd0f5b4d41591c5ca78edf00ae1a1253c63238e071dbb7db033623d70adb54",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k.wav": "5a3625b3f85b01dafc0ee5ed82c62f7ef25753ebddc5b8663e9e55ec9dbefb90",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav": "bf9cbee7cd93e04df4b7a8651246fb0d8becb85b94caeddb6abcdb753196d681",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_5243.wav": "2528de81b56c9f1ea11081e5bca604f80c27bb8d34bd36617148b7c2e31ca6a2",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_6339.wav": "0d3c94f92842e485a578a07d44fe7ee9068112b0729a1cce63c8d1ef9cb2575c",
+    "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/inputs/recipe_frozen.json": "8936e3edc3f337356cba7943745a9ed2a9939a76e7ce0da4afd21eb84749d769",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/analysis_plan.md": "3901fe646026df3330841b84c8b04f7593b8fcaef29d877ec5a8582723eaeede",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/config.yaml": "f6ff1db0f615b0b62ee28e751a40422aeae45d836c0766c270270f3e5a4dad19",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/run_calibration.py": "74f838ffbf2004136e440943989c188d5f9a563f0097e0861ea35130a9b65bcf",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8"
+  },
+  "recipe": {
+    "noise_start_sample": 80000,
+    "snr_db": [
+      -18,
+      0
+    ],
+    "scale": "per utterance all four conditions and components, min(1,0.9/M)",
+    "quantizer": "floor(float64*32768), reject saturation",
+    "raw_array": "IEEE754 float32 little endian .f32le",
+    "complete_utterance": true
+  },
+  "budgets": {
+    "seconds": 120,
+    "artifact_bytes": 12000000,
+    "models": 0,
+    "network_bytes": 0
+  },
+  "model_phase_authorized": false,
+  "future_model_budget": {
+    "frontend_calls": 16,
+    "off_n30_calls": 16,
+    "transcribe_api_calls": 52,
+    "seconds": 420,
+    "total_bytes": 40000000
+  },
+  "source_gate_status_preserved": "waveform_gate_failed"
+}

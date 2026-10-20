@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p227_031_N2_snr_p0.wav__off",
+    "id": "p227_031",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_p0.wav",
+    "basename": "p227_031_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "5ea17f738e8affe251d94d3268320976a9782db5198d3760cf663caa5c35a4ea",
+      "samples": 51005,
+      "array_sha256": "49f84d4305013aef4f2cd32b89c7de52c62016b72b3667f44398fd62069a2bc0",
+      "peak": 0.1722412109375,
+      "rms": 0.011706923660398707
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " The Premier League has been accused of success.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " The Premier League has been accused of success.",
+        "tokens": [
+          50363,
+          383,
+          9952,
+          4041,
+          468,
+          587,
+          5371,
+          286,
+          1943,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5510044892628988,
+        "compression_ratio": 0.8545454545454545,
+        "no_speech_prob": 0.023845741525292397
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 32,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

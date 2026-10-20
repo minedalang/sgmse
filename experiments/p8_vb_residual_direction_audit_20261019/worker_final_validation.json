@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "preserved_source_files": 497,
+  "source_pcm_unique": 72,
+  "decodes_main": 72,
+  "decodes_validator": 72,
+  "cases": 32,
+  "strata": 21,
+  "git_outside_newdir_unchanged": true,
+  "metrics_sha256": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17",
+  "independent_validation_sha256": "150c9b98cae247b6dbe16c41103fe1e3f4f7906b464c83a3588a2912c80eaaa8",
+  "report_sha256": "312541907832bc47b44bfbf6ea1aa4426c4c07cce0fea65b9b7b26ca5b2e5d3c",
+  "max_quadratic_identity_residual": 2.710505431213761e-20,
+  "max_part_contribution_residual": 2.0328790734103208e-20,
+  "max_gain_rest_inner": 1.6230513930530842e-22,
+  "no_follow_on": true
+}

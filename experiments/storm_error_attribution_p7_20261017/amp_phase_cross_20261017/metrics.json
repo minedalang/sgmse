@@ -1,0 +1,762 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_amp_phase_cross_20261017",
+  "status": "complete",
+  "n": 32,
+  "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "stft_istft": {
+    "sample_rate_hz": 16000,
+    "n_fft": 510,
+    "hop_length": 128,
+    "win_length": 510,
+    "window": "periodic Hann",
+    "center": true,
+    "torch_stft_pad_mode": "reflect (PyTorch default)",
+    "istft_length": "exact input sample count from manifest audio"
+  },
+  "audio_arms": {
+    "magP_phaseG": "experiments/storm_error_attribution_p7_20261017/amp_phase_cross_20261017/magP_phaseG",
+    "magG_phaseP": "experiments/storm_error_attribution_p7_20261017/amp_phase_cross_20261017/magG_phaseP"
+  },
+  "dnsmos_runtime": {
+    "requested_device": "auto",
+    "runtime_info": {
+      "device": "cuda:0",
+      "execution_provider": "CUDAExecutionProvider",
+      "onnx_session_providers": {
+        "sig_bak_ovr": [
+          "CUDAExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "model_v8": [
+          "CUDAExecutionProvider",
+          "CPUExecutionProvider"
+        ]
+      }
+    },
+    "feature_extraction": "TorchMetrics librosa mel preprocessing remains CPU-side",
+    "resolved_device": "cuda:0",
+    "inference_arms": [
+      "magP_phaseG",
+      "magG_phaseP"
+    ],
+    "cpu_fallback_observed": false
+  },
+  "reconstruction_summary": {
+    "source_frontend_relative_rmse": {
+      "mean": 1.242734755682974e-07,
+      "median": 1.2435501496287108e-07,
+      "max": 1.2623952190085957e-07
+    },
+    "source_off_relative_rmse": {
+      "mean": 1.244645172143157e-07,
+      "median": 1.2432192331555355e-07,
+      "max": 1.2633836819363723e-07
+    },
+    "magP_phaseG_stft_projection_relative_l2": {
+      "mean": 0.05966355191029864,
+      "median": 0.06293433315489211,
+      "max": 0.09473740531331606
+    },
+    "magG_phaseP_stft_projection_relative_l2": {
+      "mean": 0.11296881172481396,
+      "median": 0.10513176297777146,
+      "max": 0.22629957141740228
+    }
+  },
+  "summary": {
+    "n": 32,
+    "arms": {
+      "magP_phaseG": {
+        "pesq_wb": {
+          "mean": 1.5158568546175957,
+          "std": 0.45544335078102594,
+          "median": 1.3157844543457031
+        },
+        "stoi": {
+          "mean": 0.8241890155012824,
+          "std": 0.09743981423745238,
+          "median": 0.8319890222659572
+        },
+        "si_sdr": {
+          "mean": 7.901552008258143,
+          "std": 4.721865580427242,
+          "median": 7.7005414165632935
+        },
+        "dnsmos_p808": {
+          "mean": 3.74176255187818,
+          "std": 0.33505437549645767,
+          "median": 3.8710519415991644
+        },
+        "dnsmos_sig": {
+          "mean": 3.3501899060045073,
+          "std": 0.22334020739359084,
+          "median": 3.4049040997577835
+        },
+        "dnsmos_bak": {
+          "mean": 4.091244621867622,
+          "std": 0.15581182561562779,
+          "median": 4.13847186858582
+        },
+        "dnsmos_ovrl": {
+          "mean": 3.0422509467459835,
+          "std": 0.26844676324647476,
+          "median": 3.1192710743234993
+        }
+      },
+      "magG_phaseP": {
+        "pesq_wb": {
+          "mean": 1.7623215354979038,
+          "std": 0.5849509710604659,
+          "median": 1.5646089911460876
+        },
+        "stoi": {
+          "mean": 0.8326641947040728,
+          "std": 0.10564335118612492,
+          "median": 0.8495334556303071
+        },
+        "si_sdr": {
+          "mean": 7.93706816456846,
+          "std": 4.995301301678416,
+          "median": 8.064514346744403
+        },
+        "dnsmos_p808": {
+          "mean": 3.9834192874176164,
+          "std": 0.16949841373240163,
+          "median": 4.013006346566336
+        },
+        "dnsmos_sig": {
+          "mean": 3.433172154485515,
+          "std": 0.17760017650701523,
+          "median": 3.487832288915147
+        },
+        "dnsmos_bak": {
+          "mean": 4.114306539523604,
+          "std": 0.09961724686579915,
+          "median": 4.142004364077862
+        },
+        "dnsmos_ovrl": {
+          "mean": 3.133308463328551,
+          "std": 0.21035773066704241,
+          "median": 3.1872377874788924
+        }
+      },
+      "frontend": {
+        "pesq_wb": {
+          "mean": 1.4936664998531342,
+          "std": 0.4415136704764145,
+          "median": 1.3203746676445007
+        },
+        "stoi": {
+          "mean": 0.8215957549962821,
+          "std": 0.09815347338654992,
+          "median": 0.8287031020648854
+        },
+        "si_sdr": {
+          "mean": 8.089448761789182,
+          "std": 4.7387543254599755,
+          "median": 7.84143529163072
+        },
+        "dnsmos_p808": {
+          "mean": 3.682830198534897,
+          "std": 0.3615358747792708,
+          "median": 3.8293862002236505
+        },
+        "dnsmos_sig": {
+          "mean": 3.3062043766655984,
+          "std": 0.25222587415907827,
+          "median": 3.385030029763044
+        },
+        "dnsmos_bak": {
+          "mean": 4.075477233264704,
+          "std": 0.14682924378077647,
+          "median": 4.121352672633284
+        },
+        "dnsmos_ovrl": {
+          "mean": 2.995755647875332,
+          "std": 0.28977963804880086,
+          "median": 3.0870260105708303
+        }
+      },
+      "off": {
+        "pesq_wb": {
+          "mean": 1.729178037494421,
+          "std": 0.5763943509110496,
+          "median": 1.541123867034912
+        },
+        "stoi": {
+          "mean": 0.8309583095941373,
+          "std": 0.10667765831450553,
+          "median": 0.8489442052235966
+        },
+        "si_sdr": {
+          "mean": 7.278470446737668,
+          "std": 5.003278681408355,
+          "median": 7.509298098339654
+        },
+        "dnsmos_p808": {
+          "mean": 4.044658004173211,
+          "std": 0.12418854621919283,
+          "median": 4.0741758687155585
+        },
+        "dnsmos_sig": {
+          "mean": 3.498033467620569,
+          "std": 0.13307266598467155,
+          "median": 3.542369975419909
+        },
+        "dnsmos_bak": {
+          "mean": 4.143862075987066,
+          "std": 0.06504351072770448,
+          "median": 4.156976554764448
+        },
+        "dnsmos_ovrl": {
+          "mean": 3.20649023582346,
+          "std": 0.1639218222496462,
+          "median": 3.271806515575965
+        }
+      },
+      "router": {
+        "pesq_wb": {
+          "mean": 1.7490405663847923,
+          "std": 0.5823761370723589,
+          "median": 1.5561671257019043
+        },
+        "stoi": {
+          "mean": 0.8319251702280563,
+          "std": 0.1064528842813434,
+          "median": 0.8499046958024565
+        },
+        "si_sdr": {
+          "mean": 7.801026637189377,
+          "std": 4.89455521096109,
+          "median": 7.919489589951904
+        },
+        "dnsmos_p808": {
+          "mean": 4.02186114766768,
+          "std": 0.13016159707019187,
+          "median": 4.051253284726824
+        },
+        "dnsmos_sig": {
+          "mean": 3.477706405063389,
+          "std": 0.1402426764050654,
+          "median": 3.5182943947276026
+        },
+        "dnsmos_bak": {
+          "mean": 4.142771640669107,
+          "std": 0.05894503441970521,
+          "median": 4.1555630035130875
+        },
+        "dnsmos_ovrl": {
+          "mean": 3.185399381446362,
+          "std": 0.17386947080642187,
+          "median": 3.251981910352402
+        }
+      }
+    },
+    "paired_new_minus_existing": {
+      "magP_phaseG": {
+        "pesq_wb": {
+          "frontend": {
+            "mean_delta": 0.022190354764461517,
+            "median_delta": 0.01352912187576294,
+            "bootstrap_95ci": [
+              0.012104707024991513,
+              0.032919256202876564
+            ],
+            "new_arm_wins": 28,
+            "existing_arm_wins": 4,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.21332118287682533,
+            "median_delta": -0.2125173807144165,
+            "bootstrap_95ci": [
+              -0.2827469754964113,
+              -0.14483158728107812
+            ],
+            "new_arm_wins": 3,
+            "existing_arm_wins": 29,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.23318371176719666,
+            "median_delta": -0.2241162657737732,
+            "bootstrap_95ci": [
+              -0.30449320236220956,
+              -0.1681333300657571
+            ],
+            "new_arm_wins": 2,
+            "existing_arm_wins": 30,
+            "ties": 0
+          }
+        },
+        "stoi": {
+          "frontend": {
+            "mean_delta": 0.002593260505000288,
+            "median_delta": 0.0023984720689659844,
+            "bootstrap_95ci": [
+              0.002117971919760891,
+              0.003086779177667352
+            ],
+            "new_arm_wins": 32,
+            "existing_arm_wins": 0,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.006769294092854945,
+            "median_delta": -0.010742967696313832,
+            "bootstrap_95ci": [
+              -0.011819261946131077,
+              -0.001574737931261031
+            ],
+            "new_arm_wins": 11,
+            "existing_arm_wins": 21,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.007736154726773959,
+            "median_delta": -0.011536337229749782,
+            "bootstrap_95ci": [
+              -0.012592628605122927,
+              -0.0027453350734171073
+            ],
+            "new_arm_wins": 10,
+            "existing_arm_wins": 22,
+            "ties": 0
+          }
+        },
+        "si_sdr": {
+          "frontend": {
+            "mean_delta": -0.18789675353104024,
+            "median_delta": -0.1653115551379627,
+            "bootstrap_95ci": [
+              -0.23760835037714917,
+              -0.1403258474524979
+            ],
+            "new_arm_wins": 3,
+            "existing_arm_wins": 29,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": 0.6230815615204749,
+            "median_delta": 0.5349268237188125,
+            "bootstrap_95ci": [
+              0.44838439851095857,
+              0.8043401693662313
+            ],
+            "new_arm_wins": 29,
+            "existing_arm_wins": 3,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": 0.10052537106876572,
+            "median_delta": 0.10279856672747201,
+            "bootstrap_95ci": [
+              -0.01957342852880087,
+              0.22271599262587455
+            ],
+            "new_arm_wins": 19,
+            "existing_arm_wins": 13,
+            "ties": 0
+          }
+        },
+        "dnsmos_p808": {
+          "frontend": {
+            "mean_delta": 0.05893235334328244,
+            "median_delta": 0.04832424436296723,
+            "bootstrap_95ci": [
+              0.04107647910714144,
+              0.07908911856689621
+            ],
+            "new_arm_wins": 30,
+            "existing_arm_wins": 2,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.30289545229503084,
+            "median_delta": -0.20033322061811165,
+            "bootstrap_95ci": [
+              -0.3951652652184878,
+              -0.21891972161829487
+            ],
+            "new_arm_wins": 1,
+            "existing_arm_wins": 31,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.2800985957895007,
+            "median_delta": -0.17089177880968398,
+            "bootstrap_95ci": [
+              -0.3672864218109421,
+              -0.19987871588340833
+            ],
+            "new_arm_wins": 1,
+            "existing_arm_wins": 31,
+            "ties": 0
+          }
+        },
+        "dnsmos_sig": {
+          "frontend": {
+            "mean_delta": 0.043985529338909174,
+            "median_delta": 0.02618300348675273,
+            "bootstrap_95ci": [
+              0.024137731985635173,
+              0.07066023186683613
+            ],
+            "new_arm_wins": 27,
+            "existing_arm_wins": 5,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.14784356161606127,
+            "median_delta": -0.09298116542933976,
+            "bootstrap_95ci": [
+              -0.20017019338509126,
+              -0.10122903932924927
+            ],
+            "new_arm_wins": 2,
+            "existing_arm_wins": 30,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.12751649905888152,
+            "median_delta": -0.06829788047968832,
+            "bootstrap_95ci": [
+              -0.1756807611438622,
+              -0.08408473712849497
+            ],
+            "new_arm_wins": 2,
+            "existing_arm_wins": 30,
+            "ties": 0
+          }
+        },
+        "dnsmos_bak": {
+          "frontend": {
+            "mean_delta": 0.01576738860291782,
+            "median_delta": 0.010242800834903143,
+            "bootstrap_95ci": [
+              0.0020550323732305064,
+              0.03366420718791849
+            ],
+            "new_arm_wins": 23,
+            "existing_arm_wins": 9,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.0526174541194451,
+            "median_delta": -0.008140127928530028,
+            "bootstrap_95ci": [
+              -0.09183323341160192,
+              -0.021309419170410855
+            ],
+            "new_arm_wins": 8,
+            "existing_arm_wins": 24,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.05152701880148479,
+            "median_delta": -0.010852991714996207,
+            "bootstrap_95ci": [
+              -0.09309716425640477,
+              -0.01897786985651027
+            ],
+            "new_arm_wins": 11,
+            "existing_arm_wins": 21,
+            "ties": 0
+          }
+        },
+        "dnsmos_ovrl": {
+          "frontend": {
+            "mean_delta": 0.04649529887065158,
+            "median_delta": 0.02805764779219988,
+            "bootstrap_95ci": [
+              0.024540830032475053,
+              0.07636642496161279
+            ],
+            "new_arm_wins": 29,
+            "existing_arm_wins": 3,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.1642392890774763,
+            "median_delta": -0.1021274780469188,
+            "bootstrap_95ci": [
+              -0.22314607948083745,
+              -0.10962977095573141
+            ],
+            "new_arm_wins": 2,
+            "existing_arm_wins": 30,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.14314843470037836,
+            "median_delta": -0.08160380142372858,
+            "bootstrap_95ci": [
+              -0.20143584646982637,
+              -0.09245292554151319
+            ],
+            "new_arm_wins": 2,
+            "existing_arm_wins": 30,
+            "ties": 0
+          }
+        }
+      },
+      "magG_phaseP": {
+        "pesq_wb": {
+          "frontend": {
+            "mean_delta": 0.26865503564476967,
+            "median_delta": 0.22301781177520752,
+            "bootstrap_95ci": [
+              0.20104847196489573,
+              0.342440992500633
+            ],
+            "new_arm_wins": 32,
+            "existing_arm_wins": 0,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": 0.03314349800348282,
+            "median_delta": 0.02506774663925171,
+            "bootstrap_95ci": [
+              0.020383168198168277,
+              0.05182462064549326
+            ],
+            "new_arm_wins": 29,
+            "existing_arm_wins": 3,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": 0.013280969113111496,
+            "median_delta": 0.012056350708007812,
+            "bootstrap_95ci": [
+              0.0073396340943872925,
+              0.0191405045799911
+            ],
+            "new_arm_wins": 27,
+            "existing_arm_wins": 5,
+            "ties": 0
+          }
+        },
+        "stoi": {
+          "frontend": {
+            "mean_delta": 0.011068439707790648,
+            "median_delta": 0.01439953345232542,
+            "bootstrap_95ci": [
+              0.006398996157534068,
+              0.01575742337963422
+            ],
+            "new_arm_wins": 24,
+            "existing_arm_wins": 8,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": 0.0017058851099354157,
+            "median_delta": 0.001696721883198693,
+            "bootstrap_95ci": [
+              0.001166073353161913,
+              0.002269141397227829
+            ],
+            "new_arm_wins": 28,
+            "existing_arm_wins": 4,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": 0.0007390244760164012,
+            "median_delta": 0.000569313641350877,
+            "bootstrap_95ci": [
+              0.00030361934073995717,
+              0.0011793548729182057
+            ],
+            "new_arm_wins": 21,
+            "existing_arm_wins": 11,
+            "ties": 0
+          }
+        },
+        "si_sdr": {
+          "frontend": {
+            "mean_delta": -0.15238059722072322,
+            "median_delta": -0.13834332467207933,
+            "bootstrap_95ci": [
+              -0.3094195452467672,
+              -0.00460205487689681
+            ],
+            "new_arm_wins": 13,
+            "existing_arm_wins": 19,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": 0.658597717830792,
+            "median_delta": 0.6589629539809038,
+            "bootstrap_95ci": [
+              0.5748687338219396,
+              0.7393746001505355
+            ],
+            "new_arm_wins": 32,
+            "existing_arm_wins": 0,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": 0.13604152737908276,
+            "median_delta": 0.13429523581703545,
+            "bootstrap_95ci": [
+              0.06665312468549342,
+              0.20734146906711623
+            ],
+            "new_arm_wins": 22,
+            "existing_arm_wins": 10,
+            "ties": 0
+          }
+        },
+        "dnsmos_p808": {
+          "frontend": {
+            "mean_delta": 0.3005890888827188,
+            "median_delta": 0.1943700824465071,
+            "bootstrap_95ci": [
+              0.2188149048015475,
+              0.3915366132876703
+            ],
+            "new_arm_wins": 32,
+            "existing_arm_wins": 0,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.0612387167555945,
+            "median_delta": -0.05041238239833268,
+            "bootstrap_95ci": [
+              -0.0838128886850817,
+              -0.040303813266967
+            ],
+            "new_arm_wins": 5,
+            "existing_arm_wins": 27,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.03844186025006435,
+            "median_delta": -0.027454291071210557,
+            "bootstrap_95ci": [
+              -0.056808449407773375,
+              -0.021358690224587903
+            ],
+            "new_arm_wins": 6,
+            "existing_arm_wins": 26,
+            "ties": 0
+          }
+        },
+        "dnsmos_sig": {
+          "frontend": {
+            "mean_delta": 0.12696777781991658,
+            "median_delta": 0.08993998238776735,
+            "bootstrap_95ci": [
+              0.0895162620999913,
+              0.16974597024756888
+            ],
+            "new_arm_wins": 31,
+            "existing_arm_wins": 1,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.06486131313505383,
+            "median_delta": -0.03150023091437659,
+            "bootstrap_95ci": [
+              -0.09672789831583199,
+              -0.03628772171794192
+            ],
+            "new_arm_wins": 5,
+            "existing_arm_wins": 27,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.04453425057787409,
+            "median_delta": -0.014464696421711665,
+            "bootstrap_95ci": [
+              -0.07294970336073502,
+              -0.019932784244256194
+            ],
+            "new_arm_wins": 9,
+            "existing_arm_wins": 23,
+            "ties": 0
+          }
+        },
+        "dnsmos_bak": {
+          "frontend": {
+            "mean_delta": 0.0388293062588997,
+            "median_delta": 0.00755664467398498,
+            "bootstrap_95ci": [
+              0.018391409687831775,
+              0.06373379741559587
+            ],
+            "new_arm_wins": 23,
+            "existing_arm_wins": 9,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.02955553646346322,
+            "median_delta": -0.00904476672051624,
+            "bootstrap_95ci": [
+              -0.04674209406702158,
+              -0.014706639741103032
+            ],
+            "new_arm_wins": 8,
+            "existing_arm_wins": 24,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.028465101145502908,
+            "median_delta": -0.007618051182428864,
+            "bootstrap_95ci": [
+              -0.047057246131276896,
+              -0.012763474110666992
+            ],
+            "new_arm_wins": 6,
+            "existing_arm_wins": 26,
+            "ties": 0
+          }
+        },
+        "dnsmos_ovrl": {
+          "frontend": {
+            "mean_delta": 0.1375528154532195,
+            "median_delta": 0.10038915371980472,
+            "bootstrap_95ci": [
+              0.09651016788122965,
+              0.18422021169991956
+            ],
+            "new_arm_wins": 31,
+            "existing_arm_wins": 1,
+            "ties": 0
+          },
+          "off": {
+            "mean_delta": -0.07318177249490841,
+            "median_delta": -0.03401762443535494,
+            "bootstrap_95ci": [
+              -0.10774835570546291,
+              -0.04196462079385017
+            ],
+            "new_arm_wins": 6,
+            "existing_arm_wins": 26,
+            "ties": 0
+          },
+          "router": {
+            "mean_delta": -0.052090918117810456,
+            "median_delta": -0.01836526843111108,
+            "bootstrap_95ci": [
+              -0.08255366526708868,
+              -0.025050221868865883
+            ],
+            "new_arm_wins": 9,
+            "existing_arm_wins": 23,
+            "ties": 0
+          }
+        }
+      }
+    }
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261021,
+    "scope": "exploratory paired mean-difference intervals"
+  },
+  "runtime_seconds": 65.05697059631348,
+  "training": false,
+  "source_audio_modified": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false
+}

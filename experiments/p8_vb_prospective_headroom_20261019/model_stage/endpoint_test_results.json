@@ -1,0 +1,14 @@
+{
+  "status": "passed",
+  "synthetic_native_cases": 32,
+  "synthetic_ASR_requests": 104,
+  "synthetic_quality_arms": 96,
+  "independent_headroom_bootstrap": 10000,
+  "strata": 21,
+  "zero_N_and_ties": true,
+  "SI_SDR_degeneracy": true,
+  "warning_raw_null": true,
+  "paired_missing_case_check": true,
+  "real_source_audio_decodes": 0,
+  "model_imports": 0
+}

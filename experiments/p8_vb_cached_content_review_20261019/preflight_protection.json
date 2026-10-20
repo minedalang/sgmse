@@ -1,0 +1,84 @@
+{
+  "utc": "2026-10-19T12:19:42.679529+00:00",
+  "thread_id": "01a153da-1fff-72d0-9b8d-d30c76ed3cbb",
+  "provider": "codex_tools_compat",
+  "server_pid": 16022,
+  "bridge_pid": 39452,
+  "files": {
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/input_registry.json": {
+      "sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+      "bytes": 63894
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/metrics.json": {
+      "sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+      "bytes": 2227266
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/metrics.json": {
+      "sha256": "9df573afc59542872c20545f2f3e1bdc3ed9a3b87f448860f43c709a54101ce7",
+      "bytes": 561
+    },
+    "/data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/metrics.json": {
+      "sha256": "93af91ade77fd6072b40a7e8ef915edf360dc4748f4223eca15287aa1d6a08a6",
+      "bytes": 52921
+    },
+    "/data/coding/sgmse/experiments/p8_i1b_event_pair_integrity_20261019/metrics.json": {
+      "sha256": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c",
+      "bytes": 5524731
+    },
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/metrics.json": {
+      "sha256": "c7db69b017e841cab7470af410171642ab1c97ef0ada689b879d7d5b685d5880",
+      "bytes": 2248
+    },
+    "/data/coding/sgmse/experiments/p8_vb_residual_direction_audit_20261019/metrics.json": {
+      "sha256": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17",
+      "bytes": 80051
+    },
+    "/data/coding/sgmse/experiments/p8_cached_multiseed_variance_audit_20261019/metrics.json": {
+      "sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e",
+      "bytes": 21702
+    },
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/metrics.json": {
+      "sha256": "6e70d1bef76eb8ea752f401d5fa102b377580365cda477742e4131d4d25fa929",
+      "bytes": 105153
+    },
+    "/data/coding/sgmse/experiments/p8_5243_local_condition_necessity_20261019/metrics.json": {
+      "sha256": "de82cd812d2100dac0fc0849b5bc8a5f104328090cfab2ca461883ae4b19916e",
+      "bytes": 98638
+    },
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_chat_export_20261019T113610712Z.json": {
+      "sha256": "a8bcc1d9845e07c0b7b17160d0d88daa45f8195f0b5396734864d51d1c4ccdb3",
+      "bytes": 29713
+    },
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_chat_export_20261019T114522648Z.json": {
+      "sha256": "0b42e1c620d3608cd6f2eb7444c1b75a5341edb121d94aaf62eeb7e9437e3d88",
+      "bytes": 30836
+    },
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_qualitative_clarification_20261019.json": {
+      "sha256": "abd62417feaddbe11b9979a4f08bbcccf947d0940806f938122c9157b9c150df",
+      "bytes": 1218
+    },
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/build_review.py": {
+      "sha256": "36fed574ef01a4201904564a5ea6546e5bf895a158e226f2c86993a2d7ccc6ec",
+      "bytes": 7722
+    },
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/check_materials.py": {
+      "sha256": "27836ee2c03ef8d0b57fab3b830b81ab6b36dca1ac5bfb819f81440276c647f4",
+      "bytes": 4047
+    },
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/player.js": {
+      "sha256": "c0d6997cb07fc6b16f6fb11ac807519654bbfb6d18626ccf9901aa7436e57ac8",
+      "bytes": 9658
+    },
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/index.html": {
+      "sha256": "94e2ddace0ba2b55bb860672fed508fd037365ce37ee789ab5c8d94e6b2c015a",
+      "bytes": 4807
+    },
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/config.yaml": {
+      "sha256": "2d2608126ae0d22455ec4eccd28adc60896d25ddb78dc497a59b8530619564c3",
+      "bytes": 1671
+    }
+  },
+  "protected_old_metrics": 8,
+  "archived_user_exports": 2,
+  "archived_clarification": 1
+}

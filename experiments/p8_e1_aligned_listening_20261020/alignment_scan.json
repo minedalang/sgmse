@@ -1,0 +1,194 @@
+[
+  {
+    "index": 2,
+    "fileid": "4812",
+    "start_s": 17.0,
+    "end_s": 17.5,
+    "context_start_s": 16.25,
+    "context_end_s": 18.25,
+    "sample_rate_hz": 16000,
+    "lengths_samples": {
+      "noisy": 480000,
+      "clean": 480000,
+      "y_pre": 480000,
+      "off": 480000,
+      "router": 480000
+    },
+    "alignment": {
+      "noisy": {
+        "zero_lag_corr": 0.4630378796932613,
+        "max_corr": 0.4630378796932613,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "clean": {
+        "zero_lag_corr": 0.9999999999999998,
+        "max_corr": 0.9999999999999998,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "y_pre": {
+        "zero_lag_corr": 0.9002005516428081,
+        "max_corr": 0.9002005516428081,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "off": {
+        "zero_lag_corr": 0.8680947695447999,
+        "max_corr": 0.8680947695447999,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "router": {
+        "zero_lag_corr": 0.8800819560227044,
+        "max_corr": 0.8800819560227044,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      }
+    }
+  },
+  {
+    "index": 2,
+    "fileid": "4812",
+    "start_s": 14.5,
+    "end_s": 15.0,
+    "context_start_s": 13.75,
+    "context_end_s": 15.75,
+    "sample_rate_hz": 16000,
+    "lengths_samples": {
+      "noisy": 480000,
+      "clean": 480000,
+      "y_pre": 480000,
+      "off": 480000,
+      "router": 480000
+    },
+    "alignment": {
+      "noisy": {
+        "zero_lag_corr": 0.3914182849640049,
+        "max_corr": 0.3914182849640049,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "clean": {
+        "zero_lag_corr": 1.0,
+        "max_corr": 1.0,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "y_pre": {
+        "zero_lag_corr": 0.892232301603935,
+        "max_corr": 0.892232301603935,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "off": {
+        "zero_lag_corr": 0.874400550851947,
+        "max_corr": 0.874400550851947,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "router": {
+        "zero_lag_corr": 0.8860996369007376,
+        "max_corr": 0.8860996369007376,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      }
+    }
+  },
+  {
+    "index": 4,
+    "fileid": "10720",
+    "start_s": 9.0,
+    "end_s": 9.5,
+    "context_start_s": 8.25,
+    "context_end_s": 10.25,
+    "sample_rate_hz": 16000,
+    "lengths_samples": {
+      "noisy": 480000,
+      "clean": 480000,
+      "y_pre": 480000,
+      "off": 480000,
+      "router": 480000
+    },
+    "alignment": {
+      "noisy": {
+        "zero_lag_corr": 0.15756323335449016,
+        "max_corr": 0.15756323335449016,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "clean": {
+        "zero_lag_corr": 0.9999999999999966,
+        "max_corr": 0.9999999999999966,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "y_pre": {
+        "zero_lag_corr": 0.7611289722499304,
+        "max_corr": 0.7611289722499304,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "off": {
+        "zero_lag_corr": 0.75235016989023,
+        "max_corr": 0.75235016989023,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "router": {
+        "zero_lag_corr": 0.7690147958350779,
+        "max_corr": 0.7690147958350779,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      }
+    }
+  },
+  {
+    "index": 1,
+    "fileid": "6339",
+    "start_s": 10.5,
+    "end_s": 11.0,
+    "context_start_s": 9.75,
+    "context_end_s": 11.75,
+    "sample_rate_hz": 16000,
+    "lengths_samples": {
+      "noisy": 480000,
+      "clean": 480000,
+      "y_pre": 480000,
+      "off": 480000,
+      "router": 480000
+    },
+    "alignment": {
+      "noisy": {
+        "zero_lag_corr": 0.09712741481183543,
+        "max_corr": 0.09712741481183543,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "clean": {
+        "zero_lag_corr": 0.9999999999999994,
+        "max_corr": 0.9999999999999994,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "y_pre": {
+        "zero_lag_corr": 0.8052090392686914,
+        "max_corr": 0.8052090392686914,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "off": {
+        "zero_lag_corr": 0.8324056372680123,
+        "max_corr": 0.8324056372680123,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      },
+      "router": {
+        "zero_lag_corr": 0.843028766858837,
+        "max_corr": 0.843028766858837,
+        "best_lag_samples": 0,
+        "best_lag_ms": 0.0
+      }
+    }
+  }
+]

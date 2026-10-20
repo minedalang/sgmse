@@ -1,0 +1,19 @@
+test_all_records_stay_unapproved (test_annotation_contract.ContractTests) ... ok
+test_bad_labels_fail_without_repair (test_annotation_contract.ContractTests) ... ok
+test_case_and_raw_fields_preserved (test_annotation_contract.ContractTests) ... ok
+test_decimal_precision_and_supported_types (test_annotation_contract.ContractTests) ... ok
+test_error_identity_not_silence (test_annotation_contract.ContractTests) ... ok
+test_forced_error_labels_rejected (test_annotation_contract.ContractTests) ... ok
+test_invalid_times (test_annotation_contract.ContractTests) ... ok
+test_invalid_types_and_sources (test_annotation_contract.ContractTests) ... ok
+test_sil_is_source_claim_only (test_annotation_contract.ContractTests) ... ok
+test_single_sources_are_different (test_annotation_contract.ContractTests) ... ok
+test_source_addition_is_present (test_annotation_contract.ContractTests) ... ok
+test_source_deletion_not_enhancement_deletion (test_annotation_contract.ContractTests) ... ok
+test_star_retained_not_hard_g (test_annotation_contract.ContractTests) ... ok
+test_substitution_preserves_actual_not_expected (test_annotation_contract.ContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 14 tests in 0.002s
+
+OK

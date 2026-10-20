@@ -1,0 +1,93 @@
+{
+  "status": "passed",
+  "no_new_model_forwards": true,
+  "audio_pairs_validated": 16,
+  "ctc_candidate_scores_recomputed": 384,
+  "ctc_checks": [
+    {
+      "case_id": "f6__N1_snr-6__anchor_k__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N2_snr-6__anchor_k__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N1_snr-6__anchor_k__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N2_snr-6__anchor_k__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N1_snr-6__anchor_g__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N1_snr-6__anchor_g__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N1_snr-6__anchor_k__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N2_snr-6__anchor_g__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N2_snr-6__anchor_g__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "f6__N2_snr-6__anchor_k__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N1_snr-6__anchor_g__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N1_snr-6__anchor_g__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N1_snr-6__anchor_k__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N2_snr-6__anchor_g__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N2_snr-6__anchor_g__noisy_k",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    },
+    {
+      "case_id": "m5__N2_snr-6__anchor_k__noisy_g",
+      "candidate_scores_checked": 24,
+      "max_abs_error": 0.0
+    }
+  ],
+  "source_locks_validated": 158,
+  "exact_native_k_gates_validated": 4,
+  "common_scale_noise_groups_validated": 4,
+  "held_row_geometry_checks": 8,
+  "factorial_contrasts_validated": 12
+}

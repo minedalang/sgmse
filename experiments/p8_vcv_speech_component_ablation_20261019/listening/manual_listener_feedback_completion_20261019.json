@@ -1,0 +1,17 @@
+{
+  "date": "2026-10-19",
+  "source": "explicit_user_chat_after_listening",
+  "verbatim": "五例我停了  4.两者差不多 原始后端和消融后端都把原来的t,变成k了。5.两者差不多，但消融后端语音末尾加了个明显的/s/辅音，y_pre末尾没有一点声音，原始后端末尾有相对轻微的声音，但不似人声。",
+  "listener_count": 1,
+  "same_listener_as": "manual_listener_feedback_20261019.json",
+  "protocol": "Prompted, labeled, nonblind comparison against clean. Original Y_pre anchor retained for native and direct-condition speech-removal outputs.",
+  "responses": [
+    {"ordinal": 4, "case_id": "original__N1_snr-6__f11ata1", "choice_verbatim": "两者差不多", "comment_verbatim": "原始后端和消融后端都把原来的t,变成k了。", "interpretation": "Listener explicitly identifies t-to-k substitution in both versions, consistent with their unchanged automatic central label. Not evidence that either version is correct."},
+    {"ordinal": 5, "case_id": "fresh__N2_snr-6__f20aka1", "choice_verbatim": "两者差不多", "comment_verbatim": "消融后端语音末尾加了个明显的/s/辅音，y_pre末尾没有一点声音，原始后端末尾有相对轻微的声音，但不似人声。", "interpretation": "Overall comparison is similar, while listener separately reports extra s-like tail in the ablation, absent in frontend and weaker/non-speech-like in native OFF. No exact timestamp or independent central phoneme judgment supplied."}
+  ],
+  "listening_task_status": "completed_all_five",
+  "no_further_listening_requested": true,
+  "selection_bias": "All five cases were selected based on earlier frontend/OFF nominal correctness transitions; first three were further selected for ablation-label changes. Not a random or confirmatory population sample.",
+  "browser_response_provenance": "These are explicit chat answers. Do not fabricate browser/session identity, overwrite browser records, or count a later duplicate web submission as a second listener.",
+  "overall_method_improvement_established": false
+}

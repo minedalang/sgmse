@@ -1,0 +1,46 @@
+{
+  "proofs": [
+    {
+      "case_id": "original__N1_snr-6__m2ada1",
+      "refscale": 0.15047039091587067,
+      "decomposition_max_error": 7.79356887359306e-09,
+      "float32_error_bound": 7.174987359803708e-08,
+      "noise_only_normalized_peak": 0.5568432211875916,
+      "noise_only_float32_sha256": "52e4a875cb55f0c906953f9b271f4f8d47f2e332c250c98e74efd38dcf9a2f22"
+    },
+    {
+      "case_id": "original__N1_snr-6__f11ata1",
+      "refscale": 0.19293227791786194,
+      "decomposition_max_error": 7.331390411424721e-09,
+      "float32_error_bound": 9.199727912800881e-08,
+      "noise_only_normalized_peak": 0.43428927659988403,
+      "noise_only_float32_sha256": "52e4a875cb55f0c906953f9b271f4f8d47f2e332c250c98e74efd38dcf9a2f22"
+    },
+    {
+      "case_id": "original__N2_snr-6__m2aga1",
+      "refscale": 0.16557472944259644,
+      "decomposition_max_error": 8.432035333849619e-09,
+      "float32_error_bound": 7.895218345765898e-08,
+      "noise_only_normalized_peak": 0.8771175742149353,
+      "noise_only_float32_sha256": "e25b4f20d41e132f2d9d98676a4ca4482f9de45f9231b176abbc3ba6f9c16232"
+    },
+    {
+      "case_id": "fresh__N1_snr-6__f20aka1",
+      "refscale": 0.26450368762016296,
+      "decomposition_max_error": 1.2944189775598858e-08,
+      "float32_error_bound": 1.261251867390456e-07,
+      "noise_only_normalized_peak": 0.31677597761154175,
+      "noise_only_float32_sha256": "52e4a875cb55f0c906953f9b271f4f8d47f2e332c250c98e74efd38dcf9a2f22"
+    },
+    {
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "refscale": 0.27250027656555176,
+      "decomposition_max_error": 1.10815446263679e-08,
+      "float32_error_bound": 1.2993825748708332e-07,
+      "noise_only_normalized_peak": 0.5329480767250061,
+      "noise_only_float32_sha256": "e25b4f20d41e132f2d9d98676a4ca4482f9de45f9231b176abbc3ba6f9c16232"
+    }
+  ],
+  "numpy_scalar": 0.10000000149011612,
+  "path_value": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019"
+}

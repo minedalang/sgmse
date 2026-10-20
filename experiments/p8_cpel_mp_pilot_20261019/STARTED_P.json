@@ -1,0 +1,25 @@
+{
+  "pid": 30297,
+  "config_sha256": "20f750545ff249238dc2e012d474d0ee1f3137abc8218a93cfea9891894864e5",
+  "config_path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/config.yaml",
+  "arm": "P",
+  "seed": 20261019,
+  "steps": 500,
+  "batch_original_pairs": 1,
+  "lr": 1e-05,
+  "clip": 1.0,
+  "ema": 0.999,
+  "native_t": [
+    0.03,
+    1.0
+  ],
+  "aux_t": [
+    0.3,
+    0.7
+  ],
+  "pair_rule": "dynamic raw-gradient budget, target .01 cap100; M eta_applied0",
+  "reverse_traversals_per_step": 2,
+  "dtype": "float32/complex64",
+  "loss_reduction": "coefficient mean, then branch mean",
+  "score_mode": "eval_with_parameter_grad"
+}

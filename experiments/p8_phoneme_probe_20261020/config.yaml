@@ -1,0 +1,16 @@
+experiment_id: p8_phoneme_probe_20261020
+purpose: small read-only phoneme CTC diagnostic on four aligned P8 candidate groups
+status: completed
+dependency_repair: phonemizer-3.4.0 and dlinfo-2.0.0; espeak-ng present; processor loaded
+input_dir: experiments/p8_e1_candidate_listening_aligned_20261020/clips
+planned_groups: [00_fileid_5243, 01_fileid_4812, 02_fileid_11999, 03_fileid_10720]
+conditions: [clean, noisy, y_pre, off, router]
+model: facebook/wav2vec2-lv-60-espeak-cv-ft
+cache_dir: /data/.rootcache/huggingface
+estimated_pytorch_model_bin_bytes: 1263535127
+proxy: http://127.0.0.1:7890
+execution: CUDA if available; CTC greedy decode and token posteriors; no training
+supplementary_probes: [same-time clean-active argmax alignment, clean-target posterior pseudo-target probe]
+interpretation: acoustic-model proxies only; no verified transcript, WER/CER, or phoneme ground truth
+download: one direct HF_HUB_DISABLE_XET attempt; completed; model symlinked to snapshot without copying weight
+constraints: no dataset modification; no checkpoint modification

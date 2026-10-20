@@ -1,0 +1,8 @@
+{
+  "experiment_id": "p8_q_vcv_lowsnr_challenge_20261018",
+  "status": "prepared_no_inference",
+  "stage": "independent_low_snr_challenge",
+  "frontend_forwards": 0,
+  "backend_forwards": 0,
+  "recognizer_forwards": 0
+}

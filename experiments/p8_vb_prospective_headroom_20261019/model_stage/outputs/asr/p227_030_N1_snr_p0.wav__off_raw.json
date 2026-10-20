@@ -1,0 +1,77 @@
+{
+  "request": {
+    "key": "p227_030_N1_snr_p0.wav__off",
+    "id": "p227_030",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_p0.wav",
+    "basename": "p227_030_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "7f442f5d8e7c69db96d4b52ece3d1813b3bada43f3ffd937117d0d3fd61c24ae",
+      "samples": 52810,
+      "array_sha256": "d47a0fb48e73dc3da89ef6d263661aab768b646c46213c9b3420bfa5ee28c36b",
+      "peak": 0.146881103515625,
+      "rms": 0.011559407363536358
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " Nonetheless, the overall picture is helpful.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.2,
+        "text": " Nonetheless, the overall picture is helpful.",
+        "tokens": [
+          50363,
+          27251,
+          11,
+          262,
+          4045,
+          4286,
+          318,
+          7613,
+          13,
+          50523
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.43442834507335315,
+        "compression_ratio": 0.8979591836734694,
+        "no_speech_prob": 0.11315516382455826
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 14,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

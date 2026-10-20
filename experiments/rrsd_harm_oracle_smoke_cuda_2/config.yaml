@@ -1,0 +1,12 @@
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+noisy_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy
+clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean
+out_dir: experiment_logs/rrsd_harm_oracle_smoke_cuda_2
+max_files: 1
+N: 4
+device: cuda
+seed: 2026
+use_ema: true
+harm_threshold: 0.0
+harm_scale: 0.0
+git_commit: 3e08d3c23bae552238dfcc4abb75c05a7e8b1966

@@ -1,0 +1,42 @@
+{
+  "source": "user_explicit_completed_browser_export_pasted_in_chat",
+  "storage": "structured_transcription_not_verbatim_message_bytes; stage1_checked_visually_against_prior_submission_and_preserved",
+  "response_file": "user_chat_export_20261019T114522648Z.json",
+  "response_sha256": "0b42e1c620d3608cd6f2eb7444c1b75a5341edb121d94aaf62eeb7e9437e3d88",
+  "all94_trial_ID_and_stage_order_match": true,
+  "locked": 94,
+  "unique_observations": 47,
+  "stage_counts": {
+    "noisy": {
+      "structure": 41,
+      "non_speech": 2,
+      "unknown": 4
+    },
+    "clean": {
+      "structure": 45,
+      "unknown": 2
+    }
+  },
+  "paired_matrix_rows_clean_columns_noisy": {
+    "structure": {
+      "structure": 40,
+      "non_speech": 1,
+      "unknown": 4
+    },
+    "non_speech": {
+      "structure": 0,
+      "non_speech": 0,
+      "unknown": 0
+    },
+    "unknown": {
+      "structure": 1,
+      "non_speech": 1,
+      "unknown": 0
+    }
+  },
+  "stage1_matches_previous_submission": true,
+  "interpretation": "same_person_structure_judgments_not_independent_gold; no phoneme or accuracy claim; clean non_speech class absent",
+  "protocol_risk": "Prior yellow-region localization/instruction ambiguity; UI version not recorded per trial; preserve all answers without excluding early trials",
+  "browser_automatic_server_upload": false,
+  "chat_submission_archived": true
+}

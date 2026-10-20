@@ -1,0 +1,118 @@
+# Speech Enhancement Research Agent Protocol
+
+## Team
+
+The project uses three roles:
+
+### Research Lead
+The root agent.
+Model: GPT-6.1 Sol.
+reasoning_effort: high
+Role:
+- research strategy
+- final decisions
+- coordination
+- deciding when to call Research Lead
+- experimental analysis
+- literature research
+- research gap analysis
+- innovation discovery
+- hypothesis generation
+- ablation design
+
+### Engineer
+Model: GPT-6.1 Sol.
+reasoning_effort: medium
+Role:
+- implementation
+- debugging
+- architecture modification
+- training pipeline fixes
+
+### Experiment Worker
+Model: GPT-6.1 Sol.
+Role:
+- experiment execution
+- parameter changes
+- training
+- evaluation
+- result recording
+
+## Delegation Rules
+
+Routine experiment execution MUST be delegated to experiment_worker.
+
+Do NOT use the Research Lead to wait for long-running training jobs.
+
+Use Research Lead when:
+- interpreting experimental results;
+- comparing multiple experiments;
+- identifying performance bottlenecks;
+- reviewing recent literature;
+- proposing new research directions;
+- evaluating novelty;
+- designing ablation studies;
+- deciding what experiment should be performed next.
+
+Use engineer when:
+- model code must be modified;
+- training code has bugs;
+- tensor shapes are incorrect;
+- implementation requires debugging.
+
+Use experiment_worker when:
+- the scientific decision is already made;
+- the task is primarily execution;
+- training or evaluation must be performed;
+- multiple parameter combinations need to be tested.
+
+## Experiment Loop
+
+Always prefer:
+
+Research hypothesis
+→ Research Lead
+→ approved experiment design
+→ Engineer if code changes are required
+→ Experiment Worker
+→ results
+→ Research Lead
+→ next hypothesis
+
+Never allow the worker to independently change the research direction.
+
+## Experiment Records
+
+Every completed experiment must produce:
+
+experiments/<experiment_id>/config.yaml
+experiments/<experiment_id>/metrics.json
+experiments/<experiment_id>/experiment_report.md
+
+The result must be reproducible.
+
+## Important
+
+Do not redo completed experiments.
+
+Before starting a new experiment:
+1. inspect existing experiments;
+2. check whether the configuration was already tested;
+3. check the current git state;
+4. check the latest experiment results.
+
+When an experiment fails:
+- record the failure;
+- diagnose it;
+- do not endlessly retry the same command.
+
+When three or more related experiments produce no meaningful improvement,
+call Research Lead and reassess the research hypothesis.
+
+## Context compaction and tool recovery
+
+- Context compaction does not by itself mean tools are unavailable. Inspect the current injected tool declarations and attempt a real, read-only tool call before concluding that access is missing. Verify recovery by actually reading the requested attachment and checking its SHA256, including after a fresh compaction.
+- This environment has a verified compatibility provider, `codex_tools_compat`. Its bridge is `/data/codex-state/tool-compat/bridge.py`; start it with `python3 /data/codex-state/tool-compat/manage.py start`. Apply it to an idle thread with `python3 /data/codex-state/tool-compat/apply_thread.py THREAD_ID`. Keep resumed/delegated work on the intended provider, and check that the bridge is running after a host restart. Default provider selection is unchanged.
+- The observed failure involves `additional_tools` preceding opaque compaction input: moving those declarations into top-level `tools` restored real calls in controlled tests. The bridge preserves all other input, including opaque compaction items. This establishes a working compatibility fix, not a diagnosis of all upstream internals. Repeated forks or compactions alone are not a repair.
+- If the same missing-tool condition prevents real progress for three consecutive goal turns, stop the loop, record the evidence, and mark the goal `blocked` when the goal interface is available. If no tool interface is callable, the host must perform the diagnosis and state update. Never invent tool results or goal usage. Set `paused` only on an explicit user request, and preserve a user pause until the user authorizes continuation.
+- Recovery must not change permissions, delete session history, or terminate research experiments. Preserve research handover and experiment records. Record the diagnosis, verification, running bridge dependency, and rollback instructions in `/data/codex-state/tool-compat/repair_report.md`.

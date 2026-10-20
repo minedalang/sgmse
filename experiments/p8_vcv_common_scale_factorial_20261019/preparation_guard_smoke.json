@@ -1,0 +1,72 @@
+{
+  "status": "passed",
+  "eight_guard_structures": [
+    {
+      "speaker": "f6",
+      "condition": "N1_snr-6",
+      "noisy_donor": "g",
+      "common_ref": 0.21088647842407227,
+      "normalized_condition_peak": 0.9590869545936584,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "f6",
+      "condition": "N1_snr-6",
+      "noisy_donor": "k",
+      "common_ref": 0.21088647842407227,
+      "normalized_condition_peak": 1.0,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "f6",
+      "condition": "N2_snr-6",
+      "noisy_donor": "g",
+      "common_ref": 0.22638864815235138,
+      "normalized_condition_peak": 0.8718672394752502,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "f6",
+      "condition": "N2_snr-6",
+      "noisy_donor": "k",
+      "common_ref": 0.22638864815235138,
+      "normalized_condition_peak": 1.0,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "m5",
+      "condition": "N1_snr-6",
+      "noisy_donor": "g",
+      "common_ref": 0.1722656488418579,
+      "normalized_condition_peak": 0.7936184406280518,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "m5",
+      "condition": "N1_snr-6",
+      "noisy_donor": "k",
+      "common_ref": 0.1722656488418579,
+      "normalized_condition_peak": 1.0,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "m5",
+      "condition": "N2_snr-6",
+      "noisy_donor": "g",
+      "common_ref": 0.17840027809143066,
+      "normalized_condition_peak": 0.8378896713256836,
+      "float32_error_bound": 1.0000000116860974e-07
+    },
+    {
+      "speaker": "m5",
+      "condition": "N2_snr-6",
+      "noisy_donor": "k",
+      "common_ref": 0.17840027809143066,
+      "normalized_condition_peak": 1.0,
+      "float32_error_bound": 1.0000000116860974e-07
+    }
+  ],
+  "numpy_scalar": 0.10000000149011612,
+  "path_value": "/data/coding/sgmse/experiments/p8_vcv_common_scale_factorial_20261019",
+  "numpy_version": "2.2.6"
+}

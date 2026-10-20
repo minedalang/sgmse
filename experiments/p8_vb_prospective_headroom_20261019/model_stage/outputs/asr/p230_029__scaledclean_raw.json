@@ -1,0 +1,76 @@
+{
+  "request": {
+    "key": "p230_029__scaledclean",
+    "id": "p230_029",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_scaledclean.wav",
+    "input": {
+      "wav_sha256": "a0db9c9c7577916f9c80c54205fdadf533368e4abd17f085744f00aad1c84e51",
+      "samples": 56211,
+      "array_sha256": "110e477419ddb6e85810f9d2cdb477b928e9f0c177c2aabd8371791f072be7ed",
+      "peak": 0.083038330078125,
+      "rms": 0.011541902838933058
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_029",
+    "original_text": "It shouldn't come as a surprise, but it does.\n",
+    "raw_text_hex": "49742073686f756c646e277420636f6d6520617320612073757270726973652c2062757420697420646f65732e0a",
+    "raw_text_sha256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+    "archive_entry": "trainset_28spk_txt/p230_029.txt"
+  },
+  "raw_result": {
+    "text": " It shouldn't come as a surprise but it does.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " It shouldn't come as a surprise but it does.",
+        "tokens": [
+          50363,
+          632,
+          6584,
+          470,
+          1282,
+          355,
+          257,
+          5975,
+          475,
+          340,
+          857,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.42354869842529297,
+        "compression_ratio": 0.8461538461538461,
+        "no_speech_prob": 0.03910759463906288
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 6,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

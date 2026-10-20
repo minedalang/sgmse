@@ -1,0 +1,100 @@
+{
+  "request": {
+    "key": "p287_037_N2_snr_m18.wav__frontend",
+    "id": "p287_037",
+    "arm": "frontend",
+    "path": "outputs/frontend/p287_037_N2_snr_m18.wav",
+    "basename": "p287_037_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "efc6c16bd25f41c4de63976a872f2bd0d66de244c5e678c10ac29e5299669a85",
+      "samples": 60008,
+      "array_sha256": "eaae9ad25957de2c016d46ddb64884f77318cde3bfd5047f03fd3267e68a9ee6",
+      "peak": 0.10772705078125,
+      "rms": 0.00961360100348277
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_037",
+    "original_text": "But, after a dip in sales, growth was recorded.\n",
+    "raw_text_hex": "4275742c20616674657220612064697020696e2073616c65732c2067726f77746820776173207265636f726465642e0a",
+    "raw_text_sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+    "archive_entry": "trainset_28spk_txt/p287_037.txt"
+  },
+  "raw_result": {
+    "text": " It's not true, it didn't change. It's grossing the children.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.44,
+        "text": " It's not true, it didn't change.",
+        "tokens": [
+          50363,
+          632,
+          338,
+          407,
+          2081,
+          11,
+          340,
+          1422,
+          470,
+          1487,
+          13,
+          50485
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0827815315940164,
+        "compression_ratio": 0.9230769230769231,
+        "no_speech_prob": 0.3306514024734497
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 2.44,
+        "end": 3.8000000000000003,
+        "text": " It's grossing the children.",
+        "tokens": [
+          50485,
+          632,
+          338,
+          10319,
+          278,
+          262,
+          1751,
+          13,
+          50553
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0827815315940164,
+        "compression_ratio": 0.9230769230769231,
+        "no_speech_prob": 0.3306514024734497
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 37,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

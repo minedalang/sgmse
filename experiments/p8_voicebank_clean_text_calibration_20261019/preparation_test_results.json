@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "AST_parse": true,
+  "safe_import_without_heavy_libraries": true,
+  "exhaustive_independent_alignment_pairs": 225,
+  "normalization_and_ties": true,
+  "empty_hypothesis_and_reference": true,
+  "unclipped_WER_over_1": true,
+  "micro_vs_sentence_mean": true,
+  "raw_publisher_reference_hashes": true,
+  "expected_reference_word_counts": [
+    12,
+    9,
+    9,
+    9
+  ],
+  "source_hashes": true,
+  "missing_supervisor_and_existing_STARTED_and_bad_hash_refused": true,
+  "offline_socket_URL_guards": true,
+  "actual_installed_options_dataclass_AST_only": true,
+  "models": 0,
+  "audio_decodes": 0,
+  "network_calls": 0,
+  "test_script_SHA256": "88f7171a9f15d082c37f2110816effc8b5ebc7f0eaabc349b04ad63fac0088f5"
+}

@@ -1,0 +1,160 @@
+{
+  "schema_version": 1,
+  "experiment_id": "p8_cpel_public_transfer_20261020",
+  "status": "prepared_posthoc_public_transfer_not_executed",
+  "authorization_file": "root_execution_authorization.json",
+  "source": {
+    "checkpoint_path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "code_sha256": {
+      "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+      "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+      "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+      "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+      "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+      "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+      "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+      "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+    },
+    "EMA_materialization": "exactly once before freezing and capturing initial dnn state",
+    "not_proven": "original300k historical training code path"
+  },
+  "registry": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+    "sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+    "records": 64,
+    "order": "entire original registry order, no re-selection",
+    "scope": "same previously explored development data, not independent confirmation"
+  },
+  "terminals": {
+    "N": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/N_backend_ema.pt",
+      "sha256": "18131ad2b92d08a19d4adaa63596412c396e97dc55bd6a84ac6bcbf47179cd01",
+      "schema": "cpel-backend-ema-v1",
+      "source_checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+      "arm": "N"
+    },
+    "D": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/D_backend_ema.pt",
+      "sha256": "3da461301c8b4de9b0afae66c13c2718207fec7ec234f349f73c77fabeaa3ae2",
+      "schema": "cpel-backend-ema-v1",
+      "source_checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+      "arm": "D"
+    }
+  },
+  "historical_metrics": {
+    "N": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/metrics_N.json",
+      "sha256": "eae9d47fcf6e5387428918a18d020a6b104a7dbbec97a30f0521fc783689b598",
+      "expected_frozen_state": {
+        "frontend_state_dict_sha256": "e08460682d8613aaf2e427223854204ab598645547a20f8e67e623b9b81bbb0a",
+        "frontend_state_entries": 267,
+        "intrinsic_sha256": "a721d87789d6714d16b25d7d550164988f2d216ee352695906f281a794fa8d48",
+        "intrinsic_names": [
+          "dnn.all_modules.0.W"
+        ]
+      }
+    },
+    "D": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_native_pair_ablation_20261020/metrics_D.json",
+      "sha256": "1174f563fb610acfd27055ebec27d5135c89bf17065b4f6598a28511bba93fc1",
+      "expected_frozen_state": {
+        "frontend_state_dict_sha256": "e08460682d8613aaf2e427223854204ab598645547a20f8e67e623b9b81bbb0a",
+        "frontend_state_entries": 267,
+        "intrinsic_sha256": "a721d87789d6714d16b25d7d550164988f2d216ee352695906f281a794fa8d48",
+        "intrinsic_names": [
+          "dnn.all_modules.0.W"
+        ]
+      }
+    }
+  },
+  "device": "cuda:0",
+  "native_path": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "geometry": {
+    "samples": 32640,
+    "sample_rate": 16000,
+    "n_fft": 510,
+    "hop_length": 128,
+    "frames": 256,
+    "transform_type": "exponent",
+    "spec_abs_exponent": 0.5,
+    "spec_factor": 0.15,
+    "center": true,
+    "normalization": "same physical Noisy crop peak for raw/public; model/frontend tensors and windows must match"
+  },
+  "sampler": {
+    "N": 30,
+    "predictor": "reverse_diffusion",
+    "corrector": "none",
+    "corrector_steps": 1,
+    "snr": 0.5,
+    "rrsd": false,
+    "regeneration_strength": null,
+    "seed": "20261019+100000+original_dev_index; reset before each branch"
+  },
+  "arms": [
+    "source",
+    "N",
+    "D"
+  ],
+  "seed_base": 20261019,
+  "metrics": [
+    "normalized_wave_mse",
+    "si_sdr_db",
+    "stoi",
+    "pesq"
+  ],
+  "metric_definitions": {
+    "normalization": "public physical returned waveform divided by original Noisy crop peak, same reference clean normalization, no independent arm peak scaling",
+    "si_sdr": "same centered projection energy ratio as fixed N/D; silent/nonpositive energy undefined with retained error",
+    "stoi": "existing pystoi extended=False",
+    "pesq": "existing pesq(16000,ref,est,wb)",
+    "metric_preprocessing": "standard metric internal processing retained; no external clip or loudness normalization",
+    "missing": "retain all64 and per-arm errors, matched valid coverage; no replacement"
+  },
+  "invariants": {
+    "source_model_loads": 1,
+    "terminal_state_loads": 2,
+    "strict_dnn_state_loading": true,
+    "state_keys_shape_dtype_finite": "must match original source dnn state topology",
+    "effective_dnn_digest": "canonical sorted tensor bytes/dtype/shape/name must equal injected CPUstate digest",
+    "frontend_and_intrinsic_digest": "must equal each historical metrics frozen state; fixed W additionally equal source state tensor",
+    "no_model_eval_after_injection": true,
+    "shared_inputs": "64 cached physical frontend/noisy/normalizedclean shared unchanged across3arms; percase frontend exactlyonce",
+    "real_public_api": "model.enhance(shape[1,L],y_cond=shape[1,L],rrsd=False); observe actualget_pc_sampler anchor/noisy/norm/NFE/calls",
+    "same_anchor_and_noisy_across_arms": true,
+    "no_expected_roundtrip_equality_gate": true,
+    "no_training": true
+  },
+  "limits": {
+    "source_model_loads": 1,
+    "terminal_state_loads": 2,
+    "source_pcm_reads": 128,
+    "frontend_calls": 64,
+    "backend_calls": 192,
+    "score_calls": 5760,
+    "seconds": 600,
+    "artifact_bytes": 4194304,
+    "free_disk_reserve_bytes": 1073741824,
+    "network_access": false,
+    "installs": false,
+    "training_steps": 0,
+    "quality_runs": 192,
+    "test_access": false,
+    "audio_exports": false,
+    "spectra_exports": false,
+    "weight_copies": false,
+    "ASR_calls": 0,
+    "DNSMOS_calls": 0,
+    "weight_loads": 3
+  },
+  "interpretation": {
+    "kind": "posthoc missing deployment-transfer evaluation, exploratory",
+    "primary": "public D−N, with all source/N/D means and N−source/D−source",
+    "old_pair_gate": "raw and precision10% failure unchanged; newpublic metrics do not replace or reopen gate",
+    "no_automatic_success_threshold": "descriptive matched comparisons, not confirmatory optimization/selection; no choosingbest interface or state",
+    "no_phone_or_hallucination_claim": true,
+    "no_automatic_followup_training": true,
+    "old_interface_audit": "failed7partial preserved, not broadened tolerance or completed8; thisrun tests actualpublic outputs only"
+  }
+}

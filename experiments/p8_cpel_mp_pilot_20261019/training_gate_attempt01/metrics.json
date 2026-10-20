@@ -1,0 +1,62 @@
+{
+  "experiment_id": "p8_cpel_mp_pilot_20261019",
+  "protocol_version": "v2_dynamic_gradient_budget_and_precision_control",
+  "status": "failed_before_training_at_M_configuration_gate",
+  "M": {
+    "arm": "M",
+    "command": "env PATH='/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin' env/bin/python -B experiments/p8_cpel_mp_pilot_20261019/run_pilot.py --execute-arm M --config config.yaml",
+    "cwd": "/data/coding/sgmse",
+    "execution_count": 1,
+    "exec_session_id": null,
+    "tool_chunk_id": "7f5ba8",
+    "exit_code": 1,
+    "pid": null,
+    "pid_note": "CLI failed before STARTED_M.json and completed inside initial tool call; no child PID was exposed.",
+    "tool_wall_seconds": 1.5469e-05,
+    "failure": "RuntimeError: Fixed implementation/config mismatch: optimization.learning_rate",
+    "stage": "gated_config -> validate_v2_config -> validate_fixed_config; before source checkpoint hashing/model import/scientific execution",
+    "optimizer_steps": 0,
+    "score_calls": 0,
+    "backward_traversals": 0,
+    "EMA_updates": 0,
+    "model_loads": 0,
+    "scientific_PCM_decodes": 0
+  },
+  "P": {
+    "arm": "P",
+    "status": "not_started_due_to_M_terminal_failure",
+    "execution_count": 0
+  },
+  "all_scientific_calls": {
+    "model_loads": 0,
+    "PCM_decodes": 0,
+    "Score": 0,
+    "reverse": 0,
+    "optimizer": 0,
+    "EMA_updates": 0
+  },
+  "baseline_status": "not_started",
+  "paired_comparison": "unavailable; M/P never reached optimizer updates",
+  "config_sha256": "20f750545ff249238dc2e012d474d0ee1f3137abc8218a93cfea9891894864e5",
+  "code_sha256": {
+    "run_pilot.py": "9be1538b67e50d1f7cc3dc6fd54a867c9b395ead57a977cfa015c1386593d511",
+    "loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "editing.py": "05b40d9b13c58b224b468d7dae424dfcdbc2d5cc20c83d276f63da5a2d06281a",
+    "gradient_budget.py": "3cc7dac72de799717184c54d89f9f3d63dd2b5fbf939fbbdaf71b7624367bfda"
+  },
+  "source_audio_hash_files": 704,
+  "protected_files": 726,
+  "source_unchanged": true,
+  "diagnosis": {
+    "json_learning_rate": {
+      "value": 1e-05,
+      "type": "float"
+    },
+    "runner_yaml_safe_load_learning_rate": {
+      "value": "1e-05",
+      "type": "str"
+    },
+    "cause": "JSON-formatted canonical config emits 1e-05; YAML safe_load interprets this token as string, causing frozen numeric equality failure. No parser/config change applied."
+  },
+  "no_scientific_conclusion": "This is a config parser/type gate failure, not a CPEL effectiveness result."
+}

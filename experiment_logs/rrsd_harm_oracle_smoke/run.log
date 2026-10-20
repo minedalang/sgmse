@@ -1,0 +1,23 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/rrsd_harm_oracle_infer.py", line 183, in <module>
+    main()
+  File "/data/coding/sgmse/rrsd_harm_oracle_infer.py", line 113, in main
+    model = _load_model(args)
+  File "/data/coding/sgmse/rrsd_harm_oracle_infer.py", line 51, in _load_model
+    model = JointSemambaSgmseModel.load_from_checkpoint(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/model_helpers.py", line 130, in wrapper
+    return self.method(cls_type, *args, **kwargs)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/module.py", line 1796, in load_from_checkpoint
+    loaded = _load_from_checkpoint(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/core/saving.py", line 72, in _load_from_checkpoint
+    checkpoint = pl_load(checkpoint_path, map_location=map_location, weights_only=weights_only)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/lightning_fabric/utilities/cloud_io.py", line 73, in _load
+    return torch.load(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/serialization.py", line 1614, in load
+    raise pickle.UnpicklingError(_get_wo_message(str(e))) from None
+_pickle.UnpicklingError: Weights only load failed. This file can still be loaded, to do so you have two options, [1mdo those steps only if you trust the source of the checkpoint[0m. 
+	(1) In PyTorch 2.6, we changed the default value of the `weights_only` argument in `torch.load` from `False` to `True`. Re-running `torch.load` with `weights_only` set to `False` will likely succeed, but it can result in arbitrary code execution. Do it only if you got the file from a trusted source.
+	(2) Alternatively, to load with `weights_only=True` please check the recommended steps in the following error message.
+	WeightsUnpickler error: Unsupported global: GLOBAL sgmse.joint_data_module.JointWaveScpDataModule was not an allowed global by default. Please use `torch.serialization.add_safe_globals([sgmse.joint_data_module.JointWaveScpDataModule])` or the `torch.serialization.safe_globals([sgmse.joint_data_module.JointWaveScpDataModule])` context manager to allowlist this global if you trust this class/function.
+
+Check the documentation of torch.load to learn more about types accepted by default with weights_only https://pytorch.org/docs/stable/generated/torch.load.html.

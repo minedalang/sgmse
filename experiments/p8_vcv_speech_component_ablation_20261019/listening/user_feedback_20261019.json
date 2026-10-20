@@ -1,0 +1,9 @@
+{
+  "date": "2026-10-19",
+  "verbatim": "没懂那个消融后端noise-only， 他的语音很清晰啊，没有一点noise的存在",
+  "scope": "User's overall impression of an unspecified diagnostic output; no case number, central consonant identity or per-arm comparison was specified.",
+  "interpretation": "Reports clear speech and no audible noise, while asking what noise-only means. This does not confirm any specific repair, damage, correct phoneme or absence of hallucination.",
+  "clarification": "Only the direct noisy condition loses its known speech component. The original Y_pre waveform remains the diffusion anchor and still contains speech information. Therefore clear output speech is expected to remain possible.",
+  "ui_action": "Renamed diagnostic button in Chinese and added prominent explanation. Existing audio remained byte-identical.",
+  "phoneme_identity_judgment": "unknown"
+}

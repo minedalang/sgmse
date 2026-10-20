@@ -1,0 +1,22 @@
+{
+  "status": "completed",
+  "failures": [],
+  "network_attempts": [],
+  "network_bytes": 0,
+  "audio_sample_decodes": 0,
+  "model_imports": 0,
+  "training_calls": 0,
+  "noise_disjoint_ready": false,
+  "split_frozen": false,
+  "wav_header_checks": 24,
+  "full_wav_hash_bytes": 2770724,
+  "pairs": 12,
+  "speakers": 6,
+  "audio_files_hashed": 24,
+  "registry_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6",
+  "seconds": 0.23511696397326887,
+  "pid": 36478,
+  "time_cap": 60,
+  "byte_cap": 2097152,
+  "actual_audio_samples_read": 0
+}

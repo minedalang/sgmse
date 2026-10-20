@@ -1,0 +1,105 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_amp_phase_cross_20261017",
+  "status": "complete",
+  "purpose": "Fixed |P|∠G and |G|∠P waveform diagnostics; zero training",
+  "source_manifest": "experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv",
+  "source_manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "n_expected": 32,
+  "split_warning": "Previously used development split; not an independent blind test.",
+  "inputs": {
+    "frontend_y_pre": "experiments/storm_error_attribution_p7_20261017/frontend_only",
+    "router_off_x_gen": "experiment_logs/rrsd_tcut_screen/off",
+    "clean_reference": "clean_path entries in source manifest; offline evaluation only",
+    "router_baseline_metrics": "existing paired metrics from frontend_attribution; Router audio is not an input to crossing construction"
+  },
+  "arms": {
+    "magP_phaseG": "abs(STFT(frontend-only Y_pre)) * exp(1j * angle(STFT(Router-off X_gen)))",
+    "magG_phaseP": "abs(STFT(Router-off X_gen)) * exp(1j * angle(STFT(frontend-only Y_pre)))"
+  },
+  "stft_istft": {
+    "sample_rate_hz": 16000,
+    "n_fft": 510,
+    "hop_length": 128,
+    "win_length": 510,
+    "window": "periodic Hann",
+    "center": true,
+    "torch_stft_pad_mode": "reflect (PyTorch default)",
+    "istft_length": "exact input sample count from manifest audio"
+  },
+  "audio_output": {
+    "format": "WAV",
+    "subtype": "FLOAT",
+    "files_per_arm": 32
+  },
+  "metrics": [
+    "PESQ-WB",
+    "STOI",
+    "SI-SDR",
+    "DNSMOS P.808/SIG/BAK/OVRL"
+  ],
+  "dnsmos": {
+    "requested_device": "auto",
+    "runtime_info": {
+      "device": "cuda:0",
+      "execution_provider": "CUDAExecutionProvider",
+      "onnx_session_providers": {
+        "sig_bak_ovr": [
+          "CUDAExecutionProvider",
+          "CPUExecutionProvider"
+        ],
+        "model_v8": [
+          "CUDAExecutionProvider",
+          "CPUExecutionProvider"
+        ]
+      }
+    },
+    "feature_extraction": "TorchMetrics librosa mel preprocessing remains CPU-side",
+    "resolved_device": "cuda:0",
+    "inference_arms": [
+      "magP_phaseG",
+      "magG_phaseP"
+    ],
+    "cpu_fallback_observed": false
+  },
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261021,
+    "scope": "exploratory paired mean-difference intervals"
+  },
+  "search_or_selection": "none; exactly the two pre-registered crossings",
+  "training": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "source_audio_modified": false,
+  "available_disk_bytes_before_run": 6505017344,
+  "software": {
+    "python": "3.12.0",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.35",
+    "torch": "2.14.1+cu130",
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0"
+  },
+  "runtime_seconds": 65.05697059631348,
+  "reconstruction_summary": {
+    "source_frontend_relative_rmse": {
+      "mean": 1.242734755682974e-07,
+      "median": 1.2435501496287108e-07,
+      "max": 1.2623952190085957e-07
+    },
+    "source_off_relative_rmse": {
+      "mean": 1.244645172143157e-07,
+      "median": 1.2432192331555355e-07,
+      "max": 1.2633836819363723e-07
+    },
+    "magP_phaseG_stft_projection_relative_l2": {
+      "mean": 0.05966355191029864,
+      "median": 0.06293433315489211,
+      "max": 0.09473740531331606
+    },
+    "magG_phaseP_stft_projection_relative_l2": {
+      "mean": 0.11296881172481396,
+      "median": 0.10513176297777146,
+      "max": 0.22629957141740228
+    }
+  }
+}

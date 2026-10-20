@@ -1,0 +1,23 @@
+{
+  "experiment_id": "p8_voicebank_content_reference_audit_20261019_attempt02",
+  "status": "single_authorized_zip_only_transaction",
+  "url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/fb55b5de-c2db-4451-ac0a-134e98011ffa/content",
+  "proxy": "http://127.0.0.1:7890",
+  "download_is_resume": false,
+  "previous_partial_recoverable": false,
+  "no_refetch_official_documents": true,
+  "expected_size_bytes": 6489312,
+  "expected_official_MD5": "48bfcd5945165c60ab9d2f312f4d6e1c",
+  "new_transfer_cap_bytes": 7000000,
+  "known_combined_network_cap_bytes": 15000000,
+  "prior_known_recorded_bytes": 4534750,
+  "prior_interrupted_direct_bytes_unknown": true,
+  "network_hard_wall_seconds": 420,
+  "additional_artifact_cap_bytes": 30000000,
+  "archive_max_total_uncompressed_bytes": 60000000,
+  "archive_max_single_member_bytes": 1000000,
+  "test_policy": "SCPIDs only;no testtext/archive/audio/content retrieval",
+  "audio_decode": false,
+  "models": false,
+  "training": false
+}

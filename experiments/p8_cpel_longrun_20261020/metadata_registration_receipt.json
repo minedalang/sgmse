@@ -1,0 +1,213 @@
+{
+  "schema_version": 1,
+  "status": "metadata_registered_not_authorized_to_execute",
+  "utc": "2026-10-20T01:55:28.584881+00:00",
+  "scope_sha256": "c2d191aa2c26b9e06e05a615dc8e93b136b17dde6c402b98279892cf4a4f66dd",
+  "goal_sha256": "269a3ba1f319601e1130da8da9ff2c91f0cc5e27d95b72948c9d52ca1195548b",
+  "source_sha256_pre": {
+    "/data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/tr_synthetic_records.jsonl": "804860d754fcd1fde817def88994d6f4da53705a547d44fae13c546904bdd402",
+    "/data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/cv_synthetic_records.jsonl": "3389ab8d99dad93f134e0a2b8aa5d80cf910e2cacb61d4656484095ecab2cf6c",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/registry_receipt.json": "3db02282385dcaaec3dd6e9f3b5ec04f23e0bab6f07344d96c1a8887277addbc",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc"
+  },
+  "source_sha256_post": {
+    "/data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/tr_synthetic_records.jsonl": "804860d754fcd1fde817def88994d6f4da53705a547d44fae13c546904bdd402",
+    "/data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/cv_synthetic_records.jsonl": "3389ab8d99dad93f134e0a2b8aa5d80cf910e2cacb61d4656484095ecab2cf6c",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/registry_receipt.json": "3db02282385dcaaec3dd6e9f3b5ec04f23e0bab6f07344d96c1a8887277addbc",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc"
+  },
+  "current_scp_text_checks": {
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/wav.scp": {
+      "sha256": "13c3a7d7e423240042b8a5d465cb3cafccedc20eecfa62e6e3abd694d06d47c9",
+      "records": 10800,
+      "id_order_matches": true,
+      "path_basename_matches": true,
+      "scope": "text only; audio paths not accessed"
+    },
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/spk1.scp": {
+      "sha256": "b68d68f441ee35202b79cd641170205b092d32f4896495089826981b5c80ec68",
+      "records": 10800,
+      "id_order_matches": true,
+      "path_basename_matches": true,
+      "scope": "text only; audio paths not accessed"
+    },
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/tr_synthetic/noise1.scp": {
+      "sha256": "bd6cb84d185d8e1fe13a33877b555f66cab0c563a69be01aca97929cb5e7b944",
+      "records": 10800,
+      "id_order_matches": true,
+      "path_basename_matches": true,
+      "scope": "text only; audio paths not accessed"
+    },
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp": {
+      "sha256": "0eab57df64a26c3bcb6d3539754cb3c5a4d7f1c81b29168cd9d6dc56afb08553",
+      "records": 1200,
+      "id_order_matches": true,
+      "path_basename_matches": true,
+      "scope": "text only; audio paths not accessed"
+    },
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/spk1.scp": {
+      "sha256": "12267aa830bd57742b10d1b45c0fe33cc52a07330808342d82911cac9deec8db",
+      "records": 1200,
+      "id_order_matches": true,
+      "path_basename_matches": true,
+      "scope": "text only; audio paths not accessed"
+    },
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/noise1.scp": {
+      "sha256": "6c0548271ee15d8c676febcd5a6e94e4bf161b9431155fbd6c608012bf56c516",
+      "records": 1200,
+      "id_order_matches": true,
+      "path_basename_matches": true,
+      "scope": "text only; audio paths not accessed"
+    }
+  },
+  "scientific_fields": [
+    "utt",
+    "fileid",
+    "speaker",
+    "nominal_snr_db",
+    "priority_bin",
+    "wav_path",
+    "clean_path_loader",
+    "noise1_path"
+  ],
+  "excluded_speakers": [
+    "10658"
+  ],
+  "excluded_fileids": [
+    "10720",
+    "11489",
+    "11999",
+    "3321",
+    "3645",
+    "4812",
+    "5243",
+    "6339"
+  ],
+  "registries": {
+    "full_train_registry.jsonl": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/full_train_registry.jsonl",
+      "sha256": "b374f7b0d4affac8fc1454ed7887259bf3f48c3360046f526f2671b861ae399f",
+      "bytes": 5594324,
+      "statistics": {
+        "records": 10797,
+        "speakers": 1469,
+        "per_bin": {
+          "[-15,-10)": 3394,
+          "[-10,-5]": 4080,
+          "[-20,-18)": 1393,
+          "[-18,-15)": 1930
+        }
+      }
+    },
+    "eligible_cv_registry.jsonl": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/eligible_cv_registry.jsonl",
+      "sha256": "abfa11d7227a65e18c2033d0800984326986ef4763b80282e684a193ec05d055",
+      "bytes": 614935,
+      "statistics": {
+        "records": 1186,
+        "speakers": 157,
+        "per_bin": {
+          "[-20,-18)": 161,
+          "[-10,-5]": 455,
+          "[-18,-15)": 213,
+          "[-15,-10)": 357
+        }
+      }
+    },
+    "validation256_registry.jsonl": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/validation256_registry.jsonl",
+      "sha256": "cdc78461726021bcdaa2143796b3b83d307a0fca7e0dd0af71ba3e7c7aa2dd93",
+      "bytes": 161016,
+      "statistics": {
+        "records": 256,
+        "speakers": 119,
+        "per_bin": {
+          "[-20,-18)": 64,
+          "[-18,-15)": 64,
+          "[-15,-10)": 64,
+          "[-10,-5]": 64
+        }
+      }
+    }
+  },
+  "source_order_preserved": {
+    "full_train": true,
+    "eligible_cv": true
+  },
+  "duration_from_historical_records_only": {
+    "train_seconds": 323910.0,
+    "cv_seconds": 35580.0
+  },
+  "validation_selection": {
+    "tag": "cpel-longrun-v1|validation|",
+    "rule": "Exclude old64 utt, then per bin ascending hexadecimal sha256(tag+utt), first64; bins in old64 first-occurrence order; no audio or metric ranking",
+    "bin_order": [
+      "[-20,-18)",
+      "[-18,-15)",
+      "[-15,-10)",
+      "[-10,-5]"
+    ],
+    "original_cv_index": "zero based in source cv records",
+    "validation_extra_fields": [
+      "original_cv_index",
+      "selection_sha256"
+    ],
+    "old64_utt_intersection": [],
+    "old64_speaker_intersection_count": 43
+  },
+  "old64_trend_panel": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+    "sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+    "records": 64,
+    "original_order_preserved_by_reference": true,
+    "copied": false
+  },
+  "train_cv_metadata_disjointness": {
+    "speaker": {
+      "train_unique": 1469,
+      "cv_unique": 157,
+      "intersection": []
+    },
+    "fileid": {
+      "train_unique": 10797,
+      "cv_unique": 1186,
+      "intersection": []
+    },
+    "utt": {
+      "train_unique": 10797,
+      "cv_unique": 1186,
+      "intersection": []
+    },
+    "clean_instance_basename": {
+      "train_unique": 10797,
+      "cv_unique": 1186,
+      "intersection": []
+    },
+    "noise_instance_basename": {
+      "train_unique": 10797,
+      "cv_unique": 1186,
+      "intersection": []
+    }
+  },
+  "limitations": [
+    "Existing CV was used for pretraining/model selection; this is development validation, not independent confirmation or pretraining-unseen material.",
+    "Validation256 excludes old64 file/utt only, not their entire speakers; speaker overlap is explicitly retained.",
+    "Only speaker10658 is excluded as a whole speaker; other seven explored file IDs do not trigger whole-speaker exclusion.",
+    "Noise instance basename disjointness is not source noise recording or semantic category isolation.",
+    "Clean instance basename separation does not establish underlying long-recording or text-content independence.",
+    "All duration/status facts are inherited metadata; no WAV existence/stat/hash/header/PCM revalidation.",
+    "Random crops from pre-synthesized pairs do not create new source recordings or online remixed noise/SNR.",
+    "Final validation crop/full-utterance evaluation and scientific driver remain unfrozen; no execution authorization."
+  ],
+  "activity": {
+    "wav_stat_hash_header_pcm": 0,
+    "checkpoint_model_cuda_network": 0,
+    "frozen_test_reads": 0,
+    "new_scientific_driver": false,
+    "new_execution_authorization": false
+  },
+  "budget": {
+    "new_files": 4,
+    "max_new_bytes": 12582912
+  }
+}

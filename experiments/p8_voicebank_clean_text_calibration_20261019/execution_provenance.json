@@ -1,0 +1,25 @@
+{
+  "agent_path": "/root/experiment_worker_waveform_gate",
+  "worker_thread_id": "01a1521e-ecec-7ac2-9ede-4099926e8196",
+  "readonly_SQLite_provider": "codex_tools_compat",
+  "started_utc": "2026-10-19T03:19:30.407910+00:00",
+  "session_id": 3199,
+  "supervisor_pid": 44420,
+  "child_pid": 44423,
+  "starts": 1,
+  "retries": 0,
+  "command": "PATH=/data/coding/sgmse/env/bin:$PATH /data/coding/sgmse/env/bin/python /data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/run_calibration.py",
+  "validation_command": "/data/coding/sgmse/env/bin/python /data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/validate_completed_run.py",
+  "validation_exec_wall_seconds": 0.211473794,
+  "metrics_sha256": "f443996cd8c5e80d0be224ab8fcbebcde925bec65cf9d87d045ebbb10ecfef6a",
+  "independent_validation_sha256": "92620e7b8fbe32530f7d7f97cea0883fe941b529118f6dd544d6ccf330f30f0e",
+  "preserved_processes": [
+    16022,
+    39452
+  ],
+  "network_bytes": 0,
+  "transcribe_api_calls": 4,
+  "internal_decode_api_calls": 4,
+  "neural_forward_count": "not measured; not equal to API counts",
+  "supervisor_seconds": 6.099228171049617
+}

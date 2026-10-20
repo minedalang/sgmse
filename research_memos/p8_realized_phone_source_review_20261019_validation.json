@@ -1,0 +1,65 @@
+{
+  "kind": "source_review_and_synthetic_software_acceptance_not_acoustic_experiment",
+  "utc": "2026-10-19T06:10:45.291114+00:00",
+  "status": "passed",
+  "delivery_files_verified": 6,
+  "delivery_manifest_sha256": "8e33d44693abef7b7f9e3bc81e1b36c21fba89f83e6a8d5da0f32d9695ec1d0d",
+  "software_directory_bytes": 22268,
+  "root_review": {
+    "actual_unit_test_methods": 14,
+    "unit_tests_passed": true,
+    "additional_fixed_literal_cases": 5,
+    "passed": true,
+    "real_corpus_schema_validated": false,
+    "real_data_approved": false,
+    "hard_identity_eligible": false
+  },
+  "protected_metrics_unchanged": {
+    "experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+    "experiments/p8_vb_caseB_opening_existing_audit_20261019/metrics.json": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7"
+  },
+  "primary_sources": [
+    {
+      "url": "https://psi.engr.tamu.edu/l2-arctic-corpus-docs/",
+      "scope": "manual-label semantics and manual-vs-forced directories"
+    },
+    {
+      "url": "https://psi.engr.tamu.edu/l2-arctic-corpus/",
+      "scope": "access process, publisher license designation and annotated subset"
+    },
+    {
+      "url": "https://buckeyecorpus.osu.edu/php/corpusInfo.php",
+      "scope": "citation vs actual pronunciations and timestamps"
+    },
+    {
+      "url": "https://buckeyecorpus.osu.edu/",
+      "scope": "registration and noncommercial-use notice"
+    }
+  ],
+  "network_note": "Read-only web searches and primary page browsing occurred. Transport byte/request totals not instrumented. No corpus/audio/model download or registration.",
+  "actual_new_model_calls": 0,
+  "actual_new_audio_sample_decodes": 0,
+  "actual_new_training": 0,
+  "modified_documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_realized_phone_source_review_20261019.md",
+      "bytes": 5860,
+      "sha256": "979671eb00e62328711f63c2087dc90aa854a35f8c755f093c472340c1064a0b"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 9142,
+      "sha256": "222c9e1937c094f0798f0ecbc6a7d2b1c9be562234caabbbfc570bd1bca8e845"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 10224,
+      "sha256": "4bdcb6d4ce8d6183080555a96837c5f46e249a0bbd54f17f2f7cf2310032044b"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 10365,
+      "sha256": "2ca7737474e270c18a5e761a4d8fb8e647d0e05281d3ab43ab9333a4ae6bcbe4"
+    }
+  ]
+}

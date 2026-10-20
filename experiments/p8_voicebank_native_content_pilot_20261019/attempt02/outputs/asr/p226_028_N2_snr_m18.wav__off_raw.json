@@ -1,0 +1,123 @@
+{
+  "request": {
+    "key": "p226_028_N2_snr_m18.wav__off",
+    "id": "p226_028",
+    "arm": "off",
+    "path": "outputs/off/p226_028_N2_snr_m18.wav",
+    "basename": "p226_028_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737",
+      "samples": 67653,
+      "array_sha256": "7bc6aa6f2b2cf891702a944c69222d0d8f05b471ac93981dddba43a98af9b9f4",
+      "peak": 0.046783447265625,
+      "rms": 0.005807030478751163
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " and they did have some of the best swim that the athletes in Bayley's come out to smess. But I...",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 1.28,
+        "text": " and they did have some of the best swim",
+        "tokens": [
+          50363,
+          290,
+          484,
+          750,
+          423,
+          617,
+          286,
+          262,
+          1266,
+          9422,
+          50427
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9438909292221069,
+        "compression_ratio": 1.1547619047619047,
+        "no_speech_prob": 0.21106590330600739
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 1.28,
+        "end": 3.92,
+        "text": " that the athletes in Bayley's come out to smess.",
+        "tokens": [
+          50427,
+          326,
+          262,
+          10856,
+          287,
+          4696,
+          1636,
+          338,
+          1282,
+          503,
+          284,
+          895,
+          408,
+          13,
+          50559
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9438909292221069,
+        "compression_ratio": 1.1547619047619047,
+        "no_speech_prob": 0.21106590330600739
+      },
+      {
+        "id": 2,
+        "seek": 0,
+        "start": 3.92,
+        "end": 4.76,
+        "text": " But I...",
+        "tokens": [
+          50559,
+          887,
+          314,
+          986,
+          50601
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9438909292221069,
+        "compression_ratio": 1.1547619047619047,
+        "no_speech_prob": 0.21106590330600739
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 25,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

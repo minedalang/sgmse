@@ -1,0 +1,25 @@
+experiment_id: p8_10720_tail_mechanism_20261018
+purpose: offline_acoustic_tail_and_neighbor_context_probe
+source_metrics: ../p8_10720_snr_control_20261018/metrics.json
+source_clip_manifest: ../p8_10720_snr_control_20261018/source_clip_manifest.json
+sample_rate: 16000
+source_samples: 480000
+extended_seconds: [12.75, 17.75]
+reported_tail_seconds: [15.05, 15.75]
+original_listening_clip_seconds: [13.75, 15.75]
+frame_ms: 20
+hop_ms: 10
+window: periodic_hann
+periodicity_window_ms: 40
+periodicity_frequency_hz: [60, 400]
+highband_hz: [4000, 7500]
+spectrum_band_edges_hz: [0, 500, 1000, 1500, 2000, 2500, 3000, 3500, 4000, 4500, 5000, 5500, 6000, 6500, 7000, 7500, 8000]
+tail_block_ms: 100
+lag_search_seconds: 1.0
+db_display_floor: -240.0
+near_quantization_floor_pcm16_steps: 3.0
+near_floor_note: Fixed diagnostic threshold of three PCM16 steps RMS; flag only, not a speech decision; raw values retained. Also used as conservative reference validity threshold for cosine scans.
+plot: true
+new_model_inference: false
+source_writes: false
+interpretation_limits: Acoustic proxies are not phoneme truth. Correlation and best spectral matches are not proof of timing displacement, identity, or causality. Clip end is not utterance end.

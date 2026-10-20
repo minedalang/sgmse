@@ -1,0 +1,119 @@
+{
+  "kind": "documentation_integration_not_new_scientific_results",
+  "generator": "generate_reader.py",
+  "command": "cd /data/coding/sgmse && python3 -B thesis/generate_reader.py",
+  "sources": [
+    {
+      "path": "../THESIS_FRAMING_DRAFT_20261019.md",
+      "bytes": 5506,
+      "sha256": "d7e288641419c519ef569a586b5165a31e3cf700dea3bb830c462d86142efc5a"
+    },
+    {
+      "path": "../THESIS_ABSTRACT_DRAFT_20261020.md",
+      "bytes": 4356,
+      "sha256": "8b49d4fbf808d10afd32fce32f22a20c8967e78949274a5fc0e349d2103f4ddf"
+    },
+    {
+      "path": "../THESIS_INTRODUCTION_DRAFT_20261020.md",
+      "bytes": 8130,
+      "sha256": "63f9e37a8664c0244811a3d5edb9bc75337b48c7f90b2d6c324ed41cddc9834a"
+    },
+    {
+      "path": "../P8_RELATED_WORK_DRAFT_20261019.md",
+      "bytes": 7544,
+      "sha256": "0b1840025c139b3158c37a17187ff4c54036dfa6bd4253c1b2ff85455d65bc42"
+    },
+    {
+      "path": "../METHODS_RRSD_IMPLEMENTED_DRAFT_20261019.md",
+      "bytes": 9958,
+      "sha256": "13b43bb2f5ec7059b142d8c6820341e547919543e2a7c517862c10b5dd5e5e89"
+    },
+    {
+      "path": "../THESIS_EXPERIMENTS_CHAPTER_DRAFT_20261019.md",
+      "bytes": 24415,
+      "sha256": "2121947f5628b4b8a31da46174e36e82766753425dd3c9a18c3dd7f4373fc372"
+    },
+    {
+      "path": "../P8_EVIDENCE_DISCUSSION_DRAFT_20261019.md",
+      "bytes": 14447,
+      "sha256": "58a6417698f74ba32594bf76de3c8ae5801b4273fd70fcfb6339ee84c4c5eec4"
+    },
+    {
+      "path": "../THESIS_CONCLUSION_DRAFT_20261020.md",
+      "bytes": 7488,
+      "sha256": "cb4f2b1cb323475cb78dc421fb6cab82ade69c0cb70637415c17b4bbc0200f25"
+    },
+    {
+      "path": "../P8_RELATED_WORK_REFERENCES_20261019.bib",
+      "bytes": 3388,
+      "sha256": "aec80cc27f884de432f4aef8a05de52c3b71aa20a070b4704c1599e081122836"
+    },
+    {
+      "path": "../experiments/final_eval_full_20261018/metrics.json",
+      "bytes": 18188,
+      "sha256": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa",
+      "use": "Only original seven per-condition mean_delta/ci95 fields for static figure"
+    }
+  ],
+  "outputs": {
+    "manuscript.md": {
+      "bytes": 88136,
+      "sha256": "cbc368186fb51d24742d40655c31d31137b8f56f225514a0d90a188c40f80a5a"
+    },
+    "manuscript.html": {
+      "bytes": 102595,
+      "sha256": "84f7609a89bbf1db16258aa5639a99a3492769e3ce00547df381574930631c71"
+    },
+    "figures/router_condition_tradeoffs.svg": {
+      "bytes": 16753,
+      "sha256": "49e2be6c0692155948122951fdd4fea96b6e95086daf4515756145e918df19e7"
+    },
+    "figures/router_condition_tradeoffs.data.json": {
+      "bytes": 3366,
+      "sha256": "5b200f4bc8161226e2e5dbd260831d924b911ebb576a16128dd2b46870349ea8"
+    }
+  },
+  "checks": {
+    "inline_code_escaped": true,
+    "relative_link_relocated": true,
+    "external_link_preserved": true,
+    "table_rendered": true,
+    "math_verbatim_escaped": true,
+    "no_scripts_or_external_assets": true,
+    "frozen_figure_source_unchanged": true,
+    "source_bytes_unchanged": true,
+    "display_math_blocks_preserved": true,
+    "local_link_targets_exist": true
+  },
+  "figure_static_checks": {
+    "static_xml_parses": true,
+    "fourteen_mean_points": true,
+    "title_and_desc": true,
+    "no_external_references": true,
+    "no_script": true,
+    "source_bytes_unchanged": true,
+    "all_14_exact_value_records": true
+  },
+  "figure_generator_sha256": "7cc1fa65c1642cc2300fb57bb4b38b15e0a057b5e0fab79f8c6570cd4908ffef",
+  "missing_local_links": [],
+  "unverified": [
+    "Real browser rendering, mobile and print layout",
+    "Mathematical typesetting; raw LaTeX is preserved, not rendered",
+    "BibTeX/TeX compilation and school thesis formatting",
+    "No revalidation of historical scientific results or external references"
+  ],
+  "transformations": [
+    "Framing guide followed by fixed chapter ordering",
+    "Heading depth adjusted",
+    "Relative link targets prefixed ../ from source-root directory",
+    "Existing writing audit/version sections moved intact to appendix",
+    "BibTeX embedded verbatim as appendix"
+  ],
+  "attachment_preflight": {
+    "bytes": 4694,
+    "sha256": "75e785ebb749a77f37c91741fd2a0c7fc606416903ac9e6b1116d07dce12a613",
+    "note": "Read in full before implementation; historical uppercase research entry is superseded by current AGENTS routing"
+  },
+  "generator_sha256": "83215e5267e4224eee01440150093c43299f1c8ae4a5dd12c2999b4be12ef197",
+  "dependencies": "Python standard library only; no Markdown packages installed or fetched"
+}

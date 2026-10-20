@@ -1,0 +1,264 @@
+{
+  "status": "passed",
+  "source_hashes_verified": 48,
+  "utterances": 8,
+  "frames_verified": 12000,
+  "gaps_verified": 39,
+  "direct_float64_gap_energy_checks": [
+    {
+      "fileid": "10720",
+      "start_seconds": 15.04,
+      "end_seconds": 16.16,
+      "off_rms": 0.0027066229221007327,
+      "off_highband_mean_square": 3.2565177134176362e-06
+    },
+    {
+      "fileid": "3321",
+      "start_seconds": 22.62,
+      "end_seconds": 23.66,
+      "off_rms": 0.0011166823762922217,
+      "off_highband_mean_square": 2.9859513513370986e-09
+    }
+  ],
+  "per_utterance_delta_energy_mix": [
+    {
+      "active": 7.084813595749438,
+      "quiet": 1.5057623386383057e-05,
+      "qualifying_gap": 0.0,
+      "unclassified": 0.31676883064210415,
+      "boundary": 0.050822539255023,
+      "fileid": "5243",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 2.0343747979949845e-06,
+      "gap_fraction_interior_delta_energy": 0.0
+    },
+    {
+      "active": 3.935883373953402,
+      "quiet": 9.705312550067902e-06,
+      "qualifying_gap": 0.0,
+      "unclassified": 0.15935244876891375,
+      "boundary": 0.030489950440824032,
+      "fileid": "5243",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 2.369897600431559e-06,
+      "gap_fraction_interior_delta_energy": 0.0
+    },
+    {
+      "active": 3.402163427323103,
+      "quiet": 0.06236882787197828,
+      "qualifying_gap": 0.00028383173048496246,
+      "unclassified": 0.04795798845589161,
+      "boundary": 0.07017524167895317,
+      "fileid": "6339",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.017756299248008877,
+      "gap_fraction_interior_delta_energy": 8.080641106349108e-05
+    },
+    {
+      "active": 2.027714959345758,
+      "quiet": 0.028588132932782173,
+      "qualifying_gap": 0.00016446970403194427,
+      "unclassified": 0.022199262864887714,
+      "boundary": 0.05048172455281019,
+      "fileid": "6339",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.013754197998399399,
+      "gap_fraction_interior_delta_energy": 7.912894764105042e-05
+    },
+    {
+      "active": 22.51322868000716,
+      "quiet": 0.005354374647140503,
+      "qualifying_gap": 0.0,
+      "unclassified": 0.6190906632691622,
+      "boundary": 0.306551662273705,
+      "fileid": "4812",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.00023141369838717917,
+      "gap_fraction_interior_delta_energy": 0.0
+    },
+    {
+      "active": 12.480733235366642,
+      "quiet": 0.003152070567011833,
+      "qualifying_gap": 0.0,
+      "unclassified": 0.2686689095571637,
+      "boundary": 0.16538792848587036,
+      "fileid": "4812",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.0002471717048795559,
+      "gap_fraction_interior_delta_energy": 0.0
+    },
+    {
+      "active": 1.0806180527433753,
+      "quiet": 0.003704882226884365,
+      "qualifying_gap": 0.00019428879022598267,
+      "unclassified": 0.021642865613102913,
+      "boundary": 0.0009259209036827087,
+      "fileid": "11999",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.0033499066833080687,
+      "gap_fraction_interior_delta_energy": 0.00017567341605273995
+    },
+    {
+      "active": 0.6305235391482711,
+      "quiet": 0.0019964640960097313,
+      "qualifying_gap": 0.0001338087022304535,
+      "unclassified": 0.011735687963664532,
+      "boundary": 0.0007456745952367783,
+      "fileid": "11999",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.003098869165232311,
+      "gap_fraction_interior_delta_energy": 0.00020769502552560963
+    },
+    {
+      "active": 0.8742398647591472,
+      "quiet": 0.21599718742072582,
+      "qualifying_gap": 0.184229732491076,
+      "unclassified": 0.02248084358870983,
+      "boundary": 0.020120328292250633,
+      "fileid": "10720",
+      "group": "discovery_10720",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.19411675523698754,
+      "gap_fraction_interior_delta_energy": 0.16556733129902956
+    },
+    {
+      "active": 0.5192561456933618,
+      "quiet": 0.11654015071690083,
+      "qualifying_gap": 0.09937650430947542,
+      "unclassified": 0.011087284423410892,
+      "boundary": 0.01292873453348875,
+      "fileid": "10720",
+      "group": "discovery_10720",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.1801562973150583,
+      "gap_fraction_interior_delta_energy": 0.15362347608421845
+    },
+    {
+      "active": 0.5638540992513299,
+      "quiet": 0.017296520993113518,
+      "qualifying_gap": 0.0037131262943148613,
+      "unclassified": 0.039152891375124454,
+      "boundary": 0.00021833833307027817,
+      "fileid": "11489",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.027883964332159825,
+      "gap_fraction_interior_delta_energy": 0.005985983030500916
+    },
+    {
+      "active": 0.3631496140733361,
+      "quiet": 0.009459510445594788,
+      "qualifying_gap": 0.002103187143802643,
+      "unclassified": 0.026767585426568985,
+      "boundary": 0.00018203631043434143,
+      "fileid": "11489",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.023685683741762657,
+      "gap_fraction_interior_delta_energy": 0.005266173743806067
+    },
+    {
+      "active": 0.2689170613884926,
+      "quiet": 0.04592793621122837,
+      "qualifying_gap": 0.04209103900939226,
+      "unclassified": 0.006394228897988796,
+      "boundary": 0.000927991233766079,
+      "fileid": "3321",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.14297113310835285,
+      "gap_fraction_interior_delta_energy": 0.1310270836730842
+    },
+    {
+      "active": 0.1511761024594307,
+      "quiet": 0.02343190647661686,
+      "qualifying_gap": 0.02132711000740528,
+      "unclassified": 0.0035144761204719543,
+      "boundary": 0.0004419945180416107,
+      "fileid": "3321",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.13154940247539076,
+      "gap_fraction_interior_delta_energy": 0.11973283440682989
+    },
+    {
+      "active": 0.38499085418879986,
+      "quiet": 0.021393519826233387,
+      "qualifying_gap": 0.02137579955160618,
+      "unclassified": 0.005450972355902195,
+      "boundary": 0.006341147236526012,
+      "fileid": "3645",
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.051946779252319164,
+      "gap_fraction_interior_delta_energy": 0.05190375168126836
+    },
+    {
+      "active": 0.23473199922591448,
+      "quiet": 0.011426365002989769,
+      "qualifying_gap": 0.01141401007771492,
+      "unclassified": 0.002720632590353489,
+      "boundary": 0.004465143196284771,
+      "fileid": "3645",
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.045911326986294014,
+      "gap_fraction_interior_delta_energy": 0.04586168468849971
+    }
+  ],
+  "group_delta_energy_mix": [
+    {
+      "active": 0.8742398647591472,
+      "quiet": 0.21599718742072582,
+      "qualifying_gap": 0.184229732491076,
+      "unclassified": 0.02248084358870983,
+      "boundary": 0.020120328292250633,
+      "group": "discovery_10720",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.19411675523698754,
+      "gap_fraction_interior_delta_energy": 0.16556733129902956
+    },
+    {
+      "active": 0.5192561456933618,
+      "quiet": 0.11654015071690083,
+      "qualifying_gap": 0.09937650430947542,
+      "unclassified": 0.011087284423410892,
+      "boundary": 0.01292873453348875,
+      "group": "discovery_10720",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.1801562973150583,
+      "gap_fraction_interior_delta_energy": 0.15362347608421845
+    },
+    {
+      "active": 35.2985857706517,
+      "quiet": 0.1560611193999648,
+      "qualifying_gap": 0.06765808537602425,
+      "unclassified": 1.0564584406092763,
+      "boundary": 0.43596284091472626,
+      "group": "exploratory_other7",
+      "arm": "off",
+      "quiet_fraction_interior_delta_energy": 0.0042743466128074,
+      "gap_fraction_interior_delta_energy": 0.0018530823639350902
+    },
+    {
+      "active": 19.823912823572755,
+      "quiet": 0.07806415483355522,
+      "qualifying_gap": 0.03514258563518524,
+      "unclassified": 0.49495900329202414,
+      "boundary": 0.2521944520995021,
+      "group": "exploratory_other7",
+      "arm": "router",
+      "quiet_fraction_interior_delta_energy": 0.0038272490977860722,
+      "gap_fraction_interior_delta_energy": 0.0017229345459885649
+    }
+  ],
+  "energy_note": "Sample-sum squared backend-minus-Y_pre waveform differences, including phase changes; fractions use interior active+quiet+unclassified total, not clean speech energy."
+}

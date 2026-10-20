@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-19",
+  "source": "explicit_user_chat_after_listening",
+  "verbatim": "1.两者差不多  2.原始后端更接近 3.两者差不多",
+  "listener_count": 1,
+  "protocol": "Prompted, labeled, nonblind comparison against the clean reference; native OFF versus OFF with speech removed only from its direct noisy condition. Original Y_pre anchor retained.",
+  "responses": [
+    {"ordinal": 1, "case_id": "original__N1_snr-6__m2ada1", "choice_verbatim": "两者差不多", "interpretation": "No clear closeness preference reported; does not confirm perceptual equivalence or a true d-to-t change."},
+    {"ordinal": 2, "case_id": "fresh__N1_snr-6__f20aka1", "choice_verbatim": "原始后端更接近", "interpretation": "Native output preferred for closeness to clean; no explicit phoneme identity or deletion/insertion judgment supplied."},
+    {"ordinal": 3, "case_id": "original__N2_snr-6__m2aga1", "choice_verbatim": "两者差不多", "interpretation": "No clear closeness preference reported; does not independently confirm the recognizer's k-to-g reversal."}
+  ],
+  "selection_bias": "These three cases were selected because the single recognizer's top1 label changed after ablation. They are not a random sample or an estimate of general enhancement benefit.",
+  "ui_issue": "Original dropdowns had no persistence or upload handler. User reported selecting options, then supplied their exact values in chat. Values were recovered from explicit chat, not from browser state or server logs.",
+  "pending": ["original__N1_snr-6__f11ata1", "fresh__N2_snr-6__f20aka1"],
+  "overall_method_improvement_established": false
+}

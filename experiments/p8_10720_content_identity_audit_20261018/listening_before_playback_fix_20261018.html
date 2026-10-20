@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="zh-CN">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>10720 · 可选声音比较</title>
+<style>
+body{font:17px/1.65 system-ui,sans-serif;background:#f4f6f8;color:#18202b;max-width:900px;margin:36px auto;padding:0 20px}h1{font-size:28px}h2{font-size:21px;margin-top:0}section,.settings{background:white;border:1px solid #d6dce3;border-radius:12px;padding:22px;margin:20px 0}p{margin:10px 0}button,select{font:inherit;padding:9px 15px;border-radius:7px;border:1px solid #9aaaba;background:#fff;color:#13283c;margin:5px 8px 5px 0;cursor:pointer}button:hover{background:#eaf2fb}a{color:#145a99}.sub{font-size:14px;color:#536273}label{display:inline-block;margin-right:20px}#status{min-height:1.7em;font-variant-numeric:tabular-nums}audio{display:none}.badge{font-size:14px;background:#eaf0f7;border-radius:5px;padding:3px 8px}footer{margin:30px 0;font-size:14px;color:#536273}
+</style>
+<h1>10720 · 可选声音比较</h1>
+<p>这里是同一段已对齐的 2 秒上下文。先听 clean，再比较 off；需要时也可听 y_pre。所有时间都相对于本页的 2 秒片段。</p>
+<p>这项试听不影响其他分析。可以直接回复：<strong>A 同音／不同／听不清，B 同音／不同／听不清，C 同音／不同／听不清</strong>，再补一句听感即可，无需填表。</p>
+<div class="settings">
+  <label><input id="loop" type="checkbox"> 循环当前时间窗</label>
+  <label><input id="equal" type="checkbox"> 按整段 RMS 对齐音量</label>
+  <label>统一播放增益 <select id="gain"><option value="1">1×（默认）</option><option value="2">2×</option><option value="4">4×</option><option value="8">8×</option></select></label>
+  <p class="sub">默认增益为 1×，保留文件原始幅度。勾选音量对齐后，以 clean 整段 RMS 为参考显式调整各文件增益；它只是试听辅助，不代表恢复了真实内容。建议先用默认设置听一次。</p>
+  <button id="stop">停止播放</button><span id="status" role="status" aria-live="polite">尚未播放 · 原始幅度 · 增益 1×</span>
+</div>
+<main>
+<section id="context"><h2>完整上下文 <span class="badge">0.00–2.00 秒</span></h2>
+<p>先建立整段听感，再进入下方三个时间窗。</p>
+<div class="buttons" data-start="0" data-end="2" data-label="完整上下文" data-conditions="clean,off,y_pre,router,noisy"></div>
+</section>
+<section id="A"><h2>A · 开头的短促声音 <span class="badge">0.00–0.55 秒</span></h2>
+<p>比较约 0.30 秒处 clean 与 off 的短促声音：它们听起来是同一个声音、不同声音，还是无法判断？</p>
+<p class="sub">识别器把附近事件标成了不同辅音；这只是待核实的假设，没有预设答案。</p>
+<div class="buttons" data-start="0" data-end="0.55" data-label="A" data-conditions="clean,off,y_pre"></div>
+</section>
+<section id="B"><h2>B · 中段声音与时间变化 <span class="badge">0.45–1.05 秒</span></h2>
+<p>比较这一段是否有相同的声音或顺序；如果相似，off 是否听起来有所延后？也可以只回答“听不清”。</p>
+<p class="sub">识别器在这一带找到了部分相同标签，也给出了时间差。标签和 CTC 时间都不是人工核实的音素边界。</p>
+<div class="buttons" data-start="0.45" data-end="1.05" data-label="B" data-conditions="clean,off,y_pre"></div>
+</section>
+<section id="C"><h2>C · 后半段还有什么声音 <span class="badge">1.10–2.00 秒</span></h2>
+<p>先听 clean 在这个窗口中是否还有可辨声音，再听 off 是否有持续的类语音声。两者听起来相同、不同，还是无法判断？</p>
+<p class="sub">这里不预设 clean 已经结束。识别器最后一个标签的时间不等于真实语音结束时间；off 中的额外标签也不能直接证明是生成幻觉。</p>
+<div class="buttons" data-start="1.1" data-end="2" data-label="C" data-conditions="clean,off,y_pre"></div>
+</section>
+</main>
+<p class="sub">y_pre 原始音量较低。识别器的预处理配置启用了逐段归一化，因此“有识别标签”不能说明原始文件中的声音可听清。若调整了播放增益或勾选了音量对齐，回复时顺便注明即可。</p>
+<details><summary>原文件与播放说明</summary><p id="links"></p><p class="sub">本页直接播放原有 WAV，不生成裁剪文件。浏览器按 currentTime 跳转并在窗口末尾停止；定位是近似的。音量对齐使用整段 RMS，不进行动态响度处理。</p></details>
+<footer>样本：03_fileid_10720_14.50-15.00s_context · 试听判断尚未收集。本页不提供推测词句或答案键。</footer>
+<script>
+'use strict';
+const directory='../p8_e1_candidate_listening_aligned_20261020/clips/';
+const prefix='03_fileid_10720_14.50-15.00s_context_';
+const rms={clean:0.0030624846097227374,off:0.002787858291700449,y_pre:0.0012221700794622383,router:0.0021684906292193454,noisy:0.025210868652796363};
+const players={},nodes={};let context=null,active=null,frame=null;
+const status=document.getElementById('status');
+for(const name of Object.keys(rms)){
+ const player=document.createElement('audio');player.preload='metadata';player.src=directory+prefix+name+'.wav';document.body.append(player);players[name]=player;
+ player.addEventListener('ended',()=>{if(active&&active.name===name){if(document.getElementById('loop').checked){player.currentTime=active.start;player.play().catch(showError);}else stop();}});
+ const link=document.createElement('a');link.href=player.src;link.textContent=name+' 原文件';document.getElementById('links').append(link,document.createTextNode('　'));
+}
+function showError(error){stop();status.textContent='播放失败：'+error.message+'。也可打开下方原文件链接。';}
+function factor(name){return Number(document.getElementById('gain').value)*(document.getElementById('equal').checked?rms.clean/rms[name]:1);}
+function updateGain(){for(const name of Object.keys(nodes))nodes[name].gain.value=factor(name);}
+function stop(){if(frame!==null)cancelAnimationFrame(frame);frame=null;for(const player of Object.values(players))player.pause();active=null;status.textContent='已停止';}
+function tick(){if(!active)return;const player=players[active.name];if(player.currentTime>=active.end){if(document.getElementById('loop').checked){player.currentTime=active.start;}else{stop();return;}}status.textContent=active.label+' · '+active.name+' · '+player.currentTime.toFixed(2)+' 秒 · '+(document.getElementById('equal').checked?'RMS 对齐':'原始幅度')+' · 实际增益 '+factor(active.name).toFixed(2)+'×';frame=requestAnimationFrame(tick);}
+async function play(name,start,end,label){
+ stop();
+ try{
+  if(!context){context=new (window.AudioContext||window.webkitAudioContext)();for(const key of Object.keys(players)){const source=context.createMediaElementSource(players[key]);nodes[key]=context.createGain();source.connect(nodes[key]).connect(context.destination);}}
+  await context.resume();updateGain();const player=players[name];
+  if(player.readyState<1)await new Promise((resolve,reject)=>{player.addEventListener('loadedmetadata',resolve,{once:true});player.addEventListener('error',()=>reject(new Error('无法读取 '+name+' 文件')),{once:true});});
+  player.currentTime=start;active={name,start,end,label};await player.play();tick();
+ }catch(error){showError(error);}
+}
+for(const group of document.querySelectorAll('.buttons'))for(const name of group.dataset.conditions.split(',')){
+ const button=document.createElement('button');button.type='button';button.textContent='播放 '+name;button.addEventListener('click',()=>play(name,Number(group.dataset.start),Number(group.dataset.end),group.dataset.label));group.append(button);
+}
+document.getElementById('stop').addEventListener('click',stop);
+document.getElementById('gain').addEventListener('change',updateGain);
+document.getElementById('equal').addEventListener('change',updateGain);
+window.addEventListener('pagehide',stop);
+</script>
+</html>

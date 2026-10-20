@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p231_029_N2_snr_p0.wav__off",
+    "id": "p231_029",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_p0.wav",
+    "basename": "p231_029_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "63cb3850fb74448c29ee6b7ebc3aa1ce565de1c4c786c112e90c4736c0bf2502",
+      "samples": 49851,
+      "array_sha256": "7c49bd1f712edc17a7e080b0ec0d373533292d02bbf4436903744a164a67818b",
+      "peak": 0.14398193359375,
+      "rms": 0.011866629929912768
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_029",
+    "original_text": "Last night, Mr Robertson said he was delighted.\n",
+    "raw_text_hex": "4c617374206e696768742c204d7220526f62657274736f6e2073616964206865207761732064656c6967687465642e0a",
+    "raw_text_sha256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+    "archive_entry": "trainset_28spk_txt/p231_029.txt"
+  },
+  "raw_result": {
+    "text": " Last night Mr Robertson said he was delighted.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Last night Mr Robertson said he was delighted.",
+        "tokens": [
+          50363,
+          4586,
+          1755,
+          1770,
+          23590,
+          531,
+          339,
+          373,
+          20707,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5924463669459025,
+        "compression_ratio": 0.8846153846153846,
+        "no_speech_prob": 0.0954531878232956
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 92,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

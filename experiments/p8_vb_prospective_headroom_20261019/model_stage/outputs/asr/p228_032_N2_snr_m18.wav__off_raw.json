@@ -1,0 +1,87 @@
+{
+  "request": {
+    "key": "p228_032_N2_snr_m18.wav__off",
+    "id": "p228_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p228_032_N2_snr_m18.wav",
+    "basename": "p228_032_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "e41d309864aa0f51a6dd2de028763971c9ed98e474d0ac651380c6194be41635",
+      "samples": 67141,
+      "array_sha256": "3913365e8566219e9c302894b98039117b4802996963164aa307f64fa22cb450",
+      "peak": 0.037811279296875,
+      "rms": 0.006603632480184956
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_032",
+    "original_text": "We must provide a long-term solution to tackle this attitude.\n",
+    "raw_text_hex": "5765206d7573742070726f766964652061206c6f6e672d7465726d20736f6c7574696f6e20746f207461636b6c6520746869732061747469747564652e0a",
+    "raw_text_sha256": "01ce75c43a733202876dadf42f77f76d99dac373f40d3e609ac15248a9d65429",
+    "archive_entry": "trainset_28spk_txt/p228_032.txt"
+  },
+  "raw_result": {
+    "text": " but the map desired a wrong-hand widget of trap or the spasticed model.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " but the map desired a wrong-hand widget of trap or the spasticed model.",
+        "tokens": [
+          50363,
+          475,
+          262,
+          3975,
+          10348,
+          257,
+          2642,
+          12,
+          4993,
+          26295,
+          286,
+          12840,
+          393,
+          262,
+          599,
+          3477,
+          276,
+          2746,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0650416782924108,
+        "compression_ratio": 1.0289855072463767,
+        "no_speech_prob": 0.05042799562215805
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 53,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

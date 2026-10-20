@@ -1,0 +1,73 @@
+{
+  "status": "metadata_only_registered",
+  "utc": "2026-10-20T00:31:36.651065+00:00",
+  "source_registry": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+  "source_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+  "source_records": 64,
+  "rule": "For bins[-20,-18),[-18,-15),[-15,-10),[-10,-5] in that order, sort each bin ascending sha256('native-anchor-roundtrip-v1|'+utt), take first2; preserve original fields and zero-based dev_index; expected_seed=20261019+100000+dev_index",
+  "selected_count": 8,
+  "bin_counts": {
+    "[-20,-18)": 2,
+    "[-18,-15)": 2,
+    "[-15,-10)": 2,
+    "[-10,-5]": 2
+  },
+  "selected_ids_in_order": [
+    {
+      "utt": "reader_11121_fileid_10724",
+      "fileid": "10724",
+      "dev_index": 3,
+      "expected_seed": 20361022
+    },
+    {
+      "utt": "reader_11446_fileid_11151",
+      "fileid": "11151",
+      "dev_index": 11,
+      "expected_seed": 20361030
+    },
+    {
+      "utt": "reader_11794_fileid_5599",
+      "fileid": "5599",
+      "dev_index": 18,
+      "expected_seed": 20361037
+    },
+    {
+      "utt": "reader_11128_fileid_5694",
+      "fileid": "5694",
+      "dev_index": 30,
+      "expected_seed": 20361049
+    },
+    {
+      "utt": "reader_11301_fileid_9495",
+      "fileid": "9495",
+      "dev_index": 40,
+      "expected_seed": 20361059
+    },
+    {
+      "utt": "reader_11917_fileid_1923",
+      "fileid": "1923",
+      "dev_index": 43,
+      "expected_seed": 20361062
+    },
+    {
+      "utt": "reader_11053_fileid_1482",
+      "fileid": "1482",
+      "dev_index": 62,
+      "expected_seed": 20361081
+    },
+    {
+      "utt": "reader_11195_fileid_7449",
+      "fileid": "7449",
+      "dev_index": 53,
+      "expected_seed": 20361072
+    }
+  ],
+  "selected_manifest_sha256": "aad118341d0dfab83f13d0221e87699ec090d0ad81005102adf5c141d5029631",
+  "source_unchanged": true,
+  "WAV_stat_hash_header_or_PCM_reads": 0,
+  "checkpoint_reads": 0,
+  "model_calls": 0,
+  "network_requests": 0,
+  "selection_not_based_on_model_result_or_volume": true,
+  "old_baseline_ND_sourcefiles_modified": false
+}

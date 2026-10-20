@@ -1,0 +1,41 @@
+{
+  "kind": "Research_Lead_completed_run_audit_and_scientific_decision_not_goal_completion",
+  "utc": "2026-10-19T06:53:41.836460+00:00",
+  "status": "technical_run_and_independent_validation_accepted_scientific_claims_limited",
+  "metrics_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "report_sha256": "6693926fafb4664df4fbca0475f24d3088d13b851e5209920a1f0a2a927e5d80",
+  "independent_validation_sha256": "9397f692973082a879d5c33f05052c7fdebd3e2ecc962e5707984a9ced052151",
+  "source_locks_verified": 413,
+  "runtime_artifacts_verified": 368,
+  "parent_bytes_current": 45840344,
+  "next_model_training_ranking_authorized": false,
+  "prior_runs_closed": true,
+  "scope": "No new audio/metric/model/ASR called in Root analysis; arithmetic reuses frozen measurements. Primary kept, no censor/cap. Decomposition is labeled descriptive posthoc. Human content assessment not performed.",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_prospective_headroom_interpretation_20261019.md",
+      "bytes": 6416,
+      "sha256": "735f86a834245332829e076ae545cddf858bdb351d5db49ce4f05b531edc32c7"
+    },
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_prospective_headroom_interpretation_20261019.json",
+      "bytes": 5054,
+      "sha256": "0ad672c95a6514fae9968530ed6d87a5771a38e7c872c61079b22603794e41b9"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 9199,
+      "sha256": "b565d54ad54b2704f77dfca6ab064d173cae08058bb049c25b9fd4acd11d24e9"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 10741,
+      "sha256": "7a15b257356d58beeb21d9660a05e0d30e9a605d2523697ecd2c971304d4a1e3"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 14254,
+      "sha256": "4b12fb02f8b993db391c34be8cc1b1c94fa17a4161b1f2cf9b5e53d7524f0624"
+    }
+  ]
+}

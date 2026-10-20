@@ -1,0 +1,26 @@
+# YAML-compatible experiment configuration
+{
+  "experiment_id": "multitrajectory_pair_subset_20261017",
+  "purpose": "Estimate whether two-seed DNSMOS-OVRL selection retains multi-trajectory gains at half of four-trajectory sampling cost.",
+  "inputs": [
+    "experiments/multitrajectory_oracle_20261017/metrics.json",
+    "experiments/multitrajectory_oracle_heldout16/metrics.json"
+  ],
+  "procedure": "For each of the six seed pairs among 2026-2029, select the trajectory with higher DNSMOS OVRL per utterance; compare with seed 2026 using paired utterance bootstrap.",
+  "selection_uses_clean_reference": false,
+  "new_inference_or_training": false,
+  "nfe_per_trajectory": 30,
+  "trajectories_per_pair": 2,
+  "score_network_evaluations_per_input": 60,
+  "bootstrap_replicates": 20000,
+  "bootstrap_seed": 2026,
+  "metrics": [
+    "pesq",
+    "stoi",
+    "sisdr",
+    "dnsmos_p808",
+    "dnsmos_sig",
+    "dnsmos_bak",
+    "dnsmos_ovrl"
+  ]
+}

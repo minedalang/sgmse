@@ -1,0 +1,25 @@
+{
+  "status": "passed",
+  "inference_executed": false,
+  "model_loaded_by_engineer": false,
+  "diagnosis": "PyYAML1.1 parsed unquoted off mapping key and backend value as False. KeyError at source hash assertion before model load.",
+  "failure_preload_proof": {
+    "failure": {
+      "error": "KeyError('off')",
+      "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/run_pilot.py\", line 112, in main\n    assert rec['sha256']==expected[k]\nKeyError: 'off'\n"
+    },
+    "runs": {},
+    "loaded_model_key_present": false,
+    "failing_line_before_load": true
+  },
+  "original_hashes_preserved": {
+    "run_pilot.py": "73509d46db953b70802cc3df213d51bc3a187726e9287cb36e2d53019e6844cc",
+    "config.yaml": "02331b5b52eae59f9cbe6c2fdf693bc8c8b74e758016f3f827a861b760b72e56",
+    "metrics.json": "7e25ff93532068d9391f1b577f21088bb7e2435625e322ba964fecc3fe335243",
+    "failure_archive/failure_snapshot.json": "b400164e39e0b4a71eae34d1efdbf70fd501fc72e09479016943a118b50db089"
+  },
+  "driver_sha256": "4047a774219a0e70f9b9fefe2790d7d47738d480d0456598bb59f26145ad1f45",
+  "config_sha256": "7e427c0f4f8f4861ea2759e79ad337fc90f65e798c41f8b4368e15e87af3963e",
+  "parser_regression_checks": "passed; five source string keys and strict booleans; invalid booleans rejected",
+  "noise_hash_verified": true
+}

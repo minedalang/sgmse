@@ -1,0 +1,384 @@
+{
+  "status": "passed",
+  "model_forwards": 0,
+  "clean_gate_passed": true,
+  "scores_verified": 6528,
+  "max_ctc_probability_json_error": 0.0,
+  "raw_and_pcm16_audio_verified": 320,
+  "source_checkpoint_protocol_locks_unchanged": true,
+  "frozen_manifest_sha256": "31c4e4aa9abd9a2cae0cf8b2576942506e3f1cb18cfdb5d7ffd356ff24773ff2",
+  "all_80_clean_noisy_recipes_verified": true,
+  "matched_noise_and_gain_per_pair": true,
+  "actual_common_pair_seeds_verified": true,
+  "frontend_rng_invariance_verified": true,
+  "pcm16_quantization_max_error": 3.0517338018398732e-05,
+  "pcm_clipping_count_total": 0,
+  "arm_comparisons": {
+    "N1_snr-6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 7
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 5
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 7
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 5
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 7
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 5
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      }
+    },
+    "N2_snr-6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 8
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 2,
+          "wrong_to_correct": 8
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 2,
+          "wrong_to_correct": 8
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      }
+    },
+    "N1_snr+6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 1
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        }
+      }
+    },
+    "N2_snr+6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      }
+    }
+  },
+  "noise_stability": {
+    "-6": {
+      "baseline": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 10,
+          "both_correct": 4,
+          "stable_incorrect": 2
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 7,
+          "both_correct": 8,
+          "stable_incorrect": 1
+        }
+      },
+      "y_pre": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 4,
+          "both_correct": 12,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 15,
+          "stable_incorrect": 1
+        }
+      },
+      "off": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 4,
+          "both_correct": 12,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 15,
+          "stable_incorrect": 1
+        }
+      },
+      "router": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 5,
+          "both_correct": 11,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 15,
+          "stable_incorrect": 1
+        }
+      }
+    },
+    "6": {
+      "baseline": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 3,
+          "both_correct": 13,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 3,
+          "both_correct": 13,
+          "stable_incorrect": 0
+        }
+      },
+      "y_pre": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        }
+      },
+      "off": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        }
+      },
+      "router": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 1,
+          "both_correct": 15,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 1,
+          "both_correct": 15,
+          "stable_incorrect": 0
+        }
+      }
+    }
+  },
+  "support_snr_summary": {
+    "N1_snr-6": {
+      "n": 16,
+      "minimum_db": -0.7378516645971399,
+      "mean_db": 0.10880536823813973,
+      "maximum_db": 0.842932545299525,
+      "carrier_snr_db": -5.999999999999998
+    },
+    "N2_snr-6": {
+      "n": 16,
+      "minimum_db": -0.7682279541702909,
+      "mean_db": 0.9376760942736682,
+      "maximum_db": 1.5035034397334632,
+      "carrier_snr_db": -5.999999999999998
+    },
+    "N1_snr+6": {
+      "n": 16,
+      "minimum_db": 11.262148335402859,
+      "mean_db": 12.108805368238139,
+      "maximum_db": 12.842932545299526,
+      "carrier_snr_db": 6.0
+    },
+    "N2_snr+6": {
+      "n": 16,
+      "minimum_db": 11.23177204582971,
+      "mean_db": 12.93767609427367,
+      "maximum_db": 13.503503439733462,
+      "carrier_snr_db": 5.999999999999997
+    }
+  },
+  "support_definition": "entire resampled source recording [8000,8000+resampled_samples), not phoneme-local or clean-active",
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.35",
+    "torch": "2.14.1+cu130",
+    "cuda_build": "13.0",
+    "cudnn": 92400,
+    "gpu": "NVIDIA L40S"
+  },
+  "disk_free_bytes": 2464555008
+}

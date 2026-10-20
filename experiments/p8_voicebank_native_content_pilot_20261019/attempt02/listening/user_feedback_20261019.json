@@ -1,0 +1,39 @@
+{
+  "source": "user_chat",
+  "recorded_at_utc": "2026-10-19T04:27:40.068704+00:00",
+  "feedback_verbatim": "A: 句末前端和后端都没有额外语音，是正确的。两者从音节上差不多，前端高频较少，后端的音节质量好很多。B:信噪比较低，所以y_pre丢失了很多语音音节，而后端错误的生成了很多奇怪的音节。比如一开始clean和y_pre根本没语音，而原生后端在开始时就错误的生成了一些无法理解的音节，估计是把噪声识别成语音了",
+  "cases": [
+    {
+      "label": "A",
+      "basename": "p287_054_N1_snr_p0.wav",
+      "comment_verbatim": "句末前端和后端都没有额外语音，是正确的。两者从音节上差不多，前端高频较少，后端的音节质量好很多。",
+      "interpretation": {
+        "no_extra_tail_speech_in_both": "user_report",
+        "syllabic_content_comparison": "similar",
+        "frontend_highband": "less according to user",
+        "backend_syllable_quality": "much better according to user",
+        "ASR_selected_tail_content_harm": "not supported by this listener observation",
+        "full_sentence_word_accuracy": "not manually enumerated"
+      }
+    },
+    {
+      "label": "B",
+      "basename": "p226_028_N2_snr_m18.wav",
+      "comment_verbatim": "信噪比较低，所以y_pre丢失了很多语音音节，而后端错误的生成了很多奇怪的音节。比如一开始clean和y_pre根本没语音，而原生后端在开始时就错误的生成了一些无法理解的音节，估计是把噪声识别成语音了",
+      "interpretation": {
+        "frontend_syllable_loss": "user_report",
+        "backend_strange_unintelligible_syllables": "user_report",
+        "opening_region": "user reports clean/frontend lack speech while backend has unintelligible syllables",
+        "noise_mistaken_for_speech": "user hypothesis, not established causal mechanism",
+        "exact_human_time_boundary": null,
+        "clean_samples_exactly_zero": "not yet checked; no-speech percept is not exact waveform zero"
+      }
+    }
+  ],
+  "limits": [
+    "One listener, reference-aided/nonblind, post-hoc selected cases; not population accuracy",
+    "No exact manual onset/offset, phoneme or word counts provided",
+    "Do not reinterpret existing ASR scores or prior VCV/5243 feedback",
+    "No browser identity/submission fabricated"
+  ]
+}

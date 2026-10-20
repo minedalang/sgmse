@@ -423,17 +423,23 @@ class _BaseJointWaveDataModule(pl.LightningDataModule):
             length=length,
         )
 
-    def train_dataloader(self, contrastive_weight: float = 0.0, *args, **kwargs):
+    def train_dataloader(
+        self,
+        contrastive_weight: float = 0.0,
+        *args,
+        speaker_balanced_batches: bool = False,
+        **kwargs,
+    ):
         """Build the training loader.
 
-        With contrastive loss enabled, use speaker-balanced batches so every
-        selected speaker contributes at least two utterances and the
-        same-speaker multi-positive objective is actually exercised.
+        Speaker-balanced batches are used for contrastive loss, or when
+        explicitly requested for a matched-speaker sampling ablation. Every
+        selected speaker contributes at least two utterances.
         """
-        if contrastive_weight > 0.0:
+        if contrastive_weight > 0.0 or speaker_balanced_batches:
             if not hasattr(self.train_set, "spk_ids"):
                 raise RuntimeError(
-                    "Speaker-aware contrastive training requires train_set.spk_ids."
+                    "Speaker-balanced training requires train_set.spk_ids."
                 )
             batch_sampler = SpeakerBatchSampler(
                 spk_ids=self.train_set.spk_ids,

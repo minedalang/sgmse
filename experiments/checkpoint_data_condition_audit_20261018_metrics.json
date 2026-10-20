@@ -1,0 +1,41 @@
+{
+  "experiment_id": "checkpoint_data_condition_audit_20261018",
+  "checkpoint": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "checkpoint_epoch": 118,
+  "checkpoint_global_step": 80000,
+  "hyper_parameters": {
+    "global_step": null,
+    "epoch": null,
+    "train_wav_scp": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/tr_synthetic/wav.scp",
+    "valid_wav_scp": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/cv_synthetic/wav.scp",
+    "test_wav_scp": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/tt_real_recordings/wav.scp",
+    "clean_dir": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/clean",
+    "train_clean_scp": null,
+    "valid_clean_scp": null,
+    "test_clean_scp": null,
+    "frontend": "storm",
+    "frontend_trainable": true,
+    "frontend_ckpt": null,
+    "train_type": "mode2",
+    "sde": "ouve",
+    "loss_type": "score_matching",
+    "rrsd_teacher": "future_grad",
+    "rrsd_freeze_base": true,
+    "N": 30,
+    "sampler_type": "pc"
+  },
+  "ema_present": true,
+  "ema_keys": [
+    "decay",
+    "num_updates",
+    "shadow_params",
+    "collected_params"
+  ],
+  "train_wav_scp_exists": false,
+  "train_wav_scp_path_as_saved": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/tr_synthetic/wav.scp",
+  "valid_wav_scp_exists": false,
+  "valid_wav_scp_path_as_saved": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/cv_synthetic/wav.scp",
+  "test_wav_scp_exists": false,
+  "test_wav_scp_path_as_saved": "/home/xyf/cwh_project/DNS-Challenge-1/dns1-repo/synthetic_snr-20_-5/scp/tt_real_recordings/wav.scp"
+}

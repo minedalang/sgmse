@@ -1,0 +1,90 @@
+{
+  "schema": 1,
+  "parent": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019",
+  "case": "p226_028_N2_snr_m18.wav",
+  "feedback_sha256": "308eaca771c4a4b258a428cdb27c3f570580a42a89a5c1ec919724e52e700edc",
+  "intervals": [
+    [
+      "0.0-0.1",
+      0,
+      1600
+    ],
+    [
+      "0.1-0.2",
+      1600,
+      3200
+    ],
+    [
+      "0.2-0.3",
+      3200,
+      4800
+    ],
+    [
+      "0.3-0.4",
+      4800,
+      6400
+    ],
+    [
+      "0.4-0.5",
+      6400,
+      8000
+    ],
+    [
+      "0-0.5",
+      0,
+      8000
+    ],
+    [
+      "whole",
+      0,
+      67653
+    ]
+  ],
+  "frame_samples": 320,
+  "retain_partial": true,
+  "bands_hz": [
+    "[0,4000)",
+    "[4000,7500)",
+    "[7500,8000]"
+  ],
+  "projection": "full-band zero-lag no-centering scalar; no lag/phase/filter/mean fit; zero denominators undefined",
+  "limits": {
+    "seconds": 60,
+    "total_bytes": 2000000,
+    "models": 0,
+    "ASR": 0,
+    "training": 0,
+    "network": 0,
+    "audio_outputs": 0
+  },
+  "no_retries": true,
+  "plot": false,
+  "source_locks": {
+    "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/analysis_plan.md": "9902324eed9e904ef7d0716d8befb77f611247f16bb64608cc93464684c6f166",
+    "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/audit.py": "42bf38ed88fb47718eda70a07fd805bc97c73d56808265304779c6fb41c11e05",
+    "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/validate_cpu.py": "9d27d11515467759b3a9a99e57a0118e66c9ea750f64d5b5fc5ce2ff6d03b98c",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/config.yaml": "3b271bf7cd74d59997feffc3a56caddac536f6899757b17c5b129b93e2381a2b",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/input_registry.json": "0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_clean.wav": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_frontend.wav": "d2af3533e221364cc123030c38fce085b08d3069de5a768868232f365a6c6921",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_noisy.wav": "50fdfe9c34ad5dd8d82ce1c9c47befbd637d31009168e73349a6c5a6aec19af8",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_off.wav": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/sources.json": "79bbd6f3767aec8b778489b6f8112531682912ad224a2835bbd4c25c463d63b7",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/user_feedback_20261019.json": "308eaca771c4a4b258a428cdb27c3f570580a42a89a5c1ec919724e52e700edc",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/model_independent_validation.json": "c38aa025b8fdc72e0e8cd50c7ed70feb874f6cb3bc2ef0b867a0a59b2d321700",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/model_stage/execution_manifest.json": "de564d709bf70f6158bc8c0420a7b5ff338a35b7e644268ab195067d63a36995",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/frontend/p226_028_N2_snr_m18.wav": "d2af3533e221364cc123030c38fce085b08d3069de5a768868232f365a6c6921",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/off/p226_028_N2_snr_m18.wav": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p226_028_N2_snr_m18.wav__frontend.npy": "6550206f8447a663e60b097b7b9bc2c058b107f02cc39c135a66e417cdf9099c",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/outputs/raw/p226_028_N2_snr_m18.wav__off.npy": "b251433974a2f439b7b563e753a7228e79a801c937c382d3a9cf199fa4dbbba8",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/input_registry.json": "0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_N2_snr_m18.f32le": "4aca8c8ed938ed75a101c13f97f0d5eaa86c218a002c35e13f002789de9493e4",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_N2_snr_m18.wav": "50fdfe9c34ad5dd8d82ce1c9c47befbd637d31009168e73349a6c5a6aec19af8",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_scaledclean.f32le": "210c1fcd37a625ab1b2a50fd628ad66de796a6626f0d1aa55a04072dc4d5c262",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/inputs/p226_028_scaledclean.wav": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_6339.wav": "0d3c94f92842e485a578a07d44fe7ee9068112b0729a1cce63c8d1ef9cb2575c"
+  },
+  "lock_scope": "Targeted B audio/raw, source recipe/input/model provenance, feedback; inherited original 260-lock validation preserved, not rehashed globally; mutable UI HTML/validation excluded"
+}

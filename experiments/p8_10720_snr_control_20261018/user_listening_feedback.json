@@ -1,0 +1,13 @@
+{
+  "recorded_date": "2026-10-18",
+  "source": "user feedback in current conversation",
+  "verbatim": "我听了 确实降低db的 听着几段语音是匹配的",
+  "scope": "Noise-attenuated 10720 positive controls on the generated listening page; the user did not separately enumerate each attenuation level or arm.",
+  "observation": "User reports corresponding speech content across the listened-to lower-noise control outputs.",
+  "listener_count": 1,
+  "blind": false,
+  "reference_available": true,
+  "per_condition_scores": null,
+  "verified_transcript_or_phoneme_labels": false,
+  "interpretation": "Supports content correspondence in the easier controls and, together with exact input-to-output replays, weakens a file-routing explanation for the original extreme-low-SNR difference. Does not establish a hallucination rate, identify every wrong phone, or prove recoverability of original noisy."
+}

@@ -1,0 +1,40 @@
+experiment_id: p8_q_a_ctc_forced_alignment_20261020
+date: 2026-10-18
+type: read_only_clean_derived_ctc_forced_alignment_pilot
+purpose: >-
+  Hold a high-confidence clean CTC pseudo-token sequence fixed within each of
+  four existing aligned 2-second groups and compute CTC Viterbi paths and
+  token posteriors for clean/noisy/Y_pre/Router-off/Router.
+source_experiment: experiments/p8_e1_candidate_listening_aligned_20261020
+source_clips: experiments/p8_e1_candidate_listening_aligned_20261020/clips
+groups: [00_fileid_5243, 01_fileid_4812, 02_fileid_11999, 03_fileid_10720]
+conditions: [clean, noisy, y_pre, off, router]
+clip_duration_seconds: 2.0
+
+model:
+  name: facebook/wav2vec2-lv-60-espeak-cv-ft
+  local_dir: experiments/p8_phoneme_probe_20261020/local_model
+  local_files_only: true
+  cache_reused: true
+  new_download: false
+  clean_target_threshold: 0.50
+  clean_target_definition: >-
+    Nonblank greedy CTC runs from clean whose mean run posterior is at least
+    0.50; this sequence is a per-group pseudo-target, not verified text or
+    phoneme ground truth.
+  decoder: CTC Viterbi over [blank, token_1, blank, ..., token_K, blank]
+
+execution:
+  device: cuda_if_available
+  seed: 0
+  training: false
+  inference: acoustic_model_forward_only
+  dataset_modified: false
+  checkpoint_modified: false
+  test_manifest_read: false
+
+outputs:
+  metrics: metrics.json
+  alignment_summary: alignments.csv
+  token_table: token_alignments.csv
+  script: forced_alignment_probe.py

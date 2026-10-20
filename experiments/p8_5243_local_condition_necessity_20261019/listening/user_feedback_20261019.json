@@ -1,0 +1,15 @@
+{
+  "date": "2026-10-19",
+  "source": "explicit_user_chat_after_new_natural5243_comparison",
+  "verbatim": "3,4 那个/d/很小，可能小到听不见了。无法说哪版更像参考。5,6也是和3,4差不多",
+  "listener_count": 1,
+  "protocol": "Prompted, nonblind, clean-reference comparison of already generated 2-second aligned clips; no forms or inferred browser values.",
+  "clip_mapping": {"3": "native", "4": "target", "5": "left", "6": "right"},
+  "target_d_audibility": "uncertain_or_too_weak_to_compare",
+  "reliable_closeness_preference": null,
+  "interpretation": "No reliable auditory discrimination among the four backend variants was supplied. This is not confirmed d deletion, recovery, perceptual equivalence, or validation of higher/lower classifier posterior.",
+  "prior_feedback_boundary": "Earlier user observation of frontend/backend d difference remains in its original record. This new answer is specifically about discriminating the four current backend conditions and supplies no stable new ranking.",
+  "task_status": "completed_with_uncertain_judgment",
+  "no_repeat_listening_requested": true,
+  "research_decision": "Stop this event's local condition-removal, boundary/strength/seed and same-recognizer tuning; preserve all results, retain only bounded conditional-sensitivity observations."
+}

@@ -1,0 +1,80 @@
+{
+  "request": {
+    "key": "p287_054_N2_snr_m18.wav__off",
+    "id": "p287_054",
+    "arm": "off",
+    "path": "outputs/off/p287_054_N2_snr_m18.wav",
+    "basename": "p287_054_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "869766d7c44069fedc3148e3fcab5712ad3ca1b5b50da0c7c7994a684e1c0c0c",
+      "samples": 51089,
+      "array_sha256": "62a079a115c3429f70515014b5052300736e39a29cf81cb92136ebb8e253f66e",
+      "peak": 0.08551025390625,
+      "rms": 0.011195457833012672
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " their pin-kites of respect and entry is owned.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " their pin-kites of respect and entry is owned.",
+        "tokens": [
+          50363,
+          511,
+          6757,
+          12,
+          74,
+          2737,
+          286,
+          2461,
+          290,
+          5726,
+          318,
+          6898,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1968393961588542,
+        "compression_ratio": 0.8679245283018868,
+        "no_speech_prob": 0.1593172699213028
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 50,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

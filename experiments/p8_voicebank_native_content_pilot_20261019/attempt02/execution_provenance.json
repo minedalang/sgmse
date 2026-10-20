@@ -1,0 +1,58 @@
+{
+  "recorded_utc": "2026-10-19T04:09:47.925845+00:00",
+  "command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/model_stage/run_pilot.py",
+  "exec_session_id": 74292,
+  "supervisor_pid": 49180,
+  "child_pid": 49186,
+  "pids_source": "Actual ps observed both at elapsed6 seconds",
+  "started": {
+    "utc": "2026-10-19T04:07:27.388842+00:00",
+    "execution_manifest_sha256": "de564d709bf70f6158bc8c0420a7b5ff338a35b7e644268ab195067d63a36995",
+    "scope": "model phase only; prior CPU preparation preserved"
+  },
+  "supervisor_seconds": 46.53944971598685,
+  "model_phase_launches_in_attempt02": 1,
+  "retries": 0,
+  "new_smokes": 0,
+  "metrics_sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+  "independent_validation": {
+    "status": "passed",
+    "serialization_pairs": 32,
+    "scoring_items": 52,
+    "native_cases": 16,
+    "metrics_sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+    "model_loads": 0,
+    "network_bytes": 0,
+    "source_locks": 260,
+    "blocked_local_ipv6_probe_refusals": 1,
+    "unknown_network_refusals": 0,
+    "all_socket_creation_still_refused": true
+  },
+  "original_files_preserved": 78,
+  "execution_locks_current_equal": 260,
+  "original_artifacts_hash_bytes_checked": 217,
+  "original_git_status_unchanged": true,
+  "thread": {
+    "id": "01a15244-7b13-7462-97dc-cb5e3865de74",
+    "agent_path": "/root/experiment_worker_native_model",
+    "provider": "codex_tools_compat"
+  },
+  "services_alive": {
+    "39452": "/usr/bin/python3 /data/codex-state/tool-compat/bridge.py --port 42084 ",
+    "16022": "/data/coding/sgmse/env/bin/python /data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listening/feedback_server.py --port 8766 "
+  },
+  "preflight": {
+    "parent_bytes": 8658048,
+    "gpu_used_mib": 0,
+    "gpu_total_mib": 49140,
+    "disk_available": "1.9G",
+    "host_available_memory": "432Gi"
+  },
+  "network_accounting": {
+    "blocked_local_probe_count": 1,
+    "unknown_network_refusal_count": 0,
+    "network_bytes": 0,
+    "all_socket_creation_still_refused": true
+  },
+  "final_parent_bytes": 24153753
+}

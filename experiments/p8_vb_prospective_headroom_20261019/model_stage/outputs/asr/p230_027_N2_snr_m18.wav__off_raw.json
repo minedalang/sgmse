@@ -1,0 +1,84 @@
+{
+  "request": {
+    "key": "p230_027_N2_snr_m18.wav__off",
+    "id": "p230_027",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_027_N2_snr_m18.wav",
+    "basename": "p230_027_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "d282d73ee3bb053b3ed4fc4114a038657653e4406f56af5133dac1cf48716fe8",
+      "samples": 51162,
+      "array_sha256": "cd8118c811f6a9b9fe3c93193f06a6c426ad570ee342605dfde19280e147d678",
+      "peak": 0.07470703125,
+      "rms": 0.011238410822286679
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " He has been stories. I'll just wear it and pull no one.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " He has been stories. I'll just wear it and pull no one.",
+        "tokens": [
+          50363,
+          679,
+          468,
+          587,
+          3923,
+          13,
+          314,
+          1183,
+          655,
+          5806,
+          340,
+          290,
+          2834,
+          645,
+          530,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8072500228881836,
+        "compression_ratio": 0.8870967741935484,
+        "no_speech_prob": 0.1953631043434143
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 65,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+schema_version: 1
+experiment_id: perceptual_representation_probe_20261017
+purpose: p3a_read_only_perceptual_representation_ranking_diagnostic
+status: completed_smoke4_and_full32
+mutates_dataset: false
+mutates_checkpoint: false
+mutates_model_or_inference: false
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+files: 32
+smoke_files: 4
+arms: [noisy, off, router, cut005, selective]
+dnsmos_arms: [router, cut005, selective]
+quality_sources:
+  reconstruction: [experiment_logs/rrsd_tcut_screen/paired_metrics.csv, experiment_logs/rrsd_selective_screen/metrics/paired_metrics.csv]
+  dnsmos: [experiment_logs/rrsd_tcut_screen/router/metrics/dnsmos_batch_metrics.csv, experiment_logs/rrsd_tcut_screen/cut005/metrics/dnsmos_batch_metrics.csv, experiment_logs/rrsd_selective_screen/selective_dnsmos_metrics.csv]
+representations:
+  - normalized_wave_mse
+  - relative_complex_stft_mse
+  - log_mel_l1_db_80_bands
+  - erb_l1_db_40_bands
+  - multi_resolution_stft_log_magnitude_l1_db_fft_512_1024_2048
+  - multi_resolution_stft_spectral_convergence_fft_512_1024_2048
+  - hilbert_envelope_relative_l1_100hz
+  - envelope_modulation_spectrum_l1_db
+ranking:
+  reconstruction_metrics_arms: [noisy, off, router, cut005, selective]
+  dnsmos_metrics_arms: [router, cut005, selective]
+  within_utterance_spearman_and_pairwise_agreement: true
+  bootstrap_unit: utterance
+  bootstrap_replicates: 20000
+  bootstrap_seed: 2026
+alignment:
+  sample_rate_hz: 16000
+  channels: mono_mean
+  gross_lag_audit_max_samples: 400
+  output_audio_copied: false

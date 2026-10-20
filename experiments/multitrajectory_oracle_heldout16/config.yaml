@@ -1,0 +1,14 @@
+schema_version: 1
+experiment_id: multitrajectory_oracle_heldout16
+purpose: heldout_no_reference_multi_trajectory_selector_validation
+status: completed_16_heldout_files_4_seeds
+checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiments/rrsd_cv_repeat32/manifest.csv
+start_index: 16
+files: 16
+seeds: [2026, 2027, 2028, 2029]
+inference: {device: cuda, use_ema: true, sampler: pc, N: 30, snr: 0.5}
+compute_cost: {trajectories_per_input: 4, nfe_per_trajectory: 30, total_nfe_per_input: 120, multiplier_vs_single_trajectory: 4.0}
+selector: fixed_no_reference_max_dnsmos_ovrl
+outputs: {wav_dir: /dev/shm/multitraj_router_wavs_heldout16, persistent_audio: false}
+bootstrap: {paired: true, replicates: 20000, seed: 2026, comparison: seed2026}

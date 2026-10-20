@@ -1,0 +1,33 @@
+{
+  "status": "passed",
+  "method": "Node VM with minimal DOM; no browser playback assertion",
+  "checks": [
+    "exactly one audio element",
+    "pause/remove source/load before fetch",
+    "await fetch and blob",
+    "abort prior request",
+    "stale response cannot replace newer clip",
+    "stop prevents pending response playback",
+    "current clip text tracks active clip",
+    "object URL revoked on stop/switch"
+  ],
+  "events": [
+    "pause",
+    "clear",
+    "load",
+    "fetch:a.wav",
+    "pause",
+    "clear",
+    "load",
+    "fetch:b.wav",
+    "play:blob:B",
+    "pause",
+    "clear",
+    "load",
+    "revoke:blob:B",
+    "fetch:c.wav",
+    "pause",
+    "clear",
+    "load"
+  ]
+}

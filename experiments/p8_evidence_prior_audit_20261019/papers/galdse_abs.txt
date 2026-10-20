@@ -1,0 +1,759 @@
+
+
+
+  [2409.15101] GALD-SE: Guided Anisotropic Lightweight Diffusion for Efficient Speech Enhancement
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+  
+  
+  
+  
+
+
+
+
+    Skip to main content
+  
+  
+  
+
+  
+
+  
+    
+  
+
+  
+    
+      
+      
+      
+    
+  
+
+  
+      
+        
+        
+      
+      Search
+    
+    Submit
+    Donate
+    
+      Log in
+  
+
+
+
+
+  
+
+    
+      Search arXiv
+      
+      
+      
+    
+    
+
+      Press Enter to search · Advanced search
+    
+  
+
+    
+      
+
+
+
+
+  
+
+    
+
+      
+Computer Science > Sound
+    
+
+    
+
+      arXiv:2409.15101 (cs)
+    
+
+
+
+  
+
+    
+
+  [Submitted on 23 Sep 2024 (v1), last revised 22 Jan 2025 (this version, v5)]
+    
+Title:GALD-SE: Guided Anisotropic Lightweight Diffusion for Efficient Speech Enhancement
+    
+Authors:Chengzhong Wang, Jianjun Gu, Dingding Yao, Junfeng Li, Yonghong Yan            
+View a PDF of the paper titled GALD-SE: Guided Anisotropic Lightweight Diffusion for Efficient Speech Enhancement, by Chengzhong Wang and 4 other authors
+    View PDF
+    HTML (experimental)
+
+
+
+    
+            Abstract:Speech enhancement is designed to enhance the intelligibility and quality of speech across diverse noise conditions. Recently, diffusion model has gained lots of attention in speech enhancement area, achieving competitive results. Current diffusion-based methods blur the signal with isotropic Gaussian noise and recover clean speech from the prior. However, these methods often suffer from a substantial computational burden. We argue that the computational inefficiency partially stems from the oversight that speech enhancement is not purely a generative task; it primarily involves noise reduction and completion of missing information, while the clean clues in the original mixture do not need to be regenerated. In this paper, we propose a method that introduces noise with anisotropic guidance during the diffusion process, allowing the neural network to preserve clean clues within noisy recordings. This approach substantially reduces computational complexity while exhibiting robustness against various forms of noise and speech distortion. Experiments demonstrate that the proposed method achieves state-of-the-art results with only approximately 4.5 million parameters, a number significantly lower than that required by other diffusion methods. This effectively narrows the model size disparity between diffusion-based and predictive speech enhancement approaches. Additionally, the proposed method performs well in very noisy scenarios, demonstrating its potential for applications in highly challenging environments.
+    
+
+    
+    
+
+      
+
+          Subjects:
+          
+            Sound (cs.SD); Audio and Speech Processing (eess.AS)
+        
+
+          Cite as:
+          arXiv:2409.15101 [cs.SD]
+        
+        
+
+           
+          (or 
+              arXiv:2409.15101v5 [cs.SD] for this version)
+          
+        
+        
+
+           
+                        https://doi.org/10.48550/arXiv.2409.15101
+
+              
+                
+                Focus to learn more
+              
+              
+              
+
+                                  arXiv-issued DOI via DataCite
+            
+          
+                
+
+          Journal reference:
+          IEEE Signal Processing Letters, vol. 32, pp. 426-430, 2025
+        
+        
+
+          
+            Related DOI:
+          
+          https://doi.org/10.1109/LSP.2024.3522852
+
+            
+            
+
+              
+                
+                Focus to learn more
+              
+              
+              
+
+                
+                DOI(s) linking to related resources
+              
+            
+          
+        
+
+    
+  
+
+    
+
+      
+Submission history From: Chengzhong Wang [view email]                  [v1]
+        Mon, 23 Sep 2024 15:12:05 UTC (1,304 KB)
+            [v2]
+        Wed, 25 Sep 2024 14:56:52 UTC (1,409 KB)
+            [v3]
+        Thu, 3 Oct 2024 05:52:18 UTC (1,415 KB)
+            [v4]
+        Wed, 9 Oct 2024 09:20:19 UTC (648 KB)
+    [v5]
+        Wed, 22 Jan 2025 02:41:17 UTC (440 KB)
+
+  
+  
+
+    
+
+      
+      Full-text links:
+      
+Access Paper:
+      
+  
+
+View a PDF of the paper titled GALD-SE: Guided Anisotropic Lightweight Diffusion for Efficient Speech Enhancement, by Chengzhong Wang and 4 other authors
+View PDF
+HTML (experimental)
+TeX Source
+ 
+      
+view license
+    
+        
+
+      
+Additional Features
+      
+        
+Audio Summary
+      
+    
+    
+
+    
+Current browse context:
+  
+cs.SD
+
+  
+
+
+      < prev
+    
+      |      
+      next >
+    
+  
+
+    new
+     | 
+    recent
+     | 2024-09
+  
+
+    Change to browse by:
+    
+
+        cs
+        eess
+        eess.AS
+    
+  
+
+    
+      
+
+        
+References & Citations
+        
+          
+NASA ADS
+Google Scholar
+          
+Semantic Scholar
+        
+        
+
+      
+
+
+
+    export BibTeX citation
+    Loading...
+
+
+
+
+    
+
+        
+
+            
+BibTeX formatted citation
+            ×
+        
+        
+
+            loading...
+        
+        
+
+            Data provided by: 
+            
+        
+    
+
+
+  
+
+Bookmark
+    
+  
+  
+    
+  
+  
+  
+
+
+
+  
+
+    Bibliographic Tools
+    
+
+      
+Bibliographic and Citation Tools
+      
+
+        
+
+          
+
+            
+              
+              
+              Bibliographic Explorer Toggle
+            
+          
+          
+
+            Bibliographic Explorer (What is the Explorer?)
+          
+        
+        
+
+          
+
+            
+              
+              
+              Connected Papers Toggle
+            
+          
+          
+
+            Connected Papers (What is Connected Papers?)
+          
+        
+
+          
+
+            
+              
+              
+              Litmaps Toggle
+            
+          
+          
+
+            Litmaps (What is Litmaps?)
+          
+        
+        
+
+          
+
+            
+              
+              
+              scite.ai Toggle
+            
+          
+          
+
+            scite Smart Citations (What are Smart Citations?)
+          
+        
+      
+        
+
+        
+
+        
+
+        
+
+    
+
+
+    
+    Code, Data, Media
+    
+
+      
+Code, Data and Media Associated with this Article
+      
+
+        
+
+          
+
+            
+              
+              
+              alphaXiv Toggle
+            
+          
+          
+
+            alphaXiv (What is alphaXiv?)
+          
+        
+
+        
+
+          
+
+            
+              
+              
+              Links to Code Toggle
+            
+          
+          
+
+            CatalyzeX Code Finder for Papers (What is CatalyzeX?)
+          
+        
+
+        
+
+          
+
+            
+              
+              
+              DagsHub Toggle
+            
+          
+          
+
+            DagsHub (What is DagsHub?)
+          
+        
+  
+        
+
+          
+
+            
+              
+              
+              GotitPub Toggle
+            
+          
+          
+
+            Gotit.pub (What is GotitPub?)
+          
+        
+
+        
+
+          
+
+            
+              
+              
+              Huggingface Toggle
+            
+          
+          
+
+            Hugging Face (What is Huggingface?)
+          
+        
+
+        
+
+          
+
+            
+              
+              
+              ScienceCast Toggle
+            
+          
+          
+
+            ScienceCast (What is ScienceCast?)
+          
+        
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+      
+
+    
+
+
+      
+      Demos
+      
+
+        
+Demos
+        
+
+          
+
+            
+
+              
+                
+                
+                Replicate Toggle
+              
+            
+            
+
+              Replicate (What is Replicate?)
+            
+          
+          
+
+            
+
+              
+                
+                
+                Spaces Toggle
+              
+            
+            
+
+              Hugging Face Spaces (What is Spaces?)
+            
+          
+          
+
+            
+
+              
+                
+                
+                Spaces Toggle
+              
+            
+            
+
+              TXYZ.AI (What is TXYZ.AI?)
+            
+          
+        
+        
+
+        
+
+        
+
+      
+      
+      Related Papers
+      
+
+        
+Recommenders and Search Tools
+        
+
+          
+
+            
+
+              
+                
+                
+                Link to Influence Flower
+              
+            
+            
+
+              Influence Flower (What are Influence Flowers?)
+            
+          
+          
+
+            
+
+              
+                
+                
+                Core recommender toggle
+              
+            
+            
+
+              CORE Recommender (What is CORE?)
+            
+          
+        
+
+        
+
+          
+            
+Author
+            
+Venue
+            
+Institution
+            
+Topic
+          
+          
+
+            
+
+            
+
+            
+
+            
+
+          
+        
+        
+
+        
+
+      
+
+      
+      
+        About arXivLabs
+      
+      
+
+        
+
+          
+
+            
+arXivLabs: experimental projects with community collaborators
+            
+arXivLabs is a framework that allows collaborators to develop and share new arXiv features directly on our website.
+            
+Both individuals and organizations that work with arXivLabs have embraced and accepted our values of openness, community, excellence, and user data privacy. arXiv is committed to these values and only works with partners that adhere to them.
+            
+Have an idea for a project that will add value for arXiv's community? Learn more about arXivLabs.
+          
+          
+
+            
+
+          
+        
+      
+
+    
+
+
+  
+
+    Which authors of this paper are endorsers? |
+    Disable MathJax (What is MathJax?)
+    
+  
+  
+
+      
+    
+
+
+  
+
+    
+
+      
+
+        We gratefully acknowledge support from
+        our major funders,
+        member institutions, ,
+        and all contributors.
+      
+      
+        About
+        ·
+        Help
+        ·
+        Contact
+        ·
+        Subscribe
+        ·
+        Copyright
+        ·
+        Privacy
+        ·
+        Accessibility
+        ·
+        Operational Status (opens in new tab)
+      
+    
+
+    
+
+      
+Major funding support from
+      
+
+        
+          
+        
+        
+          
+        
+        
+          
+        
+      
+    
+  
+  
+
+  
+
+
+

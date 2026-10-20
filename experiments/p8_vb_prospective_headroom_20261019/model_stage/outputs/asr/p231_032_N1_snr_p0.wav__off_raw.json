@@ -1,0 +1,84 @@
+{
+  "request": {
+    "key": "p231_032_N1_snr_p0.wav__off",
+    "id": "p231_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_p0.wav",
+    "basename": "p231_032_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "f5a9dbb71bb476589bd0658fa546fee8054e8aac8cb0e6bc88e177b20627527f",
+      "samples": 55680,
+      "array_sha256": "3e6f9e7d6fa665709bcbbed5f2138ba1a5b7d2fe7e80d472fdad82cb3e46253b",
+      "peak": 0.115692138671875,
+      "rms": 0.011384496843566095
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " We'll be kind of succeeding this in devart and so be it.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " We'll be kind of succeeding this in devart and so be it.",
+        "tokens": [
+          50363,
+          775,
+          1183,
+          307,
+          1611,
+          286,
+          34195,
+          428,
+          287,
+          1614,
+          433,
+          290,
+          523,
+          307,
+          340,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5346753862169054,
+        "compression_ratio": 0.9180327868852459,
+        "no_speech_prob": 0.023637324571609497
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 98,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

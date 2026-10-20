@@ -1,0 +1,14 @@
+/data/coding/mymetrics/get_metrics_for_papertable.py:1: SyntaxWarning: invalid escape sequence '\ '
+  '''
+Loaded  speechmetrics.relative.sisdr
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]Evaluating:   0%|          | 0/32 [00:04<?, ?it/s]
+Traceback (most recent call last):
+  File "/data/coding/mymetrics/get_metrics_for_papertable.py", line 173, in <module>
+    main()
+  File "/data/coding/mymetrics/get_metrics_for_papertable.py", line 162, in main
+    summary, rows = evaluate_dirs(
+                    ^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/get_metrics_for_papertable.py", line 74, in evaluate_dirs
+    sisdr_e = float(sisdr_metric(deg, ref, rate=sr)['sisdr'])
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: only 0-dimensional arrays can be converted to Python scalars

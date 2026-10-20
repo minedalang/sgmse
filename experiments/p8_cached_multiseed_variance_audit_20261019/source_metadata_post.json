@@ -1,0 +1,11 @@
+{
+  "/data/coding/sgmse/experiments/multitrajectory_oracle_heldout16/config.yaml": "5084a4811f74ae11f083264a288007ed3bbee1b6b3e91b4e13aa028af84ed0ef",
+  "/data/coding/sgmse/experiments/multitrajectory_oracle_heldout16/metrics.json": "89bbe3200c9d658115086d6f7400abb9cde696710dbae623a50b64ae6dc20a89",
+  "/data/coding/sgmse/experiments/multitrajectory_oracle_heldout16/experiment_report.md": "62844ef50dd352c00de29816e436332601151b1f551d2dd2b9321b917ca69ee2",
+  "/data/coding/sgmse/experiments/rrsd_cv_repeat32/manifest.csv": "4349228558395bcdabf9a1e4ab4b23ac6256834169c4338dfd4daca03746558e",
+  "/data/coding/sgmse/experiments/multitrajectory_oracle_20261017/multitrajectory_oracle.py": "a2adb667ee3275e3f51b556c4ac34fd40115a205b5fab63fcf46e6ffa7c6749b",
+  "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/metrics.json": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "/data/coding/sgmse/experiments/p8_vb_residual_direction_audit_20261019/metrics.json": "06603c8fef1a7ee7b5a7bed89b159f6f97036e06e7d04c241524190892fe3e17",
+  "/data/coding/sgmse/experiments/p8_cached_multiseed_variance_audit_20261019/config.yaml": "102f9996efd5e7e2b5a5d611d64d00584b8f0db517bcc0140b5f137a4d2d212a",
+  "/data/coding/sgmse/experiments/p8_cached_multiseed_variance_audit_20261019/analysis_plan.md": "f6298d76fcb188aa722b71d3955eda3ded847cb052b54b52a208250fa7d06ef2"
+}

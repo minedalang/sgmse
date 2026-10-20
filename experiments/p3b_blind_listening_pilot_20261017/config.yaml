@@ -1,0 +1,27 @@
+schema_version: 1
+experiment_id: p3b_blind_listening_pilot_20261017
+status: completed_exploratory_no_preference
+purpose: exploratory_blinded_paired_preference_pilot
+random_seed: 20261017
+source_manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+source_conditions:
+  router: RRSD scale=1.0; PC N=30; seed=2026
+  cut005: RRSD scale=1.0; t_cut=0.05; PC N=30; seed=2026
+  selective: RRSD scale=1.0; 0.15<=t<=0.75; PC N=30; seed=2026
+sampling:
+  utterances: 8 (2 per nominal-SNR stratum)
+  pairwise_trials: 24 (all three pairs among the three conditions)
+  snr_strata_counts: {"higher": 2, "low": 2, "mid": 2, "very_low": 2}
+audio_format: {"channels": 1, "frames_per_clip": 480000, "sample_rate_hz": 16000, "sample_width_bytes": 2}
+playback_audio_bytes: 46082112
+dataset_modified: false
+inference_or_training_run: false
+ratings: single-listener exploratory pilot; not independent test evidence
+
+listener_rating_summary:
+  listeners: 1
+  completed_trials: 24
+  preference_A: 0
+  preference_B: 0
+  ties: 24
+  status: no_discerning_preference_reported

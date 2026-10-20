@@ -1,0 +1,42 @@
+{
+  "analysis_plan.md": {
+    "sha256": "d2df87e5fdec9b1d5aeead39bde053e04208f6700425f30a9687af3ee1d8d296",
+    "bytes": 7196
+  },
+  "config.yaml": {
+    "sha256": "b20f5022c8a251bb273b546dcf311135aab536744c5fe09cb76110be75749c3c",
+    "bytes": 7838
+  },
+  "config_before_intrinsic_freeze.yaml": {
+    "sha256": "43da736cbaf52e7345fa47f47ceace6f46e23f74878ceb357f61d33cd57678de",
+    "bytes": 7481
+  },
+  "editing.py": {
+    "sha256": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d",
+    "bytes": 2990
+  },
+  "loss_helpers.py": {
+    "sha256": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "bytes": 1960
+  },
+  "preflight_config.json": {
+    "sha256": "136bbb9313de5941972460c09d9256ce6910b789bd07c63bf57c527713aa02ad",
+    "bytes": 1859
+  },
+  "preflight_config_before_intrinsic_freeze.json": {
+    "sha256": "2a7d640883793bffd834f90b10d355700931cef8f23c6e988ed926b69521f7f4",
+    "bytes": 1794
+  },
+  "preflight_pilot.py": {
+    "sha256": "9cc7960f25d6b6598f6278b9ab2817c8fe18835b6fac0d05410314f5421ecb65",
+    "bytes": 15948
+  },
+  "root_preflight_authorization.json": {
+    "sha256": "5ffcfd7f3851587c5195c2ba3da1191b82c1e210308d805bde50feaf08a96291",
+    "bytes": 1105
+  },
+  "run_pilot.py": {
+    "sha256": "fff9adb4ab1da2e5c8735778e3df6e1b3202717354230cb416b211f7294aa74c",
+    "bytes": 28006
+  }
+}

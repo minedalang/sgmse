@@ -1,0 +1,89 @@
+{
+  "kind": "training_budget_evidence_audit_not_new_training",
+  "source_sha256": {
+    "N": "eae9d47fcf6e5387428918a18d020a6b104a7dbbec97a30f0521fc783689b598",
+    "D": "1174f563fb610acfd27055ebec27d5135c89bf17065b4f6598a28511bba93fc1"
+  },
+  "source_unchanged": true,
+  "matched_steps": 500,
+  "matched_fields": [
+    "step",
+    "utt",
+    "crop_start",
+    "normfactor",
+    "center",
+    "parent",
+    "t",
+    "aux_t"
+  ],
+  "blocks": [
+    {
+      "steps": [
+        1,
+        100
+      ],
+      "N_pair_mean": 5.270874686242877e-06,
+      "D_pair_mean": 5.043380312530488e-06,
+      "D_relative_pair_difference": -0.043160649276325125,
+      "N_native_mean": 0.009192935658757052,
+      "D_native_mean": 0.009192955924154375
+    },
+    {
+      "steps": [
+        101,
+        200
+      ],
+      "N_pair_mean": 5.60729344456945e-06,
+      "D_pair_mean": 5.039973913874007e-06,
+      "D_relative_pair_difference": -0.1011752882747523,
+      "N_native_mean": 0.011070356827767682,
+      "D_native_mean": 0.011070693254332582
+    },
+    {
+      "steps": [
+        201,
+        300
+      ],
+      "N_pair_mean": 6.1392108762969855e-06,
+      "D_pair_mean": 5.587612092678995e-06,
+      "D_relative_pair_difference": -0.08984848292924263,
+      "N_native_mean": 0.011520347464174846,
+      "D_native_mean": 0.01152043607980886
+    },
+    {
+      "steps": [
+        301,
+        400
+      ],
+      "N_pair_mean": 5.457901192240655e-06,
+      "D_pair_mean": 4.690703696024201e-06,
+      "D_relative_pair_difference": -0.14056639524862724,
+      "N_native_mean": 0.011833077513274474,
+      "D_native_mean": 0.011833175012579886
+    },
+    {
+      "steps": [
+        401,
+        500
+      ],
+      "N_pair_mean": 4.681626498070912e-06,
+      "D_pair_mean": 3.952377357325787e-06,
+      "D_relative_pair_difference": -0.15576832988398714,
+      "N_native_mean": 0.011646663340561645,
+      "D_native_mean": 0.011647124031915155
+    }
+  ],
+  "initial_EMA_coefficient_by_updates": {
+    "500": 0.6063789448611847,
+    "1000": 0.36769542477096373,
+    "2000": 0.13519992539749945,
+    "5000": 0.006721111959865588
+  },
+  "limitations": [
+    "Training examples/crops/times differ between steps; blocks are not a fixed validation curve",
+    "No intermediate raw/EMA heldout evaluation or optimizer/raw/RNG resume checkpoint was retained",
+    "EMA initial coefficient is a linear averaging coefficient, not a bound on learned behavior",
+    "The 1% budget is preclip raw gradient norm, not Adam parameter or cumulative update bound",
+    "This does not demonstrate convergence, justify automatic expansion, or change the 500-step exit result"
+  ]
+}

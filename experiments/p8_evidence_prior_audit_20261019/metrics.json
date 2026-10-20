@@ -1,0 +1,27 @@
+{
+  "experiment_id": "p8_evidence_prior_audit_20261019",
+  "status": "completed",
+  "audit_type": "research_lead_primary_literature_and_static_code_comparison",
+  "previous_goal_turn_classification": "progress",
+  "validated_saved_payloads": 14,
+  "validated_code_blobs": 6,
+  "galdse_commit": "4444cfed9944d20908d1d2a22fbb8ec81ecc530f",
+  "galdse_paper_version": 5,
+  "retrieval_wall_seconds": 145.05273163411766,
+  "saved_payload_bytes": 1448124,
+  "training_forwards": 0,
+  "inference_forwards": 0,
+  "all_payload_hashes_verified_by_lead": true,
+  "all_code_git_blobs_verified_by_lead": true,
+  "source_local_hashes_worker_verified": true,
+  "retrieval_has_recorded_transport_failures": true,
+  "findings": {
+    "galdse_guidance_affects_prewarp_and_stochastic_geometry": true,
+    "galdse_two_channel_trunk_does_not_imply_guidance_independence": true,
+    "pase_student_denoising_differs_from_frozen_ssl_loss": true,
+    "grounded_decoding_is_autoregressive_fsq_not_ouve": true,
+    "artifree_multiple_candidate_selection_is_prior_art": true
+  },
+  "decision": "No new model calls or gate/loss training; optional human verification plus bounded natural-5243 provenance/feasibility audit next. Novelty and deployable identity-recovery evidence remain unproven.",
+  "created_utc": "2026-10-19T01:05:52.392493+00:00"
+}

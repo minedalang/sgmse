@@ -1,0 +1,60 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/run_ode_convergence_smoke.py", line 423, in <module>
+    main()
+  File "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/run_ode_convergence_smoke.py", line 246, in main
+    model, loaded_parameters = load_model(device)
+  File "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/run_ode_convergence_smoke.py", line 89, in load_model
+    from sgmse.joint_model import JointSemambaSgmseModel
+  File "/data/coding/sgmse/sgmse/joint_model.py", line 40, in <module>
+    from sgmse.model import ScoreModel
+  File "/data/coding/sgmse/sgmse/model.py", line 18, in <module>
+    from sgmse.backbones import BackboneRegistry
+  File "/data/coding/sgmse/sgmse/backbones/__init__.py", line 2, in <module>
+    from .ncsnpp import NCSNpp
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp.py", line 18, in <module>
+    from .ncsnpp_utils import layers, layerspp, normalization
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/layerspp.py", line 20, in <module>
+    from . import up_or_down_sampling
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/up_or_down_sampling.py", line 10, in <module>
+    from .op import upfirdn2d
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/__init__.py", line 1, in <module>
+    from .upfirdn2d import upfirdn2d
+  File "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/upfirdn2d.py", line 12, in <module>
+    upfirdn2d_op = load(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 1937, in load
+    return _jit_compile(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 2398, in _jit_compile
+    _write_ninja_file_and_build_library(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 2508, in _write_ninja_file_and_build_library
+    verify_ninja_availability()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/utils/cpp_extension.py", line 2574, in verify_ninja_availability
+    raise RuntimeError("Ninja is required to load C++ extensions (pip install ninja to get it)")
+RuntimeError: Ninja is required to load C++ extensions (pip install ninja to get it)
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[ODE smoke] preparing 1/4 000_fileid_2673.wav
+[ODE smoke] start 000_fileid_2673.wav rtol=atol=1e-03
+[ODE smoke] done  000_fileid_2673.wav rtol=atol=1e-03 nfev=26 score_calls=26 elapsed=15.74s
+[ODE smoke] start 000_fileid_2673.wav rtol=atol=1e-05
+[ODE smoke] done  000_fileid_2673.wav rtol=atol=1e-05 nfev=92 score_calls=92 elapsed=45.55s
+[ODE smoke] start 000_fileid_2673.wav rtol=atol=1e-07
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/run_ode_convergence_smoke.py", line 423, in <module>
+    main()
+  File "/data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/run_ode_convergence_smoke.py", line 306, in main
+    sample, nfev = sampler()
+  File "/data/coding/sgmse/sgmse/sampling/__init__.py", line 235, in ode_sampler
+    solution = integrate.solve_ivp(
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/scipy/integrate/_ivp/ivp.py", line 655, in solve_ivp
+    message = solver.step()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py", line 197, in step
+    success, message = self._step_impl()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py", line 144, in _step_impl
+    y_new, f_new = rk_step(self.fun, t, y, self.f, h, self.A,
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/scipy/integrate/_ivp/rk.py", line 64, in rk_step
+    K[s] = fun(t + c * h, y + dy)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py", line 154, in fun
+    return self.fun_single(t, y)
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/scipy/integrate/_ivp/base.py", line 23, in fun_wrapped
+    return np.asarray(fun(t, y), dtype=dtype)
+KeyboardInterrupt

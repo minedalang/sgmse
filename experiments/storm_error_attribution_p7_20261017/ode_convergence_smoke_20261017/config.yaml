@@ -1,0 +1,122 @@
+schema_version: 1
+experiment_id: storm_error_attribution_p7_20261017_ode_convergence_smoke_20261017
+status: incomplete_stopped_after_bounded_supplement
+purpose: Partial four-utterance probability-flow ODE tolerance smoke plus one bounded 1e-6 follow-up; no training or quality metric evaluation
+checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+checkpoint_global_step: 80000
+checkpoint_load:
+  class: sgmse.joint_model.JointSemambaSgmseModel
+  strict: true
+  data_module_class: sgmse.joint_data_module.JointWaveDataModule
+  dummy_data_module: true
+  frontend_override: null
+  evaluation_mode: model.eval(no_ema=false)
+  recorded_prior_verification: experiments/storm_error_attribution_p7_20261017/frontend_only/config.yaml
+  recorded_frontend_state_entries: 267
+  recorded_frontend_missing: 0
+  recorded_frontend_extra: 0
+  recorded_frontend_mismatched: 0
+  ema_note: Checkpoint EMA tracks eight Router tensors; RRSD remains disabled in this smoke.
+manifest: /data/coding/sgmse/experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv
+manifest_sha256: 77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e
+utterances:
+  selection: first four rows in the P7 baseline manifest
+  sample_rate_hz: 16000
+  files:
+    - 000_fileid_2673.wav
+    - 001_fileid_2972.wav
+    - 002_fileid_7247.wav
+    - 003_fileid_4431.wav
+model:
+  backbone: ncsnpp_v2
+  frontend: storm
+  train_type: mode2
+  mode2_include_noisy_main: true
+  ema: enabled_with_checkpoint_semantics
+  rrsd: false
+  sde: ouve
+  saved_sampler_type: pc
+  N: 30
+  theta: 1.5
+  sigma_min: 0.05
+  sigma_max: 0.5
+  t_eps: 0.03
+  loss_type: score_matching
+  loss_weighting: sigma^2
+  network_scaling: 1/t
+  c_in: "1"
+  c_out: "1"
+  c_skip: "0"
+  sigma_data: 0.1
+spectral_transform:
+  sample_rate_hz: 16000
+  n_fft: 510
+  hop_length: 128
+  num_frames: 256
+  window: periodic_hann
+  spec_factor: 0.15
+  spec_abs_exponent: 0.5
+  transform_type: exponent
+  normalize: noisy_peak
+preprocessing:
+  audio_read: soundfile_float32
+  mono_conversion: mean_channels_if_needed
+  frontend: "y_pre = model._frontend_forward(y / max_abs(y)) * max_abs(y)"
+  frontend_length_alignment: center_crop_or_zero_pad_to_noisy_length
+  mode2_main_input: frontend_output
+  mode2_condition: original_noisy_waveform
+sampler:
+  implementation: sgmse.sampling.get_ode_sampler
+  process: probability_flow
+  scipy_method: RK45
+  rtol_atol: [1.0e-3, 1.0e-5, 1.0e-7]
+  supplemental_rtol_atol: [1.0e-6]
+  denoise: false
+  integration_interval: [1.0, 0.03]
+  initial_state: one OUVE prior draw per utterance, saved and reused at all tolerances
+  score_forward_count: dnn_forward_hook
+  count_validation: require nfev_equals_hooked_dnn_calls
+  convergence_fields: [transformed_spectrum_relative_l2, waveform_relative_l2, reconstructed_complex_stft_relative_l2]
+  convergence_threshold: 1.0e-3
+  seed_base: 20261017
+outputs:
+  shared_initial_states: shared_xT/<utterance_stem>.pt
+  wav_directories:
+    - rk45_rtol_atol_1e-03/
+    - rk45_rtol_atol_1e-05/
+    - rk45_rtol_atol_1e-06/
+    - rk45_rtol_atol_1e-07/
+  metadata: metrics.json
+  wav_subtype: FLOAT
+  waveform_clipping: clip_to_minus1_plus1_before_wav_write
+  convergence_delta_source: unclipped_in_memory_waveform_and_its_reconstructed_complex_stft
+  clipped_sample_count_recorded: true
+command: "cd /data/coding/sgmse && PATH=/data/coding/sgmse/env/bin:$PATH /data/coding/sgmse/env/bin/python experiments/storm_error_attribution_p7_20261017/ode_convergence_smoke_20261017/run_ode_convergence_smoke.py --device cuda"
+training: false
+quality_evaluation: false
+checkpoint_or_source_data_modified: false
+execution_status:
+  model_loaded: true
+  first_utterance_completed_tolerances: [1.0e-3, 1.0e-5, 1.0e-6]
+  first_utterance_interrupted_tolerance: 1.0e-7
+  interruption_reason: "The 1e-7 solve remained active on GPU for about 14.5 minutes without returning; stopped at a 15-minute observation limit."
+  bounded_supplemental_1e-6:
+    status: completed
+    nfev: 464
+    score_forward_calls: 464
+    solve_seconds: 174.032
+    total_seconds: 183.023
+    waveform_relative_l2_vs_1e-5: 0.00398533
+    complex_stft_relative_l2_vs_1e-5: 0.00398575
+    reached_1e-3_threshold: false
+    record: supplemental_metrics_1e-6.json
+  remaining_utterances_run: false
+  first_attempt_issue: "Existing ninja 1.13.2 was outside PATH; fixed PATH without installing packages."
+  dns_mos_migration_or_evaluation: false
+precision_path_audit:
+  source: sgmse/sampling/__init__.py::get_ode_sampler
+  observation: "The SciPy state is converted to torch.complex64 inside every ODE callback; SciPy 1.15.3 promoted complex64 y0 to complex128 in an isolated CPU check."
+  interpretation: "Potential precision floor under tighter tolerances; effect on observed sensitivity has not been measured."
+  sampler_code_modified: false
+next_action: "Do not run more strict-tolerance integrations yet; assess whether a separately bounded precision-path experiment is justified."

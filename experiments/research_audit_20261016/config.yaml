@@ -1,0 +1,6 @@
+experiment_id: research_audit_20261016
+type: code_data_evidence_audit
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+source_plan: /data/RESEARCH_PLAN.md
+mutates_dataset: false
+long_training_started: false

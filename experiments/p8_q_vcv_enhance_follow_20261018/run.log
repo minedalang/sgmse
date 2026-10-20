@@ -1,0 +1,35 @@
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+N1_snr+6/f6aka1: frontend+off+router completed
+N1_snr+6/f6aga1: frontend+off+router completed
+N1_snr+6/f6ata1: frontend+off+router completed
+N1_snr+6/f6ada1: frontend+off+router completed
+N1_snr+6/m2aka1: frontend+off+router completed
+N1_snr+6/m2aga1: frontend+off+router completed
+N1_snr+6/m2ata1: frontend+off+router completed
+N1_snr+6/m2ada1: frontend+off+router completed
+N1_snr+6/f11aka1: frontend+off+router completed
+N1_snr+6/f11aga1: frontend+off+router completed
+N1_snr+6/f11ata1: frontend+off+router completed
+N1_snr+6/f11ada1: frontend+off+router completed
+N1_snr+6/m4aka1: frontend+off+router completed
+N1_snr+6/m4aga1: frontend+off+router completed
+N1_snr+6/m4ata1: frontend+off+router completed
+N1_snr+6/m4ada1: frontend+off+router completed
+N2_snr+6/f6aka1: frontend+off+router completed
+N2_snr+6/f6aga1: frontend+off+router completed
+N2_snr+6/f6ata1: frontend+off+router completed
+N2_snr+6/f6ada1: frontend+off+router completed
+N2_snr+6/m2aka1: frontend+off+router completed
+N2_snr+6/m2aga1: frontend+off+router completed
+N2_snr+6/m2ata1: frontend+off+router completed
+N2_snr+6/m2ada1: frontend+off+router completed
+N2_snr+6/f11aka1: frontend+off+router completed
+N2_snr+6/f11aga1: frontend+off+router completed
+N2_snr+6/f11ata1: frontend+off+router completed
+N2_snr+6/f11ada1: frontend+off+router completed
+N2_snr+6/m4aka1: frontend+off+router completed
+N2_snr+6/m4aga1: frontend+off+router completed
+N2_snr+6/m4ata1: frontend+off+router completed
+N2_snr+6/m4ada1: frontend+off+router completed
+Loading weights:   0%|          | 0/424 [00:00<?, ?it/s]Loading weights: 100%|██████████| 424/424 [00:00<00:00, 26918.31it/s]

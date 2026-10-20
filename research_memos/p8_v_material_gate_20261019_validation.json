@@ -1,0 +1,38 @@
+{
+  "kind": "documentation_material_review_validation",
+  "utc": "2026-10-19T06:01:39.955331+00:00",
+  "status": "passed",
+  "checks": {
+    "source_and_raw_byte_locks_checked": 53,
+    "all_passed": true,
+    "retired_uppercase_entry_absent": true
+  },
+  "files": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_v_material_gate_20261019.json",
+      "bytes": 22765,
+      "sha256": "21410f6c34f0c4bafc713c64ac9fc205f3a8266428221c04aae475017afb2945"
+    },
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_v_material_gate_20261019.md",
+      "bytes": 6415,
+      "sha256": "876f364f5807e3cb59e04713ff69664d0a34e77f2a5921a4d5ac3149dd3eb9fe"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 9095,
+      "sha256": "1b4916f1d5066d2cfd3eada65a49569cbbf6d49ccaf083b1e7badde5a4d53c88"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 9687,
+      "sha256": "8615efe71a70c0bff01a465e5e3bb2cffe86495acce6a475c769c16315a0d556"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 9817,
+      "sha256": "e4f577147a14d56e95f723a625be1c446d1deaac48d3278578e87b642eba252f"
+    }
+  ],
+  "notes": "Checks prove source identity and report routing, not acoustic labels, model validity, full worktree equality or long-goal completion."
+}

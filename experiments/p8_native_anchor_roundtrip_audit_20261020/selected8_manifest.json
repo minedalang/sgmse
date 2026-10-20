@@ -1,0 +1,111 @@
+{
+  "schema": "native-anchor-roundtrip-selected8-v1",
+  "scope": "metadata selection only; no real audit executed",
+  "source_registry": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+  "source_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+  "source_records": 64,
+  "bin_order": [
+    "[-20,-18)",
+    "[-18,-15)",
+    "[-15,-10)",
+    "[-10,-5]"
+  ],
+  "records": [
+    {
+      "utt": "reader_11121_fileid_10724",
+      "fileid": "10724",
+      "speaker": "11121",
+      "nominal_snr_db": -20,
+      "priority_bin": "[-20,-18)",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08262_chp_0003_reader_11121_47_dw01uNojLKA-YkwrwCFjtf8-fan_Freesound_validated_437343_3_snr-20_fileid_10724.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10724.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_10724.wav",
+      "dev_index": 3,
+      "expected_seed": 20361022
+    },
+    {
+      "utt": "reader_11446_fileid_11151",
+      "fileid": "11151",
+      "speaker": "11446",
+      "nominal_snr_db": -20,
+      "priority_bin": "[-20,-18)",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06632_chp_0020_reader_11446_52_CAb-VztHqZ4-MpS7yOF7LdU-kQtoIyVNj3M_snr-20_fileid_11151.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11151.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_11151.wav",
+      "dev_index": 11,
+      "expected_seed": 20361030
+    },
+    {
+      "utt": "reader_11794_fileid_5599",
+      "fileid": "5599",
+      "speaker": "11794",
+      "nominal_snr_db": -16,
+      "priority_bin": "[-18,-15)",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07714_chp_0007_reader_11794_7_LZIq3ARVkO0-copy-machine_Freesound_validated_402463_4-E9MtHhS4rbM_snr-16_fileid_5599.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5599.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_5599.wav",
+      "dev_index": 18,
+      "expected_seed": 20361037
+    },
+    {
+      "utt": "reader_11128_fileid_5694",
+      "fileid": "5694",
+      "speaker": "11128",
+      "nominal_snr_db": -16,
+      "priority_bin": "[-18,-15)",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08134_chp_0001_reader_11128_45_QnWP29qko_0-pBXZyD7pVA8-Z9mOTdFvCn4_snr-16_fileid_5694.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5694.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_5694.wav",
+      "dev_index": 30,
+      "expected_seed": 20361049
+    },
+    {
+      "utt": "reader_11301_fileid_9495",
+      "fileid": "9495",
+      "speaker": "11301",
+      "nominal_snr_db": -14,
+      "priority_bin": "[-15,-10)",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02353_chp_0003_reader_11301_53_L6ttBdK8V5U-GBnr9mguZyY-breath_spit_Freesound_validated_335775_0_snr-14_fileid_9495.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_9495.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_9495.wav",
+      "dev_index": 40,
+      "expected_seed": 20361059
+    },
+    {
+      "utt": "reader_11917_fileid_1923",
+      "fileid": "1923",
+      "speaker": "11917",
+      "nominal_snr_db": -15,
+      "priority_bin": "[-15,-10)",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09653_chp_0007_reader_11917_46_door_Freesound_validated_138084_1-door_Freesound_validated_260075_0-iMB_JpEScMY_snr-15_fileid_1923.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1923.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_1923.wav",
+      "dev_index": 43,
+      "expected_seed": 20361062
+    },
+    {
+      "utt": "reader_11053_fileid_1482",
+      "fileid": "1482",
+      "speaker": "11053",
+      "nominal_snr_db": -10,
+      "priority_bin": "[-10,-5]",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_33_z00xmf4R9kA-wyZlvUSm9ng-4VG6_kFy6s0_snr-10_fileid_1482.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1482.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_1482.wav",
+      "dev_index": 62,
+      "expected_seed": 20361081
+    },
+    {
+      "utt": "reader_11195_fileid_7449",
+      "fileid": "7449",
+      "speaker": "11195",
+      "nominal_snr_db": -7,
+      "priority_bin": "[-10,-5]",
+      "wav_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10732_chp_0035_reader_11195_4_P6XUaw6OXdg-PLFR7foIMkk-p2tKO12rfSI_snr-7_fileid_7449.wav",
+      "clean_path_loader": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7449.wav",
+      "noise1_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_7449.wav",
+      "dev_index": 53,
+      "expected_seed": 20361072
+    }
+  ]
+}

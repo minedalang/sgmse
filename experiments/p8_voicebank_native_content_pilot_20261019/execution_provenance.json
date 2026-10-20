@@ -1,0 +1,42 @@
+{
+  "utc_recorded": "2026-10-19T03:48:28.935294+00:00",
+  "command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/model_stage/run_pilot.py",
+  "tool_session_id": 72446,
+  "supervisor_pid": null,
+  "child_pid": null,
+  "pid_observation": "Process exited before first post-launch ps; no PID was captured by tool or driver. No PID inferred.",
+  "started": {
+    "utc": "2026-10-19T03:47:18.197950+00:00",
+    "execution_manifest_sha256": "1605fe58d5963b5300c83da51b0c248722e561235708e3b20229d90651937528",
+    "scope": "model phase only; prior CPU preparation preserved"
+  },
+  "thread": {
+    "id": "01a15244-7b13-7462-97dc-cb5e3865de74",
+    "agent_path": "/root/experiment_worker_native_model",
+    "provider": "codex_tools_compat"
+  },
+  "preserved_services": {
+    "39452": "/usr/bin/python3 /data/codex-state/tool-compat/bridge.py --port 42084 ",
+    "16022": "/data/coding/sgmse/env/bin/python /data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listening/feedback_server.py --port 8766 "
+  },
+  "preflight": {
+    "locks_checked": 173,
+    "mismatches": 0,
+    "bytes": 7699155,
+    "gpu_used_mib": 0,
+    "gpu_total_mib": 49140,
+    "disk_available": "1.9G as reported by df -h",
+    "host_available_memory": "381Gi as reported by free -h",
+    "no_prior_model_artifacts": true
+  },
+  "metrics_sha256": "6e70d1bef76eb8ea752f401d5fa102b377580365cda477742e4131d4d25fa929",
+  "git_head": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status_unchanged": true,
+  "model_launch_attempts": 1,
+  "retries": 0,
+  "code_changes": 0,
+  "guard_relaxations": 0,
+  "success_validator_run": false,
+  "success_validator_reason": "Requires status completed and 16/16/52 calls; model phase failed during torch import.",
+  "failure_diagnosis": "cuda.pathfinder import invoked ctypes.util.find_library(dl), which attempted /sbin/ldconfig -p. Its resolved /usr/sbin/ldconfig executable was outside frozen local_build_executables and was rejected by audit before process execution. This is a dependency-discovery subprocess compatibility failure, not a model quality result."
+}

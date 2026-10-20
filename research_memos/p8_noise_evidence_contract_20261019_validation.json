@@ -1,0 +1,48 @@
+{
+  "kind": "static_checkpoint_evidence_and_analytic_contract_review",
+  "utc": "2026-10-19T07:10:22.502696+00:00",
+  "status": "evidence_and_document_checks_passed_no_new_method_claim",
+  "actual_checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "pickle_member_sha256": "acb90863638763908f18b69f104f0df31828198e859947a4d4a37583f793f6ff",
+  "direct_transform_parameters": {
+    "transform_type": "exponent",
+    "spec_abs_exponent": 0.5,
+    "spec_factor": 0.15
+  },
+  "saved_not_runtime_reloaded": true,
+  "unresolved_values_not_guessed": [
+    "c_out"
+  ],
+  "first_query_failure_preserved": true,
+  "new_model_audio_training_or_network": 0,
+  "analytic_ranking_monotonicity_checks": 75,
+  "no_new_runs_authorized": true,
+  "old_measurement_sha256_unchanged": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_noise_evidence_contract_20261019.md",
+      "bytes": 6935,
+      "sha256": "af6bafde575fef6b7e6188a039d40d4463a8cea7cce8f3af33ee29ae1fe4dda5"
+    },
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_noise_evidence_contract_20261019.json",
+      "bytes": 11315,
+      "sha256": "0af07bf0106a3b1b8a59caced5cc8a4675e4990e71c1464e1a26f9acd0f4834b"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 10128,
+      "sha256": "73d750e3d01848408ddac47a58e51f28396791099ed8a468b6bf1fea6a561055"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 11850,
+      "sha256": "64e5fcf70968a415c35396ab9c03946994f1fa5ed9219f16c301cbea0e8563d8"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 16294,
+      "sha256": "36600900ad5b67491b13e696e9ee3f493eb3ffc1c02192f360013176f9afad5a"
+    }
+  ]
+}

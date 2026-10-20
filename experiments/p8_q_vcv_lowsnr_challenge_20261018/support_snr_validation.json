@@ -1,0 +1,10 @@
+{
+  "source_audit_path": "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/support_snr_audit.json",
+  "source_audit_sha256": "c472727c8ecbfaf4015dcbb031631beaedde43ca8348d6a5e7359b28073acd9e",
+  "n": 32,
+  "minimum_db": -0.3301029470481993,
+  "mean_db": 0.8665572664043003,
+  "maximum_db": 3.1948132987088016,
+  "definition": "source_recording_support: [8000,8000+resampled_samples); includes the entire resampled source recording, without phoneme boundaries or clean activity selection",
+  "interpretation": "Full two-second carrier SNR=-6dB. Source-recording-support SNR excludes padded clean zeros and measures the entire recording, not true consonant or clean-active SNR. Different windows explain the numerical difference; frozen recipe is unchanged."
+}

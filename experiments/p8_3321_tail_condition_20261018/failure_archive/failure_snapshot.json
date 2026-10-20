@@ -1,0 +1,17 @@
+{
+  "failure": {
+    "error": "KeyError('off')",
+    "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_3321_tail_condition_20261018/run_pilot.py\", line 112, in main\n    assert rec['sha256']==expected[k]\nKeyError: 'off'\n"
+  },
+  "preserved_artifacts": [
+    "run_pilot.py",
+    "config.yaml",
+    "engineer_validation.json",
+    "engineer_handoff.md",
+    "run.log",
+    "run_started.json",
+    "__pycache__/run_pilot.cpython-310.pyc",
+    "failure_archive/failure_snapshot.json"
+  ],
+  "action": "Stop; preserve all partial artifacts in place. No retry without diagnosis and a new attempt directory."
+}

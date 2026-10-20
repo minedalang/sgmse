@@ -1,0 +1,1120 @@
+{
+  "status": "completed",
+  "case_id": "fresh__N2_snr-6__f20aka1",
+  "source_support_samples": [
+    8000,
+    14881
+  ],
+  "source_support_seconds": [
+    0.5,
+    0.9300625
+  ],
+  "declared_resampled_source_length": 6881,
+  "sources": [
+    {
+      "arm": "clean",
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/f20aka1_clean.npy",
+      "file_sha256": "5be0449015b6c4b5b19e1031e32faf632dc02e61c0e3bf205457dfcff4db80f8",
+      "array_sha256": "3da559f27dee875c0e74f8c6d7fe6060d953a87b1defb304781e9efb4fbfdb1a",
+      "dtype": "float64",
+      "shape": [
+        32000
+      ],
+      "sample_rate": 16000,
+      "alignment": "Common frozen carrier indices, no shift/resampling applied"
+    },
+    {
+      "arm": "y_pre",
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/y_pre/output_raw.npy",
+      "file_sha256": "0ffcf03c026b15f2ea56b0a7e75fd79311d3f9130702c6f6b54bd4afec4d499d",
+      "array_sha256": "92db2f506286271428cfbf86051c0238a1883c2f9344c0a8fff6e86ada23c201",
+      "dtype": "float32",
+      "shape": [
+        32000
+      ],
+      "sample_rate": 16000,
+      "alignment": "Common frozen carrier indices, no shift/resampling applied"
+    },
+    {
+      "arm": "native_off",
+      "path": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__native/output_raw.npy",
+      "file_sha256": "05b4e387d1378bcf0010abef46e38772c0403f9650b20349c9ff82469401640a",
+      "array_sha256": "6098964963b71352ca10f1f59e23b1a56a4242ff8a5887999c0fdfc9b539ff0c",
+      "dtype": "float32",
+      "shape": [
+        32000
+      ],
+      "sample_rate": 16000,
+      "alignment": "Common frozen carrier indices, no shift/resampling applied"
+    },
+    {
+      "arm": "ablated_off",
+      "path": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__noise_only/output_raw.npy",
+      "file_sha256": "3e287695a998d80294b59b1b29d4c398fee49e4985a1eedc9633a52f7de2f673",
+      "array_sha256": "797881f84ba8341a3e458b0b0f1ef1ffc07397f904e49b2cb482f9416ca5397c",
+      "dtype": "float32",
+      "shape": [
+        32000
+      ],
+      "sample_rate": 16000,
+      "alignment": "Common frozen carrier indices, no shift/resampling applied"
+    }
+  ],
+  "source_locks_before_after": {
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/metrics.json": "b16c5d414f3b57163800b2272d1cc6e0aa54787560814c228c5cc77019fa2562",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/selection_frozen.json": "c3e7327573f2ec46b7745ba5a5db8484dc4a1876d1ab830fa8d731ef2b7c4b76",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/source_proofs.json": "8f74d581f7d37f29b2516d6073c4826433e11a4a8c80725a8d3dc7faa8bf5e92",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/config.yaml": "3b6e0fca2631fe507e49263af138d7d7b1b201af0cca9749d6192af782f43015",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/recipe_frozen.json": "867ab987d1a135a2c8edbce575c398303f57c16a65e15f048ae354f47940e05f",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio_manifest.json": "b88b428710063e0a0114d1dc96c38aa45cac3da6d6f96e19bc6653570d89cc32",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/per_sample.json": "a98f0f9446a31b8670d1cf57bab5c40b3b40f39047989909903bbf82d8e920cc",
+    "/data/coding/sgmse/experiments/p8_q_vcv_fixed_noise_20261018/inputs/N2.npz": "1234631ece97b70063629cdbba3dfcb81a3b1639033fd3c766fa2ce5a7d13740",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/vocab.json": "d732ab2456c0c017930001dc9af0b41b3b93d25b2eb9740bf9d925508d7d87d0",
+    "/data/coding/sgmse/experiments/p8_phoneme_probe_20261020/local_model/config.json": "4609fb49b7e1d28aecb2840da1926c40bd915bc6f1120a940afacf7159bbfb13",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/retrieval/raw_audio/f20aka1.wav": "2e3914bda6eb64c8c749531a4472b0082c1fc37de8c8de74d194eac1e5d6c44b",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/f20aka1_clean.npy": "5be0449015b6c4b5b19e1031e32faf632dc02e61c0e3bf205457dfcff4db80f8",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/y_pre/output_raw.npy": "0ffcf03c026b15f2ea56b0a7e75fd79311d3f9130702c6f6b54bd4afec4d499d",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__native/output_raw.npy": "05b4e387d1378bcf0010abef46e38772c0403f9650b20349c9ff82469401640a",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__noise_only/output_raw.npy": "3e287695a998d80294b59b1b29d4c398fee49e4985a1eedc9633a52f7de2f673",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/ctc_arrays/N2_snr-6__f20aka1__off.npz": "33120d4e65f87f9c62ab2894b136700818180aeeb9fb29d1a322fa4e26a1665e",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/ctc_arrays/fresh__N2_snr-6__f20aka1.npz": "c5969b26c25680e75526c75e90550046e7c2ebc82924ce7890ce4e95c4941773",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/ctc_arrays/N2_snr-6__f20aka1__y_pre.npz": "af8a25ad5ae4a21b9654283cd7ff8505fa5a94056b50de7414073b78a41cead0",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/y_pre/listening.wav": "8db6bdd8668e6325454ea9de76bace9cf52d225cf25a406000210ea5fdc6c15d",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/audio/N2_snr-6/f20aka1/off/listening.wav": "e5f5b7dcc3ea73e73a55ccea1d931249c24d497c36e0e713e88991aff58a8241",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__native/listening.wav": "e5f5b7dcc3ea73e73a55ccea1d931249c24d497c36e0e713e88991aff58a8241",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/audio/fresh__N2_snr-6__f20aka1__noise_only/listening.wav": "69ca60d62a6a72017ed88286d8a5e9a5e0e8d05cddb1278da96c895c64e37f83",
+    "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listening/manual_listener_feedback_completion_20261019.json": "7b55f1c21efb291c67908f623366e5dc64856d85e6e8d7fa9dfb41cb923196fb",
+    "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/ctc_arrays/padded_clean__f20aka1__baseline.npz": "67b11f45d2a482d1cb70254bebe6cd74bd7da5c6e2e5016d23c4181f8bc05ed3"
+  },
+  "all_sources_unchanged": true,
+  "condition_proof": {
+    "conditions_exactly_equal_outside_known_clean_support": true,
+    "outside_samples": 25119,
+    "outside_max_abs_difference": 0.0,
+    "clean_pre_and_post_padding_exact_zero": true,
+    "noisy_input_sha256": "0321de422a116ba2ba4682717137fe51f9b6483a33227ff03ca7d9d45ccd2c0e",
+    "noise_only_input_sha256": "e25b4f20d41e132f2d9d98676a4ca4482f9de45f9231b176abbc3ba6f9c16232",
+    "same_normalized_physical_noise_hash": "dce0d0b9ee8f8de9b793e4fe316d5ee49f4104bfcbe2962cf194163bbe639e30",
+    "active_change_rms": 0.021564987481741085
+  },
+  "native_ablated_geometry_match": {
+    "anchor_raw_sha256": true,
+    "normalized_anchor_sha256": true,
+    "refscale": true,
+    "seed": true,
+    "cpu_rng_sha256": true,
+    "cuda_rng_sha256": true,
+    "initial_xT_sha256": true,
+    "normalized_physical_noise_sha256": true
+  },
+  "nfe_and_trace_steps": [
+    30,
+    30
+  ],
+  "intervals": {
+    "after_declared_support": [
+      14881,
+      32000
+    ],
+    "after_declared_support_plus100ms": [
+      16481,
+      32000
+    ]
+  },
+  "waveform_metrics": {
+    "after_declared_support": {
+      "clean": {
+        "samples": 17119,
+        "rms": 0.0,
+        "mean_square": 0.0,
+        "highband_mean_square": 0.0,
+        "parseval_absolute_error": 0.0
+      },
+      "y_pre": {
+        "samples": 17119,
+        "rms": 4.2303389970455835e-05,
+        "mean_square": 1.7895768029924633e-09,
+        "highband_mean_square": 4.073712347659424e-10,
+        "parseval_absolute_error": 0.0
+      },
+      "native_off": {
+        "samples": 17119,
+        "rms": 0.00017172472213745262,
+        "mean_square": 2.948938019318531e-08,
+        "highband_mean_square": 3.673977940543507e-10,
+        "parseval_absolute_error": 6.617444900424222e-24
+      },
+      "ablated_off": {
+        "samples": 17119,
+        "rms": 0.00018774381412014351,
+        "mean_square": 3.5247739740379004e-08,
+        "highband_mean_square": 1.1476870212148434e-08,
+        "parseval_absolute_error": 1.3234889800848443e-23
+      }
+    },
+    "after_declared_support_plus100ms": {
+      "clean": {
+        "samples": 15519,
+        "rms": 0.0,
+        "mean_square": 0.0,
+        "highband_mean_square": 0.0,
+        "parseval_absolute_error": 0.0
+      },
+      "y_pre": {
+        "samples": 15519,
+        "rms": 2.875476302900276e-05,
+        "mean_square": 8.268363968541039e-10,
+        "highband_mean_square": 2.3623727934107456e-11,
+        "parseval_absolute_error": 2.0679515313825692e-25
+      },
+      "native_off": {
+        "samples": 15519,
+        "rms": 0.0001395396103307146,
+        "mean_square": 1.9471302851247674e-08,
+        "highband_mean_square": 3.6919268865535405e-10,
+        "parseval_absolute_error": 3.308722450212111e-24
+      },
+      "ablated_off": {
+        "samples": 15519,
+        "rms": 0.00017833059962562144,
+        "mean_square": 3.1801802762833696e-08,
+        "highband_mean_square": 1.2399713496246375e-08,
+        "parseval_absolute_error": 0.0
+      }
+    }
+  },
+  "waveform_difference_metrics": {
+    "after_declared_support": {
+      "ablated_minus_native": {
+        "samples": 17119,
+        "rms": 0.00011343831797647837,
+        "mean_square": 1.2868251985332614e-08,
+        "highband_mean_square": 9.74768541006683e-09,
+        "parseval_absolute_error": 0.0
+      },
+      "native_minus_y_pre": {
+        "samples": 17119,
+        "rms": 0.00016598202960244583,
+        "mean_square": 2.7550034150947207e-08,
+        "highband_mean_square": 7.566658059313002e-10,
+        "parseval_absolute_error": 3.308722450212111e-24
+      },
+      "ablated_minus_y_pre": {
+        "samples": 17119,
+        "rms": 0.00018440488760897028,
+        "mean_square": 3.400516257407696e-08,
+        "highband_mean_square": 1.1820695458560385e-08,
+        "parseval_absolute_error": 6.617444900424222e-24
+      }
+    },
+    "after_declared_support_plus100ms": {
+      "ablated_minus_native": {
+        "samples": 15519,
+        "rms": 0.00011296298765621334,
+        "mean_square": 1.2760636580217808e-08,
+        "highband_mean_square": 1.0603500575950008e-08,
+        "parseval_absolute_error": 4.963083675318166e-24
+      },
+      "native_minus_y_pre": {
+        "samples": 15519,
+        "rms": 0.00013613333896070047,
+        "mean_square": 1.853228597658897e-08,
+        "highband_mean_square": 3.9177212785609236e-10,
+        "parseval_absolute_error": 6.617444900424222e-24
+      },
+      "ablated_minus_y_pre": {
+        "samples": 15519,
+        "rms": 0.0001762048673149599,
+        "mean_square": 3.1048155265482626e-08,
+        "highband_mean_square": 1.237572159985066e-08,
+        "parseval_absolute_error": 6.617444900424222e-24
+      }
+    }
+  },
+  "ctc_frame_geometry": {
+    "conv_stride_samples": 320,
+    "conv_receptive_field_samples": 400,
+    "first_conv_support_seconds": [
+      0,
+      0.025
+    ],
+    "center_formula": "(i*stride+receptive_field/2)/16000",
+    "limits": "Feature convolution support is not independent transformer or phoneme support. No user /s/ onset supplied."
+  },
+  "ctc_cached": {
+    "native_off": {
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/ctc_arrays/N2_snr-6__f20aka1__off.npz",
+      "shape": [
+        99,
+        392
+      ],
+      "blank_id": 0,
+      "s_token_id": 5,
+      "greedy_collapsed_full_tokens": [
+        "r",
+        "a",
+        "r",
+        "tʃ",
+        "a",
+        "k"
+      ],
+      "greedy_nonblank_runs": [
+        {
+          "token": "r",
+          "token_id": 31,
+          "first_frame": 2,
+          "end_frame_exclusive": 3,
+          "first_conv_support_s": [
+            0.04,
+            0.065
+          ],
+          "last_conv_support_s": [
+            0.04,
+            0.065
+          ],
+          "mean_token_posterior": 0.9617373943328857
+        },
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 28,
+          "end_frame_exclusive": 29,
+          "first_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "last_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "mean_token_posterior": 0.9511927366256714
+        },
+        {
+          "token": "r",
+          "token_id": 31,
+          "first_frame": 32,
+          "end_frame_exclusive": 33,
+          "first_conv_support_s": [
+            0.64,
+            0.665
+          ],
+          "last_conv_support_s": [
+            0.64,
+            0.665
+          ],
+          "mean_token_posterior": 0.9879584312438965
+        },
+        {
+          "token": "tʃ",
+          "token_id": 66,
+          "first_frame": 36,
+          "end_frame_exclusive": 37,
+          "first_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "last_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "mean_token_posterior": 0.6589753031730652
+        },
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 41,
+          "end_frame_exclusive": 42,
+          "first_conv_support_s": [
+            0.82,
+            0.845
+          ],
+          "last_conv_support_s": [
+            0.82,
+            0.845
+          ],
+          "mean_token_posterior": 0.9313824772834778
+        },
+        {
+          "token": "k",
+          "token_id": 11,
+          "first_frame": 50,
+          "end_frame_exclusive": 51,
+          "first_conv_support_s": [
+            1.0,
+            1.025
+          ],
+          "last_conv_support_s": [
+            1.0,
+            1.025
+          ],
+          "mean_token_posterior": 0.6071375012397766
+        }
+      ],
+      "center24_top1": "ch",
+      "s_posterior": {
+        "after_declared_support": {
+          "selection": "fixed convolution receptive-field center falls in predeclared interval; transformer context is global",
+          "frame_indices": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 1.5593630450894125e-05,
+          "max_s_posterior": 0.0005975060048513114,
+          "s_argmax_frames": []
+        },
+        "after_declared_support_plus100ms": {
+          "selection": "fixed convolution receptive-field center falls in predeclared interval; transformer context is global",
+          "frame_indices": [
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 3.060590415771003e-06,
+          "max_s_posterior": 3.376327731530182e-05,
+          "s_argmax_frames": []
+        }
+      }
+    },
+    "ablated_off": {
+      "path": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/outputs/ctc_arrays/fresh__N2_snr-6__f20aka1.npz",
+      "shape": [
+        99,
+        392
+      ],
+      "blank_id": 0,
+      "s_token_id": 5,
+      "greedy_collapsed_full_tokens": [
+        "r",
+        "a",
+        "r",
+        "tʃ",
+        "a",
+        "θ",
+        "s"
+      ],
+      "greedy_nonblank_runs": [
+        {
+          "token": "r",
+          "token_id": 31,
+          "first_frame": 2,
+          "end_frame_exclusive": 3,
+          "first_conv_support_s": [
+            0.04,
+            0.065
+          ],
+          "last_conv_support_s": [
+            0.04,
+            0.065
+          ],
+          "mean_token_posterior": 0.96648770570755
+        },
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 28,
+          "end_frame_exclusive": 29,
+          "first_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "last_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "mean_token_posterior": 0.9741758704185486
+        },
+        {
+          "token": "r",
+          "token_id": 31,
+          "first_frame": 32,
+          "end_frame_exclusive": 33,
+          "first_conv_support_s": [
+            0.64,
+            0.665
+          ],
+          "last_conv_support_s": [
+            0.64,
+            0.665
+          ],
+          "mean_token_posterior": 0.9678051471710205
+        },
+        {
+          "token": "tʃ",
+          "token_id": 66,
+          "first_frame": 36,
+          "end_frame_exclusive": 37,
+          "first_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "last_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "mean_token_posterior": 0.5524044632911682
+        },
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 41,
+          "end_frame_exclusive": 42,
+          "first_conv_support_s": [
+            0.82,
+            0.845
+          ],
+          "last_conv_support_s": [
+            0.82,
+            0.845
+          ],
+          "mean_token_posterior": 0.98653644323349
+        },
+        {
+          "token": "θ",
+          "token_id": 52,
+          "first_frame": 50,
+          "end_frame_exclusive": 51,
+          "first_conv_support_s": [
+            1.0,
+            1.025
+          ],
+          "last_conv_support_s": [
+            1.0,
+            1.025
+          ],
+          "mean_token_posterior": 0.34877774119377136
+        },
+        {
+          "token": "s",
+          "token_id": 5,
+          "first_frame": 53,
+          "end_frame_exclusive": 54,
+          "first_conv_support_s": [
+            1.06,
+            1.085
+          ],
+          "last_conv_support_s": [
+            1.06,
+            1.085
+          ],
+          "mean_token_posterior": 0.6721716523170471
+        }
+      ],
+      "center24_top1": "ch",
+      "s_posterior": {
+        "after_declared_support": {
+          "selection": "fixed convolution receptive-field center falls in predeclared interval; transformer context is global",
+          "frame_indices": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 0.014093832112848759,
+          "max_s_posterior": 0.6721716523170471,
+          "s_argmax_frames": [
+            53
+          ]
+        },
+        "after_declared_support_plus100ms": {
+          "selection": "fixed convolution receptive-field center falls in predeclared interval; transformer context is global",
+          "frame_indices": [
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 0.014264878816902637,
+          "max_s_posterior": 0.6721716523170471,
+          "s_argmax_frames": [
+            53
+          ]
+        }
+      }
+    },
+    "y_pre": {
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/ctc_arrays/N2_snr-6__f20aka1__y_pre.npz",
+      "shape": [
+        99,
+        392
+      ],
+      "blank_id": 0,
+      "s_token_id": 5,
+      "greedy_collapsed_full_tokens": [
+        "a",
+        "r",
+        "k",
+        "a"
+      ],
+      "greedy_nonblank_runs": [
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 28,
+          "end_frame_exclusive": 29,
+          "first_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "last_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "mean_token_posterior": 0.9135792255401611
+        },
+        {
+          "token": "r",
+          "token_id": 31,
+          "first_frame": 32,
+          "end_frame_exclusive": 33,
+          "first_conv_support_s": [
+            0.64,
+            0.665
+          ],
+          "last_conv_support_s": [
+            0.64,
+            0.665
+          ],
+          "mean_token_posterior": 0.9873128533363342
+        },
+        {
+          "token": "k",
+          "token_id": 11,
+          "first_frame": 36,
+          "end_frame_exclusive": 37,
+          "first_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "last_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "mean_token_posterior": 0.967437744140625
+        },
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 40,
+          "end_frame_exclusive": 41,
+          "first_conv_support_s": [
+            0.8,
+            0.825
+          ],
+          "last_conv_support_s": [
+            0.8,
+            0.825
+          ],
+          "mean_token_posterior": 0.8355094194412231
+        }
+      ],
+      "center24_top1": "k",
+      "s_posterior": {
+        "after_declared_support": {
+          "selection": "fixed convolution receptive-field center falls in predeclared interval; transformer context is global",
+          "frame_indices": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 2.7745680199586786e-05,
+          "max_s_posterior": 0.0005517707322724164,
+          "s_argmax_frames": []
+        },
+        "after_declared_support_plus100ms": {
+          "selection": "fixed convolution receptive-field center falls in predeclared interval; transformer context is global",
+          "frame_indices": [
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 2.738615876296535e-06,
+          "max_s_posterior": 4.109564542886801e-05,
+          "s_argmax_frames": []
+        }
+      }
+    },
+    "clean": {
+      "path": "/data/coding/sgmse/experiments/p8_q_vcv_speaker_replication_20261019/outputs/ctc_arrays/padded_clean__f20aka1__baseline.npz",
+      "shape": [
+        99,
+        392
+      ],
+      "center24_top1": "k",
+      "greedy_collapsed_full_tokens": [
+        "a",
+        "k",
+        "a"
+      ],
+      "greedy_nonblank_runs": [
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 28,
+          "end_frame_exclusive": 29,
+          "first_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "last_conv_support_s": [
+            0.56,
+            0.585
+          ],
+          "mean_token_posterior": 0.8930176496505737
+        },
+        {
+          "token": "k",
+          "token_id": 11,
+          "first_frame": 36,
+          "end_frame_exclusive": 37,
+          "first_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "last_conv_support_s": [
+            0.72,
+            0.745
+          ],
+          "mean_token_posterior": 0.9865423440933228
+        },
+        {
+          "token": "a",
+          "token_id": 9,
+          "first_frame": 40,
+          "end_frame_exclusive": 41,
+          "first_conv_support_s": [
+            0.8,
+            0.825
+          ],
+          "last_conv_support_s": [
+            0.8,
+            0.825
+          ],
+          "mean_token_posterior": 0.8578525185585022
+        }
+      ],
+      "s_posterior": {
+        "after_declared_support": {
+          "frame_indices": [
+            46,
+            47,
+            48,
+            49,
+            50,
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 0.0003364947915542871,
+          "max_s_posterior": 0.012569895945489407,
+          "s_argmax_frames": []
+        },
+        "after_declared_support_plus100ms": {
+          "frame_indices": [
+            51,
+            52,
+            53,
+            54,
+            55,
+            56,
+            57,
+            58,
+            59,
+            60,
+            61,
+            62,
+            63,
+            64,
+            65,
+            66,
+            67,
+            68,
+            69,
+            70,
+            71,
+            72,
+            73,
+            74,
+            75,
+            76,
+            77,
+            78,
+            79,
+            80,
+            81,
+            82,
+            83,
+            84,
+            85,
+            86,
+            87,
+            88,
+            89,
+            90,
+            91,
+            92,
+            93,
+            94,
+            95,
+            96,
+            97,
+            98
+          ],
+          "mean_s_posterior": 2.23432343773311e-05,
+          "max_s_posterior": 0.00012900099682155997,
+          "s_argmax_frames": []
+        }
+      }
+    }
+  },
+  "full_clean_ctc_available": true,
+  "parseval_sine_calibration": true,
+  "model_calls": 0,
+  "training_calls": 0,
+  "audio_outputs": 0,
+  "git_status_unchanged": true,
+  "wall_seconds": 0.09213256009388715,
+  "human_feedback": {
+    "path": "/data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listening/manual_listener_feedback_completion_20261019.json",
+    "sha256": "7b55f1c21efb291c67908f623366e5dc64856d85e6e8d7fa9dfb41cb923196fb",
+    "response": {
+      "ordinal": 5,
+      "case_id": "fresh__N2_snr-6__f20aka1",
+      "choice_verbatim": "两者差不多",
+      "comment_verbatim": "消融后端语音末尾加了个明显的/s/辅音，y_pre末尾没有一点声音，原始后端末尾有相对轻微的声音，但不似人声。",
+      "interpretation": "Overall comparison is similar, while listener separately reports extra s-like tail in the ablation, absent in frontend and weaker/non-speech-like in native OFF. No exact timestamp or independent central phoneme judgment supplied."
+    },
+    "timing": "User reports末尾 only, exact sound onset unknown"
+  },
+  "scientific_plot_status": "saved",
+  "finalizer_cpu_wall_seconds": 0.9475395909976214,
+  "artifact_bytes": 364767
+}

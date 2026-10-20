@@ -1,0 +1,37 @@
+{
+  "case_id": "fresh__N2_snr-6__f20aka1",
+  "sample_rate": 16000,
+  "intervals": {
+    "after_declared_support": [
+      14881,
+      32000
+    ],
+    "after_declared_support_plus100ms": [
+      16481,
+      32000
+    ]
+  },
+  "CPU_only": true,
+  "model_calls": 0,
+  "training_calls": 0,
+  "downloads": 0,
+  "audio_outputs": 0,
+  "budget_seconds": 120,
+  "artifact_cap_bytes": 1000000,
+  "reference": "Frozen float64 physical N2 noise = recorded noise_gain * frozen unit waveform; output physical scale",
+  "bands": {
+    "fullband": "all RFFT bins, 0 <= f <= 8000",
+    "lowband": "0 <= f < 4000",
+    "highband": "4000 <= f <= 7500"
+  },
+  "band_boundary": "No low/high overlap. Frequencies >7500 remain only in fullband.",
+  "DFT": "Unwindowed finite-interval RFFT; weights 1 for DC/Nyquist (if present), 2 otherwise; /N^2 mean products",
+  "primary": [
+    "signed_rho",
+    "least_squares_gain",
+    "projection_fraction_rho_squared",
+    "residual_mean_square"
+  ],
+  "secondary": "cosine of weighted per-bin spectral powers, phase insensitive",
+  "forbidden": "No optimized lag, filter, kernel, threshold, window, or classifier; no waveform output"
+}

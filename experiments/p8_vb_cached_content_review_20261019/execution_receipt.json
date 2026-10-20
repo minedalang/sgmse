@@ -1,0 +1,29 @@
+{
+  "status": "completed_materials_unrated",
+  "utc": "2026-10-19T12:20:41.207101+00:00",
+  "worker_thread": "01a153da-1fff-72d0-9b8d-d30c76ed3cbb",
+  "builder_pid": 7604,
+  "build_executions": 1,
+  "checker_executions": 1,
+  "builder_seconds": 0.100404208060354,
+  "cases": 32,
+  "human_responses": 0,
+  "AB_frontend_A": 14,
+  "AB_frontend_B": 18,
+  "PCM_sample_decodes": 0,
+  "actual_browser_playback_tested": false,
+  "metrics_sha256": "171bb9f017e4bb886c3b4108da75493e72056f16899594dc0c56e0c010f89871",
+  "regular_file_bytes": 213668,
+  "symlink_own_bytes": 14416,
+  "referenced_unique_source_bytes": 11902696,
+  "referenced_entry_total_bytes": 14649472,
+  "full_file_duration_range_seconds": [
+    3.1156875,
+    4.61
+  ],
+  "unique_source_duration_seconds": 371.81625,
+  "entry_duration_seconds_onepass": 457.62,
+  "loopback_GETs": 7,
+  "audio_playbacks": 0,
+  "server_pid": 16022
+}

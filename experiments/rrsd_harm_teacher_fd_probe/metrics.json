@@ -1,0 +1,51 @@
+{
+  "experiment_id": "rrsd_harm_teacher_fd_probe",
+  "source_logs": [
+    "experiment_logs/rrsd_pg_conflict_fd_router_wavlm_l3_cv_synthetic_64b_seed2026.log",
+    "experiment_logs/rrsd_pg_conflict_fd_router_wavlm_l3_cv_synthetic_96b_seed2026.log"
+  ],
+  "n_all_rows": 86,
+  "n_conflict_rows": 64,
+  "all": {
+    "n": 86,
+    "conflict_rows": 64,
+    "mean_tiles": 9.430232558139535,
+    "plus_ok_rate": 0.5348837209302325,
+    "minus_ok_rate": 0.6162790697674418,
+    "both_rate": 0.4418604651162791,
+    "future_plus_decrease_rate": 0.6511627906976745,
+    "ssl_plus_increase_rate": 0.5813953488372093
+  },
+  "conflict_only": {
+    "n": 64,
+    "conflict_rows": 64,
+    "mean_tiles": 12.671875,
+    "plus_ok_rate": 0.71875,
+    "minus_ok_rate": 0.828125,
+    "both_rate": 0.59375,
+    "future_plus_decrease_rate": 0.875,
+    "ssl_plus_increase_rate": 0.78125
+  },
+  "bins": {
+    "low": {
+      "n": 28,
+      "conflict_rows": 28,
+      "mean_tiles": 16,
+      "plus_ok_rate": 0.7857142857142857,
+      "minus_ok_rate": 0.9285714285714286,
+      "both_rate": 0.7142857142857143,
+      "future_plus_decrease_rate": 1.0,
+      "ssl_plus_increase_rate": 0.7857142857142857
+    },
+    "mid": {
+      "n": 36,
+      "conflict_rows": 36,
+      "mean_tiles": 10.083333333333334,
+      "plus_ok_rate": 0.6666666666666666,
+      "minus_ok_rate": 0.75,
+      "both_rate": 0.5,
+      "future_plus_decrease_rate": 0.7777777777777778,
+      "ssl_plus_increase_rate": 0.7777777777777778
+    }
+  }
+}

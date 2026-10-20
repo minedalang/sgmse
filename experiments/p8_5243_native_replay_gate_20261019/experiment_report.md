@@ -1,0 +1,13 @@
+# Native5243 replay gate — failed before model calls
+
+The single approved command stopped during model-code import with `RuntimeError: Ninja is required to load C++ extensions`. Supervisor wall time:6.96014seconds. Calls: frontend0,backend0,trace0; no classifier,training,Router,intervention or retry. No model was initialized or checkpoint loaded into a model; checkpoint bytes were hash-checked before and after the import failure.
+
+Read-only diagnosis: `/data/coding/sgmse/env/bin/ninja` exists, but the exact approved command's inherited PATH omits `/data/coding/sgmse/env/bin`; `command -v ninja` returns no path. Torch's extension loader checks executable availability before importing the model. This is an environment-path failure, not evidence of a numerical replay mismatch or absent installed ninja. Worker made no environment,driver,config,helper or dependency changes and did not rerun.
+
+All17 pre/post source and checkpoint hashes match the frozen expected locks. Corrected driver/config/frozen manifest hashes match approval, and all preparation locks remain intact. CPU independent validation verifies every one of10 supervisor-manifest artifacts by size/SHA256, confirms an empty outputs directory, unchanged locks and zero model-call counts; see failure_validation.json. STARTED.json,launch_provenance.json,run.log,child_result.json and metrics.json preserve the actual attempt and traceback. A new-directory input symlink bearing the original00_ basename was created before the failure; existing data/source files were not modified.
+
+No frontend PCM gate,fullOFF30s gate or2s clip gate was reached. No raw frontend/backend arrays were recovered. Therefore this attempt establishes no exact native replay and permits no local intervention. The intended reconstruction remains full30s context,80k EMA,mode2,PC N30/OFF,base2026→effective seed369124093; these were frozen settings,not runtime results from this failed attempt. Original historical raw frontend remains unavailable.
+
+For future interpretation of the approved tracing code only: callback occurs after predictor execution; payload x_t refers to pre-predictor state after corrector,while callback RNG is post-predictor. No callback occurred here,so no RNG/xT/state claim is based on captured replay data. This failure says nothing about content restoration,phoneme correctness or the5243 causal mechanism.
+
+GPU is idle and the existing listening server remains running. Source/data/checkpoint and pre-existing dirty workspace files were preserved. Research plan was not edited. Worker stopped as required; any correction/new execution requires Research Lead's separate decision.

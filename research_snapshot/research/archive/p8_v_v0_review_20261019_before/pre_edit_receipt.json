@@ -1,0 +1,66 @@
+{
+  "kind": "documentation_review_not_experiment",
+  "utc": "2026-10-19T05:54:37.105237+00:00",
+  "pre_edit_records": [
+    {
+      "path": "/data/research_plan.md",
+      "backup": "/data/research/archive/p8_v_v0_review_20261019_before/research_plan.md",
+      "bytes": 8614,
+      "sha256": "81cdd9a6072f8b5719c818a3f0102e1927e56b1ec27401f9e8691f7e17698648"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "backup": "/data/research/archive/p8_v_v0_review_20261019_before/p8_v_counterfactual.md",
+      "bytes": 8601,
+      "sha256": "83510f80814e9e1332b33bf73e7d54e28a8e6502cb3c1b184c5017561b7fd51b"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "backup": "/data/research/archive/p8_v_v0_review_20261019_before/evidence_summary.md",
+      "bytes": 8395,
+      "sha256": "42915e64457aeafa0cd0713d9b25c651ff912a0dc7e1f0ef51bd94cadf3cd2c4"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/papers/artifree_2509.19495v1.txt",
+      "bytes": 32660,
+      "sha256": "209db3340596c4692611952678ee5e9a7a7966bfeb6e18c2574e612dc96d977f",
+      "role": "existing_source"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/papers/galdse_2409.15101v5.txt",
+      "bytes": 37751,
+      "sha256": "f6383fcc74a3eb63013404e2124921b91f31346d29778ec1dd76cd93b870979e",
+      "role": "existing_source"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/papers/pase_2511.13300v1.txt",
+      "bytes": 69584,
+      "sha256": "544fb0192fa4b003ba017f4e4d5b2d08f6f3faf83a1aace9bcfdab2e661d7b1b",
+      "role": "existing_source"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_evidence_prior_audit_20261019/papers/grounded_2609.04245v1.txt",
+      "bytes": 85392,
+      "sha256": "f4eec63a51e002732899d69e3633ecaa1079fe7724fd40e4d593b6bfb6cc4af5",
+      "role": "existing_source"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json",
+      "bytes": 1038290,
+      "sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+      "role": "existing_source"
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/metrics.json",
+      "bytes": 57176,
+      "sha256": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7",
+      "role": "existing_source"
+    }
+  ],
+  "git_status_before_sha256": "0086d160751ab67e6ec0059ecc2dc7e9bfde772770f4914a778b853bc1832fed",
+  "git_status_before_entries": 154,
+  "new_model_calls": 0,
+  "new_audio_decodes": 0,
+  "new_training": 0,
+  "notes": "Read-only literature browsing performed through web tool. Network request/byte counts are not instrumented and are not claimed zero. No source-code edits or experiment runs."
+}

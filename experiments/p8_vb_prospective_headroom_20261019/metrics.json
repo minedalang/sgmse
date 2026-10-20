@@ -1,0 +1,40 @@
+{
+  "status": "metadata_registered_pending_history_review",
+  "elapsed_seconds": 0.9754672449780628,
+  "selected_ids": [
+    "p227_030",
+    "p227_031",
+    "p228_026",
+    "p228_032",
+    "p230_027",
+    "p230_029",
+    "p231_029",
+    "p231_032"
+  ],
+  "speaker_count": 4,
+  "utterance_count": 8,
+  "source_locks_pre": {
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/config.yaml": "02d8d2042bbde01e97633c2fbced5e8c29f588357b12f15c388f1337f1aea9ed",
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/metadata_plan.md": "c2ae0e4165c9ad3cf093115dffd8e194b1849004cecdbc7bd04af6023caec3aa",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+    "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/metrics.json": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7"
+  },
+  "source_locks_post": {
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/config.yaml": "02d8d2042bbde01e97633c2fbced5e8c29f588357b12f15c388f1337f1aea9ed",
+    "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/metadata_plan.md": "c2ae0e4165c9ad3cf093115dffd8e194b1849004cecdbc7bd04af6023caec3aa",
+    "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+    "/data/coding/sgmse/experiments/p8_vb_caseB_opening_existing_audit_20261019/metrics.json": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7"
+  },
+  "git_other_entries_unchanged": true,
+  "network_calls": 0,
+  "audio_decode": 0,
+  "resample": 0,
+  "mixing": 0,
+  "models": 0,
+  "ASR": 0,
+  "training": 0,
+  "retries": 0,
+  "model_stage_authorized": false
+}

@@ -1,0 +1,882 @@
+{
+  "status": "failed",
+  "identity": {
+    "config_sha256": "bebce9b43785023e9e08828da57b9ca64de5441d6f16a32387951f15e77fc9dd",
+    "code_sha256": "c9de83b883a1b3284f6653c99c2028726530b3c75e7dc522a8ca9e4ba9c14fa5",
+    "manifest_sha256": "aad118341d0dfab83f13d0221e87699ec090d0ad81005102adf5c141d5029631",
+    "source_checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "core_sha256": {
+      "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+      "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+      "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+      "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+      "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+      "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+      "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+      "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+    },
+    "source_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+    "old_baseline_sha256": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388"
+  },
+  "cases": [
+    {
+      "utt": "reader_11121_fileid_10724",
+      "dev_index": 3,
+      "bin": "[-20,-18)",
+      "seed": 20361022,
+      "crop_start": 223680,
+      "normfactor": 0.48455810546875,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "2420afa7ea20f9ba4001fab521621d5d181f9a323546a2d554d14e8256cfc89e"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "ab70af80d38d6a77c4b4e0fc111ccee5fb79a32945b87e58e292842e670203b1"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "33feec4d05c2df3cbad8397ef4c1f88ce747368592a9322f2aaec84dc13abe76"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "62213d7c6b2b4f934547250634e696b0972e826ba0633636e7b37a60b1400b17"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "11b9a9facc53830c2ed363644995f7548adf10c0fb3f13bf3e92878dec7a2b15"
+      },
+      "actual_public_norm": 0.48455810546875,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "4799af79615a9c6482e29ba2241579d3a35916faf03c2f550f187ef7731edf9b"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "04cd93a374030ced662d8d39a8a6de244190b196884a7b1a2e409d8a606c70dd"
+      },
+      "raw_public_anchor": {
+        "mse": 2.211852522893178e-05,
+        "reference_energy": 0.00036775931611027153,
+        "normalized_mse": 0.060144024257157376,
+        "relative_l2": 0.24524278635090854
+      },
+      "expected_actual_anchor": {
+        "mse": 1.0589492713988998e-15,
+        "reference_energy": 0.00039051544801986483,
+        "normalized_mse": 2.7116706311321975e-12,
+        "relative_l2": 1.6467151032076549e-06
+      },
+      "raw_public_noisy": {
+        "mse": 1.3773342184192304e-13,
+        "reference_energy": 0.027346759662195515,
+        "normalized_mse": 5.036553637187493e-12,
+        "relative_l2": 2.2442267347992034e-06
+      },
+      "output_difference": {
+        "mse": 0.00014660970039191145,
+        "reference_energy": 0.0001233560821898217,
+        "normalized_mse": 1.1885080799364787,
+        "relative_l2": 1.0901871765602815
+      },
+      "raw_clean_mse": 0.00020305298223587017,
+      "public_clean_mse": 0.00018360790968391846,
+      "interface_passed": true,
+      "old_baseline_sanity": {
+        "old_mse": 0.00020305298223587017,
+        "absolute_difference": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "utt": "reader_11446_fileid_11151",
+      "dev_index": 11,
+      "bin": "[-20,-18)",
+      "seed": 20361030,
+      "crop_start": 223680,
+      "normfactor": 0.094085693359375,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "40474597f58f13ea61c6e3a0a450aefc15d61b6d5161cd2152e27e1454baa978"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "ef0c05afae2ab3ef08355a62a62d63321c1c262ec86b78d69b36af39f661e01b"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "8d415ac4438a198ac8c975a110684a0f33d74c504c435a9070caf51ded7e3f00"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "51a57a2573bbabe5a16b3e54db3489bd2d2b905722f5af976e28f66d95688d3e"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "52ebf0bb0fc691d34ec12bf6928cf20e36eeb9cc3db0bc04540f391451d128d7"
+      },
+      "actual_public_norm": 0.094085693359375,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "a3c3256858887cbebf7fcf6683ca53769a64130bdeeaec3167d0c99483c60bac"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "877d52a1fa019bdcabcf7cc5cdc380f744b940900233cabd72c81acef1d2f041"
+      },
+      "raw_public_anchor": {
+        "mse": 4.1139240751641794e-05,
+        "reference_energy": 0.001732169761477837,
+        "normalized_mse": 0.023750120609739193,
+        "relative_l2": 0.1541107413833935
+      },
+      "expected_actual_anchor": {
+        "mse": 5.709904221652354e-14,
+        "reference_energy": 0.0018089147526580752,
+        "normalized_mse": 3.156535825285323e-11,
+        "relative_l2": 5.618305638967431e-06
+      },
+      "raw_public_noisy": {
+        "mse": 6.615026839424105e-15,
+        "reference_energy": 0.027315780407503116,
+        "normalized_mse": 2.421686929950237e-13,
+        "relative_l2": 4.921063838186045e-07
+      },
+      "output_difference": {
+        "mse": 0.00040173450580043935,
+        "reference_energy": 0.0013946197327628477,
+        "normalized_mse": 0.2880602477957004,
+        "relative_l2": 0.5367124442340613
+      },
+      "raw_clean_mse": 0.0007122949073487678,
+      "public_clean_mse": 0.0004204484744672346,
+      "interface_passed": true,
+      "old_baseline_sanity": {
+        "old_mse": 0.0007122949073487677,
+        "absolute_difference": 1.0842021724855044e-19,
+        "passed": true
+      }
+    },
+    {
+      "utt": "reader_11794_fileid_5599",
+      "dev_index": 18,
+      "bin": "[-18,-15)",
+      "seed": 20361037,
+      "crop_start": 223680,
+      "normfactor": 0.263763427734375,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "47b51f04621dd6c84c87db853ee0bbb6fd0c5e749befe19abf7e428c6e01f766"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "97606a2f4cbf0b5e4876a8f54cc400b8c1ecf7087fab6addc5f87ec85d42dc31"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "629ef2c8195910b1f06e64ea2c24e209dda35d3b951b927dee223bba4a13ac8e"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "7d113fc9654df9b6dbefe968676522d80613897a167b624bc4ab06db2e2a7eae"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "c10fa6d8fd5b279295dfb715c42957a370e5a6046eba00ca5fcb7df8be3d32b6"
+      },
+      "actual_public_norm": 0.263763427734375,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "fbf139c28755a734f97e0e9d08e2bf5e7b678a1e080042cbd9d3328c25e7aed2"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "f0be45a33c0a2b1956458588781798d25eebe36ef18351c78fd5758e93698b20"
+      },
+      "raw_public_anchor": {
+        "mse": 3.713703228738403e-05,
+        "reference_energy": 0.0022460791578281505,
+        "normalized_mse": 0.016534160053064975,
+        "relative_l2": 0.12858522486298718
+      },
+      "expected_actual_anchor": {
+        "mse": 2.20920318122729e-14,
+        "reference_energy": 0.0023210085625987122,
+        "normalized_mse": 9.51828966435936e-12,
+        "relative_l2": 3.0851725501759803e-06
+      },
+      "raw_public_noisy": {
+        "mse": 5.993886965711119e-15,
+        "reference_energy": 0.010832910684615591,
+        "normalized_mse": 5.533034601885314e-13,
+        "relative_l2": 7.438437068286129e-07
+      },
+      "output_difference": {
+        "mse": 0.00016780817739832458,
+        "reference_energy": 0.0013356309915600732,
+        "normalized_mse": 0.12563962535963438,
+        "relative_l2": 0.35445680323508305
+      },
+      "raw_clean_mse": 0.00020726875701141973,
+      "public_clean_mse": 0.00019713010969859502,
+      "interface_passed": true,
+      "old_baseline_sanity": {
+        "old_mse": 0.00020726875701141973,
+        "absolute_difference": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "utt": "reader_11128_fileid_5694",
+      "dev_index": 30,
+      "bin": "[-18,-15)",
+      "seed": 20361049,
+      "crop_start": 223680,
+      "normfactor": 0.944580078125,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "795553d0e9fe5dc71d7fd01cf6a38fa503bf041cd22908c8e6a2b0cbb2a9f52d"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "c3c3ea01cd118e90b12e0614ea8527cd469aafae976cfef97f9d8f597438ebb9"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "8bdde2d0cf3967ef470f01bd50135a6383523b3cd7d989e1a0e80fab6f5f361e"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "d7e8516a1fbd59639e87d8b312db65eb81839287393e0e426503f709b30658af"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "1c46a8f6dca0324c01561d6f3eb2dd5b52c1c7fa417e54da78ae618e1e00d4ee"
+      },
+      "actual_public_norm": 0.944580078125,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "d4438aece5c35e5b92e1231bf5ee24c01578c51474f806b2e32f4bcdf76d34b4"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "79f58c8dafd12852b32b1b6fa762b037067d564d55cdbe6f1c769d8922a813ba"
+      },
+      "raw_public_anchor": {
+        "mse": 1.141218817622976e-05,
+        "reference_energy": 0.00033965597143229237,
+        "normalized_mse": 0.03359925670703153,
+        "relative_l2": 0.1833010002892279
+      },
+      "expected_actual_anchor": {
+        "mse": 4.232709875611393e-15,
+        "reference_energy": 0.0003551241380598555,
+        "normalized_mse": 1.1918958533024242e-11,
+        "relative_l2": 3.4523844706266773e-06
+      },
+      "raw_public_noisy": {
+        "mse": 3.9644905611869735e-15,
+        "reference_energy": 0.01291259871170532,
+        "normalized_mse": 3.070249954870159e-13,
+        "relative_l2": 5.540983626460342e-07
+      },
+      "output_difference": {
+        "mse": 3.8514250070704295e-05,
+        "reference_energy": 9.958382735678e-05,
+        "normalized_mse": 0.38675205696522286,
+        "relative_l2": 0.6218939274226939
+      },
+      "raw_clean_mse": 4.017139296730423e-05,
+      "public_clean_mse": 4.303354392025301e-05,
+      "interface_passed": true,
+      "old_baseline_sanity": {
+        "old_mse": 4.017139296730423e-05,
+        "absolute_difference": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "utt": "reader_11301_fileid_9495",
+      "dev_index": 40,
+      "bin": "[-15,-10)",
+      "seed": 20361059,
+      "crop_start": 223680,
+      "normfactor": 0.348052978515625,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "b40a787c4c0f1ca0abeccca6fb95c40b850556d9c9d14883d48c193d1cd958c2"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "fe08ab53fb2e1bc1ca3f47e3ac1590875b208807e8dde8b41e853ef9f5fa87a2"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "853a32379aea88834e1f4d0a2b6b3f095b7e4e1c15e4bd4831e2ce5836d05b56"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "047aa3050d8e5dc83a8aac58ae0355b0a1e57fe4498043c3a6bb12d831f17445"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "b43826775a47cde9a7ba93029c001b14a5e57f7681b91d0e7acf2ccfef57768d"
+      },
+      "actual_public_norm": 0.348052978515625,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "a54f1776619ddd4f82c3a65a25d5d5f8a1adad928bf1bb5b9972c3a186965933"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "58ae23742b425d86dcfad27d0b7922a57c34408f25a9e6505b567b306ca974e1"
+      },
+      "raw_public_anchor": {
+        "mse": 3.017062172457373e-05,
+        "reference_energy": 0.0029528592694059207,
+        "normalized_mse": 0.010217426220465864,
+        "relative_l2": 0.10108128521376182
+      },
+      "expected_actual_anchor": {
+        "mse": 3.325932777247739e-14,
+        "reference_energy": 0.0029996898354501655,
+        "normalized_mse": 1.1087588916500809e-11,
+        "relative_l2": 3.3298031347965316e-06
+      },
+      "raw_public_noisy": {
+        "mse": 3.5512649984175417e-13,
+        "reference_energy": 0.021218978078663374,
+        "normalized_mse": 1.6736267812956065e-11,
+        "relative_l2": 4.090998388285684e-06
+      },
+      "output_difference": {
+        "mse": 1.219322735949909e-05,
+        "reference_energy": 0.0025709172604774784,
+        "normalized_mse": 0.004742753703880197,
+        "relative_l2": 0.06886765353836441
+      },
+      "raw_clean_mse": 1.4550317343009092e-05,
+      "public_clean_mse": 1.6564985283716712e-05,
+      "interface_passed": true,
+      "old_baseline_sanity": {
+        "old_mse": 1.4550317343009092e-05,
+        "absolute_difference": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "utt": "reader_11917_fileid_1923",
+      "dev_index": 43,
+      "bin": "[-15,-10)",
+      "seed": 20361062,
+      "crop_start": 223680,
+      "normfactor": 0.233734130859375,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "4dd5ddbb8cbe9d474ca944ea84e338b95e2faa1605fed863cbd8339248c5f0ea"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "ace2ccc6634293ce69ad29c50ed01808219ea18274529046a8b0e9b27f1ba39a"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "5b77035e87a1f16186d3d6467744c00902dc3f550e430720203ecd4fcc3a1029"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "79819949630a3e6f51311f46188c65f4c50b0476c07f6a334fbf0dadaf5e873f"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "24f18835cd01d442a627b33a1ebfb6321514ef48eee6340f646cdaa931b298a5"
+      },
+      "actual_public_norm": 0.233734130859375,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "2a16e94e01bdac4fcf350b9e88f788665ae01f618c1df927cf7cf693b0ed08f8"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "2bea71f54c6074cfee8cde693e9ecf93f84d4eab755bf8b5e7e23802b7b051e8"
+      },
+      "raw_public_anchor": {
+        "mse": 2.3444681013459127e-05,
+        "reference_energy": 0.0016526485755588233,
+        "normalized_mse": 0.014186126052558748,
+        "relative_l2": 0.11910552486160643
+      },
+      "expected_actual_anchor": {
+        "mse": 4.295982509059964e-14,
+        "reference_energy": 0.001703218333527266,
+        "normalized_mse": 2.5222735244771787e-11,
+        "relative_l2": 5.0222241332672306e-06
+      },
+      "raw_public_noisy": {
+        "mse": 6.062177425953062e-15,
+        "reference_energy": 0.006144036432114474,
+        "normalized_mse": 9.866766730526628e-13,
+        "relative_l2": 9.933159985888995e-07
+      },
+      "output_difference": {
+        "mse": 7.319607333130728e-05,
+        "reference_energy": 0.0008045749975264159,
+        "normalized_mse": 0.09097482963843168,
+        "relative_l2": 0.30162034022663603
+      },
+      "raw_clean_mse": 9.304930303601926e-05,
+      "public_clean_mse": 8.351067987242327e-05,
+      "interface_passed": true,
+      "old_baseline_sanity": {
+        "old_mse": 9.304930303601926e-05,
+        "absolute_difference": 0.0,
+        "passed": true
+      }
+    },
+    {
+      "utt": "reader_11053_fileid_1482",
+      "dev_index": 62,
+      "bin": "[-10,-5]",
+      "seed": 20361081,
+      "crop_start": 223680,
+      "normfactor": 0.17034912109375,
+      "raw_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "2d7b48e86d6cf862f31dd11ab9aca897944f7e143fd834d2483e272d61cadb25"
+      },
+      "expected_roundtrip": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "9155f9fafebeff8cdbc2daf73fbb450dfaa13dff09223d479129d68db6435150"
+      },
+      "noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "c6c0a493aa79898dbc94fe2b746fd74f53951471e1a6e32f8c4e0ffc143db21b"
+      },
+      "raw_calls": 30,
+      "public_calls": 30,
+      "actual_public_anchor": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "5fac798d2817666be32785562b8d1e075e68faa09f19557bae41eabb1253f7bb"
+      },
+      "actual_public_noisy": {
+        "shape": [
+          1,
+          1,
+          256,
+          256
+        ],
+        "dtype": "complex64",
+        "sha256": "1083cf7e52149bbe99c4a9aee3886e390cd562037caa85f450822b026602a5ae"
+      },
+      "actual_public_norm": 0.17034912109375,
+      "raw_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "c41b71f9720901032749337a43db76d20be3aec75a2e058474691a363d936973"
+      },
+      "public_normalized_output": {
+        "shape": [
+          1,
+          32640
+        ],
+        "dtype": "float32",
+        "sha256": "e5a3e5a239e2b2620b5fe15ea97fd2ecb44b60d2b9af5fff1c2b4422b47a4892"
+      },
+      "raw_public_anchor": {
+        "mse": 3.420539387482765e-05,
+        "reference_energy": 0.0021316152298163182,
+        "normalized_mse": 0.01604670176698594,
+        "relative_l2": 0.12667557683699704
+      },
+      "expected_actual_anchor": {
+        "mse": 2.565583989693233e-13,
+        "reference_energy": 0.002211427357627805,
+        "normalized_mse": 1.1601484357348872e-10,
+        "relative_l2": 1.0771018687825619e-05
+      },
+      "raw_public_noisy": {
+        "mse": 8.352281610217858e-16,
+        "reference_energy": 0.0436137851757047,
+        "normalized_mse": 1.915055429509141e-14,
+        "relative_l2": 1.383855277660616e-07
+      },
+      "output_difference": {
+        "mse": 0.0004196141857523057,
+        "reference_energy": 0.0024003256961769824,
+        "normalized_mse": 0.1748155204190117,
+        "relative_l2": 0.41810945985353126
+      },
+      "raw_clean_mse": 0.0008995966320277003,
+      "public_clean_mse": 0.0008896966435185019,
+      "interface_passed": false,
+      "old_baseline_sanity": {
+        "old_mse": 0.0008995966320277004,
+        "absolute_difference": 1.0842021724855044e-19,
+        "passed": true
+      }
+    }
+  ],
+  "counts": {
+    "model_loads": 1,
+    "pcm_reads": 14,
+    "frontend": 7,
+    "backend": 14,
+    "score": 420
+  },
+  "source_pre": {
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08262_chp_0003_reader_11121_47_dw01uNojLKA-YkwrwCFjtf8-fan_Freesound_validated_437343_3_snr-20_fileid_10724.wav": "dc5ce3da81b41701b0ae9c287e271c936b0f9aeb6151f3e8c54bd3dd30ffd02d",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10724.wav": "4e3985890ebdef4b46b128fb16beb5bff49d13f5d9af991c1a12317d07fd4bf4",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06632_chp_0020_reader_11446_52_CAb-VztHqZ4-MpS7yOF7LdU-kQtoIyVNj3M_snr-20_fileid_11151.wav": "a5c51a62cdb4d7e60529b19ad148d49394ba7ccd246c07a4ba4d66b5a4e95bd5",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11151.wav": "bb15145ddecdc6f703ecd2ec5709bbf403b44ee834deac92b1618f7330e8eaf0",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07714_chp_0007_reader_11794_7_LZIq3ARVkO0-copy-machine_Freesound_validated_402463_4-E9MtHhS4rbM_snr-16_fileid_5599.wav": "77aba51187bc2ac008998c08cbcc74e712c8274ad363ae346629a4f9fe79123c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5599.wav": "c0567f40c4df4edee4278e3ca8bc68d0a7b1f8073d89dca937006cc985181e7c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08134_chp_0001_reader_11128_45_QnWP29qko_0-pBXZyD7pVA8-Z9mOTdFvCn4_snr-16_fileid_5694.wav": "2d7cb5f798c40ad3bfdb91beb00015c537ac7f7faed32d679f13ae3dc7bfcdb4",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5694.wav": "ca51020405274b45f3d8378253d99d5af91e3606a2ddf428bcbc6fcf3208b5ba",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02353_chp_0003_reader_11301_53_L6ttBdK8V5U-GBnr9mguZyY-breath_spit_Freesound_validated_335775_0_snr-14_fileid_9495.wav": "e5ccaa381615acfb32ccc588857dd048bed071fae25a1451e1b890a789af2ae8",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_9495.wav": "1184c46fef3bd1766176f61be2e69ec977c8b5e6755d9f667c208d3c7ec43d1e",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09653_chp_0007_reader_11917_46_door_Freesound_validated_138084_1-door_Freesound_validated_260075_0-iMB_JpEScMY_snr-15_fileid_1923.wav": "56e5997e21a4fb1f6cb8112ff548b0a2496f8416bd73875a4c72ae2245310ed0",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1923.wav": "92746bddcd45b6e7ec578b9b873596d42cd0b248d5d774c1ef08fb9127694e2c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_33_z00xmf4R9kA-wyZlvUSm9ng-4VG6_kFy6s0_snr-10_fileid_1482.wav": "56370a7c006a3776b0b87e64bd087c9911a8599e0d2f866c54b203133ba0cd44",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1482.wav": "70558d3756e0eab2fbb741422b2396bc6994163801cdb90395e86d30f7473d60",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10732_chp_0035_reader_11195_4_P6XUaw6OXdg-PLFR7foIMkk-p2tKO12rfSI_snr-7_fileid_7449.wav": "85f90748ffe453fab3836e1aca27c5cbb9eb13b1274983623d815abd9915790c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7449.wav": "7295191ba1ab76973b080d02c7bcd98e056be82760b00856d9cf6fb691de0cf3",
+    "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/config.yaml": "bebce9b43785023e9e08828da57b9ca64de5441d6f16a32387951f15e77fc9dd",
+    "/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/audit.py": "c9de83b883a1b3284f6653c99c2028726530b3c75e7dc522a8ca9e4ba9c14fa5",
+    "/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/selected8_manifest.json": "aad118341d0dfab83f13d0221e87699ec090d0ad81005102adf5c141d5029631",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/initial_base_metrics.json": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388",
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+    "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+    "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+    "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+    "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+  },
+  "source_post": {
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08262_chp_0003_reader_11121_47_dw01uNojLKA-YkwrwCFjtf8-fan_Freesound_validated_437343_3_snr-20_fileid_10724.wav": "dc5ce3da81b41701b0ae9c287e271c936b0f9aeb6151f3e8c54bd3dd30ffd02d",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10724.wav": "4e3985890ebdef4b46b128fb16beb5bff49d13f5d9af991c1a12317d07fd4bf4",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06632_chp_0020_reader_11446_52_CAb-VztHqZ4-MpS7yOF7LdU-kQtoIyVNj3M_snr-20_fileid_11151.wav": "a5c51a62cdb4d7e60529b19ad148d49394ba7ccd246c07a4ba4d66b5a4e95bd5",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11151.wav": "bb15145ddecdc6f703ecd2ec5709bbf403b44ee834deac92b1618f7330e8eaf0",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07714_chp_0007_reader_11794_7_LZIq3ARVkO0-copy-machine_Freesound_validated_402463_4-E9MtHhS4rbM_snr-16_fileid_5599.wav": "77aba51187bc2ac008998c08cbcc74e712c8274ad363ae346629a4f9fe79123c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5599.wav": "c0567f40c4df4edee4278e3ca8bc68d0a7b1f8073d89dca937006cc985181e7c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_08134_chp_0001_reader_11128_45_QnWP29qko_0-pBXZyD7pVA8-Z9mOTdFvCn4_snr-16_fileid_5694.wav": "2d7cb5f798c40ad3bfdb91beb00015c537ac7f7faed32d679f13ae3dc7bfcdb4",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5694.wav": "ca51020405274b45f3d8378253d99d5af91e3606a2ddf428bcbc6fcf3208b5ba",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02353_chp_0003_reader_11301_53_L6ttBdK8V5U-GBnr9mguZyY-breath_spit_Freesound_validated_335775_0_snr-14_fileid_9495.wav": "e5ccaa381615acfb32ccc588857dd048bed071fae25a1451e1b890a789af2ae8",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_9495.wav": "1184c46fef3bd1766176f61be2e69ec977c8b5e6755d9f667c208d3c7ec43d1e",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09653_chp_0007_reader_11917_46_door_Freesound_validated_138084_1-door_Freesound_validated_260075_0-iMB_JpEScMY_snr-15_fileid_1923.wav": "56e5997e21a4fb1f6cb8112ff548b0a2496f8416bd73875a4c72ae2245310ed0",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1923.wav": "92746bddcd45b6e7ec578b9b873596d42cd0b248d5d774c1ef08fb9127694e2c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02396_chp_0002_reader_11053_33_z00xmf4R9kA-wyZlvUSm9ng-4VG6_kFy6s0_snr-10_fileid_1482.wav": "56370a7c006a3776b0b87e64bd087c9911a8599e0d2f866c54b203133ba0cd44",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_1482.wav": "70558d3756e0eab2fbb741422b2396bc6994163801cdb90395e86d30f7473d60",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_10732_chp_0035_reader_11195_4_P6XUaw6OXdg-PLFR7foIMkk-p2tKO12rfSI_snr-7_fileid_7449.wav": "85f90748ffe453fab3836e1aca27c5cbb9eb13b1274983623d815abd9915790c",
+    "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_7449.wav": "7295191ba1ab76973b080d02c7bcd98e056be82760b00856d9cf6fb691de0cf3",
+    "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/config.yaml": "bebce9b43785023e9e08828da57b9ca64de5441d6f16a32387951f15e77fc9dd",
+    "/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/audit.py": "c9de83b883a1b3284f6653c99c2028726530b3c75e7dc522a8ca9e4ba9c14fa5",
+    "/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/selected8_manifest.json": "aad118341d0dfab83f13d0221e87699ec090d0ad81005102adf5c141d5029631",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/initial_base_metrics.json": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388",
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+    "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+    "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+    "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+    "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+  },
+  "failure": {
+    "type": "RuntimeError",
+    "message": "Public interface invariant failed; stop without retry",
+    "traceback": "Traceback (most recent call last):\n  File \"/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/audit.py\", line 314, in main\n    require(out['interface_passed'], 'Public interface invariant failed; stop without retry')\n  File \"/data/coding/sgmse/experiments/p8_native_anchor_roundtrip_audit_20261020/audit.py\", line 30, in require\n    raise RuntimeError(message)\nRuntimeError: Public interface invariant failed; stop without retry\n"
+  },
+  "network_refusals": [],
+  "elapsed_seconds": 22.149935366003774,
+  "geometry": {
+    "n_fft": 510,
+    "hop_length": 128,
+    "transform_type": "exponent",
+    "spec_abs_exponent": 0.5,
+    "spec_factor": 0.15,
+    "samples": 32640,
+    "frames": 256,
+    "center": true,
+    "window": {
+      "shape": [
+        510
+      ],
+      "dtype": "float32",
+      "sha256": "42ebc31a5eb68a03fb7dab65725e69f38c005c98af447bcbb0c13cac53cd02a2"
+    },
+    "exact_inverse": false
+  }
+}

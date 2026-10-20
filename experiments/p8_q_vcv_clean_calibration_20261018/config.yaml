@@ -1,0 +1,49 @@
+experiment_id: p8_q_vcv_clean_calibration_20261018
+phase: prepared
+stage: subset_selection_only
+training: false
+enhancement_inference: false
+network_executed_during_preparation: false
+source:
+  corpus: The Consonant Challenge Corpus
+  record_id: 3538223
+  doi: 10.5281/zenodo.3538223
+  license: CC-BY-4.0
+  archive: train.zip
+  archive_bytes: 169755879
+  archive_metadata_md5: 53a9ede7b84cfb61e4189ccd3149a744
+  metadata: ../p8_q_external_corpus_audit_20261018/record.json
+  manual_mlf: ../p8_q_external_corpus_audit_20261018/handsegm.91.mlf.txt
+bounds:
+  received_http_body_bytes: 8000000
+  derived_output_bytes: 32000000
+  wav_files: 32
+  timeout_seconds: 30
+  proxy_fallback_requests: 1
+  proxy: http://127.0.0.1:7890
+  require_http_206_and_exact_content_range: true
+  full_download_fallback: false
+selection:
+  distinct_corpus_train_speakers: 4
+  pairs: 8
+  primary_wavs: 16
+  contrasts: [k/g, t/d]
+  common_context_priority: [aCa, iCi, uCu]
+  stress_priority: [1, 2]
+  speaker_order: numeric_with_alternating_f_m_start_f
+  require_both_sexes_if_available: true
+  all_four_consonants_share_context_and_stress_per_speaker: true
+  supplementary_manual_mlf_targets_max: 13
+  supplementary_order: lexical_basename_present_in_archive_excluding_primary
+  identity_source: nominal_corpus_filename_independent_of_teacher
+  manual_boundaries_establish_perfect_identity: false
+  freeze_selection_plan_before_audio_reads: true
+  freeze_manifest_with_wav_sha256_before_model_results: true
+preservation:
+  original_datasets_modified: false
+  raw_wav_sample_rate: 25000
+  resampling: false
+  save_full_archive: false
+  wav_integrity: sha256_and_verified_zip_crc32
+  output_guard: new_directory_and_exclusive_file_creation
+next_stage: Research Lead defines calibration scientific design after inventory review

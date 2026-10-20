@@ -1,0 +1,11 @@
+{
+  "status": "completed",
+  "successful_metrics": "attempt02/metrics.json",
+  "initial_import_failure_metrics": "metrics.json",
+  "single_model_inference_completed": true,
+  "off_exact_byte_match": true,
+  "y_pre_exact_pcm16_match": true,
+  "router_replay_performed": false,
+  "effective_per_file_seed": 2997368683,
+  "nfe": 30
+}

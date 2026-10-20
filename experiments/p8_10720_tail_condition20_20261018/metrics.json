@@ -1,0 +1,213 @@
+{
+  "experiment_id": "p8_10720_tail_condition20_20261018",
+  "status": "completed",
+  "started_at_utc": "2026-10-18T14:27:10.589510+00:00",
+  "failures": [],
+  "runs": {
+    "no_op": {
+      "seed": 2997368683,
+      "anchor_tail_clean": false,
+      "condition_tail_clean": false,
+      "outside_input_max_abs_difference": 0.0,
+      "normalization_peak": 0.04799804836511612,
+      "anchor_float32_sha256": "bd1768f829504acef833313543b9cc07ed91f5334f49d294dae652e85bbdc6ee",
+      "condition_float32_sha256": "f53b044ffa88c6c0488f7337fa1d496d6b73af352af7d6745da70adee2331dbf",
+      "input_perturbation": {
+        "anchor_tail_delta_rms": 0.0,
+        "condition_tail_delta_rms": 0.0,
+        "anchor_outside_max_abs": 0.0,
+        "condition_outside_max_abs": 0.0,
+        "normalization_peak_unchanged": true
+      },
+      "rng_before": {
+        "cpu": "cce387665763e9c51d8ff995142b63dd949818195e4257f1cfb2f25f3a58fc5a",
+        "cuda": "1e80b5d480c407e66b32b13738c9858f948dfa5a80b13abcc38dca21c719cfec"
+      },
+      "nfe": 30,
+      "wall_seconds": 9.181935898028314,
+      "rtf": 0.30573590596516925,
+      "raw_dtype": "float32",
+      "raw_sha256": "8a121959287fcf7f398ad3efae595006049b6beb50b2c81edb952093717a98dc",
+      "raw_file_sha256": "166f6307cdc085fa8d49fe58ac4e5294f7f7ffbf322ac7f652d4f2064b933164",
+      "pcm16_sha256": "e1f3bc73edb0908db91bb35716341bcd29422ba1807fbde2bc51865705a28c4c",
+      "clipped_samples": 0,
+      "exact_saved_pcm16_byte_match": true,
+      "raw_metrics": {
+        "tail_rms": 0.000238707576650123,
+        "tail_rms_dbfs": -72.44267592274565,
+        "tail_highband_mean_square_4k_7p5k": 5.208739946148019e-08,
+        "tail_delta_from_no_op_rms": 0.0,
+        "outside_window_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.21888954791754137,
+        "full_clean_speech_active_rmse_vs_clean": 0.0008129272481246481
+      },
+      "pcm16_reference_metrics": {
+        "tail_rms": 0.00023992890587629448,
+        "tail_rms_dbfs": -72.39834852906972,
+        "tail_highband_mean_square_4k_7p5k": 5.212911782466544e-08,
+        "tail_delta_from_no_op_rms": 0.0,
+        "outside_window_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.21891199146159676,
+        "full_clean_speech_active_rmse_vs_clean": 0.0008130106004835813
+      }
+    },
+    "condition_tail_clean": {
+      "seed": 2997368683,
+      "anchor_tail_clean": false,
+      "condition_tail_clean": true,
+      "outside_input_max_abs_difference": 0.0,
+      "normalization_peak": 0.04799804836511612,
+      "anchor_float32_sha256": "bd1768f829504acef833313543b9cc07ed91f5334f49d294dae652e85bbdc6ee",
+      "condition_float32_sha256": "8bb6db1cad7df6e75212f844d164245162e86963d895814046eed80cfbfea984",
+      "input_perturbation": {
+        "anchor_tail_delta_rms": 0.0,
+        "condition_tail_delta_rms": 0.002636247474386818,
+        "anchor_outside_max_abs": 0.0,
+        "condition_outside_max_abs": 0.0,
+        "normalization_peak_unchanged": true
+      },
+      "rng_before": {
+        "cpu": "cce387665763e9c51d8ff995142b63dd949818195e4257f1cfb2f25f3a58fc5a",
+        "cuda": "1e80b5d480c407e66b32b13738c9858f948dfa5a80b13abcc38dca21c719cfec"
+      },
+      "nfe": 30,
+      "wall_seconds": 9.198993538040668,
+      "rtf": 0.30631884733835857,
+      "raw_dtype": "float32",
+      "raw_sha256": "8b1515bd6ab4bb1f651b9b21afa40a4bc5d98eda5fafba4f85667dd37968e355",
+      "raw_file_sha256": "a1d15c931eb36338e2776e969c71fbe269a68bd76f7527c5e416fe79c91f2bb6",
+      "pcm16_sha256": "8799b15afb0d21867393c30f12537798a9def9e320ae02d9ca0ed4e7e32cd2c5",
+      "clipped_samples": 0,
+      "raw_metrics": {
+        "tail_rms": 8.114257038520206e-06,
+        "tail_rms_dbfs": -101.81502478192431,
+        "tail_highband_mean_square_4k_7p5k": 9.107598923431332e-12,
+        "tail_delta_from_no_op_rms": 0.00023797609873891227,
+        "outside_window_relative_l2_vs_no_op": 0.0022074121453839446,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.002094380029248566,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.21843373877013594,
+        "full_clean_speech_active_rmse_vs_clean": 0.0008112344321921174
+      },
+      "pcm16_reference_metrics": {
+        "tail_rms": 2.8609139557921988e-05,
+        "tail_rms_dbfs": -90.86990407483908,
+        "tail_highband_mean_square_4k_7p5k": 3.937884258474773e-11,
+        "tail_delta_from_no_op_rms": 0.0002372093269785823,
+        "outside_window_relative_l2_vs_no_op": 0.0036656873851367375,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.003439502877449778,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.21845920892891516,
+        "full_clean_speech_active_rmse_vs_clean": 0.0008113290251787012
+      }
+    }
+  },
+  "limits": "Oracle clean-tail intervention is an OOD mechanism probe, not a deployable method. This is within-case/SNR replication, not independent generalization or a trained method. Prior P8-M 5243 active masking negative is preserved and is a distinct experiment.",
+  "enhance_kwargs": {
+    "sampler_type": "pc",
+    "predictor": "reverse_diffusion",
+    "corrector": "none",
+    "N": 30,
+    "snr": 0.5,
+    "regen_strength": null,
+    "anchor_calib": false,
+    "anchor_k_max": null,
+    "anchor_scale": 1.0,
+    "anchor_v2": false,
+    "rrsd_scale": 1.0,
+    "rrsd_t_cut": 0.0,
+    "rrsd_t_cut_scale": 0.0,
+    "rrsd_t_min": 0.0,
+    "rrsd_t_max": null,
+    "anchor_v2_a_max": null,
+    "anchor_v2_b_max": null,
+    "anchor_v2_scale": 1.0,
+    "anchor_v2_single_shot": false,
+    "anchor_v2_single_shot_ratio": 0.5,
+    "anchor_v2_single_shot_step": null,
+    "rrsd": false,
+    "timeit": true
+  },
+  "source_metrics_sha256": "5481db0bbd0c94867423f741f95aca21ed1cd9e380d4c1812973767e65087af6",
+  "source_driver_sha256": "fd18edb502ded24961c74c0260ef68952200a1b5d769e237fd93658ffa608ae0",
+  "code_sha256": {
+    "joint_enhance_by_dir.py": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108",
+    "sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321"
+  },
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9"
+  },
+  "driver_sha256": "3f631f30cd5f685c1ca32efaeddaff04127cfb5153de5d2f124aee164ecd643d",
+  "config_sha256": "8b8d86f549f934459bd5acbbb83e1cb0d7e16e53da4ea94f8f866777c1f5914f",
+  "git_head": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status": " M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py",
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "executable": "/data/coding/sgmse/env/bin/python",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "cudnn": 92400,
+    "device": "NVIDIA L40S",
+    "PATH": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+    "cudnn_deterministic": false,
+    "cudnn_benchmark": false
+  },
+  "inputs": {
+    "clean": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10720.wav",
+      "sha256": "e2a1d164b64b494c9d99c1d1697360ef5f345c7ad12427d995d9c03b781b6c5e",
+      "float32_sha256": "82ff09d4c7e4e4add247c5f92e5a3369087a32a0b609a7d2bb12cad8c9bea2b0",
+      "subtype": "PCM_16"
+    },
+    "noisy": {
+      "path": "/data/coding/sgmse/experiments/p8_10720_snr_control_20261018/noise_minus20dB/inputs/04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+      "sha256": "26f066f0e42ffceefa2dbd170d7c20b086c946c02deb5f9b8bc79ca18b049447",
+      "float32_sha256": "f53b044ffa88c6c0488f7337fa1d496d6b73af352af7d6745da70adee2331dbf",
+      "subtype": "FLOAT"
+    },
+    "off": {
+      "path": "/data/coding/sgmse/experiments/p8_10720_snr_control_20261018/noise_minus20dB/off/04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+      "sha256": "e1f3bc73edb0908db91bb35716341bcd29422ba1807fbde2bc51865705a28c4c",
+      "float32_sha256": "1aedc638faa68ddea84bead678eae0678151948e0184587ac284846ef8e17891",
+      "subtype": "PCM_16"
+    },
+    "y_pre": {
+      "path": "/data/coding/sgmse/experiments/p8_10720_snr_control_20261018/noise_minus20dB/y_pre/04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+      "sha256": "56e6b29beb64ebfef411342deb984d3fea678efc9f069c0a2fadc87e08bd8729",
+      "float32_sha256": "985e71ebf478a587678d7e4cd65a218ef837fabbd6feb7b3cef82a0a7305e550",
+      "subtype": "PCM_16"
+    }
+  },
+  "clean_tail": {
+    "rms": 1.2217244916199046e-05,
+    "rms_dbfs": -98.26053439675279,
+    "floor_limit_pcm16_steps": 3
+  },
+  "speech_activity": {
+    "reference": "full clean 16kHz waveform",
+    "frame_samples": 320,
+    "hop_samples": 320,
+    "threshold_dbfs": -70,
+    "comparison": ">",
+    "active_frames": 1060,
+    "total_frames": 1500
+  },
+  "loaded_model": {
+    "train_type": "mode2",
+    "frontend": "storm",
+    "residual_refine_enable": false
+  },
+  "frontend": {
+    "float32_sha256": "bd1768f829504acef833313543b9cc07ed91f5334f49d294dae652e85bbdc6ee",
+    "rng_unchanged": true,
+    "recomputed_count": 1
+  },
+  "sources_and_checkpoint_unchanged": true,
+  "output_bytes": 11960521,
+  "completed_at_utc": "2026-10-18T14:27:41.344683+00:00",
+  "wall_seconds": 30.755190922063775
+}

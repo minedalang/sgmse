@@ -1,0 +1,13 @@
+experiment_id: speaker_headroom_20261017
+purpose: independent_campp_speaker_headroom_probe
+split: experiments/rrsd_cv_repeat32/manifest.csv
+utterances: 32
+speakers: 16
+encoder: pre_models/wespeaker-voxceleb-campplus/avg_model.pt
+arms: [noisy, off, router, pair, proto01, proto01_cw1, masked, clean]
+max_samples: 32000
+device: cuda_if_available
+training: false
+new_audio_generated: false
+mutates_dataset: false
+mutates_checkpoint: false

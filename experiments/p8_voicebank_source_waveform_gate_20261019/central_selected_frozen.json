@@ -1,0 +1,46 @@
+{
+  "clean_trainset_28spk_wav/p226_027.wav": {
+    "name": "clean_trainset_28spk_wav/p226_027.wav",
+    "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703232365f3032372e776176",
+    "version_needed": 20,
+    "flags": 8,
+    "method": 8,
+    "crc32": 1111473794,
+    "compressed_size": 295799,
+    "uncompressed_size": 380724,
+    "local_offset": 11377093
+  },
+  "clean_trainset_28spk_wav/p226_028.wav": {
+    "name": "clean_trainset_28spk_wav/p226_028.wav",
+    "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703232365f3032382e776176",
+    "version_needed": 20,
+    "flags": 8,
+    "method": 8,
+    "crc32": 2382019220,
+    "compressed_size": 314171,
+    "uncompressed_size": 405962,
+    "local_offset": 11672991
+  },
+  "clean_trainset_28spk_wav/p287_037.wav": {
+    "name": "clean_trainset_28spk_wav/p287_037.wav",
+    "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703238375f3033372e776176",
+    "version_needed": 20,
+    "flags": 8,
+    "method": 8,
+    "crc32": 745520634,
+    "compressed_size": 271224,
+    "uncompressed_size": 360092,
+    "local_offset": 2412357455
+  },
+  "clean_trainset_28spk_wav/p287_054.wav": {
+    "name": "clean_trainset_28spk_wav/p287_054.wav",
+    "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703238375f3035342e776176",
+    "version_needed": 20,
+    "flags": 8,
+    "method": 8,
+    "crc32": 3800049610,
+    "compressed_size": 239761,
+    "uncompressed_size": 306578,
+    "local_offset": 2415078746
+  }
+}

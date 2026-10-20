@@ -1,0 +1,10 @@
+{
+  "status": "prepared_only",
+  "source_locks_before_stage": 393,
+  "quality_source_files": 29,
+  "input_registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "real_model_imports": 0,
+  "real_source_audio_decodes": 0,
+  "network_bytes": 0,
+  "model_run_authorized": false
+}

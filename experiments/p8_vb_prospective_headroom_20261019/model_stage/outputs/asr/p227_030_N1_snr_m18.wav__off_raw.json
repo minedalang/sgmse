@@ -1,0 +1,85 @@
+{
+  "request": {
+    "key": "p227_030_N1_snr_m18.wav__off",
+    "id": "p227_030",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_030_N1_snr_m18.wav",
+    "basename": "p227_030_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "380dc7da1c18c5ab669e9fcc062a87154817a1f4f7c609f08daaf93d6072962a",
+      "samples": 52810,
+      "array_sha256": "d453e6b6b661a8aaac09bca1f32ed74ef9747542810860bb7275920cb4ad831c",
+      "peak": 0.1029052734375,
+      "rms": 0.009064409316191593
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " The Bolden Quasselworm Harder Van Dank Lourdes.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " The Bolden Quasselworm Harder Van Dank Lourdes.",
+        "tokens": [
+          50363,
+          383,
+          27059,
+          268,
+          2264,
+          292,
+          741,
+          25323,
+          6912,
+          263,
+          6656,
+          360,
+          962,
+          406,
+          454,
+          8906,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.4343470523231907,
+        "compression_ratio": 0.8703703703703703,
+        "no_speech_prob": 0.09664254635572433
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 11,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

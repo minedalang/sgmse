@@ -51,3 +51,31 @@ echo
 joint_enhance_zhz7x8vt.log
 
 onnx_*/
+
+# Local model/artifact binaries and numerical audio caches (keep reports/config/code)
+*.pt
+*.bin
+*.safetensors
+*.onnx
+*.npy
+*.npz
+*.f32le
+*.pcm
+*.flac
+*.mp3
+*.ogg
+*.aiff
+*.nbc
+*.nbi
+*.gz
+*.tar
+*.7z
+onnxruntime_profile__*.json
+**/local_model/
+**/node_modules/
+experiments/p8_cpel_longrun_20261020/tiny_resume_artifacts*/
+experiments/p8_voicebank_native_content_pilot_20261019/attempt02/inputs
+
+# Downloaded external corpus document; source URL/hash remain in audit report
+experiments/p8_q_external_corpus_audit_20261018/readme.pdf
+*.pid

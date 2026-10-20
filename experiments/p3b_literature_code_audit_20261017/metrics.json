@@ -1,0 +1,29 @@
+{
+  "status": "completed_read_only_audit",
+  "training_started": false,
+  "inference_started": false,
+  "dataset_modified": false,
+  "checkpoint_modified": false,
+  "local_environment": {
+    "cdpam_importable": false,
+    "nomad_importable": false,
+    "torch_and_torchaudio_available": true,
+    "no_model_weights_downloaded": true
+  },
+  "local_objective": {
+    "sde": "OUVE",
+    "loss_type": "score_matching",
+    "loss_weighting": "sigma^2",
+    "pesq_weight": 0.0,
+    "checkpoint_hparams_verified_by_cpu_torch_load": true,
+    "rrsd_requires_same_objective": true
+  },
+  "findings": {
+    "cdpam": "Human-judgment-trained full-reference perceptual metric; speech enhancement use is already reported in the original work.",
+    "nomad": "Unsupervised non-matching-reference embedding trained with NSIM-guided triplets; usable as a pretrained perceptual distance, not a new mechanism here.",
+    "generative_objectives": "The 2025 study evaluates diffusion objectives and adds differentiable PESQ plus time-domain L1 to an SB data-prediction objective; this is not the current OUVE score-matching branch. Its reported M5/M6/M7/M8 PESQ-SI-SDR tradeoffs reinforce that a perceptual term is a baseline to test, not an assumed win.",
+    "compatibility": "sgmse/model.py enables its differentiable PESQ term only for loss_type=data_prediction; JointFrontendSgmseModel and RRSD/no-regret paths enforce score_matching with sigma^2.",
+    "novelty_implication": "A bare perceptual loss, CDPAM/NOMAD insertion, or PESQ term would be a baseline/ablation and cannot by itself be claimed as the StoRM innovation."
+  },
+  "next_gate": "wait for exploratory listening evidence; if a reproducible StoRM-specific distortion is identified, design a matched backend-only probe rather than changing Router alpha"
+}

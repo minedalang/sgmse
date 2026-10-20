@@ -1,0 +1,2487 @@
+{
+  "status": "passed_saved_JSON_arithmetic_only",
+  "source_metrics_sha256": "46f554f248efae36cb2509006fc437f4db60bf2030661f593c90fce46f930dac",
+  "complete_items": 192,
+  "per_arm_items": {
+    "source": 64,
+    "N": 64,
+    "D": 64
+  },
+  "counts": {
+    "weight_loads": 3,
+    "source_model_loads": 1,
+    "terminal_state_loads": 2,
+    "pcm_reads": 128,
+    "frontend": 64,
+    "backend": 192,
+    "score": 5760
+  },
+  "summary": {
+    "absolute": {
+      "source": {
+        "normalized_wave_mse": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 0.0005079983148904041
+        },
+        "si_sdr_db": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 6.286137729056227
+        },
+        "stoi": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 0.7824292504593567
+        },
+        "pesq": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 1.8903984371572733
+        }
+      },
+      "N": {
+        "normalized_wave_mse": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 0.0005056396218349989
+        },
+        "si_sdr_db": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 6.3208390666952585
+        },
+        "stoi": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 0.7826476114311665
+        },
+        "pesq": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 1.886743264272809
+        }
+      },
+      "D": {
+        "normalized_wave_mse": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 0.0005051888197484863
+        },
+        "si_sdr_db": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 6.3254284295125425
+        },
+        "stoi": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 0.7826476626762972
+        },
+        "pesq": {
+          "total": 64,
+          "defined": 64,
+          "missing": 0,
+          "mean": 1.887085946276784
+        }
+      }
+    },
+    "paired": {
+      "D-minus-N": {
+        "normalized_wave_mse": {
+          "count": 64,
+          "missing": 0,
+          "mean": -4.5080208651254814e-07,
+          "min": -3.0669389690466677e-06,
+          "median": -1.6672703981181582e-07,
+          "max": 9.82537634800515e-07,
+          "positive": 12,
+          "negative": 52,
+          "zero": 0
+        },
+        "si_sdr_db": {
+          "count": 64,
+          "missing": 0,
+          "mean": 0.004589362817283908,
+          "min": -0.0289625975636838,
+          "median": 0.0031072943152716803,
+          "max": 0.0683671379626567,
+          "positive": 51,
+          "negative": 13,
+          "zero": 0
+        },
+        "stoi": {
+          "count": 64,
+          "missing": 0,
+          "mean": 5.1245130738668265e-08,
+          "min": -0.0008488484310376909,
+          "median": 8.840149194611069e-06,
+          "max": 0.0004107914984827765,
+          "positive": 38,
+          "negative": 26,
+          "zero": 0
+        },
+        "pesq": {
+          "count": 64,
+          "missing": 0,
+          "mean": 0.00034268200397491455,
+          "min": -0.004262089729309082,
+          "median": 0.00020927190780639648,
+          "max": 0.010849475860595703,
+          "positive": 42,
+          "negative": 22,
+          "zero": 0
+        }
+      },
+      "N-minus-source": {
+        "normalized_wave_mse": {
+          "count": 64,
+          "missing": 0,
+          "mean": -2.3586930554052564e-06,
+          "min": -2.3785338295588716e-05,
+          "median": -9.860129666622902e-07,
+          "max": 8.17775956864019e-06,
+          "positive": 9,
+          "negative": 55,
+          "zero": 0
+        },
+        "si_sdr_db": {
+          "count": 64,
+          "missing": 0,
+          "mean": 0.03470133763903175,
+          "min": -0.168183900906687,
+          "median": 0.016608462058936624,
+          "max": 0.49374989722682017,
+          "positive": 47,
+          "negative": 17,
+          "zero": 0
+        },
+        "stoi": {
+          "count": 64,
+          "missing": 0,
+          "mean": 0.0002183609718096626,
+          "min": -0.01837620781763183,
+          "median": 1.5026217057900748e-05,
+          "max": 0.014506527182044648,
+          "positive": 34,
+          "negative": 30,
+          "zero": 0
+        },
+        "pesq": {
+          "count": 64,
+          "missing": 0,
+          "mean": -0.003655172884464264,
+          "min": -0.16485261917114258,
+          "median": 0.00012767314910888672,
+          "max": 0.04175829887390137,
+          "positive": 33,
+          "negative": 31,
+          "zero": 0
+        }
+      },
+      "D-minus-source": {
+        "normalized_wave_mse": {
+          "count": 64,
+          "missing": 0,
+          "mean": -2.8094951419178047e-06,
+          "min": -2.4485609941138266e-05,
+          "median": -1.3939085364211905e-06,
+          "max": 9.160297203440705e-06,
+          "positive": 7,
+          "negative": 57,
+          "zero": 0
+        },
+        "si_sdr_db": {
+          "count": 64,
+          "missing": 0,
+          "mean": 0.03929070045631566,
+          "min": -0.17316689654243334,
+          "median": 0.021237672628256377,
+          "max": 0.46478729966313637,
+          "positive": 53,
+          "negative": 11,
+          "zero": 0
+        },
+        "stoi": {
+          "count": 64,
+          "missing": 0,
+          "mean": 0.00021841221694040127,
+          "min": -0.018543813519174335,
+          "median": 1.9804560236647006e-05,
+          "max": 0.013657678751006957,
+          "positive": 36,
+          "negative": 28,
+          "zero": 0
+        },
+        "pesq": {
+          "count": 64,
+          "missing": 0,
+          "mean": -0.0033124908804893494,
+          "min": -0.15400314331054688,
+          "median": 0.00038057565689086914,
+          "max": 0.0377047061920166,
+          "positive": 34,
+          "negative": 30,
+          "zero": 0
+        }
+      }
+    }
+  },
+  "paired_per_file": {
+    "D-minus-N": [
+      {
+        "utt": "reader_11236_fileid_6794",
+        "dev_index": 0,
+        "differences": {
+          "normalized_wave_mse": 3.888204291468034e-07,
+          "si_sdr_db": -0.006621504315351245,
+          "stoi": -2.553853979214704e-05,
+          "pesq": -0.002062559127807617
+        }
+      },
+      {
+        "utt": "reader_11826_fileid_6359",
+        "dev_index": 1,
+        "differences": {
+          "normalized_wave_mse": -1.660046305211843e-08,
+          "si_sdr_db": 0.001268960901159133,
+          "stoi": 3.419948683791585e-05,
+          "pesq": 0.0009086132049560547
+        }
+      },
+      {
+        "utt": "reader_11065_fileid_7519",
+        "dev_index": 2,
+        "differences": {
+          "normalized_wave_mse": -1.8879292178119664e-06,
+          "si_sdr_db": 0.004043734507112262,
+          "stoi": -3.545820025374624e-06,
+          "pesq": 0.00020897388458251953
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_10724",
+        "dev_index": 3,
+        "differences": {
+          "normalized_wave_mse": 7.86331856531691e-08,
+          "si_sdr_db": -0.00692050408378897,
+          "stoi": 3.114071440546429e-05,
+          "pesq": 9.179115295410156e-06
+        }
+      },
+      {
+        "utt": "reader_11880_fileid_9924",
+        "dev_index": 4,
+        "differences": {
+          "normalized_wave_mse": -2.5546435973800236e-07,
+          "si_sdr_db": -0.005065257292972802,
+          "stoi": -8.214799798725303e-05,
+          "pesq": -0.00021588802337646484
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_10605",
+        "dev_index": 5,
+        "differences": {
+          "normalized_wave_mse": 7.352186441963613e-08,
+          "si_sdr_db": -0.005084060118905498,
+          "stoi": -0.00010193971366168064,
+          "pesq": 0.00037682056427001953
+        }
+      },
+      {
+        "utt": "reader_11265_fileid_2501",
+        "dev_index": 6,
+        "differences": {
+          "normalized_wave_mse": -1.211834359248642e-08,
+          "si_sdr_db": 0.0014187173219717408,
+          "stoi": -6.039725669926277e-06,
+          "pesq": 0.010849475860595703
+        }
+      },
+      {
+        "utt": "reader_11117_fileid_8577",
+        "dev_index": 7,
+        "differences": {
+          "normalized_wave_mse": 6.615068248380651e-09,
+          "si_sdr_db": -0.0009929830635453385,
+          "stoi": 0.0002179297853276141,
+          "pesq": 4.76837158203125e-06
+        }
+      },
+      {
+        "utt": "reader_11297_fileid_3545",
+        "dev_index": 8,
+        "differences": {
+          "normalized_wave_mse": -1.5506477857914897e-07,
+          "si_sdr_db": 0.010055428662004484,
+          "stoi": 0.00015320728145939988,
+          "pesq": 3.2782554626464844e-05
+        }
+      },
+      {
+        "utt": "reader_11346_fileid_6754",
+        "dev_index": 9,
+        "differences": {
+          "normalized_wave_mse": -1.7058233694076052e-07,
+          "si_sdr_db": 0.003140077751352166,
+          "stoi": 4.474646072083477e-05,
+          "pesq": 0.0015664100646972656
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_5420",
+        "dev_index": 10,
+        "differences": {
+          "normalized_wave_mse": -4.244392648453175e-08,
+          "si_sdr_db": 0.0036452920467180405,
+          "stoi": -3.5412841250304083e-05,
+          "pesq": -5.4001808166503906e-05
+        }
+      },
+      {
+        "utt": "reader_11446_fileid_11151",
+        "dev_index": 11,
+        "differences": {
+          "normalized_wave_mse": 1.8966987414795362e-08,
+          "si_sdr_db": -0.00025137629905458425,
+          "stoi": 4.763066397628357e-06,
+          "pesq": 0.0011037588119506836
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_3187",
+        "dev_index": 12,
+        "differences": {
+          "normalized_wave_mse": -1.1258378467435227e-06,
+          "si_sdr_db": 0.011711755810019042,
+          "stoi": -3.574699602992837e-06,
+          "pesq": -0.0019237995147705078
+        }
+      },
+      {
+        "utt": "reader_10907_fileid_11974",
+        "dev_index": 13,
+        "differences": {
+          "normalized_wave_mse": -2.057733457011459e-08,
+          "si_sdr_db": 0.00010973247520684737,
+          "stoi": -0.00016760570154250587,
+          "pesq": 1.823902130126953e-05
+        }
+      },
+      {
+        "utt": "reader_11103_fileid_2057",
+        "dev_index": 14,
+        "differences": {
+          "normalized_wave_mse": 3.2992210705393805e-07,
+          "si_sdr_db": -0.0049829956357463345,
+          "stoi": -0.00013193990070287098,
+          "pesq": -1.633167266845703e-05
+        }
+      },
+      {
+        "utt": "reader_11219_fileid_2058",
+        "dev_index": 15,
+        "differences": {
+          "normalized_wave_mse": 4.6053326915667606e-07,
+          "si_sdr_db": -0.0289625975636838,
+          "stoi": 0.0004107914984827765,
+          "pesq": 1.2516975402832031e-05
+        }
+      },
+      {
+        "utt": "reader_11617_fileid_6929",
+        "dev_index": 16,
+        "differences": {
+          "normalized_wave_mse": -6.582071777859466e-07,
+          "si_sdr_db": 0.012957151066366634,
+          "stoi": -0.0008488484310376909,
+          "pesq": -0.0001024007797241211
+        }
+      },
+      {
+        "utt": "reader_11299_fileid_2399",
+        "dev_index": 17,
+        "differences": {
+          "normalized_wave_mse": -1.2415946117445235e-06,
+          "si_sdr_db": 0.01086298219877957,
+          "stoi": -1.691866015318677e-05,
+          "pesq": -1.5735626220703125e-05
+        }
+      },
+      {
+        "utt": "reader_11794_fileid_5599",
+        "dev_index": 18,
+        "differences": {
+          "normalized_wave_mse": -1.529357704045046e-07,
+          "si_sdr_db": 0.003781295938791729,
+          "stoi": 6.358359688907189e-05,
+          "pesq": 0.0002478361129760742
+        }
+      },
+      {
+        "utt": "reader_11963_fileid_10405",
+        "dev_index": 19,
+        "differences": {
+          "normalized_wave_mse": -3.0669389690466677e-06,
+          "si_sdr_db": 0.0683671379626567,
+          "stoi": 1.0317026338024782e-05,
+          "pesq": 0.004651069641113281
+        }
+      },
+      {
+        "utt": "reader_11794_fileid_451",
+        "dev_index": 20,
+        "differences": {
+          "normalized_wave_mse": -1.1754353081740165e-06,
+          "si_sdr_db": 0.018437774173357013,
+          "stoi": -0.00011240594926986702,
+          "pesq": 0.0013602972030639648
+        }
+      },
+      {
+        "utt": "reader_11057_fileid_7856",
+        "dev_index": 21,
+        "differences": {
+          "normalized_wave_mse": -4.4466344170028364e-08,
+          "si_sdr_db": 0.0030598061383866337,
+          "stoi": 3.801584620555243e-05,
+          "pesq": 0.0010352134704589844
+        }
+      },
+      {
+        "utt": "reader_10676_fileid_7317",
+        "dev_index": 22,
+        "differences": {
+          "normalized_wave_mse": -1.1518787765079589e-07,
+          "si_sdr_db": 0.0012430651855505487,
+          "stoi": -0.00023805421513434233,
+          "pesq": -0.004262089729309082
+        }
+      },
+      {
+        "utt": "reader_11357_fileid_9224",
+        "dev_index": 23,
+        "differences": {
+          "normalized_wave_mse": -3.833806736037093e-07,
+          "si_sdr_db": 0.002799394275209366,
+          "stoi": -0.00020403491537535068,
+          "pesq": 1.430511474609375e-06
+        }
+      },
+      {
+        "utt": "reader_11713_fileid_3877",
+        "dev_index": 24,
+        "differences": {
+          "normalized_wave_mse": -3.1143293745786074e-08,
+          "si_sdr_db": 0.007750092121884933,
+          "stoi": 7.363272051197356e-06,
+          "pesq": 0.000939488410949707
+        }
+      },
+      {
+        "utt": "reader_11273_fileid_1479",
+        "dev_index": 25,
+        "differences": {
+          "normalized_wave_mse": -2.8128054980360284e-08,
+          "si_sdr_db": 0.004264773161031243,
+          "stoi": 3.3153740166214085e-05,
+          "pesq": 0.000729680061340332
+        }
+      },
+      {
+        "utt": "reader_11065_fileid_2673",
+        "dev_index": 26,
+        "differences": {
+          "normalized_wave_mse": -7.002716455495502e-07,
+          "si_sdr_db": 0.0025974935421082535,
+          "stoi": 0.00017691379018880404,
+          "pesq": -1.5139579772949219e-05
+        }
+      },
+      {
+        "utt": "reader_11450_fileid_4097",
+        "dev_index": 27,
+        "differences": {
+          "normalized_wave_mse": -8.000882544855533e-07,
+          "si_sdr_db": 0.011660501893253183,
+          "stoi": 5.7844057059691645e-05,
+          "pesq": 0.00020956993103027344
+        }
+      },
+      {
+        "utt": "reader_11912_fileid_8148",
+        "dev_index": 28,
+        "differences": {
+          "normalized_wave_mse": 1.023831221694672e-08,
+          "si_sdr_db": -0.0011151455568452207,
+          "stoi": -9.719046997203051e-06,
+          "pesq": 0.0003707408905029297
+        }
+      },
+      {
+        "utt": "reader_11364_fileid_11310",
+        "dev_index": 29,
+        "differences": {
+          "normalized_wave_mse": -1.1826639095204348e-07,
+          "si_sdr_db": 0.012758775717657045,
+          "stoi": 3.041382338531129e-06,
+          "pesq": 0.00018453598022460938
+        }
+      },
+      {
+        "utt": "reader_11128_fileid_5694",
+        "dev_index": 30,
+        "differences": {
+          "normalized_wave_mse": 1.5587930470813474e-08,
+          "si_sdr_db": -0.0026406676816015384,
+          "stoi": -0.00016171919962915116,
+          "pesq": -0.00021278858184814453
+        }
+      },
+      {
+        "utt": "reader_11203_fileid_9673",
+        "dev_index": 31,
+        "differences": {
+          "normalized_wave_mse": -5.079562182593728e-07,
+          "si_sdr_db": 0.004369583712284353,
+          "stoi": 0.00014968075134624836,
+          "pesq": -0.0001342296600341797
+        }
+      },
+      {
+        "utt": "reader_11046_fileid_10711",
+        "dev_index": 32,
+        "differences": {
+          "normalized_wave_mse": -2.6611826144744256e-07,
+          "si_sdr_db": 0.008552791271073446,
+          "stoi": 0.0002113372760280674,
+          "pesq": 0.0008571147918701172
+        }
+      },
+      {
+        "utt": "reader_11077_fileid_1780",
+        "dev_index": 33,
+        "differences": {
+          "normalized_wave_mse": -3.826647091860469e-07,
+          "si_sdr_db": 0.007746594229917747,
+          "stoi": 6.351058055020786e-06,
+          "pesq": 0.0010330677032470703
+        }
+      },
+      {
+        "utt": "reader_11139_fileid_4052",
+        "dev_index": 34,
+        "differences": {
+          "normalized_wave_mse": -5.048944489259707e-07,
+          "si_sdr_db": 0.004829528479247003,
+          "stoi": -7.60427330093183e-06,
+          "pesq": 0.0009918212890625
+        }
+      },
+      {
+        "utt": "reader_11981_fileid_612",
+        "dev_index": 35,
+        "differences": {
+          "normalized_wave_mse": -7.591851745325246e-07,
+          "si_sdr_db": 0.005503688007270413,
+          "stoi": 3.781815716441539e-05,
+          "pesq": 0.0005352497100830078
+        }
+      },
+      {
+        "utt": "reader_11332_fileid_161",
+        "dev_index": 36,
+        "differences": {
+          "normalized_wave_mse": -4.02481836545422e-07,
+          "si_sdr_db": 0.0028905374873184897,
+          "stoi": 8.696010672859522e-05,
+          "pesq": 0.0002840757369995117
+        }
+      },
+      {
+        "utt": "reader_10715_fileid_5533",
+        "dev_index": 37,
+        "differences": {
+          "normalized_wave_mse": -2.0476658025378068e-06,
+          "si_sdr_db": 0.009836688119124304,
+          "stoi": 1.933378767149385e-05,
+          "pesq": 0.0006922483444213867
+        }
+      },
+      {
+        "utt": "reader_11265_fileid_6999",
+        "dev_index": 38,
+        "differences": {
+          "normalized_wave_mse": -2.414828468095729e-07,
+          "si_sdr_db": 0.005743331342030089,
+          "stoi": 0.0001254541394544173,
+          "pesq": 0.0013211965560913086
+        }
+      },
+      {
+        "utt": "reader_11297_fileid_4129",
+        "dev_index": 39,
+        "differences": {
+          "normalized_wave_mse": -5.213048482526701e-07,
+          "si_sdr_db": 0.011663980573394017,
+          "stoi": 5.99541587961161e-05,
+          "pesq": 0.002995729446411133
+        }
+      },
+      {
+        "utt": "reader_11301_fileid_9495",
+        "dev_index": 40,
+        "differences": {
+          "normalized_wave_mse": -8.851447120756178e-09,
+          "si_sdr_db": 0.0022619103167187404,
+          "stoi": -1.5486519403307142e-05,
+          "pesq": -0.0011763572692871094
+        }
+      },
+      {
+        "utt": "reader_11216_fileid_6365",
+        "dev_index": 41,
+        "differences": {
+          "normalized_wave_mse": 9.82537634800515e-07,
+          "si_sdr_db": -0.01779200634019773,
+          "stoi": 6.357994499373021e-05,
+          "pesq": -0.0035843849182128906
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_6552",
+        "dev_index": 42,
+        "differences": {
+          "normalized_wave_mse": -4.356778544822805e-08,
+          "si_sdr_db": 0.0016553110226524836,
+          "stoi": 1.5547969001161732e-07,
+          "pesq": 0.0006954669952392578
+        }
+      },
+      {
+        "utt": "reader_11917_fileid_1923",
+        "dev_index": 43,
+        "differences": {
+          "normalized_wave_mse": -2.7972156668579825e-08,
+          "si_sdr_db": 0.0012953405006488339,
+          "stoi": -7.55990611482904e-05,
+          "pesq": 0.00046312808990478516
+        }
+      },
+      {
+        "utt": "reader_11254_fileid_2505",
+        "dev_index": 44,
+        "differences": {
+          "normalized_wave_mse": -1.6287174268287113e-07,
+          "si_sdr_db": 0.0014761670188647713,
+          "stoi": -0.00011650577867938772,
+          "pesq": -0.0006368160247802734
+        }
+      },
+      {
+        "utt": "reader_11071_fileid_5369",
+        "dev_index": 45,
+        "differences": {
+          "normalized_wave_mse": -2.0362353364182864e-06,
+          "si_sdr_db": 0.006793506029278973,
+          "stoi": 2.4976603857584934e-05,
+          "pesq": 0.001506805419921875
+        }
+      },
+      {
+        "utt": "reader_11301_fileid_8115",
+        "dev_index": 46,
+        "differences": {
+          "normalized_wave_mse": -1.0067801343531784e-06,
+          "si_sdr_db": 0.007802573159166215,
+          "stoi": 2.647054196747156e-05,
+          "pesq": -0.004053592681884766
+        }
+      },
+      {
+        "utt": "reader_11458_fileid_4985",
+        "dev_index": 47,
+        "differences": {
+          "normalized_wave_mse": -1.5299586231692398e-06,
+          "si_sdr_db": 0.004315045479427182,
+          "stoi": 0.00013363573285973818,
+          "pesq": 4.2557716369628906e-05
+        }
+      },
+      {
+        "utt": "reader_10927_fileid_850",
+        "dev_index": 48,
+        "differences": {
+          "normalized_wave_mse": 1.1512464965726275e-07,
+          "si_sdr_db": -0.001443522077085646,
+          "stoi": -2.6951468376612553e-05,
+          "pesq": -0.0008224248886108398
+        }
+      },
+      {
+        "utt": "reader_11888_fileid_4088",
+        "dev_index": 49,
+        "differences": {
+          "normalized_wave_mse": -8.596145302320127e-07,
+          "si_sdr_db": 0.002503421991088217,
+          "stoi": -8.297632371201402e-07,
+          "pesq": -0.00023996829986572266
+        }
+      },
+      {
+        "utt": "reader_11446_fileid_7296",
+        "dev_index": 50,
+        "differences": {
+          "normalized_wave_mse": -2.599942417190991e-06,
+          "si_sdr_db": 0.008046864453943314,
+          "stoi": 8.154076249689002e-05,
+          "pesq": -0.0017018318176269531
+        }
+      },
+      {
+        "utt": "reader_11901_fileid_1583",
+        "dev_index": 51,
+        "differences": {
+          "normalized_wave_mse": -1.2396498199322313e-07,
+          "si_sdr_db": 0.00080147458512414,
+          "stoi": -0.00027394853322604273,
+          "pesq": 0.0006036758422851562
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_3122",
+        "dev_index": 52,
+        "differences": {
+          "normalized_wave_mse": -2.8753318786089676e-08,
+          "si_sdr_db": 0.007763988897885099,
+          "stoi": 7.452606367586156e-07,
+          "pesq": -4.9591064453125e-05
+        }
+      },
+      {
+        "utt": "reader_11195_fileid_7449",
+        "dev_index": 53,
+        "differences": {
+          "normalized_wave_mse": -4.5232947294498137e-07,
+          "si_sdr_db": 0.0029425632924642287,
+          "stoi": -2.5841588287778272e-05,
+          "pesq": 0.00037682056427001953
+        }
+      },
+      {
+        "utt": "reader_11170_fileid_6209",
+        "dev_index": 54,
+        "differences": {
+          "normalized_wave_mse": -2.8055590882544636e-08,
+          "si_sdr_db": 0.00021915133058669767,
+          "stoi": -1.1822736600497485e-05,
+          "pesq": 0.0011737346649169922
+        }
+      },
+      {
+        "utt": "reader_10785_fileid_3854",
+        "dev_index": 55,
+        "differences": {
+          "normalized_wave_mse": -7.872067468771369e-07,
+          "si_sdr_db": 0.004785846589584253,
+          "stoi": 8.698904991988332e-05,
+          "pesq": 0.0001748800277709961
+        }
+      },
+      {
+        "utt": "reader_10777_fileid_6785",
+        "dev_index": 56,
+        "differences": {
+          "normalized_wave_mse": -2.5829372478599938e-08,
+          "si_sdr_db": 0.002245139800646001,
+          "stoi": -1.9171479860746743e-05,
+          "pesq": 0.0002713203430175781
+        }
+      },
+      {
+        "utt": "reader_11553_fileid_9309",
+        "dev_index": 57,
+        "differences": {
+          "normalized_wave_mse": 7.604190441459942e-07,
+          "si_sdr_db": -0.004496626245194424,
+          "stoi": 0.00011972400108495318,
+          "pesq": -0.00036704540252685547
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_8729",
+        "dev_index": 58,
+        "differences": {
+          "normalized_wave_mse": -9.523538732857367e-07,
+          "si_sdr_db": 0.0028457173716258666,
+          "stoi": 4.903708119896599e-05,
+          "pesq": 0.0008833408355712891
+        }
+      },
+      {
+        "utt": "reader_11961_fileid_529",
+        "dev_index": 59,
+        "differences": {
+          "normalized_wave_mse": -8.891808547158175e-08,
+          "si_sdr_db": 0.0030745108791911946,
+          "stoi": 1.197759313820157e-05,
+          "pesq": -0.0006024837493896484
+        }
+      },
+      {
+        "utt": "reader_11560_fileid_7582",
+        "dev_index": 60,
+        "differences": {
+          "normalized_wave_mse": -3.020764124529759e-07,
+          "si_sdr_db": 0.02481706677170692,
+          "stoi": 1.4807779780912078e-05,
+          "pesq": -0.0003800392150878906
+        }
+      },
+      {
+        "utt": "reader_11535_fileid_2947",
+        "dev_index": 61,
+        "differences": {
+          "normalized_wave_mse": -2.263692951186844e-06,
+          "si_sdr_db": 0.030215002814237835,
+          "stoi": 2.2196159559118023e-05,
+          "pesq": 0.003786802291870117
+        }
+      },
+      {
+        "utt": "reader_11053_fileid_1482",
+        "dev_index": 62,
+        "differences": {
+          "normalized_wave_mse": -6.479101880990396e-07,
+          "si_sdr_db": 0.0038831671283983127,
+          "stoi": 8.165264132187211e-05,
+          "pesq": 0.0002422332763671875
+        }
+      },
+      {
+        "utt": "reader_11046_fileid_8124",
+        "dev_index": 63,
+        "differences": {
+          "normalized_wave_mse": -2.789517251421494e-07,
+          "si_sdr_db": 0.003274031074667505,
+          "stoi": 2.5097175700650176e-05,
+          "pesq": 0.0008084774017333984
+        }
+      }
+    ],
+    "N-minus-source": [
+      {
+        "utt": "reader_11236_fileid_6794",
+        "dev_index": 0,
+        "differences": {
+          "normalized_wave_mse": -1.1146273290551611e-06,
+          "si_sdr_db": 0.017127500466035173,
+          "stoi": 0.00016138068090520985,
+          "pesq": 0.010715723037719727
+        }
+      },
+      {
+        "utt": "reader_11826_fileid_6359",
+        "dev_index": 1,
+        "differences": {
+          "normalized_wave_mse": -1.1591805338056175e-06,
+          "si_sdr_db": 0.045457398845091035,
+          "stoi": -0.0004103455765291919,
+          "pesq": 0.0008625984191894531
+        }
+      },
+      {
+        "utt": "reader_11065_fileid_7519",
+        "dev_index": 2,
+        "differences": {
+          "normalized_wave_mse": -4.598540516282529e-06,
+          "si_sdr_db": -0.001692754889317527,
+          "stoi": 0.000191307586071221,
+          "pesq": 0.001326918601989746
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_10724",
+        "dev_index": 3,
+        "differences": {
+          "normalized_wave_mse": -1.086922083952754e-06,
+          "si_sdr_db": -0.05850797087586024,
+          "stoi": -0.0014686354608473007,
+          "pesq": -0.001210927963256836
+        }
+      },
+      {
+        "utt": "reader_11880_fileid_9924",
+        "dev_index": 4,
+        "differences": {
+          "normalized_wave_mse": -1.5714783561316856e-05,
+          "si_sdr_db": 0.33508104137348127,
+          "stoi": -0.007667473328330177,
+          "pesq": 0.02155923843383789
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_10605",
+        "dev_index": 5,
+        "differences": {
+          "normalized_wave_mse": -4.2847960538004487e-07,
+          "si_sdr_db": 0.02937487759227686,
+          "stoi": -0.00011922561421384703,
+          "pesq": 0.007574915885925293
+        }
+      },
+      {
+        "utt": "reader_11265_fileid_2501",
+        "dev_index": 6,
+        "differences": {
+          "normalized_wave_mse": -2.11555404247538e-07,
+          "si_sdr_db": 0.023054648624643903,
+          "stoi": 2.29383367702507e-05,
+          "pesq": -0.16485261917114258
+        }
+      },
+      {
+        "utt": "reader_11117_fileid_8577",
+        "dev_index": 7,
+        "differences": {
+          "normalized_wave_mse": -4.886086715501865e-06,
+          "si_sdr_db": 0.12654325026743685,
+          "stoi": 0.0029972905135961514,
+          "pesq": -0.008733987808227539
+        }
+      },
+      {
+        "utt": "reader_11297_fileid_3545",
+        "dev_index": 8,
+        "differences": {
+          "normalized_wave_mse": -2.604457476624173e-06,
+          "si_sdr_db": 0.12735389424082166,
+          "stoi": -0.0025835846650189564,
+          "pesq": -0.009618520736694336
+        }
+      },
+      {
+        "utt": "reader_11346_fileid_6754",
+        "dev_index": 9,
+        "differences": {
+          "normalized_wave_mse": -8.388652421120833e-07,
+          "si_sdr_db": 0.013101023816654234,
+          "stoi": 0.0002914697875637806,
+          "pesq": 0.01094508171081543
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_5420",
+        "dev_index": 10,
+        "differences": {
+          "normalized_wave_mse": -1.201528250207646e-08,
+          "si_sdr_db": -0.005927821599383876,
+          "stoi": -0.0007205366739274632,
+          "pesq": 0.0025238990783691406
+        }
+      },
+      {
+        "utt": "reader_11446_fileid_11151",
+        "dev_index": 11,
+        "differences": {
+          "normalized_wave_mse": 3.685916516913974e-06,
+          "si_sdr_db": -0.048034372801023295,
+          "stoi": 0.00019632579246298132,
+          "pesq": -0.004782676696777344
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_3187",
+        "dev_index": 12,
+        "differences": {
+          "normalized_wave_mse": -1.0748645588229129e-06,
+          "si_sdr_db": 0.011489241152261798,
+          "stoi": 6.906961636943265e-05,
+          "pesq": -0.017732858657836914
+        }
+      },
+      {
+        "utt": "reader_10907_fileid_11974",
+        "dev_index": 13,
+        "differences": {
+          "normalized_wave_mse": -5.085130057891265e-06,
+          "si_sdr_db": 0.018665064619088234,
+          "stoi": -0.01837620781763183,
+          "pesq": -0.007754683494567871
+        }
+      },
+      {
+        "utt": "reader_11103_fileid_2057",
+        "dev_index": 14,
+        "differences": {
+          "normalized_wave_mse": -1.4092092438172188e-06,
+          "si_sdr_db": -0.168183900906687,
+          "stoi": 0.004429725865913392,
+          "pesq": -0.0002510547637939453
+        }
+      },
+      {
+        "utt": "reader_11219_fileid_2058",
+        "dev_index": 15,
+        "differences": {
+          "normalized_wave_mse": 3.2402935805220918e-06,
+          "si_sdr_db": 0.49374989722682017,
+          "stoi": -0.004038616303851911,
+          "pesq": 0.0010124444961547852
+        }
+      },
+      {
+        "utt": "reader_11617_fileid_6929",
+        "dev_index": 16,
+        "differences": {
+          "normalized_wave_mse": -8.604875115619375e-06,
+          "si_sdr_db": 0.28558008214816866,
+          "stoi": 0.014506527182044648,
+          "pesq": 0.00481104850769043
+        }
+      },
+      {
+        "utt": "reader_11299_fileid_2399",
+        "dev_index": 17,
+        "differences": {
+          "normalized_wave_mse": -3.455834771911616e-07,
+          "si_sdr_db": -0.021444193953619295,
+          "stoi": -0.0019226620330708988,
+          "pesq": 0.002336740493774414
+        }
+      },
+      {
+        "utt": "reader_11794_fileid_5599",
+        "dev_index": 18,
+        "differences": {
+          "normalized_wave_mse": -4.971341615629817e-07,
+          "si_sdr_db": 0.007289528810285439,
+          "stoi": -1.795465198206614e-05,
+          "pesq": -0.0012385845184326172
+        }
+      },
+      {
+        "utt": "reader_11963_fileid_10405",
+        "dev_index": 19,
+        "differences": {
+          "normalized_wave_mse": -2.655260189526399e-06,
+          "si_sdr_db": 0.05883349571122665,
+          "stoi": 2.8235681711508143e-05,
+          "pesq": -0.003652811050415039
+        }
+      },
+      {
+        "utt": "reader_11794_fileid_451",
+        "dev_index": 20,
+        "differences": {
+          "normalized_wave_mse": -4.047705741122467e-06,
+          "si_sdr_db": 0.04351927892979113,
+          "stoi": 0.0005163660318617813,
+          "pesq": 0.0030164718627929688
+        }
+      },
+      {
+        "utt": "reader_11057_fileid_7856",
+        "dev_index": 21,
+        "differences": {
+          "normalized_wave_mse": -1.41711308979941e-06,
+          "si_sdr_db": 0.02252892077690305,
+          "stoi": -5.7651010070602915e-05,
+          "pesq": 0.018267154693603516
+        }
+      },
+      {
+        "utt": "reader_10676_fileid_7317",
+        "dev_index": 22,
+        "differences": {
+          "normalized_wave_mse": -7.65885342976513e-06,
+          "si_sdr_db": 0.11268418232245818,
+          "stoi": 0.008001277324611866,
+          "pesq": 0.0034662485122680664
+        }
+      },
+      {
+        "utt": "reader_11357_fileid_9224",
+        "dev_index": 23,
+        "differences": {
+          "normalized_wave_mse": -9.530659503294097e-06,
+          "si_sdr_db": 0.04602778575304445,
+          "stoi": 0.0005803485861647362,
+          "pesq": 0.006666302680969238
+        }
+      },
+      {
+        "utt": "reader_11713_fileid_3877",
+        "dev_index": 24,
+        "differences": {
+          "normalized_wave_mse": -1.3790697913830353e-07,
+          "si_sdr_db": 0.02693541640553665,
+          "stoi": 9.455441598282821e-05,
+          "pesq": 0.013515949249267578
+        }
+      },
+      {
+        "utt": "reader_11273_fileid_1479",
+        "dev_index": 25,
+        "differences": {
+          "normalized_wave_mse": -1.1822522850187932e-07,
+          "si_sdr_db": 0.009770325314129025,
+          "stoi": 2.1757943180267247e-05,
+          "pesq": 0.005323529243469238
+        }
+      },
+      {
+        "utt": "reader_11065_fileid_2673",
+        "dev_index": 26,
+        "differences": {
+          "normalized_wave_mse": -2.3785338295588716e-05,
+          "si_sdr_db": 0.21851264091439582,
+          "stoi": 0.007053615025104987,
+          "pesq": -0.003109574317932129
+        }
+      },
+      {
+        "utt": "reader_11450_fileid_4097",
+        "dev_index": 27,
+        "differences": {
+          "normalized_wave_mse": -7.51732967999518e-06,
+          "si_sdr_db": 0.14351977823993067,
+          "stoi": -0.001786660099722559,
+          "pesq": -0.017157912254333496
+        }
+      },
+      {
+        "utt": "reader_11912_fileid_8148",
+        "dev_index": 28,
+        "differences": {
+          "normalized_wave_mse": -9.936782476803452e-07,
+          "si_sdr_db": 0.028345966387263388,
+          "stoi": 0.0003116972712031707,
+          "pesq": 0.0025320053100585938
+        }
+      },
+      {
+        "utt": "reader_11364_fileid_11310",
+        "dev_index": 29,
+        "differences": {
+          "normalized_wave_mse": -6.472753303534692e-08,
+          "si_sdr_db": 0.011083414006002101,
+          "stoi": 5.6446880708937996e-05,
+          "pesq": -0.0030663013458251953
+        }
+      },
+      {
+        "utt": "reader_11128_fileid_5694",
+        "dev_index": 30,
+        "differences": {
+          "normalized_wave_mse": -5.134852966701931e-07,
+          "si_sdr_db": 0.03560596582617803,
+          "stoi": -0.00011707314293296633,
+          "pesq": 0.0025120973587036133
+        }
+      },
+      {
+        "utt": "reader_11203_fileid_9673",
+        "dev_index": 31,
+        "differences": {
+          "normalized_wave_mse": -8.182814206135697e-07,
+          "si_sdr_db": -0.012642689779648109,
+          "stoi": 0.0008516093571466765,
+          "pesq": 0.004588961601257324
+        }
+      },
+      {
+        "utt": "reader_11046_fileid_10711",
+        "dev_index": 32,
+        "differences": {
+          "normalized_wave_mse": -1.2361962813213013e-06,
+          "si_sdr_db": 0.030178373983122952,
+          "stoi": -0.0003194038637971408,
+          "pesq": 0.005756855010986328
+        }
+      },
+      {
+        "utt": "reader_11077_fileid_1780",
+        "dev_index": 33,
+        "differences": {
+          "normalized_wave_mse": -1.6412754162822623e-06,
+          "si_sdr_db": 0.036566980468712984,
+          "stoi": 8.294490935534249e-06,
+          "pesq": 0.008998394012451172
+        }
+      },
+      {
+        "utt": "reader_11139_fileid_4052",
+        "dev_index": 34,
+        "differences": {
+          "normalized_wave_mse": -4.746302567917361e-06,
+          "si_sdr_db": 0.03389840717938242,
+          "stoi": 0.00036178252410867806,
+          "pesq": -0.012819051742553711
+        }
+      },
+      {
+        "utt": "reader_11981_fileid_612",
+        "dev_index": 35,
+        "differences": {
+          "normalized_wave_mse": -3.048318310626516e-06,
+          "si_sdr_db": 0.0029858730842645675,
+          "stoi": -0.00048458775982573865,
+          "pesq": 0.0045816898345947266
+        }
+      },
+      {
+        "utt": "reader_11332_fileid_161",
+        "dev_index": 36,
+        "differences": {
+          "normalized_wave_mse": -8.572905283741944e-07,
+          "si_sdr_db": 0.0004679467206312182,
+          "stoi": -0.00044714672677659273,
+          "pesq": -0.005025386810302734
+        }
+      },
+      {
+        "utt": "reader_10715_fileid_5533",
+        "dev_index": 37,
+        "differences": {
+          "normalized_wave_mse": -6.386597105211998e-07,
+          "si_sdr_db": -0.002005004761517881,
+          "stoi": 0.0006215424101143618,
+          "pesq": -0.004015088081359863
+        }
+      },
+      {
+        "utt": "reader_11265_fileid_6999",
+        "dev_index": 38,
+        "differences": {
+          "normalized_wave_mse": 1.2534866749110878e-07,
+          "si_sdr_db": -0.002200326877314751,
+          "stoi": -0.00032945864215450094,
+          "pesq": -0.0011222362518310547
+        }
+      },
+      {
+        "utt": "reader_11297_fileid_4129",
+        "dev_index": 39,
+        "differences": {
+          "normalized_wave_mse": -2.111273705713971e-06,
+          "si_sdr_db": 0.005963302132960369,
+          "stoi": -0.0007026972326958925,
+          "pesq": 0.006728172302246094
+        }
+      },
+      {
+        "utt": "reader_11301_fileid_9495",
+        "dev_index": 40,
+        "differences": {
+          "normalized_wave_mse": -3.0037215774768045e-08,
+          "si_sdr_db": 0.009659788122405644,
+          "stoi": -7.889917883019404e-05,
+          "pesq": 0.006142139434814453
+        }
+      },
+      {
+        "utt": "reader_11216_fileid_6365",
+        "dev_index": 41,
+        "differences": {
+          "normalized_wave_mse": 8.17775956864019e-06,
+          "si_sdr_db": -0.15328173165381642,
+          "stoi": 0.0010025889046757497,
+          "pesq": -0.12913894653320312
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_6552",
+        "dev_index": 42,
+        "differences": {
+          "normalized_wave_mse": -9.783476856442351e-07,
+          "si_sdr_db": 0.036011473464562016,
+          "stoi": 9.622970812439569e-05,
+          "pesq": 0.009937286376953125
+        }
+      },
+      {
+        "utt": "reader_11917_fileid_1923",
+        "dev_index": 43,
+        "differences": {
+          "normalized_wave_mse": -2.6596083524780287e-07,
+          "si_sdr_db": 0.00788285679309908,
+          "stoi": -0.0009878202772702904,
+          "pesq": 9.906291961669922e-05
+        }
+      },
+      {
+        "utt": "reader_11254_fileid_2505",
+        "dev_index": 44,
+        "differences": {
+          "normalized_wave_mse": -2.2289043600394985e-06,
+          "si_sdr_db": 0.02167068601652211,
+          "stoi": -0.0008135397813692213,
+          "pesq": -0.012844085693359375
+        }
+      },
+      {
+        "utt": "reader_11071_fileid_5369",
+        "dev_index": 45,
+        "differences": {
+          "normalized_wave_mse": -1.2356344136984143e-05,
+          "si_sdr_db": 0.03483720117683653,
+          "stoi": -0.000279645368682524,
+          "pesq": -0.008972883224487305
+        }
+      },
+      {
+        "utt": "reader_11301_fileid_8115",
+        "dev_index": 46,
+        "differences": {
+          "normalized_wave_mse": 3.384804522409352e-07,
+          "si_sdr_db": 0.004067153699716997,
+          "stoi": 0.0003261987334842731,
+          "pesq": 0.04175829887390137
+        }
+      },
+      {
+        "utt": "reader_11458_fileid_4985",
+        "dev_index": 47,
+        "differences": {
+          "normalized_wave_mse": 4.05465057009809e-06,
+          "si_sdr_db": -0.028178377408474953,
+          "stoi": -0.000275341275892238,
+          "pesq": 0.00015628337860107422
+        }
+      },
+      {
+        "utt": "reader_10927_fileid_850",
+        "dev_index": 48,
+        "differences": {
+          "normalized_wave_mse": -1.8555291780438746e-06,
+          "si_sdr_db": 0.016962942775938572,
+          "stoi": -0.0010100227458896827,
+          "pesq": -0.004050612449645996
+        }
+      },
+      {
+        "utt": "reader_11888_fileid_4088",
+        "dev_index": 49,
+        "differences": {
+          "normalized_wave_mse": -1.6634686064178087e-05,
+          "si_sdr_db": 0.04954101695666502,
+          "stoi": 2.354027261008973e-05,
+          "pesq": 0.007541656494140625
+        }
+      },
+      {
+        "utt": "reader_11446_fileid_7296",
+        "dev_index": 50,
+        "differences": {
+          "normalized_wave_mse": -2.1014023409500655e-07,
+          "si_sdr_db": -0.0019425014702623145,
+          "stoi": -0.00010020884673078712,
+          "pesq": -0.00510096549987793
+        }
+      },
+      {
+        "utt": "reader_11901_fileid_1583",
+        "dev_index": 51,
+        "differences": {
+          "normalized_wave_mse": -2.030826632429749e-06,
+          "si_sdr_db": 0.10913860343954207,
+          "stoi": 0.0015232992136176016,
+          "pesq": -0.012483835220336914
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_3122",
+        "dev_index": 52,
+        "differences": {
+          "normalized_wave_mse": -9.248634340880994e-08,
+          "si_sdr_db": 0.039010140730226794,
+          "stoi": 2.1692909496495716e-06,
+          "pesq": -0.0009312629699707031
+        }
+      },
+      {
+        "utt": "reader_11195_fileid_7449",
+        "dev_index": 53,
+        "differences": {
+          "normalized_wave_mse": -1.7857851818429624e-06,
+          "si_sdr_db": 0.006051189018351444,
+          "stoi": 0.00013233272168822197,
+          "pesq": -0.0012449026107788086
+        }
+      },
+      {
+        "utt": "reader_11170_fileid_6209",
+        "dev_index": 54,
+        "differences": {
+          "normalized_wave_mse": -3.117223909838388e-06,
+          "si_sdr_db": 0.027456202400859553,
+          "stoi": -0.0003857208337325613,
+          "pesq": 0.0062677860260009766
+        }
+      },
+      {
+        "utt": "reader_10785_fileid_3854",
+        "dev_index": 55,
+        "differences": {
+          "normalized_wave_mse": -4.735148001877099e-06,
+          "si_sdr_db": 0.03181616558997291,
+          "stoi": 0.0007000231114631106,
+          "pesq": 0.005423545837402344
+        }
+      },
+      {
+        "utt": "reader_10777_fileid_6785",
+        "dev_index": 56,
+        "differences": {
+          "normalized_wave_mse": 3.031586838087556e-07,
+          "si_sdr_db": -0.026714714434955766,
+          "stoi": -3.7086095092786486e-05,
+          "pesq": -0.008103132247924805
+        }
+      },
+      {
+        "utt": "reader_11553_fileid_9309",
+        "dev_index": 57,
+        "differences": {
+          "normalized_wave_mse": 8.347425308045421e-07,
+          "si_sdr_db": -0.03515909773591419,
+          "stoi": 0.013392645591928154,
+          "pesq": -0.006253361701965332
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_8729",
+        "dev_index": 58,
+        "differences": {
+          "normalized_wave_mse": -3.5778050466294536e-07,
+          "si_sdr_db": -0.0024423322381252888,
+          "stoi": 0.00044163182780665444,
+          "pesq": -0.0015721321105957031
+        }
+      },
+      {
+        "utt": "reader_11961_fileid_529",
+        "dev_index": 59,
+        "differences": {
+          "normalized_wave_mse": -5.073316136561723e-07,
+          "si_sdr_db": 0.016253981341934676,
+          "stoi": -0.0006250338588432713,
+          "pesq": 0.02159285545349121
+        }
+      },
+      {
+        "utt": "reader_11560_fileid_7582",
+        "dev_index": 60,
+        "differences": {
+          "normalized_wave_mse": 4.325492545702165e-07,
+          "si_sdr_db": -0.028736988374191696,
+          "stoi": -4.9057474218461294e-06,
+          "pesq": -0.019009113311767578
+        }
+      },
+      {
+        "utt": "reader_11535_fileid_2947",
+        "dev_index": 61,
+        "differences": {
+          "normalized_wave_mse": -3.583084462126349e-07,
+          "si_sdr_db": 0.004729245689798489,
+          "stoi": 3.0096777464461155e-05,
+          "pesq": -0.005341053009033203
+        }
+      },
+      {
+        "utt": "reader_11053_fileid_1482",
+        "dev_index": 62,
+        "differences": {
+          "normalized_wave_mse": -9.77262107804632e-07,
+          "si_sdr_db": -0.00016429721857669222,
+          "stoi": 0.0013394244826917534,
+          "pesq": -0.0060759782791137695
+        }
+      },
+      {
+        "utt": "reader_11046_fileid_8124",
+        "dev_index": 63,
+        "differences": {
+          "normalized_wave_mse": -4.169613981120442e-07,
+          "si_sdr_db": 0.0017605353212903907,
+          "stoi": -0.00024049713208307288,
+          "pesq": 0.004794120788574219
+        }
+      }
+    ],
+    "D-minus-source": [
+      {
+        "utt": "reader_11236_fileid_6794",
+        "dev_index": 0,
+        "differences": {
+          "normalized_wave_mse": -7.258068999083577e-07,
+          "si_sdr_db": 0.010505996150683927,
+          "stoi": 0.0001358421411130628,
+          "pesq": 0.00865316390991211
+        }
+      },
+      {
+        "utt": "reader_11826_fileid_6359",
+        "dev_index": 1,
+        "differences": {
+          "normalized_wave_mse": -1.175780996857736e-06,
+          "si_sdr_db": 0.04672635974625017,
+          "stoi": -0.00037614608969127605,
+          "pesq": 0.0017712116241455078
+        }
+      },
+      {
+        "utt": "reader_11065_fileid_7519",
+        "dev_index": 2,
+        "differences": {
+          "normalized_wave_mse": -6.486469734094495e-06,
+          "si_sdr_db": 0.002350979617794735,
+          "stoi": 0.00018776176604584638,
+          "pesq": 0.0015358924865722656
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_10724",
+        "dev_index": 3,
+        "differences": {
+          "normalized_wave_mse": -1.0082888982995849e-06,
+          "si_sdr_db": -0.06542847495964921,
+          "stoi": -0.0014374947464418364,
+          "pesq": -0.0012017488479614258
+        }
+      },
+      {
+        "utt": "reader_11880_fileid_9924",
+        "dev_index": 4,
+        "differences": {
+          "normalized_wave_mse": -1.597024792105486e-05,
+          "si_sdr_db": 0.33001578408050847,
+          "stoi": -0.00774962132631743,
+          "pesq": 0.021343350410461426
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_10605",
+        "dev_index": 5,
+        "differences": {
+          "normalized_wave_mse": -3.5495774096040874e-07,
+          "si_sdr_db": 0.024290817473371362,
+          "stoi": -0.00022116532787552767,
+          "pesq": 0.007951736450195312
+        }
+      },
+      {
+        "utt": "reader_11265_fileid_2501",
+        "dev_index": 6,
+        "differences": {
+          "normalized_wave_mse": -2.2367374784002442e-07,
+          "si_sdr_db": 0.024473365946615644,
+          "stoi": 1.6898611100324423e-05,
+          "pesq": -0.15400314331054688
+        }
+      },
+      {
+        "utt": "reader_11117_fileid_8577",
+        "dev_index": 7,
+        "differences": {
+          "normalized_wave_mse": -4.8794716472534846e-06,
+          "si_sdr_db": 0.1255502672038915,
+          "stoi": 0.0032152202989237655,
+          "pesq": -0.008729219436645508
+        }
+      },
+      {
+        "utt": "reader_11297_fileid_3545",
+        "dev_index": 8,
+        "differences": {
+          "normalized_wave_mse": -2.759522255203322e-06,
+          "si_sdr_db": 0.13740932290282615,
+          "stoi": -0.0024303773835595566,
+          "pesq": -0.009585738182067871
+        }
+      },
+      {
+        "utt": "reader_11346_fileid_6754",
+        "dev_index": 9,
+        "differences": {
+          "normalized_wave_mse": -1.0094475790528438e-06,
+          "si_sdr_db": 0.0162411015680064,
+          "stoi": 0.0003362162482846154,
+          "pesq": 0.012511491775512695
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_5420",
+        "dev_index": 10,
+        "differences": {
+          "normalized_wave_mse": -5.445920898660821e-08,
+          "si_sdr_db": -0.002282529552665835,
+          "stoi": -0.0007559495151777673,
+          "pesq": 0.0024698972702026367
+        }
+      },
+      {
+        "utt": "reader_11446_fileid_11151",
+        "dev_index": 11,
+        "differences": {
+          "normalized_wave_mse": 3.7048835043287692e-06,
+          "si_sdr_db": -0.04828574910007788,
+          "stoi": 0.00020108885886060968,
+          "pesq": -0.00367891788482666
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_3187",
+        "dev_index": 12,
+        "differences": {
+          "normalized_wave_mse": -2.2007024055664356e-06,
+          "si_sdr_db": 0.02320099696228084,
+          "stoi": 6.549491676643981e-05,
+          "pesq": -0.019656658172607422
+        }
+      },
+      {
+        "utt": "reader_10907_fileid_11974",
+        "dev_index": 13,
+        "differences": {
+          "normalized_wave_mse": -5.1057073924613795e-06,
+          "si_sdr_db": 0.01877479709429508,
+          "stoi": -0.018543813519174335,
+          "pesq": -0.0077364444732666016
+        }
+      },
+      {
+        "utt": "reader_11103_fileid_2057",
+        "dev_index": 14,
+        "differences": {
+          "normalized_wave_mse": -1.0792871367632808e-06,
+          "si_sdr_db": -0.17316689654243334,
+          "stoi": 0.004297785965210521,
+          "pesq": -0.00026738643646240234
+        }
+      },
+      {
+        "utt": "reader_11219_fileid_2058",
+        "dev_index": 15,
+        "differences": {
+          "normalized_wave_mse": 3.700826849678768e-06,
+          "si_sdr_db": 0.46478729966313637,
+          "stoi": -0.003627824805369134,
+          "pesq": 0.0010249614715576172
+        }
+      },
+      {
+        "utt": "reader_11617_fileid_6929",
+        "dev_index": 16,
+        "differences": {
+          "normalized_wave_mse": -9.263082293405322e-06,
+          "si_sdr_db": 0.2985372332145353,
+          "stoi": 0.013657678751006957,
+          "pesq": 0.004708647727966309
+        }
+      },
+      {
+        "utt": "reader_11299_fileid_2399",
+        "dev_index": 17,
+        "differences": {
+          "normalized_wave_mse": -1.587178088935685e-06,
+          "si_sdr_db": -0.010581211754839726,
+          "stoi": -0.0019395806932240856,
+          "pesq": 0.002321004867553711
+        }
+      },
+      {
+        "utt": "reader_11794_fileid_5599",
+        "dev_index": 18,
+        "differences": {
+          "normalized_wave_mse": -6.500699319674863e-07,
+          "si_sdr_db": 0.011070824749077168,
+          "stoi": 4.562894490700575e-05,
+          "pesq": -0.000990748405456543
+        }
+      },
+      {
+        "utt": "reader_11963_fileid_10405",
+        "dev_index": 19,
+        "differences": {
+          "normalized_wave_mse": -5.722199158573067e-06,
+          "si_sdr_db": 0.12720063367388335,
+          "stoi": 3.8552708049532924e-05,
+          "pesq": 0.0009982585906982422
+        }
+      },
+      {
+        "utt": "reader_11794_fileid_451",
+        "dev_index": 20,
+        "differences": {
+          "normalized_wave_mse": -5.223141049296484e-06,
+          "si_sdr_db": 0.06195705310314814,
+          "stoi": 0.0004039600825919143,
+          "pesq": 0.004376769065856934
+        }
+      },
+      {
+        "utt": "reader_11057_fileid_7856",
+        "dev_index": 21,
+        "differences": {
+          "normalized_wave_mse": -1.4615794339694385e-06,
+          "si_sdr_db": 0.025588726915289683,
+          "stoi": -1.9635163865050487e-05,
+          "pesq": 0.0193023681640625
+        }
+      },
+      {
+        "utt": "reader_10676_fileid_7317",
+        "dev_index": 22,
+        "differences": {
+          "normalized_wave_mse": -7.774041307415927e-06,
+          "si_sdr_db": 0.11392724750800873,
+          "stoi": 0.007763223109477524,
+          "pesq": -0.0007958412170410156
+        }
+      },
+      {
+        "utt": "reader_11357_fileid_9224",
+        "dev_index": 23,
+        "differences": {
+          "normalized_wave_mse": -9.914040176897806e-06,
+          "si_sdr_db": 0.048827180028253814,
+          "stoi": 0.0003763136707893855,
+          "pesq": 0.006667733192443848
+        }
+      },
+      {
+        "utt": "reader_11713_fileid_3877",
+        "dev_index": 24,
+        "differences": {
+          "normalized_wave_mse": -1.690502728840896e-07,
+          "si_sdr_db": 0.03468550852742158,
+          "stoi": 0.00010191768803402557,
+          "pesq": 0.014455437660217285
+        }
+      },
+      {
+        "utt": "reader_11273_fileid_1479",
+        "dev_index": 25,
+        "differences": {
+          "normalized_wave_mse": -1.463532834822396e-07,
+          "si_sdr_db": 0.014035098475160268,
+          "stoi": 5.491168334648133e-05,
+          "pesq": 0.00605320930480957
+        }
+      },
+      {
+        "utt": "reader_11065_fileid_2673",
+        "dev_index": 26,
+        "differences": {
+          "normalized_wave_mse": -2.4485609941138266e-05,
+          "si_sdr_db": 0.22111013445650407,
+          "stoi": 0.007230528815293791,
+          "pesq": -0.003124713897705078
+        }
+      },
+      {
+        "utt": "reader_11450_fileid_4097",
+        "dev_index": 27,
+        "differences": {
+          "normalized_wave_mse": -8.317417934480733e-06,
+          "si_sdr_db": 0.15518028013318386,
+          "stoi": -0.0017288160426628674,
+          "pesq": -0.016948342323303223
+        }
+      },
+      {
+        "utt": "reader_11912_fileid_8148",
+        "dev_index": 28,
+        "differences": {
+          "normalized_wave_mse": -9.834399354633985e-07,
+          "si_sdr_db": 0.027230820830418168,
+          "stoi": 0.00030197822420596765,
+          "pesq": 0.0029027462005615234
+        }
+      },
+      {
+        "utt": "reader_11364_fileid_11310",
+        "dev_index": 29,
+        "differences": {
+          "normalized_wave_mse": -1.829939239873904e-07,
+          "si_sdr_db": 0.023842189723659146,
+          "stoi": 5.9488263047469125e-05,
+          "pesq": -0.002881765365600586
+        }
+      },
+      {
+        "utt": "reader_11128_fileid_5694",
+        "dev_index": 30,
+        "differences": {
+          "normalized_wave_mse": -4.978973661993796e-07,
+          "si_sdr_db": 0.032965298144576494,
+          "stoi": -0.0002787923425621175,
+          "pesq": 0.0022993087768554688
+        }
+      },
+      {
+        "utt": "reader_11203_fileid_9673",
+        "dev_index": 31,
+        "differences": {
+          "normalized_wave_mse": -1.3262376388729425e-06,
+          "si_sdr_db": -0.008273106067363756,
+          "stoi": 0.0010012901084929249,
+          "pesq": 0.0044547319412231445
+        }
+      },
+      {
+        "utt": "reader_11046_fileid_10711",
+        "dev_index": 32,
+        "differences": {
+          "normalized_wave_mse": -1.5023145427687438e-06,
+          "si_sdr_db": 0.0387311652541964,
+          "stoi": -0.00010806658776907341,
+          "pesq": 0.006613969802856445
+        }
+      },
+      {
+        "utt": "reader_11077_fileid_1780",
+        "dev_index": 33,
+        "differences": {
+          "normalized_wave_mse": -2.0239401254683093e-06,
+          "si_sdr_db": 0.04431357469863073,
+          "stoi": 1.4645548990555035e-05,
+          "pesq": 0.010031461715698242
+        }
+      },
+      {
+        "utt": "reader_11139_fileid_4052",
+        "dev_index": 34,
+        "differences": {
+          "normalized_wave_mse": -5.251197016843331e-06,
+          "si_sdr_db": 0.03872793565862942,
+          "stoi": 0.00035417825080774623,
+          "pesq": -0.011827230453491211
+        }
+      },
+      {
+        "utt": "reader_11981_fileid_612",
+        "dev_index": 35,
+        "differences": {
+          "normalized_wave_mse": -3.807503485159041e-06,
+          "si_sdr_db": 0.00848956109153498,
+          "stoi": -0.00044676960266132326,
+          "pesq": 0.005116939544677734
+        }
+      },
+      {
+        "utt": "reader_11332_fileid_161",
+        "dev_index": 36,
+        "differences": {
+          "normalized_wave_mse": -1.2597723649196164e-06,
+          "si_sdr_db": 0.003358484207949708,
+          "stoi": -0.0003601866200479975,
+          "pesq": -0.004741311073303223
+        }
+      },
+      {
+        "utt": "reader_10715_fileid_5533",
+        "dev_index": 37,
+        "differences": {
+          "normalized_wave_mse": -2.6863255130590066e-06,
+          "si_sdr_db": 0.007831683357606423,
+          "stoi": 0.0006408761977858557,
+          "pesq": -0.0033228397369384766
+        }
+      },
+      {
+        "utt": "reader_11265_fileid_6999",
+        "dev_index": 38,
+        "differences": {
+          "normalized_wave_mse": -1.161341793184641e-07,
+          "si_sdr_db": 0.003543004464715338,
+          "stoi": -0.00020400450270008363,
+          "pesq": 0.0001989603042602539
+        }
+      },
+      {
+        "utt": "reader_11297_fileid_4129",
+        "dev_index": 39,
+        "differences": {
+          "normalized_wave_mse": -2.6325785539666412e-06,
+          "si_sdr_db": 0.017627282706354386,
+          "stoi": -0.0006427430738997764,
+          "pesq": 0.009723901748657227
+        }
+      },
+      {
+        "utt": "reader_11301_fileid_9495",
+        "dev_index": 40,
+        "differences": {
+          "normalized_wave_mse": -3.8888662895524223e-08,
+          "si_sdr_db": 0.011921698439124384,
+          "stoi": -9.438569823350118e-05,
+          "pesq": 0.004965782165527344
+        }
+      },
+      {
+        "utt": "reader_11216_fileid_6365",
+        "dev_index": 41,
+        "differences": {
+          "normalized_wave_mse": 9.160297203440705e-06,
+          "si_sdr_db": -0.17107373799401415,
+          "stoi": 0.0010661688496694799,
+          "pesq": -0.13272333145141602
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_6552",
+        "dev_index": 42,
+        "differences": {
+          "normalized_wave_mse": -1.0219154710924632e-06,
+          "si_sdr_db": 0.0376667844872145,
+          "stoi": 9.63851878144073e-05,
+          "pesq": 0.010632753372192383
+        }
+      },
+      {
+        "utt": "reader_11917_fileid_1923",
+        "dev_index": 43,
+        "differences": {
+          "normalized_wave_mse": -2.939329919163827e-07,
+          "si_sdr_db": 0.009178197293747914,
+          "stoi": -0.0010634193384185808,
+          "pesq": 0.0005621910095214844
+        }
+      },
+      {
+        "utt": "reader_11254_fileid_2505",
+        "dev_index": 44,
+        "differences": {
+          "normalized_wave_mse": -2.3917761027223696e-06,
+          "si_sdr_db": 0.023146853035386883,
+          "stoi": -0.0009300455600486091,
+          "pesq": -0.013480901718139648
+        }
+      },
+      {
+        "utt": "reader_11071_fileid_5369",
+        "dev_index": 45,
+        "differences": {
+          "normalized_wave_mse": -1.439257947340243e-05,
+          "si_sdr_db": 0.0416307072061155,
+          "stoi": -0.00025466876482493905,
+          "pesq": -0.00746607780456543
+        }
+      },
+      {
+        "utt": "reader_11301_fileid_8115",
+        "dev_index": 46,
+        "differences": {
+          "normalized_wave_mse": -6.682996821122432e-07,
+          "si_sdr_db": 0.011869726858883212,
+          "stoi": 0.00035266927545174465,
+          "pesq": 0.0377047061920166
+        }
+      },
+      {
+        "utt": "reader_11458_fileid_4985",
+        "dev_index": 47,
+        "differences": {
+          "normalized_wave_mse": 2.5246919469288504e-06,
+          "si_sdr_db": -0.02386333192904777,
+          "stoi": -0.00014170554303249983,
+          "pesq": 0.00019884109497070312
+        }
+      },
+      {
+        "utt": "reader_10927_fileid_850",
+        "dev_index": 48,
+        "differences": {
+          "normalized_wave_mse": -1.7404045283866119e-06,
+          "si_sdr_db": 0.015519420698852926,
+          "stoi": -0.0010369742142662952,
+          "pesq": -0.004873037338256836
+        }
+      },
+      {
+        "utt": "reader_11888_fileid_4088",
+        "dev_index": 49,
+        "differences": {
+          "normalized_wave_mse": -1.74943005944101e-05,
+          "si_sdr_db": 0.052044438947753235,
+          "stoi": 2.271050937296959e-05,
+          "pesq": 0.007301688194274902
+        }
+      },
+      {
+        "utt": "reader_11446_fileid_7296",
+        "dev_index": 50,
+        "differences": {
+          "normalized_wave_mse": -2.8100826512859976e-06,
+          "si_sdr_db": 0.006104362983681,
+          "stoi": -1.8668084233897098e-05,
+          "pesq": -0.006802797317504883
+        }
+      },
+      {
+        "utt": "reader_11901_fileid_1583",
+        "dev_index": 51,
+        "differences": {
+          "normalized_wave_mse": -2.1547916144229722e-06,
+          "si_sdr_db": 0.10994007802466621,
+          "stoi": 0.0012493506803915588,
+          "pesq": -0.011880159378051758
+        }
+      },
+      {
+        "utt": "reader_10929_fileid_3122",
+        "dev_index": 52,
+        "differences": {
+          "normalized_wave_mse": -1.2123966219489962e-07,
+          "si_sdr_db": 0.04677412962811189,
+          "stoi": 2.9145515864081872e-06,
+          "pesq": -0.0009808540344238281
+        }
+      },
+      {
+        "utt": "reader_11195_fileid_7449",
+        "dev_index": 53,
+        "differences": {
+          "normalized_wave_mse": -2.2381146547879437e-06,
+          "si_sdr_db": 0.008993752310815673,
+          "stoi": 0.0001064911334004437,
+          "pesq": -0.0008680820465087891
+        }
+      },
+      {
+        "utt": "reader_11170_fileid_6209",
+        "dev_index": 54,
+        "differences": {
+          "normalized_wave_mse": -3.1452795007209326e-06,
+          "si_sdr_db": 0.02767535373144625,
+          "stoi": -0.00039754357033305876,
+          "pesq": 0.007441520690917969
+        }
+      },
+      {
+        "utt": "reader_10785_fileid_3854",
+        "dev_index": 55,
+        "differences": {
+          "normalized_wave_mse": -5.522354748754236e-06,
+          "si_sdr_db": 0.036602012179557164,
+          "stoi": 0.0007870121613829939,
+          "pesq": 0.00559842586517334
+        }
+      },
+      {
+        "utt": "reader_10777_fileid_6785",
+        "dev_index": 56,
+        "differences": {
+          "normalized_wave_mse": 2.7732931133015565e-07,
+          "si_sdr_db": -0.024469574634309765,
+          "stoi": -5.625757495353323e-05,
+          "pesq": -0.007831811904907227
+        }
+      },
+      {
+        "utt": "reader_11553_fileid_9309",
+        "dev_index": 57,
+        "differences": {
+          "normalized_wave_mse": 1.5951615749505363e-06,
+          "si_sdr_db": -0.039655723981108615,
+          "stoi": 0.013512369593013107,
+          "pesq": -0.0066204071044921875
+        }
+      },
+      {
+        "utt": "reader_11121_fileid_8729",
+        "dev_index": 58,
+        "differences": {
+          "normalized_wave_mse": -1.310134377948682e-06,
+          "si_sdr_db": 0.0004033851335005778,
+          "stoi": 0.0004906689090056204,
+          "pesq": -0.0006887912750244141
+        }
+      },
+      {
+        "utt": "reader_11961_fileid_529",
+        "dev_index": 59,
+        "differences": {
+          "normalized_wave_mse": -5.96249699127754e-07,
+          "si_sdr_db": 0.01932849222112587,
+          "stoi": -0.0006130562657050698,
+          "pesq": 0.020990371704101562
+        }
+      },
+      {
+        "utt": "reader_11560_fileid_7582",
+        "dev_index": 60,
+        "differences": {
+          "normalized_wave_mse": 1.304728421172406e-07,
+          "si_sdr_db": -0.003919921602484777,
+          "stoi": 9.902032359065949e-06,
+          "pesq": -0.01938915252685547
+        }
+      },
+      {
+        "utt": "reader_11535_fileid_2947",
+        "dev_index": 61,
+        "differences": {
+          "normalized_wave_mse": -2.622001397399479e-06,
+          "si_sdr_db": 0.034944248504036324,
+          "stoi": 5.229293702357918e-05,
+          "pesq": -0.001554250717163086
+        }
+      },
+      {
+        "utt": "reader_11053_fileid_1482",
+        "dev_index": 62,
+        "differences": {
+          "normalized_wave_mse": -1.6251722959036716e-06,
+          "si_sdr_db": 0.0037188699098216205,
+          "stoi": 0.0014210771240136255,
+          "pesq": -0.005833745002746582
+        }
+      },
+      {
+        "utt": "reader_11046_fileid_8124",
+        "dev_index": 63,
+        "differences": {
+          "normalized_wave_mse": -6.959131232541936e-07,
+          "si_sdr_db": 0.005034566395957896,
+          "stoi": -0.0002153999563824227,
+          "pesq": 0.005602598190307617
+        }
+      }
+    ]
+  },
+  "SNR_descriptive_groups": {
+    "[-10,-5]": {
+      "D-minus-N": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -5.352534983262906e-07
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.005717362416179345
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 8.450120953087947e-06
+        },
+        "pesq": {
+          "count": 16,
+          "mean": 0.0002598688006401062
+        }
+      },
+      "N-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -1.9693136966861806e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.012972505737034623
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 0.0009488555019016055
+        },
+        "pesq": {
+          "count": 16,
+          "mean": -0.0015341490507125854
+        }
+      },
+      "D-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -2.504567195012471e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.018689868153213968
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 0.0009573056228546935
+        },
+        "pesq": {
+          "count": 16,
+          "mean": -0.0012742802500724792
+        }
+      }
+    },
+    "[-15,-10)": {
+      "D-minus-N": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -5.599685949561301e-07
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.004035936668495936
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 3.630195967092159e-05
+        },
+        "pesq": {
+          "count": 16,
+          "mean": 0.00012295693159103394
+        }
+      },
+      "N-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -1.090166968498558e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.002407787633818305
+        },
+        "stoi": {
+          "count": 16,
+          "mean": -0.0001438689584907088
+        },
+        "pesq": {
+          "count": 16,
+          "mean": -0.005611218512058258
+        }
+      },
+      "D-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -1.6501355634546882e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.006443724302314241
+        },
+        "stoi": {
+          "count": 16,
+          "mean": -0.00010756699881978721
+        },
+        "pesq": {
+          "count": 16,
+          "mean": -0.005488261580467224
+        }
+      }
+    },
+    "[-18,-15)": {
+      "D-minus-N": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -5.623858967415686e-07
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.010072125865554404
+        },
+        "stoi": {
+          "count": 16,
+          "mean": -6.573668468834101e-05
+        },
+        "pesq": {
+          "count": 16,
+          "mean": 0.0003117173910140991
+        }
+      },
+      "N-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -4.294134836819035e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.06350936861325286
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 0.0017575271726213947
+        },
+        "pesq": {
+          "count": 16,
+          "mean": 0.0024257078766822815
+        }
+      },
+      "D-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -4.856520733560603e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.07358149447880727
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 0.0016917904879330536
+        },
+        "pesq": {
+          "count": 16,
+          "mean": 0.0027374252676963806
+        }
+      }
+    },
+    "[-20,-18)": {
+      "D-minus-N": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -1.4560035602620334e-07
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": -0.0014679736810940536
+        },
+        "stoi": {
+          "count": 16,
+          "mean": 2.1189584587286148e-05
+        },
+        "pesq": {
+          "count": 16,
+          "mean": 0.0006761848926544189
+        }
+      },
+      "N-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -2.081156719617252e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.0599156885720212
+        },
+        "stoi": {
+          "count": 16,
+          "mean": -0.001689069828793641
+        },
+        "pesq": {
+          "count": 16,
+          "mean": -0.009901031851768494
+        }
+      },
+      "D-minus-source": {
+        "normalized_wave_mse": {
+          "count": 16,
+          "mean": -2.226757075643455e-06
+        },
+        "si_sdr_db": {
+          "count": 16,
+          "mean": 0.05844771489092715
+        },
+        "stoi": {
+          "count": 16,
+          "mean": -0.0016678802442063548
+        },
+        "pesq": {
+          "count": 16,
+          "mean": -0.009224846959114075
+        }
+      }
+    }
+  },
+  "state_injections": {
+    "source": {
+      "expected": "4813c3ea5659d4c7f9c58e73107d30d93c7cef21e2e64f267671e9f6430592bb",
+      "actual": "4813c3ea5659d4c7f9c58e73107d30d93c7cef21e2e64f267671e9f6430592bb",
+      "matched": true
+    },
+    "N": {
+      "expected": "15e400d6e775930b9784ab49c4a71f43d3acf6df888169c0f44e6532be4b252c",
+      "actual": "15e400d6e775930b9784ab49c4a71f43d3acf6df888169c0f44e6532be4b252c",
+      "matched": true
+    },
+    "D": {
+      "expected": "11d2df47424ea7075bb96e504e1b687514447ad4de3a41eba23e117962e02aaa",
+      "actual": "11d2df47424ea7075bb96e504e1b687514447ad4de3a41eba23e117962e02aaa",
+      "matched": true
+    }
+  },
+  "frozen_checks_all_match": true,
+  "crossarm_exact_sampler_anchor_condition_norm_length_seed_crop_match_files": 64,
+  "actual_score_calls_summed": 5760,
+  "max_mean_reconstruction_difference": 8.881784197001252e-16,
+  "historical_partial7_repeatability": {
+    "old_status_preserved": "failed",
+    "cases": [
+      {
+        "utt": "reader_11121_fileid_10724",
+        "dev_index": 3,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": 1.871514824624415e-12
+      },
+      {
+        "utt": "reader_11446_fileid_11151",
+        "dev_index": 11,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": -2.6561608815200977e-13
+      },
+      {
+        "utt": "reader_11794_fileid_5599",
+        "dev_index": 18,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": -8.786539746653832e-13
+      },
+      {
+        "utt": "reader_11128_fileid_5694",
+        "dev_index": 30,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": 6.91286993468633e-13
+      },
+      {
+        "utt": "reader_11301_fileid_9495",
+        "dev_index": 40,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": -7.909456103310022e-14
+      },
+      {
+        "utt": "reader_11917_fileid_1923",
+        "dev_index": 43,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": 1.7952806938541926e-12
+      },
+      {
+        "utt": "reader_11053_fileid_1482",
+        "dev_index": 62,
+        "norm_anchor_condition_match": true,
+        "MSE_difference": -2.5477360022022055e-12
+      }
+    ],
+    "max_MSE_absolute_difference": 2.5477360022022055e-12,
+    "scope": "same public descriptions7/7; MSE differences retained, no waveform recomputation"
+  },
+  "historical_raw_reference_only": {
+    "source": {
+      "normalized_wave_mse": 0.0005210014620157216,
+      "si_sdr_db": 5.864715098972805,
+      "stoi": 0.7939588226167306,
+      "pesq": 1.899856710806489
+    },
+    "N": {
+      "normalized_wave_mse": 0.0005184643123715819,
+      "si_sdr_db": 5.876827648766388,
+      "stoi": 0.7943418129396506,
+      "pesq": 1.8931056652218103
+    },
+    "D": {
+      "normalized_wave_mse": 0.0005181184163100173,
+      "si_sdr_db": 5.916407077218962,
+      "stoi": 0.7944695294196518,
+      "pesq": 1.8945892378687859
+    }
+  },
+  "no_new_model_PCM_or_statistics_resampling": true,
+  "limitations": "arithmetic/hash descriptor audit only; no independent metric model or GPU inference validation; posthoc same64 development evaluation"
+}

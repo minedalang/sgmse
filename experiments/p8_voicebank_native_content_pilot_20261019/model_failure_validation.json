@@ -1,0 +1,21 @@
+{
+  "status": "passed_failure_record_audit_only",
+  "metrics_status": "failed",
+  "metrics_sha256": "6e70d1bef76eb8ea752f401d5fa102b377580365cda477742e4131d4d25fa929",
+  "source_locks": 173,
+  "source_pre_post_supervisor_current_equal": true,
+  "original_artifacts_checked": 74,
+  "original_artifacts_hash_bytes_equal": true,
+  "preexisting_cpu_and_frozen_files_unchanged": true,
+  "git_status_unchanged": true,
+  "models": 0,
+  "network_bytes": 0,
+  "retries": 0,
+  "success_model_validator_run": false,
+  "serialization_and_scoring_validation": "not applicable: no enhanced outputs or ASR scores produced",
+  "provider": "codex_tools_compat",
+  "bridge_and_listening_pids_alive": [
+    "39452",
+    "16022"
+  ]
+}

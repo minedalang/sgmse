@@ -1,0 +1,72 @@
+{
+  "request": {
+    "key": "p227_031_N1_snr_m18.wav__noisy",
+    "id": "p227_031",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_m18.wav",
+    "basename": "p227_031_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "34849ec866f524004591ef5e13483fbdd26928ad4c8771447655ac8a7ff74587",
+      "samples": 51005,
+      "array_sha256": "00447acb701ac5532caed6fa0fb1979dcc08070baaa024121969ff053a9bf604",
+      "peak": 0.41168212890625,
+      "rms": 0.09677831661356842
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2772650718688965,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.8870269060134888
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 21,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

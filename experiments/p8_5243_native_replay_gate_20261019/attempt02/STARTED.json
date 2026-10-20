@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-19T01:31:40.358740+00:00",
+  "command": [
+    "/data/coding/sgmse/env/bin/python",
+    "/data/coding/sgmse/experiments/p8_5243_native_replay_gate_20261019/attempt02/run_replay.py"
+  ],
+  "frozen_manifest_sha256": "3658fecece008aaef026e48c201346bbf2bc1fb9819e078d3e4e3e40db08cc50"
+}

@@ -1,0 +1,444 @@
+{
+  "experiment_id": "p8_silent_gap_screen8_20261018",
+  "status": "completed",
+  "interpretation": "Exploratory ranking only; no speech or hallucination labels, no learned gate. Other seven are held out with respect to this tail hypothesis, but were used in previous global audits and are not confirmation or virgin cross-validation.",
+  "threshold_note": "Quiet threshold (three PCM16 steps), minimum run duration (300ms), and backend ranking thresholds (-60dBFS and 10dB above Y_pre) are fixed exploratory choices, not tuned on these results. The active complementary threshold is separately fixed at -70dBFS.",
+  "noise_note": "Exact archived paired noise WAV; not noisy minus clean proxy.",
+  "db_note": "No RMS floor. Zero RMS or zero reference gives null/undefined dB or ratio; never silently floored.",
+  "highband_note": "Rectangular 20ms frame FFT, one-sided Parseval power, inclusive 4\u20137.5kHz bins.",
+  "addition_note": "Delta waveform energy versus Y_pre includes phase changes; signed output energy change also retained. Neither identifies speech.",
+  "utterances": [
+    {
+      "fileid": "5243",
+      "index": 0,
+      "speaker": "reader_10658",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 1,
+      "clean_active_frames": 1339,
+      "unclassified_frames": 140,
+      "quiet_duration_seconds": 0.02,
+      "qualifying_gap_count": 0,
+      "qualifying_gap_seconds": 0.0,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0,
+          "gap_delta_vs_ypre_energy_seconds": 0.0,
+          "gap_signed_energy_change_sample_sum": 0,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 1.5057623386383057e-05
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0,
+          "gap_delta_vs_ypre_energy_seconds": 0.0,
+          "gap_signed_energy_change_sample_sum": 0,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 9.705312550067902e-06
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.6971472852798847,
+          "relative_l2_db": -3.133509189060515,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.7894786041476395,
+          "relative_l2_db": -2.0531927083392842,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.7343231201089765,
+          "relative_l2_db": -2.682255956947376,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "6339",
+      "index": 1,
+      "speaker": "reader_10920",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 232,
+      "clean_active_frames": 1120,
+      "unclassified_frames": 128,
+      "quiet_duration_seconds": 4.64,
+      "qualifying_gap_count": 4,
+      "qualifying_gap_seconds": 2.86,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.00028383173048496246,
+          "gap_delta_vs_ypre_energy_seconds": 1.7739483155310154e-08,
+          "gap_signed_energy_change_sample_sum": 0.00018425099551677704,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.06236882787197828
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.00016446970403194427,
+          "gap_delta_vs_ypre_energy_seconds": 1.0279356501996518e-08,
+          "gap_signed_energy_change_sample_sum": 5.88931143283844e-05,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.028588132932782173
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.5352508231691895,
+          "relative_l2_db": -5.428853122517776,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.5592001769826208,
+          "relative_l2_db": -5.048653996228779,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.5340864641125986,
+          "relative_l2_db": -5.447768573015628,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "4812",
+      "index": 2,
+      "speaker": "reader_10921",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 30,
+      "clean_active_frames": 1249,
+      "unclassified_frames": 201,
+      "quiet_duration_seconds": 0.6,
+      "qualifying_gap_count": 0,
+      "qualifying_gap_seconds": 0.0,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0,
+          "gap_delta_vs_ypre_energy_seconds": 0.0,
+          "gap_signed_energy_change_sample_sum": 0,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.005354374647140503
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0,
+          "gap_delta_vs_ypre_energy_seconds": 0.0,
+          "gap_signed_energy_change_sample_sum": 0,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.003152070567011833
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.7277494406380866,
+          "relative_l2_db": -2.760362393918676,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.772235273375029,
+          "relative_l2_db": -2.2450072999719946,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.7361944477717502,
+          "relative_l2_db": -2.6601492447466697,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "11999",
+      "index": 3,
+      "speaker": "reader_10927",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 145,
+      "clean_active_frames": 1193,
+      "unclassified_frames": 142,
+      "quiet_duration_seconds": 2.9,
+      "qualifying_gap_count": 3,
+      "qualifying_gap_seconds": 1.38,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.00019428879022598267,
+          "gap_delta_vs_ypre_energy_seconds": 1.2143049389123917e-08,
+          "gap_signed_energy_change_sample_sum": 0.00018544867634773254,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.003704882226884365
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.0001338087022304535,
+          "gap_delta_vs_ypre_energy_seconds": 8.363043889403342e-09,
+          "gap_signed_energy_change_sample_sum": 0.00012141838669776917,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.0019964640960097313
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.4737512790751098,
+          "relative_l2_db": -6.488992089521764,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.5061228272109821,
+          "relative_l2_db": -5.9148814929786315,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.48181383433319164,
+          "relative_l2_db": -6.342414684997233,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "10720",
+      "index": 4,
+      "speaker": "reader_10929",
+      "group": "discovery_10720",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 388,
+      "clean_active_frames": 1043,
+      "unclassified_frames": 49,
+      "quiet_duration_seconds": 7.76,
+      "qualifying_gap_count": 8,
+      "qualifying_gap_seconds": 6.38,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 2,
+          "rank_flagged_duration_seconds": 1.58,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.184229732491076,
+          "gap_delta_vs_ypre_energy_seconds": 1.151435828069225e-05,
+          "gap_signed_energy_change_sample_sum": 0.14969484228640795,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.21599718742072582
+        },
+        "router": {
+          "rank_flagged_gap_count": 1,
+          "rank_flagged_duration_seconds": 1.12,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.09937650430947542,
+          "gap_delta_vs_ypre_energy_seconds": 6.211031519342214e-06,
+          "gap_signed_energy_change_sample_sum": 0.06409432645887136,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.11654015071690083
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.658507497721301,
+          "relative_l2_db": -3.6287855165359675,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.713025501234966,
+          "relative_l2_db": -2.937898748051706,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.6698923037975271,
+          "relative_l2_db": -3.479900233324598,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "11489",
+      "index": 5,
+      "speaker": "reader_11053",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 196,
+      "clean_active_frames": 1157,
+      "unclassified_frames": 127,
+      "quiet_duration_seconds": 3.92,
+      "qualifying_gap_count": 6,
+      "qualifying_gap_seconds": 2.08,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.0037131262943148613,
+          "gap_delta_vs_ypre_energy_seconds": 2.3207039339467882e-07,
+          "gap_signed_energy_change_sample_sum": 0.0036178668960928917,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.017296520993113518
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.002103187143802643,
+          "gap_delta_vs_ypre_energy_seconds": 1.314491964876652e-07,
+          "gap_signed_energy_change_sample_sum": 0.0019210893660783768,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.009459510445594788
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.8114877666984455,
+          "relative_l2_db": -1.8143604568759093,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.994193648001901,
+          "relative_l2_db": -0.05058031874095634,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.9261892896073968,
+          "relative_l2_db": -0.6660049093236386,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "3321",
+      "index": 6,
+      "speaker": "reader_11057",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 463,
+      "clean_active_frames": 933,
+      "unclassified_frames": 84,
+      "quiet_duration_seconds": 9.26,
+      "qualifying_gap_count": 9,
+      "qualifying_gap_seconds": 8.74,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 1,
+          "rank_flagged_duration_seconds": 1.04,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.04209103900939226,
+          "gap_delta_vs_ypre_energy_seconds": 2.6306899380870163e-06,
+          "gap_signed_energy_change_sample_sum": 0.04447712656110525,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.04592793621122837
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.02132711000740528,
+          "gap_delta_vs_ypre_energy_seconds": 1.3329443754628301e-06,
+          "gap_signed_energy_change_sample_sum": 0.02229081094264984,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.02343190647661686
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.5517759238438883,
+          "relative_l2_db": -5.164745068432888,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.605178768763494,
+          "relative_l2_db": -4.362326331106497,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.577497293234723,
+          "relative_l2_db": -4.7690009399190805,
+          "db_status": "defined"
+        }
+      }
+    },
+    {
+      "fileid": "3645",
+      "index": 7,
+      "speaker": "reader_11062",
+      "group": "exploratory_other7",
+      "interior_frames": 1480,
+      "boundary_excluded_frames": 20,
+      "clean_quiet_frames": 325,
+      "clean_active_frames": 1073,
+      "unclassified_frames": 82,
+      "quiet_duration_seconds": 6.5,
+      "qualifying_gap_count": 9,
+      "qualifying_gap_seconds": 5.94,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.02137579955160618,
+          "gap_delta_vs_ypre_energy_seconds": 1.3359874719753862e-06,
+          "gap_signed_energy_change_sample_sum": 0.022818684577941895,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.021393519826233387
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "rank_flagged_duration_seconds": 0,
+          "gap_delta_vs_ypre_energy_sample_sum": 0.01141401007771492,
+          "gap_delta_vs_ypre_energy_seconds": 7.133756298571825e-07,
+          "gap_signed_energy_change_sample_sum": 0.011545712128281593,
+          "all_quiet_delta_vs_ypre_energy_sample_sum": 0.011426365002989769
+        }
+      },
+      "active_complement": {
+        "y_pre": {
+          "relative_l2": 0.514832494149561,
+          "relative_l2_db": -5.766680999747271,
+          "db_status": "defined"
+        },
+        "off": {
+          "relative_l2": 0.5518065420470705,
+          "relative_l2_db": -5.164263099314957,
+          "db_status": "defined"
+        },
+        "router": {
+          "relative_l2": 0.5217808457900197,
+          "relative_l2_db": -5.6502373517984505,
+          "db_status": "defined"
+        }
+      }
+    }
+  ],
+  "groups": {
+    "discovery_10720": {
+      "utterances": 1,
+      "qualifying_gap_count": 8,
+      "qualifying_gap_seconds": 6.38,
+      "quiet_duration_seconds": 7.76,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 2,
+          "utterances_with_rank_flag": 1,
+          "gap_delta_vs_ypre_energy_seconds": 1.151435828069225e-05
+        },
+        "router": {
+          "rank_flagged_gap_count": 1,
+          "utterances_with_rank_flag": 1,
+          "gap_delta_vs_ypre_energy_seconds": 6.211031519342214e-06
+        }
+      }
+    },
+    "exploratory_other7": {
+      "utterances": 7,
+      "qualifying_gap_count": 31,
+      "qualifying_gap_seconds": 21.0,
+      "quiet_duration_seconds": 27.839999999999996,
+      "backend": {
+        "off": {
+          "rank_flagged_gap_count": 1,
+          "utterances_with_rank_flag": 1,
+          "gap_delta_vs_ypre_energy_seconds": 4.228630336001516e-06
+        },
+        "router": {
+          "rank_flagged_gap_count": 0,
+          "utterances_with_rank_flag": 0,
+          "gap_delta_vs_ypre_energy_seconds": 2.1964116021990775e-06
+        }
+      }
+    }
+  },
+  "all_sources_unchanged": true,
+  "new_model_inference": false
+}

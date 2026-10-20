@@ -1,0 +1,15 @@
+{
+  "status": "single_file_smoke_complete",
+  "device_requested": "auto",
+  "resolved_device": "cuda:0",
+  "torch_cuda_available": true,
+  "torch_cuda_device_count": 1,
+  "onnx_session_providers": ["CUDAExecutionProvider", "CPUExecutionProvider"],
+  "provider_warning": "No registered plugin EP device found for CUDAExecutionProvider with device_id=0",
+  "actual_cuda_execution_verified": false,
+  "frames": 480000,
+  "sample_rate_hz": 16000,
+  "elapsed_seconds": 3.179553270339966,
+  "metrics": {"p808": 4.011950560978481, "sig": 3.5288963074442923, "bak": 4.154198483639262, "ovrl": 3.2433596540092964},
+  "full_evaluation": "not_run_due_to_unverified_cuda_provider_and_prior_cpu_fallback"
+}

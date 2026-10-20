@@ -1,0 +1,42 @@
+{
+  "kind": "bounded primary-literature/source/math review, no experiment",
+  "utc": "2026-10-19T09:30:38.702532+00:00",
+  "documents": {
+    "/data/coding/sgmse/research_memos/p8_condition_utilization_priorart_20261019.md": "6925d9ad53b43111fba444d3d55da471ced2a7e10e979fc6b79f103a73636e30",
+    "/data/research_plan.md": "8ba118d031e014115f76e18423635675c110f8128d7b692bc2bc6d9e61d371f6",
+    "/data/research/p8_low_snr.md": "7c771c50b37494f0e0d5a900b3c3a2e7ab46a17d7f91215029a5b62c70c4122b",
+    "/data/research/evidence_summary.md": "a7f75eb40e4b9f648915eb64380e9edcfc14dac78a03ee569c153e7255c66b4b",
+    "/data/research/archive.md": "cfd9e7df3fcf648294ef7fca074f2231fde2292e28f79d07cf45cd90d02303ed"
+  },
+  "sources_pre_post_unchanged": {
+    "sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21",
+    "sgmse/backbones/ncsnpp_v2.py": "63e467295acd0a01d20fb4a4941addc12bfa4bd69bad43be15427c81b8767f5e",
+    "experiments/p8_vcv_speech_component_ablation_20261019/listener_assessment_20261019.md": "89eb1f6c44b8dd7801e6321dd5b52e53872ee8f5a732a7b57efcea4fb13bbb92",
+    "research_memos/p8_i1b_human_structure_protocol_20261019.md": "0d7af40bda0ecdfc4cbdd6b4bf52143dcb60637d5d24eab477ff3c66c7288146",
+    "experiments/p8_i1b_event_pair_integrity_20261019/metrics.json": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c"
+  },
+  "local_links_checked": 42,
+  "primary_urls": [
+    {
+      "url": "https://proceedings.neurips.cc/paper_files/paper/2023/file/7e966a12c2d6307adb8809aaa9acf057-Paper-Conference.pdf",
+      "read": "3.3,4.1-4.3 Eq14 Algorithm1"
+    },
+    {
+      "url": "https://ojs.aaai.org/index.php/AAAI/article/download/26597/26369",
+      "read": "WeakConditionInfluence/Methodology Eq9-11"
+    },
+    {
+      "url": "https://www.sciencedirect.com/science/article/pii/S0167865526001340",
+      "read": "publisher search excerpt/abstract only; direct fulltext failed; no exact formula or novelty-overlap claim"
+    }
+  ],
+  "actual_audio_reads": 0,
+  "models": 0,
+  "training": 0,
+  "human_responses": 0,
+  "resource_status": "no user confirmation received; no new repeated question/recruitment/UI",
+  "old_archive_originals_modified": false,
+  "decision": "correct state-drop vs condition-drop terminology and forbid naive unchanged-DSM transplant inference; no new experiment authorization",
+  "goal_complete": false
+}

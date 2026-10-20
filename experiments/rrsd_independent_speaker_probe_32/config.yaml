@@ -1,0 +1,6 @@
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+encoder: /data/coding/sgmse/pre_models/wespeaker-voxceleb-campplus/avg_model.pt
+arms: [off, original_router, pair, proto01, proto01_cw1]
+original_router_dir: experiment_logs/rrsd_tcut_screen/router
+device: cuda
+count: 32

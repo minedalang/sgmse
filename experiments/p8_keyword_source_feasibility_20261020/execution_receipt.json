@@ -1,0 +1,21 @@
+{
+  "status": "failed_HTTP_source_verification_and_artifact_budget",
+  "pid": 5566,
+  "session_id": 47128,
+  "exit_code": 1,
+  "requests": 3,
+  "body_bytes": 2143724,
+  "seconds": 33.603907694108784,
+  "artifact_limit": 4194304,
+  "observed_bytes_before_reporting": 5556584,
+  "resource_gate_passed": false,
+  "retained_all_files": true,
+  "no_retry_or_new_HTTP": true,
+  "member_reads": 0,
+  "PCM_decodes": 0,
+  "metrics_sha256": "83b261b3ef1b702fcf38fda6a13e6b1a0197e98e1ec35e4e3fe510def8bcf113",
+  "report_sha256": "fed13110465115afe6212864b38f0eb7570cb039892a4db4fa144d82e00ab512",
+  "thread_id": "01a153f1-d6c2-7f42-9c8b-323bcb2a9375",
+  "disk_free_bytes": 1617784832,
+  "actual_final_directory_bytes": 5567282
+}

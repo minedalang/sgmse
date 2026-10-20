@@ -1,0 +1,213 @@
+{
+  "source": "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json",
+  "source_sha256": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0",
+  "scope": "Post-hoc descriptive Lead analysis of all 16 existing records; not a new model experiment",
+  "formula": "20*log10(actual_ASR_PCM_RMS_OFF/actual_ASR_PCM_RMS_frontend); no flooring/window/selection",
+  "word_count_identity": "delta N_hyp = D_frontend-D_OFF + I_OFF-I_frontend",
+  "rows": [
+    {
+      "basename": "p226_027_N1_snr_m18.wav",
+      "noise": "N1",
+      "snr_db": -18,
+      "rms_gain_db": 10.844876519669537,
+      "peak_gain_db": 5.624020027872491,
+      "frontend_hypothesis_words": 8,
+      "off_hypothesis_words": 8,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 0
+    },
+    {
+      "basename": "p226_027_N1_snr_p0.wav",
+      "noise": "N1",
+      "snr_db": 0,
+      "rms_gain_db": 0.3040423424129696,
+      "peak_gain_db": 0.43834392266528766,
+      "frontend_hypothesis_words": 12,
+      "off_hypothesis_words": 12,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 0
+    },
+    {
+      "basename": "p226_027_N2_snr_m18.wav",
+      "noise": "N2",
+      "snr_db": -18,
+      "rms_gain_db": 1.0004945121549405,
+      "peak_gain_db": 1.0976528984628433,
+      "frontend_hypothesis_words": 11,
+      "off_hypothesis_words": 12,
+      "hypothesis_word_delta": 1,
+      "word_edit_error_delta": -1
+    },
+    {
+      "basename": "p226_027_N2_snr_p0.wav",
+      "noise": "N2",
+      "snr_db": 0,
+      "rms_gain_db": -0.1018986841468482,
+      "peak_gain_db": 0.10671450307849925,
+      "frontend_hypothesis_words": 12,
+      "off_hypothesis_words": 12,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 0
+    },
+    {
+      "basename": "p226_028_N1_snr_m18.wav",
+      "noise": "N1",
+      "snr_db": -18,
+      "rms_gain_db": 9.992576587410165,
+      "peak_gain_db": 4.640804860703847,
+      "frontend_hypothesis_words": 1,
+      "off_hypothesis_words": 14,
+      "hypothesis_word_delta": 13,
+      "word_edit_error_delta": 4
+    },
+    {
+      "basename": "p226_028_N1_snr_p0.wav",
+      "noise": "N1",
+      "snr_db": 0,
+      "rms_gain_db": 0.34642586451078994,
+      "peak_gain_db": -0.4703556774671823,
+      "frontend_hypothesis_words": 10,
+      "off_hypothesis_words": 10,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 0
+    },
+    {
+      "basename": "p226_028_N2_snr_m18.wav",
+      "noise": "N2",
+      "snr_db": -18,
+      "rms_gain_db": 0.9807870160322746,
+      "peak_gain_db": 0.3881636909853206,
+      "frontend_hypothesis_words": 12,
+      "off_hypothesis_words": 20,
+      "hypothesis_word_delta": 8,
+      "word_edit_error_delta": 11
+    },
+    {
+      "basename": "p226_028_N2_snr_p0.wav",
+      "noise": "N2",
+      "snr_db": 0,
+      "rms_gain_db": -0.02267371941389233,
+      "peak_gain_db": 0.16437931137146217,
+      "frontend_hypothesis_words": 9,
+      "off_hypothesis_words": 9,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 0
+    },
+    {
+      "basename": "p287_037_N1_snr_m18.wav",
+      "noise": "N1",
+      "snr_db": -18,
+      "rms_gain_db": 2.433263456069355,
+      "peak_gain_db": 1.0504767099351455,
+      "frontend_hypothesis_words": 5,
+      "off_hypothesis_words": 18,
+      "hypothesis_word_delta": 13,
+      "word_edit_error_delta": 9
+    },
+    {
+      "basename": "p287_037_N1_snr_p0.wav",
+      "noise": "N1",
+      "snr_db": 0,
+      "rms_gain_db": -0.06113443536652625,
+      "peak_gain_db": 0.36342600823032567,
+      "frontend_hypothesis_words": 8,
+      "off_hypothesis_words": 7,
+      "hypothesis_word_delta": -1,
+      "word_edit_error_delta": 1
+    },
+    {
+      "basename": "p287_037_N2_snr_m18.wav",
+      "noise": "N2",
+      "snr_db": -18,
+      "rms_gain_db": 1.3561313515623579,
+      "peak_gain_db": 0.04172966168240453,
+      "frontend_hypothesis_words": 10,
+      "off_hypothesis_words": 15,
+      "hypothesis_word_delta": 5,
+      "word_edit_error_delta": 4
+    },
+    {
+      "basename": "p287_037_N2_snr_p0.wav",
+      "noise": "N2",
+      "snr_db": 0,
+      "rms_gain_db": -0.008297177890094988,
+      "peak_gain_db": 0.04000672719760296,
+      "frontend_hypothesis_words": 8,
+      "off_hypothesis_words": 8,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 2
+    },
+    {
+      "basename": "p287_054_N1_snr_m18.wav",
+      "noise": "N1",
+      "snr_db": -18,
+      "rms_gain_db": 7.189056444127397,
+      "peak_gain_db": 2.6639831732082184,
+      "frontend_hypothesis_words": 0,
+      "off_hypothesis_words": 7,
+      "hypothesis_word_delta": 7,
+      "word_edit_error_delta": -1
+    },
+    {
+      "basename": "p287_054_N1_snr_p0.wav",
+      "noise": "N1",
+      "snr_db": 0,
+      "rms_gain_db": 0.13021838922747658,
+      "peak_gain_db": -0.0389166824709043,
+      "frontend_hypothesis_words": 8,
+      "off_hypothesis_words": 9,
+      "hypothesis_word_delta": 1,
+      "word_edit_error_delta": 3
+    },
+    {
+      "basename": "p287_054_N2_snr_m18.wav",
+      "noise": "N2",
+      "snr_db": -18,
+      "rms_gain_db": 1.2425730685917378,
+      "peak_gain_db": -0.33744707355822995,
+      "frontend_hypothesis_words": 8,
+      "off_hypothesis_words": 9,
+      "hypothesis_word_delta": 1,
+      "word_edit_error_delta": 0
+    },
+    {
+      "basename": "p287_054_N2_snr_p0.wav",
+      "noise": "N2",
+      "snr_db": 0,
+      "rms_gain_db": -0.007832348931710477,
+      "peak_gain_db": -0.12739533173698453,
+      "frontend_hypothesis_words": 10,
+      "off_hypothesis_words": 10,
+      "hypothesis_word_delta": 0,
+      "word_edit_error_delta": 1
+    }
+  ],
+  "strata": {
+    "-18": {
+      "cases": 8,
+      "median_rms_gain_db": 1.8946974038158564,
+      "min_rms_gain_db": 0.9807870160322746,
+      "max_rms_gain_db": 10.844876519669537,
+      "longer_ASR_hypotheses": 7,
+      "total_hypothesis_word_delta": 48,
+      "total_word_edit_error_delta": 26
+    },
+    "0": {
+      "cases": 8,
+      "median_rms_gain_db": -0.008064763410902733,
+      "min_rms_gain_db": -0.1018986841468482,
+      "max_rms_gain_db": 0.34642586451078994,
+      "longer_ASR_hypotheses": 1,
+      "total_hypothesis_word_delta": 0,
+      "total_word_edit_error_delta": 7
+    }
+  },
+  "model_calls": 0,
+  "audio_decodes": 0,
+  "network_calls": 0,
+  "limitations": [
+    "No amplitude intervention/redecoding; association is not causation",
+    "ASR hypothesis length is not a count of actual spoken words",
+    "Four repeated utterances/two speakers; no independent-sample inference"
+  ]
+}

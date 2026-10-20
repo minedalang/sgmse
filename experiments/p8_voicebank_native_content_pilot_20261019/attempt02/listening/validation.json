@@ -1,0 +1,168 @@
+{
+  "status": "passed",
+  "url": "http://localhost:8766/p8_voicebank_native_content_pilot_20261019/attempt02/listening/index.html",
+  "provider_rows": [
+    [
+      "01a1525c-97aa-7363-a7a4-17fed3ac51c0",
+      "/root/engineer_native_listening",
+      "codex_tools_compat"
+    ]
+  ],
+  "server_unchanged": {
+    "pid": 16022,
+    "stat": "81968073",
+    "cmdline": "/data/coding/sgmse/env/bin/python /data/coding/sgmse/experiments/p8_vcv_speech_component_ablation_20261019/listening/feedback_server.py --port 8766 "
+  },
+  "bridge_unchanged": {
+    "pid": 39452,
+    "stat": "82545046",
+    "cmdline": "/usr/bin/python3 /data/codex-state/tool-compat/bridge.py --port 42084 "
+  },
+  "eight_full_length_byte_copies": true,
+  "source_pre_post_hashes_equal": true,
+  "original_parent_files_unchanged": true,
+  "http_actual_get_and_head": [
+    {
+      "path": "index.html",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 4224,
+      "content_type": "text/html",
+      "sha256": "4b8f04c093144fb9a9f29b8db5ccfbefaec660e9a9d1661410886369d086bd96"
+    },
+    {
+      "path": "player.js",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 1463,
+      "content_type": "text/javascript",
+      "sha256": "e5313799d79b78ace0632d51a5c74ef064d87c6b1dcffa37bb6184754018208c"
+    },
+    {
+      "path": "audio/A_clean.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 102222,
+      "content_type": "audio/x-wav",
+      "sha256": "095bc6c0ee82cdfa0e8c435c564539b2f09ff0551d62554ec6763d8af42a7280"
+    },
+    {
+      "path": "audio/A_noisy.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 102222,
+      "content_type": "audio/x-wav",
+      "sha256": "6ff9d222dec1bc3a489a043e9b47d8996875e7567bafd7065ec0c61d4daa366b"
+    },
+    {
+      "path": "audio/A_frontend.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 102222,
+      "content_type": "audio/x-wav",
+      "sha256": "3096a926666a3a008fced515fc8597d879009ba8e7d4c9b1b3c0286bc964ff8f"
+    },
+    {
+      "path": "audio/A_off.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 102222,
+      "content_type": "audio/x-wav",
+      "sha256": "06f40a1b474377104dae933b20a12f57fd53293c31694ce7e1c24a1a4954f926"
+    },
+    {
+      "path": "audio/B_clean.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 135350,
+      "content_type": "audio/x-wav",
+      "sha256": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a"
+    },
+    {
+      "path": "audio/B_noisy.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 135350,
+      "content_type": "audio/x-wav",
+      "sha256": "50fdfe9c34ad5dd8d82ce1c9c47befbd637d31009168e73349a6c5a6aec19af8"
+    },
+    {
+      "path": "audio/B_frontend.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 135350,
+      "content_type": "audio/x-wav",
+      "sha256": "d2af3533e221364cc123030c38fce085b08d3069de5a768868232f365a6c6921"
+    },
+    {
+      "path": "audio/B_off.wav",
+      "get_bytes_equal": true,
+      "head_status": 200,
+      "content_length": 135350,
+      "content_type": "audio/x-wav",
+      "sha256": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737"
+    }
+  ],
+  "node_mock": {
+    "status": "passed",
+    "scope": "minimal DOM mock; no actual browser playback",
+    "checks": [
+      "stop before switch",
+      "await fetch body",
+      "stale blob excluded",
+      "abort pending fetch",
+      "stop clears and revokes URL",
+      "stale HTTP failure excluded",
+      "autoplay rejection fallback",
+      "pagehide cleanup",
+      "stale play rejection excluded"
+    ]
+  },
+  "audio_elements": 1,
+  "real_browser_playback_tested": false,
+  "new_model_calls": 0,
+  "new_asr_calls": 0,
+  "external_network_requests": 0,
+  "human_feedback_collected": true,
+  "snapshot_note": "Budget totals include listening and existing experiment artifacts, uniformly excluding symlink duplicate counts to match the frozen runtime budget and original report. parent_logical_bytes_including_symlinks separately includes symlink targets. Original report historical byte counts are unchanged.",
+  "listening_total_bytes": 1051883,
+  "parent_total_bytes": 25205636,
+  "parent_logical_bytes_including_symlinks": 27143916,
+  "human_feedback_source": "user_chat",
+  "feedback_sha256": "308eaca771c4a4b258a428cdb27c3f570580a42a89a5c1ec919724e52e700edc",
+  "completed_feedback_page_update": {
+    "status": "passed",
+    "checks": [
+      "template reads immutable user-chat feedback",
+      "A/B original quotes rendered verbatim after HTML escaping",
+      "completion state: no relisten or resubmit requested",
+      "single audio / eight retained buttons",
+      "actual HTTP GET index matches disk bytes; HEAD length matches",
+      "eight WAV hashes unchanged",
+      "feedback SHA256 unchanged",
+      "metrics SHA256 unchanged",
+      "player.js unchanged"
+    ],
+    "protected_pre_post_sha256": {
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/A_clean.wav": "095bc6c0ee82cdfa0e8c435c564539b2f09ff0551d62554ec6763d8af42a7280",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/A_noisy.wav": "6ff9d222dec1bc3a489a043e9b47d8996875e7567bafd7065ec0c61d4daa366b",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/A_frontend.wav": "3096a926666a3a008fced515fc8597d879009ba8e7d4c9b1b3c0286bc964ff8f",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/A_off.wav": "06f40a1b474377104dae933b20a12f57fd53293c31694ce7e1c24a1a4954f926",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_clean.wav": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_noisy.wav": "50fdfe9c34ad5dd8d82ce1c9c47befbd637d31009168e73349a6c5a6aec19af8",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_frontend.wav": "d2af3533e221364cc123030c38fce085b08d3069de5a768868232f365a6c6921",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/audio/B_off.wav": "fea40f03d51b4657214d691f61f35b732070c04aaaa868bbeb2f83c110829737",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/user_feedback_20261019.json": "308eaca771c4a4b258a428cdb27c3f570580a42a89a5c1ec919724e52e700edc",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/sources.json": "79bbd6f3767aec8b778489b6f8112531682912ad224a2835bbd4c25c463d63b7",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/original_preservation.json": "a9a036d0b978e873239ab52fe788df2a6373a8e2a9867608985a73c9bd1b5240",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/player.js": "e5313799d79b78ace0632d51a5c74ef064d87c6b1dcffa37bb6184754018208c",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/listening/test_player.cjs": "6a89356c57cc4f98e5c7b3aee9500f99bde37c0927c511ec265c8476ddd726d9",
+      "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/attempt02/metrics.json": "e0ed9b10c646cc19d28cc8c6c6cd0225fd87c1b19b77bac108b1bb19a17066e0"
+    },
+    "page_sha256": "4b8f04c093144fb9a9f29b8db5ccfbefaec660e9a9d1661410886369d086bd96",
+    "page_bytes": 4224,
+    "template_sha256": "8da814ab1f84691f0989ae721cc7a727d80b9c8709a7083c2a3c31411a63e9ba",
+    "renderer_sha256": "a82bdd8528122e0334e20742dc80841e01a006d3560f71df84188328f46c2b92",
+    "scope": "Targeted page/template checks only; historical audio HTTP and player mock evidence retained, not rerun; no actual browser playback test."
+  }
+}

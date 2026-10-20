@@ -1,0 +1,25 @@
+{
+  "endpoint_verification": {
+    "headroom": {
+      "strata": 21,
+      "bootstrap_replicates": 10000
+    },
+    "quality": {
+      "cases": 32,
+      "arms": 96,
+      "STOI_PESQ": "recomputed same frozen official libraries, independent bookkeeping; not independent algorithms",
+      "SI_SDR": "independent centered dot-product implementation"
+    }
+  },
+  "status": "passed",
+  "serialization_pairs": 64,
+  "scoring_items": 104,
+  "native_cases": 32,
+  "metrics_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "model_loads": 0,
+  "network_bytes": 0,
+  "source_locks": 413,
+  "blocked_local_ipv6_probe_refusals": 1,
+  "unknown_network_refusals": 0,
+  "all_socket_creation_still_refused": true
+}

@@ -1,0 +1,59 @@
+experiment_id: speaker_headroom_replication_64_20261017
+purpose: independent 64-speaker CAM++ headroom replication on speaker-disjoint CV
+status: completed_inference_campp_quality_guardrail_incomplete
+selection:
+  source_wav_scp: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp
+  source_utt2spk: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/utt2spk
+  clean_parent: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean
+  noisy_parent: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy
+  repeat32_manifest: experiments/rrsd_cv_repeat32/manifest.csv
+  excluded_speakers: all repeat32 speakers plus reader_10658
+  eligible_speakers: 124
+  selection_seed: 20261017
+  selected_speakers: 64
+  utterances_per_speaker: 2
+  total_utterances: 128
+  manifest: experiments/speaker_headroom_replication_64_20261017/manifest.csv
+  manifest_lock: experiments/speaker_headroom_replication_64_20261017/manifest_lock.json
+  manifest_sha256: c04657fa21a33c7f2dc749514cec899767101ba53f46222e9f4ab8577e2f4492
+checkpoint:
+  path: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+  sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+  path_sha256_verified: true
+inference:
+  entrypoint: joint_enhance_by_dir.py
+  staging_method: symlinks_only
+  common_args: [--train_type, mode2, --sampler_type, pc, --corrector, none, --N, '30', --snr, '0.5', --seed, '2026', --use_ema, --rrsd]
+  off_args: [--rrsd_scale, '0']
+  router_args: [--rrsd_scale, '1']
+  device: cuda
+  output_subtype_expected: PCM_16
+  per_file_seed: basename_blake2b_seed2026
+encoder:
+  path: pre_models/wespeaker-voxceleb-campplus/avg_model.pt
+  sha256: 07abeeb5150441995b51ea65c9ccc8feed78b33040012f1d2fad29a0e4f5b8d7
+  segment_samples: 32000
+analysis:
+  paired_enhanced_clean_cosine: true
+  same_different_speaker_primary: true
+  clean_clean_reference: true
+  paired_arm_delta: off_vs_router
+  bootstrap_resamples_minimum: 5000
+  bootstrap_cluster: speaker
+  bootstrap_seed: 20261017
+  metrics: [same_mean, different_mean, auc, eer]
+predeclared_gate:
+  router_same_speaker_deficit_vs_clean_min: 0.05
+  router_auc_deficit_vs_clean_min: 0.02
+  router_eer_excess_vs_clean_min: 0.02
+  require_cluster_ci_excluding_zero: true
+  requires_same_speaker_and_either_auc_or_eer: true
+quality_guardrails:
+  requested_if_available: [PESQ-WB, STOI, SI-SDR, GPU-auto DNSMOS]
+  clean_reference_used_only_offline: true
+constraints:
+  training: false
+  dataset_modified: false
+  valid_checkpoint_modified: false
+  final_test_touched: false
+  research_plan_modified: false

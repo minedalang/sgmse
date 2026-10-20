@@ -1,0 +1,101 @@
+{
+  "DNSMOS_P808_e": {
+    "baseline_mean": 4.002693917070117,
+    "adapter_mean": 4.027857235499791,
+    "paired_delta_mean": 0.025163318429674397,
+    "bootstrap95_ci": [
+      -0.002077477318899734,
+      0.0628963666302817
+    ],
+    "n_improved": 7,
+    "n_degraded": 1
+  },
+  "DNSMOS_SIG_e": {
+    "baseline_mean": 3.4827649330456936,
+    "adapter_mean": 3.472671426229142,
+    "paired_delta_mean": -0.010093506816551745,
+    "bootstrap95_ci": [
+      -0.06074749808704338,
+      0.0259584604584013
+    ],
+    "n_improved": 4,
+    "n_degraded": 4
+  },
+  "DNSMOS_BAK_e": {
+    "baseline_mean": 4.129962095340289,
+    "adapter_mean": 4.138305706574759,
+    "paired_delta_mean": 0.008343611234468862,
+    "bootstrap95_ci": [
+      -3.492981729710368e-05,
+      0.017657882386511902
+    ],
+    "n_improved": 5,
+    "n_degraded": 3
+  },
+  "DNSMOS_OVRL_e": {
+    "baseline_mean": 3.1578513358809164,
+    "adapter_mean": 3.152373302567942,
+    "paired_delta_mean": -0.005478033312974695,
+    "bootstrap95_ci": [
+      -0.05398405091346831,
+      0.030858691356621726
+    ],
+    "n_improved": 5,
+    "n_degraded": 3
+  },
+  "PESQ_e": {
+    "baseline_mean": 2.007903218269348,
+    "adapter_mean": 2.0453066527843475,
+    "paired_delta_mean": 0.03740343451499939,
+    "bootstrap95_ci": [
+      -0.013105243444442749,
+      0.0984213650226593
+    ],
+    "n_improved": 6,
+    "n_degraded": 2
+  },
+  "STOI_e": {
+    "baseline_mean": 0.8784472047611487,
+    "adapter_mean": 0.8799723893875446,
+    "paired_delta_mean": 0.0015251846263958785,
+    "bootstrap95_ci": [
+      -0.00038444476213069407,
+      0.0035198718982743654
+    ],
+    "n_improved": 7,
+    "n_degraded": 1
+  },
+  "SI-SDR_e": {
+    "baseline_mean": 9.805614970624447,
+    "adapter_mean": 9.979225099086761,
+    "paired_delta_mean": 0.1736101284623146,
+    "bootstrap95_ci": [
+      0.10506623983383179,
+      0.27036677598953235
+    ],
+    "n_improved": 8,
+    "n_degraded": 0
+  },
+  "WSS_e": {
+    "baseline_mean": 28.811762993533698,
+    "adapter_mean": 28.5479204676948,
+    "paired_delta_mean": -0.2638425258388919,
+    "bootstrap95_ci": [
+      -0.5727943377218114,
+      0.07556650900834505
+    ],
+    "n_improved": 2,
+    "n_degraded": 6
+  },
+  "segSNR_e": {
+    "baseline_mean": 11.81787651231003,
+    "adapter_mean": 12.2332939529703,
+    "paired_delta_mean": 0.41541744066026876,
+    "bootstrap95_ci": [
+      0.3200528608226148,
+      0.5198926191711286
+    ],
+    "n_improved": 8,
+    "n_degraded": 0
+  }
+}

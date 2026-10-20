@@ -1,0 +1,9 @@
+experiment_id: p8_e1_candidate_ranking_20261018
+purpose: "Read-only ranking of possible P8-E1 windows from existing local probes"
+source_dir: ../p8_local_content_probe_20261020
+join_keys: [fileid, start_s, end_s]
+selection: "candidate_frontend_suppression=true; rank noisy-clean cue among suppressed windows"
+model_inference: false
+dataset_modified: false
+checkpoint_modified: false
+interpretation: "candidate list for human verification only; not a phoneme or WER result"

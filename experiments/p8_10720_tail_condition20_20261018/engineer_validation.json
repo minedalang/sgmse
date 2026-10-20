@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "inference_executed": false,
+  "checks": [
+    "mask deterministic symmetric internal raised cosine",
+    "strict unchanged outside support",
+    "tensor shape dtype and deterministic interpolation",
+    "no-op identity",
+    "Parseval highband calibration"
+  ],
+  "source_variant": "noise_minus20dB",
+  "source_status": "completed",
+  "source_code_hashes_match": true,
+  "driver_sha256": "3f631f30cd5f685c1ca32efaeddaff04127cfb5153de5d2f124aee164ecd643d",
+  "config_sha256": "8b8d86f549f934459bd5acbbb83e1cb0d7e16e53da4ea94f8f866777c1f5914f",
+  "source_frontend_float32_sha256": "bd1768f829504acef833313543b9cc07ed91f5334f49d294dae652e85bbdc6ee",
+  "source_off_pcm16_sha256": "e1f3bc73edb0908db91bb35716341bcd29422ba1807fbde2bc51865705a28c4c",
+  "run_count": 2,
+  "cap_bytes": 20000000,
+  "completed_primary_driver_sha256": "6005bd2112378108932674494d73114bf1a42d94d14e99acc59b66be1ddb7df4"
+}

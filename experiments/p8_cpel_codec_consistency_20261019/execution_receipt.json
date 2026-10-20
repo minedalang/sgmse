@@ -1,0 +1,24 @@
+{
+  "status": "completed",
+  "pid": 38596,
+  "code_sha256": "caed652f867d8e0e4b13d96125757f916ba511d186b0460a780dc33c6674d0e3",
+  "config_sha256": "84cfac5632dc5092a4f55f144568a4a872f47b5bf8eaed731b4e547dc8b0e91b",
+  "old_metadata_sha_pre": {
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/additivity_diagnosis/metrics.json": "23170f951d82be5d5592d309f080fa23dd66cbbda1c174e96231deb7b1351e94",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/preflight_attempt03/preflight_result.json": "79efbbb2b9dec1fb29880e8f5d74e387ac7c250f6a400e9fd7127772df36a5db"
+  },
+  "seconds": 0.515609077992849,
+  "source_unique_files": 192,
+  "old_metadata_sha_post": {
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/additivity_diagnosis/metrics.json": "23170f951d82be5d5592d309f080fa23dd66cbbda1c174e96231deb7b1351e94",
+    "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/preflight_attempt03/preflight_result.json": "79efbbb2b9dec1fb29880e8f5d74e387ac7c250f6a400e9fd7127772df36a5db"
+  },
+  "registry_sha_post": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+  "metrics_sha256": "ce0e7e94059655af673af7eea3b20187e1b095a54e3c38b27bcf00e01e73e894",
+  "exit_code": 0,
+  "execution_count": 1,
+  "tool_chunk_id": "6a22ed",
+  "exec_session_id": null,
+  "command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_cpel_codec_consistency_20261019/diagnose.py",
+  "report_sha256": "7a9aa5a5fe2d1cad6e3fe73baac843c48ad3cc36032398ad0834268f1a236a0b"
+}

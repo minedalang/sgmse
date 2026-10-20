@@ -1,0 +1,358 @@
+{
+  "schema": "p8-vb-content-single-v1",
+  "material_id": "a78b5db04fa268772c87997abab68f9001f1f17445ae7165014822d4430fb45d",
+  "cases": [
+    {
+      "case_id": "C02e225f7ee1a412f",
+      "reference": "The Premier League has been a huge success.\n",
+      "audio": {
+        "clean": "audio/8254e4d7b2acf26bfb1927091b1f1001892cdc60f1d8e9bbfd4cd6c0daf7a65a.wav",
+        "noisy": "audio/bac8d5989c0a7dd0dda4c23cfac82df8b23d5b5af32142426f1023a3a85fa82d.wav",
+        "A": "audio/1d24a144d8005cd93631efe6cc907437e04297c35a86859afd686aca9479dc85.wav",
+        "B": "audio/9fc35d4737a4a3685e84fc9fa5bf7bf50c54bbc2b14884531aaf279a17f15d9e.wav"
+      },
+      "duration_seconds": 3.1878125
+    },
+    {
+      "case_id": "C047ff2b0d4a5f0ec",
+      "reference": "The Premier League has been a huge success.\n",
+      "audio": {
+        "clean": "audio/b36ade21060da0a486faddce1ddc1758b4df79d4c0348a1fb0508c778b06119b.wav",
+        "noisy": "audio/eb7b2172d7db705dbb5d1dba1ddd1efeaec4114162964dcc30d2690d1a1d9497.wav",
+        "A": "audio/f018801bb656b3cd3797cdcb89e8f3fd939bbe30074ac49229807b2572716a12.wav",
+        "B": "audio/b1ac38c5850ee241df58ea6258cd0b851576c002e3a7f8238305797edbcf68c6.wav"
+      },
+      "duration_seconds": 3.1878125
+    },
+    {
+      "case_id": "C0e302c8e70a69fec",
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "audio": {
+        "clean": "audio/0c7381232e698d83178c001b68c1cecf9e7843930ec99e4568c8f1d5b7de2eaf.wav",
+        "noisy": "audio/6fa2f90e7dd9118eda737253238977957056ec47fa63c745fa4422c52154a362.wav",
+        "A": "audio/77dc84aea100928dd32be9cf5d37ffdfe5f7324158bc7e1094901166eddfbfe6.wav",
+        "B": "audio/e20c30b2de9b94c14314ff40fd6b8e5c2a790d44dd6230739b8465742a9a1a6b.wav"
+      },
+      "duration_seconds": 3.48
+    },
+    {
+      "case_id": "C0efcea8bfa42db06",
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "audio": {
+        "clean": "audio/30c9ba60925b8b5853d02772cc2c48d4a8b82b224ee9f50efa7019bdd1b64944.wav",
+        "noisy": "audio/8bcf4c1917b68db996f5b6009414c3392199237b0b8be5aed7ed3ead164a4e24.wav",
+        "A": "audio/564bd668a096100157ddb7b3d4bfca472fa5e76b8a890940e7acb9075e2d39ae.wav",
+        "B": "audio/014ece58305ae70868bd55af10e464a6f7bac4c3895d970b496fbac5cf8fe346.wav"
+      },
+      "duration_seconds": 3.1156875
+    },
+    {
+      "case_id": "C22c3debacf910a6a",
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "audio": {
+        "clean": "audio/e7ee93594ea071b4d30c187161bee17ce4f2b135ccd9be335b5ed4c5c90bfb01.wav",
+        "noisy": "audio/d6063b82f49eaa030fbdeac3ee18a3e3133b315a9d5f603a32d61a1237a7f0d6.wav",
+        "A": "audio/27566bac2d8494d0d356d1578afea24d41fe9ba3ba543f01df237615dc2f1493.wav",
+        "B": "audio/d2147c47e7cedca78eb2d815d146a5faaead5db48acc16a9295ddbb28cbd493a.wav"
+      },
+      "duration_seconds": 4.1963125
+    },
+    {
+      "case_id": "C28dbce90832410fb",
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "audio": {
+        "clean": "audio/68180508be8c207d500f0d695b9f68269ac72c1fd327427e36f843c714640c81.wav",
+        "noisy": "audio/df389b683cecff287c949e36304529e20c70c2d4d591b05f2cd24ecbffabce2a.wav",
+        "A": "audio/5a9c2c4f652b3cd6f56703334b6b79c9735cbdc77c4bba3317c3e0d6aac2eb65.wav",
+        "B": "audio/394884707ddfce9491f54b4188838eda615ff4ecd77ec088cf16a209c7ea00f2.wav"
+      },
+      "duration_seconds": 3.5131875
+    },
+    {
+      "case_id": "C30ddb89c3f5cf45b",
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "audio": {
+        "clean": "audio/b00a7cc5ff3b0549693364482e23b522050b987e9c1b3a3f7044727ee50233dc.wav",
+        "noisy": "audio/3eddb9c78df9559b903ef91d193458d80490ef1205f42cea62f9f68aa817201a.wav",
+        "A": "audio/7dd145fec2ee35ca5915b32d036c4afcc11843c64cdc654f109fa6814f58e5eb.wav",
+        "B": "audio/c9b668748057d609702e7559bbd82a47ec191552904eb11075ae73dc48916f13.wav"
+      },
+      "duration_seconds": 3.1156875
+    },
+    {
+      "case_id": "C35fca845e6bb91d6",
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "audio": {
+        "clean": "audio/ae0ad36331c3b1f149c4cf7df37c19ad1b3ab084b5b9447a2c29efa568abb3ca.wav",
+        "noisy": "audio/27e4d1601377d7b3e8a97bc4c6715c6dd2a4145e65d0ab60a931e6db54f50815.wav",
+        "A": "audio/2763d8500a376cbd4e157d02f55377880f69b380ca4beba97a43ebebe971ff77.wav",
+        "B": "audio/dd6ac31e0a6dbafa3c9a9fb84419d99059955dddf26fc80cdaf1a22f4c1318f1.wav"
+      },
+      "duration_seconds": 4.1963125
+    },
+    {
+      "case_id": "C3936dd1c4426b776",
+      "reference": "He has the courage of the unaware.\n",
+      "audio": {
+        "clean": "audio/db91e4f508f0501df02f34ec21e056a4b48c91b119152c5fc2c3afbe2120a8e8.wav",
+        "noisy": "audio/4106e7c8d538a622f48d53fc7bc8a6812c832207eb665b309574aa89651a7473.wav",
+        "A": "audio/fa87ad24f36e7a1730eea472b4707ee26217f52760b4a3cd1499d0b7f59c7e52.wav",
+        "B": "audio/cbc16ccaa6f8de26afb7834832cf2cdc7d5263e0870f5399edb0bb3da27426fd.wav"
+      },
+      "duration_seconds": 3.197625
+    },
+    {
+      "case_id": "C40d22ef3affc62ca",
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "audio": {
+        "clean": "audio/959fcab3555a896596debb5a698c012683d1ea570132c3d68fcfcb2188f41ec5.wav",
+        "noisy": "audio/a1024d165dd9c17bd0a0e7570cd8401848384532d5d21c4ace65883441bc78ec.wav",
+        "A": "audio/4c9dc8f3c419af8ba2450769809db71148b30fdafdfb40923c46e137b07aa904.wav",
+        "B": "audio/3ca4bcdaef0697d4706070098aa20d9765759812bd2e5bae3325ea304f51e60e.wav"
+      },
+      "duration_seconds": 3.5131875
+    },
+    {
+      "case_id": "C42502acd318f5869",
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "audio": {
+        "clean": "audio/1e43a8a11619199e1e8c83b07d400f52fe00287561b2bd3bd8024ce732f9acd7.wav",
+        "noisy": "audio/a29eac4818b3c19d41f747a584edc9dedcad125079468b759a3ded564f0b379c.wav",
+        "A": "audio/74d539f1333dd437898735c46553323c30f0baad40a7550f4a8216c3bf37aae0.wav",
+        "B": "audio/6ea1818d4969187911657eff2c29750e45e42577a262f57cc255b16dc7ecfa0c.wav"
+      },
+      "duration_seconds": 3.1156875
+    },
+    {
+      "case_id": "C43ef2b6c1741707a",
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "audio": {
+        "clean": "audio/dcb90e53161ae61132db08fb06426cbe8725741676e9ab2d19e132f863ca6486.wav",
+        "noisy": "audio/ab7f6eef1dc90c75629df442710567311830797d8a69631104d292c18e4338ec.wav",
+        "A": "audio/1abb15656a690671d557b574e04ab97f9f094b0b3069f6455ee8eaf741cc75a7.wav",
+        "B": "audio/65180ffa87a7aad5ff3f4a59e4eed172b3d0e0866c529ccb31bcca7468e1ca03.wav"
+      },
+      "duration_seconds": 3.5131875
+    },
+    {
+      "case_id": "C55d61d12b49b1d6b",
+      "reference": "He has the courage of the unaware.\n",
+      "audio": {
+        "clean": "audio/4fe3ffe0b88e4974020c868809c8a0b10eb0d3d2e16402002dfc95df3f1f9d29.wav",
+        "noisy": "audio/6f030b4bd60210342a806ebcbddc5f063c3075a3d17d212dea4bd5327df26ea6.wav",
+        "A": "audio/aff602438c44e01b4078c88cd6e16ebc3b8480d93a33d6cda7db89985ed349e7.wav",
+        "B": "audio/bd8e3bb65fe69cf75bbad1faeeb687b256476f02767d35ee6826f7e4fb34f0b2.wav"
+      },
+      "duration_seconds": 3.197625
+    },
+    {
+      "case_id": "C577141b1673af333",
+      "reference": "It shouldn't come as a surprise, but it does.\n",
+      "audio": {
+        "clean": "audio/cba41fa30d6e0c670d9d75cb86edb93ea523bc6f6a88058b771fa15951952202.wav",
+        "noisy": "audio/799d9dcbd2c6ac1164aa512180901b6a8e38df291c1441b1b7df2de25d1e113d.wav",
+        "A": "audio/332bf64eb0b7121b9c5298024aef6da0af975b08003e1169bc2c82ccd17afc12.wav",
+        "B": "audio/4561fce8d6e0aa14463f38f4dff7729a9cb43104c5d1a69b344b58575deeeb57.wav"
+      },
+      "duration_seconds": 3.5131875
+    },
+    {
+      "case_id": "C61d95655dcea9c5f",
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "audio": {
+        "clean": "audio/0e38a0ac251f8b1190906451f2172680827e645f93cc9ff28677d5e8f9a7ad58.wav",
+        "noisy": "audio/9b43b49439cba6ee92cfdb7d28e7c0509c037408ce66311ebbb87cbf218ebc5a.wav",
+        "A": "audio/baabc672cd13d92c600bc703578cb7450cf5f351a7fe015f7cc2ca4dd7a80733.wav",
+        "B": "audio/24edb5859cb24c02904c8eed03c8f7a6d63d7b7bc4a59dae8f4256a008424239.wav"
+      },
+      "duration_seconds": 3.300625
+    },
+    {
+      "case_id": "C672998ae6c0b71b4",
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "audio": {
+        "clean": "audio/7ead4b69629a28f723a7dad832c1f822f09a45b3da17808cbf78266fa3eeb877.wav",
+        "noisy": "audio/b88be2397da029339ab6b1037e457bd84822d3ad47fe023f69ab0ffff3208bcd.wav",
+        "A": "audio/21eec288e61f597ba736fd74a6485b0b8095bde36c66da22ba296861ad86e1fa.wav",
+        "B": "audio/09d6dd559942b13cc250e9c3b01212a3e70e2decd2d054d4301e8df0119b9bc8.wav"
+      },
+      "duration_seconds": 3.48
+    },
+    {
+      "case_id": "C67c1dc5e8a0c35d5",
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "audio": {
+        "clean": "audio/ac71bd8d842436a2f2b65bc3c597559517c777b8179745b1ff9942199460bef3.wav",
+        "noisy": "audio/ec392d59892a4451e584222d1fa309f6af56dc431c20c717b07416203b6ffd5e.wav",
+        "A": "audio/999e0de643ec44c76e7b620cb67c9fde6e9c69f77138ec13c96b9510156bd279.wav",
+        "B": "audio/a04613c37c5ccfbbeb76bd1dedfd0a7780e1a4d1523959545ca3e1cbb3fc2f49.wav"
+      },
+      "duration_seconds": 3.300625
+    },
+    {
+      "case_id": "C6999e660f113021d",
+      "reference": "The Premier League has been a huge success.\n",
+      "audio": {
+        "clean": "audio/73ae7a5faa6f303463dd0f1ee9156ba45e44df9955b6f36163c6b4053665b064.wav",
+        "noisy": "audio/7eacc99e90f3d6d83af2816327c500128cad4033d02c659bfd965af906d039a1.wav",
+        "A": "audio/52f54acfc6936847fadc99472993ea82a145e1f2e88e6ce55e813a832566daed.wav",
+        "B": "audio/64522d99f6917a05a46ce9de27607c7267b7638992a07bce652eac5270555673.wav"
+      },
+      "duration_seconds": 3.1878125
+    },
+    {
+      "case_id": "C6fa680cf759bfe88",
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "audio": {
+        "clean": "audio/e470b061db0cf252ccea3028e45c9147d06b0ddce881d4309a39cafb254cf9d5.wav",
+        "noisy": "audio/f9ef689dc8061a7e08ea8ae86ba61f39222644470b06432c3c367c87100034c0.wav",
+        "A": "audio/a15c401bc54b98706b8423a0f47c074e654a48773d49294805a0bfa59530bd26.wav",
+        "B": "audio/f66389c8820563a2c452564ee8356aaf76e1da515b191dff26cfd19311263719.wav"
+      },
+      "duration_seconds": 4.61
+    },
+    {
+      "case_id": "C7874fbc8a5eec0be",
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "audio": {
+        "clean": "audio/293129ec3879b3bbd83fdda7c753748947e74403e0bbeaa46d0904d44b5f0d94.wav",
+        "noisy": "audio/cd84771974c5a74f6e2411b32f9fc251b1d8a524ad59a61defa0d3d9b07fd3c7.wav",
+        "A": "audio/06a635099639a64c54adb560e1e97cdf1b7832ce598844601e41236ebb7eacec.wav",
+        "B": "audio/88336e31068a57b2924ab3b9af19e8f373b1af4b42e14ef2a54cd05f5210f921.wav"
+      },
+      "duration_seconds": 4.61
+    },
+    {
+      "case_id": "C8d212b16a10e5c72",
+      "reference": "He has the courage of the unaware.\n",
+      "audio": {
+        "clean": "audio/e4e6bd4ee168225845df752aafc079be2868038497f215641e8930cc3e512cd7.wav",
+        "noisy": "audio/d841c52234826059f1a4b336ad889f03da371a900a90f47bcdd7934604f44a37.wav",
+        "A": "audio/0cfb5d881aefd0ac0fd609c7b95ce6656196c1364676d68ea64b1cb4cbdb62ea.wav",
+        "B": "audio/9bc28566fd12a95b9c69fbfb808095ee81f3245a6f7c057c705986574f5fbaab.wav"
+      },
+      "duration_seconds": 3.197625
+    },
+    {
+      "case_id": "Ca4190a8c0315f48b",
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "audio": {
+        "clean": "audio/589e242d5ad4320fe2e467e3f5d3a29d07fee2bfa898f74b8dabeccb5b4722e7.wav",
+        "noisy": "audio/2cc428fa4d0ead9c2720f331e36fed8695e0bb4a7fba704c0ef18c8e52189f73.wav",
+        "A": "audio/c16bc0aea05013ef355fae06b2426fd9c24b94455586feedf37e31de3faa3577.wav",
+        "B": "audio/081b42734b24b2596db394efb7133eea732b030d30953b3da3cfa7467aa2786a.wav"
+      },
+      "duration_seconds": 4.1963125
+    },
+    {
+      "case_id": "Ca58f9ff32ba8e0f1",
+      "reference": "The Premier League has been a huge success.\n",
+      "audio": {
+        "clean": "audio/14e11c1791f76825a7f29f5fcaf2e8aa339d8d9ee95f5fab24bd95636b0012d2.wav",
+        "noisy": "audio/70c3776f3200722887ec587d8e67b25c0bab748df6b8738519e692729dfb7229.wav",
+        "A": "audio/d9474885a09f867e3c6cc1a23e717671f2a0dad0e2355a11d1272cb7835b55d7.wav",
+        "B": "audio/b4fc9ecdad4841198f15eb09560ce59d8b4fb79584e9608ea234c8b6bf8b8d62.wav"
+      },
+      "duration_seconds": 3.1878125
+    },
+    {
+      "case_id": "Cb33fc94b89a7d763",
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "audio": {
+        "clean": "audio/532d119a50be3c57d3b48e037a67af483070f88bbf7db1ab91e72c14b6edca5c.wav",
+        "noisy": "audio/625eb8df9c7d8ac1bc61eac21843305203654ea8b0d0f881e00787e58eb145ce.wav",
+        "A": "audio/7e7a97d2e905636720113a199cfe4f86bcd687622e3b863904f42be658951553.wav",
+        "B": "audio/3bb09554edb22d1d339538ea2dceccf8013632b50a8c4169ebb85093ed09e716.wav"
+      },
+      "duration_seconds": 3.48
+    },
+    {
+      "case_id": "Cb8e8f962aca402ac",
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "audio": {
+        "clean": "audio/2c96491be6ab5542bf412174d7771bfd2e46610103d7d462c2698751598b1eff.wav",
+        "noisy": "audio/f10609f9fe3c5a6f4548ab2c8d7b4e428d575d9040410be347840e3522f4494c.wav",
+        "A": "audio/45c12fd761fa77160998ca537306280689f077986dedaecd2c0dd2f0dc4c4321.wav",
+        "B": "audio/dd8dafeab7587bad46dc71e434d7406c13967f5913b5432c65299cd66e6b6022.wav"
+      },
+      "duration_seconds": 3.300625
+    },
+    {
+      "case_id": "Cbb6fea1afba8d09c",
+      "reference": "Last night, Mr Robertson said he was delighted.\n",
+      "audio": {
+        "clean": "audio/f46b86294d675e704269799b614a091379364bfa7d33259041cbd308d63f0113.wav",
+        "noisy": "audio/50ef47195721dde12fe7d2077c10b79c7e650281a256b5988ba8da9b7acfbfb7.wav",
+        "A": "audio/b327f2edb8c2cfd7a1913f31c68fa5f56e3a6f4cd51fd6d925f5e209d89707d5.wav",
+        "B": "audio/249eb61d1103cd6b9d7ca76bffd278f60876a45a264896c3dc46e5dd4e98ad46.wav"
+      },
+      "duration_seconds": 3.1156875
+    },
+    {
+      "case_id": "Cbc723a3d1b8d6cc9",
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "audio": {
+        "clean": "audio/0c515d50baa1da51d70e8e5880c51dd504b0427b4eb9f505aa61f4aa57559fd3.wav",
+        "noisy": "audio/608f7d8eafee51b4a9adac4f08f0c49b78b85a03cbef57dc849d86b039958055.wav",
+        "A": "audio/48b26d4e3f2bb4c7e9c0050dd9d5069098121690c641ee03b3626c41f762699f.wav",
+        "B": "audio/d2a96f46bf8ef2ba814b0f016fde74c0c1cf19930c48eef76f05459f4d9b8857.wav"
+      },
+      "duration_seconds": 4.61
+    },
+    {
+      "case_id": "Cc28e360f80e277c9",
+      "reference": "Nonetheless, the overall picture is healthy.\n",
+      "audio": {
+        "clean": "audio/ecf51a222134a838be53905f63507ddc0ee974e65ca29b689d61158b5fca4c82.wav",
+        "noisy": "audio/b6f91f466fa7eca2fbcf9cae43dbc0188a158cff1785b6dc93c1ec2e70b712a9.wav",
+        "A": "audio/85f66eeda1e83bf306c0edeb9849550237e9c9b90c31cbfb521a23629e3f945f.wav",
+        "B": "audio/389da9a9b83e381b309bd692deca899991744f4cc31d3afffdddb39f7d4bb3b8.wav"
+      },
+      "duration_seconds": 3.300625
+    },
+    {
+      "case_id": "Cc3b24d0c9050c14e",
+      "reference": "He has the courage of the unaware.\n",
+      "audio": {
+        "clean": "audio/d669939493ce592a70de0dd23f51fdf159740286904ab57e18aca94399c9dcf4.wav",
+        "noisy": "audio/98dbfd75b7e4a745ed1f7b4e05944be8e1cf18536dd5bf74a020bc2d52b553bb.wav",
+        "A": "audio/e770952565161d9d7f2bf9d5ea5781ddd530d7a2b43176209872bf0b6d62c8f3.wav",
+        "B": "audio/e86a2f4fa3da6231a78fbbb90ae6894c0786cfdc4cf337dff595fde0c563659d.wav"
+      },
+      "duration_seconds": 3.197625
+    },
+    {
+      "case_id": "Cd4a5dae69eb05041",
+      "reference": "If we cannot succeed in this endeavour, then so be it.\n",
+      "audio": {
+        "clean": "audio/ed4f98d4826f51cee070bb281461da4d36335886c51b623e1ba0207cb35fa2fd.wav",
+        "noisy": "audio/e2bb5eeb5513eaef456400e1caa2f0210c61838143d12e7e0d69e4a358403a54.wav",
+        "A": "audio/ddec93c6e88bff67187f18b051da8f48d8f83201f9b3c606016d563ed7b0fde7.wav",
+        "B": "audio/8035f1c682c135677694d90c5db9763d63a77e362ab6d42d8bb58a092f0a6d85.wav"
+      },
+      "duration_seconds": 3.48
+    },
+    {
+      "case_id": "Ce825f6a085511fa8",
+      "reference": "So if we can take anything from tonight, it will be fantastic.\n",
+      "audio": {
+        "clean": "audio/5087cdc1647443b9e68cede6d5f631a7203754416edb0ef5c55fe21444edc155.wav",
+        "noisy": "audio/03467cd14875eb2c028e65c02094da0a30aaea51810cc4d1e3a1fcbb16151b32.wav",
+        "A": "audio/605ab10195c4a8bf886d8b841c406a5910ac7a1f9507607a15781a3050f3f4b0.wav",
+        "B": "audio/6f18ae0f8b906a5d8bc704a410f02af63c1237070c701304a79c1ce9b5b6b280.wav"
+      },
+      "duration_seconds": 4.61
+    },
+    {
+      "case_id": "Ced63b5684ab079cb",
+      "reference": "We must provide a long-term solution to tackle this attitude.\n",
+      "audio": {
+        "clean": "audio/02e7449efdeb9ca46d7ff4bc031b14b19138bd137bcc81e20b027dc21e1a81e5.wav",
+        "noisy": "audio/0c0535827a757a679433c9b6c517805f3fdb191588364d8050d303dfcd62374f.wav",
+        "A": "audio/136a72f77b94be0ca6bf3db5d850d85da61d02de262b8e8a3461ff805c2ecbf5.wav",
+        "B": "audio/0ac873e9a4308afa843d7d95fb63e2cc64ddadb8841c8e8163a726b0d304d062.wav"
+      },
+      "duration_seconds": 4.1963125
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "train": {
+    "wav_entries": 10800,
+    "utt2spk_entries": 10800,
+    "speakers": 1470,
+    "unknown": 0,
+    "singletons": 167,
+    "speakers_with_at_least_two": 1303,
+    "max_utterances_per_speaker": 33,
+    "reader_parse_mismatches": 0
+  },
+  "cv": {
+    "wav_entries": 1200,
+    "utt2spk_entries": 1200,
+    "speakers": 158,
+    "unknown": 0,
+    "singletons": 17,
+    "speakers_with_at_least_two": 141,
+    "max_utterances_per_speaker": 24,
+    "reader_parse_mismatches": 0
+  },
+  "test_synthetic_no_reverb": {
+    "wav_entries": 150,
+    "speakers": 150,
+    "speakers_with_at_least_two": 0
+  },
+  "test_real_recordings": {
+    "wav_entries": 300,
+    "speakers": 300,
+    "speakers_with_at_least_two": 0
+  },
+  "train_cv_speaker_overlap": 1,
+  "overlap_speakers": ["reader_10658"],
+  "sampler": {
+    "samples": 10800,
+    "speakers": 1470,
+    "batches": 1250,
+    "composition_histogram": {
+      "(2,2,2,2)": 1246,
+      "(2,2,4)": 4
+    },
+    "bad_batches": 0
+  }
+}

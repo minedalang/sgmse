@@ -1,0 +1,109 @@
+{
+  "status": "passed",
+  "thread_id": "01a153f1-d6c2-7f42-9c8b-323bcb2a9375",
+  "provider": "codex_tools_compat",
+  "attachment_sha256": "75e785ebb749a77f37c91741fd2a0c7fc606416903ac9e6b1116d07dce12a613",
+  "bridge_pid": 39452,
+  "server16022_alive_pre": true,
+  "code_config_sha_pre": {
+    "config.yaml": "213ec701eb6c12fb931993fb3e10db933c31d8f4cff6efeb40a029aa7f53b4b0",
+    "objective.py": "9bdbc99dd8094f184385058a2f955085b5749521a45262e5eac20f58ae028522",
+    "synthetic_check.py": "fa49c6d4795d993cd85c27c2ec69b1261198dcc0fc7dfe553167712de369ec31",
+    "reference_check.py": "55a340c3bf0f0561a3d49ce8c031d25ed332cc11969765c3ed0e8220e6892daa",
+    "implementation_notes.md": "4ee95bcee024746d54c1feb542da45ffe8341ac0910e10c7a9c20084af7ead97",
+    "analysis_plan.md": "3e45cbd574462a8a4e1faf24688518a8fa71f8091cddb26967ea7b287c9985e4"
+  },
+  "protected_sha_pre": {
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics.json": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa",
+    "/data/coding/sgmse/experiments/final_matched_file_uncertainty_20261019/metrics.json": "cff1cb2ef8bf3919d64908d3e4f110945aef02acb8f0328dfb05265435f104a0",
+    "/data/coding/sgmse/experiments/p8_cached_structure_readability_20261019/metrics.json": "235a7b2ac8f15131d25d1f061319f2d8e1c815d00d53ad08e311192e7c67e913",
+    "/data/codex-state/attachments/79890d49-e736-4581-ae97-f0eef07a9baa/pasted-text-1.txt": "75e785ebb749a77f37c91741fd2a0c7fc606416903ac9e6b1116d07dce12a613",
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_chat_export_20261019T113610712Z.json": "a8bcc1d9845e07c0b7b17160d0d88daa45f8195f0b5396734864d51d1c4ccdb3",
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_chat_export_20261019T114522648Z.json": "0b42e1c620d3608cd6f2eb7444c1b75a5341edb121d94aaf62eeb7e9437e3d88",
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/responses/user_chat_export_20261019T124256544Z.json": "372f2709fe64f5f993fb1ffa6ad4e6ec91f3dfece945aed32eae98622e7ccb06"
+  },
+  "git_HEAD": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status_pre": " D \"SGMSE_RRSD_\\346\\216\\250\\347\\220\\206\\346\\227\\266\\351\\227\\264\\351\\227\\250\\346\\216\\247.patch\"\n M THESIS_INNOVATION_RESULTS_DRAFT_2026-10-20.md\n M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M research_status_brief_2026-10-18.md\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? METHODS_RRSD_IMPLEMENTED_DRAFT_20261019.md\n?? P8_EVIDENCE_DISCUSSION_DRAFT_20261019.md\n?? P8_RELATED_WORK_DRAFT_20261019.md\n?? P8_RELATED_WORK_REFERENCES_20261019.bib\n?? RESEARCH_BRIEF_2026-10-18_TAIL.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? THESIS_EXPERIMENTS_CHAPTER_DRAFT_20261019.md\n?? THESIS_FRAMING_DRAFT_20261019.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/final_matched_file_uncertainty_20261019/\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_3321_tail_condition_20261018/\n?? experiments/p8_5243_local_condition_necessity_20261019/\n?? experiments/p8_5243_native_replay_gate_20261019/\n?? experiments/p8_5243_natural_evidence_feasibility_20261019/\n?? experiments/p8_cached_multiseed_variance_audit_20261019/\n?? experiments/p8_cached_structure_readability_20261019/\n?? experiments/p8_checkpoint_base_identity_20261019/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_cpel_objective_prototype_20261019/\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_evidence_prior_audit_20261019/\n?? experiments/p8_i1_pair_residual_audit_20261019/\n?? experiments/p8_i1b_event_pair_integrity_20261019/\n?? experiments/p8_i1b_single_listener_materials_20261019/\n?? experiments/p8_l2_public_annotation_schema_audit_20261019/\n?? experiments/p8_noisy_condition_path_audit_20261018/\n?? experiments/p8_noisy_local_identifiability_prep_20261019/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_q_vcv_enhance_follow_20261018/\n?? experiments/p8_q_vcv_fixed_noise_20261018/\n?? experiments/p8_q_vcv_lowsnr_challenge_20261018/\n?? experiments/p8_q_vcv_speaker_replication_20261019/\n?? experiments/p8_silent_gap_screen8_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_vb_cached_content_review_20261019/\n?? experiments/p8_vb_caseB_opening_existing_audit_20261019/\n?? experiments/p8_vb_prospective_headroom_20261019/\n?? experiments/p8_vb_residual_direction_audit_20261019/\n?? experiments/p8_vb_train_noise_log_audit_20261019/\n?? experiments/p8_vcv_common_scale_factorial_20261019/\n?? experiments/p8_vcv_f20_noise_correspondence_20261019/\n?? experiments/p8_vcv_f20_tail_existing_audit_20261019/\n?? experiments/p8_vcv_fixed_norm_condition_swap_20261019/\n?? experiments/p8_vcv_speech_component_ablation_20261019/\n?? experiments/p8_voicebank_clean_text_calibration_20261019/\n?? experiments/p8_voicebank_content_reference_audit_20261019/\n?? experiments/p8_voicebank_native_content_pilot_20261019/\n?? experiments/p8_voicebank_source_waveform_gate_20261019/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? research_memos/\n?? research_tools/\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py\n?? thesis/\n",
+  "disk_free_bytes": 1866776576,
+  "stage_runs": [
+    {
+      "stage": "synthetic",
+      "argv": [
+        "../../env/bin/python",
+        "-B",
+        "synthetic_check.py",
+        "--output",
+        "metrics.json"
+      ],
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "pid": 25589,
+      "seconds": 2.017076743999496,
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"check_count\": 18}\n",
+      "stderr": "",
+      "execution_count": 1
+    },
+    {
+      "stage": "reference",
+      "argv": [
+        "../../env/bin/python",
+        "-B",
+        "reference_check.py",
+        "metrics.json",
+        "--output",
+        "independent_validation.json"
+      ],
+      "environment": {
+        "CUDA_VISIBLE_DEVICES": "",
+        "OMP_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "pid": 25773,
+      "seconds": 0.032390191918239,
+      "exit_code": 0,
+      "stdout": "{\"status\": \"passed\", \"fixed_cases\": 11, \"scalar_values_checked\": 126, \"max_abs_error\": 1.7763568394002505e-15, \"scope\": \"independent scalar arithmetic for saved fixed cases and OUVE; does not independently establish gradients or acoustic validity\"}\n",
+      "stderr": "",
+      "execution_count": 1
+    }
+  ],
+  "no_existing_metrics_or_same_script_live": true,
+  "audio_hashing": false,
+  "code_config_sha_post": {
+    "config.yaml": "213ec701eb6c12fb931993fb3e10db933c31d8f4cff6efeb40a029aa7f53b4b0",
+    "objective.py": "9bdbc99dd8094f184385058a2f955085b5749521a45262e5eac20f58ae028522",
+    "synthetic_check.py": "fa49c6d4795d993cd85c27c2ec69b1261198dcc0fc7dfe553167712de369ec31",
+    "reference_check.py": "55a340c3bf0f0561a3d49ce8c031d25ed332cc11969765c3ed0e8220e6892daa",
+    "implementation_notes.md": "4ee95bcee024746d54c1feb542da45ffe8341ac0910e10c7a9c20084af7ead97",
+    "analysis_plan.md": "3e45cbd574462a8a4e1faf24688518a8fa71f8091cddb26967ea7b287c9985e4"
+  },
+  "protected_sha_post": {
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics.json": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa",
+    "/data/coding/sgmse/experiments/final_matched_file_uncertainty_20261019/metrics.json": "cff1cb2ef8bf3919d64908d3e4f110945aef02acb8f0328dfb05265435f104a0",
+    "/data/coding/sgmse/experiments/p8_cached_structure_readability_20261019/metrics.json": "235a7b2ac8f15131d25d1f061319f2d8e1c815d00d53ad08e311192e7c67e913",
+    "/data/codex-state/attachments/79890d49-e736-4581-ae97-f0eef07a9baa/pasted-text-1.txt": "75e785ebb749a77f37c91741fd2a0c7fc606416903ac9e6b1116d07dce12a613",
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_chat_export_20261019T113610712Z.json": "a8bcc1d9845e07c0b7b17160d0d88daa45f8195f0b5396734864d51d1c4ccdb3",
+    "/data/coding/sgmse/experiments/p8_i1b_single_listener_materials_20261019/responses/user_chat_export_20261019T114522648Z.json": "0b42e1c620d3608cd6f2eb7444c1b75a5341edb121d94aaf62eeb7e9437e3d88",
+    "/data/coding/sgmse/experiments/p8_vb_cached_content_review_20261019/responses/user_chat_export_20261019T124256544Z.json": "372f2709fe64f5f993fb1ffa6ad4e6ec91f3dfece945aed32eae98622e7ccb06"
+  },
+  "utc_completed": "2026-10-19T13:50:22.488004+00:00",
+  "metrics_sha256": "30b088cb2f1fcc47c3c5dcd9e0ac1f3abb6e7e7162c91b6403021b2188efaba3",
+  "independent_validation_sha256": "c753d9f58346a2d2e8d0ceb971603dd407a591cbac329c3fb23b89fc47ae428b",
+  "synthetic_exec_session_id": 2565,
+  "reference_exec_session_id": null,
+  "reference_tool_chunk_id": "a414ca",
+  "bridge39452_alive_post": true,
+  "server16022_alive_post": true,
+  "scope": "synthetic CPU tensor arithmetic/autograd only; no model class, CUDA API, dataset/audio/checkpoint/network/optimizerstep",
+  "failures": [],
+  "report_sha256": "58785a5ddec2cc8b0c8950071e55f5260612689f2629709a42e1e341ccf8c87c"
+}

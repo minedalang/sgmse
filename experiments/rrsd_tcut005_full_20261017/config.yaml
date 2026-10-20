@@ -1,0 +1,23 @@
+schema_version: 1
+experiment_id: rrsd_tcut005_full_20261017
+purpose: full_test_time_cutoff_pareto_candidate
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+control_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+input_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisy
+clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/clean
+n: 150
+sampler: pc
+corrector: none
+N: 30
+snr: 0.5
+seed: 2026
+use_ema: true
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_cut: 0.05
+rrsd_t_max: 1.0
+inference_command: 'PATH=/data/coding/sgmse/env/bin:$PATH env/bin/python -u joint_enhance_by_dir.py --ckpt joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt --in_dir .../noisy --out_dir experiment_logs/rrsd_tcut005_full_20261017 --device cuda --sampler_type pc --corrector none --N 30 --snr 0.5 --use_ema --rrsd --rrsd_scale 1.0 --rrsd_t_cut 0.05 --rrsd_t_max 1.0 --seed 2026'
+control_record: experiments/rrsd_router_full_matched_20261017/metrics.json
+metrics_csv: experiment_logs/rrsd_tcut005_full_20261017/metrics/metrics.csv
+evaluator: '/data/coding/mymetrics/env/bin/python get_metrics_for_papertable_forDNS.py --dnsmos --dnsmos_device cpu'
+mutates_dataset: false

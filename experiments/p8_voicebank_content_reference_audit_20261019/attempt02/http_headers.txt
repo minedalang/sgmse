@@ -1,0 +1,31 @@
+HTTP/1.1 200 Connection established
+
+HTTP/1.1 200 200
+Content-Type: application/zip ;charset=UTF-8
+Content-Length: 6489312
+Connection: keep-alive
+Date: Mon, 19 Oct 2026 02:25:22 GMT
+Server: Apache
+Strict-Transport-Security: max-age=31536000
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Referrer-Policy: strict-origin-when-cross-origin
+Permissions-Policy: camera=(), geolocation=(), microphone=()
+Content-Security-Policy: default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:
+Vary: Origin,Access-Control-Request-Method,Access-Control-Request-Headers
+DSPACE-XSRF-TOKEN: 76b55ef0-d816-417b-8890-69bba9a5692e
+Set-Cookie: DSPACE-XSRF-COOKIE=76b55ef0-d816-417b-8890-69bba9a5692e; Path=/server; Secure; HttpOnly; SameSite=None
+Content-Language: en
+Last-Modified: Mon, 21 Aug 2017 10:35:43 GMT
+ETag: "48bfcd5945165c60ab9d2f312f4d6e1c"
+Accept-Ranges: bytes
+Expires: Mon, 19 Oct 2026 03:25:22 GMT
+Cache-Control: private,no-cache
+Access-Control-Expose-Headers: Accept-Ranges
+Content-Disposition: inline; filename="trainset_28spk_txt.zip"; filename*=UTF-8''trainset_28spk_txt.zip
+X-Content-Type-Options: nosniff
+X-XSS-Protection: 0
+Strict-Transport-Security: max-age=31536000 ; includeSubDomains
+X-Frame-Options: DENY
+Set-Cookie: RCKBMHKB=027ff8be59-56fd-48l6b5Cv7PCxR4nj04f20YTypqIkerqutc_IHOGHGCBmTiycA9aoK7-aAgqZmk_AAZr-8; path=/; SameSite=None; Secure
+

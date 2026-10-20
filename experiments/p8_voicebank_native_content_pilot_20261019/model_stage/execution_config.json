@@ -1,0 +1,214 @@
+{
+  "scope": "prepared model phase; Root review and explicit Worker assignment required before single launch",
+  "cpu_preparation_records_immutable": true,
+  "checkpoint": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "calibration_driver": "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/run_calibration.py",
+  "calibration_validator": "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/validate_completed_run.py",
+  "calibration": {
+    "experiment_id": "p8_voicebank_clean_text_calibration_20261019",
+    "status": "prepared_only",
+    "ids": [
+      "p226_027",
+      "p226_028",
+      "p287_037",
+      "p287_054"
+    ],
+    "samples": [
+      {
+        "id": "p226_027",
+        "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k.wav",
+        "header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "sample_width": 2,
+          "frames": 63447,
+          "compression": "NONE"
+        },
+        "amplitude": "unaltered stored PCM16",
+        "duration_seconds": 3.9654375
+      },
+      {
+        "id": "p226_028",
+        "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav",
+        "header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "sample_width": 2,
+          "frames": 67653,
+          "compression": "NONE"
+        },
+        "amplitude": "unaltered stored PCM16",
+        "duration_seconds": 4.2283125
+      },
+      {
+        "id": "p287_037",
+        "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k.wav",
+        "header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "sample_width": 2,
+          "frames": 60008,
+          "compression": "NONE"
+        },
+        "amplitude": "unaltered stored PCM16",
+        "duration_seconds": 3.7505
+      },
+      {
+        "id": "p287_054",
+        "audio": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav",
+        "header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "sample_width": 2,
+          "frames": 51089,
+          "compression": "NONE"
+        },
+        "amplitude": "unaltered stored PCM16",
+        "duration_seconds": 3.1930625
+      }
+    ],
+    "model_path": "/data/.rootcache/whisper/tiny.en.pt",
+    "whisper_package": "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper",
+    "text_manifest": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl",
+    "text_zip": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip",
+    "device": "cuda:0",
+    "seed": 20261019,
+    "transcribe_options": {
+      "language": "en",
+      "task": "transcribe",
+      "temperature": [
+        0.0
+      ],
+      "beam_size": 1,
+      "best_of": 1,
+      "condition_on_previous_text": false,
+      "initial_prompt": null,
+      "no_speech_threshold": null,
+      "verbose": false,
+      "word_timestamps": false,
+      "fp16": false
+    },
+    "budgets": {
+      "seconds": 180,
+      "artifact_bytes": 5000000,
+      "network_bytes": 0,
+      "max_transcribe_api_calls": 4
+    },
+    "scoring": {
+      "word_regex": "[a-z0-9]+(?:'[a-z0-9]+)*",
+      "character_regex": "[a-z0-9]",
+      "apostrophes_to_ASCII": [
+        "U+2018",
+        "U+2019"
+      ],
+      "lowercase": true,
+      "tie_order": [
+        "diagonal",
+        "delete_reference",
+        "insert_hypothesis"
+      ],
+      "empty_reference_rate": null,
+      "expected_word_counts": [
+        12,
+        9,
+        9,
+        9
+      ]
+    },
+    "source_locks": {
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/metrics.json": "3f25d3a8180cab6533bc987dc070fe01f86c96e5242053c4f32300f864f9f742",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/independent_validation.json": "2c816120472fcaced65de03215c9259950eb32635d44305abf027523d4936789",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/config.yaml": "110a9242b724ad0a28e3f77ff8f88b2f7163ffd7acbd2370464337d270deb68a",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/frozen_selection.json": "60b69d1a39271e3514f5c423233e0b9ab0ce1e8d8ac3545db91095dc85568a0c",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/run_gate.py": "d7114eee7128bd61496926f8b692fc403514583a68cf6babbcfd9a43dfb49664",
+      "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+      "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8",
+      "/data/.rootcache/whisper/tiny.en.pt": "d3dd57d32accea0b295c96e26691aa14d8822fac7d9d27d5dc00b4ca2826dd03",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/__init__.py": "79ecbed714783b6230931a3dba6d5da6d386e2d44f9fc27256e4fc72751e1f62",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/__main__.py": "c519d586c3a6b639f64e59d2d6fd6b591a67ecd739f9727492911fc4ce4d545a",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/audio.py": "36ed287b2de3eaf40207cd2a44a8d45d57ea5c212a39df07401d4fcb4d5a5a1a",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/decoding.py": "94084fedc5af74cabf8e1883a85552700057081f00ea669ad49435ecb29039db",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/model.py": "473491a97554ad1d0beaaef6fe91d965f12785b466b93ebb61024307b50ad683",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/normalizers/__init__.py": "f18fcdce4caee7f2e80e4c01ab0457d3a080a872a29489542c6d23c4b0bba572",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/normalizers/basic.py": "4742eaa040e0657fa1247a1361e0d856c62317a43326ea59a40c2e9edd8d2c38",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/normalizers/english.py": "2898e4672aeefc9f44cb4de38c115cdf286f5b35ae321433467a7674ce8841d0",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/timing.py": "bb091c973c428697012f0f8d1b4f5f3a605cd93c5d1c129957f712a6a878a59c",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/tokenizer.py": "3b48e361a7e95b4ec0356ca6d72bba635778aa10269153136ee7bc34cae30b85",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/transcribe.py": "848b82877500d6fb8f0b91bee7a08ac67ef670a113591d11b494848d263ad0f6",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/triton_ops.py": "26c5082f029bbd2b7ae77ecf5a3f7f196f220e5850e2c9d0ec42961caf0dde4c",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/utils.py": "c25990446ab7dd5ba30bd52bd4f0e6537f11b5e361a015f02c21355d41027b05",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/version.py": "c4d27ecccdd52a9cded762f1a82da3152db12cbc0aa6ea781f945446a143cfaf",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/assets/gpt2.tiktoken": "306cd27f03c1a714eca7108e03d66b7dc042abe8c258b44c199a7ed9838dd930",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/assets/mel_filters.npz": "7450ae70723a5ef9d341e3cee628c7cb0177f36ce42c44b7ed2bf3325f0f6d4c",
+      "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/assets/multilingual.tiktoken": "b34b360dbb493e781e479794586d661700670d65564001f23024971d1f2fa126",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k.wav": "edfd0f5b4d41591c5ca78edf00ae1a1253c63238e071dbb7db033623d70adb54",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_derived16k_float32.npy": "5f61b4ca91ea0b24d459abb99619b88def0077c31fea732fc1e0d23709714e44",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_027_official48k.wav": "ad17535744a1353363bfcea4f022cadeed76281dff8e57a6ccd28dce31b763a9",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k.wav": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_derived16k_float32.npy": "741422159dae1906c1b1affc57ec10a88445bbd67002032680d2a7096650b7a5",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p226_028_official48k.wav": "8ff2ffbf13f231d707652ddb5b7b55381a5159ea4d5bc09e4aca4ac0189b063f",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k.wav": "5a3625b3f85b01dafc0ee5ed82c62f7ef25753ebddc5b8663e9e55ec9dbefb90",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_derived16k_float32.npy": "38ca306e7e8eaec13d60a24235921c368eb5f688d5b07964286500f23ed72373",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_037_official48k.wav": "621597bfea6417286305aefab985c6940dc2f7cd82b9215a52123e1bb2ff3402",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k.wav": "bf9cbee7cd93e04df4b7a8651246fb0d8becb85b94caeddb6abcdb753196d681",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_derived16k_float32.npy": "c865d28d9b97634264fb0198b4b99441515c76fed1fbee71c95c2fcd61adc99e",
+      "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/p287_054_official48k.wav": "a5c405008a21adb42e7ed4ca68118c38f5ea336cf927a3fa6c1107b5ddd872ff"
+    },
+    "no_test_noisy_ASR_pseudo_reference": true,
+    "source_gate_status_preserved": "waveform_gate_failed",
+    "calls_not_neural_forward_counts": true,
+    "no_accuracy_threshold": true
+  },
+  "calibration_effective_options": {
+    "task": "transcribe",
+    "language": "en",
+    "temperature": 0.0,
+    "sample_len": null,
+    "best_of": null,
+    "beam_size": 1,
+    "patience": null,
+    "length_penalty": null,
+    "prompt": [],
+    "prefix": null,
+    "suppress_tokens": "-1",
+    "suppress_blank": true,
+    "without_timestamps": false,
+    "max_initial_timestamp": 1.0,
+    "fp16": false
+  },
+  "expected_enhance_kwargs": {
+    "sampler_type": "pc",
+    "predictor": "reverse_diffusion",
+    "corrector": "none",
+    "N": 30,
+    "snr": 0.5,
+    "rrsd": false,
+    "anchor_calib": false,
+    "anchor_v2": false,
+    "regen_strength": null
+  },
+  "native_path": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "local_build_executables": [
+    "/data/coding/sgmse/env/bin/ninja",
+    "/data/coding/sgmse/env/bin/nvcc",
+    "/usr/bin/x86_64-linux-gnu-g++-11",
+    "/usr/local/cuda-126/bin/nvcc"
+  ],
+  "native_build_directories": [
+    "/data/.rootcache/torch_extensions/upfirdn2d",
+    "/root/.cache/torch_extensions/py310_cu130/upfirdn2d"
+  ],
+  "minimum_free_gpu_bytes": 4000000000,
+  "budgets": {
+    "seconds": 420,
+    "execution_seconds": 410,
+    "total_bytes": 40000000,
+    "max_frontend_calls": 16,
+    "max_backend_calls": 16,
+    "max_transcribe_api_calls": 52,
+    "network_bytes": 0,
+    "training_calls": 0
+  },
+  "actual_input_registry_sha256": "0af790bf7392c8b24697cf1cb4c40e537d424c09d82940661a18ad37dfacdf13",
+  "native_main_calls": 1
+}

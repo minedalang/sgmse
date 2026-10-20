@@ -1,0 +1,31 @@
+{
+  "case_id": "fresh__N2_snr-6__f20aka1",
+  "CPU_only": true,
+  "inference": false,
+  "training": false,
+  "downloads": false,
+  "audio_output": false,
+  "budget_seconds": 120,
+  "artifact_cap_bytes": 2000000,
+  "clean_support_samples": [
+    8000,
+    14881
+  ],
+  "intervals": {
+    "after_declared_support": [
+      14881,
+      32000
+    ],
+    "after_declared_support_plus100ms": [
+      16481,
+      32000
+    ]
+  },
+  "disjoint_frame_samples": 320,
+  "highband_hz": [
+    4000,
+    7500
+  ],
+  "window": "rectangular no overlap",
+  "user_sound_timing": "Only末尾 reported; no precise onset inferred"
+}

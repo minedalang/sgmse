@@ -1,0 +1,76 @@
+{
+  "request": {
+    "key": "p227_031_N1_snr_p0.wav__noisy",
+    "id": "p227_031",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_031_N1_snr_p0.wav",
+    "basename": "p227_031_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "7fd533482e76c39eae0437db9999bfff205fab0a99a2354d8a3e997ad5f03b53",
+      "samples": 51005,
+      "array_sha256": "ce55ef129fe091efd611cd4f22cee65a3ea37f09ef497f38eb907a6118fd6776",
+      "peak": 0.196258544921875,
+      "rms": 0.017169580220242908
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " Premier League has been huge success.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Premier League has been huge success.",
+        "tokens": [
+          50363,
+          9952,
+          4041,
+          468,
+          587,
+          3236,
+          1943,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5865841388702393,
+        "compression_ratio": 0.8222222222222222,
+        "no_speech_prob": 0.27439525723457336
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 24,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

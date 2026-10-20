@@ -1,0 +1,19 @@
+experiment_id: speaker_data_audit_20261017
+purpose: read_only_audit_of_speaker_ids_and_cross_utterance_support
+root: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp
+splits:
+  train: tr_synthetic
+  validation: cv_synthetic
+  test_synthetic: tt_synthetic_no_reverb
+  test_real: tt_real_recordings
+checks:
+  - utt2spk_coverage
+  - reader_id_consistency
+  - train_cv_speaker_overlap
+  - speaker_balanced_batch_sampler
+batch_sampler:
+  batch_size: 8
+  min_per_speaker: 2
+  drop_last: true
+mutates_dataset: false
+mutates_code: false

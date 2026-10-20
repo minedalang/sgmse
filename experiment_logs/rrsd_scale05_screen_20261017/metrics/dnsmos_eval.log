@@ -1,0 +1,26 @@
+Loaded  speechmetrics.relative.sisdr
+Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]Evaluating:   0%|          | 0/32 [00:00<?, ?it/s]
+Traceback (most recent call last):
+  File "/data/coding/mymetrics/get_metrics_for_papertable_forDNS.py", line 341, in <module>
+    main()
+  File "/data/coding/mymetrics/get_metrics_for_papertable_forDNS.py", line 326, in main
+    summary, rows = evaluate_dirs(
+                    ^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/get_metrics_for_papertable_forDNS.py", line 182, in evaluate_dirs
+    ref, _ = load_wav_16k(clean_path, sr)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/get_metrics_for_papertable_forDNS.py", line 20, in load_wav_16k
+    y, rate = librosa.load(path, sr=sr)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/env/lib/python3.12/site-packages/librosa/core/audio.py", line 156, in load
+    y, sr_native = __soundfile_load(path, offset, duration, dtype)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/env/lib/python3.12/site-packages/librosa/core/audio.py", line 179, in __soundfile_load
+    context = sf.SoundFile(path)
+              ^^^^^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/env/lib/python3.12/site-packages/soundfile.py", line 708, in __init__
+    self._file = self._open(file, mode_int, closefd)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/data/coding/mymetrics/env/lib/python3.12/site-packages/soundfile.py", line 1296, in _open
+    raise LibsndfileError(err, prefix=f"Error opening {self.name!r}: ")
+soundfile.LibsndfileError: Error opening '/tmp/rrsd_scale05_eval_20261017b/clean/clean_fileid_10001.wav': System error.

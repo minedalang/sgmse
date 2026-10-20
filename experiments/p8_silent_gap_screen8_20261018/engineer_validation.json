@@ -1,0 +1,10 @@
+{
+  "status": "prepared_not_executed",
+  "syntax": "pass",
+  "synthetic_run_length": "pass",
+  "synthetic_exact_zero_energy": "pass",
+  "undefined_zero_denominators": "pass",
+  "sources_hashed": 48,
+  "screen_sha256": "9cec243b7adaf130a1dc0edd9708b1e4a9ff6ddffb212645353c7f02d7b76c84",
+  "config_sha256": "3f777efb9decc49e648adcc0bc9f862ae2a89c7ddf6151c0c781ac33aefbae9d"
+}

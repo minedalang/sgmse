@@ -1,0 +1,19 @@
+experiment_id: p8_noisy_condition_path_audit_20261018
+purpose: scoped_read_only_checkpoint_and_noisy_condition_code_path_audit
+checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+python: /data/coding/sgmse/env/bin/python
+map_location: cpu
+weights_only: false
+model_initialization: false
+inference: false
+training: false
+gpu: false
+original_files_modified: false
+metadata_output_cap_bytes: 50000
+prior_audits: [backend_adapter_architecture_audit_20261018, checkpoint_data_condition_audit_20261018]
+load_attempts: 2
+successful_metadata_reads: 1
+retry_count: 1
+corrected_launcher_pythonpath: /data/coding/sgmse
+first_failure_record: failures.json
+corrected_attempt_record: attempt02_provenance.json

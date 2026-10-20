@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "parser_independence": "separate line-state parser, no shared parser imports/functions/regex; shared raw source and published structure schema, same author and standard library",
+  "tiers": 3,
+  "interval_counts": {
+    "words": 7,
+    "phones": 16,
+    "IPA": 7
+  },
+  "all_intervals_compared": 30,
+  "all_times_Decimal_checked": true,
+  "all_raw_labels_compared": true,
+  "protected_hash_count": 11,
+  "source_sha256": "bb2e198e06fb6646f7f60f6548e5ed7d6d558987bad52c4d0e9a278190d88573"
+}

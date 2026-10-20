@@ -1,0 +1,72 @@
+{
+  "request": {
+    "key": "p227_030_N2_snr_m18.wav__noisy",
+    "id": "p227_030",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_N2_snr_m18.wav",
+    "basename": "p227_030_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "55e3e83994d5a2a5e9f180ed4d9b4c849b6b40ed7e889d4d39dec2048986cbd7",
+      "samples": 52810,
+      "array_sha256": "a4561eeae8a0d95f33e2a490e2d6abd2a47d30679b9bab7c0e4e487f974c7921",
+      "peak": 0.889495849609375,
+      "rms": 0.09525515729861599
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.2800000000000002,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50527
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2521604696909587,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.8302066326141357
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 15,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

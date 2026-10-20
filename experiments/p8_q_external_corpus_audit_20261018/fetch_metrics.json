@@ -1,0 +1,50 @@
+{
+  "timestamp_utc": "2026-10-18T11:39:15.501233+00:00",
+  "cap_bytes": 2000000,
+  "network_body_bytes": 103288,
+  "proxy_fallback_used": false,
+  "attempts": [
+    {
+      "url": "https://zenodo.org/api/records/3538223",
+      "filename": "record.json",
+      "mode": "direct",
+      "status": 200,
+      "final_url": "https://zenodo.org/api/records/3538223",
+      "bytes_received": 8852,
+      "success": true,
+      "content_type": "application/json",
+      "content_length": "8852",
+      "saved_bytes": 8852,
+      "sha256": "b581f11dd6418902349d5913bfa3d9e81bc1dd6d611e60aad22ec6257c18f4ad",
+      "elapsed_seconds": 1.1605938440188766
+    },
+    {
+      "url": "https://zenodo.org/records/3538223/files/readme.pdf?download=1",
+      "filename": "readme.pdf",
+      "mode": "direct",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/3538223/files/readme.pdf?download=1",
+      "bytes_received": 86400,
+      "success": true,
+      "content_type": "application/octet-stream, application/octet-stream",
+      "content_length": "86400",
+      "saved_bytes": 86400,
+      "sha256": "e6362b528a063cbf44657b304acef663ceb407e846297f64f986aa139cd98a05",
+      "elapsed_seconds": 7.5034200981026515
+    },
+    {
+      "url": "https://zenodo.org/records/3538223/files/handsegm.91.mlf.txt?download=1",
+      "filename": "handsegm.91.mlf.txt",
+      "mode": "direct",
+      "status": 200,
+      "final_url": "https://zenodo.org/records/3538223/files/handsegm.91.mlf.txt?download=1",
+      "bytes_received": 8036,
+      "success": true,
+      "content_type": "text/plain; charset=utf-8, text/plain; charset=utf-8",
+      "content_length": "8036",
+      "saved_bytes": 8036,
+      "sha256": "f373fbfa6c065b85ea98ac0be86644ea108a35c0189fca061aebe1420cf1e646",
+      "elapsed_seconds": 0.7786584720015526
+    }
+  ]
+}

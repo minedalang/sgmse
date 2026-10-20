@@ -1,0 +1,6 @@
+{
+  "previous_driver_sha256": "915a2a435176017047a9379f73e24a97093d39183a13e13faecce908c726f188",
+  "previous_validator_sha256": "e7a1e7b96924d4541fe5bcf04c8e513000a523c048d6ed4618be075da74d2924",
+  "previous_manifest_sha256": "db4929787684c438487953785ddc9c9a9177da271d46c391858d2d03bd430647",
+  "reason": "Exact-constant Pearson correction, prior prepared never executed"
+}

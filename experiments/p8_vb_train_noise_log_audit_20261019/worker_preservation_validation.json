@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "source_locks_checked": 6,
+  "source_locks_all_match": true,
+  "metrics_sha256": "ca1ffd3055f8c98e6fd77e3d9c351d7e55c52a743a086324c4fcc5570a8849da",
+  "independent_validation_sha256": "3ff582b4c7aa91279928ed139f23fbc99e075d4c8f588394223caec43c023db7",
+  "report_sha256": "5d1906adeae571c4b1057e4e3779ee01547c7a1048fa65f6ac699ca0c0d19c7c",
+  "source_WAV_accesses": 0,
+  "test_readme_56_payloads_opened": 0,
+  "external_git_added": [],
+  "external_git_removed": [],
+  "no_follow_on": true
+}

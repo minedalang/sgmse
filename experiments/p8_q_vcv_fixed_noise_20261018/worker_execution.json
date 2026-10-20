@@ -1,0 +1,8 @@
+{
+  "command": "PATH=\"/data/coding/sgmse/env/bin:$PATH\" env/bin/python experiments/p8_q_vcv_fixed_noise_20261018/fixed_noise.py --device cuda",
+  "cwd": "/data/coding/sgmse",
+  "start_unix": 1792336897.357222,
+  "disk_free_before": 2784047104,
+  "driver": "610.57.04",
+  "gpu": "NVIDIA L40S"
+}

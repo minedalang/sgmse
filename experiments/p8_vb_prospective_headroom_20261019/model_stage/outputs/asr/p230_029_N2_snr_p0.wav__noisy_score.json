@@ -1,0 +1,357 @@
+{
+  "original_reference": "It shouldn't come as a surprise, but it does.\n",
+  "original_hypothesis": " It doesn't come as the size, but it does.",
+  "reference_word_tokens": [
+    "it",
+    "shouldn't",
+    "come",
+    "as",
+    "a",
+    "surprise",
+    "but",
+    "it",
+    "does"
+  ],
+  "hypothesis_word_tokens": [
+    "it",
+    "doesn't",
+    "come",
+    "as",
+    "the",
+    "size",
+    "but",
+    "it",
+    "does"
+  ],
+  "reference_scoring_words": "it shouldn't come as a surprise but it does",
+  "hypothesis_scoring_words": "it doesn't come as the size but it does",
+  "reference_scoring_chars": "itshouldntcomeasasurprisebutitdoes",
+  "hypothesis_scoring_chars": "itdoesntcomeasthesizebutitdoes",
+  "word": {
+    "H": 6,
+    "S": 3,
+    "D": 0,
+    "I": 0,
+    "N": 9,
+    "N_hyp": 9,
+    "edit_distance": 3,
+    "rate": 0.3333333333333333,
+    "rate_status": "defined",
+    "alignment": [
+      {
+        "op": "H",
+        "reference_index": 0,
+        "hypothesis_index": 0,
+        "reference": "it",
+        "hypothesis": "it"
+      },
+      {
+        "op": "S",
+        "reference_index": 1,
+        "hypothesis_index": 1,
+        "reference": "shouldn't",
+        "hypothesis": "doesn't"
+      },
+      {
+        "op": "H",
+        "reference_index": 2,
+        "hypothesis_index": 2,
+        "reference": "come",
+        "hypothesis": "come"
+      },
+      {
+        "op": "H",
+        "reference_index": 3,
+        "hypothesis_index": 3,
+        "reference": "as",
+        "hypothesis": "as"
+      },
+      {
+        "op": "S",
+        "reference_index": 4,
+        "hypothesis_index": 4,
+        "reference": "a",
+        "hypothesis": "the"
+      },
+      {
+        "op": "S",
+        "reference_index": 5,
+        "hypothesis_index": 5,
+        "reference": "surprise",
+        "hypothesis": "size"
+      },
+      {
+        "op": "H",
+        "reference_index": 6,
+        "hypothesis_index": 6,
+        "reference": "but",
+        "hypothesis": "but"
+      },
+      {
+        "op": "H",
+        "reference_index": 7,
+        "hypothesis_index": 7,
+        "reference": "it",
+        "hypothesis": "it"
+      },
+      {
+        "op": "H",
+        "reference_index": 8,
+        "hypothesis_index": 8,
+        "reference": "does",
+        "hypothesis": "does"
+      }
+    ]
+  },
+  "character": {
+    "H": 22,
+    "S": 8,
+    "D": 4,
+    "I": 0,
+    "N": 34,
+    "N_hyp": 30,
+    "edit_distance": 12,
+    "rate": 0.35294117647058826,
+    "rate_status": "defined",
+    "alignment": [
+      {
+        "op": "H",
+        "reference_index": 0,
+        "hypothesis_index": 0,
+        "reference": "i",
+        "hypothesis": "i"
+      },
+      {
+        "op": "H",
+        "reference_index": 1,
+        "hypothesis_index": 1,
+        "reference": "t",
+        "hypothesis": "t"
+      },
+      {
+        "op": "D",
+        "reference_index": 2,
+        "hypothesis_index": null,
+        "reference": "s",
+        "hypothesis": null
+      },
+      {
+        "op": "S",
+        "reference_index": 3,
+        "hypothesis_index": 2,
+        "reference": "h",
+        "hypothesis": "d"
+      },
+      {
+        "op": "H",
+        "reference_index": 4,
+        "hypothesis_index": 3,
+        "reference": "o",
+        "hypothesis": "o"
+      },
+      {
+        "op": "D",
+        "reference_index": 5,
+        "hypothesis_index": null,
+        "reference": "u",
+        "hypothesis": null
+      },
+      {
+        "op": "S",
+        "reference_index": 6,
+        "hypothesis_index": 4,
+        "reference": "l",
+        "hypothesis": "e"
+      },
+      {
+        "op": "S",
+        "reference_index": 7,
+        "hypothesis_index": 5,
+        "reference": "d",
+        "hypothesis": "s"
+      },
+      {
+        "op": "H",
+        "reference_index": 8,
+        "hypothesis_index": 6,
+        "reference": "n",
+        "hypothesis": "n"
+      },
+      {
+        "op": "H",
+        "reference_index": 9,
+        "hypothesis_index": 7,
+        "reference": "t",
+        "hypothesis": "t"
+      },
+      {
+        "op": "H",
+        "reference_index": 10,
+        "hypothesis_index": 8,
+        "reference": "c",
+        "hypothesis": "c"
+      },
+      {
+        "op": "H",
+        "reference_index": 11,
+        "hypothesis_index": 9,
+        "reference": "o",
+        "hypothesis": "o"
+      },
+      {
+        "op": "H",
+        "reference_index": 12,
+        "hypothesis_index": 10,
+        "reference": "m",
+        "hypothesis": "m"
+      },
+      {
+        "op": "H",
+        "reference_index": 13,
+        "hypothesis_index": 11,
+        "reference": "e",
+        "hypothesis": "e"
+      },
+      {
+        "op": "D",
+        "reference_index": 14,
+        "hypothesis_index": null,
+        "reference": "a",
+        "hypothesis": null
+      },
+      {
+        "op": "D",
+        "reference_index": 15,
+        "hypothesis_index": null,
+        "reference": "s",
+        "hypothesis": null
+      },
+      {
+        "op": "H",
+        "reference_index": 16,
+        "hypothesis_index": 12,
+        "reference": "a",
+        "hypothesis": "a"
+      },
+      {
+        "op": "H",
+        "reference_index": 17,
+        "hypothesis_index": 13,
+        "reference": "s",
+        "hypothesis": "s"
+      },
+      {
+        "op": "S",
+        "reference_index": 18,
+        "hypothesis_index": 14,
+        "reference": "u",
+        "hypothesis": "t"
+      },
+      {
+        "op": "S",
+        "reference_index": 19,
+        "hypothesis_index": 15,
+        "reference": "r",
+        "hypothesis": "h"
+      },
+      {
+        "op": "S",
+        "reference_index": 20,
+        "hypothesis_index": 16,
+        "reference": "p",
+        "hypothesis": "e"
+      },
+      {
+        "op": "S",
+        "reference_index": 21,
+        "hypothesis_index": 17,
+        "reference": "r",
+        "hypothesis": "s"
+      },
+      {
+        "op": "H",
+        "reference_index": 22,
+        "hypothesis_index": 18,
+        "reference": "i",
+        "hypothesis": "i"
+      },
+      {
+        "op": "S",
+        "reference_index": 23,
+        "hypothesis_index": 19,
+        "reference": "s",
+        "hypothesis": "z"
+      },
+      {
+        "op": "H",
+        "reference_index": 24,
+        "hypothesis_index": 20,
+        "reference": "e",
+        "hypothesis": "e"
+      },
+      {
+        "op": "H",
+        "reference_index": 25,
+        "hypothesis_index": 21,
+        "reference": "b",
+        "hypothesis": "b"
+      },
+      {
+        "op": "H",
+        "reference_index": 26,
+        "hypothesis_index": 22,
+        "reference": "u",
+        "hypothesis": "u"
+      },
+      {
+        "op": "H",
+        "reference_index": 27,
+        "hypothesis_index": 23,
+        "reference": "t",
+        "hypothesis": "t"
+      },
+      {
+        "op": "H",
+        "reference_index": 28,
+        "hypothesis_index": 24,
+        "reference": "i",
+        "hypothesis": "i"
+      },
+      {
+        "op": "H",
+        "reference_index": 29,
+        "hypothesis_index": 25,
+        "reference": "t",
+        "hypothesis": "t"
+      },
+      {
+        "op": "H",
+        "reference_index": 30,
+        "hypothesis_index": 26,
+        "reference": "d",
+        "hypothesis": "d"
+      },
+      {
+        "op": "H",
+        "reference_index": 31,
+        "hypothesis_index": 27,
+        "reference": "o",
+        "hypothesis": "o"
+      },
+      {
+        "op": "H",
+        "reference_index": 32,
+        "hypothesis_index": 28,
+        "reference": "e",
+        "hypothesis": "e"
+      },
+      {
+        "op": "H",
+        "reference_index": 33,
+        "hypothesis_index": 29,
+        "reference": "s",
+        "hypothesis": "s"
+      }
+    ]
+  }
+}

@@ -1,0 +1,70 @@
+{
+  "request": {
+    "key": "p226_028_N1_snr_m18.wav__frontend",
+    "id": "p226_028",
+    "arm": "frontend",
+    "path": "outputs/frontend/p226_028_N1_snr_m18.wav",
+    "basename": "p226_028_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "72679c84fad79d5c5b82e1a721fd9985f6eae9f8083de5b6c00519efc565a4b1",
+      "samples": 67653,
+      "array_sha256": "a49810a691bde3249c5d269886d9bcc323eaba5eca2229b4f275bc10abf07c7d",
+      "peak": 0.020050048828125,
+      "rms": 0.0009581751076149015
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " Question.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Question.",
+        "tokens": [
+          50363,
+          18233,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.3596617698669433,
+        "compression_ratio": 0.5294117647058824,
+        "no_speech_prob": 0.855856716632843
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 18,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

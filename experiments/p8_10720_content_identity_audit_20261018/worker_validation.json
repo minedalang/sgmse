@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "source_hashes_verified": 8,
+  "wav_hashes_verified": 5,
+  "conditions": 5,
+  "ctc_frames_each": 99,
+  "source_wav_duration_seconds_each": 2,
+  "reference_tokens": 14,
+  "reference_consonants": 9,
+  "prior_decoded_sequences_exact_match_all_conditions": true,
+  "independent_all_and_consonant_edit_distance_checks_passed": true,
+  "independent_maximum_monotonic_same_id_100ms_matching_checks_passed": true,
+  "saved_fixed_time_rows": 70,
+  "fixed_time_rows_exactly_match_filtered_source": true,
+  "RMS_and_peak_independently_recomputed_with_soundfile": true,
+  "normalization_confound": "Local feature extractor do_normalize=true. Clip amplitude can be normalized before recognition; many greedy tokens do not establish audibility or intelligibility of the original quiet waveform.",
+  "no_model_inference": true,
+  "no_source_edits": true,
+  "metrics_sha256": "a3ea1bd235e0fff2183ecea6aef94aa1fc215175ba4235494ee44fedab8b650b"
+}

@@ -1,0 +1,43 @@
+experiment_id: p8_3321_tail_condition_20261018
+source: /data/coding/sgmse/experiments/p8_10720_snr_control_20261018/metrics.json
+source_variant: original_3321
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+seed: 513132500
+window_samples:
+- 361920
+- 378560
+window_seconds:
+- 22.62
+- 23.66
+fade_samples: 320
+fade: internal_symmetric_raised_cosine_including_zero_and_one_endpoints
+runs:
+- no_op
+- condition_tail_clean
+backend: 'off'
+N: 30
+sampling_snr: 0.5
+sample_rate: 16000
+source_samples: 480000
+speech_active_threshold_dbfs: -70
+speech_active_frame_samples: 320
+highband_hz:
+- 4000
+- 7500
+output_cap_bytes: 25000000
+purpose: oracle_OOD_mechanism_probe_not_deployable_method
+prior_history: P8-M_5243_active_masking_negative_is_distinct_and_preserved
+replication_scope: preidentified_picked_second_utterance_exploratory_positive_case_not_unbiased_population_proof
+source_manifest: /data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/manifest.csv
+source_index: 6
+source_basename: 06_book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav
+source_sha256:
+  clean: 607c2547a52e994d112a6e359fdd65a6c25525c8667cb29bafeddff353e38048
+  noisy: 917249f1473ae6b47f03e66752556afce131179125af1fe6bc4c86a62a5fc583
+  'off': 87124db6e825bb82cb7df24d7cfaca13ba51d143f1ca93fbf4e93bc89a2d00ec
+  y_pre: 05989f99124f2e7148f46ff9f8ffd82281e142079785ff6ad09c6a016d953f0f
+  noise: 45e3815aa452b6982d00a654e250c9262f1f49be319174be11ac1d6995810e63
+rrsd: false
+use_ema: true
+noise_path: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_3321.wav
+attempt: attempt02

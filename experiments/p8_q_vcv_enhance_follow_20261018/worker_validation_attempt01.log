@@ -1,0 +1,4 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_q_vcv_enhance_follow_20261018/worker_validate.py", line 33, in <module>
+    err=float(np.max(np.abs(wav-expected)));max_pcm=max(max_pcm,err);assert err==0
+AssertionError

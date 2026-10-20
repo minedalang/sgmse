@@ -1,0 +1,277 @@
+{
+  "experiment_id": "p8_e1_candidate_listening_aligned_20261020",
+  "n_candidates": 4,
+  "n_arms": 5,
+  "records": [
+    {
+      "fileid": 5243,
+      "speaker": "reader_10658",
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "context_window_s": [
+        18.75,
+        20.75
+      ],
+      "sample_rate_hz": 16000,
+      "samples": 32000,
+      "source_paths": {
+        "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
+        "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_5243.wav",
+        "y_pre": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
+        "off": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/off/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav",
+        "router": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/router/00_book_02324_chp_0015_reader_10658_7_CGPxaXQVd_U-fan_Freesound_validated_350631_0-oHvYwexeY6k_snr-19_fileid_5243.wav"
+      },
+      "source_sha256": {
+        "noisy": "e30186b92d733e6f616494ac02b37d6a82191f27b10150a7575bce8133e7e53b",
+        "clean": "7a87811cbefd60005be820188eaf918f8a19c00bafb626054205ec6365ef9781",
+        "y_pre": "b947b42959316da5886a934c16fa6f345e8cf4721a9c8d4ed2aadce0c185f868",
+        "off": "b4de19918c094f322aab87905a78e889b4624b1aa319ae85c060eadcdc1d82e4",
+        "router": "c4adedee75aeedd702e8ae4f774c60cb2ec01956e9479a23c0f21fb7f561707a"
+      },
+      "source_lengths_samples": {
+        "noisy": 480000,
+        "clean": 480000,
+        "y_pre": 480000,
+        "off": 480000,
+        "router": 480000
+      },
+      "alignment_scan": {
+        "clean": {
+          "zero_lag_corr": 0.9999999999999992,
+          "max_corr": 0.9999999999999992,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "noisy": {
+          "zero_lag_corr": 0.13490126168841185,
+          "max_corr": 0.13490126168841185,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "y_pre": {
+          "zero_lag_corr": 0.7762288924445885,
+          "max_corr": 0.7762288924445885,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "off": {
+          "zero_lag_corr": 0.7924919238979276,
+          "max_corr": 0.7924919238979276,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "router": {
+          "zero_lag_corr": 0.802194634325253,
+          "max_corr": 0.802194634325253,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        }
+      }
+    },
+    {
+      "fileid": 4812,
+      "speaker": "reader_10921",
+      "target_window_s": [
+        12.5,
+        13.0
+      ],
+      "context_window_s": [
+        11.75,
+        13.75
+      ],
+      "sample_rate_hz": 16000,
+      "samples": 32000,
+      "source_paths": {
+        "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav",
+        "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_4812.wav",
+        "y_pre": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/02_book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav",
+        "off": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/off/02_book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav",
+        "router": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/router/02_book_09391_chp_0005_reader_10921_13_6_Fot9vtgx8-zot1BCRYlZ8-Nzsw5BeVxLs_snr-17_fileid_4812.wav"
+      },
+      "source_sha256": {
+        "noisy": "82e6e729711a02d2b452e6d864f22bcbabd30453fd6b24e3e348b5f7c21ce915",
+        "clean": "7772c5c1027cec7437de4e044d1c98eb0920e955f88fd74bf1e99f1e2ae0e4c4",
+        "y_pre": "2d22a222d7ee986581df174b1e05e7732b1142e952e4bef4be8bc60e962f58c2",
+        "off": "63124d1f9e0626ff7796d0970cc354afe3925117311c5e0f8798510d4cd81186",
+        "router": "3a6d82b357ba3ca4ac5e0b0b187b15c10951fb13e5c660d2d399f545ac42639b"
+      },
+      "source_lengths_samples": {
+        "noisy": 480000,
+        "clean": 480000,
+        "y_pre": 480000,
+        "off": 480000,
+        "router": 480000
+      },
+      "alignment_scan": {
+        "clean": {
+          "zero_lag_corr": 0.9999999999999996,
+          "max_corr": 0.9999999999999996,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "noisy": {
+          "zero_lag_corr": 0.3494053237227665,
+          "max_corr": 0.3494053237227665,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "y_pre": {
+          "zero_lag_corr": 0.8595921997868664,
+          "max_corr": 0.8595921997868664,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "off": {
+          "zero_lag_corr": 0.821538211140027,
+          "max_corr": 0.821538211140027,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "router": {
+          "zero_lag_corr": 0.8370058232730322,
+          "max_corr": 0.8370058232730322,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        }
+      }
+    },
+    {
+      "fileid": 11999,
+      "speaker": "reader_10927",
+      "target_window_s": [
+        19.5,
+        20.0
+      ],
+      "context_window_s": [
+        18.75,
+        20.75
+      ],
+      "sample_rate_hz": 16000,
+      "samples": 32000,
+      "source_paths": {
+        "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav",
+        "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_11999.wav",
+        "y_pre": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/03_book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav",
+        "off": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/off/03_book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav",
+        "router": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/router/03_book_07500_chp_0005_reader_10927_26_IhT-WxWAauI-iQh74zbdM9I-9-zlKI1xH9Y-tNyxJ760fRQ_snr-17_fileid_11999.wav"
+      },
+      "source_sha256": {
+        "noisy": "5365d261b07079b09c29688905b03e890a15bd01e9a9c1fbddb0c7dc7cf6f676",
+        "clean": "58c59e63d7dec4d7e75801436cee40ccc0c52143151b4f980ed74339c9e107d1",
+        "y_pre": "ab27cd0d4dd270411ac193293538f85dd3521ec807bd69ca006a96e8c9252410",
+        "off": "0739b414d491c52aa7e88c7150c0daffd876f84d3afa6bf43050f005c94b2ff7",
+        "router": "5027c800f77bed77c9eb412ff17b6263d2a40ca940b271f6069f2b87d997f84c"
+      },
+      "source_lengths_samples": {
+        "noisy": 480000,
+        "clean": 480000,
+        "y_pre": 480000,
+        "off": 480000,
+        "router": 480000
+      },
+      "alignment_scan": {
+        "clean": {
+          "zero_lag_corr": 0.9999999999999986,
+          "max_corr": 0.9999999999999986,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "noisy": {
+          "zero_lag_corr": 0.10608507480305769,
+          "max_corr": 0.10608507480305769,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "y_pre": {
+          "zero_lag_corr": 0.606682765259384,
+          "max_corr": 0.606682765259384,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "off": {
+          "zero_lag_corr": 0.5229918603208051,
+          "max_corr": 0.5229918603208051,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "router": {
+          "zero_lag_corr": 0.5500003391195974,
+          "max_corr": 0.5500003391195974,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        }
+      }
+    },
+    {
+      "fileid": 10720,
+      "speaker": "reader_10929",
+      "target_window_s": [
+        14.5,
+        15.0
+      ],
+      "context_window_s": [
+        13.75,
+        15.75
+      ],
+      "sample_rate_hz": 16000,
+      "samples": 32000,
+      "source_paths": {
+        "noisy": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+        "clean": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_10720.wav",
+        "y_pre": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+        "off": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/off/04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav",
+        "router": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/router/04_book_04733_chp_0031_reader_10929_13_WIPwL0T99nw-10Ebq7HBVxk-U_5z8BeHx5M_snr-16_fileid_10720.wav"
+      },
+      "source_sha256": {
+        "noisy": "cb714d176ad32c2aa041dc5a71715349ec9c35ae441bf55b0036f37d5bec173c",
+        "clean": "e2a1d164b64b494c9d99c1d1697360ef5f345c7ad12427d995d9c03b781b6c5e",
+        "y_pre": "285a319dfcbea54bdcfce623220ae858ac7d53afd5981db97c7eaddf96725f4d",
+        "off": "912f380d90be61b6b2ad0f8bb4cab166aaf597c5e0423eae26193aa4207d1b03",
+        "router": "78cd59bfa8695624751bff392c71532b40ece20f229e7cf5640e15a806a14cb6"
+      },
+      "source_lengths_samples": {
+        "noisy": 480000,
+        "clean": 480000,
+        "y_pre": 480000,
+        "off": 480000,
+        "router": 480000
+      },
+      "alignment_scan": {
+        "clean": {
+          "zero_lag_corr": 0.9999999999999969,
+          "max_corr": 0.9999999999999969,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "noisy": {
+          "zero_lag_corr": 0.12287306098754654,
+          "max_corr": 0.12287306098754654,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "y_pre": {
+          "zero_lag_corr": 0.5022768988193632,
+          "max_corr": 0.5022768988193632,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "off": {
+          "zero_lag_corr": 0.29066615924999184,
+          "max_corr": 0.29066615924999184,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        },
+        "router": {
+          "zero_lag_corr": 0.342416577672041,
+          "max_corr": 0.342416577672041,
+          "best_lag_samples": 0,
+          "best_lag_ms": 0.0
+        }
+      }
+    }
+  ],
+  "dataset_modified": false,
+  "checkpoint_modified": false
+}

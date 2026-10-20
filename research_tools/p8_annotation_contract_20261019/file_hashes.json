@@ -1,0 +1,35 @@
+{
+  "scope": "software_preparation_only",
+  "files": [
+    {
+      "path": "annotation_contract.py",
+      "bytes": 5062,
+      "sha256": "3804462ab9bbe0408c94c7a4f06f9ff5a60b8c37fcecbf2d92e4443132dbc689"
+    },
+    {
+      "path": "design.md",
+      "bytes": 4304,
+      "sha256": "a47bed36bfe94e8f919cc35d97bccf7f03c87a96afd7abaf0e7086fe8a08b2ce"
+    },
+    {
+      "path": "preparation_report.md",
+      "bytes": 3547,
+      "sha256": "322b22e1f231df462518942f46e59ed394238843adc780eb148e6dc39ad61a86"
+    },
+    {
+      "path": "test_annotation_contract.py",
+      "bytes": 6355,
+      "sha256": "a372a000cd78b22bdcd680a8f805b2cd7df31a5b2277d950d2304ebb74e9703c"
+    },
+    {
+      "path": "test_output.txt",
+      "bytes": 1254,
+      "sha256": "be40a000844297bea614339db03773f2f33865161d023ab9580f80e08992a224"
+    },
+    {
+      "path": "test_receipt.json",
+      "bytes": 766,
+      "sha256": "7a4ac256fb52a7da1eccb095963fc3d522fd13d86b8b9c8cc29036d35fdbb80d"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "status": "prepared_no_inference",
+  "phases": {
+    "retrieval": "prepared",
+    "baseline": "prepared",
+    "enhancement": "prepared"
+  }
+}

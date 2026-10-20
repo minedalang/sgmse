@@ -1,0 +1,73 @@
+{
+  "request": {
+    "key": "p227_030__scaledclean",
+    "id": "p227_030",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p227_030_scaledclean.wav",
+    "input": {
+      "wav_sha256": "372355cf101552c6b9476702405c2ef45d6e85cae5e9c4832baada2ad058a68c",
+      "samples": 52810,
+      "array_sha256": "34d43a762fb1ba23cae3be88c5889ebef309f3788b6afa647faee5dc8bdc1017",
+      "peak": 0.150390625,
+      "rms": 0.011903732134291366
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_030",
+    "original_text": "Nonetheless, the overall picture is healthy.\n",
+    "raw_text_hex": "4e6f6e657468656c6573732c20746865206f766572616c6c2070696374757265206973206865616c7468792e0a",
+    "raw_text_sha256": "1fbc53bfa7e889fa0bae56cc553db7cae042a65f916a5c3b24389b79c25106f1",
+    "archive_entry": "trainset_28spk_txt/p227_030.txt"
+  },
+  "raw_result": {
+    "text": " Nonetheless, the overall picture is healthy.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.2,
+        "text": " Nonetheless, the overall picture is healthy.",
+        "tokens": [
+          50363,
+          27251,
+          11,
+          262,
+          4045,
+          4286,
+          318,
+          5448,
+          13,
+          50523
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.4795642766085538,
+        "compression_ratio": 0.88,
+        "no_speech_prob": 0.024613840505480766
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 1,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

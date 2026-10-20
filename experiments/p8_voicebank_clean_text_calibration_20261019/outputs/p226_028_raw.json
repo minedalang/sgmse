@@ -1,0 +1,73 @@
+{
+  "id": "p226_028",
+  "publisher_reference": {
+    "id": "p226_028",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt",
+    "raw_text_SHA256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n"
+  },
+  "input": {
+    "array_SHA256": "89b3a1dedc7d56ab1b62bb1c7bb344373cb3d71eafeb68b9e5c956b6da5e2a31",
+    "frames": 67653,
+    "sample_rate": 16000,
+    "dtype": "float32",
+    "peak": 0.496429443359375,
+    "rms": 0.051305585827789865,
+    "input_WAV_SHA256": "add912d161b01c9de54afa07ed16074e22d0aef5cc7d32aab1ee0ba5facb8c8e"
+  },
+  "raw_result": {
+    "text": " Suggestions of the action being a punishment were dismissed.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " Suggestions of the action being a punishment were dismissed.",
+        "tokens": [
+          50363,
+          35042,
+          507,
+          286,
+          262,
+          2223,
+          852,
+          257,
+          9837,
+          547,
+          11126,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.3476508685520717,
+        "compression_ratio": 0.9523809523809523,
+        "no_speech_prob": 0.07296980917453766
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 2,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+schema_version: 1
+experiment_id: anchor_v2_real_oracle_20261017
+purpose: clean_reference_anchor_v2_real_audio_oracle_screen
+status: completed_32_file_n30
+mutates_dataset: false
+mutates_checkpoint: false
+checkpoint: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiments/rrsd_cv_repeat32/manifest.csv
+files: 32
+inference: {device: cuda, use_ema: true, sampler: pc, N: 30, snr: 0.5, seed: 2026}
+arms: [router, tcut005, anchor_oracle]
+anchor_oracle: {num_bands: 32, num_time_blocks: 16, a_max: 0.25, b_max: 0.15, time_power: 1.0, clean_reference: diagnostic_only}
+outputs: {wav_dir: /dev/shm/anchor_v2_real_oracle_wavs_32, persistent_audio: false}
+metrics: [PESQ_WB, STOI, SI_SDR, DNSMOS_P808, DNSMOS_SIG, DNSMOS_BAK, DNSMOS_OVRL]
+bootstrap: {paired: true, replicates: 20000, seed: 2026, comparison: router}

@@ -1,0 +1,14 @@
+{
+  "status": "prepared_not_executed",
+  "checks": {
+    "syntax": "pass",
+    "synthetic_exact_zero_rms": "pass",
+    "synthetic_db_floor_after_rms": "pass",
+    "synthetic_signed_pearson_lag_recovery": "pass"
+  },
+  "hashes": {
+    "probe.py": "7a844039f93ce47cc872e62ec7967965e45e9aaef5c778fde018c6ca927105ed",
+    "config.yaml": "4dbd5a5a2c297f6895f8e94b6ff470f7c3a715fe80ec644dc71453de832f2b0a",
+    "engineer_handoff.md": "049dd7e6e99e1c5e0c95dcd0edacb6d63ab2755dacf0d20e36967db54ef7b04b"
+  }
+}

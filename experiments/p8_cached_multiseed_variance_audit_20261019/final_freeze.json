@@ -1,0 +1,74 @@
+{
+  "files": {
+    "analysis_plan.md": {
+      "bytes": 4957,
+      "sha256": "f6298d76fcb188aa722b71d3955eda3ded847cb052b54b52a208250fa7d06ef2"
+    },
+    "config.yaml": {
+      "bytes": 985,
+      "sha256": "102f9996efd5e7e2b5a5d611d64d00584b8f0db517bcc0140b5f137a4d2d212a"
+    },
+    "worker_preflight.json": {
+      "bytes": 301754,
+      "sha256": "775574cacf978025b3bb51c0125e3936a2014852d7394432402001c84d4c2b72"
+    },
+    "run_audit.py": {
+      "bytes": 6674,
+      "sha256": "d3f9ed855aa66511c8cd9c86ab26902cd28bbc83fb5b43ee55a68b7dc6d55d67"
+    },
+    "validate_audit.py": {
+      "bytes": 4371,
+      "sha256": "6ae6f30602f63417f7d4b83db4fee256c540dbe3d674690c6c0785e255b3effc"
+    },
+    "STARTED.json": {
+      "bytes": 142,
+      "sha256": "d1df02de1bc0d2b8fbf142a3ac86b1922c6fb07f7eb5d81d2dfab1ed81e94114"
+    },
+    "source_metadata_pre.json": {
+      "bytes": 1403,
+      "sha256": "193b508ba968693b15bbf02912bf36b1dbe928eb94f8dfdd3e7354c05a80055a"
+    },
+    "source_PCM_locks.json": {
+      "bytes": 26683,
+      "sha256": "2e0c6ff01f41a1906dfdfa8fc3fbd81e070c3cb849df6adaf2d35af1cb77eacf"
+    },
+    "source_registry.json": {
+      "bytes": 37055,
+      "sha256": "dba0cad04b3c5b88230b9c46b45d49bcd47073d23502ebaa97d13c73fdbea687"
+    },
+    "source_metadata_post.json": {
+      "bytes": 1403,
+      "sha256": "193b508ba968693b15bbf02912bf36b1dbe928eb94f8dfdd3e7354c05a80055a"
+    },
+    "metrics.json": {
+      "bytes": 21702,
+      "sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e"
+    },
+    "independent_validation.json": {
+      "bytes": 604,
+      "sha256": "3b98f3fe9913cc3de0e9d4d5df1dfece6085de21aef02b8c926d017b60035697"
+    },
+    "finalize_report.py": {
+      "bytes": 10566,
+      "sha256": "ae846aa128f37762fe983e23ae91bccad0bea19ba60331bfdecf6db5aaed7a14"
+    },
+    "execution_provenance.json": {
+      "bytes": 1162,
+      "sha256": "1c1494d1d12cf6c9c5b107a907e57c83eee305fd05e6a3072f81f5ec52c24cf2"
+    },
+    "experiment_report.md": {
+      "bytes": 14750,
+      "sha256": "3e7e6dd6ab6208aaf56f639a72d484e673e0cedbf57736f44aad55319419b592"
+    },
+    "worker_final_validation.json": {
+      "bytes": 642,
+      "sha256": "e83d340bbed9498690f087c7dcb15d2cb575ee07e083a99d5b516a34fa83ffa0"
+    }
+  },
+  "bytes_excluding_this_receipt": 434853,
+  "budget": 2097152,
+  "models": 0,
+  "ASR": 0,
+  "audio_outputs": 0,
+  "newgeneration": 0
+}

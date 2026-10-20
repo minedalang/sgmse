@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "seconds": 0.029835449066013098,
+  "network_requests": 0,
+  "audio_decodes": 0,
+  "models": 0,
+  "ASR": 0,
+  "training": 0,
+  "opened_zip_payloads": [
+    "log_trainset_28spk.txt"
+  ],
+  "train_rows": 11572,
+  "join_rows": 12,
+  "component_sizes": [
+    2,
+    10
+  ],
+  "archive_MD5_verified": true,
+  "training_CRC_verified": true,
+  "metrics_sha256": "ca1ffd3055f8c98e6fd77e3d9c351d7e55c52a743a086324c4fcc5570a8849da",
+  "source_locks_post_equal": true
+}

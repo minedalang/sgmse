@@ -1,0 +1,82 @@
+{
+  "experiment_id": "p8_q_a_ctc_boundary_audit_20261020",
+  "status": "completed",
+  "source": "/data/coding/sgmse/experiments/p8_q_a_ctc_forced_alignment_20261020/token_alignments.csv",
+  "input_rows": 445,
+  "definition": "absolute midpoint displacement of each condition's forced token path from the clean path, in milliseconds",
+  "same_time_claim_limit_ms": 40.0,
+  "by_condition": {
+    "clean": {
+      "n": 89,
+      "median_abs_shift_ms": 0.0,
+      "p90_abs_shift_ms": 0.0,
+      "within_limit_fraction": 1.0,
+      "max_abs_shift_ms": 0.0
+    },
+    "noisy": {
+      "n": 89,
+      "median_abs_shift_ms": 120.00000000000006,
+      "p90_abs_shift_ms": 652.0,
+      "within_limit_fraction": 0.38202247191011235,
+      "max_abs_shift_ms": 820.0000000000001
+    },
+    "y_pre": {
+      "n": 89,
+      "median_abs_shift_ms": 20.000000000000018,
+      "p90_abs_shift_ms": 240.0,
+      "within_limit_fraction": 0.6629213483146067,
+      "max_abs_shift_ms": 520.0
+    },
+    "off": {
+      "n": 89,
+      "median_abs_shift_ms": 20.000000000000018,
+      "p90_abs_shift_ms": 184.00000000000017,
+      "within_limit_fraction": 0.5730337078651685,
+      "max_abs_shift_ms": 720.0
+    },
+    "router": {
+      "n": 89,
+      "median_abs_shift_ms": 20.000000000000018,
+      "p90_abs_shift_ms": 240.0,
+      "within_limit_fraction": 0.5730337078651685,
+      "max_abs_shift_ms": 720.0
+    }
+  },
+  "by_condition_consonants": {
+    "clean": {
+      "n": 56,
+      "median_abs_shift_ms": 0.0,
+      "p90_abs_shift_ms": 0.0,
+      "within_limit_fraction": 1.0,
+      "max_abs_shift_ms": 0.0
+    },
+    "noisy": {
+      "n": 56,
+      "median_abs_shift_ms": 140.0,
+      "p90_abs_shift_ms": 610.0,
+      "within_limit_fraction": 0.3392857142857143,
+      "max_abs_shift_ms": 820.0000000000001
+    },
+    "y_pre": {
+      "n": 56,
+      "median_abs_shift_ms": 20.000000000000018,
+      "p90_abs_shift_ms": 225.0000000000001,
+      "within_limit_fraction": 0.6428571428571429,
+      "max_abs_shift_ms": 510.0
+    },
+    "off": {
+      "n": 56,
+      "median_abs_shift_ms": 20.000000000000018,
+      "p90_abs_shift_ms": 190.0,
+      "within_limit_fraction": 0.5535714285714286,
+      "max_abs_shift_ms": 720.0
+    },
+    "router": {
+      "n": 56,
+      "median_abs_shift_ms": 20.000000000000018,
+      "p90_abs_shift_ms": 219.99999999999997,
+      "within_limit_fraction": 0.5535714285714286,
+      "max_abs_shift_ms": 720.0
+    }
+  }
+}

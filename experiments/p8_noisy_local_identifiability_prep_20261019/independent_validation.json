@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "pairs": 12,
+  "speakers": 6,
+  "rehashed_selected_files": 24,
+  "actual_audio_samples_read": 0,
+  "noise_disjoint_ready": false,
+  "split_frozen": false,
+  "registry_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6"
+}

@@ -1,0 +1,264 @@
+{
+  "experiment_id": "attempt02",
+  "status": "completed",
+  "started_at_utc": "2026-10-18T15:03:59.340080+00:00",
+  "failures": [],
+  "runs": {
+    "no_op": {
+      "seed": 513132500,
+      "anchor_tail_clean": false,
+      "condition_tail_clean": false,
+      "outside_input_max_abs_difference": 0.0,
+      "normalization_peak": 0.2052001953125,
+      "anchor_float32_sha256": "6910608a02790bbb8d6d331813841b26b1a0cbecbe682d8eda1cb83c72d626fe",
+      "condition_float32_sha256": "37b2a6f8506d78f91d743b5a584034e1a6dc485f34b4f82bde370d42a1c6c2e5",
+      "input_perturbation": {
+        "anchor_tail_delta_rms": 0.0,
+        "condition_tail_delta_rms": 0.0,
+        "anchor_outside_max_abs": 0.0,
+        "condition_outside_max_abs": 0.0,
+        "normalization_peak_unchanged": true
+      },
+      "rng_before": {
+        "cpu": "90a489487fd816e1cfe39cf8119e85048269bf2adc027b5047c053c4aa94c9f1",
+        "cuda": "59cbc72c8ecb10ead48847aad51359938720fc15925c23c1bac680ba6821a8ab"
+      },
+      "nfe": 30,
+      "wall_seconds": 9.169992778915912,
+      "rtf": 0.3053500254948934,
+      "raw_dtype": "float32",
+      "raw_sha256": "95a797dedb9d1be4a6d7c858f5f10fd6f918d497508b8cbf899fe1311a4aa9f4",
+      "raw_file_sha256": "1c00e24f26bc93190ea9e90902049b396a69748ea0d59060ab24a3c86e726fe4",
+      "pcm16_sha256": "87124db6e825bb82cb7df24d7cfaca13ba51d143f1ca93fbf4e93bc89a2d00ec",
+      "clipped_samples": 0,
+      "exact_saved_pcm16_byte_match": true,
+      "raw_metrics": {
+        "tail_rms": 0.0011164770041116518,
+        "tail_rms_dbfs": -59.04300435181084,
+        "tail_highband_mean_square_4k_7p5k": 1.7817434724351745e-09,
+        "tail_delta_from_no_op_rms": 0.0,
+        "outside_window_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.6103292473509591,
+        "full_clean_speech_active_rmse_vs_clean": 0.0019127039105155572
+      },
+      "pcm16_reference_metrics": {
+        "tail_rms": 0.0011166823762922217,
+        "tail_rms_dbfs": -59.041406758628874,
+        "tail_highband_mean_square_4k_7p5k": 1.81615356051243e-09,
+        "tail_delta_from_no_op_rms": 0.0,
+        "outside_window_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.6103493842017809,
+        "full_clean_speech_active_rmse_vs_clean": 0.0019127670173013703
+      }
+    },
+    "condition_tail_clean": {
+      "seed": 513132500,
+      "anchor_tail_clean": false,
+      "condition_tail_clean": true,
+      "outside_input_max_abs_difference": 0.0,
+      "normalization_peak": 0.2052001953125,
+      "anchor_float32_sha256": "6910608a02790bbb8d6d331813841b26b1a0cbecbe682d8eda1cb83c72d626fe",
+      "condition_float32_sha256": "9353992232143c469c7a734f15dccedcac23adcbbd70e52c09fe30d58af90274",
+      "input_perturbation": {
+        "anchor_tail_delta_rms": 0.0,
+        "condition_tail_delta_rms": 0.03869219386347776,
+        "anchor_outside_max_abs": 0.0,
+        "condition_outside_max_abs": 0.0,
+        "normalization_peak_unchanged": true
+      },
+      "rng_before": {
+        "cpu": "90a489487fd816e1cfe39cf8119e85048269bf2adc027b5047c053c4aa94c9f1",
+        "cuda": "59cbc72c8ecb10ead48847aad51359938720fc15925c23c1bac680ba6821a8ab"
+      },
+      "nfe": 30,
+      "wall_seconds": 9.186331856995821,
+      "rtf": 0.3058804750442505,
+      "raw_dtype": "float32",
+      "raw_sha256": "5812e31a0ab92635fd5d597bfb0d7ea1883267afcb65228ac405a861dee5c8ff",
+      "raw_file_sha256": "770bfc8ede2effc861fdab4f1d61241d73607678d09885b4abca89c6644e1c77",
+      "pcm16_sha256": "663a23d626cc26fc30759c04358032fa130b5db572808ce6e00cd8db2ac1574c",
+      "clipped_samples": 0,
+      "raw_metrics": {
+        "tail_rms": 3.633282308435926e-05,
+        "tail_rms_dbfs": -88.79401711716051,
+        "tail_highband_mean_square_4k_7p5k": 1.4456852528880108e-11,
+        "tail_delta_from_no_op_rms": 0.0011067542008729155,
+        "outside_window_relative_l2_vs_no_op": 0.015713464108619516,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.014069088268412862,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.6114316184055663,
+        "full_clean_speech_active_rmse_vs_clean": 0.001916158618656154
+      },
+      "pcm16_reference_metrics": {
+        "tail_rms": 4.371437193885084e-05,
+        "tail_rms_dbfs": -87.18751513812337,
+        "tail_highband_mean_square_4k_7p5k": 3.4476575280953815e-11,
+        "tail_delta_from_no_op_rms": 0.001106628337144158,
+        "outside_window_relative_l2_vs_no_op": 0.016259337721085614,
+        "full_clean_speech_active_relative_l2_vs_no_op": 0.01455367647287402,
+        "full_clean_speech_active_relative_l2_vs_clean": 0.6114394090969621,
+        "full_clean_speech_active_rmse_vs_clean": 0.0019161830339657709
+      }
+    }
+  },
+  "limits": "Oracle clean-tail intervention is an OOD mechanism probe, not a deployable method. This is a preidentified picked exploratory positive case on a second utterance, not unbiased population proof or a trained method. Prior P8-M 5243 active masking negative is preserved and is a distinct experiment.",
+  "execution_stages": {
+    "config_validated": true,
+    "model_loaded": true,
+    "frontend_completed": true,
+    "backend_runs_completed": 2
+  },
+  "source_manifest": {
+    "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/manifest.csv",
+    "sha256": "66686df893d8322e90ea2364233153443c505cf6ad0b0bae8fde32912c46911d",
+    "row": {
+      "index": "6",
+      "speaker": "reader_11057",
+      "fileid": "3321",
+      "snr_db": "-19",
+      "utt_key": "reader_11057_fileid_3321",
+      "noisy_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+      "clean_path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3321.wav",
+      "noisy_basename": "book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+      "clean_basename": "clean_fileid_3321.wav",
+      "noisy_sha256": "917249f1473ae6b47f03e66752556afce131179125af1fe6bc4c86a62a5fc583",
+      "clean_sha256": "607c2547a52e994d112a6e359fdd65a6c25525c8667cb29bafeddff353e38048",
+      "sample_rate_hz": "16000",
+      "noisy_samples": "480000",
+      "clean_samples": "480000",
+      "noisy_duration_seconds": "30.0",
+      "clean_duration_seconds": "30.0",
+      "speaker_in_rrsd_cv_repeat32": "False",
+      "speaker_in_tr0_fresh": "False"
+    },
+    "export_basename": "06_book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+    "seed_formula": "(2026 + little_endian_uint32(blake2b(basename,digest_size=4))) mod 2**32",
+    "effective_seed": 513132500,
+    "window_samples": [
+      361920,
+      378560
+    ],
+    "window_seconds": [
+      22.62,
+      23.66
+    ]
+  },
+  "source_audit_metrics_sha256": "6f64f219d24a6e7f0a4666ef1b05f2638707a78e3b21747606907439088c5e15",
+  "enhance_kwargs": {
+    "sampler_type": "pc",
+    "predictor": "reverse_diffusion",
+    "corrector": "none",
+    "N": 30,
+    "snr": 0.5,
+    "regen_strength": null,
+    "anchor_calib": false,
+    "anchor_k_max": null,
+    "anchor_scale": 1.0,
+    "anchor_v2": false,
+    "rrsd_scale": 1.0,
+    "rrsd_t_cut": 0.0,
+    "rrsd_t_cut_scale": 0.0,
+    "rrsd_t_min": 0.0,
+    "rrsd_t_max": null,
+    "anchor_v2_a_max": null,
+    "anchor_v2_b_max": null,
+    "anchor_v2_scale": 1.0,
+    "anchor_v2_single_shot": false,
+    "anchor_v2_single_shot_ratio": 0.5,
+    "anchor_v2_single_shot_step": null,
+    "rrsd": false,
+    "timeit": true
+  },
+  "source_metrics_sha256": "5481db0bbd0c94867423f741f95aca21ed1cd9e380d4c1812973767e65087af6",
+  "source_driver_sha256": "fd18edb502ded24961c74c0260ef68952200a1b5d769e237fd93658ffa608ae0",
+  "code_sha256": {
+    "joint_enhance_by_dir.py": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108",
+    "sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321"
+  },
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9"
+  },
+  "driver_sha256": "4047a774219a0e70f9b9fefe2790d7d47738d480d0456598bb59f26145ad1f45",
+  "config_sha256": "7e427c0f4f8f4861ea2759e79ad337fc90f65e798c41f8b4368e15e87af3963e",
+  "git_head": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status": " M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_3321_tail_condition_20261018/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_silent_gap_screen8_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py",
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "executable": "/data/coding/sgmse/env/bin/python",
+    "torch": "2.14.1+cu130",
+    "cuda": "13.0",
+    "cudnn": 92400,
+    "device": "NVIDIA L40S",
+    "PATH": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+    "cudnn_deterministic": false,
+    "cudnn_benchmark": false
+  },
+  "inputs": {
+    "clean": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_3321.wav",
+      "sha256": "607c2547a52e994d112a6e359fdd65a6c25525c8667cb29bafeddff353e38048",
+      "float32_sha256": "6d68359a1be07d4735d0fba83904f5af5527d18ff629951776471c4d1a8d2538",
+      "subtype": "PCM_16"
+    },
+    "noisy": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+      "sha256": "917249f1473ae6b47f03e66752556afce131179125af1fe6bc4c86a62a5fc583",
+      "float32_sha256": "37b2a6f8506d78f91d743b5a584034e1a6dc485f34b4f82bde370d42a1c6c2e5",
+      "subtype": "PCM_16"
+    },
+    "off": {
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/off/06_book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+      "sha256": "87124db6e825bb82cb7df24d7cfaca13ba51d143f1ca93fbf4e93bc89a2d00ec",
+      "float32_sha256": "14b90d3662ac11651d4076cbd9c8cce380c27199009176f162eab40a9ea3fd11",
+      "subtype": "PCM_16"
+    },
+    "y_pre": {
+      "path": "/data/coding/sgmse/experiments/p8_frontend_backend_audit_20261020/outputs/y_pre/06_book_06813_chp_0007_reader_11057_20_squeak_squeakyChair_Freesound_validated_414106_13-I6OcJm3PcaY-81hASIAq51A_snr-19_fileid_3321.wav",
+      "sha256": "05989f99124f2e7148f46ff9f8ffd82281e142079785ff6ad09c6a016d953f0f",
+      "float32_sha256": "6a67961b18e1f69bc5e9a19cf65c7352bd6f982687f38b1a2a552450b970a870",
+      "subtype": "PCM_16"
+    },
+    "noise": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_3321.wav",
+      "sha256": "45e3815aa452b6982d00a654e250c9262f1f49be319174be11ac1d6995810e63",
+      "float32_sha256": "c64d8250eb37d924f6ba31f3a58b622b0c8969984dd9ae6d4ee84cc2c07bd999",
+      "subtype": "PCM_16"
+    }
+  },
+  "clean_tail": {
+    "rms": 2.513072066040131e-05,
+    "rms_dbfs": -91.99590114390813,
+    "floor_limit_pcm16_steps": 3
+  },
+  "speech_activity": {
+    "reference": "full clean 16kHz waveform",
+    "frame_samples": 320,
+    "hop_samples": 320,
+    "threshold_dbfs": -70,
+    "comparison": ">",
+    "active_frames": 951,
+    "total_frames": 1500
+  },
+  "loaded_model": {
+    "train_type": "mode2",
+    "frontend": "storm",
+    "residual_refine_enable": false
+  },
+  "frontend": {
+    "float32_sha256": "6910608a02790bbb8d6d331813841b26b1a0cbecbe682d8eda1cb83c72d626fe",
+    "rng_unchanged": true,
+    "recomputed_count": 1,
+    "pcm16_sha256": "05989f99124f2e7148f46ff9f8ffd82281e142079785ff6ad09c6a016d953f0f",
+    "exact_saved_pcm16_byte_match": true,
+    "prior_float32_hash_available": false
+  },
+  "sources_and_checkpoint_unchanged": true,
+  "output_bytes": 12932134,
+  "completed_at_utc": "2026-10-18T15:04:29.341800+00:00",
+  "wall_seconds": 30.001753087039106
+}

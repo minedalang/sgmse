@@ -1,0 +1,156 @@
+{
+  "experiment_id": "speaker_headroom_replication_64_20261017_quality_strata",
+  "source_quality_csv": "/data/coding/sgmse/experiments/speaker_headroom_replication_64_20261017/quality_per_utterance.csv",
+  "analysis": "offline per-utterance deltas; no new inference",
+  "overall": {
+    "n": 128,
+    "speakers": 64,
+    "snr_db": -13.195271477690028,
+    "delta_pesq_wb": 0.010924872942268848,
+    "delta_stoi": 0.001145587667272728,
+    "delta_si_sdr_db": 0.5114873215604513,
+    "delta_dnsmos_sig": -0.03086852043983088,
+    "delta_dnsmos_ovrl": -0.02983727402127514,
+    "ovrl_negative_fraction": 0.8203125
+  },
+  "snr_strata": {
+    "<=-15": {
+      "n": 45,
+      "speakers": 39,
+      "snr_db": -18.08881312243524,
+      "delta_pesq_wb": 0.005971421135796441,
+      "delta_stoi": 0.0007426738416768466,
+      "delta_si_sdr_db": 0.616692256353008,
+      "delta_dnsmos_sig": -0.04303512133856745,
+      "delta_dnsmos_ovrl": -0.04458652726967378,
+      "ovrl_negative_fraction": 0.9111111111111111
+    },
+    "(-15,-10]": {
+      "n": 38,
+      "speakers": 31,
+      "snr_db": -13.157881866894947,
+      "delta_pesq_wb": 0.0078056611512836655,
+      "delta_stoi": 0.0016239893833176653,
+      "delta_si_sdr_db": 0.5183824192951441,
+      "delta_dnsmos_sig": -0.036046454898201186,
+      "delta_dnsmos_ovrl": -0.03178709891666273,
+      "ovrl_negative_fraction": 0.7894736842105263
+    },
+    "(-10,-5]": {
+      "n": 45,
+      "speakers": 39,
+      "snr_db": -8.333303282060664,
+      "delta_pesq_wb": 0.0185123258166843,
+      "delta_stoi": 0.0011445178215417733,
+      "delta_si_sdr_db": 0.40045985979193216,
+      "delta_dnsmos_sig": -0.01432944155402605,
+      "delta_dnsmos_ovrl": -0.013441501972326976,
+      "ovrl_negative_fraction": 0.7555555555555555
+    },
+    ">-5": {
+      "n": 0,
+      "speakers": 0
+    }
+  },
+  "correlations_snr": {
+    "delta_dnsmos_ovrl": {
+      "pearson_r": 0.3512764942818315,
+      "pearson_p": 4.790972202980331e-05,
+      "spearman_r": 0.33840528291521693,
+      "spearman_p": 9.345841529537232e-05
+    },
+    "delta_dnsmos_sig": {
+      "pearson_r": 0.3438335919633341,
+      "pearson_p": 7.075704353737222e-05,
+      "spearman_r": 0.3447342519685039,
+      "spearman_p": 6.753092567716549e-05
+    },
+    "delta_pesq_wb": {
+      "pearson_r": 0.27105936201759223,
+      "pearson_p": 0.001969753482511811,
+      "spearman_r": 0.2574448361106024,
+      "spearman_p": 0.0033494741567303456
+    },
+    "delta_stoi": {
+      "pearson_r": 0.14394101925178987,
+      "pearson_p": 0.10502095429546371,
+      "spearman_r": 0.10763253067203808,
+      "spearman_p": 0.22654992245232516
+    },
+    "delta_si_sdr_db": {
+      "pearson_r": -0.54904934146913,
+      "pearson_p": 1.940802230179909e-11,
+      "spearman_r": -0.5321770280168467,
+      "spearman_p": 1.014454437431879e-10
+    }
+  },
+  "correlations_metric_deltas": {
+    "delta_dnsmos_ovrl_vs_delta_si_sdr_db": {
+      "pearson_r": -0.3736173336223531,
+      "pearson_p": 1.3997035152831958e-05,
+      "spearman_r": -0.28375640908258565,
+      "spearman_p": 0.001171089016799066
+    },
+    "delta_dnsmos_ovrl_vs_delta_pesq_wb": {
+      "pearson_r": 0.029545739156814327,
+      "pearson_p": 0.740595357926262,
+      "spearman_r": 0.0472212049075261,
+      "spearman_p": 0.5965963032853545
+    },
+    "delta_dnsmos_ovrl_vs_delta_stoi": {
+      "pearson_r": -0.03880572976161989,
+      "pearson_p": 0.663639561918265,
+      "spearman_r": -0.10317478483794176,
+      "spearman_p": 0.24648292010056108
+    },
+    "delta_dnsmos_sig_vs_delta_si_sdr_db": {
+      "pearson_r": -0.37150842421659724,
+      "pearson_p": 1.578307126989909e-05,
+      "spearman_r": -0.3042425837758652,
+      "spearman_p": 0.00048032902174285935
+    }
+  },
+  "speaker_level_summary": {
+    "n": 64,
+    "speakers": 64,
+    "snr_db": -13.195271477690028,
+    "delta_pesq_wb": 0.010924872942268848,
+    "delta_stoi": 0.001145587667272728,
+    "delta_si_sdr_db": 0.5114873215604513,
+    "delta_dnsmos_sig": -0.03086852043983088,
+    "delta_dnsmos_ovrl": -0.02983727402127514,
+    "ovrl_negative_fraction": 0.9375
+  },
+  "speaker_level_correlations": {
+    "delta_pesq_wb": {
+      "pearson_r": 0.38565757060700745,
+      "pearson_p": 0.0016486356779762531,
+      "spearman_r": 0.318040293040293,
+      "spearman_p": 0.010435673888052697
+    },
+    "delta_stoi": {
+      "pearson_r": 0.20392820007022905,
+      "pearson_p": 0.10602804873888477,
+      "spearman_r": 0.14061355311355309,
+      "spearman_p": 0.2677519369037136
+    },
+    "delta_si_sdr_db": {
+      "pearson_r": -0.503904402498557,
+      "pearson_p": 2.1872633886154067e-05,
+      "spearman_r": -0.4052197802197802,
+      "spearman_p": 0.0008950732951032162
+    },
+    "delta_dnsmos_sig": {
+      "pearson_r": 0.38579081044572716,
+      "pearson_p": 0.0016419948008979163,
+      "spearman_r": 0.37138278388278384,
+      "spearman_p": 0.0025163993963557654
+    },
+    "delta_dnsmos_ovrl": {
+      "pearson_r": 0.4124980557611539,
+      "pearson_p": 0.000706314504995322,
+      "spearman_r": 0.40966117216117215,
+      "spearman_p": 0.0007751136389247054
+    }
+  }
+}

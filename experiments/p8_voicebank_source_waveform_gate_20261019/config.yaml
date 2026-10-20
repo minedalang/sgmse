@@ -1,0 +1,56 @@
+{
+  "experiment_id": "p8_voicebank_source_waveform_gate_20261019",
+  "purpose": "Bounded official48k-to-local16k origin/conversion consistency on four selected valid clean files only",
+  "bitstream_guid": "245452b6-6235-44b6-a6f9-e7eb19797769",
+  "archive_name": "clean_trainset_28spk_wav.zip",
+  "archive_size": 2486057279,
+  "content_url": "https://datashare.ed.ac.uk/server/api/core/bitstreams/245452b6-6235-44b6-a6f9-e7eb19797769/content",
+  "publisher_html": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/item.html",
+  "license_file": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/license.txt",
+  "proxy": "http://127.0.0.1:7890",
+  "selection_sha256": "60b69d1a39271e3514f5c423233e0b9ab0ce1e8d8ac3545db91095dc85568a0c",
+  "recipe_script": "/data/datasets/vb/voicebank_demand/voicebank_prepare.py",
+  "resample_defaults": {
+    "lowpass_filter_width": 6,
+    "rolloff": 0.99,
+    "resampling_method": "sinc_interp_hann",
+    "beta": null
+  },
+  "recipe_dtype": "float32",
+  "recipe_device": "cpu",
+  "gate": {
+    "zero_alignment": true,
+    "matching_length_required": true,
+    "max_abs_error": 6.103515625e-05,
+    "max_abs_error_PCM16_LSB": 2,
+    "all_four_required": true
+  },
+  "caps": {
+    "wall_seconds": 180,
+    "network_bytes_including_65536_header_reservation_per_response": 8000000,
+    "artifact_bytes": 12000000,
+    "HTTP_requests": 16,
+    "expected_HTTP_requests": 15,
+    "EOCD_suffix_bytes": 65557,
+    "central_directory_bytes": 3000000,
+    "member_compressed_and_uncompressed_bytes": 2000000,
+    "retries": 0
+  },
+  "source_locks": {
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/metrics.json": "233c1cce6615fa9a133fd3c503062f4e6fb7cbfc470edcd37ac4b29a67eea9c5",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/item.html": "f87f16037ef976f453950d591d6773eb606c0adcbb4f6d3257c143e8bf1fe2c0",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/license.txt": "b34e17103bfb246f2549fc82a279e6ba28834e0cb42f76a92efc14b72e3a3723",
+    "/data/datasets/vb/voicebank_demand/voicebank_prepare.py": "a659ad6f96441f4afe97e05e50638b6f45948b42efc2ed79b3bc545221076d6f",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_027.wav": "d56d7e5b9eda853a0d493c246f1e59ecd39cf830776ec1895691d57ec7e77385",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_028.wav": "7df2e7755da80d44493350eb7af61ebb022bd3bb9066f1145f028f35d574f3ec",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_037.wav": "bd02cedd2a8d847b8a4a0897ba61814ae6027faed162dce7f5e5bf557abfffcd",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_054.wav": "05690fdc79c92a9a54b6a8fe6c0acdcb1f10be090773a4090418458fff052e76"
+  },
+  "unsupported_formats_stop": "ZIP64,multi-disk,unsupported flags/encryption/method or layout; no fallback",
+  "test_content": false,
+  "models": false,
+  "training": false,
+  "script_presence_is_not_past_procedure_proof": true
+}

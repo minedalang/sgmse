@@ -1,0 +1,78 @@
+{
+  "request": {
+    "key": "p228_026__scaledclean",
+    "id": "p228_026",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_scaledclean.wav",
+    "input": {
+      "wav_sha256": "8eccef9495277229ee9e17253dc5a24f0d7439dcf5709e803ba8c12f6e09694c",
+      "samples": 73760,
+      "array_sha256": "2cd0a3402dd93ef2ebeac10dbf3e1a1db4a3aa09f45757781b8c5bb1b5dc6afd",
+      "peak": 0.047607421875,
+      "rms": 0.006754529436748885
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_026",
+    "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+    "raw_text_hex": "536f2069662077652063616e2074616b6520616e797468696e672066726f6d20746f6e696768742c2069742077696c6c2062652066616e7461737469632e0a",
+    "raw_text_sha256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+    "archive_entry": "trainset_28spk_txt/p228_026.txt"
+  },
+  "raw_result": {
+    "text": " So if we can take anything from tonight it will be fantastic.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " So if we can take anything from tonight it will be fantastic.",
+        "tokens": [
+          50363,
+          1406,
+          611,
+          356,
+          460,
+          1011,
+          1997,
+          422,
+          9975,
+          340,
+          481,
+          307,
+          9623,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.35125622153282166,
+        "compression_ratio": 0.9682539682539683,
+        "no_speech_prob": 0.03750273212790489
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 3,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

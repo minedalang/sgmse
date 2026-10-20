@@ -1,0 +1,87 @@
+{
+  "files": {
+    "config.yaml": {
+      "bytes": 3544,
+      "sha256": "5456b8889395f01d0fcce97126d8ffb44baca855d42020514c92813b4006eab7"
+    },
+    "analysis_plan.md": {
+      "bytes": 3450,
+      "sha256": "a4fecd1cdcffdcddaee8835e1ab9cd5d28e5bcdaead49167f9837733b8ae034f"
+    },
+    "worker_preflight.json": {
+      "bytes": 310916,
+      "sha256": "54ae78ffcc0ceb0a327812b6794483889a2b86ab519964f4d0f220a8d13eabfc"
+    },
+    "fetch_official.py": {
+      "bytes": 4775,
+      "sha256": "85c86428763dd1c17b649c0435c728425b8ebe15745ac576c5ebc623cd55ed2e"
+    },
+    "STARTED.json": {
+      "bytes": 57,
+      "sha256": "b94c7b3f3dce5833e108b12f27ce238a935958d88bca46454f4a5c074edf3cb1"
+    },
+    "http_requests.json": {
+      "bytes": 5273,
+      "sha256": "0ef465cdcbb263beeacf0447a220487b3916ce0c67f603266f473219bf3aea11"
+    },
+    "bundles_metadata.json": {
+      "bytes": 2269,
+      "sha256": "4a851156d06761b8200a0e9f280bba5615778be265e457dfd509a20fbb58e8dc"
+    },
+    "bitstreams_metadata.json": {
+      "bytes": 18298,
+      "sha256": "21b67f4c9aa425e6b90a1c0e260794a56023101fa763fee4e9a92d22bdd9072e"
+    },
+    "logfiles.zip": {
+      "bytes": 115932,
+      "sha256": "ab37c41f31bc2b6c204cc10c8e5bb8bde800307fdb49f277e366d986fefc9e39"
+    },
+    "zip_directory_metadata.json": {
+      "bytes": 1110,
+      "sha256": "a74db9915b8920569f6378821341e1fda16a3b1e92596d4e7e0f2f59199ee53c"
+    },
+    "log_trainset_28spk.txt": {
+      "bytes": 218659,
+      "sha256": "462e42fbd0ab30f77cc5ad54fa97620aabe8cab9a8cd6eff3697708c5c01014e"
+    },
+    "fetch_result.json": {
+      "bytes": 656,
+      "sha256": "fe333e2ab891750012a5f02ad1c82f37c1aba45f0ab4871fe1c6b8c82cd4d313"
+    },
+    "parse_training.py": {
+      "bytes": 3277,
+      "sha256": "bdef43ccceea906fa3387591243a54b5c24de6df48d8d639428cb0f491cc957f"
+    },
+    "metrics.json": {
+      "bytes": 12927,
+      "sha256": "ca1ffd3055f8c98e6fd77e3d9c351d7e55c52a743a086324c4fcc5570a8849da"
+    },
+    "validate_offline.py": {
+      "bytes": 3562,
+      "sha256": "34183ff49081f7e8c74189f7d025d504960deb8bd750852d519912afdfa7fb39"
+    },
+    "independent_validation.json": {
+      "bytes": 483,
+      "sha256": "3ff582b4c7aa91279928ed139f23fbc99e075d4c8f588394223caec43c023db7"
+    },
+    "finalize_report.py": {
+      "bytes": 8598,
+      "sha256": "1497755f70fb41c1bcbc18568889d07be9e2478dcd599e5f4c6cabb6c3dcdbb0"
+    },
+    "execution_provenance.json": {
+      "bytes": 1371,
+      "sha256": "8d45f75445b32cd54b9134997045e83cf0fe306371c2bf89e00dffc9ef3f7093"
+    },
+    "experiment_report.md": {
+      "bytes": 6144,
+      "sha256": "5d1906adeae571c4b1057e4e3779ee01547c7a1048fa65f6ac699ca0c0d19c7c"
+    },
+    "worker_preservation_validation.json": {
+      "bytes": 515,
+      "sha256": "446401e11e121ad983009961729c9b8d1f34c4a068eb07aad9f38de199407bd0"
+    }
+  },
+  "bytes_excluding_receipt": 721816,
+  "budget": 4194304,
+  "scope": "officialtrain28metadataonly/noiseidentityunknown"
+}

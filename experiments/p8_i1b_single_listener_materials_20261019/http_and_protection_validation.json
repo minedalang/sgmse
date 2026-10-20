@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "worker_pid": 54976,
+  "http_host": "127.0.0.1:8766",
+  "http_gets": 97,
+  "http_bytes": 1469875,
+  "all_http_bytes_equal_disk": true,
+  "wav_headers_checked": 94,
+  "protected_files_unchanged": 38,
+  "source_files_unchanged": 24,
+  "old_metrics_unchanged": 8,
+  "feedback_unchanged": true,
+  "bridge_pid": 39452,
+  "server_pid": 16022,
+  "seconds": 0.12681012006942183,
+  "external_network_calls": 0,
+  "audio_playback": false,
+  "post_requests": 0
+}

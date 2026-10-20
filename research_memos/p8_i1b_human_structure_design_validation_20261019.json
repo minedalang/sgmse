@@ -1,0 +1,26 @@
+{
+  "kind": "independent allocation metadata checks only not human experiment",
+  "utc": "2026-10-19T09:24:52.900159+00:00",
+  "allocation_sha256": "fde1df737bcea16a769e9f903d03ac385266f5c4ad7094c7c8433a99aba681a8",
+  "protocol_sha256": "0d7af40bda0ecdfc4cbdd6b4bf52143dcb60637d5d24eab477ff3c66c7288146",
+  "checks": {
+    "unique_intervals": 47,
+    "source_role_references": 48,
+    "shared_control_deduplicated": 1,
+    "unassigned_slots": 4,
+    "planned_trials": 188,
+    "each_observation_arm_count": 2,
+    "no_same_listener_utterance_crossarm": true,
+    "all480ms_contexts_within_frozen_headers": true,
+    "local_links_valid": 25
+  },
+  "audio_reads": 0,
+  "audio_exports": 0,
+  "human_responses": 0,
+  "participants": 0,
+  "listener_resources_confirmed": false,
+  "launch_authorized": false,
+  "scientific_gate_ready": false,
+  "review": "independent readonly critic found no fatal design issue; target-only/unknown/playback/context caveats incorporated;480ms replacement validated after600ms metadata-only boundary failure",
+  "goal_complete": false
+}

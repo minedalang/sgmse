@@ -1,0 +1,101 @@
+{
+  "request": {
+    "key": "p230_029_N1_snr_m18.wav__off",
+    "id": "p230_029",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p230_029_N1_snr_m18.wav",
+    "basename": "p230_029_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "a80a8aa7673f6f784607781af17b8c73d97fd4b141d636657497753dc21f83f2",
+      "samples": 56211,
+      "array_sha256": "534ac87b832357aea0283ff0ca3b9d4b0047302c7473b5070804305d2865be92",
+      "peak": 0.05352783203125,
+      "rms": 0.007779592264301702
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_029",
+    "original_text": "It shouldn't come as a surprise, but it does.\n",
+    "raw_text_hex": "49742073686f756c646e277420636f6d6520617320612073757270726973652c2062757420697420646f65732e0a",
+    "raw_text_sha256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+    "archive_entry": "trainset_28spk_txt/p230_029.txt"
+  },
+  "raw_result": {
+    "text": " I thought the journey fit in zero, thank you for the whole heart of turn.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 1.44,
+        "text": " I thought the journey fit in zero,",
+        "tokens": [
+          50363,
+          314,
+          1807,
+          262,
+          7002,
+          4197,
+          287,
+          6632,
+          11,
+          50435
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.7825092647386633,
+        "compression_ratio": 1.0138888888888888,
+        "no_speech_prob": 0.11462971568107605
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 1.44,
+        "end": 3.64,
+        "text": " thank you for the whole heart of turn.",
+        "tokens": [
+          50435,
+          5875,
+          345,
+          329,
+          262,
+          2187,
+          2612,
+          286,
+          1210,
+          13,
+          50545
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.7825092647386633,
+        "compression_ratio": 1.0138888888888888,
+        "no_speech_prob": 0.11462971568107605
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 71,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

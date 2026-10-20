@@ -1,0 +1,80 @@
+{
+  "request": {
+    "key": "p227_031_N2_snr_m18.wav__frontend",
+    "id": "p227_031",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p227_031_N2_snr_m18.wav",
+    "basename": "p227_031_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "75407bf0f890edff7c45c63ae79f620c7b7d62339d7a7ef9c88627b4f1cc5d6b",
+      "samples": 51005,
+      "array_sha256": "b4bd88cce0286a06047f4fd5234cbd879623933a4e93d4e8d6fe99d1b75b4c4f",
+      "peak": 0.158111572265625,
+      "rms": 0.009892210805881678
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " I'm going to leave the queue for a sec.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " I'm going to leave the queue for a sec.",
+        "tokens": [
+          50363,
+          314,
+          1101,
+          1016,
+          284,
+          2666,
+          262,
+          16834,
+          329,
+          257,
+          792,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.009007453918457,
+        "compression_ratio": 0.8297872340425532,
+        "no_speech_prob": 0.3603004813194275
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 28,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+experiment_id: p8_10720_content_identity_audit_20261018
+group: 03_fileid_10720_14.50-15.00s
+conditions: [clean, noisy, y_pre, off, router]
+scope: offline_cached_outputs_only
+source_metrics: ../p8_q_a_ctc_fixed_time_v2_20261018/metrics.json
+source_cache: ../p8_q_a_ctc_fixed_time_v2_20261018/frame_probabilities.npz
+source_fixed_time_csv: ../p8_q_a_ctc_fixed_time_v2_20261018/fixed_time_token_posteriors.csv
+source_prior_sequences: ../p8_phoneme_probe_20261020/phoneme_results.json
+source_vocab: ../p8_phoneme_probe_20261020/local_model/vocab.json
+source_preprocessor_config: ../p8_phoneme_probe_20261020/local_model/preprocessor_config.json
+source_wavs: manifest_paths_read_only_for_RMS_dBFS_peak_nonzero_fraction
+blank_id: 0
+frame_hop_seconds: 0.02
+primary_alignment: unconstrained_unit_cost_Levenshtein
+tie_breaking: forward_suffix_DP_prefer_match_then_substitution_then_deletion_then_insertion
+secondary_diagnostic: maximum_monotonic_same_ID_matches_with_midpoint_shift_at_most_100ms
+secondary_tolerance_ms: 0.000001
+timestamps: approximate_CTC_run_frame_times_not_true_acoustic_boundaries
+consonants: explicit_IPA_mapping_in_script_no_complement_of_vowels
+inference: false
+training: false
+threshold_tuning: false
+overwrite_results: refuse_even_partial
+interpretation: clean_decoded_proxy_not_verified_transcription_PER_WER_or_hallucination_ground_truth

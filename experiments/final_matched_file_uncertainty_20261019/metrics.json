@@ -1,0 +1,434 @@
+{
+  "status": "completed",
+  "failures": [],
+  "forbidden_attempts": [],
+  "audio_reads": 0,
+  "model_calls": 0,
+  "training_calls": 0,
+  "network_bytes": 0,
+  "source_sha_pre": {
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/off/no_reverb.csv": "80a7cfb6f39d14d819bed02cea55e65b49a89bc2bc4f9cba47f57ebc7799a289",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/off/with_reverb.csv": "2e9e27a2bef4431078d8cc38409a336bcde4a9ba0abfad88b90f403ce7600ef4",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/router/no_reverb.csv": "344c3d3881e11604513778b28feefec1dc1fc8aa36d3ac70cfce9e1333c000fb",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/router/with_reverb.csv": "17885bdc9b749e4a8a4d8661196f372930976a6c6b675a8fec80f1b35fdf866a",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/tcut005/no_reverb.csv": "8825faefbdcd6309dcef0cc045e9c9f6c7ea402028aac21ca4d28945878abdc3",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/tcut005/with_reverb.csv": "8eddf69185340b52d17ebb78a80e4cbe73bd665ad7189776d284e7bc708a6875",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics.json": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa"
+  },
+  "code_config_sha_pre": {
+    "analysis_plan.md": "6958745de754293aa73ebe12a9af78a4071b80de99b12b806c0d5c7259d08e80",
+    "config.yaml": "494b76b084039c0b8b5dff33827910d52e1af548a0e677faab3465ad13ea49a2",
+    "bootstrap_main.py": "065b8f9cf10837fd476c8633bb91b3ac101147005b2525386aa61a824cac0efa",
+    "bootstrap_check.py": "914ad5029b6ad12d0206dff16a0f3895320f0e1d8f4b93da067b74133f485138",
+    "bootstrap_io.py": "e420b1878dd405d2a39fae94f1a3d71adc65026d0e2345da700d56cb9c3b1f4a",
+    "test_synthetic.py": "df0dea5c6f94e9e6d96b5b70c4a8c1e2500e891d408fca1aa877d069c441167b"
+  },
+  "result": {
+    "columns": [
+      "router_vs_off__PESQ_e",
+      "router_vs_off__STOI_e",
+      "router_vs_off__SI-SDR_e",
+      "router_vs_off__DNSMOS_SIG_e",
+      "router_vs_off__DNSMOS_OVRL_e",
+      "router_vs_off__DNSMOS_P808_e",
+      "router_vs_off__DNSMOS_BAK_e",
+      "tcut005_vs_off__PESQ_e",
+      "tcut005_vs_off__STOI_e",
+      "tcut005_vs_off__SI-SDR_e",
+      "tcut005_vs_off__DNSMOS_SIG_e",
+      "tcut005_vs_off__DNSMOS_OVRL_e",
+      "tcut005_vs_off__DNSMOS_P808_e",
+      "tcut005_vs_off__DNSMOS_BAK_e"
+    ],
+    "comparisons": [
+      {
+        "contrast": "router_vs_off",
+        "metric": "PESQ_e",
+        "mean_delta": 0.005834368069966634,
+        "historical_mean_delta": 0.005834368069966634,
+        "historical_CI95": [
+          -0.005824718942244847,
+          0.015529502093791956
+        ],
+        "matched_file_CI95": [
+          -0.005428832809130351,
+          0.015219458440939585
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "router_vs_off",
+        "metric": "STOI_e",
+        "mean_delta": -0.0008132499215502655,
+        "historical_mean_delta": -0.0008132499215502657,
+        "historical_CI95": [
+          -0.0013439304035122264,
+          -0.0003085240042225946
+        ],
+        "matched_file_CI95": [
+          -0.001339023790061387,
+          -0.00031257633632768934
+        ],
+        "mean_reproduction_absolute_error": 2.168404344971009e-19
+      },
+      {
+        "contrast": "router_vs_off",
+        "metric": "SI-SDR_e",
+        "mean_delta": 0.24141207406918208,
+        "historical_mean_delta": 0.24141207406918208,
+        "historical_CI95": [
+          0.20206477646529675,
+          0.28245020511746405
+        ],
+        "matched_file_CI95": [
+          0.20140050948162874,
+          0.2828147426893313
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "router_vs_off",
+        "metric": "DNSMOS_SIG_e",
+        "mean_delta": -0.01488208153296587,
+        "historical_mean_delta": -0.014882081532965875,
+        "historical_CI95": [
+          -0.021161451416906726,
+          -0.008582479847027832
+        ],
+        "matched_file_CI95": [
+          -0.020975549189195825,
+          -0.008731247571942255
+        ],
+        "mean_reproduction_absolute_error": 5.204170427930421e-18
+      },
+      {
+        "contrast": "router_vs_off",
+        "metric": "DNSMOS_OVRL_e",
+        "mean_delta": -0.014472495368436387,
+        "historical_mean_delta": -0.014472495368436391,
+        "historical_CI95": [
+          -0.021655957516601966,
+          -0.0074032327541280595
+        ],
+        "matched_file_CI95": [
+          -0.021592043291401686,
+          -0.007543158313913002
+        ],
+        "mean_reproduction_absolute_error": 3.469446951953614e-18
+      },
+      {
+        "contrast": "router_vs_off",
+        "metric": "DNSMOS_P808_e",
+        "mean_delta": -0.010392534732818603,
+        "historical_mean_delta": -0.010392534732818603,
+        "historical_CI95": [
+          -0.01740515297651291,
+          -0.003573730727036796
+        ],
+        "matched_file_CI95": [
+          -0.017295883297920228,
+          -0.0036224421064058984
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "router_vs_off",
+        "metric": "DNSMOS_BAK_e",
+        "mean_delta": 0.012040685349797109,
+        "historical_mean_delta": 0.012040685349797109,
+        "historical_CI95": [
+          0.005612095460592891,
+          0.018724502421795762
+        ],
+        "matched_file_CI95": [
+          0.00530989011839646,
+          0.018992059526411805
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "PESQ_e",
+        "mean_delta": 0.005167328516642253,
+        "historical_mean_delta": 0.005167328516642253,
+        "historical_CI95": [
+          -0.009440796971321105,
+          0.01844951431949933
+        ],
+        "matched_file_CI95": [
+          -0.009027850697437922,
+          0.01810862947503725
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "STOI_e",
+        "mean_delta": -0.0010164929702455138,
+        "historical_mean_delta": -0.0010164929702455136,
+        "historical_CI95": [
+          -0.0014683261405837639,
+          -0.0005749453381602013
+        ],
+        "matched_file_CI95": [
+          -0.0014553464617521193,
+          -0.0005961069994364446
+        ],
+        "mean_reproduction_absolute_error": 2.168404344971009e-19
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "SI-SDR_e",
+        "mean_delta": 0.16264951924482982,
+        "historical_mean_delta": 0.16264951924482982,
+        "historical_CI95": [
+          0.12488738777240117,
+          0.1981885596513748
+        ],
+        "matched_file_CI95": [
+          0.1259197128067414,
+          0.19783063348631064
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "DNSMOS_SIG_e",
+        "mean_delta": -0.011654017519881798,
+        "historical_mean_delta": -0.011654017519881798,
+        "historical_CI95": [
+          -0.017242308496308718,
+          -0.006063309502034448
+        ],
+        "matched_file_CI95": [
+          -0.01724084512451007,
+          -0.006159144637014894
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "DNSMOS_OVRL_e",
+        "mean_delta": -0.011272403099848137,
+        "historical_mean_delta": -0.011272403099848139,
+        "historical_CI95": [
+          -0.017827467343152922,
+          -0.005035220747557307
+        ],
+        "matched_file_CI95": [
+          -0.01779932534534661,
+          -0.004891201848862044
+        ],
+        "mean_reproduction_absolute_error": 1.734723475976807e-18
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "DNSMOS_P808_e",
+        "mean_delta": -0.005017632643381754,
+        "historical_mean_delta": -0.005017632643381754,
+        "historical_CI95": [
+          -0.011247634947299957,
+          0.0011602493127187085
+        ],
+        "matched_file_CI95": [
+          -0.011369688073794048,
+          0.0011526238918304437
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      },
+      {
+        "contrast": "tcut005_vs_off",
+        "metric": "DNSMOS_BAK_e",
+        "mean_delta": 0.010935688232915611,
+        "historical_mean_delta": 0.010935688232915611,
+        "historical_CI95": [
+          0.004765830770392721,
+          0.01736013928347689
+        ],
+        "matched_file_CI95": [
+          0.004596662040369133,
+          0.017393067409260395
+        ],
+        "mean_reproduction_absolute_error": 0.0
+      }
+    ],
+    "matched_file_n": 150,
+    "replicates": 10000,
+    "seed": 20261019,
+    "bootstrap_unit": "matched_fileID_with_both_splits_and_all_arms_kept_together",
+    "quantile_method": "linear"
+  },
+  "matched_file_ids": [
+    0,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    14,
+    16,
+    17,
+    19,
+    20,
+    21,
+    23,
+    26,
+    33,
+    34,
+    35,
+    37,
+    38,
+    42,
+    43,
+    44,
+    45,
+    47,
+    48,
+    49,
+    50,
+    52,
+    53,
+    54,
+    57,
+    58,
+    59,
+    60,
+    63,
+    64,
+    66,
+    67,
+    69,
+    71,
+    72,
+    73,
+    76,
+    77,
+    80,
+    81,
+    82,
+    88,
+    89,
+    90,
+    94,
+    96,
+    101,
+    102,
+    104,
+    105,
+    107,
+    110,
+    112,
+    113,
+    116,
+    117,
+    118,
+    125,
+    127,
+    130,
+    132,
+    133,
+    134,
+    136,
+    137,
+    139,
+    142,
+    143,
+    145,
+    146,
+    147,
+    149,
+    150,
+    152,
+    155,
+    156,
+    158,
+    161,
+    163,
+    165,
+    166,
+    167,
+    169,
+    170,
+    173,
+    175,
+    176,
+    178,
+    180,
+    181,
+    191,
+    192,
+    197,
+    199,
+    200,
+    201,
+    205,
+    206,
+    207,
+    208,
+    210,
+    213,
+    214,
+    218,
+    220,
+    221,
+    223,
+    228,
+    229,
+    231,
+    232,
+    234,
+    238,
+    241,
+    243,
+    245,
+    247,
+    249,
+    250,
+    252,
+    253,
+    255,
+    261,
+    264,
+    268,
+    271,
+    274,
+    275,
+    277,
+    280,
+    282,
+    283,
+    285,
+    287,
+    288,
+    289,
+    290,
+    291,
+    293,
+    296,
+    300
+  ],
+  "source_sha_post": {
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/off/no_reverb.csv": "80a7cfb6f39d14d819bed02cea55e65b49a89bc2bc4f9cba47f57ebc7799a289",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/off/with_reverb.csv": "2e9e27a2bef4431078d8cc38409a336bcde4a9ba0abfad88b90f403ce7600ef4",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/router/no_reverb.csv": "344c3d3881e11604513778b28feefec1dc1fc8aa36d3ac70cfce9e1333c000fb",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/router/with_reverb.csv": "17885bdc9b749e4a8a4d8661196f372930976a6c6b675a8fec80f1b35fdf866a",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/tcut005/no_reverb.csv": "8825faefbdcd6309dcef0cc045e9c9f6c7ea402028aac21ca4d28945878abdc3",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics/tcut005/with_reverb.csv": "8eddf69185340b52d17ebb78a80e4cbe73bd665ad7189776d284e7bc708a6875",
+    "/data/coding/sgmse/experiments/final_eval_full_20261018/metrics.json": "15cf7076a0e233042e83e68ff429ff0b949e83ebcaf88297d1448d10b363daaa"
+  },
+  "code_config_sha_post": {
+    "analysis_plan.md": "6958745de754293aa73ebe12a9af78a4071b80de99b12b806c0d5c7259d08e80",
+    "config.yaml": "494b76b084039c0b8b5dff33827910d52e1af548a0e677faab3465ad13ea49a2",
+    "bootstrap_main.py": "065b8f9cf10837fd476c8633bb91b3ac101147005b2525386aa61a824cac0efa",
+    "bootstrap_check.py": "914ad5029b6ad12d0206dff16a0f3895320f0e1d8f4b93da067b74133f485138",
+    "bootstrap_io.py": "e420b1878dd405d2a39fae94f1a3d71adc65026d0e2345da700d56cb9c3b1f4a",
+    "test_synthetic.py": "df0dea5c6f94e9e6d96b5b70c4a8c1e2500e891d408fca1aa877d069c441167b"
+  },
+  "seconds": 0.4693419400136918,
+  "pid": 15768,
+  "numpy_version": "2.2.6",
+  "interpretation": "matchedfileID with bothsplits; notspeaker/noise/roomcluster, no multiplicitycorrection, no newmethodchoice or contentclaim"
+}

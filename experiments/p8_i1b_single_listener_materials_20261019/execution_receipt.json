@@ -1,0 +1,21 @@
+{
+  "status": "completed_materials_unrated",
+  "utc": "2026-10-19T11:14:54.911008+00:00",
+  "thread_id": "01a153da-1fff-72d0-9b8d-d30c76ed3cbb",
+  "provider": "codex_tools_compat",
+  "builder_pid": 54877,
+  "receipt_pid": 55217,
+  "builder_seconds": 0.17203641403466463,
+  "build_executions": 1,
+  "independent_validation_executions": 1,
+  "human_responses": 0,
+  "source_files": 24,
+  "crops": 94,
+  "loopback_gets": 97,
+  "external_network_calls": 0,
+  "new_server": false,
+  "bridge_pid": 39452,
+  "server_pid": 16022,
+  "metrics_sha256": "aa2443321cf4a23b0a3b988c4ccf915a1f5b46d9eb115511b9b69c0bd6142d4e",
+  "directory_bytes": 1578946
+}

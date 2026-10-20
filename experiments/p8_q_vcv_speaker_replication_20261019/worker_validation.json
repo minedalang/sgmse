@@ -1,0 +1,898 @@
+{
+  "status": "passed",
+  "model_forwards": 0,
+  "clean_gate_passed": true,
+  "scores_verified": 6528,
+  "max_ctc_probability_json_error": 0.0,
+  "raw_and_pcm16_audio_verified": 320,
+  "source_checkpoint_protocol_locks_unchanged": true,
+  "frozen_manifest_sha256": "31c4e4aa9abd9a2cae0cf8b2576942506e3f1cb18cfdb5d7ffd356ff24773ff2",
+  "all_80_clean_noisy_recipes_verified": true,
+  "matched_noise_and_gain_per_pair": true,
+  "actual_common_pair_seeds_verified": true,
+  "frontend_rng_invariance_verified": true,
+  "pcm16_quantization_max_error": 3.0517338018398732e-05,
+  "pcm_clipping_count_total": 0,
+  "arm_comparisons": {
+    "N1_snr-6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 7
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 5
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 7
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 5
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 7
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 5
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      }
+    },
+    "N2_snr-6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 8
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 2,
+          "wrong_to_correct": 8
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 2,
+          "wrong_to_correct": 8
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      }
+    },
+    "N1_snr+6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 1
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 1
+        },
+        "binary_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 1
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 1,
+          "wrong_to_correct": 0
+        }
+      }
+    },
+    "N2_snr+6": {
+      "y_pre_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "router_versus_baseline": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 2
+        }
+      },
+      "off_versus_y_pre": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      },
+      "router_versus_off": {
+        "top1_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        },
+        "binary_correct": {
+          "correct_to_wrong": 0,
+          "wrong_to_correct": 0
+        }
+      }
+    }
+  },
+  "noise_stability": {
+    "-6": {
+      "baseline": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 10,
+          "both_correct": 4,
+          "stable_incorrect": 2
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 7,
+          "both_correct": 8,
+          "stable_incorrect": 1
+        }
+      },
+      "y_pre": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 4,
+          "both_correct": 12,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 15,
+          "stable_incorrect": 1
+        }
+      },
+      "off": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 4,
+          "both_correct": 12,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 15,
+          "stable_incorrect": 1
+        }
+      },
+      "router": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 5,
+          "both_correct": 11,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 15,
+          "stable_incorrect": 1
+        }
+      }
+    },
+    "6": {
+      "baseline": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 3,
+          "both_correct": 13,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 3,
+          "both_correct": 13,
+          "stable_incorrect": 0
+        }
+      },
+      "y_pre": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        }
+      },
+      "off": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 0,
+          "both_correct": 16,
+          "stable_incorrect": 0
+        }
+      },
+      "router": {
+        "24way": {
+          "n": 16,
+          "changed_prediction": 1,
+          "both_correct": 15,
+          "stable_incorrect": 0
+        },
+        "binary": {
+          "n": 16,
+          "changed_prediction": 1,
+          "both_correct": 15,
+          "stable_incorrect": 0
+        }
+      }
+    }
+  },
+  "support_snr_summary": {
+    "N1_snr-6": {
+      "n": 16,
+      "minimum_db": -0.7378516645971399,
+      "mean_db": 0.10880536823813973,
+      "maximum_db": 0.842932545299525,
+      "carrier_snr_db": -5.999999999999998
+    },
+    "N2_snr-6": {
+      "n": 16,
+      "minimum_db": -0.7682279541702909,
+      "mean_db": 0.9376760942736682,
+      "maximum_db": 1.5035034397334632,
+      "carrier_snr_db": -5.999999999999998
+    },
+    "N1_snr+6": {
+      "n": 16,
+      "minimum_db": 11.262148335402859,
+      "mean_db": 12.108805368238139,
+      "maximum_db": 12.842932545299526,
+      "carrier_snr_db": 6.0
+    },
+    "N2_snr+6": {
+      "n": 16,
+      "minimum_db": 11.23177204582971,
+      "mean_db": 12.93767609427367,
+      "maximum_db": 13.503503439733462,
+      "carrier_snr_db": 5.999999999999997
+    }
+  },
+  "support_snr_per_sample": [
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999989243724,
+      "source_recording_support_snr_db": -0.1963590874767471,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.9999999791471375,
+      "source_recording_support_snr_db": 0.06998542137870473,
+      "recording_duration_seconds": 0.4600625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18ata1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999983920125,
+      "source_recording_support_snr_db": -0.19635908747674816,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f18ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000008410856,
+      "source_recording_support_snr_db": 0.17222638946441543,
+      "recording_duration_seconds": 0.4500625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999993276434,
+      "source_recording_support_snr_db": -0.6207108076262351,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999998611174,
+      "source_recording_support_snr_db": -0.6207108076262368,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5ata1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999999594312,
+      "source_recording_support_snr_db": -0.19635908747674816,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.9999999973355465,
+      "source_recording_support_snr_db": -0.7378516645971399,
+      "recording_duration_seconds": 0.5600625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000007644295,
+      "source_recording_support_snr_db": 0.36028314798507594,
+      "recording_duration_seconds": 0.4300625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.0000000024295765,
+      "source_recording_support_snr_db": 0.710691875369276,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20ata1",
+      "carrier_snr64_db": -6.000000000000001,
+      "effective_input32_snr_db": -6.000000003622662,
+      "source_recording_support_snr_db": 0.26579655715652173,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f20ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000008750087,
+      "source_recording_support_snr_db": 0.710691875369276,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.99999999057103,
+      "source_recording_support_snr_db": 0.6450355077542526,
+      "recording_duration_seconds": 0.4100625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.0000000003008065,
+      "source_recording_support_snr_db": 0.26579655715652173,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15ata1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000004828559,
+      "source_recording_support_snr_db": 0.26579655715652173,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m15ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.9999999817331044,
+      "source_recording_support_snr_db": 0.842932545299525,
+      "recording_duration_seconds": 0.3900625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999993133603,
+      "source_recording_support_snr_db": 0.8201126043747875,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999984603772,
+      "source_recording_support_snr_db": 1.4441007903588956,
+      "recording_duration_seconds": 0.4600625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18ata1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999985246366,
+      "source_recording_support_snr_db": 0.8201126043747866,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f18ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.0000000121654615,
+      "source_recording_support_snr_db": 1.4508839176747437,
+      "recording_duration_seconds": 0.4500625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999996023584,
+      "source_recording_support_snr_db": -0.6928673756797364,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999997502354,
+      "source_recording_support_snr_db": -0.6928673756797376,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5ata1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000003383862,
+      "source_recording_support_snr_db": 0.8201126043747866,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999998497564,
+      "source_recording_support_snr_db": -0.7682279541702909,
+      "recording_duration_seconds": 0.5600625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000009408092,
+      "source_recording_support_snr_db": 1.464813144786374,
+      "recording_duration_seconds": 0.4300625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000006389402,
+      "source_recording_support_snr_db": 1.487362278580213,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20ata1",
+      "carrier_snr64_db": -6.000000000000001,
+      "effective_input32_snr_db": -6.000000006862477,
+      "source_recording_support_snr_db": 1.4613824954951489,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f20ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000012570956,
+      "source_recording_support_snr_db": 1.487362278580213,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15aka1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999994614087,
+      "source_recording_support_snr_db": 1.4742690645847445,
+      "recording_duration_seconds": 0.4100625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15aga1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000006709184,
+      "source_recording_support_snr_db": 1.4613824954951489,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15ata1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -6.000000013313988,
+      "source_recording_support_snr_db": 1.4613824954951489,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m15ada1",
+      "carrier_snr64_db": -5.999999999999998,
+      "effective_input32_snr_db": -5.999999986038739,
+      "source_recording_support_snr_db": 1.5035034397334632,
+      "recording_duration_seconds": 0.3900625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18aka1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000012068342,
+      "source_recording_support_snr_db": 11.803640912523253,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18aga1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.0000000153863065,
+      "source_recording_support_snr_db": 12.069985421378703,
+      "recording_duration_seconds": 0.4600625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18ata1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000015953773,
+      "source_recording_support_snr_db": 11.803640912523253,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f18ada1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 5.9999999957911925,
+      "source_recording_support_snr_db": 12.172226389464416,
+      "recording_duration_seconds": 0.4500625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5aka1",
+      "carrier_snr64_db": 6.000000000000001,
+      "effective_input32_snr_db": 6.000000003353896,
+      "source_recording_support_snr_db": 11.379289192373765,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5aga1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000006488841,
+      "source_recording_support_snr_db": 11.379289192373763,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5ata1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 5.999999994440928,
+      "source_recording_support_snr_db": 11.803640912523253,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m5ada1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 5.999999998840528,
+      "source_recording_support_snr_db": 11.262148335402859,
+      "recording_duration_seconds": 0.5600625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20aka1",
+      "carrier_snr64_db": 6.000000000000001,
+      "effective_input32_snr_db": 5.9999999866624,
+      "source_recording_support_snr_db": 12.360283147985076,
+      "recording_duration_seconds": 0.4300625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20aga1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000003209392,
+      "source_recording_support_snr_db": 12.710691875369275,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20ata1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.99999999730745,
+      "source_recording_support_snr_db": 12.26579655715652,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "f20ada1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 5.99999998947639,
+      "source_recording_support_snr_db": 12.710691875369275,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15aka1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000011834209,
+      "source_recording_support_snr_db": 12.645035507754251,
+      "recording_duration_seconds": 0.4100625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15aga1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 5.9999999994530295,
+      "source_recording_support_snr_db": 12.26579655715652,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15ata1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000000173518,
+      "source_recording_support_snr_db": 12.26579655715652,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N1_snr+6",
+      "sample_id": "m15ada1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000017028682,
+      "source_recording_support_snr_db": 12.842932545299526,
+      "recording_duration_seconds": 0.3900625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18aka1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000006018139,
+      "source_recording_support_snr_db": 12.820112604374787,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18aga1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000010876196,
+      "source_recording_support_snr_db": 13.444100790358895,
+      "recording_duration_seconds": 0.4600625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18ata1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000016702208,
+      "source_recording_support_snr_db": 12.820112604374785,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f18ada1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.99999998642636,
+      "source_recording_support_snr_db": 13.450883917674744,
+      "recording_duration_seconds": 0.4500625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5aka1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 6.000000006887446,
+      "source_recording_support_snr_db": 11.307132624320264,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5aga1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000004497402,
+      "source_recording_support_snr_db": 11.307132624320262,
+      "recording_duration_seconds": 0.5400625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5ata1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.999999995178492,
+      "source_recording_support_snr_db": 12.820112604374785,
+      "recording_duration_seconds": 0.4900625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m5ada1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000004623768,
+      "source_recording_support_snr_db": 11.23177204582971,
+      "recording_duration_seconds": 0.5600625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20aka1",
+      "carrier_snr64_db": 6.0,
+      "effective_input32_snr_db": 5.999999993830503,
+      "source_recording_support_snr_db": 13.464813144786373,
+      "recording_duration_seconds": 0.4300625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20aga1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.999999995938908,
+      "source_recording_support_snr_db": 13.48736227858021,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20ata1",
+      "carrier_snr64_db": 5.9999999999999964,
+      "effective_input32_snr_db": 5.999999995774768,
+      "source_recording_support_snr_db": 13.46138249549515,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "f20ada1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.99999998433796,
+      "source_recording_support_snr_db": 13.48736227858021,
+      "recording_duration_seconds": 0.4000625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15aka1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000006257935,
+      "source_recording_support_snr_db": 13.474269064584746,
+      "recording_duration_seconds": 0.4100625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15aga1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.999999994833002,
+      "source_recording_support_snr_db": 13.46138249549515,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15ata1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 5.999999983173323,
+      "source_recording_support_snr_db": 13.46138249549515,
+      "recording_duration_seconds": 0.4400625
+    },
+    {
+      "condition": "N2_snr+6",
+      "sample_id": "m15ada1",
+      "carrier_snr64_db": 5.999999999999997,
+      "effective_input32_snr_db": 6.000000015430058,
+      "source_recording_support_snr_db": 13.503503439733462,
+      "recording_duration_seconds": 0.3900625
+    }
+  ],
+  "support_definition": "entire resampled source recording [8000,8000+resampled_samples), not phoneme-local or clean-active",
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "platform": "Linux-6.8.0-142-generic-x86_64-with-glibc2.35",
+    "torch": "2.14.1+cu130",
+    "cuda_build": "13.0",
+    "cudnn": 92400,
+    "gpu": "NVIDIA L40S"
+  },
+  "disk_free_bytes": 2464555008
+}

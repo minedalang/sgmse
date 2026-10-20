@@ -224,9 +224,12 @@ if __name__ == '__main__':
         **vars(arg_groups['Trainer']),
         strategy=strategy,
         # SpeakerBatchSampler performs its own rank sharding when contrastive
-        # training is enabled. Prevent Lightning from replacing/wrapping it with
-        # another distributed sampler.
-        use_distributed_sampler=not (float(getattr(args, "contrastive_weight", 0.0)) > 0.0),
+        # training or the explicit balanced-batch option is enabled. Prevent
+        # Lightning from replacing/wrapping it with another distributed sampler.
+        use_distributed_sampler=not (
+            float(getattr(args, "contrastive_weight", 0.0)) > 0.0
+            or bool(getattr(args, "speaker_balanced_batches", False))
+        ),
         # Lightning treats ``logger=None`` as "use the default logger" in
         # recent releases.  ``--nolog`` must therefore pass an explicit
         # ``False`` or it will still create ``lightning_logs`` and checkpoint

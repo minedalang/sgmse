@@ -1,0 +1,16 @@
+{
+  "status": "failed_before_inference",
+  "failure": "NumPy float32 source guard bound is not JSON serializable; exception handler repeats the same failure",
+  "frontend_forwards": 0,
+  "backend_forwards": 0,
+  "recognizer_forwards": 0,
+  "driver_sha256": "1e68ff97624cd68109518d5e19f66b864eadd5f11cae4d645ddb41108f2f95e6",
+  "helper_sha256": "66f61a892e5b4ffc37c1069e3692618a07fb09efc3717c106c1d18c212ddbb82",
+  "started_at": 1792342389.1902032,
+  "recorded_utc": "2026-10-18T16:54:05.779472+00:00",
+  "traceback_log": "run.log",
+  "repair_required": "Experiment-local serialization only; no model/scientific change",
+  "experiment_id": "p8_vcv_fixed_norm_condition_swap_20261019",
+  "attempt": "01",
+  "diagnosis": "Two recorded NumPy float32 bounds were passed to JSON unchanged; exception handler repeated the serialization failure."
+}

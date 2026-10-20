@@ -1,0 +1,322 @@
+[
+  {
+    "filename": "000_fileid_2673.wav",
+    "uttid": "reader_11065_fileid_2673",
+    "length": 480000,
+    "clean_sha256": "84a9b26ba5c94f37e3c482bc7e15a1526651737e431c3383c9f5aaed06fda1b7",
+    "noisy_sha256": "dd574edbba369208ade9d262e3b985fea9dfa95b53e5a668aec119ca0a8eb5b8",
+    "frontend_sha256": "b9a5be6fc8e77d948f5fbd4a88f9dd878874ff2912295524cf1e9a80f129cad7",
+    "off_sha256": "d5de9c5fbf7796d21b657013cc107c676db55d8e2ada2aa7c1d3aed760939a64",
+    "router_sha256": "68ed4be123a38348b4488e4b3d944260f0030cbc911b06ce264bc344bfda244e"
+  },
+  {
+    "filename": "001_fileid_2972.wav",
+    "uttid": "reader_11254_fileid_2972",
+    "length": 480000,
+    "clean_sha256": "208181e817aa305b767c0e213d41d0a984ea713da3f98603678c4a7d7893ec35",
+    "noisy_sha256": "cd70a523242c263cbaa0073ab886cce6bf8f7a2fa6fa398a0b4796f73b79837d",
+    "frontend_sha256": "a0885337e919409eb1d480d3cebff3455260619fcb2f73367b62a5992cbac637",
+    "off_sha256": "43c908efedb83134251e6797d3832105a2e9880a14a56328908fedf883bc8740",
+    "router_sha256": "a05c7266472c4fa959502220b91f537edf9bca775124ed12eb0cde86dd64c752"
+  },
+  {
+    "filename": "002_fileid_7247.wav",
+    "uttid": "reader_11794_fileid_7247",
+    "length": 480000,
+    "clean_sha256": "c762282b7d59b45245f0a1acf7c8507d20c05c531790e99be6941215165e0d9c",
+    "noisy_sha256": "6ea9aa12565269f739fed9b7937c40ef75b6e10da9a2ce350f296347f02eb60b",
+    "frontend_sha256": "bfa0bd2cd0f95edb2b2b6489854965e3c908b3f2744eecf14de35ad9b7ce6e4d",
+    "off_sha256": "d5828caf5dfb31fa12f845246b1adfc82f630d04e24b0c91dd26484177a2c07f",
+    "router_sha256": "c57ea5134dc70c24a733963fd07c19e6587956771eae03ff12a175a337c346a4"
+  },
+  {
+    "filename": "003_fileid_4431.wav",
+    "uttid": "reader_11880_fileid_4431",
+    "length": 480000,
+    "clean_sha256": "a0fa55b029e690a433ec2abe9f1c8bcd3b1dbcebce07f2665d3830a23d9dd463",
+    "noisy_sha256": "daa6a24f15fdc631c2449a7ef4c80aaf03e28f5677136ae38a042bf84f96849d",
+    "frontend_sha256": "47e5420123309388bc07a0f09fc070060064d123e8dea7c2be32e087c148d0c1",
+    "off_sha256": "f38750cfcb5d0872234234d76223f57a84fecbf3981030717404400aa1bcad85",
+    "router_sha256": "754c42a197fdb01cceca8694f35dec22356279dbad07a9d0842b77a83ce29726"
+  },
+  {
+    "filename": "004_fileid_11675.wav",
+    "uttid": "reader_11053_fileid_11675",
+    "length": 480000,
+    "clean_sha256": "d2bfd6038628b2ddfe52dbc6f2f8d45a05033f94a88fec0d04a4f6729a0dfe13",
+    "noisy_sha256": "fd8bb3790eb82c6cca6bddf47befac3c4f081909d5c4ed0a34cd39a1be939cbb",
+    "frontend_sha256": "e609f090f778533071a34954b8de72eda32dd7c9448f0932516f50ccf31dc4b2",
+    "off_sha256": "da5380770e497a28ed77c15795f03be3076393b93a46552929fcaaab2858078f",
+    "router_sha256": "9bf2fc76107fd5f97b2be3e73286dcd7ed69a30eaeb39ba95dba58958d44c578"
+  },
+  {
+    "filename": "005_fileid_6115.wav",
+    "uttid": "reader_11144_fileid_6115",
+    "length": 480000,
+    "clean_sha256": "fb5b682c7e8e0fe91ca604594848e6a48a73d1d2e509f280574db7e81dea0f58",
+    "noisy_sha256": "513481a0b27385fb2f270abc9440bf19207ebb9dd8d3095b4bbb9d6de357cc62",
+    "frontend_sha256": "e24d39d1b697814a5de4d0c9cd2449e1fd9761da1f45a195e6ff263a4782669a",
+    "off_sha256": "8251e80689d4679fc595e7488249454bfc79363c93241af1726f6adda5a10d85",
+    "router_sha256": "9dfe34b152d93d051b5c6df598df0475a15823e5fb7304d3475ba880cbb26dbb"
+  },
+  {
+    "filename": "006_fileid_8110.wav",
+    "uttid": "reader_11951_fileid_8110",
+    "length": 480000,
+    "clean_sha256": "e7732f0fe38544bb47623d09b1881b7c5ed729d8916b22afcd1fb892d0a8629a",
+    "noisy_sha256": "7d5c1ba690cd07af52d7823be3b1f56e28aa8c63191576c8b8820c85a6a4b513",
+    "frontend_sha256": "376ec8fd5bf6d1929cc84f0d2e9e8e7fcb68211b5d3347462a21f56a33e3df88",
+    "off_sha256": "d5ffbd823aaa1cd70afb4b030301e47537ea2370fdc9ef576c63fe51ae1d7366",
+    "router_sha256": "7c8eed729b9da787a29115ce902f0aa1504cca50a67d76792740bc72fba2d973"
+  },
+  {
+    "filename": "007_fileid_10001.wav",
+    "uttid": "reader_11446_fileid_10001",
+    "length": 480000,
+    "clean_sha256": "6d6fb65763379719d113daee57946322c3b5fca83b94d267abe92041594d982d",
+    "noisy_sha256": "61f4ede99535f95ae1e96a40a51634550547aa43fcbb40d6d2193b9a35a23be1",
+    "frontend_sha256": "ede793ed985d6b5c9b7dadd337334f7888049e64a1e1995d875e90ee379d59b3",
+    "off_sha256": "6f941763acfb0e242c0fae5903127289195506e05c5693a8e300835d4bc8e72c",
+    "router_sha256": "c2491a3345a58d4a74c731f5be230aeb449d68129c50f0a0ad6b1a6533727343"
+  },
+  {
+    "filename": "008_fileid_5878.wav",
+    "uttid": "reader_11970_fileid_5878",
+    "length": 480000,
+    "clean_sha256": "e37682ed91cc89a8ea86460a18183b5ed76247bb3e00b429d692dc14154cf671",
+    "noisy_sha256": "8ae744c0d0c8d7571458b4e76c4c05d23791bd707626336efb135bcfe0d3d204",
+    "frontend_sha256": "65fbea4b93c385823709c8d6e0bfe7bcaa7229f055c8d8f097b426923d883c15",
+    "off_sha256": "defb28b140105cc231a29a09a589fee544818d28a409130e58b8516e6e02147d",
+    "router_sha256": "b9d3a6079305ffb1b7e0d09ac6a152247e33029b106c161ffcd1cada811aef68"
+  },
+  {
+    "filename": "009_fileid_7221.wav",
+    "uttid": "reader_11935_fileid_7221",
+    "length": 480000,
+    "clean_sha256": "97f8dd4fc159cf1648850d07b98c98f5a1fecd4c2ebb707c75b5e1fac7cb8b1c",
+    "noisy_sha256": "6bd502b124a6c7bd9dab9db03f35e6dbb68055428872d298e38e316d43f8e519",
+    "frontend_sha256": "5717b1010f091a43358942ec298e5bf32f71e78504e9ad3159255fd8692de44e",
+    "off_sha256": "899069d0b8bee8f79f0c38807d8badf7b5239c704b1a930ea1bd17837b2e80ea",
+    "router_sha256": "d5306f543c894fc7e67e6eefd5ffb1de0899c5fca7df5656caf39f58fec1db27"
+  },
+  {
+    "filename": "010_fileid_3501.wav",
+    "uttid": "reader_11729_fileid_3501",
+    "length": 480000,
+    "clean_sha256": "f6e724db1bd12caf721eaaf889ef404855919bdc2c375f3c338c535dfed0a745",
+    "noisy_sha256": "6b654840d67948cd283408b77be4d562e8f095ea4258f4bbc14a62b2a274e76e",
+    "frontend_sha256": "bd1594f6160fe59ccb4e8801733b6c15c2dd7f95319e96f2ddfbbffd4dbc1e49",
+    "off_sha256": "dbcf37a138e1044f6472d9f2346102c8d266b28c0e6eaf47f837efabf871c139",
+    "router_sha256": "a4a218f139de34d5df07d59de115176115ee4090d7e3f21dc7cf7202ab7a0bc3"
+  },
+  {
+    "filename": "011_fileid_8207.wav",
+    "uttid": "reader_11458_fileid_8207",
+    "length": 480000,
+    "clean_sha256": "b3cfc26b1cfbffb234fea20d14ff10012a9ddff3f796cb2945617944df5eb6a9",
+    "noisy_sha256": "9e36a50bbf243e7824793ce130441694f2d2829c29911cf0c0d8265f070d3bb9",
+    "frontend_sha256": "1c7cf5f55249fe1b7642646f34eb7bfcf5b889dbefc840d9973cb16e16872552",
+    "off_sha256": "0890de4d5743fa84e2dd8efcfb9650937dec850cfb9b9953d7d0b1b0887a36c6",
+    "router_sha256": "8b6b71e8ba686731b67e28fcf495caaad1d84543ee4a8f23518c833ad4c32b1a"
+  },
+  {
+    "filename": "012_fileid_2279.wav",
+    "uttid": "reader_11166_fileid_2279",
+    "length": 480000,
+    "clean_sha256": "7329f8a758f72736b2c03af13ca06b15b5b55d12bd6e55e5f3d92da5ad6398fa",
+    "noisy_sha256": "b87751970fe15bf250deac61c72663cb5bdc06958091be64bfe02f8a73ac7b81",
+    "frontend_sha256": "79f2cf38949e717e4da0795a014c8a6458349fac6a51918ac1aa915a14000083",
+    "off_sha256": "d9de691418c17221390e94368aae33567e55752190b8e291eba57b438998339f",
+    "router_sha256": "b24b7b2b2547530019d86023b7f816b17bc688485e97ad0c7295ee0e71eb14e4"
+  },
+  {
+    "filename": "013_fileid_7021.wav",
+    "uttid": "reader_10658_fileid_7021",
+    "length": 480000,
+    "clean_sha256": "73baf752ac8f0ef9299b1eeca606b49ce450e105521eccaf0d68df80a76c690e",
+    "noisy_sha256": "19b578a05d01e1e0dcbab111a624e5cd3f8b88eefa4b2ebf3a6d2e2b22f63ff4",
+    "frontend_sha256": "fcd6c05a55dcf044da37c52c6f691c3e59fbe9be965b688808b14ba4f0340382",
+    "off_sha256": "cdbfa08cfeea013bcfbff480d0dd2652e9be72b82469b6c817892b4fca32e624",
+    "router_sha256": "7ddd87479a10f77343238ac81f892690a80624208cb1f7d5fff9a24f2bc47125"
+  },
+  {
+    "filename": "014_fileid_3187.wav",
+    "uttid": "reader_10929_fileid_3187",
+    "length": 480000,
+    "clean_sha256": "02b15bbcd781efbe28d0a7618def80cc0861d31700b3ffb2a23db06a55555758",
+    "noisy_sha256": "9eafc1874f1736bb39f9e7f1d1991704ef90b4599c063baa2604f30790820c81",
+    "frontend_sha256": "e6f61172f28dec50d3ce1318aadf315ec50fdc49c28f44c32340b1cc3055c6a9",
+    "off_sha256": "7eee543018f924cb22f0ebc8256237e0ff453705419ba6f25a61ebbda00c03aa",
+    "router_sha256": "e077fdad05615e0e1f1eb469f93fb3c57b77368cd26546b7772c18134d3768f4"
+  },
+  {
+    "filename": "015_fileid_10839.wav",
+    "uttid": "reader_11062_fileid_10839",
+    "length": 480000,
+    "clean_sha256": "aba52e95ef7edbb89ae17994e62426ae64a18e1ca58ca8d1ea195f4795a9be82",
+    "noisy_sha256": "6c6f974d493ccf3032c34ca0007838c7ce9224e4916a8f5345030ed3fd4137f1",
+    "frontend_sha256": "38ee8cc6a10f01342324b70127da6a2131faccce6b97d13d6cfe599557c4553e",
+    "off_sha256": "0c9604eb2ccce3863397aa3cfd434fbd2c30daf2e244341d98276d79611fc241",
+    "router_sha256": "7db32b9197d73e6794c6f1da8829e4e02e3e0767318f587d9a5b32723b43ed9b"
+  },
+  {
+    "filename": "016_fileid_7803.wav",
+    "uttid": "reader_11208_fileid_7803",
+    "length": 480000,
+    "clean_sha256": "97e745338e7d514c2d19438dddad9b4a07eeaafe99ed7e74d83a2d42df01606c",
+    "noisy_sha256": "9f9722edefb709af151a2186e22ad878fff72118b6ba31d14a99b192ee40901c",
+    "frontend_sha256": "611afcd803d57450419d85374407f88beca2c898e16e3903267f415c92590755",
+    "off_sha256": "dd1a9651ee9ddeb09453abca22b90782686769641ee077ff7dbf3a08b887e213",
+    "router_sha256": "5bcf403203c6ccd5577cfa12403b891b25716147e43cdda059458edbed30035c"
+  },
+  {
+    "filename": "017_fileid_1253.wav",
+    "uttid": "reader_11052_fileid_1253",
+    "length": 480000,
+    "clean_sha256": "2837be1624458baed3ab7f6f21fb50e77474871fe9daa8695aa9139d1383a231",
+    "noisy_sha256": "ec99b57b1931c8c637fbb9d59061e09bdec0dc7d09219e12269f17495e162148",
+    "frontend_sha256": "261b41bb1d072e63761a95e64d3f9d781e07afe3240f2eef55fb98bceeef469b",
+    "off_sha256": "6f331af257562910bac1ab23bcedb157acc727ad3f262564f73c2d8c9038da1c",
+    "router_sha256": "eb125dcedb7c342b1cedcd0ab1cde7545c961982f4b604651b9372f8261e5398"
+  },
+  {
+    "filename": "018_fileid_8516.wav",
+    "uttid": "reader_11459_fileid_8516",
+    "length": 480000,
+    "clean_sha256": "a34ed2cbb9f2af342fe142daf7256f3a254fd751433c7576d79a1720398c8bb9",
+    "noisy_sha256": "00f6f254dc0bb919befb01f5fe38686624fa3f7fabb7a696ae3b6220347e20af",
+    "frontend_sha256": "1a5cfbf8dd9ec8eb5695dc74d22c86292d8c927d35ab8ff215261767ccb25ba8",
+    "off_sha256": "63fc35611d3958142cc4498435bb296beb2015bac1dea7c9a5bf92e98520598f",
+    "router_sha256": "79673cb2ccfba4d4bbe5e151ae2d4ac2f61eae409bd91c872844b341f3bc0582"
+  },
+  {
+    "filename": "019_fileid_273.wav",
+    "uttid": "reader_10686_fileid_273",
+    "length": 480000,
+    "clean_sha256": "2ccf24d7c6df34d8281dd9d558e7d96cd6159e67bfc74c72c44b7e5d4dba3a77",
+    "noisy_sha256": "7ad60d517d4605d2eb923944f37f3090921ccfa7681ef20b7c790a5daef67b92",
+    "frontend_sha256": "62e13d6823a34765f4391f6ee212f502ca91ab9c1e1dc82e3f3c646efe807a23",
+    "off_sha256": "27c3049cec8345ae6863ca86fe1e0ea1f704c127f8c5a94cbe2a764b6da7d48b",
+    "router_sha256": "10de32f832d6cee8ca190c8a82f4969cd247d314204d1345b7938c784703373d"
+  },
+  {
+    "filename": "020_fileid_2196.wav",
+    "uttid": "reader_11729_fileid_2196",
+    "length": 480000,
+    "clean_sha256": "e510d0eabf0830332b4adaf18ae3624298d4ba48eb84f8d628700e7340f06519",
+    "noisy_sha256": "edab4d7b8019c4548cdca4baf2be879115d5757b2d996ea12c4d6f5e1d22a345",
+    "frontend_sha256": "f29e09d513c2e3e8bb9c53d40d479c67c566a36b9a739b380025020fb23e9bb6",
+    "off_sha256": "78f501240b06570fb7878953120bc60e0f36de3837fde6a551963d44671c425d",
+    "router_sha256": "2102f64dc63df8774b8337d1a2a9a4ed2265a2a808aa077f333756f90ba8e264"
+  },
+  {
+    "filename": "021_fileid_726.wav",
+    "uttid": "reader_11252_fileid_726",
+    "length": 480000,
+    "clean_sha256": "7cc181f4fadc4e99e34096f411038b16e606c8bfeca383a5fcd77491fdd3f55f",
+    "noisy_sha256": "59e7108a2bfe533ef89b171900ab96f0d93a9804f2686bd56db301f3b5151568",
+    "frontend_sha256": "d11ccf7bdccfdafa700cedcb823bc2481f6c1f131fbce48b7e9f8a00466b651c",
+    "off_sha256": "f462c8b34241132cab0b4e5f036b5b000be6a15182b9a41d32a9dbe05f5d845d",
+    "router_sha256": "ef7fda13babbcc3419eb9ac820af1d9c7a781315ea2729a1a472afe71eac3e4c"
+  },
+  {
+    "filename": "022_fileid_9359.wav",
+    "uttid": "reader_11128_fileid_9359",
+    "length": 480000,
+    "clean_sha256": "8049933052a65e887e934a0cf2b1c533df05c50b52c69b8f3c18a8bf34705448",
+    "noisy_sha256": "a42860e1a39d0c6eb211e8e3d8f205da7f46b98763a1e82ef9e1df7c23adfd3d",
+    "frontend_sha256": "e8a928adc9ec12814b850430ea4f6dc04e330efbb02a5079f648612307550356",
+    "off_sha256": "da36f561c9a17cd1d16b07ff503ab0116a6d7de9bf9da8b800b34756a723284b",
+    "router_sha256": "a80dcde1b4e27f6b564be125c900bb312f813715f4fa8840067ac566e29efb8b"
+  },
+  {
+    "filename": "023_fileid_2286.wav",
+    "uttid": "reader_11382_fileid_2286",
+    "length": 480000,
+    "clean_sha256": "c241911246ed2b99400fbd43c77e2ecfeb1a41f85728b39cb06968961375d6f2",
+    "noisy_sha256": "9b53587b1a019c3f3490d2d9694b5e70de53be8de6aef1a6ddd80cea9460969f",
+    "frontend_sha256": "1922fa1d76e302e871c283131053a4d34e9b11e859bfbe60572f3c0ea5cc7606",
+    "off_sha256": "773e5f43989e3ad474bd2b7f5bef97326fcc436eb71dd7fe96c79846d16dff58",
+    "router_sha256": "145f24ecd24ec16ab268816f25a4008426b91d3956703ee8fc36e2a86e34cdf6"
+  },
+  {
+    "filename": "024_fileid_6209.wav",
+    "uttid": "reader_11170_fileid_6209",
+    "length": 480000,
+    "clean_sha256": "7c38d776694f78d76244bf6c43a5e5bb21b2ba7846288b4ab5ac5ffce2c4f94a",
+    "noisy_sha256": "9046113ce439d43d9483cc4e46710232f412a922247c1f0daa097399204d8554",
+    "frontend_sha256": "1cfaca3fbe08128e9ad3007ade1d1f07f9586512e9390455cb5725fbed57d37c",
+    "off_sha256": "c8970732be84dc25cf1f6d147098690f5726f0f8f046db34b95cddc7a3ffcdc1",
+    "router_sha256": "3062289a6ff6b1f8c37d3a070de84a27910d126f0edb7f19e76159ceaa9758ff"
+  },
+  {
+    "filename": "025_fileid_3545.wav",
+    "uttid": "reader_11297_fileid_3545",
+    "length": 480000,
+    "clean_sha256": "3f6244f7f7d6c43ec1833d29f572b288b9c89e5f4295a6b819ebd05a1071d02d",
+    "noisy_sha256": "1d0ed53321fa2001e68a230ecf9761f8751e255b71bb2314897a67fb5fe0970f",
+    "frontend_sha256": "4e64818cb26562cc9604ba86abd2aab1997d39c63fd9257504286887334ae2eb",
+    "off_sha256": "e1e22ee0823f8732673000711b2013fafb8061eb1f29a1fe3638393ac5b7ca37",
+    "router_sha256": "bad1dc1d94d6910954eedced451fc49aa474d56478ea4002d6b0498c3333a15e"
+  },
+  {
+    "filename": "026_fileid_5223.wav",
+    "uttid": "reader_11301_fileid_5223",
+    "length": 480000,
+    "clean_sha256": "9e6734bf4d667ee6909ca023f1aa7d20432d98702efa0d2ed155bbf4de4a06ef",
+    "noisy_sha256": "90ce94f4be3ab9d338de8e5be8e42e7c9175c50a9c7be995970882ce01993f80",
+    "frontend_sha256": "58e36cbd08b15aaabe58840e536b52bc8c2eb452bd9d8223704ec7cac25700df",
+    "off_sha256": "3abb2656ae2b8042d954c0e610453a5ee1b5c838c5a24118b5e4394cc3e2cfde",
+    "router_sha256": "d7224e8da1c1005ccfb23a494be312c05ca7b72e470759642adc4f26a95f3edf"
+  },
+  {
+    "filename": "027_fileid_6428.wav",
+    "uttid": "reader_11346_fileid_6428",
+    "length": 480000,
+    "clean_sha256": "47b9d66b1cf8bbae5274ed320f5c1d9724c7f9549bf2c2d83731d7756e002396",
+    "noisy_sha256": "bf42022877fb01e84bc6cd07110adedd270d9c8803e73451753d287099272019",
+    "frontend_sha256": "0fc397f65949366fa1c512c65b45b4db6b4785e503362b9034f22cbac70833f3",
+    "off_sha256": "47388b649ca82dd5bf9fd586725897f3d46f9ef8206f8662231d54cd283ea821",
+    "router_sha256": "098e0c16431b14437b95be050f7615ceb6a781fc38c4ed9e0459dfb811c0871c"
+  },
+  {
+    "filename": "028_fileid_7165.wav",
+    "uttid": "reader_11880_fileid_7165",
+    "length": 480000,
+    "clean_sha256": "0711a1fe885d50d8d3ca579f75b2cfb35db947c9975f65ef4a4b4c44325d7a49",
+    "noisy_sha256": "69985f444dabdcac0bda3030fba5a63d55819c13f140ac1f16db02556e29bbcd",
+    "frontend_sha256": "d9ded8dd147ee33d0e58bd96ec5854e8c9adcc6dd591cf1e208fd9de11c5e68d",
+    "off_sha256": "a74402a9686a752ed7ae8a0c9e3a9749452d7e2ba46ac7148f1c77d94fd58dd1",
+    "router_sha256": "793d7a1bf6ec66bb4addd9643e395d2a3623fea94d1d7fa13a06538e8a08d994"
+  },
+  {
+    "filename": "029_fileid_7104.wav",
+    "uttid": "reader_10927_fileid_7104",
+    "length": 480000,
+    "clean_sha256": "b84dd4e429ac97d8b8937c1b4b10cd579ceaa70b825e01a32630cd059c6d7e12",
+    "noisy_sha256": "4dbc00c01237fc933b72d491db73cc544ea705220b2f7d9d9ac96dad8313ea86",
+    "frontend_sha256": "f39295f8db476a2fa86a0eb5e554095967369f12730633e874ac9925856917b3",
+    "off_sha256": "2452355630183319ca8b23408a710e8583260b0e015fba62973d9d47afeba0c0",
+    "router_sha256": "0c0503f09d239dc95f4ae669c0023a87a14888d2841ac1d06e4442232cecb125"
+  },
+  {
+    "filename": "030_fileid_1816.wav",
+    "uttid": "reader_11273_fileid_1816",
+    "length": 480000,
+    "clean_sha256": "3cd3cc9b8a77e2c433fdc0e52e0c1a946565911a72c38665eb4074c7f42db20a",
+    "noisy_sha256": "ad2557a35ac97b132550ab6d35fcb4be18d7a24aca7520e1dbba4ceabe013cae",
+    "frontend_sha256": "84c71aca151f8052e01e5904f0fed723c8e7c7bda39763982e9afd9c336408d6",
+    "off_sha256": "46a27926393e2c36f16b1bba416cacc19342b02eed605581da416930b3909398",
+    "router_sha256": "d57aaa3947210d5f9b5556e401a6073f64b42992f5a4d1dd30c196b6877e6f66"
+  },
+  {
+    "filename": "031_fileid_9984.wav",
+    "uttid": "reader_11006_fileid_9984",
+    "length": 480000,
+    "clean_sha256": "25af4addcd389bb0da53da15b9f3ca4efc05b044117926a3b0162099c797c0dd",
+    "noisy_sha256": "c34d87f67e2e2271eb78069cb7cc7804cbbe543a957d11fc328a4968bd43de90",
+    "frontend_sha256": "aeedfcc3fd77f72693209a1c4a65edd0025469d84b2477c30f5290ab494f94ea",
+    "off_sha256": "fa0a4d5632d11d4f25742b207083457ea7f883c3765de8abdcca5e5024b5ef97",
+    "router_sha256": "94e289647d10b780087b47235fdfa9136b6b6f68a7dc6ee3bcd99692565f7ac7"
+  }
+]

@@ -1,0 +1,18 @@
+{
+  "run_pilot.py": {
+    "sha256": "9b02a84f540913802145ebcd39fa0b5dbe0e996179b6865cd7d51fb716570d86",
+    "bytes": 26395
+  },
+  "preflight_pilot.py": {
+    "sha256": "e67835bdf22d9c148c4e07f698b15d6c260066be58b29c5f4770130a6e3efd39",
+    "bytes": 15881
+  },
+  "loss_helpers.py": {
+    "sha256": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "bytes": 1960
+  },
+  "editing.py": {
+    "sha256": "ebbe821e3b58617627f6f181e354170cc6c956e9ebe52d419538988f97ec785d",
+    "bytes": 2990
+  }
+}

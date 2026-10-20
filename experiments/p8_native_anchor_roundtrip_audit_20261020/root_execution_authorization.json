@@ -1,0 +1,41 @@
+{
+  "status": "authorized_once",
+  "approved_at_utc": "2026-10-20T00:36:21.455608+00:00",
+  "config_sha256": "bebce9b43785023e9e08828da57b9ca64de5441d6f16a32387951f15e77fc9dd",
+  "code_sha256": "c9de83b883a1b3284f6653c99c2028726530b3c75e7dc522a8ca9e4ba9c14fa5",
+  "manifest_sha256": "aad118341d0dfab83f13d0221e87699ec090d0ad81005102adf5c141d5029631",
+  "source_checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "core_sha256": {
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+    "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+    "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+    "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+    "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+  },
+  "source_registry_sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+  "old_baseline_sha256": "aabba9cb9da7cbc2377e629368a3f1c54e45b1ab3db2ab2bd10e458575f69388",
+  "limits": {
+    "source_model_loads": 1,
+    "source_pcm_reads": 16,
+    "frontend_calls": 8,
+    "backend_calls": 16,
+    "score_calls": 480,
+    "seconds": 180,
+    "artifact_bytes": 2097152,
+    "free_disk_reserve_bytes": 1073741824,
+    "network_access": false,
+    "install_packages": false,
+    "training_steps": 0,
+    "test_access": false,
+    "source_checkpoint_writes": false,
+    "audio_exports": false,
+    "weight_copies": false,
+    "new_quality_or_ASR_metrics": false
+  },
+  "scope": "single fixed8 raw-spectrum vs actual public waveform-roundtrip interface audit; no training/quality selection",
+  "interpretation": "any raw/public difference is an interface observation, not a normalization bug, speech loss mechanism or innovation proof",
+  "no_retry": true
+}

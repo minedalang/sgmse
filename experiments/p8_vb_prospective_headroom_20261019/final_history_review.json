@@ -1,0 +1,70 @@
+{
+  "status": "scoped_use_history_review_completed",
+  "authoritative_for": "Final scoped project-use classification; supersedes provisional pending fields in immutable registry/metrics, NOT a global unseen certificate or model authorization",
+  "files": [
+    {
+      "path": "experiments/p8_voicebank_content_reference_audit_20261019/filename_inventory.json",
+      "classification": "all-reference inventory / metadata-only audit, not actual selected model/listening output",
+      "evidence": "full train clean/noisy ID inventory",
+      "matching_lines": 16
+    },
+    {
+      "path": "experiments/p8_voicebank_content_reference_audit_20261019/scp_id_inventory.json",
+      "classification": "all-reference inventory / metadata-only audit, not actual selected model/listening output",
+      "evidence": "full split SCP ID inventory",
+      "matching_lines": 8
+    },
+    {
+      "path": "experiments/p8_voicebank_content_reference_audit_20261019/attempt02/archive_entry_inventory.json",
+      "classification": "all-reference inventory / metadata-only audit, not actual selected model/listening output",
+      "evidence": "publisher ZIP member inventory including __MACOSX entries",
+      "matching_lines": 16
+    },
+    {
+      "path": "experiments/p8_voicebank_content_reference_audit_20261019/attempt02/metrics.json",
+      "classification": "all-reference inventory / metadata-only audit, not actual selected model/listening output",
+      "evidence": "reference audit metrics listing discarded __MACOSX metadata",
+      "matching_lines": 8
+    }
+  ],
+  "selected_case_output_path_hits": 0,
+  "explicit_actual_model_listening_use_found": false,
+  "skips_resolution": "Both >8MiB text files read (manifest during selection; 10800-line training coverage in supplementary review). 1465 symlink paths checked, targets not followed. Binary contents not searched.",
+  "remaining_inconclusive": "External, anonymized or undocumented use cannot be ruled out; full pretraining exposure unknown. This scoped negative search is not proof of global unseen. Root reviews adequacy before any next stage.",
+  "known_old_pilot_ids": [
+    "p226_027",
+    "p226_028",
+    "p287_037",
+    "p287_054"
+  ],
+  "unique_normalized_text_hashes": 8,
+  "utterance_records": 8,
+  "speakers": 4,
+  "normalized_text_hash_groups": {
+    "7fb51bff5129f7c3dee3c06ce79b3368ae2045e1cfb7576eccb9c9c9b355a740": [
+      "p227_030"
+    ],
+    "92a0933b45a13f5d4ece014ef008b082ec18cc85b0a494d97a6fc0a670f64d91": [
+      "p227_031"
+    ],
+    "5e194cf6a64a3e87e0d9bfa45ad6a0eaa27e8538dd229632b6f62f1ab1b3617a": [
+      "p228_026"
+    ],
+    "c5ee7ad011a109ed90c40343c6d4c3ddb73d2fbdef222aaeb16d24efec2b348f": [
+      "p228_032"
+    ],
+    "5a8d8d746e81c98030153313ab4f471457bc77844a8b665f2cb2e6e788f49cac": [
+      "p230_027"
+    ],
+    "9015e728b3065bb04cc0375c344a1ab7838b02371e0fb87552b7123f70a77a4d": [
+      "p230_029"
+    ],
+    "757c5ccaa456116cc75c268364969e26e81364d4ac3177fe16db8693dc0b9be1": [
+      "p231_029"
+    ],
+    "72cd0a030049cbf6eb6eab64ab3709635d387d54c1fb5e07096b2371cd61c698": [
+      "p231_032"
+    ]
+  },
+  "model_stage_authorized": false
+}

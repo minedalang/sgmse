@@ -1,0 +1,17 @@
+{
+  "status": "prepared_only",
+  "source_manifest": {
+    "bytes": 12544390,
+    "sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc"
+  },
+  "files": {
+    "analysis_plan.md": "26c7cbc9316aa854983dfec941ce48709800612e9bfcc8078191872e65063223",
+    "config.yaml": "147cc0f083801da3b173d1281cc2e831105544ca8e05e2da97a87aec7e9d0c69",
+    "preparation_metrics.json": "a369a235ed20b1b39508d797b61ea44d332ef01f6aba09712ddc6265e1407124",
+    "preparation_report.md": "09f6521fb8db336f9af3c2ec64519217f3d16352562cf6e29802b25a289e52ed",
+    "register_metadata.py": "b0cc5210ed48fe1ccb8135ae40011432267e3030417bbe1209a2f48f4062cc13",
+    "synthetic_test_results.json": "1d7695b5b248494df65710a23f2ded4144fc88bbb0c47fdf1d6061e230b9c30a",
+    "test_synthetic.py": "9068b30e1f522eeb11c8ebfc3900166e76965f0d55cbf95391b5ac3c64495a0e",
+    "validate_metadata.py": "9af100a4cd2a2c77ac207914e1f8fbc7f58885957d66913fe80fdea6abf3cfe3"
+  }
+}

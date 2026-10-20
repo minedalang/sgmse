@@ -1,0 +1,74 @@
+{
+  "request": {
+    "key": "p231_029__scaledclean",
+    "id": "p231_029",
+    "arm": "scaledclean",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_029_scaledclean.wav",
+    "input": {
+      "wav_sha256": "770f60f0bb8353f0d4133cf05183c3d6839c01800ac3435c50d60a37165a02a7",
+      "samples": 49851,
+      "array_sha256": "918c76b7bbb74a252e4fa0af6b3c9d5664b40cae34b7d182dc1fd226a0e43d3d",
+      "peak": 0.14501953125,
+      "rms": 0.012094281610675838
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_029",
+    "original_text": "Last night, Mr Robertson said he was delighted.\n",
+    "raw_text_hex": "4c617374206e696768742c204d7220526f62657274736f6e2073616964206865207761732064656c6967687465642e0a",
+    "raw_text_sha256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+    "archive_entry": "trainset_28spk_txt/p231_029.txt"
+  },
+  "raw_result": {
+    "text": " Last night Mr Robertson said he was delighted.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Last night Mr Robertson said he was delighted.",
+        "tokens": [
+          50363,
+          4586,
+          1755,
+          1770,
+          23590,
+          531,
+          339,
+          373,
+          20707,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.4184858004252116,
+        "compression_ratio": 0.8846153846153846,
+        "no_speech_prob": 0.05019987002015114
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 7,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

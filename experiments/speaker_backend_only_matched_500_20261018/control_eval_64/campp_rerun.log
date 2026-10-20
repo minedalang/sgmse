@@ -1,0 +1,439 @@
+[CAM++] Loaded frozen WeSpeaker weights: /data/coding/sgmse/pre_models/wespeaker-voxceleb-campplus/avg_model.pt
+noisy: (128, 512)
+control: (128, 512)
+off: (128, 512)
+router: (128, 512)
+clean: (128, 512)
+{
+  "arms": {
+    "noisy": {
+      "paired_clean_cosine": {
+        "mean": 0.5042374021650176,
+        "median": 0.4998260885477066,
+        "cluster_bootstrap_95ci": [
+          0.4488990716959961,
+          0.558577991286802
+        ]
+      },
+      "same_speaker_cosine": {
+        "mean": 0.25252043363434495,
+        "n": 64,
+        "cluster_bootstrap_95ci": [
+          0.20604780231969927,
+          0.29966673427152274
+        ]
+      },
+      "different_speaker_cosine": {
+        "mean": 0.11293876817347025,
+        "n": 8064,
+        "cluster_bootstrap_95ci": [
+          0.09197128432987017,
+          0.1377547132729888
+        ]
+      },
+      "auc": {
+        "value": 0.7283974299355159,
+        "cluster_bootstrap_95ci": [
+          0.6480172768354151,
+          0.8041617520829316
+        ]
+      },
+      "eer": {
+        "value": 0.328125,
+        "far_at_eer": 0.328125,
+        "frr_at_eer": 0.328125,
+        "cluster_bootstrap_95ci": [
+          0.26560144472361813,
+          0.42193397710115754
+        ]
+      }
+    },
+    "control": {
+      "paired_clean_cosine": {
+        "mean": 0.653621449630009,
+        "median": 0.669610470533371,
+        "cluster_bootstrap_95ci": [
+          0.6158659063767118,
+          0.6899172995901608
+        ]
+      },
+      "same_speaker_cosine": {
+        "mean": 0.38544099451974034,
+        "n": 64,
+        "cluster_bootstrap_95ci": [
+          0.34275379321479704,
+          0.425719400125672
+        ]
+      },
+      "different_speaker_cosine": {
+        "mean": 0.12762198359829083,
+        "n": 8064,
+        "cluster_bootstrap_95ci": [
+          0.11425237353162841,
+          0.14189738578905514
+        ]
+      },
+      "auc": {
+        "value": 0.8884548611111112,
+        "cluster_bootstrap_95ci": [
+          0.8345880849142444,
+          0.9344421833704303
+        ]
+      },
+      "eer": {
+        "value": 0.1875,
+        "far_at_eer": 0.1875,
+        "frr_at_eer": 0.1875,
+        "cluster_bootstrap_95ci": [
+          0.13641362986260505,
+          0.25006287805468946
+        ]
+      }
+    },
+    "off": {
+      "paired_clean_cosine": {
+        "mean": 0.6521565188304521,
+        "median": 0.6640760600566864,
+        "cluster_bootstrap_95ci": [
+          0.61612314224476,
+          0.6875666333566187
+        ]
+      },
+      "same_speaker_cosine": {
+        "mean": 0.3828161706915125,
+        "n": 64,
+        "cluster_bootstrap_95ci": [
+          0.3403582441358594,
+          0.42292510305414904
+        ]
+      },
+      "different_speaker_cosine": {
+        "mean": 0.1295570376063956,
+        "n": 8064,
+        "cluster_bootstrap_95ci": [
+          0.11623562128040191,
+          0.1432494843364672
+        ]
+      },
+      "auc": {
+        "value": 0.8799312531001984,
+        "cluster_bootstrap_95ci": [
+          0.8252074516805552,
+          0.9282413740696854
+        ]
+      },
+      "eer": {
+        "value": 0.2048611111111111,
+        "far_at_eer": 0.2065972222222222,
+        "frr_at_eer": 0.203125,
+        "cluster_bootstrap_95ci": [
+          0.14058550303336703,
+          0.28128156565656565
+        ]
+      }
+    },
+    "router": {
+      "paired_clean_cosine": {
+        "mean": 0.6508510854910128,
+        "median": 0.6698338985443115,
+        "cluster_bootstrap_95ci": [
+          0.6142360485479003,
+          0.6863460458436748
+        ]
+      },
+      "same_speaker_cosine": {
+        "mean": 0.3851618195185438,
+        "n": 64,
+        "cluster_bootstrap_95ci": [
+          0.3431402634392725,
+          0.4257340421492699
+        ]
+      },
+      "different_speaker_cosine": {
+        "mean": 0.13356262366941668,
+        "n": 8064,
+        "cluster_bootstrap_95ci": [
+          0.11950508184760911,
+          0.1479748368071989
+        ]
+      },
+      "auc": {
+        "value": 0.8746425083705357,
+        "cluster_bootstrap_95ci": [
+          0.8199308690079266,
+          0.9240668026552717
+        ]
+      },
+      "eer": {
+        "value": 0.21875,
+        "far_at_eer": 0.21875,
+        "frr_at_eer": 0.21875,
+        "cluster_bootstrap_95ci": [
+          0.14054979839105664,
+          0.2848550168085369
+        ]
+      }
+    },
+    "clean": {
+      "paired_clean_cosine": {
+        "mean": 0.9999999837018549,
+        "median": 1.0,
+        "cluster_bootstrap_95ci": [
+          0.9999999688006938,
+          0.9999999990686774
+        ]
+      },
+      "same_speaker_cosine": {
+        "mean": 0.6119731110229623,
+        "n": 64,
+        "cluster_bootstrap_95ci": [
+          0.5703958660262287,
+          0.6472406216416857
+        ]
+      },
+      "different_speaker_cosine": {
+        "mean": 0.08996118819907549,
+        "n": 8064,
+        "cluster_bootstrap_95ci": [
+          0.0764261763421263,
+          0.10438877757393647
+        ]
+      },
+      "auc": {
+        "value": 0.9662524026537699,
+        "cluster_bootstrap_95ci": [
+          0.9236259125643833,
+          0.9995383984975208
+        ]
+      },
+      "eer": {
+        "value": 0.046875,
+        "far_at_eer": 0.046875,
+        "frr_at_eer": 0.046875,
+        "cluster_bootstrap_95ci": [
+          0.003339129640852906,
+          0.10934372012609632
+        ]
+      }
+    }
+  },
+  "paired_contrasts": {
+    "control_vs_off": {
+      "control_minus_off_paired_clean_cosine": {
+        "mean_delta": 0.001464930799556896,
+        "cluster_bootstrap_95ci": [
+          -0.005624991149670677,
+          0.008467072399798766
+        ]
+      },
+      "control_minus_off_same_speaker_cosine": {
+        "mean_delta": 0.002624823828227818,
+        "cluster_bootstrap_95ci": [
+          -0.008319237397518008,
+          0.01452577300951816
+        ]
+      },
+      "control_minus_off_different_speaker_cosine": {
+        "mean_delta": -0.0019350540081047585,
+        "cluster_bootstrap_95ci": [
+          -0.005473911214277334,
+          0.0016236012610132283
+        ]
+      },
+      "control_minus_off_auc": {
+        "mean_delta": 0.008523608010912787,
+        "cluster_bootstrap_95ci": [
+          -0.00461870790848441,
+          0.024855634416072817
+        ]
+      },
+      "control_minus_off_eer": {
+        "mean_delta": -0.017361111111111105,
+        "cluster_bootstrap_95ci": [
+          -0.06253153380423809,
+          0.030460858585858563
+        ]
+      }
+    },
+    "control_vs_router": {
+      "control_minus_router_paired_clean_cosine": {
+        "mean_delta": 0.0027703641389962286,
+        "cluster_bootstrap_95ci": [
+          -0.003897031344968127,
+          0.009805945838888868
+        ]
+      },
+      "control_minus_router_same_speaker_cosine": {
+        "mean_delta": 0.00027917500119656324,
+        "cluster_bootstrap_95ci": [
+          -0.012346876377705485,
+          0.013810361720970832
+        ]
+      },
+      "control_minus_router_different_speaker_cosine": {
+        "mean_delta": -0.005940640071125852,
+        "cluster_bootstrap_95ci": [
+          -0.010149569094000818,
+          -0.001589284653375149
+        ]
+      },
+      "control_minus_router_auc": {
+        "mean_delta": 0.013812352740575462,
+        "cluster_bootstrap_95ci": [
+          -0.003985259408348992,
+          0.035080527891213506
+        ]
+      },
+      "control_minus_router_eer": {
+        "mean_delta": -0.03125,
+        "cluster_bootstrap_95ci": [
+          -0.06748999526331133,
+          0.024903556596797584
+        ]
+      }
+    },
+    "router_vs_off": {
+      "router_minus_off_paired_clean_cosine": {
+        "mean_delta": -0.0013054333394393325,
+        "cluster_bootstrap_95ci": [
+          -0.004435808942071162,
+          0.0017115038965130219
+        ]
+      },
+      "router_minus_off_same_speaker_cosine": {
+        "mean_delta": 0.0023456488270312548,
+        "cluster_bootstrap_95ci": [
+          -0.003549154580105096,
+          0.007753904914716247
+        ]
+      },
+      "router_minus_off_different_speaker_cosine": {
+        "mean_delta": 0.004005586063021094,
+        "cluster_bootstrap_95ci": [
+          0.0014112098565031172,
+          0.0063933136978971015
+        ]
+      },
+      "router_minus_off_auc": {
+        "mean_delta": -0.0052887447296626755,
+        "cluster_bootstrap_95ci": [
+          -0.012489487707494978,
+          0.001376300250274615
+        ]
+      },
+      "router_minus_off_eer": {
+        "mean_delta": 0.013888888888888895,
+        "cluster_bootstrap_95ci": [
+          -0.01208820771888504,
+          0.03338032137793483
+        ]
+      }
+    },
+    "router_vs_clean": {
+      "router_minus_clean_paired_clean_cosine": {
+        "mean_delta": -0.34914889821084216,
+        "cluster_bootstrap_95ci": [
+          -0.3857639282621676,
+          -0.31365393767191574
+        ]
+      },
+      "router_minus_clean_same_speaker_cosine": {
+        "mean_delta": -0.22681129150441848,
+        "cluster_bootstrap_95ci": [
+          -0.27018314537563126,
+          -0.1848431431259087
+        ]
+      },
+      "router_minus_clean_different_speaker_cosine": {
+        "mean_delta": 0.04360143547034119,
+        "cluster_bootstrap_95ci": [
+          0.032922628621441706,
+          0.05461624390598442
+        ]
+      },
+      "router_minus_clean_auc": {
+        "mean_delta": -0.09160989428323418,
+        "cluster_bootstrap_95ci": [
+          -0.14297481449771687,
+          -0.04382624768326369
+        ]
+      },
+      "router_minus_clean_eer": {
+        "mean_delta": 0.171875,
+        "cluster_bootstrap_95ci": [
+          0.09368699596774194,
+          0.23472812857010011
+        ]
+      }
+    },
+    "off_vs_clean": {
+      "off_minus_clean_paired_clean_cosine": {
+        "mean_delta": -0.34784346487140283,
+        "cluster_bootstrap_95ci": [
+          -0.3838768365676515,
+          -0.31243335295293945
+        ]
+      },
+      "off_minus_clean_same_speaker_cosine": {
+        "mean_delta": -0.22915694033144973,
+        "cluster_bootstrap_95ci": [
+          -0.2710697019647341,
+          -0.18794728445864167
+        ]
+      },
+      "off_minus_clean_different_speaker_cosine": {
+        "mean_delta": 0.0395958494073201,
+        "cluster_bootstrap_95ci": [
+          0.028925666963688673,
+          0.05057693559117995
+        ]
+      },
+      "off_minus_clean_auc": {
+        "mean_delta": -0.08632114955357151,
+        "cluster_bootstrap_95ci": [
+          -0.1361125673774043,
+          -0.04212566706631274
+        ]
+      },
+      "off_minus_clean_eer": {
+        "mean_delta": 0.1579861111111111,
+        "cluster_bootstrap_95ci": [
+          0.09356909135111535,
+          0.2343947371662233
+        ]
+      }
+    }
+  },
+  "predeclared_gate": {
+    "router_same_speaker_deficit_vs_clean": {
+      "estimate": 0.22681129150441848,
+      "cluster_bootstrap_95ci": [
+        0.1848431431259087,
+        0.27018314537563126
+      ],
+      "threshold": 0.05,
+      "passes_magnitude_and_ci": true
+    },
+    "router_auc_deficit_vs_clean": {
+      "estimate": 0.09160989428323418,
+      "cluster_bootstrap_95ci": [
+        0.04382624768326368,
+        0.1429748144977168
+      ],
+      "threshold": 0.02,
+      "passes_magnitude_and_ci": true
+    },
+    "router_eer_excess_vs_clean": {
+      "estimate": 0.171875,
+      "cluster_bootstrap_95ci": [
+        0.09368699596774194,
+        0.23472812857010011
+      ],
+      "threshold": 0.02,
+      "passes_magnitude_and_ci": true
+    },
+    "gate_passed": true,
+    "interpretation": "development-only; a pass supports investigating a no-training headroom hypothesis but does not authorize training without Research Lead review"
+  },
+  "runtime_seconds": 20.814974546432495
+}

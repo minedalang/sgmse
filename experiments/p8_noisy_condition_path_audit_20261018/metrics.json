@@ -1,0 +1,703 @@
+{
+  "experiment_id": "p8_noisy_condition_path_audit_20261018",
+  "status": "completed_read_only_no_inference",
+  "checkpoint": {
+    "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+    "sha256_before": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "sha256_after": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+    "unchanged": true,
+    "global_step": 80000,
+    "epoch": 118,
+    "cpu_load_count": 1,
+    "load_attempts": 2,
+    "successful_metadata_reads": 1
+  },
+  "git_head": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status_before_record_creation": "M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? RESEARCH_BRIEF_2026-10-18_TAIL.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_3321_tail_condition_20261018/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_noisy_condition_path_audit_20261018/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_q_vcv_fixed_noise_20261018/\n?? experiments/p8_silent_gap_screen8_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py",
+  "hyperparameter_resolution": {
+    "backbone": {
+      "present": true,
+      "saved_value": "ncsnpp_v2",
+      "current_constructor_defaults": {},
+      "effective_value": "ncsnpp_v2",
+      "basis": "saved hyperparameter"
+    },
+    "train_type": {
+      "present": true,
+      "saved_value": "mode2",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": "default",
+        "sgmse/joint_model.py:JointFrontendSgmseModel": "mode3"
+      },
+      "effective_value": "mode2",
+      "basis": "saved hyperparameter"
+    },
+    "mode2_include_noisy_main": {
+      "present": true,
+      "saved_value": true,
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": false,
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": false
+      },
+      "effective_value": true,
+      "basis": "saved hyperparameter"
+    },
+    "cross_attn": {
+      "present": true,
+      "saved_value": false,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": false
+      },
+      "effective_value": false,
+      "basis": "saved hyperparameter"
+    },
+    "film_modulate": {
+      "present": true,
+      "saved_value": false,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": false
+      },
+      "effective_value": false,
+      "basis": "saved hyperparameter"
+    },
+    "film_levels": {
+      "present": true,
+      "saved_value": "first",
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": "first"
+      },
+      "effective_value": "first",
+      "basis": "saved hyperparameter"
+    },
+    "selector_type": {
+      "present": true,
+      "saved_value": "none",
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": "none"
+      },
+      "effective_value": "none",
+      "basis": "saved hyperparameter"
+    },
+    "evidence_selector_type": {
+      "present": false,
+      "saved_value": null,
+      "current_constructor_defaults": {},
+      "basis": "not a constructor argument; do not invent saved/default value"
+    },
+    "use_tfgrid_selector": {
+      "present": false,
+      "saved_value": null,
+      "current_constructor_defaults": {},
+      "basis": "not a constructor argument; do not invent saved/default value",
+      "derived_current_value": false
+    },
+    "selector_attn_levels": {
+      "present": true,
+      "saved_value": "6,5",
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": "6,5"
+      },
+      "effective_value": "6,5",
+      "basis": "saved hyperparameter"
+    },
+    "nf": {
+      "present": true,
+      "saved_value": 128,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": 128
+      },
+      "effective_value": 128,
+      "basis": "saved hyperparameter"
+    },
+    "ch_mult": {
+      "present": true,
+      "saved_value": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": [
+          1,
+          1,
+          2,
+          2,
+          2,
+          2,
+          2
+        ]
+      },
+      "effective_value": [
+        1,
+        2,
+        2,
+        2
+      ],
+      "basis": "saved hyperparameter"
+    },
+    "num_res_blocks": {
+      "present": true,
+      "saved_value": 1,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": 2
+      },
+      "effective_value": 1,
+      "basis": "saved hyperparameter"
+    },
+    "attn_resolutions": {
+      "present": true,
+      "saved_value": [
+        0
+      ],
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": [
+          16
+        ]
+      },
+      "effective_value": [
+        0
+      ],
+      "basis": "saved hyperparameter"
+    },
+    "sde": {
+      "present": true,
+      "saved_value": "ouve",
+      "current_constructor_defaults": {},
+      "effective_value": "ouve",
+      "basis": "saved hyperparameter"
+    },
+    "loss_type": {
+      "present": true,
+      "saved_value": "score_matching",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": "score_matching"
+      },
+      "effective_value": "score_matching",
+      "basis": "saved hyperparameter"
+    },
+    "loss_weighting": {
+      "present": true,
+      "saved_value": "sigma^2",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": "sigma^2"
+      },
+      "effective_value": "sigma^2",
+      "basis": "saved hyperparameter"
+    },
+    "network_scaling": {
+      "present": true,
+      "saved_value": "1/t",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": null
+      },
+      "effective_value": "1/t",
+      "basis": "saved hyperparameter"
+    },
+    "c_in": {
+      "present": true,
+      "saved_value": "1",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": "1"
+      },
+      "effective_value": "1",
+      "basis": "saved hyperparameter"
+    },
+    "c_out": {
+      "present": true,
+      "saved_value": "1",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": "1"
+      },
+      "effective_value": "1",
+      "basis": "saved hyperparameter"
+    },
+    "c_skip": {
+      "present": true,
+      "saved_value": "0",
+      "current_constructor_defaults": {
+        "sgmse/model.py:ScoreModel": "0"
+      },
+      "effective_value": "0",
+      "basis": "saved hyperparameter"
+    },
+    "progressive_input": {
+      "present": false,
+      "saved_value": null,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": "input_skip"
+      },
+      "effective_value": "input_skip",
+      "basis": "current constructor default; see source-specific defaults"
+    },
+    "progressive": {
+      "present": false,
+      "saved_value": null,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": "output_skip"
+      },
+      "effective_value": "output_skip",
+      "basis": "current constructor default; see source-specific defaults"
+    },
+    "backend_adapter_enable": {
+      "present": false,
+      "saved_value": null,
+      "current_constructor_defaults": {
+        "sgmse/backbones/ncsnpp_v2.py:NCSNpp_v2": false
+      },
+      "effective_value": false,
+      "basis": "current constructor default; see source-specific defaults"
+    },
+    "residual_refine_enable": {
+      "present": true,
+      "saved_value": false,
+      "current_constructor_defaults": {
+        "sgmse/joint_model.py:JointFrontendSgmseModel": false
+      },
+      "effective_value": false,
+      "basis": "saved hyperparameter"
+    },
+    "frontend": {
+      "present": true,
+      "saved_value": "storm",
+      "current_constructor_defaults": {
+        "sgmse/joint_model.py:JointFrontendSgmseModel": "semamba"
+      },
+      "effective_value": "storm",
+      "basis": "saved hyperparameter"
+    },
+    "rrsd_enable": {
+      "present": false,
+      "saved_value": null,
+      "current_constructor_defaults": {},
+      "basis": "not a constructor argument; do not invent saved/default value"
+    },
+    "rrsd_freeze_base": {
+      "present": true,
+      "saved_value": true,
+      "current_constructor_defaults": {
+        "sgmse/joint_model.py:JointFrontendSgmseModel": false
+      },
+      "effective_value": true,
+      "basis": "saved hyperparameter"
+    }
+  },
+  "conditioning_related_saved_hyperparameters": {
+    "mode2_include_noisy_main": true,
+    "cross_attn": false,
+    "film_modulate": false,
+    "film_levels": "first",
+    "selector_type": "none",
+    "selector_hidden_ch": 32,
+    "selector_num_blocks": 2,
+    "selector_attn_levels": "6,5",
+    "selector_ctx_ch": 8,
+    "selector_ctx_num_feats": 3,
+    "selector_content_weight": 0.0,
+    "selector_oracle_weight": 0.0,
+    "selector_oracle_conf_weight": 1.0,
+    "selector_oracle_eps": 1e-08,
+    "residual_refine_enable": false,
+    "residual_refine_start_strength": 1.0
+  },
+  "state_dict": {
+    "total_keys": 546,
+    "dnn_keys": [
+      "dnn.output_layer.weight",
+      "dnn.output_layer.bias",
+      "dnn.all_modules.0.W",
+      "dnn.all_modules.1.weight",
+      "dnn.all_modules.1.bias",
+      "dnn.all_modules.2.weight",
+      "dnn.all_modules.2.bias",
+      "dnn.all_modules.3.weight",
+      "dnn.all_modules.3.bias",
+      "dnn.all_modules.4.GroupNorm_0.weight",
+      "dnn.all_modules.4.GroupNorm_0.bias",
+      "dnn.all_modules.4.Conv_0.weight",
+      "dnn.all_modules.4.Conv_0.bias",
+      "dnn.all_modules.4.Dense_0.weight",
+      "dnn.all_modules.4.Dense_0.bias",
+      "dnn.all_modules.4.GroupNorm_1.weight",
+      "dnn.all_modules.4.GroupNorm_1.bias",
+      "dnn.all_modules.4.Conv_1.weight",
+      "dnn.all_modules.4.Conv_1.bias",
+      "dnn.all_modules.5.GroupNorm_0.weight",
+      "dnn.all_modules.5.GroupNorm_0.bias",
+      "dnn.all_modules.5.Conv_0.weight",
+      "dnn.all_modules.5.Conv_0.bias",
+      "dnn.all_modules.5.Dense_0.weight",
+      "dnn.all_modules.5.Dense_0.bias",
+      "dnn.all_modules.5.GroupNorm_1.weight",
+      "dnn.all_modules.5.GroupNorm_1.bias",
+      "dnn.all_modules.5.Conv_1.weight",
+      "dnn.all_modules.5.Conv_1.bias",
+      "dnn.all_modules.5.Conv_2.weight",
+      "dnn.all_modules.5.Conv_2.bias",
+      "dnn.all_modules.6.Conv_0.weight",
+      "dnn.all_modules.6.Conv_0.bias",
+      "dnn.all_modules.7.GroupNorm_0.weight",
+      "dnn.all_modules.7.GroupNorm_0.bias",
+      "dnn.all_modules.7.Conv_0.weight",
+      "dnn.all_modules.7.Conv_0.bias",
+      "dnn.all_modules.7.Dense_0.weight",
+      "dnn.all_modules.7.Dense_0.bias",
+      "dnn.all_modules.7.GroupNorm_1.weight",
+      "dnn.all_modules.7.GroupNorm_1.bias",
+      "dnn.all_modules.7.Conv_1.weight",
+      "dnn.all_modules.7.Conv_1.bias",
+      "dnn.all_modules.7.Conv_2.weight",
+      "dnn.all_modules.7.Conv_2.bias",
+      "dnn.all_modules.8.GroupNorm_0.weight",
+      "dnn.all_modules.8.GroupNorm_0.bias",
+      "dnn.all_modules.8.Conv_0.weight",
+      "dnn.all_modules.8.Conv_0.bias",
+      "dnn.all_modules.8.Dense_0.weight",
+      "dnn.all_modules.8.Dense_0.bias",
+      "dnn.all_modules.8.GroupNorm_1.weight",
+      "dnn.all_modules.8.GroupNorm_1.bias",
+      "dnn.all_modules.8.Conv_1.weight",
+      "dnn.all_modules.8.Conv_1.bias",
+      "dnn.all_modules.8.Conv_2.weight",
+      "dnn.all_modules.8.Conv_2.bias",
+      "dnn.all_modules.9.Conv_0.weight",
+      "dnn.all_modules.9.Conv_0.bias",
+      "dnn.all_modules.10.GroupNorm_0.weight",
+      "dnn.all_modules.10.GroupNorm_0.bias",
+      "dnn.all_modules.10.Conv_0.weight",
+      "dnn.all_modules.10.Conv_0.bias",
+      "dnn.all_modules.10.Dense_0.weight",
+      "dnn.all_modules.10.Dense_0.bias",
+      "dnn.all_modules.10.GroupNorm_1.weight",
+      "dnn.all_modules.10.GroupNorm_1.bias",
+      "dnn.all_modules.10.Conv_1.weight",
+      "dnn.all_modules.10.Conv_1.bias",
+      "dnn.all_modules.11.GroupNorm_0.weight",
+      "dnn.all_modules.11.GroupNorm_0.bias",
+      "dnn.all_modules.11.Conv_0.weight",
+      "dnn.all_modules.11.Conv_0.bias",
+      "dnn.all_modules.11.Dense_0.weight",
+      "dnn.all_modules.11.Dense_0.bias",
+      "dnn.all_modules.11.GroupNorm_1.weight",
+      "dnn.all_modules.11.GroupNorm_1.bias",
+      "dnn.all_modules.11.Conv_1.weight",
+      "dnn.all_modules.11.Conv_1.bias",
+      "dnn.all_modules.11.Conv_2.weight",
+      "dnn.all_modules.11.Conv_2.bias",
+      "dnn.all_modules.12.Conv_0.weight",
+      "dnn.all_modules.12.Conv_0.bias",
+      "dnn.all_modules.13.GroupNorm_0.weight",
+      "dnn.all_modules.13.GroupNorm_0.bias",
+      "dnn.all_modules.13.Conv_0.weight",
+      "dnn.all_modules.13.Conv_0.bias",
+      "dnn.all_modules.13.Dense_0.weight",
+      "dnn.all_modules.13.Dense_0.bias",
+      "dnn.all_modules.13.GroupNorm_1.weight",
+      "dnn.all_modules.13.GroupNorm_1.bias",
+      "dnn.all_modules.13.Conv_1.weight",
+      "dnn.all_modules.13.Conv_1.bias",
+      "dnn.all_modules.14.GroupNorm_0.weight",
+      "dnn.all_modules.14.GroupNorm_0.bias",
+      "dnn.all_modules.14.Conv_0.weight",
+      "dnn.all_modules.14.Conv_0.bias",
+      "dnn.all_modules.14.Dense_0.weight",
+      "dnn.all_modules.14.Dense_0.bias",
+      "dnn.all_modules.14.GroupNorm_1.weight",
+      "dnn.all_modules.14.GroupNorm_1.bias",
+      "dnn.all_modules.14.Conv_1.weight",
+      "dnn.all_modules.14.Conv_1.bias",
+      "dnn.all_modules.15.GroupNorm_0.weight",
+      "dnn.all_modules.15.GroupNorm_0.bias",
+      "dnn.all_modules.15.NIN_0.W",
+      "dnn.all_modules.15.NIN_0.b",
+      "dnn.all_modules.15.NIN_1.W",
+      "dnn.all_modules.15.NIN_1.b",
+      "dnn.all_modules.15.NIN_2.W",
+      "dnn.all_modules.15.NIN_2.b",
+      "dnn.all_modules.15.NIN_3.W",
+      "dnn.all_modules.15.NIN_3.b",
+      "dnn.all_modules.16.GroupNorm_0.weight",
+      "dnn.all_modules.16.GroupNorm_0.bias",
+      "dnn.all_modules.16.Conv_0.weight",
+      "dnn.all_modules.16.Conv_0.bias",
+      "dnn.all_modules.16.Dense_0.weight",
+      "dnn.all_modules.16.Dense_0.bias",
+      "dnn.all_modules.16.GroupNorm_1.weight",
+      "dnn.all_modules.16.GroupNorm_1.bias",
+      "dnn.all_modules.16.Conv_1.weight",
+      "dnn.all_modules.16.Conv_1.bias",
+      "dnn.all_modules.17.GroupNorm_0.weight",
+      "dnn.all_modules.17.GroupNorm_0.bias",
+      "dnn.all_modules.17.Conv_0.weight",
+      "dnn.all_modules.17.Conv_0.bias",
+      "dnn.all_modules.17.Dense_0.weight",
+      "dnn.all_modules.17.Dense_0.bias",
+      "dnn.all_modules.17.GroupNorm_1.weight",
+      "dnn.all_modules.17.GroupNorm_1.bias",
+      "dnn.all_modules.17.Conv_1.weight",
+      "dnn.all_modules.17.Conv_1.bias",
+      "dnn.all_modules.17.Conv_2.weight",
+      "dnn.all_modules.17.Conv_2.bias",
+      "dnn.all_modules.18.GroupNorm_0.weight",
+      "dnn.all_modules.18.GroupNorm_0.bias",
+      "dnn.all_modules.18.Conv_0.weight",
+      "dnn.all_modules.18.Conv_0.bias",
+      "dnn.all_modules.18.Dense_0.weight",
+      "dnn.all_modules.18.Dense_0.bias",
+      "dnn.all_modules.18.GroupNorm_1.weight",
+      "dnn.all_modules.18.GroupNorm_1.bias",
+      "dnn.all_modules.18.Conv_1.weight",
+      "dnn.all_modules.18.Conv_1.bias",
+      "dnn.all_modules.18.Conv_2.weight",
+      "dnn.all_modules.18.Conv_2.bias",
+      "dnn.all_modules.19.weight",
+      "dnn.all_modules.19.bias",
+      "dnn.all_modules.20.weight",
+      "dnn.all_modules.20.bias",
+      "dnn.all_modules.21.GroupNorm_0.weight",
+      "dnn.all_modules.21.GroupNorm_0.bias",
+      "dnn.all_modules.21.Conv_0.weight",
+      "dnn.all_modules.21.Conv_0.bias",
+      "dnn.all_modules.21.Dense_0.weight",
+      "dnn.all_modules.21.Dense_0.bias",
+      "dnn.all_modules.21.GroupNorm_1.weight",
+      "dnn.all_modules.21.GroupNorm_1.bias",
+      "dnn.all_modules.21.Conv_1.weight",
+      "dnn.all_modules.21.Conv_1.bias",
+      "dnn.all_modules.21.Conv_2.weight",
+      "dnn.all_modules.21.Conv_2.bias",
+      "dnn.all_modules.22.GroupNorm_0.weight",
+      "dnn.all_modules.22.GroupNorm_0.bias",
+      "dnn.all_modules.22.Conv_0.weight",
+      "dnn.all_modules.22.Conv_0.bias",
+      "dnn.all_modules.22.Dense_0.weight",
+      "dnn.all_modules.22.Dense_0.bias",
+      "dnn.all_modules.22.GroupNorm_1.weight",
+      "dnn.all_modules.22.GroupNorm_1.bias",
+      "dnn.all_modules.22.Conv_1.weight",
+      "dnn.all_modules.22.Conv_1.bias",
+      "dnn.all_modules.22.Conv_2.weight",
+      "dnn.all_modules.22.Conv_2.bias",
+      "dnn.all_modules.23.GroupNorm_0.weight",
+      "dnn.all_modules.23.GroupNorm_0.bias",
+      "dnn.all_modules.23.Conv_0.weight",
+      "dnn.all_modules.23.Conv_0.bias",
+      "dnn.all_modules.23.Dense_0.weight",
+      "dnn.all_modules.23.Dense_0.bias",
+      "dnn.all_modules.23.GroupNorm_1.weight",
+      "dnn.all_modules.23.GroupNorm_1.bias",
+      "dnn.all_modules.23.Conv_1.weight",
+      "dnn.all_modules.23.Conv_1.bias",
+      "dnn.all_modules.23.Conv_2.weight",
+      "dnn.all_modules.23.Conv_2.bias",
+      "dnn.all_modules.24.weight",
+      "dnn.all_modules.24.bias",
+      "dnn.all_modules.25.weight",
+      "dnn.all_modules.25.bias",
+      "dnn.all_modules.26.GroupNorm_0.weight",
+      "dnn.all_modules.26.GroupNorm_0.bias",
+      "dnn.all_modules.26.Conv_0.weight",
+      "dnn.all_modules.26.Conv_0.bias",
+      "dnn.all_modules.26.Dense_0.weight",
+      "dnn.all_modules.26.Dense_0.bias",
+      "dnn.all_modules.26.GroupNorm_1.weight",
+      "dnn.all_modules.26.GroupNorm_1.bias",
+      "dnn.all_modules.26.Conv_1.weight",
+      "dnn.all_modules.26.Conv_1.bias",
+      "dnn.all_modules.26.Conv_2.weight",
+      "dnn.all_modules.26.Conv_2.bias",
+      "dnn.all_modules.27.GroupNorm_0.weight",
+      "dnn.all_modules.27.GroupNorm_0.bias",
+      "dnn.all_modules.27.Conv_0.weight",
+      "dnn.all_modules.27.Conv_0.bias",
+      "dnn.all_modules.27.Dense_0.weight",
+      "dnn.all_modules.27.Dense_0.bias",
+      "dnn.all_modules.27.GroupNorm_1.weight",
+      "dnn.all_modules.27.GroupNorm_1.bias",
+      "dnn.all_modules.27.Conv_1.weight",
+      "dnn.all_modules.27.Conv_1.bias",
+      "dnn.all_modules.27.Conv_2.weight",
+      "dnn.all_modules.27.Conv_2.bias",
+      "dnn.all_modules.28.GroupNorm_0.weight",
+      "dnn.all_modules.28.GroupNorm_0.bias",
+      "dnn.all_modules.28.Conv_0.weight",
+      "dnn.all_modules.28.Conv_0.bias",
+      "dnn.all_modules.28.Dense_0.weight",
+      "dnn.all_modules.28.Dense_0.bias",
+      "dnn.all_modules.28.GroupNorm_1.weight",
+      "dnn.all_modules.28.GroupNorm_1.bias",
+      "dnn.all_modules.28.Conv_1.weight",
+      "dnn.all_modules.28.Conv_1.bias",
+      "dnn.all_modules.28.Conv_2.weight",
+      "dnn.all_modules.28.Conv_2.bias",
+      "dnn.all_modules.29.weight",
+      "dnn.all_modules.29.bias",
+      "dnn.all_modules.30.weight",
+      "dnn.all_modules.30.bias",
+      "dnn.all_modules.31.GroupNorm_0.weight",
+      "dnn.all_modules.31.GroupNorm_0.bias",
+      "dnn.all_modules.31.Conv_0.weight",
+      "dnn.all_modules.31.Conv_0.bias",
+      "dnn.all_modules.31.Dense_0.weight",
+      "dnn.all_modules.31.Dense_0.bias",
+      "dnn.all_modules.31.GroupNorm_1.weight",
+      "dnn.all_modules.31.GroupNorm_1.bias",
+      "dnn.all_modules.31.Conv_1.weight",
+      "dnn.all_modules.31.Conv_1.bias",
+      "dnn.all_modules.31.Conv_2.weight",
+      "dnn.all_modules.31.Conv_2.bias",
+      "dnn.all_modules.32.GroupNorm_0.weight",
+      "dnn.all_modules.32.GroupNorm_0.bias",
+      "dnn.all_modules.32.Conv_0.weight",
+      "dnn.all_modules.32.Conv_0.bias",
+      "dnn.all_modules.32.Dense_0.weight",
+      "dnn.all_modules.32.Dense_0.bias",
+      "dnn.all_modules.32.GroupNorm_1.weight",
+      "dnn.all_modules.32.GroupNorm_1.bias",
+      "dnn.all_modules.32.Conv_1.weight",
+      "dnn.all_modules.32.Conv_1.bias",
+      "dnn.all_modules.32.Conv_2.weight",
+      "dnn.all_modules.32.Conv_2.bias",
+      "dnn.all_modules.33.GroupNorm_0.weight",
+      "dnn.all_modules.33.GroupNorm_0.bias",
+      "dnn.all_modules.33.Conv_0.weight",
+      "dnn.all_modules.33.Conv_0.bias",
+      "dnn.all_modules.33.Dense_0.weight",
+      "dnn.all_modules.33.Dense_0.bias",
+      "dnn.all_modules.33.GroupNorm_1.weight",
+      "dnn.all_modules.33.GroupNorm_1.bias",
+      "dnn.all_modules.33.Conv_1.weight",
+      "dnn.all_modules.33.Conv_1.bias",
+      "dnn.all_modules.33.Conv_2.weight",
+      "dnn.all_modules.33.Conv_2.bias",
+      "dnn.all_modules.34.weight",
+      "dnn.all_modules.34.bias",
+      "dnn.all_modules.35.weight",
+      "dnn.all_modules.35.bias"
+    ],
+    "selected_shapes": {
+      "dnn.all_modules.3.weight": [
+        128,
+        6,
+        3,
+        3
+      ],
+      "dnn.all_modules.6.Conv_0.weight": [
+        128,
+        6,
+        1,
+        1
+      ]
+    },
+    "presence_tests": {
+      "bottleneck_cross_attention": {
+        "matching_dnn_keys": [],
+        "count": 0
+      },
+      "tfgrid_evidence_selector": {
+        "matching_dnn_keys": [],
+        "count": 0
+      },
+      "decoder_film": {
+        "matching_dnn_keys": [],
+        "count": 0
+      },
+      "residual_regen": {
+        "matching_dnn_keys": [],
+        "count": 0
+      },
+      "noise_prior_guidance": {
+        "matching_dnn_keys": [],
+        "count": 0
+      },
+      "all_dnn_attention_projections": {
+        "matching_dnn_keys": [],
+        "count": 0
+      },
+      "backend_adapter": {
+        "matching_dnn_keys": [],
+        "count": 0
+      }
+    }
+  },
+  "current_code_sha256": {
+    "sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "sgmse/backbones/ncsnpp_v2.py": "63e467295acd0a01d20fb4a4941addc12bfa4bd69bad43be15427c81b8767f5e",
+    "sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+    "sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21"
+  },
+  "historical_pilot_provenance": {
+    "path": "experiments/p8_10720_tail_condition20_20261018/launch_provenance.json",
+    "recorded_code_hash_comparison": {
+      "joint_enhance_by_dir.py": {
+        "prior_sha256": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108",
+        "current_sha256": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108",
+        "matches": true
+      },
+      "sgmse/joint_model.py": {
+        "prior_sha256": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+        "current_sha256": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+        "matches": true
+      },
+      "sgmse/joint_data_module.py": {
+        "prior_sha256": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+        "current_sha256": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+        "matches": true
+      },
+      "sgmse/model.py": {
+        "prior_sha256": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+        "current_sha256": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+        "matches": true
+      },
+      "sgmse/frontends/storm.py": {
+        "prior_sha256": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+        "current_sha256": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+        "matches": true
+      }
+    },
+    "backbone_hash_not_recorded_in_prior": true
+  },
+  "safety": {
+    "model_instantiated": false,
+    "inference_run": false,
+    "training_run": false,
+    "checkpoint_written": false,
+    "gpu_used": false
+  },
+  "prior_audits_read": [
+    "experiments/backend_adapter_architecture_audit_20261018/metrics.json",
+    "experiments/backend_adapter_architecture_audit_20261018/experiment_report.md",
+    "experiments/checkpoint_data_condition_audit_20261018_metrics.json",
+    "experiments/p8_10720_tail_condition20_20261018/config.yaml",
+    "experiments/p8_10720_tail_condition20_20261018/experiment_report.md"
+  ],
+  "retry_count": 1,
+  "failure_record": "failures.json",
+  "corrected_attempt": {
+    "attempt": 2,
+    "launcher": "PYTHONPATH=/data/coding/sgmse PATH=/data/coding/sgmse/env/bin:$PATH /data/coding/sgmse/env/bin/python experiments/p8_noisy_condition_path_audit_20261018/audit.py",
+    "outcome": "success",
+    "scope_authorization": "Research Lead authorized corrected import launcher after first failure",
+    "additional_dependencies_installed": false
+  },
+  "git_status_capture_timing": "after creation of audit script/config/failure artifacts, before metadata/report completion",
+  "causal_findings": {
+    "path": "direct six-real-channel concatenation plus progressive input skip",
+    "channel_order": [
+      "x_t.real",
+      "x_t.imag",
+      "noisy.real",
+      "noisy.imag",
+      "anchor.real",
+      "anchor.imag"
+    ],
+    "learned_evidence_selector_active": false,
+    "cross_attention_conditioning_active": false,
+    "film_conditioning_active": false,
+    "anchor_waveform_held_by_existing_pilot": true,
+    "normalization_peak_held_by_existing_pilot": true,
+    "reverse_trajectory_held": false,
+    "inference_evidence_generated_here": false
+  }
+}

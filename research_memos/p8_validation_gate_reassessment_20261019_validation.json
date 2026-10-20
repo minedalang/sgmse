@@ -1,0 +1,49 @@
+{
+  "kind": "root_research_decision_and_metadata_review",
+  "utc": "2026-10-19T06:30:30.556241+00:00",
+  "status": "metadata_accepted_for_limited_train_split_exploratory_design_only",
+  "freeze_files_verified": 15,
+  "freeze_manifest_sha256": "64ce113923ffdee7ff6bcf5eeebc9cb174f2b5f96bdaff1dbf3c006a1fd5644a",
+  "registry_sha256": "6c929a2c2c66e00b0bdf7c15172200f7c37eec522c5adeda29190845362bb6eb",
+  "final_history_review_sha256": "3240ac13207a5539b5eed36f675746d107adc7b40e4981876971f85d2cd88dd3",
+  "model_stage_authorized": false,
+  "audio_decode_mix_models_this_turn": 0,
+  "scope_limit": "Accepts declared current-project exposure scan, not global non-use/pretraining independence, spoken alignment or headroom. No original metrics/registry/freeze changed.",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_source_marker_quarantine_20261019.md",
+      "bytes": 2608,
+      "sha256": "40309cd6e4fb415da57b90e09e147b9fa7147c406f07df772b877c745b43009c"
+    },
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_validation_gate_critic_20261019.md",
+      "bytes": 8591,
+      "sha256": "4b4e36235c53b168cf174518d8e09de1e2510bc8954ef63f3d73b2dbe8d65552"
+    },
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_validation_gate_reassessment_20261019.md",
+      "bytes": 6108,
+      "sha256": "89c218ec67afce791f79ff6e947c61836f5420351ef5f77ec2496886f63fc8a9"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 9187,
+      "sha256": "3b4b25b77d66a2c00e0b1e91b69a611d59251e327e38d906a3c23539a0b13aa2"
+    },
+    {
+      "path": "/data/research/p8_low_snr.md",
+      "bytes": 8391,
+      "sha256": "a4ac57717fe351ec200ab011477753743a7028e6c4f3a0357bd1a2078767ef0a"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 10288,
+      "sha256": "51c27806e851282fdb1d6790f08c1136854a59ce415a689720e5b8baec4b6ff9"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 12114,
+      "sha256": "0c982b533714cf940761ce79c115b6d49f18d75d6e65eb1d713c54ac885394e3"
+    }
+  ]
+}

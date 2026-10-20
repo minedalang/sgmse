@@ -1,0 +1,47 @@
+{
+  "status": "prepared_only",
+  "driver_SHA256": "74f838ffbf2004136e440943989c188d5f9a563f0097e0861ea35130a9b65bcf",
+  "config_SHA256": "f6ff1db0f615b0b62ee28e751a40422aeae45d836c0766c270270f3e5a4dad19",
+  "analysis_plan_SHA256": "3d99b9a7d5806e98f504e5dc0ab68df63caa0fa15e0bd417ad412b74858a5f40",
+  "source_locks_count": 37,
+  "source_hashes_rechecked": true,
+  "provider_verified": "codex_tools_compat",
+  "ids": [
+    "p226_027",
+    "p226_028",
+    "p287_037",
+    "p287_054"
+  ],
+  "checks": {
+    "status": "passed",
+    "AST_parse": true,
+    "safe_import_without_heavy_libraries": true,
+    "exhaustive_independent_alignment_pairs": 225,
+    "normalization_and_ties": true,
+    "empty_hypothesis_and_reference": true,
+    "unclipped_WER_over_1": true,
+    "micro_vs_sentence_mean": true,
+    "raw_publisher_reference_hashes": true,
+    "expected_reference_word_counts": [
+      12,
+      9,
+      9,
+      9
+    ],
+    "source_hashes": true,
+    "missing_supervisor_and_existing_STARTED_and_bad_hash_refused": true,
+    "offline_socket_URL_guards": true,
+    "actual_installed_options_dataclass_AST_only": true,
+    "models": 0,
+    "audio_decodes": 0,
+    "network_calls": 0,
+    "test_script_SHA256": "88f7171a9f15d082c37f2110816effc8b5ebc7f0eaabc349b04ad63fac0088f5"
+  },
+  "model_loads": 0,
+  "transcribe_api_calls": 0,
+  "audio_decodes": 0,
+  "network_calls": 0,
+  "resample_calls": 0,
+  "training_calls": 0,
+  "execution_artifacts_absent": true
+}

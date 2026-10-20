@@ -1,0 +1,24 @@
+schema_version: 1
+experiment_id: rrsd_control1000_full_matched_20261017
+purpose: matched_full_test_control_for_conflict_weight_001
+checkpoint: joint_train_logs/acg99gpj-control1000/epoch=0-step=1000.ckpt
+initial_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+training_steps: 1000
+conflict_weight: 0.0
+input_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/noisy
+clean_dir: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5_testset/clean
+n: 150
+sampler: pc
+corrector: none
+N: 30
+snr: 0.5
+seed: 2026
+use_ema: true
+rrsd: true
+rrsd_scale: 1.0
+rrsd_t_max: 1.0
+inference_command: 'PATH=/data/coding/sgmse/env/bin:$PATH env/bin/python -u joint_enhance_by_dir.py --ckpt joint_train_logs/acg99gpj-control1000/epoch=0-step=1000.ckpt --in_dir .../noisy --out_dir experiment_logs/rrsd_control1000_full_matched_20261017 --device cuda --sampler_type pc --corrector none --N 30 --snr 0.5 --use_ema --rrsd --rrsd_scale 1.0 --rrsd_t_max 1.0 --seed 2026'
+evaluator: '/data/coding/mymetrics/env/bin/python get_metrics_for_papertable_forDNS.py --dnsmos --dnsmos_device cpu'
+metrics_csv: experiment_logs/rrsd_control1000_full_matched_20261017/metrics/metrics.csv
+comparison: experiments/rrsd_conflict_weight001_full_test/matched_comparison.json
+mutates_dataset: false

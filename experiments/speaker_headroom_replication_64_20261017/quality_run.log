@@ -1,0 +1,3 @@
+/data/coding/sgmse/experiments/speaker_headroom_replication_64_20261017/evaluate_quality.py:68: RuntimeWarning: DNSMOS CUDA unavailable; CPU fallback: 'str' object has no attribute 'type'
+  warnings.warn(f'DNSMOS CUDA unavailable; CPU fallback: {exc}',RuntimeWarning)
+evaluated 16/128 utterances

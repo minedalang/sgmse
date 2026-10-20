@@ -1,0 +1,18 @@
+{
+  "status": "completed",
+  "failures": [],
+  "human_responses": 0,
+  "model_calls": 0,
+  "network_bytes": 0,
+  "new_server": false,
+  "source_pcm_container_reads": 24,
+  "source_pcm_sample_values_converted": 0,
+  "crop_wavs": 94,
+  "material_id": "7f78189e06c3d0599a53f144c7de2ee296622019409cfb0db38c84277c194384",
+  "source_files": 24,
+  "planned_judgments": 94,
+  "human_result_status": "unrated_optional_TODO",
+  "source_pre_post_match": true,
+  "seconds": 0.17203641403466463,
+  "pid": 54877
+}

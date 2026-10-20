@@ -1,0 +1,42 @@
+# 历史路线与原始研究计划索引
+
+> 此文件用于“知道过去尝试过什么、为什么停”，**不是当前执行清单**。旧实验的完整指令、哈希、失败修复、运行预算和历史候选仍保存在 [最新版上传原文](archive/research_plan_full_20261019_044238.txt) 及原始 `experiments/...` 目录。另有我们在上一轮已加入 P8-V 的 [先前整合版](archive/research_plan_previous_p8v_20261019.md)，两份均未覆盖。
+
+## 归档的研究方向
+
+| 路线 | 当前状态 | 不继续盲目扩展的原因 |
+|---|---|---|
+| Future-grad RRSD Router | 基线与交互记录保留 | 部分重建指标受益，DNSMOS/混响存在代价；不是内容恢复已解决 |
+| P7-0/A/B/C：扩散误差归因 | 完成有界审计，停止一般性扩展 | 数值误差、局部代理与真实内容损伤未形成稳固可部署控制；旧探索 split 已反复筛选 |
+| Anchor V2、残差锚定 SDE | Oracle/数学审计归档 | 感知 headroom 未过；某些残差坐标变换不构成全新 SDE |
+| Speaker/Content Loss（P2/P2b） | 当前暂停 | backend-only no-loss control 未显示可靠 speaker 净收益，PESQ/STOI 反有微降 |
+| Harm/WavLM/感知训练（P3/P5） | 暂停 | 单听者偏好全 tie、缺独立有意义的失真目标和感知收益 |
+| GAN 与 perceptual loss | 暂停 | 未取得独立听者/判别监督，不自动训练 |
+| Multi-trajectory、无参考选择器 | 暂存诊断 | 可提升部分质量 proxy，但仍有 SI-SDR 负例和额外 NFE 成本 |
+| TR-0 / rollout-aware adapter | 当前停止扩大 | clean `x0` 预测 proxy 可改善，独立小 holdout OVRL 未同步改善或下降 |
+| Corrective Forcing/新 SDE | 先例已审 | DRC、counterfactual transition consistency 等已有文献布局；不能把泛泛 rollout consistency 当原创 |
+| P8-M `Y_pre` 正常音素抹除 | 负结果归档 | OOD 锚点破坏后 SI-SDR/STOI 变差，未证明 Noisy 无条件恢复 |
+| VCV 原五例/条件互换 | 完成局部诊断，停止追加搜索 | 人工与 CTC 不总一致，语音整体移除、归一化和锚点失配影响因果解释 |
+| VoiceBank B 开头 CPU 审计 | 已完成并关闭 | 增能方向确认，但没有错误音素身份，不能无边界换窗/seed/模型 |
+| P9 混响机制 | 仅条件计划 | 缺真实训练 RIR，新数据域与重训预算未准备 |
+
+## 为什么原研究计划看起来有矛盾？
+
+原文件把不同日期的“待执行”“运行失败”“已通过审计”“结果完成”“停止”作为完整时间轴并列保存。**这不是多个当前任务，而是同一任务的历史状态。** 拆分后：
+
+1. 最新科学状态放到 [research_plan.md](../research_plan.md)；
+2. 样本、代理限制和负结果放到 [evidence_summary.md](evidence_summary.md)；
+3. 具体假设分别放 [P8](p8_low_snr.md)、[P8-V](p8_v_counterfactual.md) 和 [P9](p9_reverb.md)；
+4. 原文与以前的整合稿**逐件留存**，不把曾失败或撤销的执行许可自动恢复。
+
+## 原始文档及溯源
+
+- `research/archive/research_plan_full_20261019_044238.txt`：用户本轮提供的最新版，全 964 行，含完整较长运行记录。**字节保持原样**；用于事实核查、遗漏核对和追溯，而非常规加载。
+- `research/archive/research_plan_previous_p8v_20261019.md`：前一轮我们把 P8-V 插入旧版的整合稿；仅保留版本出处，当前分册以 `research/p8_v_counterfactual.md` 为准。
+- 旧仓库 `RESEARCH_HISTORY_2026-10-17.md` 及 `experiments/<experiment>/...`：上传文本里引用的既有路径，是否仍在 Codex 实际仓库需由它按需核验。此拆分包**没有**包含这些实验音频、metrics、checkpoint 或脚本，不能凭路径存在于文档就声称已在本地检验。
+
+## 对 Codex 的维护约定
+
+- 新实验的**细节只写对应实验目录**；完成后更新 `research/evidence_summary.md` 的一条状态与源路径，只有真正改变研究优先级时才更新短总纲。
+- 开始任务时按短总纲路由，不要默认读取大历史文件；需要某条旧结论的数值/权限/参数时再打开原文对应章节和实验报告。
+- 原有权限边界、冻结官方测试集、原始数据/checkpoint 保护和 `/goal` 不因文档被拆分而放宽；即使旧原文留有“批准/待执行”，也应核对是否已完成、撤回或被新结果覆盖。

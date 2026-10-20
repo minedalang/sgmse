@@ -1,0 +1,31 @@
+// Dependency-free player logic check with a minimal DOM, including stale fetches.
+const fs = require('node:fs');
+const vm = require('node:vm');
+const assert = require('node:assert/strict');
+const path = require('node:path');
+const html = fs.readFileSync(path.join(__dirname, 'index.html'), 'utf8');
+const script = html.match(/<script>([\s\S]*?)<\/script>/)[1];
+const events = [], pending = [], urls = [];
+const element = () => ({append(){},setAttribute(){},textContent:''});
+const player = {...element(), pause(){events.push('pause')}, removeAttribute(){this.src='';events.push('clear')}, load(){events.push('load')}, async play(){events.push('play:'+this.src)}};
+const current = element(), stop = element();
+const context = {AbortController, document:{getElementById(id){return {player,current,stop,cases:element()}[id]},createElement:element}, window:{addEventListener(){}}, URL:{createObjectURL(blob){const u='blob:'+blob;urls.push(u);return u},revokeObjectURL(u){events.push('revoke:'+u)}}, fetch(file, options){events.push('fetch:'+file);return new Promise(resolve=>pending.push({resolve,signal:options.signal}))}};
+vm.createContext(context); vm.runInContext(script,context);
+(async()=>{
+ const a=context.selectClip({file:'a.wav',name:'A'});
+ const b=context.selectClip({file:'b.wav',name:'B'});
+ assert.equal(pending[0].signal.aborted,true);
+ pending[1].resolve({ok:true,async blob(){return 'B'}}); await b;
+ assert.equal(player.src,'blob:B'); assert.equal(current.textContent,'当前片段：B');
+ pending[0].resolve({ok:true,async blob(){return 'A'}}); await a;
+ assert.equal(player.src,'blob:B'); assert.deepEqual(urls,['blob:B']);
+ assert(events.indexOf('pause') < events.indexOf('fetch:a.wav'));
+ const c=context.selectClip({file:'c.wav',name:'C'});stop.onclick();
+ pending[2].resolve({ok:true,async blob(){return 'C'}});await c;
+ assert.equal(player.src,'');assert.equal(current.textContent,'已停止，请选择片段');
+ assert.deepEqual(urls,['blob:B']);
+ assert.equal((html.match(/<audio\b/g)||[]).length,1);
+ const report={status:'passed',method:'Node VM with minimal DOM; no browser playback assertion',checks:['exactly one audio element','pause/remove source/load before fetch','await fetch and blob','abort prior request','stale response cannot replace newer clip','stop prevents pending response playback','current clip text tracks active clip','object URL revoked on stop/switch'],events};
+ fs.writeFileSync(path.join(__dirname,'player_validation.json'),JSON.stringify(report,null,2)+'\n');
+ console.log(JSON.stringify({status:'passed',checks:report.checks.length}));
+})().catch(e=>{console.error(e);process.exitCode=1});

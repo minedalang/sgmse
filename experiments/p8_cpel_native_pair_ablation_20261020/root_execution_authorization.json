@@ -1,0 +1,52 @@
+{
+  "status": "authorized",
+  "allowed_arms": [
+    "N",
+    "D"
+  ],
+  "approved_at_utc": "2026-10-20T00:08:23.774936+00:00",
+  "config_sha256": "56787f457b21d44345ac476a972ab830ff6695cf3d5532b850fc8be8dfbe2ff2",
+  "code_sha256": {
+    "run_pilot.py": "0773741ea59b498781012bae258bb68197aa3c0b25f164b15b136a8688565d4a",
+    "editing.py": "05b40d9b13c58b224b468d7dae424dfcdbc2d5cc20c83d276f63da5a2d06281a",
+    "loss_helpers.py": "f8d14ad2abdfa52f54b50671beaa7ea83791181717c30a13a095c99e13c0aea9",
+    "gradient_budget.py": "3cc7dac72de799717184c54d89f9f3d63dd2b5fbf939fbbdaf71b7624367bfda"
+  },
+  "registry_sha256": {
+    "train": "23e138517a3860695b44d8d99bd9f3bfa04d1b5f6366ab5ca517cdf2ebbdb2b3",
+    "dev": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc"
+  },
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "baseline_provenance_sha256": "0f3ca82d79d86f77367c40c09a0e3e5d1a149c0f01b24339f907ac3203aa43c7",
+  "core_sha256": {
+    "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a"
+  },
+  "limits": {
+    "seconds_per_arm_including_evaluation": 900,
+    "total_gpu_seconds": 1800,
+    "max_directory_bytes": 335544320,
+    "minimum_free_disk_bytes": 1073741824,
+    "primary_comparison_requires_both_arms_steps": 500,
+    "failed_or_budget_limited_runs": "record terminal partial evidence, no automatic retry or hyperparameter rescue",
+    "network_access": false,
+    "install_packages": false,
+    "original_data_or_checkpoint_writes": false,
+    "frozen_test_access": false
+  },
+  "question": "native edited DSM versus same DSM plus paired response with common clean regression absent",
+  "staging": "N complete500/final64/four controls/frozen unchanged/artifact valid, then unique D; no repeated baseline inference",
+  "old_results_preserved": true,
+  "current_goal_sha256": "269a3ba1f319601e1130da8da9ff2c91f0cc5e27d95b72948c9d52ca1195548b",
+  "not_authorized": [
+    "sweep",
+    "resume",
+    "weight/window/margin/step changes",
+    "test set",
+    "human listening request",
+    "network",
+    "ASR",
+    "full claim of phone recovery"
+  ]
+}

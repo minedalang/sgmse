@@ -1,0 +1,84 @@
+{
+  "status": "passed_with_documented_precision_limit",
+  "no_model_load_or_inference": true,
+  "sources_checkpoint_code_hashes_unchanged": true,
+  "all_nfe30": true,
+  "input_interventions_exact_outside_window_and_same_peak": true,
+  "independent_energy_method": "SciPy periodogram, boxcar, no detrend, density integral",
+  "initial_check_discrepancy": "Float64 reference norm vs recorded NumPy float32 reference norm failed 1e-6 relative tolerance for active L2 vs clean. Recorded values reproduce exactly when original denominator precision is used. No inference failure or retry.",
+  "maximum_relative_L2_precision_difference": 1.863987363624387e-05,
+  "runs_float64_denominator_metrics": [
+    {
+      "tail_rms": 0.001016191272463344,
+      "tail_rms_dbfs": -59.86049078676849,
+      "tail_highband_mean_square_4k_7p5k": 6.730320363077846e-07,
+      "full_clean_speech_active_rmse_vs_clean": 0.0014851757165230805,
+      "outside_window_relative_l2_vs_no_op": 0.0,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.0,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.39989234266446094,
+      "run": "no_op",
+      "tail_rms_delta_db": 0.0,
+      "tail_highband_delta_db": 0.0
+    },
+    {
+      "tail_rms": 5.298367472801446e-05,
+      "tail_rms_dbfs": -85.51715848258968,
+      "tail_highband_mean_square_4k_7p5k": 2.1769571514550576e-11,
+      "full_clean_speech_active_rmse_vs_clean": 0.0014840075309017738,
+      "outside_window_relative_l2_vs_no_op": 0.013640078670995327,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.00857519417871239,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.39957780185400554,
+      "run": "condition_tail_clean",
+      "tail_rms_delta_db": -25.65666769582119,
+      "tail_highband_delta_db": -44.901858561150604
+    },
+    {
+      "tail_rms": 0.000379036933772493,
+      "tail_rms_dbfs": -68.42636939683486,
+      "tail_highband_mean_square_4k_7p5k": 7.414806454446292e-08,
+      "full_clean_speech_active_rmse_vs_clean": 0.0014849215716555672,
+      "outside_window_relative_l2_vs_no_op": 0.009553955483389933,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.007968754399757168,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.399823912619957,
+      "run": "anchor_tail_clean",
+      "tail_rms_delta_db": -8.56587861006637,
+      "tail_highband_delta_db": -9.579359178149172
+    },
+    {
+      "tail_rms": 3.610403081597865e-05,
+      "tail_rms_dbfs": -88.84888617606235,
+      "tail_highband_mean_square_4k_7p5k": 1.8939126583759402e-11,
+      "full_clean_speech_active_rmse_vs_clean": 0.0014844006486804888,
+      "outside_window_relative_l2_vs_no_op": 0.016698260899423115,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.010243581292366495,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.39968365100462977,
+      "run": "both_tail_clean",
+      "tail_rms_delta_db": -28.988395389293864,
+      "tail_highband_delta_db": -45.5067579036421
+    },
+    {
+      "tail_rms": 0.0005211828289319102,
+      "tail_rms_dbfs": -65.66019802277171,
+      "tail_highband_mean_square_4k_7p5k": 2.1299347279019304e-07,
+      "full_clean_speech_active_rmse_vs_clean": 0.0014864672728746554,
+      "outside_window_relative_l2_vs_no_op": 0.3272832079640433,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.3224528568289555,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.4002401018881591,
+      "run": "baseline_seed_plus1",
+      "tail_rms_delta_db": -5.799707236003222,
+      "tail_highband_delta_db": -4.996694424846432
+    },
+    {
+      "tail_rms": 0.0007662105048629944,
+      "tail_rms_dbfs": -62.31303796136952,
+      "tail_highband_mean_square_4k_7p5k": 2.3576036595166215e-07,
+      "full_clean_speech_active_rmse_vs_clean": 0.0014969339680491495,
+      "outside_window_relative_l2_vs_no_op": 0.3312458962672057,
+      "full_clean_speech_active_relative_l2_vs_no_op": 0.32242622953388533,
+      "full_clean_speech_active_relative_l2_vs_clean": 0.40305832144230064,
+      "run": "baseline_seed_plus2",
+      "tail_rms_delta_db": -2.4525471746010297,
+      "tail_highband_delta_db": -4.555649401598388
+    }
+  ]
+}

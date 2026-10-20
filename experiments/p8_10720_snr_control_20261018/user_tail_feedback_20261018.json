@@ -1,0 +1,20 @@
+{
+  "recorded_date": "2026-10-18",
+  "source": "latest user listening feedback in current conversation",
+  "verbatim": "最新听感是 降低20dB 有个现象 off/router最后结束时多了一个/s/的声音，y_pre和clean都没有。在10dB组 off/router吧这个/s/变成更像人说话的声音了，y_pre有一点点但是不像人声音。",
+  "listener_count": 1,
+  "blind": false,
+  "reference_available": true,
+  "noise_minus20dB": {
+    "off_router": "User hears an added final s-like sound.",
+    "clean_y_pre": "User does not hear that sound."
+  },
+  "noise_minus10dB": {
+    "off_router": "User hears the corresponding sound as more speech-like.",
+    "y_pre": "User hears a small residual that does not sound like human speech."
+  },
+  "exact_acoustic_boundary": null,
+  "phoneme_identity_independently_verified": false,
+  "interpretation": "Overall content correspondence in easier controls does not imply absence of local artifacts. Candidate mechanisms include residual noise becoming speech-like, context smearing and added generative speech structure. The 2-second listening clip ends inside the original 30-second recording; a true utterance endpoint must not be assumed.",
+  "availability": "User will be away until tomorrow and explicitly requests autonomous work. Do not wait for further listening responses or treat absence as a judgment."
+}

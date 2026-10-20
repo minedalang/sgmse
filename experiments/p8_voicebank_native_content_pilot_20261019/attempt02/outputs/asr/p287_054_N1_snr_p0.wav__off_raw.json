@@ -1,0 +1,79 @@
+{
+  "request": {
+    "key": "p287_054_N1_snr_p0.wav__off",
+    "id": "p287_054",
+    "arm": "off",
+    "path": "outputs/off/p287_054_N1_snr_p0.wav",
+    "basename": "p287_054_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "input": {
+      "wav_sha256": "06f40a1b474377104dae933b20a12f57fd53293c31694ce7e1c24a1a4954f926",
+      "samples": 51089,
+      "array_sha256": "7309e28d82968fafbbfa5f49d7b970ba301f147c29e33de4994fdc66753ce205",
+      "peak": 0.088348388671875,
+      "rms": 0.011522359171762184
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_054",
+    "original_text": "In time, the First Minister will grow in stature.\n",
+    "raw_text_hex": "496e2074696d652c20746865204669727374204d696e69737465722077696c6c2067726f7720696e20737461747572652e0a",
+    "raw_text_sha256": "3ffaaa575dce52a5ddfff7dd40fa97d6d5bc020bcf7ad868f43f2931b9752579",
+    "archive_entry": "trainset_28spk_txt/p287_054.txt"
+  },
+  "raw_result": {
+    "text": " In time, first minister will grill these staff chairs.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " In time, first minister will grill these staff chairs.",
+        "tokens": [
+          50363,
+          554,
+          640,
+          11,
+          717,
+          5342,
+          481,
+          29901,
+          777,
+          3085,
+          18791,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8404391833714077,
+        "compression_ratio": 0.9310344827586207,
+        "no_speech_prob": 0.07088916748762131
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 47,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

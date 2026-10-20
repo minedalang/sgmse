@@ -1,0 +1,82 @@
+{
+  "request": {
+    "key": "p230_029_N1_snr_m18.wav__frontend",
+    "id": "p230_029",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_029_N1_snr_m18.wav",
+    "basename": "p230_029_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "97db4336f0ab4271ce079bfe5742ebbdb431b0a5530bdf581fa478cc3ebb245f",
+      "samples": 56211,
+      "array_sha256": "2cc533c3ce2f103fb2ec4a74906f8c3be82b9db95a78b7f2a72b04a873e65ac7",
+      "peak": 0.0262451171875,
+      "rms": 0.002625570314553413
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_029",
+    "original_text": "It shouldn't come as a surprise, but it does.\n",
+    "raw_text_hex": "49742073686f756c646e277420636f6d6520617320612073757270726973652c2062757420697420646f65732e0a",
+    "raw_text_sha256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+    "archive_entry": "trainset_28spk_txt/p230_029.txt"
+  },
+  "raw_result": {
+    "text": " Let's show you what it has to do with the system.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Let's show you what it has to do with the system.",
+        "tokens": [
+          50363,
+          3914,
+          338,
+          905,
+          345,
+          644,
+          340,
+          468,
+          284,
+          466,
+          351,
+          262,
+          1080,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0816806554794312,
+        "compression_ratio": 0.875,
+        "no_speech_prob": 0.6681109070777893
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 70,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

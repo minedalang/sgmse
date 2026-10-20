@@ -1,0 +1,61 @@
+{
+  "experiment_id": "rollout_adapter_stable_pilot_20261018",
+  "status": "completed",
+  "device": "cuda",
+  "lr": 1e-05,
+  "steps": 100,
+  "gradient_clip": 1.0,
+  "baseline": {
+    "train_nmse": 0.7725533706446489,
+    "holdout_nmse": 0.4946419782936573
+  },
+  "trained": {
+    "train_nmse": 0.3679973982895414,
+    "holdout_nmse": 0.2850838601589203
+  },
+  "holdout_before": [
+    0.3531116545200348,
+    0.4261920750141144,
+    0.45424219965934753,
+    0.461199551820755,
+    0.4311963617801666,
+    0.5863751769065857,
+    0.6223877668380737,
+    0.6224310398101807
+  ],
+  "holdout_after": [
+    0.37181708216667175,
+    0.2506401836872101,
+    0.25404635071754456,
+    0.28667202591896057,
+    0.4775831401348114,
+    0.19993720948696136,
+    0.19158966839313507,
+    0.2483852207660675
+  ],
+  "holdout_relative_change": -0.4236561540078737,
+  "history": [
+    {
+      "step": 1,
+      "loss": 0.772574245929718,
+      "grad_norm_before_clip": 12.8897066116333
+    },
+    {
+      "step": 10,
+      "loss": 0.952205240726471,
+      "grad_norm_before_clip": 35.278533935546875
+    },
+    {
+      "step": 50,
+      "loss": 0.409706175327301,
+      "grad_norm_before_clip": 5.3121337890625
+    },
+    {
+      "step": 100,
+      "loss": 0.6022995114326477,
+      "grad_norm_before_clip": 28.12824821472168
+    }
+  ],
+  "runtime_seconds": 56.98412883700803,
+  "interpretation": "Follow-up stability check after the 1e-3 pilot. This remains a clean x0 proxy only; no final audio metric or test-set inference."
+}

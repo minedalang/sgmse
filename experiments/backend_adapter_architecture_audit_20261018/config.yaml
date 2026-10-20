@@ -1,0 +1,12 @@
+experiment_id: backend_adapter_architecture_audit_20261018
+purpose: read_only_audit_of_small_backend_adapter_insertion_candidates
+status: audit_complete_no_training
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+dataset_modified: false
+checkpoint_modified: false
+training_started: false
+candidate_design:
+  target: late_decoder_spatial_convolutions_in_dnn_all_modules_31_32_33
+  rank: 4
+  parameter_count_method: flattened_conv_lora_estimate
+  note: estimate_only; no adapter implementation or checkpoint modification

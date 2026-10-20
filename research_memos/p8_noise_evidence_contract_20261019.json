@@ -1,0 +1,475 @@
+{
+  "kind": "static_checkpoint_bytes_and_analytic_noise_model_contract_not_inference",
+  "utc": "2026-10-19T07:08:31.074588+00:00",
+  "checkpoint": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+  "checkpoint_bytes": 221378869,
+  "checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "pickle_member": "archive/data.pkl",
+  "pickle_bytes": 113258,
+  "pickle_sha256": "acb90863638763908f18b69f104f0df31828198e859947a4d4a37583f793f6ff",
+  "opcodes_scanned": 23347,
+  "hyper_parameters_opcode_offset": 105371,
+  "saved_parameter_evidence": {
+    "backbone": {
+      "saved_value_if_direct": "ncsnpp_v2",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105404,
+      "value_byte_offset": 105422,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "backbone",
+          105404
+        ],
+        [
+          "LONG_BINPUT",
+          6082,
+          105417
+        ],
+        [
+          "BINUNICODE",
+          "ncsnpp_v2",
+          105422
+        ]
+      ]
+    },
+    "sde": {
+      "saved_value_if_direct": "ouve",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105441,
+      "value_byte_offset": 105454,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "sde",
+          105441
+        ],
+        [
+          "LONG_BINPUT",
+          6084,
+          105449
+        ],
+        [
+          "BINUNICODE",
+          "ouve",
+          105454
+        ]
+      ]
+    },
+    "loss_type": {
+      "saved_value_if_direct": "score_matching",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105595,
+      "value_byte_offset": 105614,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "loss_type",
+          105595
+        ],
+        [
+          "LONG_BINPUT",
+          6091,
+          105609
+        ],
+        [
+          "BINUNICODE",
+          "score_matching",
+          105614
+        ]
+      ]
+    },
+    "loss_weighting": {
+      "saved_value_if_direct": "sigma^2",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105638,
+      "value_byte_offset": 105662,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "loss_weighting",
+          105638
+        ],
+        [
+          "LONG_BINPUT",
+          6093,
+          105657
+        ],
+        [
+          "BINUNICODE",
+          "sigma^2",
+          105662
+        ]
+      ]
+    },
+    "network_scaling": {
+      "saved_value_if_direct": "1/t",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105679,
+      "value_byte_offset": 105704,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "network_scaling",
+          105679
+        ],
+        [
+          "LONG_BINPUT",
+          6095,
+          105699
+        ],
+        [
+          "BINUNICODE",
+          "1/t",
+          105704
+        ]
+      ]
+    },
+    "c_in": {
+      "saved_value_if_direct": "1",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105717,
+      "value_byte_offset": 105731,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "c_in",
+          105717
+        ],
+        [
+          "LONG_BINPUT",
+          6097,
+          105726
+        ],
+        [
+          "BINUNICODE",
+          "1",
+          105731
+        ]
+      ]
+    },
+    "c_out": {
+      "saved_value_if_direct": null,
+      "direct_primitive": false,
+      "unresolved_memo_reference_if_any": {
+        "opcode": "LONG_BINGET",
+        "argument": 6098
+      },
+      "key_byte_offset": 105742,
+      "value_byte_offset": 105757,
+      "value_opcode": "LONG_BINGET",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "c_out",
+          105742
+        ],
+        [
+          "LONG_BINPUT",
+          6099,
+          105752
+        ],
+        [
+          "LONG_BINGET",
+          6098,
+          105757
+        ]
+      ]
+    },
+    "c_skip": {
+      "saved_value_if_direct": "0",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105762,
+      "value_byte_offset": 105778,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "c_skip",
+          105762
+        ],
+        [
+          "LONG_BINPUT",
+          6100,
+          105773
+        ],
+        [
+          "BINUNICODE",
+          "0",
+          105778
+        ]
+      ]
+    },
+    "train_type": {
+      "saved_value_if_direct": "mode2",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 105468,
+      "value_byte_offset": 105488,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "train_type",
+          105468
+        ],
+        [
+          "LONG_BINPUT",
+          6086,
+          105483
+        ],
+        [
+          "BINUNICODE",
+          "mode2",
+          105488
+        ]
+      ]
+    },
+    "mode2_include_noisy_main": {
+      "saved_value_if_direct": true,
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 106164,
+      "value_byte_offset": 106198,
+      "value_opcode": "NEWTRUE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "mode2_include_noisy_main",
+          106164
+        ],
+        [
+          "LONG_BINPUT",
+          6114,
+          106193
+        ],
+        [
+          "NEWTRUE",
+          null,
+          106198
+        ]
+      ]
+    },
+    "theta": {
+      "saved_value_if_direct": 1.5,
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 106199,
+      "value_byte_offset": 106214,
+      "value_opcode": "BINFLOAT",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "theta",
+          106199
+        ],
+        [
+          "LONG_BINPUT",
+          6115,
+          106209
+        ],
+        [
+          "BINFLOAT",
+          1.5,
+          106214
+        ]
+      ]
+    },
+    "sigma_min": {
+      "saved_value_if_direct": 0.05,
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 106223,
+      "value_byte_offset": 106242,
+      "value_opcode": "BINFLOAT",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "sigma_min",
+          106223
+        ],
+        [
+          "LONG_BINPUT",
+          6116,
+          106237
+        ],
+        [
+          "BINFLOAT",
+          0.05,
+          106242
+        ]
+      ]
+    },
+    "sigma_max": {
+      "saved_value_if_direct": 0.5,
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 106251,
+      "value_byte_offset": 106270,
+      "value_opcode": "BINFLOAT",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "sigma_max",
+          106251
+        ],
+        [
+          "LONG_BINPUT",
+          6117,
+          106265
+        ],
+        [
+          "BINFLOAT",
+          0.5,
+          106270
+        ]
+      ]
+    },
+    "spec_factor": {
+      "saved_value_if_direct": 0.15,
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 107530,
+      "value_byte_offset": 107551,
+      "value_opcode": "BINFLOAT",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "spec_factor",
+          107530
+        ],
+        [
+          "LONG_BINPUT",
+          6161,
+          107546
+        ],
+        [
+          "BINFLOAT",
+          0.15,
+          107551
+        ]
+      ]
+    },
+    "spec_abs_exponent": {
+      "saved_value_if_direct": 0.5,
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 107560,
+      "value_byte_offset": 107587,
+      "value_opcode": "BINFLOAT",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "spec_abs_exponent",
+          107560
+        ],
+        [
+          "LONG_BINPUT",
+          6162,
+          107582
+        ],
+        [
+          "BINFLOAT",
+          0.5,
+          107587
+        ]
+      ]
+    },
+    "normalize": {
+      "saved_value_if_direct": "noisy",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 107596,
+      "value_byte_offset": 107615,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "normalize",
+          107596
+        ],
+        [
+          "LONG_BINPUT",
+          6163,
+          107610
+        ],
+        [
+          "BINUNICODE",
+          "noisy",
+          107615
+        ]
+      ]
+    },
+    "transform_type": {
+      "saved_value_if_direct": "exponent",
+      "direct_primitive": true,
+      "unresolved_memo_reference_if_any": null,
+      "key_byte_offset": 107630,
+      "value_byte_offset": 107654,
+      "value_opcode": "BINUNICODE",
+      "opcode_evidence": [
+        [
+          "BINUNICODE",
+          "transform_type",
+          107630
+        ],
+        [
+          "LONG_BINPUT",
+          6165,
+          107649
+        ],
+        [
+          "BINUNICODE",
+          "exponent",
+          107654
+        ]
+      ]
+    }
+  },
+  "inspection_limit": "Exact unique key/immediately following primitive opcode windows after hyper_parameters marker. Memo-reference values remain unresolved, not guessed. No executing/reconstructing arbitrary pickle objects; not a full semantic unpickler or runtime override check.",
+  "preliminary_query_failure": {
+    "error": "AssertionError on non-direct primitive value; BINGET memo reference encountered",
+    "effect": "Read-only query stopped before writing any result file. No unpickle/model/audio/network.",
+    "correction": "Record unresolved memo references rather than broadening parser or guessing values; required transform fields have direct primitive evidence."
+  },
+  "unpickle_executions": 0,
+  "torch_imports": 0,
+  "weight_loads": 0,
+  "audio_sample_decodes": 0,
+  "new_scientific_model_or_metric_runs": 0,
+  "network_calls": 0,
+  "analytic_inverse_gamma_examples": [
+    {
+      "context_posterior_shape": 4.0,
+      "context_posterior_scale": 2.0,
+      "event_dimension": 2,
+      "RSS0": 9.0,
+      "RSS1": 4.0,
+      "logpredictive_ratio": 2.427539078908504
+    },
+    {
+      "context_posterior_shape": 4.0,
+      "context_posterior_scale": 1000.0,
+      "event_dimension": 2,
+      "RSS0": 9.0,
+      "RSS1": 4.0,
+      "logpredictive_ratio": 0.012459513050894482
+    }
+  ],
+  "analytic_monotonicity_checks": 75,
+  "scope": "Real-valued toy residual vector, shared candidate-independent context posterior; no speech experiment or confidence calibration. Ranking invariant to shared scalar variance integration; not a novel selector.",
+  "previous_metrics_unchanged": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04"
+}

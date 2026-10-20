@@ -1,0 +1,3329 @@
+{
+  "experiment_id": "p8_q_external_corpus_audit_20261018",
+  "status": "completed_metadata_only",
+  "official_record": "https://zenodo.org/records/3538223",
+  "title": "The Consonant Challenge Corpus",
+  "doi": "10.5281/zenodo.3538223",
+  "fetch": {
+    "timestamp_utc": "2026-10-18T11:39:15.501233+00:00",
+    "cap_bytes": 2000000,
+    "network_body_bytes": 103288,
+    "proxy_fallback_used": false,
+    "attempts": [
+      {
+        "url": "https://zenodo.org/api/records/3538223",
+        "filename": "record.json",
+        "mode": "direct",
+        "status": 200,
+        "final_url": "https://zenodo.org/api/records/3538223",
+        "bytes_received": 8852,
+        "success": true,
+        "content_type": "application/json",
+        "content_length": "8852",
+        "saved_bytes": 8852,
+        "sha256": "b581f11dd6418902349d5913bfa3d9e81bc1dd6d611e60aad22ec6257c18f4ad",
+        "elapsed_seconds": 1.1605938440188766
+      },
+      {
+        "url": "https://zenodo.org/records/3538223/files/readme.pdf?download=1",
+        "filename": "readme.pdf",
+        "mode": "direct",
+        "status": 200,
+        "final_url": "https://zenodo.org/records/3538223/files/readme.pdf?download=1",
+        "bytes_received": 86400,
+        "success": true,
+        "content_type": "application/octet-stream, application/octet-stream",
+        "content_length": "86400",
+        "saved_bytes": 86400,
+        "sha256": "e6362b528a063cbf44657b304acef663ceb407e846297f64f986aa139cd98a05",
+        "elapsed_seconds": 7.5034200981026515
+      },
+      {
+        "url": "https://zenodo.org/records/3538223/files/handsegm.91.mlf.txt?download=1",
+        "filename": "handsegm.91.mlf.txt",
+        "mode": "direct",
+        "status": 200,
+        "final_url": "https://zenodo.org/records/3538223/files/handsegm.91.mlf.txt?download=1",
+        "bytes_received": 8036,
+        "success": true,
+        "content_type": "text/plain; charset=utf-8, text/plain; charset=utf-8",
+        "content_length": "8036",
+        "saved_bytes": 8036,
+        "sha256": "f373fbfa6c065b85ea98ac0be86644ea108a35c0189fca061aebe1420cf1e646",
+        "elapsed_seconds": 0.7786584720015526
+      }
+    ]
+  },
+  "license": {
+    "metadata_access_right": "open",
+    "metadata_license": {
+      "id": "cc-by-4.0"
+    },
+    "explicit_license_identifier": true,
+    "full_legal_license_text_in_record_or_readme": false,
+    "readme_license_mentions": [],
+    "assessment": "CC BY 4.0 is explicitly designated by metadata. Full legal terms are not reproduced in fetched record JSON or README. License legal code was outside the three authorized fetch URLs and was not fetched; detailed reuse obligations are not audited here."
+  },
+  "downloadable_files": [
+    {
+      "name": "train.zip",
+      "size_bytes": 169755879,
+      "checksum": "md5:53a9ede7b84cfb61e4189ccd3149a744"
+    },
+    {
+      "name": "dev_binaural.zip",
+      "size_bytes": 104063498,
+      "checksum": "md5:7775d08827a4e8f40181cc0f09e8aa3d"
+    },
+    {
+      "name": "segmentation_testsets.zip",
+      "size_bytes": 38727,
+      "checksum": "md5:f9c033e52e966a2e43a7b3f0bed9ce8f"
+    },
+    {
+      "name": "segmentation_training.mlf.txt",
+      "size_bytes": 500224,
+      "checksum": "md5:da1ef5d762a890068f8d116eecf6d334"
+    },
+    {
+      "name": "readme.pdf",
+      "size_bytes": 86400,
+      "checksum": "md5:530407e42cf4f1ba8c16c725765c88b3"
+    },
+    {
+      "name": "handsegm.91.mlf.txt",
+      "size_bytes": 8036,
+      "checksum": "md5:6cb12316c67b4303760e91809c29bd90"
+    },
+    {
+      "name": "asr.zip",
+      "size_bytes": 1080519,
+      "checksum": "md5:efbc12e686c935b549fbd35e976c5e5e"
+    },
+    {
+      "name": "dev.zip",
+      "size_bytes": 69148137,
+      "checksum": "md5:5f0e42270de421876292eb3844162fbb"
+    },
+    {
+      "name": "test_binaural.zip",
+      "size_bytes": 201826628,
+      "checksum": "md5:da0d8817ee0d07fc51defe0ec9b24170"
+    },
+    {
+      "name": "test.zip",
+      "size_bytes": 142547415,
+      "checksum": "md5:4860d977e9dfd246e8ae9448b8f0dabd"
+    }
+  ],
+  "train_zip_size_bytes": 169755879,
+  "corpus_documentation": {
+    "talkers": {
+      "female": 12,
+      "male": 12,
+      "native_language": "English",
+      "age_range": [
+        18,
+        49
+      ]
+    },
+    "consonants": 24,
+    "target_consonants_listed": [
+      "k",
+      "g",
+      "d"
+    ],
+    "vowels_ipa": [
+      "iː",
+      "uː",
+      "æ"
+    ],
+    "vowel_contexts": 9,
+    "stress_patterns": {
+      "1": "front",
+      "2": "end"
+    },
+    "nominal_full_factorial_tokens": 10368,
+    "train": {
+      "female_talkers": 8,
+      "male_talkers": 8,
+      "usable_clean_tokens": 6664
+    },
+    "test": {
+      "held_out_talkers": 8,
+      "sets": 7,
+      "tokens_per_set": 384,
+      "instances_per_consonant_per_set": 16
+    },
+    "development": "dev.zip and dev_binaural.zip are listed; specific development speaker allocation/count is not specified in the fetched README.",
+    "sample_rate_after_postprocessing_hz": 25000,
+    "filename_pattern": "(f|m)<speaker_id><vowel><consonant><vowel><stress>.wav",
+    "filename_example_documentation_inconsistencies": [
+      "README states speaker IDs 1–24 but uses m25adu2.wav as example.",
+      "README describes the final vowel of m25adu2.wav as /iː/ despite u in filename; no silent correction assumed."
+    ],
+    "pronunciation_screening": "README reports pilot listening tests to identify unusable tokens due to poor pronunciations or other problems; no per-file independently corrected identity table inspected."
+  },
+  "manual_segmentation": {
+    "metadata_description": "91 hand-segmented VCVs in HTK format; at least three items per consonant with identical first/second vowels, plus 19 randomly selected VCVs.",
+    "parsed_entry_count": 91,
+    "unique_filenames": 91,
+    "consonant_counts": {
+      "b": 8,
+      "ch": 6,
+      "d": 4,
+      "dh": 3,
+      "dj": 3,
+      "f": 5,
+      "g": 3,
+      "h": 3,
+      "k": 3,
+      "l": 3,
+      "m": 3,
+      "n": 5,
+      "ng": 6,
+      "p": 3,
+      "r": 3,
+      "s": 3,
+      "sh": 6,
+      "t": 3,
+      "th": 3,
+      "v": 3,
+      "w": 3,
+      "y": 3,
+      "z": 3,
+      "zh": 3
+    },
+    "target_consonant_filenames": {
+      "k": [
+        "*/f23iki1.lab",
+        "*/m9aka1.lab",
+        "*/m10uku2.lab"
+      ],
+      "g": [
+        "*/m8igi1.lab",
+        "*/m2ugu1.lab",
+        "*/f11aga1.lab"
+      ],
+      "d": [
+        "*/m4udu1.lab",
+        "*/m4udu2.lab",
+        "*/f22idi1.lab",
+        "*/m8ada1.lab"
+      ]
+    },
+    "filename_parse_count": 91,
+    "filename_consonant_vs_segment_disagreements": [],
+    "same_vowel_context_count": 76,
+    "entries": [
+      {
+        "filename": "*/f11aba1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1300000,
+            "label": "aa1"
+          },
+          {
+            "start": 1300000,
+            "end": 2100000,
+            "label": "b"
+          },
+          {
+            "start": 2100000,
+            "end": 3600000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "b",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f20angi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1300000,
+            "label": "aa1"
+          },
+          {
+            "start": 1300000,
+            "end": 3600000,
+            "label": "ng"
+          },
+          {
+            "start": 3600000,
+            "end": 5500000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "ng",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "a",
+          "consonant": "ng",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f24ibu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1600000,
+            "label": "iy1"
+          },
+          {
+            "start": 1600000,
+            "end": 2400000,
+            "label": "b"
+          },
+          {
+            "start": 2400000,
+            "end": 5000000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "i",
+          "consonant": "b",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m15isha1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2500000,
+            "label": "iy1"
+          },
+          {
+            "start": 2500000,
+            "end": 4100000,
+            "label": "sh"
+          },
+          {
+            "start": 4100000,
+            "end": 6500000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "sh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "i",
+          "consonant": "sh",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m4udu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1500000,
+            "label": "uw1"
+          },
+          {
+            "start": 1500000,
+            "end": 2300000,
+            "label": "d"
+          },
+          {
+            "start": 2300000,
+            "end": 4600000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "d",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "u",
+          "consonant": "d",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f11aba2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1000000,
+            "label": "aa1"
+          },
+          {
+            "start": 1000000,
+            "end": 1800000,
+            "label": "b"
+          },
+          {
+            "start": 1800000,
+            "end": 3600000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "b",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f20angu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 3400000,
+            "label": "ng"
+          },
+          {
+            "start": 3400000,
+            "end": 5600000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "ng",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "a",
+          "consonant": "ng",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f24icha1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1500000,
+            "label": "iy1"
+          },
+          {
+            "start": 1500000,
+            "end": 3100000,
+            "label": "ch"
+          },
+          {
+            "start": 3100000,
+            "end": 5000000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "ch",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "i",
+          "consonant": "ch",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m15isha2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2300000,
+            "label": "iy1"
+          },
+          {
+            "start": 2300000,
+            "end": 4000000,
+            "label": "sh"
+          },
+          {
+            "start": 4000000,
+            "end": 6200000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "sh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "i",
+          "consonant": "sh",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m4udu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1300000,
+            "label": "uw1"
+          },
+          {
+            "start": 1300000,
+            "end": 2300000,
+            "label": "d"
+          },
+          {
+            "start": 2300000,
+            "end": 5100000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "d",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "u",
+          "consonant": "d",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f11abi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1600000,
+            "label": "aa1"
+          },
+          {
+            "start": 1600000,
+            "end": 2700000,
+            "label": "b"
+          },
+          {
+            "start": 2700000,
+            "end": 4800000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "b",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f20angu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1200000,
+            "label": "aa1"
+          },
+          {
+            "start": 1200000,
+            "end": 3100000,
+            "label": "ng"
+          },
+          {
+            "start": 3100000,
+            "end": 5700000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "ng",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "a",
+          "consonant": "ng",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f24icha2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 900000,
+            "label": "iy1"
+          },
+          {
+            "start": 900000,
+            "end": 2000000,
+            "label": "ch"
+          },
+          {
+            "start": 2000000,
+            "end": 3900000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "ch",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "i",
+          "consonant": "ch",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m15ishi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 3100000,
+            "label": "iy1"
+          },
+          {
+            "start": 3100000,
+            "end": 5300000,
+            "label": "sh"
+          },
+          {
+            "start": 5300000,
+            "end": 8100000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "sh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "i",
+          "consonant": "sh",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m4ufa1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1600000,
+            "label": "uw1"
+          },
+          {
+            "start": 1600000,
+            "end": 2900000,
+            "label": "f"
+          },
+          {
+            "start": 2900000,
+            "end": 4900000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "f",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "u",
+          "consonant": "f",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f11abi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1100000,
+            "label": "aa1"
+          },
+          {
+            "start": 1100000,
+            "end": 2100000,
+            "label": "b"
+          },
+          {
+            "start": 2100000,
+            "end": 4500000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "b",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f20ani1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 2900000,
+            "label": "n"
+          },
+          {
+            "start": 2900000,
+            "end": 4800000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "n",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "a",
+          "consonant": "n",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f24ichi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1800000,
+            "label": "iy1"
+          },
+          {
+            "start": 1800000,
+            "end": 3300000,
+            "label": "ch"
+          },
+          {
+            "start": 3300000,
+            "end": 5500000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "ch",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "i",
+          "consonant": "ch",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m15ishi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2400000,
+            "label": "iy1"
+          },
+          {
+            "start": 2400000,
+            "end": 4600000,
+            "label": "sh"
+          },
+          {
+            "start": 4600000,
+            "end": 7600000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "sh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "i",
+          "consonant": "sh",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m4ufa2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 1000000,
+            "label": "uw1"
+          },
+          {
+            "start": 1000000,
+            "end": 2100000,
+            "label": "f"
+          },
+          {
+            "start": 2100000,
+            "end": 4400000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "f",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "u",
+          "consonant": "f",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f11abu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1800000,
+            "label": "aa1"
+          },
+          {
+            "start": 1800000,
+            "end": 3000000,
+            "label": "b"
+          },
+          {
+            "start": 3000000,
+            "end": 4900000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "b",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f20ani2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1400000,
+            "label": "aa1"
+          },
+          {
+            "start": 1400000,
+            "end": 3000000,
+            "label": "n"
+          },
+          {
+            "start": 3000000,
+            "end": 5400000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "n",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "a",
+          "consonant": "n",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f24ichi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1300000,
+            "label": "iy1"
+          },
+          {
+            "start": 1300000,
+            "end": 2600000,
+            "label": "ch"
+          },
+          {
+            "start": 2600000,
+            "end": 5600000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "ch",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "i",
+          "consonant": "ch",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m5ubu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1600000,
+            "label": "uw1"
+          },
+          {
+            "start": 1600000,
+            "end": 3100000,
+            "label": "b"
+          },
+          {
+            "start": 3100000,
+            "end": 5300000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "5",
+          "first_vowel": "u",
+          "consonant": "b",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f6ibi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2400000,
+            "label": "iy1"
+          },
+          {
+            "start": 2400000,
+            "end": 3300000,
+            "label": "b"
+          },
+          {
+            "start": 3300000,
+            "end": 5400000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "b",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "6",
+          "first_vowel": "i",
+          "consonant": "b",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f22idi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2100000,
+            "label": "iy1"
+          },
+          {
+            "start": 2100000,
+            "end": 3100000,
+            "label": "d"
+          },
+          {
+            "start": 3100000,
+            "end": 6200000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "d",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "22",
+          "first_vowel": "i",
+          "consonant": "d",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m8ada1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1600000,
+            "label": "aa1"
+          },
+          {
+            "start": 1600000,
+            "end": 3000000,
+            "label": "d"
+          },
+          {
+            "start": 3000000,
+            "end": 4500000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "d",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "a",
+          "consonant": "d",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m8igi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2200000,
+            "label": "iy1"
+          },
+          {
+            "start": 2200000,
+            "end": 3800000,
+            "label": "g"
+          },
+          {
+            "start": 3800000,
+            "end": 6300000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "g",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "i",
+          "consonant": "g",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m2ugu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2500000,
+            "label": "uw1"
+          },
+          {
+            "start": 2500000,
+            "end": 3600000,
+            "label": "g"
+          },
+          {
+            "start": 3600000,
+            "end": 6800000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "g",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "u",
+          "consonant": "g",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f11aga1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 100000,
+            "label": "sil"
+          },
+          {
+            "start": 100000,
+            "end": 1200000,
+            "label": "aa1"
+          },
+          {
+            "start": 1200000,
+            "end": 1900000,
+            "label": "g"
+          },
+          {
+            "start": 1900000,
+            "end": 3200000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "g",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "g",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f11ipi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 2100000,
+            "label": "iy1"
+          },
+          {
+            "start": 2100000,
+            "end": 3400000,
+            "label": "p"
+          },
+          {
+            "start": 3400000,
+            "end": 5100000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "p",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "i",
+          "consonant": "p",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m5upu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1500000,
+            "label": "uw1"
+          },
+          {
+            "start": 1500000,
+            "end": 3800000,
+            "label": "p"
+          },
+          {
+            "start": 3800000,
+            "end": 5700000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "p",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "5",
+          "first_vowel": "u",
+          "consonant": "p",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f13apa2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 100000,
+            "label": "sil"
+          },
+          {
+            "start": 100000,
+            "end": 900000,
+            "label": "aa1"
+          },
+          {
+            "start": 900000,
+            "end": 2800000,
+            "label": "p"
+          },
+          {
+            "start": 2800000,
+            "end": 5900000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "p",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "13",
+          "first_vowel": "a",
+          "consonant": "p",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f6iti1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 2000000,
+            "label": "iy1"
+          },
+          {
+            "start": 2000000,
+            "end": 3600000,
+            "label": "t"
+          },
+          {
+            "start": 3600000,
+            "end": 5500000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "t",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "6",
+          "first_vowel": "i",
+          "consonant": "t",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m2ata2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1200000,
+            "label": "aa1"
+          },
+          {
+            "start": 1200000,
+            "end": 3000000,
+            "label": "t"
+          },
+          {
+            "start": 3000000,
+            "end": 5300000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "t",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "a",
+          "consonant": "t",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m8utu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2000000,
+            "label": "uw1"
+          },
+          {
+            "start": 2000000,
+            "end": 3600000,
+            "label": "t"
+          },
+          {
+            "start": 3600000,
+            "end": 6200000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "t",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "u",
+          "consonant": "t",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f23iki1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1300000,
+            "label": "iy1"
+          },
+          {
+            "start": 1300000,
+            "end": 3000000,
+            "label": "k"
+          },
+          {
+            "start": 3000000,
+            "end": 4800000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "k",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "23",
+          "first_vowel": "i",
+          "consonant": "k",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m9aka1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 100000,
+            "label": "sil"
+          },
+          {
+            "start": 100000,
+            "end": 1400000,
+            "label": "aa1"
+          },
+          {
+            "start": 1400000,
+            "end": 2900000,
+            "label": "k"
+          },
+          {
+            "start": 2900000,
+            "end": 4100000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "k",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "9",
+          "first_vowel": "a",
+          "consonant": "k",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m10uku2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2000000,
+            "label": "uw1"
+          },
+          {
+            "start": 2000000,
+            "end": 3800000,
+            "label": "k"
+          },
+          {
+            "start": 3800000,
+            "end": 6800000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "k",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "u",
+          "consonant": "k",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f18isi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1400000,
+            "label": "iy1"
+          },
+          {
+            "start": 1400000,
+            "end": 3400000,
+            "label": "s"
+          },
+          {
+            "start": 3400000,
+            "end": 6300000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "s",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "18",
+          "first_vowel": "i",
+          "consonant": "s",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m4asa1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1900000,
+            "label": "aa1"
+          },
+          {
+            "start": 1900000,
+            "end": 3000000,
+            "label": "s"
+          },
+          {
+            "start": 3000000,
+            "end": 4600000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "s",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "a",
+          "consonant": "s",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f23usu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2300000,
+            "label": "uw1"
+          },
+          {
+            "start": 2300000,
+            "end": 4500000,
+            "label": "s"
+          },
+          {
+            "start": 4500000,
+            "end": 8400000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "s",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "23",
+          "first_vowel": "u",
+          "consonant": "s",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f18ushu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 2300000,
+            "label": "uw1"
+          },
+          {
+            "start": 2300000,
+            "end": 4300000,
+            "label": "sh"
+          },
+          {
+            "start": 4300000,
+            "end": 7000000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "sh",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "18",
+          "first_vowel": "u",
+          "consonant": "sh",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m5asha2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1400000,
+            "label": "aa1"
+          },
+          {
+            "start": 1400000,
+            "end": 3300000,
+            "label": "sh"
+          },
+          {
+            "start": 3300000,
+            "end": 5600000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "sh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "5",
+          "first_vowel": "a",
+          "consonant": "sh",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m17ifi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 2000000,
+            "label": "iy1"
+          },
+          {
+            "start": 2000000,
+            "end": 3400000,
+            "label": "f"
+          },
+          {
+            "start": 3400000,
+            "end": 6500000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "f",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "17",
+          "first_vowel": "i",
+          "consonant": "f",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m8afa2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 2900000,
+            "label": "aa1"
+          },
+          {
+            "start": 2900000,
+            "end": 3400000,
+            "label": "f"
+          },
+          {
+            "start": 3400000,
+            "end": 6800000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "f",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "a",
+          "consonant": "f",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f6ufu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2100000,
+            "label": "uw1"
+          },
+          {
+            "start": 2100000,
+            "end": 3700000,
+            "label": "f"
+          },
+          {
+            "start": 3700000,
+            "end": 5600000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "f",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "6",
+          "first_vowel": "u",
+          "consonant": "f",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f13ivi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2200000,
+            "label": "iy1"
+          },
+          {
+            "start": 2200000,
+            "end": 3500000,
+            "label": "v"
+          },
+          {
+            "start": 3500000,
+            "end": 6700000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "v",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "13",
+          "first_vowel": "i",
+          "consonant": "v",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m2ava1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2200000,
+            "label": "aa1"
+          },
+          {
+            "start": 2200000,
+            "end": 3700000,
+            "label": "v"
+          },
+          {
+            "start": 3700000,
+            "end": 5100000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "v",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "a",
+          "consonant": "v",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m8uvu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2000000,
+            "label": "uw1"
+          },
+          {
+            "start": 2000000,
+            "end": 3700000,
+            "label": "v"
+          },
+          {
+            "start": 3700000,
+            "end": 7000000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "v",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "u",
+          "consonant": "v",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m10ithi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2200000,
+            "label": "iy1"
+          },
+          {
+            "start": 2200000,
+            "end": 3900000,
+            "label": "th"
+          },
+          {
+            "start": 3900000,
+            "end": 5900000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "th",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "i",
+          "consonant": "th",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f18atha2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 3000000,
+            "label": "th"
+          },
+          {
+            "start": 3000000,
+            "end": 5700000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "th",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "18",
+          "first_vowel": "a",
+          "consonant": "th",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m2uthu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2100000,
+            "label": "uw1"
+          },
+          {
+            "start": 2100000,
+            "end": 4000000,
+            "label": "th"
+          },
+          {
+            "start": 4000000,
+            "end": 7200000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "th",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "u",
+          "consonant": "th",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f23udhu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2600000,
+            "label": "uw1"
+          },
+          {
+            "start": 2600000,
+            "end": 4000000,
+            "label": "dh"
+          },
+          {
+            "start": 4000000,
+            "end": 6800000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "dh",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "23",
+          "first_vowel": "u",
+          "consonant": "dh",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m15adha1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1700000,
+            "label": "aa1"
+          },
+          {
+            "start": 1700000,
+            "end": 2500000,
+            "label": "dh"
+          },
+          {
+            "start": 2500000,
+            "end": 4300000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "dh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "a",
+          "consonant": "dh",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m8idhi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 1600000,
+            "label": "iy1"
+          },
+          {
+            "start": 1600000,
+            "end": 3200000,
+            "label": "dh"
+          },
+          {
+            "start": 3200000,
+            "end": 76000000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "dh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "i",
+          "consonant": "dh",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m9uchu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2000000,
+            "label": "uw1"
+          },
+          {
+            "start": 2000000,
+            "end": 3900000,
+            "label": "ch"
+          },
+          {
+            "start": 3900000,
+            "end": 7100000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "ch",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "9",
+          "first_vowel": "u",
+          "consonant": "ch",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f20acha1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1200000,
+            "label": "aa1"
+          },
+          {
+            "start": 1200000,
+            "end": 2900000,
+            "label": "ch"
+          },
+          {
+            "start": 2900000,
+            "end": 4700000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "ch",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "a",
+          "consonant": "ch",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m4izi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1800000,
+            "label": "iy1"
+          },
+          {
+            "start": 1800000,
+            "end": 2700000,
+            "label": "z"
+          },
+          {
+            "start": 2700000,
+            "end": 6800000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "z",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "i",
+          "consonant": "z",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f24aza1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 2400000,
+            "label": "z"
+          },
+          {
+            "start": 2400000,
+            "end": 3700000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "z",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "a",
+          "consonant": "z",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m9uzu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2600000,
+            "label": "uw1"
+          },
+          {
+            "start": 2600000,
+            "end": 4100000,
+            "label": "z"
+          },
+          {
+            "start": 4100000,
+            "end": 7700000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "z",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "9",
+          "first_vowel": "u",
+          "consonant": "z",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m4uzhu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2000000,
+            "label": "uw1"
+          },
+          {
+            "start": 2000000,
+            "end": 3000000,
+            "label": "zh"
+          },
+          {
+            "start": 3000000,
+            "end": 5800000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "zh",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "u",
+          "consonant": "zh",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f11azha1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1800000,
+            "label": "aa1"
+          },
+          {
+            "start": 1800000,
+            "end": 2600000,
+            "label": "zh"
+          },
+          {
+            "start": 2600000,
+            "end": 4100000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "zh",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "zh",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f20izhi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2300000,
+            "label": "iy1"
+          },
+          {
+            "start": 2300000,
+            "end": 3400000,
+            "label": "zh"
+          },
+          {
+            "start": 3400000,
+            "end": 6000000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "zh",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "20",
+          "first_vowel": "i",
+          "consonant": "zh",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m5imi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1900000,
+            "label": "iy1"
+          },
+          {
+            "start": 1900000,
+            "end": 3600000,
+            "label": "m"
+          },
+          {
+            "start": 3600000,
+            "end": 6000000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "m",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "5",
+          "first_vowel": "i",
+          "consonant": "m",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f6ama2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1400000,
+            "label": "aa1"
+          },
+          {
+            "start": 1400000,
+            "end": 2800000,
+            "label": "m"
+          },
+          {
+            "start": 2800000,
+            "end": 4800000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "m",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "6",
+          "first_vowel": "a",
+          "consonant": "m",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m8umu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 2200000,
+            "label": "uw1"
+          },
+          {
+            "start": 2200000,
+            "end": 3700000,
+            "label": "m"
+          },
+          {
+            "start": 3700000,
+            "end": 7700000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "m",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "u",
+          "consonant": "m",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m17unu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 2200000,
+            "label": "uw1"
+          },
+          {
+            "start": 2200000,
+            "end": 3700000,
+            "label": "n"
+          },
+          {
+            "start": 3700000,
+            "end": 7300000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "n",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "17",
+          "first_vowel": "u",
+          "consonant": "n",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f22ini1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 2200000,
+            "label": "iy1"
+          },
+          {
+            "start": 2200000,
+            "end": 3200000,
+            "label": "n"
+          },
+          {
+            "start": 3200000,
+            "end": 6200000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "n",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "22",
+          "first_vowel": "i",
+          "consonant": "n",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m8ana1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 2300000,
+            "label": "aa1"
+          },
+          {
+            "start": 2300000,
+            "end": 3800000,
+            "label": "n"
+          },
+          {
+            "start": 3800000,
+            "end": 5600000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "n",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "a",
+          "consonant": "n",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m2anga1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1600000,
+            "label": "aa1"
+          },
+          {
+            "start": 1600000,
+            "end": 3700000,
+            "label": "ng"
+          },
+          {
+            "start": 3700000,
+            "end": 5200000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "ng",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "a",
+          "consonant": "ng",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f13ungu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2300000,
+            "label": "uw1"
+          },
+          {
+            "start": 2300000,
+            "end": 4000000,
+            "label": "ng"
+          },
+          {
+            "start": 4000000,
+            "end": 6500000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "ng",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "13",
+          "first_vowel": "u",
+          "consonant": "ng",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m10ingi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1700000,
+            "label": "iy1"
+          },
+          {
+            "start": 1700000,
+            "end": 3800000,
+            "label": "ng"
+          },
+          {
+            "start": 3800000,
+            "end": 6600000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "ng",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "i",
+          "consonant": "ng",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m10ihi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2000000,
+            "label": "iy1"
+          },
+          {
+            "start": 2000000,
+            "end": 3100000,
+            "label": "h"
+          },
+          {
+            "start": 3100000,
+            "end": 5100000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "h",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "i",
+          "consonant": "h",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f18aha2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 2800000,
+            "label": "h"
+          },
+          {
+            "start": 2800000,
+            "end": 5700000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "h",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "18",
+          "first_vowel": "a",
+          "consonant": "h",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m2uhu1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2500000,
+            "label": "uw1"
+          },
+          {
+            "start": 2500000,
+            "end": 3300000,
+            "label": "h"
+          },
+          {
+            "start": 3300000,
+            "end": 6100000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "h",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "u",
+          "consonant": "h",
+          "second_vowel": "u",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m10udju2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1600000,
+            "label": "uw1"
+          },
+          {
+            "start": 1600000,
+            "end": 2700000,
+            "label": "dj"
+          },
+          {
+            "start": 2700000,
+            "end": 5900000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "dj",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "u",
+          "consonant": "dj",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m4adja2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 3000000,
+            "label": "dj"
+          },
+          {
+            "start": 3000000,
+            "end": 5300000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "dj",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "4",
+          "first_vowel": "a",
+          "consonant": "dj",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f24idji2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1200000,
+            "label": "iy1"
+          },
+          {
+            "start": 1200000,
+            "end": 2300000,
+            "label": "dj"
+          },
+          {
+            "start": 2300000,
+            "end": 3400000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "dj",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "24",
+          "first_vowel": "i",
+          "consonant": "dj",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m15iwi1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 3600000,
+            "label": "iy1"
+          },
+          {
+            "start": 3600000,
+            "end": 5300000,
+            "label": "w"
+          },
+          {
+            "start": 5300000,
+            "end": 7800000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "w",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "i",
+          "consonant": "w",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f11awa2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1300000,
+            "label": "aa1"
+          },
+          {
+            "start": 1300000,
+            "end": 2600000,
+            "label": "w"
+          },
+          {
+            "start": 2600000,
+            "end": 4500000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "w",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "a",
+          "consonant": "w",
+          "second_vowel": "a",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m15uwu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 3400000,
+            "label": "uw1"
+          },
+          {
+            "start": 3400000,
+            "end": 5400000,
+            "label": "w"
+          },
+          {
+            "start": 5400000,
+            "end": 7700000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "w",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "15",
+          "first_vowel": "u",
+          "consonant": "w",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f11iri1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2900000,
+            "label": "iy1"
+          },
+          {
+            "start": 2900000,
+            "end": 3800000,
+            "label": "r"
+          },
+          {
+            "start": 3800000,
+            "end": 5400000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "r",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "11",
+          "first_vowel": "i",
+          "consonant": "r",
+          "second_vowel": "i",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m5uru2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1900000,
+            "label": "uw1"
+          },
+          {
+            "start": 1900000,
+            "end": 2800000,
+            "label": "r"
+          },
+          {
+            "start": 2800000,
+            "end": 5500000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "r",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "5",
+          "first_vowel": "u",
+          "consonant": "r",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m8ara1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 300000,
+            "label": "sil"
+          },
+          {
+            "start": 300000,
+            "end": 1800000,
+            "label": "aa1"
+          },
+          {
+            "start": 1800000,
+            "end": 3300000,
+            "label": "r"
+          },
+          {
+            "start": 3300000,
+            "end": 5300000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "r",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "8",
+          "first_vowel": "a",
+          "consonant": "r",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m2ala1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 200000,
+            "label": "sil"
+          },
+          {
+            "start": 200000,
+            "end": 2200000,
+            "label": "aa1"
+          },
+          {
+            "start": 2200000,
+            "end": 3300000,
+            "label": "l"
+          },
+          {
+            "start": 3300000,
+            "end": 4800000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "l",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "a",
+          "consonant": "l",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/f22ulu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 2500000,
+            "label": "uw1"
+          },
+          {
+            "start": 2500000,
+            "end": 3300000,
+            "label": "l"
+          },
+          {
+            "start": 3300000,
+            "end": 7100000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "l",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "22",
+          "first_vowel": "u",
+          "consonant": "l",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m10ili2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 500000,
+            "label": "sil"
+          },
+          {
+            "start": 500000,
+            "end": 1800000,
+            "label": "iy1"
+          },
+          {
+            "start": 1800000,
+            "end": 2900000,
+            "label": "l"
+          },
+          {
+            "start": 2900000,
+            "end": 6200000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "l",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "i",
+          "consonant": "l",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/m10iyi2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2400000,
+            "label": "iy1"
+          },
+          {
+            "start": 2400000,
+            "end": 3500000,
+            "label": "y"
+          },
+          {
+            "start": 3500000,
+            "end": 7400000,
+            "label": "iy2"
+          }
+        ],
+        "consonant_label": "y",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "10",
+          "first_vowel": "i",
+          "consonant": "y",
+          "second_vowel": "i",
+          "stress": "2"
+        }
+      },
+      {
+        "filename": "*/f18aya1.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 1500000,
+            "label": "aa1"
+          },
+          {
+            "start": 1500000,
+            "end": 2500000,
+            "label": "y"
+          },
+          {
+            "start": 2500000,
+            "end": 4200000,
+            "label": "aa2"
+          }
+        ],
+        "consonant_label": "y",
+        "filename_fields": {
+          "gender": "f",
+          "speaker_id": "18",
+          "first_vowel": "a",
+          "consonant": "y",
+          "second_vowel": "a",
+          "stress": "1"
+        }
+      },
+      {
+        "filename": "*/m2uyu2.lab",
+        "segments": [
+          {
+            "start": 0,
+            "end": 400000,
+            "label": "sil"
+          },
+          {
+            "start": 400000,
+            "end": 2500000,
+            "label": "uw1"
+          },
+          {
+            "start": 2500000,
+            "end": 3800000,
+            "label": "y"
+          },
+          {
+            "start": 3800000,
+            "end": 7300000,
+            "label": "uw2"
+          }
+        ],
+        "consonant_label": "y",
+        "filename_fields": {
+          "gender": "m",
+          "speaker_id": "2",
+          "first_vowel": "u",
+          "consonant": "y",
+          "second_vowel": "u",
+          "stress": "2"
+        }
+      }
+    ],
+    "interpretation": "Hand segmentation describes boundaries. Neither filename consonant labels nor matching MLF segment labels establish independently human-corrected phoneme identity."
+  },
+  "pdf_extraction": {
+    "library": "existing pypdf from /tmp/codex_pypdf; no installation",
+    "output": "readme_extracted.txt"
+  },
+  "audio_archives_downloaded": false,
+  "training_or_inference": false,
+  "source_data_modified": false,
+  "raw_artifact_sha256": {
+    "record.json": "b581f11dd6418902349d5913bfa3d9e81bc1dd6d611e60aad22ec6257c18f4ad",
+    "readme.pdf": "e6362b528a063cbf44657b304acef663ceb407e846297f64f986aa139cd98a05",
+    "handsegm.91.mlf.txt": "f373fbfa6c065b85ea98ac0be86644ea108a35c0189fca061aebe1420cf1e646",
+    "readme_extracted.txt": "600d668605a9039ab49b685de322e212389c381d0d699f58737b8dd9c0483fd1"
+  }
+}

@@ -1,0 +1,294 @@
+{
+  "dev": [
+    {
+      "filename": "000_reader_10660_fileid_7601.wav",
+      "seed": 2028,
+      "wav_dist": 0.3493099808692932,
+      "spec_dist": 0.2531247138977051,
+      "sisdr_delta": 0.15373802185058594,
+      "ovrl_delta": 0.06925715370481056,
+      "pesq_delta": -0.044745802879333496
+    },
+    {
+      "filename": "001_reader_10660_fileid_855.wav",
+      "seed": 2029,
+      "wav_dist": 0.1190609261393547,
+      "spec_dist": 0.12159253656864166,
+      "sisdr_delta": 0.31853675842285156,
+      "ovrl_delta": 0.014133873388748164,
+      "pesq_delta": -0.1521439552307129
+    },
+    {
+      "filename": "002_reader_10666_fileid_10077.wav",
+      "seed": 2028,
+      "wav_dist": 0.22284287214279175,
+      "spec_dist": 0.14921821653842926,
+      "sisdr_delta": -0.022851943969726562,
+      "ovrl_delta": 0.10481860180078195,
+      "pesq_delta": 0.13863885402679443
+    },
+    {
+      "filename": "003_reader_10666_fileid_1450.wav",
+      "seed": 2027,
+      "wav_dist": 0.5043337345123291,
+      "spec_dist": 0.2762329578399658,
+      "sisdr_delta": 0.30611874908208847,
+      "ovrl_delta": 0.044735468670962675,
+      "pesq_delta": 0.010621428489685059
+    },
+    {
+      "filename": "004_reader_10676_fileid_10380.wav",
+      "seed": 2026,
+      "wav_dist": 0.0,
+      "spec_dist": 0.0,
+      "sisdr_delta": 0.0,
+      "ovrl_delta": 0.0,
+      "pesq_delta": 0.0
+    },
+    {
+      "filename": "005_reader_10676_fileid_10692.wav",
+      "seed": 2028,
+      "wav_dist": 0.21247979998588562,
+      "spec_dist": 0.15594585239887238,
+      "sisdr_delta": 0.0326385498046875,
+      "ovrl_delta": 0.10576288764065378,
+      "pesq_delta": 0.030569791793823242
+    },
+    {
+      "filename": "006_reader_10686_fileid_10298.wav",
+      "seed": 2027,
+      "wav_dist": 0.07421190291643143,
+      "spec_dist": 0.045247774571180344,
+      "sisdr_delta": -0.3319091796875,
+      "ovrl_delta": 0.017980142648490016,
+      "pesq_delta": 0.05422496795654297
+    },
+    {
+      "filename": "007_reader_10686_fileid_1347.wav",
+      "seed": 2026,
+      "wav_dist": 0.0,
+      "spec_dist": 0.0,
+      "sisdr_delta": 0.0,
+      "ovrl_delta": 0.0,
+      "pesq_delta": 0.0
+    },
+    {
+      "filename": "008_reader_10687_fileid_11569.wav",
+      "seed": 2026,
+      "wav_dist": 0.0,
+      "spec_dist": 0.0,
+      "sisdr_delta": 0.0,
+      "ovrl_delta": 0.0,
+      "pesq_delta": 0.0
+    },
+    {
+      "filename": "009_reader_10687_fileid_1879.wav",
+      "seed": 2029,
+      "wav_dist": 0.19043989479541779,
+      "spec_dist": 0.13608284294605255,
+      "sisdr_delta": 0.16721725463867188,
+      "ovrl_delta": 0.07676245665584647,
+      "pesq_delta": 0.01001429557800293
+    },
+    {
+      "filename": "010_reader_10715_fileid_10235.wav",
+      "seed": 2028,
+      "wav_dist": 0.14104129374027252,
+      "spec_dist": 0.13029628992080688,
+      "sisdr_delta": 0.15795326232910156,
+      "ovrl_delta": 0.0019518042157491422,
+      "pesq_delta": -0.0755167007446289
+    },
+    {
+      "filename": "011_reader_10715_fileid_10668.wav",
+      "seed": 2028,
+      "wav_dist": 0.4358298182487488,
+      "spec_dist": 0.23601794242858887,
+      "sisdr_delta": 0.33079254627227783,
+      "ovrl_delta": 0.17256720174021023,
+      "pesq_delta": 5.829334259033203e-05
+    },
+    {
+      "filename": "012_reader_10721_fileid_11656.wav",
+      "seed": 2027,
+      "wav_dist": 0.20458900928497314,
+      "spec_dist": 0.17644774913787842,
+      "sisdr_delta": 0.40569305419921875,
+      "ovrl_delta": 0.05910037691800829,
+      "pesq_delta": -0.17679846286773682
+    },
+    {
+      "filename": "013_reader_10721_fileid_2682.wav",
+      "seed": 2026,
+      "wav_dist": 0.0,
+      "spec_dist": 0.0,
+      "sisdr_delta": 0.0,
+      "ovrl_delta": 0.0,
+      "pesq_delta": 0.0
+    },
+    {
+      "filename": "014_reader_10733_fileid_10118.wav",
+      "seed": 2028,
+      "wav_dist": 0.5587957501411438,
+      "spec_dist": 0.2995986342430115,
+      "sisdr_delta": -0.056182146072387695,
+      "ovrl_delta": 0.18681341438819432,
+      "pesq_delta": 0.0400390625
+    },
+    {
+      "filename": "015_reader_10733_fileid_11101.wav",
+      "seed": 2027,
+      "wav_dist": 0.19566766917705536,
+      "spec_dist": 0.16389741003513336,
+      "sisdr_delta": 0.055889129638671875,
+      "ovrl_delta": 0.02325119900953032,
+      "pesq_delta": -0.05369400978088379
+    }
+  ],
+  "heldout": [
+    {
+      "filename": "016_reader_10741_fileid_10167.wav",
+      "seed": 2027,
+      "wav_dist": 0.1927892416715622,
+      "spec_dist": 0.14331302046775818,
+      "sisdr_delta": -0.1541423797607422,
+      "ovrl_delta": 0.11234872965775011,
+      "pesq_delta": 0.07793951034545898
+    },
+    {
+      "filename": "017_reader_10741_fileid_10788.wav",
+      "seed": 2027,
+      "wav_dist": 0.2515712380409241,
+      "spec_dist": 0.14644964039325714,
+      "sisdr_delta": 0.15891456604003906,
+      "ovrl_delta": 0.06404548658474996,
+      "pesq_delta": 0.047354936599731445
+    },
+    {
+      "filename": "018_reader_10774_fileid_11915.wav",
+      "seed": 2027,
+      "wav_dist": 0.22584418952465057,
+      "spec_dist": 0.19207613170146942,
+      "sisdr_delta": -0.0010881423950195312,
+      "ovrl_delta": 0.09171737330462904,
+      "pesq_delta": 0.010894298553466797
+    },
+    {
+      "filename": "019_reader_10774_fileid_3627.wav",
+      "seed": 2029,
+      "wav_dist": 0.4308384656906128,
+      "spec_dist": 0.3065008819103241,
+      "sisdr_delta": 0.08657217025756836,
+      "ovrl_delta": 0.06347245018083347,
+      "pesq_delta": 0.04822707176208496
+    },
+    {
+      "filename": "020_reader_10786_fileid_10314.wav",
+      "seed": 2028,
+      "wav_dist": 0.472432941198349,
+      "spec_dist": 0.27555668354034424,
+      "sisdr_delta": 0.1677113175392151,
+      "ovrl_delta": 0.11165340473456986,
+      "pesq_delta": 0.05409538745880127
+    },
+    {
+      "filename": "021_reader_10786_fileid_2142.wav",
+      "seed": 2027,
+      "wav_dist": 0.2990610897541046,
+      "spec_dist": 0.22566446661949158,
+      "sisdr_delta": -0.02407979965209961,
+      "ovrl_delta": 0.009843459829983914,
+      "pesq_delta": 0.0007717609405517578
+    },
+    {
+      "filename": "022_reader_10811_fileid_1341.wav",
+      "seed": 2029,
+      "wav_dist": 0.4397205710411072,
+      "spec_dist": 0.2618107795715332,
+      "sisdr_delta": 0.17367279529571533,
+      "ovrl_delta": 0.12097846207347374,
+      "pesq_delta": 0.01309967041015625
+    },
+    {
+      "filename": "023_reader_10811_fileid_2306.wav",
+      "seed": 2026,
+      "wav_dist": 0.0,
+      "spec_dist": 0.0,
+      "sisdr_delta": 0.0,
+      "ovrl_delta": 0.0,
+      "pesq_delta": 0.0
+    },
+    {
+      "filename": "024_reader_10820_fileid_2971.wav",
+      "seed": 2027,
+      "wav_dist": 0.1567203253507614,
+      "spec_dist": 0.10775773227214813,
+      "sisdr_delta": 0.028350830078125,
+      "ovrl_delta": 0.03644050910364216,
+      "pesq_delta": -0.050452470779418945
+    },
+    {
+      "filename": "025_reader_10820_fileid_7471.wav",
+      "seed": 2029,
+      "wav_dist": 0.1693154126405716,
+      "spec_dist": 0.10191808640956879,
+      "sisdr_delta": 0.11976909637451172,
+      "ovrl_delta": 0.01114760027564321,
+      "pesq_delta": 0.03374457359313965
+    },
+    {
+      "filename": "026_reader_10855_fileid_10269.wav",
+      "seed": 2026,
+      "wav_dist": 0.0,
+      "spec_dist": 0.0,
+      "sisdr_delta": 0.0,
+      "ovrl_delta": 0.0,
+      "pesq_delta": 0.0
+    },
+    {
+      "filename": "027_reader_10855_fileid_11779.wav",
+      "seed": 2028,
+      "wav_dist": 0.23308256268501282,
+      "spec_dist": 0.19054196774959564,
+      "sisdr_delta": -0.024221420288085938,
+      "ovrl_delta": 0.15532646578616127,
+      "pesq_delta": -0.0440678596496582
+    },
+    {
+      "filename": "028_reader_10891_fileid_10483.wav",
+      "seed": 2029,
+      "wav_dist": 0.16044621169567108,
+      "spec_dist": 0.09141400456428528,
+      "sisdr_delta": 0.009884834289550781,
+      "ovrl_delta": 0.005033378882061346,
+      "pesq_delta": -0.04075741767883301
+    },
+    {
+      "filename": "029_reader_10891_fileid_7534.wav",
+      "seed": 2028,
+      "wav_dist": 0.39673784375190735,
+      "spec_dist": 0.19892774522304535,
+      "sisdr_delta": -0.1178121566772461,
+      "ovrl_delta": 0.040951831749703516,
+      "pesq_delta": 0.009302496910095215
+    },
+    {
+      "filename": "030_reader_10907_fileid_11974.wav",
+      "seed": 2027,
+      "wav_dist": 0.48495206236839294,
+      "spec_dist": 0.2417498528957367,
+      "sisdr_delta": -0.15386056900024414,
+      "ovrl_delta": 0.060690802724962634,
+      "pesq_delta": -0.0046520233154296875
+    },
+    {
+      "filename": "031_reader_10907_fileid_2839.wav",
+      "seed": 2027,
+      "wav_dist": 0.3523610830307007,
+      "spec_dist": 0.1774703562259674,
+      "sisdr_delta": 0.12785816192626953,
+      "ovrl_delta": 0.14923214742276425,
+      "pesq_delta": 0.026777267456054688
+    }
+  ]
+}

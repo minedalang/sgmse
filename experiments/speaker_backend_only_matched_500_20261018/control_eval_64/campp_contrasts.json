@@ -1,0 +1,23 @@
+{
+  "bootstrap": {
+    "replicates": 5000,
+    "seed": 20261017,
+    "unit": "speaker cluster"
+  },
+  "contrasts": {
+    "control_minus_off_paired_clean_cosine": {
+      "mean_delta": 0.001464930799556896,
+      "speaker_cluster_bootstrap_95ci": [
+        -0.005624991149670677,
+        0.008467072399798766
+      ]
+    },
+    "control_minus_router_paired_clean_cosine": {
+      "mean_delta": 0.0027703641389962286,
+      "speaker_cluster_bootstrap_95ci": [
+        -0.003897031344968127,
+        0.009805945838888868
+      ]
+    }
+  }
+}

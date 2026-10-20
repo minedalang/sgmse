@@ -1,0 +1,86 @@
+{
+  "request": {
+    "key": "p226_028_N1_snr_m18.wav__off",
+    "id": "p226_028",
+    "arm": "off",
+    "path": "outputs/off/p226_028_N1_snr_m18.wav",
+    "basename": "p226_028_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "18f19035096b3f33f46ae0eb423d3d36de5a757eece5eb441b3c75acd85add4d",
+      "samples": 67653,
+      "array_sha256": "15ac637a07957a91ce1fe74071280b0334ce3b0e0bd196c6d572bf01a692ba3c",
+      "peak": 0.034210205078125,
+      "rms": 0.0030274272347480245
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " Oh I can break the best chew or fountains I think it's very helpful.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.08,
+        "text": " Oh I can break the best chew or fountains I think it's very helpful.",
+        "tokens": [
+          50363,
+          3966,
+          314,
+          460,
+          2270,
+          262,
+          1266,
+          34722,
+          393,
+          277,
+          608,
+          1299,
+          314,
+          892,
+          340,
+          338,
+          845,
+          7613,
+          13,
+          50567
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0454542069208055,
+        "compression_ratio": 0.9444444444444444,
+        "no_speech_prob": 0.06480368971824646
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 19,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

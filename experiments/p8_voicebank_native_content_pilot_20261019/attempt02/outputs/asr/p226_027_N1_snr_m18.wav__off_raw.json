@@ -1,0 +1,81 @@
+{
+  "request": {
+    "key": "p226_027_N1_snr_m18.wav__off",
+    "id": "p226_027",
+    "arm": "off",
+    "path": "outputs/off/p226_027_N1_snr_m18.wav",
+    "basename": "p226_027_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "d922ca49f917d7e5ac13628de4104e38cd8cb85713849001d07d52d7cb43d34b",
+      "samples": 63447,
+      "array_sha256": "b1a0cbdaed87ab83036f581015bee8621a2cfdb38b0b60383f92f9ee2b3e113a",
+      "peak": 0.045074462890625,
+      "rms": 0.005033014784092666
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_027",
+    "original_text": "They should have a major rethink about the event for next year.\n",
+    "raw_text_hex": "546865792073686f756c6420686176652061206d616a6f722072657468696e6b2061626f757420746865206576656e7420666f72206e65787420796561722e0a",
+    "raw_text_sha256": "4c89a690f064039006e014051fd9c1520256f1fc8a454a312412600e13d8cbb3",
+    "archive_entry": "trainset_28spk_txt/p226_027.txt"
+  },
+  "raw_result": {
+    "text": " from Bands Africa, the Van Gogh, of Queen.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " from Bands Africa, the Van Gogh, of Queen.",
+        "tokens": [
+          50363,
+          422,
+          347,
+          1746,
+          5478,
+          11,
+          262,
+          6656,
+          1514,
+          456,
+          11,
+          286,
+          7542,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1331392526626587,
+        "compression_ratio": 0.84,
+        "no_speech_prob": 0.14672274887561798
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 7,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

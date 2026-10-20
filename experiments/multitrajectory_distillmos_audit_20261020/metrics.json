@@ -1,0 +1,139 @@
+{
+  "experiment_id": "multitrajectory_distillmos_audit_20261020",
+  "device": "cuda",
+  "n_trajectory_wavs": 128,
+  "runtime_seconds": 4.652815016102977,
+  "new_inference": false,
+  "new_training": false,
+  "selections": {
+    "dev": {
+      "baseline": {
+        "n": 16,
+        "accepted_nonbaseline": 0,
+        "means": {
+          "distill_delta_vs_seed2026": 0.0,
+          "ovrl_delta_vs_seed2026": 0.0,
+          "sisdr_delta_vs_seed2026": 0.0,
+          "pesq_delta_vs_seed2026": 0.0,
+          "stoi_delta_vs_seed2026": 0.0
+        },
+        "negative_sisdr_files": 0,
+        "correlation_distill_vs_ovrl": {
+          "pearson": NaN,
+          "spearman": NaN
+        },
+        "correlation_distill_vs_sisdr": {
+          "pearson": NaN,
+          "spearman": NaN
+        }
+      },
+      "ovrl_winner": {
+        "n": 16,
+        "accepted_nonbaseline": 12,
+        "means": {
+          "distill_delta_vs_seed2026": 0.025452688336372375,
+          "ovrl_delta_vs_seed2026": 0.05482091129887412,
+          "sisdr_delta_vs_seed2026": 0.09485212853178382,
+          "pesq_delta_vs_seed2026": -0.013670764863491058,
+          "stoi_delta_vs_seed2026": 0.001690999088788156
+        },
+        "negative_sisdr_files": 3,
+        "correlation_distill_vs_ovrl": {
+          "pearson": 0.7735939881577956,
+          "spearman": 0.6029850746268658
+        },
+        "correlation_distill_vs_sisdr": {
+          "pearson": -0.17286164794272202,
+          "spearman": -0.26567164179104485
+        }
+      },
+      "consistency_guard": {
+        "n": 16,
+        "accepted_nonbaseline": 7,
+        "means": {
+          "distill_delta_vs_seed2026": 0.025843605399131775,
+          "ovrl_delta_vs_seed2026": 0.04420037043469649,
+          "sisdr_delta_vs_seed2026": 0.050008931662887335,
+          "pesq_delta_vs_seed2026": 0.007592976093292236,
+          "stoi_delta_vs_seed2026": 0.002008287594492758
+        },
+        "negative_sisdr_files": 2,
+        "correlation_distill_vs_ovrl": {
+          "pearson": 0.8666991084289373,
+          "spearman": 0.8214285714285713
+        },
+        "correlation_distill_vs_sisdr": {
+          "pearson": 0.226811720605265,
+          "spearman": 0.04285714285714285
+        }
+      }
+    },
+    "heldout": {
+      "baseline": {
+        "n": 16,
+        "accepted_nonbaseline": 0,
+        "means": {
+          "distill_delta_vs_seed2026": 0.0,
+          "ovrl_delta_vs_seed2026": 0.0,
+          "sisdr_delta_vs_seed2026": 0.0,
+          "pesq_delta_vs_seed2026": 0.0,
+          "stoi_delta_vs_seed2026": 0.0
+        },
+        "negative_sisdr_files": 0,
+        "correlation_distill_vs_ovrl": {
+          "pearson": NaN,
+          "spearman": NaN
+        },
+        "correlation_distill_vs_sisdr": {
+          "pearson": NaN,
+          "spearman": NaN
+        }
+      },
+      "ovrl_winner": {
+        "n": 16,
+        "accepted_nonbaseline": 14,
+        "means": {
+          "distill_delta_vs_seed2026": -0.014097332954406738,
+          "ovrl_delta_vs_seed2026": 0.06455513139443303,
+          "sisdr_delta_vs_seed2026": 0.024845581501722336,
+          "pesq_delta_vs_seed2026": 0.011392325162887573,
+          "stoi_delta_vs_seed2026": 0.0016033192578977437
+        },
+        "negative_sisdr_files": 6,
+        "correlation_distill_vs_ovrl": {
+          "pearson": -0.08752642901362294,
+          "spearman": -0.13402061855670103
+        },
+        "correlation_distill_vs_sisdr": {
+          "pearson": -0.3057024323842663,
+          "spearman": -0.1605301914580265
+        }
+      },
+      "consistency_guard": {
+        "n": 16,
+        "accepted_nonbaseline": 7,
+        "means": {
+          "distill_delta_vs_seed2026": -0.01090046763420105,
+          "ovrl_delta_vs_seed2026": 0.04328244959190444,
+          "sisdr_delta_vs_seed2026": 0.024440202862024307,
+          "pesq_delta_vs_seed2026": 0.009992115199565887,
+          "stoi_delta_vs_seed2026": 0.0012236153056609314
+        },
+        "negative_sisdr_files": 2,
+        "correlation_distill_vs_ovrl": {
+          "pearson": -0.058713484863626125,
+          "spearman": 0.12857142857142853
+        },
+        "correlation_distill_vs_sisdr": {
+          "pearson": -0.3047032340232616,
+          "spearman": 0.035714285714285705
+        }
+      }
+    }
+  },
+  "limitations": [
+    "Distill-MOS is another learned proxy, not human MOS or transcription.",
+    "The trajectory WAVs and OVRL scores were generated previously; no fresh stochastic samples were made.",
+    "Selection and evaluation remain exploratory and are not a deployable claim."
+  ]
+}

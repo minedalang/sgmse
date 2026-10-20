@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "files": 16,
+  "strata": 9,
+  "unique_original_PCM": 80,
+  "main_decodes": 80,
+  "additional_validator_decodes": 80,
+  "total_actual_decodes": 160,
+  "independent_pairwise_population_variance": true,
+  "direct_mean_residual": true,
+  "seconds": 12.374187082983553,
+  "metrics_sha256": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e",
+  "validator_sha256": "6ae6f30602f63417f7d4b83db4fee256c540dbe3d674690c6c0785e255b3effc",
+  "historical_original_WAV_hash_gap_unresolved": true,
+  "models": 0,
+  "ASR": 0,
+  "quality_recomputations": 0,
+  "audio_outputs": 0
+}

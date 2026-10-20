@@ -1,0 +1,37 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/model_stage/run_pilot.py", line 122, in child
+    import torch
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/__init__.py", line 2585, in <module>
+    _C._initExtension(_manager_path())  # pyrefly: ignore[bad-argument-type]
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/cuda/__init__.py", line 32, in <module>
+    from ._utils import _get_device_index
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/cuda/_utils.py", line 9, in <module>
+    from cuda.bindings import (  # pyrefly: ignore[missing-import]
+  File "cuda/bindings/driver.pyx", line 1, in init cuda.bindings.driver
+  File "cuda/bindings/cydriver.pyx", line 1, in init cuda.bindings.cydriver
+  File "cuda/bindings/_internal/driver.pyx", line 62, in init cuda.bindings._internal.driver
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/cuda/pathfinder/__init__.py", line 22, in <module>
+    from cuda.pathfinder._dynamic_libs.load_nvidia_dynamic_lib import load_nvidia_dynamic_lib as load_nvidia_dynamic_lib
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/cuda/pathfinder/_dynamic_libs/load_nvidia_dynamic_lib.py", line 20, in <module>
+    from cuda.pathfinder._dynamic_libs.platform_loader import LOADER
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/cuda/pathfinder/_dynamic_libs/platform_loader.py", line 37, in <module>
+    from cuda.pathfinder._dynamic_libs import load_dl_linux as _impl
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/cuda/pathfinder/_dynamic_libs/load_dl_linux.py", line 36, in <module>
+    LIBDL = _load_libdl()
+  File "/data/coding/sgmse/env/lib/python3.10/site-packages/cuda/pathfinder/_dynamic_libs/load_dl_linux.py", line 29, in _load_libdl
+    name = ctypes.util.find_library("dl") or "libdl.so.2"
+  File "/data/coding/sgmse/env/lib/python3.10/ctypes/util.py", line 350, in find_library
+    _findSoname_ldconfig(name) or \
+  File "/data/coding/sgmse/env/lib/python3.10/ctypes/util.py", line 290, in _findSoname_ldconfig
+    with subprocess.Popen(['/sbin/ldconfig', '-p'],
+  File "/data/coding/sgmse/env/lib/python3.10/subprocess.py", line 971, in __init__
+    self._execute_child(args, executable, preexec_fn, close_fds,
+  File "/data/coding/sgmse/env/lib/python3.10/subprocess.py", line 1735, in _execute_child
+    sys.audit("subprocess.Popen", executable, args, cwd, env)
+  File "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/model_stage/run_pilot.py", line 116, in audit
+    if event=='subprocess.Popen':d.setdefault('local_native_subprocesses',[]).append(allow_local_build(args[0],args[1],args[2],cfg))
+  File "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/model_stage/helpers.py", line 68, in allow_local_build
+    resolved=str(Path(resolved).resolve());allowed=config['local_build_executables'];require(resolved in allowed,'Process is not approved native compiler '+resolved)
+  File "/data/coding/sgmse/experiments/p8_voicebank_native_content_pilot_20261019/model_stage/helpers.py", line 6, in require
+    if not ok:raise RuntimeError(message)
+RuntimeError: Process is not approved native compiler /usr/sbin/ldconfig

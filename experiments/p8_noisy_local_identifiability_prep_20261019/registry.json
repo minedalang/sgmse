@@ -1,0 +1,581 @@
+{
+  "phase": "I0_metadata_only",
+  "source_manifest_sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+  "records": [
+    {
+      "id": "p233_027",
+      "speaker": "p233",
+      "source_line_number": 1971,
+      "source_line_sha256": "fd6f45b1e3141f61b17bf821eb696a8316cc407dbe2c6662fb447e8a62da12a3",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p233_027.txt",
+        "raw_text_bytes": 67,
+        "raw_text_SHA256": "5ba5ee4f01e13f6933a8652ebafc7f9098b76c6cb552db76490fd355ed2f48f3",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "Police were called to the scene, according to the weekend reports.\n",
+        "normalized_text": "Police were called to the scene, according to the weekend reports.",
+        "normalized_text_SHA256": "f47690bdbae43da5df2a818c747a65e1b17c7c320654245cdee0dbd8eb327275",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "10159400"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav",
+          "bytes": 124458,
+          "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 62207,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p233_028",
+      "speaker": "p233",
+      "source_line_number": 1972,
+      "source_line_sha256": "3b8c2799ecf6bec127908287531650b163f240a06e50abc99c141ab3f1d59b89",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p233_028.txt",
+        "raw_text_bytes": 55,
+        "raw_text_SHA256": "3233b024b82fab20aed5f09d4e600f7a47ee745841b736487590a3a1f214ee3a",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "I am not interested in the money, it is the principle.\n",
+        "normalized_text": "I am not interested in the money, it is the principle.",
+        "normalized_text_SHA256": "2fb9bb5f1b616344f7e16618115df046527e377b4640b5f7df7b5dbb43349515",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "081cae32"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav",
+          "bytes": 110728,
+          "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 55342,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p236_036",
+      "speaker": "p236",
+      "source_line_number": 2349,
+      "source_line_sha256": "99a45a5837e239594ef594283069af83752e55f546d5410274b66afbc759b22c",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p236_036.txt",
+        "raw_text_bytes": 55,
+        "raw_text_SHA256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+        "normalized_text": "If we cannot succeed in this endeavour, then so be it.",
+        "normalized_text_SHA256": "72cd0a030049cbf6eb6eab64ab3709635d387d54c1fb5e07096b2371cd61c698",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "0c87fad7"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav",
+          "bytes": 109434,
+          "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54695,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p236_040",
+      "speaker": "p236",
+      "source_line_number": 2353,
+      "source_line_sha256": "bf6e8f2b7110e656ff176ba5a473b1459389010f89df703a0ee4d60fb73aa7d5",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p236_040.txt",
+        "raw_text_bytes": 48,
+        "raw_text_SHA256": "9f80647731c6847affb41e7b1952d94644c06536459778b42f72c04410259a16",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "The staff are as good as any staff in the city.\n",
+        "normalized_text": "The staff are as good as any staff in the city.",
+        "normalized_text_SHA256": "2ac86bc60e441417edd2155a370b062ea44149a79fbeae7d845e2aa84cf49d9c",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "64f82e2a"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav",
+          "bytes": 120044,
+          "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 60000,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p239_026",
+      "speaker": "p239",
+      "source_line_number": 2829,
+      "source_line_sha256": "a357cc1d7d0dc9434b6169c164e9f4be9c71a95b8e191eee51638c6f2ee1d81f",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p239_026.txt",
+        "raw_text_bytes": 62,
+        "raw_text_SHA256": "542e7bbbf482fb6abc161386528721aed4a6fd34658f6adb4babac13e0401e80",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "The Government, however, insists the company is not for sale.\n",
+        "normalized_text": "The Government, however, insists the company is not for sale.",
+        "normalized_text_SHA256": "7e6dfd3a79beb5dce8445ff9306c20636825d59bb3cfc97bcb051e0662b1edd5",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "1fa90227"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav",
+          "bytes": 110024,
+          "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 54990,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p239_028",
+      "speaker": "p239",
+      "source_line_number": 2831,
+      "source_line_sha256": "487482ab25c6f7af968c77fd9427f05fb6ee867719c0c0eed88bc4ba4b43ba4f",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p239_028.txt",
+        "raw_text_bytes": 58,
+        "raw_text_SHA256": "9699b895629c2a5cd4651f23ebc3e85fdd452f15e337c7747a67d173ffcdf2dd",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "We are not aware of any British casualties at this stage.\n",
+        "normalized_text": "We are not aware of any British casualties at this stage.",
+        "normalized_text_SHA256": "8bdd30568328739a6c2810e7963c502489a242b770eb7d5a51738216fcd86f3d",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "6cfef86f"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav",
+          "bytes": 103976,
+          "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51966,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p243_026",
+      "speaker": "p243",
+      "source_line_number": 3327,
+      "source_line_sha256": "5d34943b96eea6e4332ed9071171dc8fb9e0aea103ff975af48b22d18f6b7860",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p243_026.txt",
+        "raw_text_bytes": 70,
+        "raw_text_SHA256": "1438c31071d2c4eebe753e724a68cef8c272c2688bc7c5a8d0aed470dffd92ce",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "His secretary said it was a matter for Murray Financial to deal with.\n",
+        "normalized_text": "His secretary said it was a matter for Murray Financial to deal with.",
+        "normalized_text_SHA256": "b6d1632539e76168ae52507d44f022dd5b6739792d7c342e38b3366f3a82be2b",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "21c54285"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav",
+          "bytes": 142124,
+          "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 71040,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p243_027",
+      "speaker": "p243",
+      "source_line_number": 3328,
+      "source_line_sha256": "1c377be67aa07e3f0bfebf6b866bb8e1ebca4bf32897c6f102046e035689e4ed",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p243_027.txt",
+        "raw_text_bytes": 57,
+        "raw_text_SHA256": "049130c8d9c2d3305fed638ac9dd278622dff9077985175edda4fa22519f0a75",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "I've got the same feeling as I had last week in Germany.\n",
+        "normalized_text": "I've got the same feeling as I had last week in Germany.",
+        "normalized_text_SHA256": "5bedfdbe56ebe7f3500ab55d67824bde038c8195aaeaf43c7a9600122893bf21",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "58917d8b"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "c0972ae9cd32e002892881677824dbb306c7774bbe89bcf186a4d5d2931353ac",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_027.wav",
+          "bytes": 130604,
+          "sha256": "f887f3c7459e108c757129b75c7c3dbb6f3803774e0412de58a2abe248df13fb",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 65280,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p244_028",
+      "speaker": "p244",
+      "source_line_number": 3719,
+      "source_line_sha256": "7ba61c9b65868fbfc8a3862fb93babd7befc8b3cfebb8d720de517362c356410",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p244_028.txt",
+        "raw_text_bytes": 55,
+        "raw_text_SHA256": "3233b024b82fab20aed5f09d4e600f7a47ee745841b736487590a3a1f214ee3a",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "I am not interested in the money, it is the principle.\n",
+        "normalized_text": "I am not interested in the money, it is the principle.",
+        "normalized_text_SHA256": "2fb9bb5f1b616344f7e16618115df046527e377b4640b5f7df7b5dbb43349515",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "081cae32"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav",
+          "bytes": 102988,
+          "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 51472,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p244_034",
+      "speaker": "p244",
+      "source_line_number": 3725,
+      "source_line_sha256": "59c1f0479d8ab87f8264e361ef60b36e66a02b91c9b436725f9fda7e0681c792",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p244_034.txt",
+        "raw_text_bytes": 54,
+        "raw_text_SHA256": "bfee941b680272481a4bd0b9ba1ed7c0b2e5edde4d9c372c7c4d2c3b5fe8ef61",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "These awards will deliver improvements on the ground.\n",
+        "normalized_text": "These awards will deliver improvements on the ground.",
+        "normalized_text_SHA256": "8bc7f74e566242bcc63eb429a3563bd58614a46158f9cd17e9237e8023f614c2",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "1cb7c47a"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav",
+          "bytes": 104498,
+          "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 52227,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p250_038",
+      "speaker": "p250",
+      "source_line_number": 4142,
+      "source_line_sha256": "c04d5a06e907bd5edbbd4c617d24f3bf9b451b057a6ba8c8705d7bc1a5edd4c7",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p250_038.txt",
+        "raw_text_bytes": 56,
+        "raw_text_SHA256": "8a00af9d71a782e3d845dc277e90100b80efdca8a2e112cacb6c26f6cbe96715",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "Of course, on Tuesday, United were beaten despite this.\n",
+        "normalized_text": "Of course, on Tuesday, United were beaten despite this.",
+        "normalized_text_SHA256": "03d87458adb8e771472ce8300009f731acfcf2efbe03f430dbcca8fa907132e8",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "0d93ec8d"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav",
+          "bytes": 113902,
+          "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56929,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    },
+    {
+      "id": "p250_050",
+      "speaker": "p250",
+      "source_line_number": 4153,
+      "source_line_sha256": "b4057584e7c7eb11f4e7286c505f2e76cde426cf8d3a2936b1d4ee79af40d441",
+      "reference": {
+        "archive_entry": "trainset_28spk_txt/p250_050.txt",
+        "raw_text_bytes": 65,
+        "raw_text_SHA256": "0cb7fd631a98268de2b0a63be6a1efbc3708a10fd6782bb7894a6177e1efe6a9",
+        "raw_encoding": "UTF-8withoptionalBOM",
+        "original_text": "Rebuilding public transport was never going to happen overnight.\n",
+        "normalized_text": "Rebuilding public transport was never going to happen overnight.",
+        "normalized_text_SHA256": "2e5f23c50b5d2ed3fabab0776f258863c417ceaf4c2657fb99a593bcdad453da",
+        "normalization": "Whitespacecollapse/striponly;caseandpunctuationpreserved",
+        "CRC32": "41a6cd08"
+      },
+      "files": {
+        "clean": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        },
+        "noisy": {
+          "path": "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav",
+          "bytes": 112582,
+          "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+          "header": {
+            "sample_rate": 16000,
+            "channels": 1,
+            "frames": 56269,
+            "subtype": "PCM_16"
+          }
+        }
+      },
+      "noise_recording_id": "unknown",
+      "noise_provenance_status": "unresolved_no_identity_claim",
+      "alignment": "unverified",
+      "gain": "unverified",
+      "residual_noise_purity": "unknown",
+      "project_use_history": "six explicitly excluded speakers only; external/anonymized/pretraining unknown"
+    }
+  ],
+  "noise_metadata_scan": {
+    "files": [],
+    "skips": [],
+    "total_read_bytes": 0,
+    "candidate_files_seen": 0,
+    "noise_identity_resolved": false
+  },
+  "noise_disjoint_ready": false,
+  "split_frozen": false,
+  "scientific_gate_ready": false,
+  "interpretation": "Metadata registration is not waveform alignment/additivity/noise-purity or local-identifiability validation"
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "Root limited I1b operation-integrity launch authorization",
+  "utc": "2026-10-19T09:12:45.569403+00:00",
+  "scope": "one real CPU main plus one prepared independent validator only if main completed;24target/96operation slots retain unsafe/unavailable; memory-only wave arithmetic/PCMhash, no audio exports",
+  "command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_i1b_event_pair_integrity_20261019/run_integrity.py --execute-after-root-review",
+  "validator_command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_i1b_event_pair_integrity_20261019/validate_integrity.py --validate-after-completed-run",
+  "locked_sha256": {
+    "run_integrity.py": "20cc293f7e4182c0d743cfad375546944de56079fa43ea4a789047a00f71d9a0",
+    "event_integrity.py": "8a431cf9ce46803805b86890326407b2352a612eca53f1773f67fdca5034ce61",
+    "independent_integrity.py": "9950d52d4378903cb3a0e56f769775f1094b75e307f4c90c54a9e35cdb0dffa6",
+    "runtime.py": "f51ad7dfa307003c1789b11692b029c97685524a961612e678621a72470bb080",
+    "validate_integrity.py": "2beb708f2135b87065cf9c8559c16c9f599ab3c6c1057da0eac773544fdebbc5",
+    "preparation_manifest.json": "147ea23f3f3e6dd1a888dc2112e121de244182d4994672130bb466ef04488d11",
+    "config.yaml": "37483cc6080fad042ed25ed43f45014ca5b9386c71613ad36dc50893b0f548e5",
+    "analysis_plan.md": "e0cbb8a064a827be6b7f68bdc6811cc3ff97b4418c55cd686e6b7b39611b7b7d"
+  },
+  "review": "Root actually read business/independent/lifecycle/test/report sources;42synthetic receipt, AST,11prep/10source records checked;audio locks inherited only at Root review",
+  "budgets": {
+    "main_seconds": 120,
+    "validator_seconds": 120,
+    "artifact_bytes": 8388608,
+    "max_main_pcm_decodes": 24,
+    "max_validator_pcm_decodes": 24,
+    "network_bytes": 0,
+    "new_audio_files": 0
+  },
+  "no_automatic_retries": true,
+  "forbidden": [
+    "model/ASR/training/classifier/AUC/dprime",
+    "newaudio/NPY/PCMpayload files",
+    "crossutterance noise reuse",
+    "gain/lag normalization",
+    "parameter changes or unsafe row omission",
+    "test content and test tuning"
+  ],
+  "config_permission_fields": "immutable preparation history; this external authorization allows only bounded technical registration, not scientific/noise/split/traininggate promotion",
+  "metrics_immutable": true,
+  "required_outcome": "technical completeness and risk report only, not Noisy identifiability or phoneme truth",
+  "goal_complete": false
+}

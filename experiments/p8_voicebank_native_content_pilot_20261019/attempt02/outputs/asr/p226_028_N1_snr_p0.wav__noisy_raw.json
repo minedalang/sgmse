@@ -1,0 +1,79 @@
+{
+  "request": {
+    "key": "p226_028_N1_snr_p0.wav__noisy",
+    "id": "p226_028",
+    "arm": "noisy",
+    "path": "inputs/p226_028_N1_snr_p0.wav",
+    "basename": "p226_028_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "input": {
+      "wav_sha256": "4733ea3eecbe905d1e9ab51fb7a6c0f13540f2d1bf31b6650d22b1a147c2e1fb",
+      "samples": 67653,
+      "array_sha256": "08a05de2bd98442e3e8abe802b7ecd94982fc0c8c7c394df0e9d53b23efaf03a",
+      "peak": 0.062286376953125,
+      "rms": 0.009096754669808187
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " suggestions of the action being a punishment for the citizens.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " suggestions of the action being a punishment for the citizens.",
+        "tokens": [
+          50363,
+          11776,
+          286,
+          262,
+          2223,
+          852,
+          257,
+          9837,
+          329,
+          262,
+          4290,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.7065138135637555,
+        "compression_ratio": 0.9841269841269841,
+        "no_speech_prob": 0.3907925486564636
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 20,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

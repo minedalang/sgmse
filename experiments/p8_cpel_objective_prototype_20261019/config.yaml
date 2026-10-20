@@ -1,0 +1,19 @@
+{
+  "schema": "cpel-objective-prototype-v1",
+  "scope": "CPU synthetic arithmetic and gradients only; no model, audio, fitting, or optimizer",
+  "parameters_are": "software examples, NOT approved training hyperparameters",
+  "objective": {
+    "lower_margin": 0.1,
+    "upper_margin": 1.5,
+    "upper_weight": 1.0,
+    "orthogonal_weight": 0.25,
+    "outside_weight": 0.2,
+    "min_delta_energy": 1e-12
+  },
+  "reduction": "coordinates summed per sample; mean of valid samples only; invalid samples skipped entirely including outside term; all-invalid returns differentiable zero",
+  "mask": "real elementwise P in [0,1]; P is a soft weighting, not idempotent; outside uses (1-P)d",
+  "denominator": "exact norm(P delta)^2 on valid samples; no epsilon added; invalid denominator replaced by 1 only for masked arithmetic",
+  "dtype": "CPU float64 and complex128 synthetic fixtures",
+  "seed": 20261019,
+  "zero_target_semantics": "Noise-only intervention has zero clean delta: direction undefined and entire sample skipped, NOT rejected noise. Input-direction gain/response energy are separate diagnostics. Zero edit with identical inputs/RNG is consistency, not learned evidence."
+}

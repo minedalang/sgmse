@@ -1,0 +1,24 @@
+{
+  "scope": "I1a audit only: one actual main CPU run, then one prepared independent validator if completed; no event construction/models/training",
+  "utc": "2026-10-19T08:53:18.297141+00:00",
+  "driver_sha256": "3543d14bf6f20bcb41914e20c97962018a6f1fcea0f1c891c3350701be94b6e8",
+  "validator_sha256": "27c29b30b7233fa5b99925f16dff224b9719027a6e120a81cac89832a0ebb831",
+  "preparation_manifest_sha256": "760b39845f99dd86c83c04833e8458fccaf83c416a24be2534a2aa7083ee92ef",
+  "config_sha256": "c0ce3be4b9f6c788fadaad1e3a5924717707e283fdb42b4c0303e6a82181bd5e",
+  "command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/audit_pairs.py --execute-after-root-review",
+  "validator_command": "/data/coding/sgmse/env/bin/python -B /data/coding/sgmse/experiments/p8_i1_pair_residual_audit_20261019/validate_audit.py --validate-after-completed-run",
+  "budgets": {
+    "each_phase_seconds": 120,
+    "total_artifact_bytes": 8388608,
+    "main_file_decodes": 24,
+    "validator_file_decodes": 24,
+    "network_bytes": 0
+  },
+  "single_attempt_no_retry": true,
+  "all_12_fixed_pairs_required": true,
+  "do_not_modify_config_false_fields": "preparation snapshot retained; this grants audit-only execution, not scientific gate, probe or audio construction permission",
+  "review": "driver/validator/tests actually read;36synthetic receipt+AST+8preparation/20I0source records checked; exactconstant issue corrected before first main;24audio locks only inherited at Root review",
+  "required_interpretation": "OLS gain and best lag descriptive; residual purity/noise identity/split/scientific gate remain unknown/false; no threshold tuning",
+  "failure_policy": "retain all failed artifacts and stop; do not edit/retry; success checker only after main completed",
+  "goal_complete": false
+}

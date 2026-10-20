@@ -1,0 +1,76 @@
+{
+  "request": {
+    "key": "p226_028__scaledclean",
+    "id": "p226_028",
+    "arm": "scaledclean",
+    "path": "inputs/p226_028_scaledclean.wav",
+    "input": {
+      "wav_sha256": "be55f0d7a89e63b1dbbf8735311d403f20d9b32153d72a98d79ae78b812cee0a",
+      "samples": 67653,
+      "array_sha256": "26b24da8696c62f94b8e068f6d2bc42a4eb3b9207514b6dbd8c87bc67c3e770f",
+      "peak": 0.061676025390625,
+      "rms": 0.006375106752750752
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " Suggestions of the action being a punishment were dismissed.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " Suggestions of the action being a punishment were dismissed.",
+        "tokens": [
+          50363,
+          35042,
+          507,
+          286,
+          262,
+          2223,
+          852,
+          257,
+          9837,
+          547,
+          11126,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.37246220452444895,
+        "compression_ratio": 0.9523809523809523,
+        "no_speech_prob": 0.09584696590900421
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 2,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

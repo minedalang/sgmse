@@ -1,0 +1,8 @@
+{
+  "local_non_dummy_transcript_found": false,
+  "local_matching_metadata_found": false,
+  "duckduckgo": "challenge page; no result content",
+  "bing_exact_phrase": "no results",
+  "google_books": "quota exceeded; no result retrieved",
+  "interpretation": "No verified original transcript recovered; Whisper remains a listening prompt only"
+}

@@ -1,0 +1,24 @@
+{
+  "kind": "Root limited I0 metadata registration authorization; not I1 or model permission",
+  "utc": "2026-10-19T08:33:49.155537+00:00",
+  "scope": "one registration plus one independent standard-library validation; complete WAV bytes for SHA and header parsing only; zero PCM decoding, editing/mixing, detector, frontend/backend, ASR, training or network",
+  "reason": "user requested preparation and validation only; this registration freezes train metadata and explicitly leaves scientific gates unresolved",
+  "frozen_preparation_manifest_sha256": "4cfac03d9a9d528d960f1a5c8cbc8c5fcbe927d38467ca253b673ce4cd4ca2cb",
+  "driver_sha256": "b0cc5210ed48fe1ccb8135ae40011432267e3030417bbe1209a2f48f4062cc13",
+  "validator_sha256": "9af100a4cd2a2c77ac207914e1f8fbc7f58885957d66913fe80fdea6abf3cfe3",
+  "config_sha256": "147cc0f083801da3b173d1281cc2e831105544ca8e05e2da97a87aec7e9d0c69",
+  "preparation_review": "all8preparation hashes/source manifest and AST verified; read driver/validator and29syntheticcheck code/receipt; not a real end-to-end data run",
+  "preparation_time_budget_testing_limit": "synthetic elapsed/reserve guard checks do not establish measured wall-time performance on actual data",
+  "budgets": {
+    "registration_seconds": 60,
+    "total_artifact_bytes": 2097152,
+    "network_bytes": 0
+  },
+  "no_retries": true,
+  "config_false_fields": "historical software-preparation snapshot retained; this external authorization grants only the stated metadata command and validator",
+  "command": "python3 -B /data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/register_metadata.py --execute-i0-after-root-review",
+  "validator_command": "python3 -B /data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/validate_metadata.py",
+  "git_status_sha256": "442c6a902cc5aa807d9509d25c054943816a77ba2cb694a321cde1fd1f02eacf",
+  "noise_identity_unknown_means": "keep noise_disjoint_ready=false; no pseudolabeling of source identity; no split or scientific gate promotion",
+  "defer_remaining_user_plan": "I1 real waveform audit/design, D0-D4 and CAEG are not authorized by this record"
+}

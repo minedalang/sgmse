@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-19T03:06:09.186048+00:00",
+  "command": [
+    "/data/coding/sgmse/env/bin/python",
+    "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/run_gate.py"
+  ],
+  "frozen_manifest_sha256": "2aedc78cce659639f5164e3687356563cfd6e4bb78d395c2e77301dde064cab6"
+}

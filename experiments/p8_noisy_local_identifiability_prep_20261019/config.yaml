@@ -1,0 +1,65 @@
+{
+  "experiment_id": "p8_noisy_local_identifiability_prep_20261019",
+  "phase": "I0_metadata_software_preparation_only_not_started",
+  "source_manifest": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl",
+  "source_manifest_sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+  "local_partition": "train",
+  "duration_seconds_inclusive": [
+    3,
+    5
+  ],
+  "minimum_utterance_number": 26,
+  "excluded_speakers": [
+    "p226",
+    "p287",
+    "p227",
+    "p228",
+    "p230",
+    "p231"
+  ],
+  "speaker_order": "lexical",
+  "utterance_order": "numeric_suffix_then_id",
+  "speaker_count": 6,
+  "utterances_per_speaker": 2,
+  "selection_fallback": "stop_and_record_insufficient_eligible_rows_no_rule_relaxation",
+  "expected_pairs": 12,
+  "max_current_audio_files_to_hash": 24,
+  "noise_source_policy": "unknown unless actual local provenance metadata establishes original recording identity; no noise-disjoint claim from filename or residual algebra",
+  "noise_metadata_roots": [
+    "/data/datasets/vb/voicebank_demand"
+  ],
+  "noise_metadata_scan": {
+    "max_depth": 2,
+    "max_candidate_files": 100,
+    "max_total_read_bytes": 524288,
+    "allowed_suffixes": [
+      ".txt",
+      ".json",
+      ".csv",
+      ".tsv",
+      ".md"
+    ],
+    "exclude_path_components": [
+      "test",
+      "testset",
+      "test_set",
+      "valid",
+      "validation"
+    ],
+    "no_audio_read_or_directory_recursion_outside_allowlist": true
+  },
+  "budgets": {
+    "seconds": 60,
+    "artifact_bytes": 2097152,
+    "network_bytes": 0,
+    "audio_decodes": 0,
+    "models": 0,
+    "training": 0
+  },
+  "current_launch_authorized": false,
+  "actual_metadata_registration_authorized": false,
+  "actual_waveform_construction_authorized": false,
+  "probe_training_authorized": false,
+  "frontend_backend_calls_authorized": false,
+  "source_write_authorized": false
+}

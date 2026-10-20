@@ -1,0 +1,99 @@
+{
+  "request": {
+    "key": "p227_031_N2_snr_m18.wav__off",
+    "id": "p227_031",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p227_031_N2_snr_m18.wav",
+    "basename": "p227_031_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p227",
+    "input": {
+      "wav_sha256": "8340fd9505373c691f8029a664ea4574b6d861ff803a313a3de63ea7af693016",
+      "samples": 51005,
+      "array_sha256": "4e9df86c3d2e498032f9b2c624a715946e4569e18acaa15d741eb404d9230fed",
+      "peak": 0.1553955078125,
+      "rms": 0.010750812769179415
+    }
+  },
+  "publisher_reference": {
+    "id": "p227_031",
+    "original_text": "The Premier League has been a huge success.\n",
+    "raw_text_hex": "546865205072656d696572204c656167756520686173206265656e2061206875676520737563636573732e0a",
+    "raw_text_sha256": "63d42cd9a7be6da59f442588177b75368272fbb4640a5eab816716b3f9be8e97",
+    "archive_entry": "trainset_28spk_txt/p227_031.txt"
+  },
+  "raw_result": {
+    "text": " It's climbing in the lead, and then it's you. Tap.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.52,
+        "text": " It's climbing in the lead, and then it's you.",
+        "tokens": [
+          50363,
+          632,
+          338,
+          14281,
+          287,
+          262,
+          1085,
+          11,
+          290,
+          788,
+          340,
+          338,
+          345,
+          13,
+          50489
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.232643985748291,
+        "compression_ratio": 0.9433962264150944,
+        "no_speech_prob": 0.1078931987285614
+      },
+      {
+        "id": 1,
+        "seek": 0,
+        "start": 2.52,
+        "end": 3.52,
+        "text": " Tap.",
+        "tokens": [
+          50489,
+          16880,
+          13,
+          50539
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.232643985748291,
+        "compression_ratio": 0.9433962264150944,
+        "no_speech_prob": 0.1078931987285614
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 29,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

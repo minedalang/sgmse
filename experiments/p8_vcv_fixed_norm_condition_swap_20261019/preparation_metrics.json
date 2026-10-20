@@ -1,0 +1,52 @@
+{
+  "status": "prepared_no_inference",
+  "syntax_valid": true,
+  "source_locks_valid": true,
+  "input_recipe_hash_checks": [
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f6aga1",
+      "native_reference_peak": 0.20225846767425537
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f6aga1",
+      "native_reference_peak": 0.19738084077835083
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "f6aka1",
+      "native_reference_peak": 0.21088647842407227
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "f6aka1",
+      "native_reference_peak": 0.22638864815235138
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aga1",
+      "native_reference_peak": 0.1367131918668747
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aga1",
+      "native_reference_peak": 0.14947974681854248
+    },
+    {
+      "condition": "N1_snr-6",
+      "sample_id": "m5aka1",
+      "native_reference_peak": 0.1722656488418579
+    },
+    {
+      "condition": "N2_snr-6",
+      "sample_id": "m5aka1",
+      "native_reference_peak": 0.17840027809143066
+    }
+  ],
+  "frontend_forwards": 0,
+  "backend_forwards": 0,
+  "recognizer_forwards": 0,
+  "prior_score_cache_keys_resolve_uniquely": true,
+  "final_syntax_valid": true
+}

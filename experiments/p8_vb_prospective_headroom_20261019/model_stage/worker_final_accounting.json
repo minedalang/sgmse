@@ -1,0 +1,13 @@
+{
+  "parent_bytes_before_this_receipt": 45839199,
+  "model_stage_bytes_before_this_receipt": 30802190,
+  "parent_cap": 67108864,
+  "exclude_symlink_target_duplication": true,
+  "receipt_not_in_its_own_prior_total": true,
+  "metrics_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "report_sha256": "6693926fafb4664df4fbca0475f24d3088d13b851e5209920a1f0a2a927e5d80",
+  "no_model_follow_on": true,
+  "parent_bytes_before_receipt_refresh": 45839766,
+  "model_stage_bytes_before_receipt_refresh": 30802757,
+  "supersedes_original_prior_totals": true
+}

@@ -1,0 +1,71 @@
+[MARK] 00:34:04 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=7.5MB :: after imports
+
+========== Checkpoint Configuration ==========
+STORM_CHECKPOINT: 0
+STORM_CHECKPOINT_MODE: full
+SCORE_CHECKPOINT: 0
+PLM_CHECKPOINT: 0
+==============================================
+
+Set TORCH_CUDA_ARCH_LIST to: 8.9
+Seed set to 2026
+[MARK] 00:34:10 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=979.5MB :: after argument parsing
+[MARK] 00:34:10 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=979.5MB :: before model init
+Running NCSN++ as discriminative backbone
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: after model init
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: before logger init
+[W&B] code archive disabled by SGMSE_WANDB_LOG_CODE
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: after logger init
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: before callbacks init
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: after callbacks init
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: before trainer init
+GPU available: True (cuda), used: True
+TPU available: False, using: 0 TPU cores
+💡 Tip: For seamless cloud logging and experiment tracking, try installing [litlogger](https://pypi.org/project/litlogger/) to enable LitLogger, which logs metrics and artifacts automatically to the Lightning Experiments platform.
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: after trainer init
+[MARK] 00:34:15 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=1470.0MB :: before trainer.fit
+[Init ckpt] loading EMA-materialized base from: /data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+Running NCSN++ as discriminative backbone
+[EMA] checkpoint EMA loaded successfully, shadow params = 8
+[Init ckpt] loaded EMA-materialized state_dict strict=False: missing=0 unexpected=0
+[Init ckpt] missing frontend keys: none
+[Init ckpt] unexpected frontend keys: none
+[Init ckpt] missing dnn keys: none
+[Init ckpt] unexpected dnn keys: none
+[Init ckpt] initialized new-run EMA over 270 trainable parameters.
+wandb: WARNING The anonymous setting has no effect and will be removed in a future version.
+wandb: WARNING `resume` will be ignored since W&B syncing is set to `offline`. Starting a new run with run id 4mfezdaw.
+wandb: Tracking run with wandb version 0.30.0
+wandb: W&B syncing is set to `offline` in this directory. Run `wandb online` or set WANDB_MODE=online to enable cloud syncing.
+wandb: Run data is saved locally in /data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/logs/wandb/offline-run-20261018_003419-4mfezdaw
+wandb: View this run in the terminal with `wandb leet`
+LOCAL_RANK: 0 - CUDA_VISIBLE_DEVICES: [0]
+┏━━━┳━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━┳━━━━━━━┳━━━━━━━┓
+┃   ┃ Name        ┃ Type                      ┃ Params ┃ Mode  ┃ FLOPs ┃
+┡━━━╇━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━╇━━━━━━━╇━━━━━━━┩
+│ 0 │ dnn         │ NCSNpp_v2                 │ 27.8 M │ train │     0 │
+│ 1 │ rrsd_router │ BandTimeReliabilityRouter │ 42.6 K │ train │     0 │
+│ 2 │ frontend    │ StormFrontend             │ 27.3 M │ eval  │     0 │
+└───┴─────────────┴───────────────────────────┴────────┴───────┴───────┘
+Trainable params: 27.8 M                                                        
+Non-trainable params: 27.4 M                                                    
+Total params: 55.2 M                                                            
+Total estimated model params size (MB): 220.644                                 
+Modules in train mode: 190                                                      
+Modules in eval mode: 184                                                       
+Total FLOPs: 0                                                                  
+[EMA] current tracked params = 270
+[EMA] current shadow params  = 270
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/utilities/_pytree.py:21: `isinstance(treespec, LeafSpec)` is deprecated, use `isinstance(treespec, TreeSpec) and treespec.is_leaf()` instead.
+/data/coding/sgmse/env/lib/python3.10/site-packages/pytorch_lightning/loops/fit_loop.py:538: Found 184 module(s) in eval mode at the start of training. This may lead to unexpected behavior during training. If this is intentional, you can ignore this warning.
+`Trainer.fit` stopped: `max_steps=500` reached.
+Epoch 0/-2 ━━━━━━━━━━━━━━━━ 500/500 0:04:29 • 0:00:00 1.86it/s v_num: zdaw      
+                                                               train_loss_step: 
+                                                               10814.631        
+                                                               train_loss_epoch:
+                                                               5963.087         
+[MARK] 00:38:52 pid=51803 ppid=51802 RANK=None LOCAL_RANK=None WORLD_SIZE=None rss=3366.0MB :: after model init
+[1;34mwandb[0m: 
+[1;34mwandb[0m: You can sync this run to the cloud by running:
+[1;34mwandb[0m: [1mwandb sync /data/coding/sgmse/experiments/speaker_backend_only_matched_500_20261018/logs/wandb/offline-run-20261018_003419-4mfezdaw[0m
+[1;34mwandb[0m: Find logs at: [1;35mexperiments/speaker_backend_only_matched_500_20261018/logs/wandb/offline-run-20261018_003419-4mfezdaw/logs[0m

@@ -1,0 +1,21 @@
+{
+  "experiment_id": "p8_vb_prospective_headroom_20261019",
+  "phase": "metadata_only",
+  "source_manifest_sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+  "partition": "train",
+  "excluded_speakers": ["p226", "p287"],
+  "minimum_utterance_number": 26,
+  "duration_seconds_inclusive": [3, 5],
+  "speaker_order": "lexical",
+  "utterance_order": "integer_suffix",
+  "speakers": 4,
+  "utterances_per_speaker": 2,
+  "budget_seconds": 60,
+  "artifact_limit_bytes": 2097152,
+  "network": false,
+  "audio_decode": false,
+  "mixing": false,
+  "models": false,
+  "training": false,
+  "model_stage_authorized": false
+}

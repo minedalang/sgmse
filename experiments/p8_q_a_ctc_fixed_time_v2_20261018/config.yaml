@@ -1,0 +1,35 @@
+experiment_id: p8_q_a_ctc_fixed_time_v2_20261018
+date: 2026-10-18
+status: prepared_not_run
+type: read_only_clean_timestamp_ctc_posterior_probe
+purpose: Correct floating point window expansion in the original fixed-time probe.
+supersedes_protocol: experiments/p8_q_a_ctc_fixed_time_probe_20261020
+source_experiment: experiments/p8_q_a_ctc_forced_alignment_20261020
+source_clips: experiments/p8_e1_candidate_listening_aligned_20261020/clips
+groups: [00_fileid_5243, 01_fileid_4812, 02_fileid_11999, 03_fileid_10720]
+conditions: [clean, noisy, y_pre, off, router]
+model:
+  name: facebook/wav2vec2-lv-60-espeak-cv-ft
+  local_dir: experiments/p8_phoneme_probe_20261020/local_model
+  local_files_only: true
+  clean_target_source: p8_q_a_ctc_forced_alignment_20261020/metrics.json
+  frame_step_seconds: 0.02
+  fixed_interval: integer [clean_greedy_start_frame, clean_greedy_end_frame_exclusive)
+  neighborhood_interval: integer [max(0,start-10), min(num_frames,end+10))
+  neighborhood_each_side_frames: 10
+execution:
+  device: cuda_if_available
+  seed: 0
+  training: false
+  dataset_modified: false
+  checkpoint_modified: false
+outputs:
+  existing_artifacts: refuse_even_partial_results
+  csv: fixed_time_token_posteriors.csv
+  probabilities: frame_probabilities.npz
+  probability_content: all_frames_clean_target_token_ids_and_full_vocabulary_argmax
+  probability_dtype: float32
+  probability_size_limit_bytes_exclusive: 1000000
+  metadata: metrics.json
+  start_marker: run_started.json
+interpretation: exploratory clean-derived pseudo-label acoustic support only

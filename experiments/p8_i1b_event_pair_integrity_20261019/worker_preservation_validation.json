@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "old_file_locks_checked": 574,
+  "prepared_locks": 11,
+  "source_record_locks": 10,
+  "metrics_sha256": "24c0ee1297e261dbecc4cfa9b2f3441292e45e71709cb2fddb0b60462362464c",
+  "independent_validation_sha256": "3fbf41d66e61f5c45f6f37703d1f66495ecbf921299b280e6f6f5ba4b7192985",
+  "report_sha256": "b8fbbbf07e779046a9b9d8f2613acf1c0a336912df355dee117a8f6d9f9cee9d",
+  "event_counts": {
+    "available": 24
+  },
+  "operation_counts": {
+    "safe": 96
+  },
+  "external_git_added": [],
+  "external_git_removed": [],
+  "no_extra_source_WAV_reads_for_reporting": true,
+  "gates_unchanged": true,
+  "no_follow_on": true,
+  "posthoc_taper_comparison_valid_n": 48,
+  "posthoc_max_relative_taper_mismatch": {
+    "id": "p244_034",
+    "event": "sustained",
+    "family": "cosine",
+    "relative_absolute_taper_energy_difference": 0.8277770635004515
+  }
+}

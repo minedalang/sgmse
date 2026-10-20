@@ -1,0 +1,138 @@
+{
+  "experiment_id": "storm_error_attribution_p7_20261017_frontend_pesq_stoi",
+  "n": 32,
+  "sample_rate_hz": 16000,
+  "pesq_mode": "wideband",
+  "stoi_extended": false,
+  "arms": {
+    "frontend": "experiments/storm_error_attribution_p7_20261017/frontend_only",
+    "off": "experiment_logs/rrsd_tcut_screen/off",
+    "router": "experiment_logs/rrsd_tcut_screen/router"
+  },
+  "manifest_sha256": "77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e",
+  "bootstrap": {
+    "replicates": 10000,
+    "seed": 20261018,
+    "scope": "exploratory; previously screened development split"
+  },
+  "software": {
+    "numpy": "2.5.4",
+    "soundfile": "0.14.0",
+    "pesq": "package import",
+    "pystoi": "0.4.1"
+  },
+  "training": false,
+  "audio_written_or_modified": false,
+  "started_unix": 1792224487.9952695,
+  "runtime_seconds": 53.58857822418213,
+  "metrics": {
+    "pesq_wb": {
+      "per_arm": {
+        "frontend": {
+          "mean": 1.4936664998531342,
+          "std": 0.4415136704764145,
+          "median": 1.3203746676445007
+        },
+        "off": {
+          "mean": 1.729178037494421,
+          "std": 0.5763943509110496,
+          "median": 1.541123867034912
+        },
+        "router": {
+          "mean": 1.7490405663847923,
+          "std": 0.5823761370723589,
+          "median": 1.5561671257019043
+        }
+      },
+      "paired": {
+        "frontend_minus_off": {
+          "mean_delta": -0.23551153764128685,
+          "median_delta": -0.20450103282928467,
+          "bootstrap_95ci": [
+            -0.30888034533709285,
+            -0.1654714005999267
+          ],
+          "a_wins": 2,
+          "b_wins": 30,
+          "ties": 0
+        },
+        "router_minus_off": {
+          "mean_delta": 0.019862528890371323,
+          "median_delta": 0.007578253746032715,
+          "bootstrap_95ci": [
+            0.00836439272388816,
+            0.03686889111995697
+          ],
+          "a_wins": 23,
+          "b_wins": 9,
+          "ties": 0
+        },
+        "router_minus_frontend": {
+          "mean_delta": 0.2553740665316582,
+          "median_delta": 0.21825867891311646,
+          "bootstrap_95ci": [
+            0.18824450923129915,
+            0.32902586571872233
+          ],
+          "a_wins": 32,
+          "b_wins": 0,
+          "ties": 0
+        }
+      }
+    },
+    "stoi": {
+      "per_arm": {
+        "frontend": {
+          "mean": 0.8215957549962821,
+          "std": 0.09815347338654992,
+          "median": 0.8287031020648854
+        },
+        "off": {
+          "mean": 0.8309583095941373,
+          "std": 0.10667765831450553,
+          "median": 0.8489442052235966
+        },
+        "router": {
+          "mean": 0.8319251702280563,
+          "std": 0.1064528842813434,
+          "median": 0.8499046958024565
+        }
+      },
+      "paired": {
+        "frontend_minus_off": {
+          "mean_delta": -0.009362554597855233,
+          "median_delta": -0.01241257547936847,
+          "bootstrap_95ci": [
+            -0.014195901535782554,
+            -0.004190845162660323
+          ],
+          "a_wins": 10,
+          "b_wins": 22,
+          "ties": 0
+        },
+        "router_minus_off": {
+          "mean_delta": 0.0009668606339190144,
+          "median_delta": 0.0010171318491704606,
+          "bootstrap_95ci": [
+            0.0005930454164947669,
+            0.0013371173002758622
+          ],
+          "a_wins": 25,
+          "b_wins": 7,
+          "ties": 0
+        },
+        "router_minus_frontend": {
+          "mean_delta": 0.010329415231774247,
+          "median_delta": 0.013205945012804421,
+          "bootstrap_95ci": [
+            0.005304308686685387,
+            0.014996418276311834
+          ],
+          "a_wins": 23,
+          "b_wins": 9,
+          "ties": 0
+        }
+      }
+    }
+  }
+}

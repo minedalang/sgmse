@@ -1,0 +1,169 @@
+{
+  "kind": "Research_Lead_arithmetic_interpretation_of_frozen_results_not_new_experiment",
+  "utc": "2026-10-19T06:51:58.232394+00:00",
+  "source_metrics_sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+  "independent_validation_sha256": "9397f692973082a879d5c33f05052c7fdebd3e2ecc962e5707984a9ced052151",
+  "verified_source_locks": 413,
+  "verified_runtime_artifacts": 368,
+  "all": {
+    "N": 288,
+    "E_frontend": 378,
+    "E_off": 229,
+    "E_oracle": 159,
+    "E_best_fixed": 229,
+    "frontend_wins": 23,
+    "off_wins": 4,
+    "ties": 5,
+    "headroom": 0.24305555555555555
+  },
+  "posthoc_descriptive_decomposition_not_new_primary": {
+    "sum_speaker_best_fixed_errors": 167,
+    "sum_speaker_oracle_errors": 159,
+    "global_fixed_to_speaker_fixed_errors": 62,
+    "speaker_fixed_to_case_oracle_errors": 8,
+    "word_denominator": 288,
+    "within_speaker_headroom_on_total_denominator": 0.027777777777777776,
+    "warning": "Speaker-best policies and this decomposition use reference retrospectively; not deployable and not a replacement primary endpoint. No sample censored/capped."
+  },
+  "recognizer_loop_case": {
+    "case": "p227_030_N1_snr_m18.wav",
+    "frontend_reference_words": 6,
+    "frontend_word_insertions": 216,
+    "frontend_hypothesis_words": 222,
+    "literal_text_characters": 891,
+    "segments": 1,
+    "compression_ratio": 27.8125,
+    "avg_logprob": -0.2586411709255642,
+    "no_speech_prob": 0.6702165603637695,
+    "raw_json": "outputs/asr/p227_030_N1_snr_m18.wav__frontend_raw.json",
+    "raw_json_sha256": "c5479fd09075956ecb54b8628882c825b4dc13d17a57caa99a79830ab6775045",
+    "warning": "Saved recognizer output pathology, not evidence enhanced audio literally repeats216extra words; no ASR re-run or option change."
+  },
+  "quality_all": {
+    "si_sdr": {
+      "noisy": {
+        "mean": -9.047572449398183,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "frontend": {
+        "mean": 7.005627632209048,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "off": {
+        "mean": 5.679533005947447,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "off_minus_frontend_paired": {
+        "mean": -1.326094626261601,
+        "paired_n": 32,
+        "missing_pair_n": 0
+      }
+    },
+    "stoi": {
+      "noisy": {
+        "mean": 0.6162248239250945,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "frontend": {
+        "mean": 0.7003317691416693,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "off": {
+        "mean": 0.7102964968889109,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "off_minus_frontend_paired": {
+        "mean": 0.009964727747241556,
+        "paired_n": 32,
+        "missing_pair_n": 0
+      }
+    },
+    "pesq": {
+      "noisy": {
+        "mean": 1.0427995547652245,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "frontend": {
+        "mean": 1.2999434396624565,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "off": {
+        "mean": 1.3625371977686882,
+        "valid_n": 32,
+        "missing_n": 0
+      },
+      "off_minus_frontend_paired": {
+        "mean": 0.06259375810623169,
+        "paired_n": 32,
+        "missing_pair_n": 0
+      }
+    }
+  },
+  "frozen_primary_bootstrap": {
+    "seed": 20261019,
+    "replicates": 10000,
+    "clusters": [
+      "p227",
+      "p228",
+      "p230",
+      "p231"
+    ],
+    "percentile_definition": "linear (n-1)*q, exploratory only; four clusters not reliable coverage",
+    "off_minus_frontend": [
+      -2.5327868852459017,
+      0.35563380281690143
+    ],
+    "headroom": [
+      0.0037313432835820895,
+      0.29347826086956524
+    ]
+  },
+  "scaledclean": {
+    "word": {
+      "S": 2,
+      "D": 0,
+      "I": 0,
+      "H": 70,
+      "N": 72,
+      "N_hyp": 72,
+      "edit_distance": 2,
+      "micro_rate": 0.027777777777777776,
+      "sentence_mean_rate": 0.02922077922077922,
+      "defined_sentence_n": 8,
+      "undefined_sentence_n": 0
+    },
+    "character": {
+      "S": 1,
+      "D": 2,
+      "I": 0,
+      "H": 309,
+      "N": 312,
+      "N_hyp": 310,
+      "edit_distance": 3,
+      "micro_rate": 0.009615384615384616,
+      "sentence_mean_rate": 0.012235449735449735,
+      "defined_sentence_n": 8,
+      "undefined_sentence_n": 0
+    }
+  },
+  "scaledclean_nonzero_ids": [
+    "p230_027",
+    "p231_032"
+  ],
+  "decisions": [
+    "Accept technical execution/serialization/scoring checks; scientific validity is narrower.",
+    "Do not interpret pooled70 saved edits as70 correct words or recovered phonemes.",
+    "No selector/verifier training, new model seeds/windows, ASR parameter repair/rerun or additional samples authorized.",
+    "Close this32condition measurement. Keep proposed offline ranking deferred: apparent headroom dominated by measurement pathology and policy heterogeneity.",
+    "Next research design must address evaluation reliability and jointly preserve content/quality, without growing generic annotation infrastructure."
+  ],
+  "new_model_audio_network_calls": 0
+}

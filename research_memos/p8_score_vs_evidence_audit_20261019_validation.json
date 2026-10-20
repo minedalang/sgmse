@@ -1,0 +1,97 @@
+{
+  "kind": "code_probability_semantics_and_directed_primary_literature_audit",
+  "utc": "2026-10-19T07:05:41.874162+00:00",
+  "status": "review_completed_no_empirical_method_claim",
+  "source_locks": [
+    {
+      "path": "/data/coding/sgmse/sgmse/model.py",
+      "sha256": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+      "bytes": 73461
+    },
+    {
+      "path": "/data/coding/sgmse/sgmse/joint_model.py",
+      "sha256": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+      "bytes": 293525
+    },
+    {
+      "path": "/data/coding/sgmse/sgmse/sdes.py",
+      "sha256": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21",
+      "bytes": 26791
+    },
+    {
+      "path": "/data/coding/sgmse/sgmse/data_module.py",
+      "sha256": "693cc2b85c8e6c816d82ecc8dcfac4ef084b2f4bea810d1e6dca9e0f07842895",
+      "bytes": 43617
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/checkpoint_data_condition_audit_20261018_metrics.json",
+      "sha256": "0c64c5164906e4e78e0682588b0b8de7f2e0a37f31a8e28c02e76eefdb7dd9f7",
+      "bytes": 1800
+    },
+    {
+      "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/metrics.json",
+      "sha256": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+      "bytes": 2227266
+    }
+  ],
+  "analytic_counterexample": {
+    "prior": "N(-2,0.25)",
+    "observation_X": 1,
+    "noise_variance": 1,
+    "candidates": [
+      -1,
+      1
+    ],
+    "prior_logratio": -16.0,
+    "measurement_likelihood_logratio": 2.0,
+    "posterior_logratio": -14.0,
+    "posterior_score": "-5*S-7",
+    "fixed_time_line_integral": -14.0,
+    "type": "exact scalar algebra; no model/audio experiment"
+  },
+  "nonlinear_additivity_example": {
+    "S": 4,
+    "N": 5,
+    "transform": "sqrt positive-real illustration only; not claiming active80kparameters",
+    "G_sum": 3.0,
+    "sum_G": 4.23606797749979
+  },
+  "independent_review": "research_gate_critic actual read-only code review; no additional source/literature assertions delegated",
+  "primary_sources": [
+    {
+      "url": "https://arxiv.org/html/2209.14687v4",
+      "scope": "sections2.2-3,Eqs5,7,15; PDF OpenReview initially browser-challenge, not bypassed"
+    },
+    {
+      "url": "https://arxiv.org/html/2601.09931v1",
+      "scope": "sectionsIII-V likelihood/speech+noise prior framework"
+    }
+  ],
+  "new_audio_sample_decodes": 0,
+  "new_model_or_ASR_calls": 0,
+  "new_training": 0,
+  "new_scientific_runs_authorized": false,
+  "network_note": "Read-only primary literature browsing/searches occurred; transfer not instrumented. No dataset/weight download.",
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_score_vs_evidence_audit_20261019.md",
+      "bytes": 8209,
+      "sha256": "a2baef0f1973e8db4ee324101eff26f74649dfc8152348618d8188755d008d04"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 10077,
+      "sha256": "5f57232f4354cd94c01645da44f7dff72f808091c50cb3212eb1f222054f904f"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 11279,
+      "sha256": "a4bf529bbea031fd52247ebee53aabd4cff7bb1abc1f0dd605f78855cadeabfc"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 15610,
+      "sha256": "33268cf395bfbf71876ad308c98dc9e3e6c2e91e6e3f6f6424d73b67196ab39c"
+    }
+  ]
+}

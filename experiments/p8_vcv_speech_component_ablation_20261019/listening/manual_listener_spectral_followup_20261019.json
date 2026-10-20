@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-19",
+  "source": "explicit_user_chat_following_listening_and_reported_spectral_inspection",
+  "case_id": "fresh__N2_snr-6__f20aka1",
+  "same_listener_as": "manual_listener_feedback_completion_20261019.json",
+  "verbatim": "我又观察了第5例的幅度谱 noise_only明显在尾部在高频明显有更多的噪声残留，原始后端去掉了大部分高频噪声，只剩低频一点没去掉，所以不像人声",
+  "image_provided": false,
+  "interpretation": "User attributes the s-like tail to stronger high-frequency noise-like residual, contrasting native OFF suppression. This refines the earlier auditory report; it does not independently establish phase-coherent retention of the original noise or a genuinely generated extra phoneme.",
+  "evidence_limit": "Textual report of spectral inspection, same selected case and listener; no new independent sample or listener. Extra s-like sound, noise residual, and semantic hallucination remain distinct claims.",
+  "next_read_only_check": "Compare saved output tails with the known unchanged physical noise using fixed aligned band statistics; do not pick lags/windows to maximize agreement. No model calls."
+}

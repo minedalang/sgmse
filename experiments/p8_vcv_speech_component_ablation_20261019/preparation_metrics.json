@@ -1,0 +1,23 @@
+{
+  "status": "prepared_no_inference",
+  "syntax_valid": true,
+  "source_locks_valid": true,
+  "source_lock_count": 163,
+  "helper_unchanged": true,
+  "helper_sha256": "66f61a892e5b4ffc37c1069e3692618a07fb09efc3717c106c1d18c212ddbb82",
+  "selected_cases": 5,
+  "repairs": 2,
+  "harms": 3,
+  "exhaustive_transition_set_matches_root": true,
+  "five_recipe_hashes_valid": true,
+  "all_decomposition_guards_passed": true,
+  "all_active_component_changes_nonzero": true,
+  "prior_pre_and_off_24_candidate_arrays_exact": true,
+  "json_numpy_scalar_roundtrip": true,
+  "json_nonfinite_rejected": true,
+  "numpy_version": "2.2.6",
+  "frontend_forwards": 0,
+  "backend_forwards": 0,
+  "recognizer_forwards": 0,
+  "driver_sha256": "2aec654600d41895e62c8b7e9669f095ebcbbec99f9b46acb8b4aa52dc9cedbb"
+}

@@ -1,0 +1,17 @@
+schema_version: 1
+experiment_id: rrsd_scale05_screen_20261017
+purpose: fixed_rrsd_scale_pareto_screen
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiment_logs/rrsd_tcut_screen/manifest.csv
+n: 32
+sampler: pc
+N: 30
+snr: 0.5
+seed: 2026
+use_ema: true
+rrsd: true
+rrsd_scale: 0.5
+rrsd_t_max: 1.0
+control_router_dir: experiment_logs/rrsd_tcut_screen/router
+control_off_dir: experiment_logs/rrsd_tcut_screen/off
+mutates_dataset: false

@@ -1,0 +1,26 @@
+{
+  "status": "prepared_only",
+  "actual_model_loads": 0,
+  "real_audio_decodes": 0,
+  "network_bytes": 0,
+  "tests": [
+    {
+      "status": "passed",
+      "native_mock_cases": 16,
+      "observer_args_returns_identity": true,
+      "model_release_weakref": true,
+      "independent_alignment_pairs": 225,
+      "synthetic_serialization_pairs": 32,
+      "real_model_loads": 0,
+      "real_audio_decodes": 0,
+      "network_bytes": 0
+    },
+    {
+      "weight_filelike_mock": "passed",
+      "position_preserved": true,
+      "unknown_filelike_rejected": true,
+      "network_process_rejected": true
+    }
+  ],
+  "preexisting_source_locks": 165
+}

@@ -1,0 +1,41 @@
+<!doctype html><html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>5243 · 局部声音对照试听</title>
+<style>body{font:18px/1.65 system-ui,sans-serif;max-width:850px;margin:28px auto;padding:0 18px;color:#192734;background:#f6f8fa}section{background:white;padding:18px;margin:18px 0;border:1px solid #ccd4dc;border-radius:10px}button{font:inherit;padding:10px;margin:5px}audio{width:100%}#playerbox{position:sticky;top:0;background:#e8eff7;padding:12px;z-index:1}small{color:#465566}</style>
+<h1>5243 · 试听记录（已完成）</h1>
+<p><strong>本轮试听已完成，无需重新试听或提交。</strong>音频保留供日后自愿回听。</p><section><h2>最新修订（同一位听者）</h2><blockquote>稍等 我需要改一下我刚刚的听感评估 4.中/d/比3原后端相对弱一点。</blockquote><p><strong>当前判断：4 的 /d/ 比 3 原后端相对弱一点。</strong>这次未重新判断哪版更接近干净参考，也未确认声音删除或身份错误；5、6 的先前评估保持不变。修订来自同一位听者，不是额外一票。</p></section><section><h2>先前反馈（历史记录）</h2><blockquote>3,4 那个/d/很小，可能小到听不见了。无法说哪版更像参考。5,6也是和3,4差不多</blockquote><p>以上为修订前的不确定判断，保留原话；3、4 的相对强弱以最新修订为准。</p></section>
+<p>六版均为同一原录音 <strong>18.75–20.75 秒</strong>，完整 2 秒、原幅度、不逐条归一化。重点约在播放器 <strong>0.70 秒（原录音 19.45 秒）</strong>附近；这个位置只是识别器提供的定位提示，不是人工标注的声音边界。</p>
+<div id="playerbox"><div id="current" role="status" aria-live="polite">当前片段：尚未选择</div><audio id="player" controls preload="none"></audio><button id="stop" type="button">停止</button></div>
+<section><div id="clips"></div></section>
+<section><h2>已完成的比较</h2><p>A 比较了 3 原后端与 4 目标附近移除条件语音后的中间短声音，以 1 干净参考为准；B 补充比较了 5 前方与 6 后方位置对照。最新修订只补充了 3、4 的相对强弱判断，未新增与干净参考接近程度的排序。</p></section>
+<p><strong>原始 Y_pre 前端语音始终作为扩散锚点保留。</strong>4 仅在另一路 noisy 条件的原录音 19.35–19.55 秒附近移除已知语音成分，保留噪声；不是把整个输入或锚点语音删掉。5、6 在前方或后方位置作局部对照。这是机制诊断。</p>
+<p><small>聊天反馈已记录；本页无表单，不需要再次提交。<a href="manifest_validation.json">音频来源与校验</a></small></p>
+<script>
+const clips = [{"file": "clean.wav", "name": "1 · 干净参考 · 原录音18.75–20.75秒", "label": "1 · 干净参考"}, {"file": "y_pre.wav", "name": "2 · 前端 Y_pre · 原录音18.75–20.75秒", "label": "2 · 前端 Y_pre"}, {"file": "native.wav", "name": "3 · 原后端 · 原录音18.75–20.75秒", "label": "3 · 原后端"}, {"file": "target.wav", "name": "4 · 目标附近移除条件语音 · 原录音18.75–20.75秒", "label": "4 · 目标附近移除条件语音"}, {"file": "left.wav", "name": "5 · 前方位置对照（可选） · 原录音18.75–20.75秒", "label": "5 · 前方位置对照（可选）"}, {"file": "right.wav", "name": "6 · 后方位置对照（可选） · 原录音18.75–20.75秒", "label": "6 · 后方位置对照（可选）"}];
+const player = document.getElementById('player');
+const current = document.getElementById('current');
+let generation=0, request=null, objectURL=null;
+function stopPlayback(){
+ generation++;
+ if(request) request.abort(); request=null;
+ player.pause();player.removeAttribute('src');player.load();
+ if(objectURL) URL.revokeObjectURL(objectURL);objectURL=null;
+}
+async function selectClip(clip){
+ stopPlayback();const ticket=generation,controller=new AbortController();request=controller;
+ current.textContent='正在载入：'+clip.name;
+ try{
+  const response=await fetch(clip.file,{signal:controller.signal});
+  if(!response.ok) throw new Error('HTTP '+response.status);
+  const blob=await response.blob();
+  if(ticket!==generation||controller.signal.aborted)return;
+  objectURL=URL.createObjectURL(blob);player.src=objectURL;
+  current.textContent='当前片段：'+clip.name;await player.play();
+ }catch(error){
+  if(ticket!==generation||controller.signal.aborted)return;
+  current.textContent='当前片段：'+clip.name+'（未自动播放，可按播放器播放；若未载入请重试）';
+ }finally{if(ticket===generation)request=null;}
+}
+document.getElementById('stop').onclick=()=>{stopPlayback();current.textContent='已停止，请选择片段';};
+clips.forEach(clip=>{const button=document.createElement('button');button.type='button';button.textContent=clip.label;button.onclick=()=>selectClip(clip);document.getElementById('clips').append(button);});
+window.addEventListener('pagehide',stopPlayback);
+</script></html>

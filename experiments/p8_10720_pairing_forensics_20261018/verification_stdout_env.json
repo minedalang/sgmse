@@ -1,0 +1,422 @@
+{
+  "status": "completed",
+  "clips": {
+    "noisy": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_noisy.wav",
+      "sha256": "284b279d34a6a76b742fffc41e6cd90a1c96682426c36d166362b3e652b50ad7",
+      "sample_rate": 16000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "format": "WAV",
+      "samples": 32000,
+      "duration_s": 2.0,
+      "rms": 0.025210868652796363,
+      "peak": 0.095947265625,
+      "exact_float_pcm_equality": true,
+      "max_absolute_difference": 0.0,
+      "least_squares_scale": 1.0,
+      "expected_sample_range": [
+        220000,
+        252000
+      ]
+    },
+    "clean": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_clean.wav",
+      "sha256": "10435d243635f7b4135fbca220d6de45d2e501e6cdd0770abd209652ec85204c",
+      "sample_rate": 16000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "format": "WAV",
+      "samples": 32000,
+      "duration_s": 2.0,
+      "rms": 0.0030624846097227374,
+      "peak": 0.0321044921875,
+      "exact_float_pcm_equality": true,
+      "max_absolute_difference": 0.0,
+      "least_squares_scale": 1.0,
+      "expected_sample_range": [
+        220000,
+        252000
+      ]
+    },
+    "y_pre": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_y_pre.wav",
+      "sha256": "559ec2a43e8ad6c694df307023a3e2454a13536c165b29a2cb63e19dbe126c0e",
+      "sample_rate": 16000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "format": "WAV",
+      "samples": 32000,
+      "duration_s": 2.0,
+      "rms": 0.0012221700794622383,
+      "peak": 0.01409912109375,
+      "exact_float_pcm_equality": true,
+      "max_absolute_difference": 0.0,
+      "least_squares_scale": 1.0,
+      "expected_sample_range": [
+        220000,
+        252000
+      ]
+    },
+    "off": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_off.wav",
+      "sha256": "368283fb95df9f7e569fde71d11cfc4fc04a967176667a3b14082bb75c70c8bb",
+      "sample_rate": 16000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "format": "WAV",
+      "samples": 32000,
+      "duration_s": 2.0,
+      "rms": 0.002787858291700449,
+      "peak": 0.026153564453125,
+      "exact_float_pcm_equality": true,
+      "max_absolute_difference": 0.0,
+      "least_squares_scale": 1.0,
+      "expected_sample_range": [
+        220000,
+        252000
+      ]
+    },
+    "router": {
+      "path": "/data/coding/sgmse/experiments/p8_e1_candidate_listening_aligned_20261020/clips/03_fileid_10720_14.50-15.00s_context_router.wav",
+      "sha256": "e841bd82429671c6c7b33768e39d5d3bbcb8884ce989ec6ad9d491e47b4b7c51",
+      "sample_rate": 16000,
+      "channels": 1,
+      "subtype": "PCM_16",
+      "format": "WAV",
+      "samples": 32000,
+      "duration_s": 2.0,
+      "rms": 0.0021684906292193454,
+      "peak": 0.022064208984375,
+      "exact_float_pcm_equality": true,
+      "max_absolute_difference": 0.0,
+      "least_squares_scale": 1.0,
+      "expected_sample_range": [
+        220000,
+        252000
+      ]
+    }
+  },
+  "full_pair_lags": {
+    "noisy_vs_clean": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.1585841338573259,
+        "zero_lag_correlation": 0.1585841338573259,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 1112,
+        "best_lag_s": 11.12,
+        "correlation": 0.1774143485221845,
+        "zero_lag_correlation": 0.005640696544316729,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "noisy_vs_y_pre": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.16382630853892077,
+        "zero_lag_correlation": 0.16382630853892077,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 1110,
+        "best_lag_s": 11.1,
+        "correlation": 0.4165996118088846,
+        "zero_lag_correlation": -0.22299257545486129,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "noisy_vs_off": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.1725764165928498,
+        "zero_lag_correlation": 0.1725764165928498,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 1113,
+        "best_lag_s": 11.13,
+        "correlation": 0.22866723567274994,
+        "zero_lag_correlation": -0.019844580096677066,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "noisy_vs_router": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.17128385245440933,
+        "zero_lag_correlation": 0.17128385245440933,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 1113,
+        "best_lag_s": 11.13,
+        "correlation": 0.2926681811776847,
+        "zero_lag_correlation": -0.09572579613869919,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "clean_vs_noisy": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.15858413385732592,
+        "zero_lag_correlation": 0.15858413385732592,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": -1112,
+        "best_lag_s": -11.12,
+        "correlation": 0.1774143485221845,
+        "zero_lag_correlation": 0.005640696544317958,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "clean_vs_y_pre": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7662239204562723,
+        "zero_lag_correlation": 0.7662239204562723,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7985451187180886,
+        "zero_lag_correlation": 0.7985451187180886,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "clean_vs_off": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7115757449317552,
+        "zero_lag_correlation": 0.7115757449317552,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7861361530674246,
+        "zero_lag_correlation": 0.7861361530674246,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "clean_vs_router": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7479279201029829,
+        "zero_lag_correlation": 0.7479279201029829,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8086166355899509,
+        "zero_lag_correlation": 0.8086166355899509,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "y_pre_vs_noisy": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.16382630853892077,
+        "zero_lag_correlation": 0.16382630853892077,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": -1110,
+        "best_lag_s": -11.1,
+        "correlation": 0.4165996118088846,
+        "zero_lag_correlation": -0.22299257545486106,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "y_pre_vs_clean": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7662239204562723,
+        "zero_lag_correlation": 0.7662239204562723,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7985451187180881,
+        "zero_lag_correlation": 0.7985451187180881,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "y_pre_vs_off": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8328989752162599,
+        "zero_lag_correlation": 0.8328989752162599,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8674372283258436,
+        "zero_lag_correlation": 0.8674372283258436,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "y_pre_vs_router": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8903236312321404,
+        "zero_lag_correlation": 0.8903236312321404,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.9250416649980574,
+        "zero_lag_correlation": 0.9250416649980574,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "off_vs_noisy": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.17257641659284984,
+        "zero_lag_correlation": 0.17257641659284984,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": -1113,
+        "best_lag_s": -11.13,
+        "correlation": 0.2286672356727503,
+        "zero_lag_correlation": -0.019844580096677528,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "off_vs_clean": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7115757449317552,
+        "zero_lag_correlation": 0.7115757449317552,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7861361530674246,
+        "zero_lag_correlation": 0.7861361530674246,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "off_vs_y_pre": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8328989752162599,
+        "zero_lag_correlation": 0.8328989752162599,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8674372283258436,
+        "zero_lag_correlation": 0.8674372283258436,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "off_vs_router": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.9915836297049835,
+        "zero_lag_correlation": 0.9915836297049835,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.9892328329154078,
+        "zero_lag_correlation": 0.9892328329154078,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "router_vs_noisy": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.17128385245440933,
+        "zero_lag_correlation": 0.17128385245440933,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": -1113,
+        "best_lag_s": -11.13,
+        "correlation": 0.2926681811776847,
+        "zero_lag_correlation": -0.09572579613869919,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "router_vs_clean": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.7479279201029828,
+        "zero_lag_correlation": 0.7479279201029828,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8086166355899506,
+        "zero_lag_correlation": 0.8086166355899506,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "router_vs_y_pre": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.8903236312321406,
+        "zero_lag_correlation": 0.8903236312321406,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.9250416649980574,
+        "zero_lag_correlation": 0.9250416649980574,
+        "minimum_overlap_s": 15.0
+      }
+    },
+    "router_vs_off": {
+      "waveform": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.9915836297049836,
+        "zero_lag_correlation": 0.9915836297049836,
+        "minimum_overlap_s": 15.0
+      },
+      "rms_envelope": {
+        "best_lag_samples": 0,
+        "best_lag_s": 0.0,
+        "correlation": 0.9892328329154071,
+        "zero_lag_correlation": 0.9892328329154071,
+        "minimum_overlap_s": 15.0
+      }
+    }
+  }
+}

@@ -1,0 +1,9 @@
+experiment_id: p8_e1_candidate_listening_aligned_20261020
+purpose: corrected_same_candidate_listening_pack
+source_manifest: ../p8_frontend_backend_audit_20261020/manifest.csv
+source_duration_s: 30.0
+sample_rate_hz: 16000
+target_windows: fileid 5243 19.5-20.0; fileid 4812 12.5-13.0; fileid 11999 19.5-20.0; fileid 10720 14.5-15.0
+context_each_side_s: 0.75
+arms: [clean, noisy, y_pre, off, router]
+processing: read-only full-30s source crop at the same original time coordinate; no inference/training/DNSMOS; old 2018 package invalid due noisy central-coordinate bug

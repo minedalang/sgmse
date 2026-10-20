@@ -1,0 +1,21 @@
+{
+  "status": "passed",
+  "all_source_locks_unchanged": true,
+  "source_locks": 25,
+  "artifact_sha256": {
+    "STARTED.json": "13d29c2871cd2d043fde1db53992265b8e87c2e62179ba931d6416906f35c35c",
+    "all_frames20ms.csv": "5f6efbe569b64c59da14acd79a0d67a6b157e671198581bc991a2b12dd07e624",
+    "analysis_plan.md": "9902324eed9e904ef7d0716d8befb77f611247f16bb64608cc93464684c6f166",
+    "audit.py": "42bf38ed88fb47718eda70a07fd805bc97c73d56808265304779c6fb41c11e05",
+    "config.yaml": "56057f10eecb35f804182ad9043c394fdcd606e73e159fb88aca49edf52fd61c",
+    "execution_receipt.json": "6192a23535b99549f667fd8f154119e6b1e825dba92b467a8fb9a27e0dd6188c",
+    "experiment_report.md": "916d1577e0061a6f3b5a5043108b927b700c8715bd7d162380b0af823f218737",
+    "fixed_interval.csv": "0e2b66b36ade4e695da21b480ebad829f0bedf45a6a5f3e5883c58b834bbaca2",
+    "independent_validation.json": "c99d84becddc997b0f136b3fcbff825ae2d3cd084e88e0431ce9e949c7e34d8a",
+    "metrics.json": "a99373256417f29d01ee6f06758586ca06d6806335c52a53c3a096655211bbd7",
+    "preflight.json": "f02f56612a18ffba1c6628befd48a48f4d961916f2dd108f330551aef32d3370",
+    "validate_cpu.py": "9d27d11515467759b3a9a99e57a0118e66c9ea750f64d5b5fc5ce2ff6d03b98c"
+  },
+  "total_bytes": 438444,
+  "byte_cap": 2000000
+}

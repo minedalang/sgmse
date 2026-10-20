@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "synthetic_pcm_outputs": 4,
+  "guards": [
+    "socket",
+    "DNS",
+    "torch",
+    "whisper",
+    "zero_power",
+    "nonfinite",
+    "saturation",
+    "length"
+  ],
+  "real_audio_decodes": 0,
+  "model_loads": 0,
+  "network_bytes": 0
+}

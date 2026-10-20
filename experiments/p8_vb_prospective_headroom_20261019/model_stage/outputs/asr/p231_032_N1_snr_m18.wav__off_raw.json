@@ -1,0 +1,89 @@
+{
+  "request": {
+    "key": "p231_032_N1_snr_m18.wav__off",
+    "id": "p231_032",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_032_N1_snr_m18.wav",
+    "basename": "p231_032_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "87a374a0e2704a9bd2d1afacdc0b672bdc4fd37a176ca4e2464c895e556b916f",
+      "samples": 55680,
+      "array_sha256": "70a3c5380e351c492a3a39c463090f0d6d682f29ba0153de6207f16615da9bd8",
+      "peak": 0.08428955078125,
+      "rms": 0.00836484465400416
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " time we've had to the nose in the boy der Haareat tips, it's sharp.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.36,
+        "text": " time we've had to the nose in the boy der Haareat tips, it's sharp.",
+        "tokens": [
+          50363,
+          640,
+          356,
+          1053,
+          550,
+          284,
+          262,
+          9686,
+          287,
+          262,
+          2933,
+          4587,
+          9398,
+          533,
+          265,
+          9040,
+          11,
+          340,
+          338,
+          7786,
+          13,
+          50531
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2426727958347485,
+        "compression_ratio": 0.9710144927536232,
+        "no_speech_prob": 0.03991122543811798
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 95,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

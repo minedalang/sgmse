@@ -1,0 +1,21 @@
+{
+  "utc": "2026-10-19T06:46:33.356239+00:00",
+  "status": "Research_Lead_approved_unique_frozen_model_run",
+  "scope": "32 native frontend/OFF pairs,8scaledclean controls,104transcribe cap,offline quality/headroom per science_plan; no training/selector/newseeds",
+  "driver_sha256": "f9f8b694ae099296ae5f6aa1c853fe06db674f05c2eb05efbdee959467d748dd",
+  "execution_config_sha256": "9258f12720fbc8751c52e540efaf7ae4a915c1b414fe101c284d96ccf5784ada",
+  "execution_manifest_sha256": "2712227ee867458d64a8a544a5de28a95d8b509913acff7931dbc1df972d4bc4",
+  "validator_sha256": "48e465032eb7cf31040b04c8d0af06f20e17005e3e63ad95216d6fd3f5023875",
+  "verified_locks": 413,
+  "input_registry_sha256": "cfc2e1b4ac313037f7e324b6e548f0f56cb1ee32a80282475a0823c7a876d998",
+  "model_execution_authorized": true,
+  "training_authorized": false,
+  "network_authorized": false,
+  "no_retry": true,
+  "bounds": {
+    "total_seconds": 180,
+    "execution_seconds": 170,
+    "parent_bytes": 67108864
+  },
+  "review": "Root inspected source/observer/paths/statistics/quality and nonfinite/sentinel correction,actual freeze hashes,current no STARTED/processes, GPU idle and disk1.9GiB. CPU independent reconstruction passed. Preserve artifacts and report terminal technical failures rather than retry."
+}

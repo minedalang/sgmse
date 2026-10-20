@@ -1,0 +1,93 @@
+{
+  "request": {
+    "key": "p287_037_N1_snr_m18.wav__off",
+    "id": "p287_037",
+    "arm": "off",
+    "path": "outputs/off/p287_037_N1_snr_m18.wav",
+    "basename": "p287_037_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "31cd071cade701716971dcce86e780bc68f5adb2f4f4e08cdcf52648fe2fbbc6",
+      "samples": 60008,
+      "array_sha256": "7017d78716a2a6a2ad8caa0b8a1caee229296c9d099bce304a5a45a7273eca79",
+      "peak": 0.072601318359375,
+      "rms": 0.006568188560866458
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_037",
+    "original_text": "But, after a dip in sales, growth was recorded.\n",
+    "raw_text_hex": "4275742c20616674657220612064697020696e2073616c65732c2067726f77746820776173207265636f726465642e0a",
+    "raw_text_sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+    "archive_entry": "trainset_28spk_txt/p287_037.txt"
+  },
+  "raw_result": {
+    "text": " he can't do it, he's like, you have to be too fast, you'll be a silver bat on.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " he can't do it, he's like, you have to be too fast, you'll be a silver bat on.",
+        "tokens": [
+          50363,
+          339,
+          460,
+          470,
+          466,
+          340,
+          11,
+          339,
+          338,
+          588,
+          11,
+          345,
+          423,
+          284,
+          307,
+          1165,
+          3049,
+          11,
+          345,
+          1183,
+          307,
+          257,
+          8465,
+          7365,
+          319,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.179817063467843,
+        "compression_ratio": 1.0684931506849316,
+        "no_speech_prob": 0.33939874172210693
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 32,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "experiment_id": "p8_5243_local_condition_necessity_20261019",
+  "status": "prepared_selection_only_no_inference",
+  "execution_authorized": false,
+  "scientific_design": "local direct-condition known-clean necessity with matched-energy position controls",
+  "target_seconds": [
+    19.35,
+    19.55
+  ],
+  "source_full_samples": 480000,
+  "source_sample_rate": 16000,
+  "frozen_selection_file": "selection_frozen.json",
+  "frozen_selection_sha256": "f59cff9bdfc80a32c4a5b2959ddde0f3b295b7ecf2c5b8eb67736ac76f43ca6d",
+  "condition_formula": "copy originalfloat32 noisy; within selectedwindow assignfloat32(noisy_float64-alpha*w*known_clean_PCM16); untouched outside",
+  "clean_gain_fitting": false,
+  "anchor": "frozen attempt02 frontend_raw.npy unchanged",
+  "rng": "frozen original effective seed369124093 and before-backend/before-sampler states; exact native gate required before edits",
+  "future_calls": {
+    "frontend": 0,
+    "backend_OFF_N30": 4,
+    "existing_recognizer_short_calls": 4
+  },
+  "future_runs": [
+    "native_exact_gate",
+    "target",
+    "left",
+    "right"
+  ],
+  "future_budget_seconds": 240,
+  "future_artifact_cap_bytes": 30000000,
+  "future_gate": "native full raw arrays, historical serialized fullOFF and clip must reproduce before target/controls; trace/RNG/reference guards matched",
+  "future_interpretation": "single natural prompted /d/ event; target200ms bracket is not isolated manually segmented /d/; controls perturb equal L2 energy at different content positions, not phonetic equivalence",
+  "no_training": true,
+  "no_downloads": true
+}

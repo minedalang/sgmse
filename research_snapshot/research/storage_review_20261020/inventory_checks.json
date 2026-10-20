@@ -1,0 +1,15 @@
+{
+  "status": "review_inventory_validated_no_deletion",
+  "groups": 27,
+  "candidate_files": 752,
+  "unique_paths": 752,
+  "protected_files_disjoint": 7,
+  "files_exist_metadata_match": true,
+  "output_sha256": {
+    "build_inventory.py": "5af17a33ea56ebb41cfb2157d0d899e77c9e62b4ffd8dd1b56bca94fc278c780",
+    "candidate_files.csv": "bc6bba3db4112e004301c32f6faa61850230b8a97da72e2804b4c54a9c3832e8",
+    "weight_inventory.csv": "e91c5c4dd9942af7ab78e39bead6657c254ef9f7e42967da7bbc221b0df2a6be",
+    "summary.json": "4bc861ec433ccafe8be3bf505fbf7a1def64b042c6b42411eb1806e4c5a55527",
+    "cleanup_candidates.md": "81dc4b15f163e50108906cffff8494b890206a298c9808df7c949c7770f64b9d"
+  }
+}

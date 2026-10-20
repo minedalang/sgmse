@@ -1,0 +1,22 @@
+experiment_id: p8_10720_tail_condition20_20261018
+source: ../p8_10720_snr_control_20261018/metrics.json
+source_variant: noise_minus20dB
+checkpoint_sha256: ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9
+seed: 2997368683
+window_samples: [240800, 252000]
+window_seconds: [15.05, 15.75]
+fade_samples: 320
+fade: internal_symmetric_raised_cosine_including_zero_and_one_endpoints
+runs: [no_op, condition_tail_clean]
+backend: off
+N: 30
+sampling_snr: 0.5
+sample_rate: 16000
+source_samples: 480000
+speech_active_threshold_dbfs: -70
+speech_active_frame_samples: 320
+highband_hz: [4000, 7500]
+output_cap_bytes: 20000000
+purpose: oracle_OOD_mechanism_probe_not_deployable_method
+prior_history: P8-M_5243_active_masking_negative_is_distinct_and_preserved
+replication_scope: within_case_SNR_replication_not_independent_generalization

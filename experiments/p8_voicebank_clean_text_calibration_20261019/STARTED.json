@@ -1,0 +1,8 @@
+{
+  "utc": "2026-10-19T03:19:30.407910+00:00",
+  "command": [
+    "/data/coding/sgmse/env/bin/python",
+    "/data/coding/sgmse/experiments/p8_voicebank_clean_text_calibration_20261019/run_calibration.py"
+  ],
+  "frozen_manifest_SHA256": "dd1e4f58596fe539aada4f4c3336f0a1defc7fff5509e9fd1a2498b86ef8340e"
+}

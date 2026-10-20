@@ -1,0 +1,85 @@
+{
+  "request": {
+    "key": "p231_029_N2_snr_m18.wav__off",
+    "id": "p231_029",
+    "arm": "off",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/off/p231_029_N2_snr_m18.wav",
+    "basename": "p231_029_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "4f73fa3a25187a76aa10a4daa7c00e02d71d2e6b35a3acd6174d39cf01d18161",
+      "samples": 49851,
+      "array_sha256": "0bab167e8b0ed304b713081ffd241a9d9f55796670a8c3b9f82169a142df9f1d",
+      "peak": 0.130035400390625,
+      "rms": 0.011346174975432534
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_029",
+    "original_text": "Last night, Mr Robertson said he was delighted.\n",
+    "raw_text_hex": "4c617374206e696768742c204d7220526f62657274736f6e2073616964206865207761732064656c6967687465642e0a",
+    "raw_text_sha256": "6848d5afa53e1fc90211382f95261d094f7fd1db6ee87c0630d9e32c52aa9665",
+    "archive_entry": "trainset_28spk_txt/p231_029.txt"
+  },
+  "raw_result": {
+    "text": " That's the last part, as well as use everything that they might end.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " That's the last part, as well as use everything that they might end.",
+        "tokens": [
+          50363,
+          1320,
+          338,
+          262,
+          938,
+          636,
+          11,
+          355,
+          880,
+          355,
+          779,
+          2279,
+          326,
+          484,
+          1244,
+          886,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5621455343146073,
+        "compression_ratio": 0.9714285714285714,
+        "no_speech_prob": 0.08643409609794617
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 89,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

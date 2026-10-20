@@ -1,0 +1,54 @@
+{
+  "status": "completed_validated",
+  "fixed_posterior_delta_native_minus_arm": {
+    "native": 0.0,
+    "target": -0.10960471630096436,
+    "left": 0.25511258840560913,
+    "right": -0.08953821659088135
+  },
+  "nearby_mean_delta_native_minus_arm": {
+    "native": 0.0,
+    "target": -0.00503905862569809,
+    "left": 0.012167049571871758,
+    "right": -0.004345856606960297
+  },
+  "preregistered_target_minus_max_control_fixed_delta": -0.3647173047065735,
+  "target_specific_decrease_direction_supported": false,
+  "output_delta_RMS_relative_to_native_region_RMS": {
+    "native": {
+      "target": 0.0,
+      "left": 0.0,
+      "right": 0.0
+    },
+    "target": {
+      "target": 0.3118014943455921,
+      "left": 0.001064777655012131,
+      "right": 0.0011034659587707918
+    },
+    "left": {
+      "target": 0.001048757905487269,
+      "left": 0.2551378940793546,
+      "right": 0.0008138726644843051
+    },
+    "right": {
+      "target": 0.001486966669572824,
+      "left": 0.0007446123274629685,
+      "right": 0.17154739137316866
+    }
+  },
+  "native_region_RMS": {
+    "target": 0.005376627968169039,
+    "left": 0.008350202949645806,
+    "right": 0.005851970138893401
+  },
+  "plot_status": "saved",
+  "finalizer_seconds": 0.626493067946285,
+  "model_calls_added": 0,
+  "supervisor_seconds": 53.17831411503721,
+  "calls": {
+    "frontend": 0,
+    "backend": 4,
+    "recognizer": 4
+  },
+  "final_artifact_bytes": 13819219
+}

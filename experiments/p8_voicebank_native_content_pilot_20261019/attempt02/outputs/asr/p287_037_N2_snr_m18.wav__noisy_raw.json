@@ -1,0 +1,71 @@
+{
+  "request": {
+    "key": "p287_037_N2_snr_m18.wav__noisy",
+    "id": "p287_037",
+    "arm": "noisy",
+    "path": "inputs/p287_037_N2_snr_m18.wav",
+    "basename": "p287_037_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "b49e7c1e13ae9d4459204fc9d0cc750d674c8cc965a03177e32f6aa1caf3336d",
+      "samples": 60008,
+      "array_sha256": "6c71425ce47849ee6c671740cc4f8490dd9936206fc3f0ce59a96affae423392",
+      "peak": 0.899993896484375,
+      "rms": 0.08949871533837787
+    }
+  },
+  "publisher_reference": {
+    "id": "p287_037",
+    "original_text": "But, after a dip in sales, growth was recorded.\n",
+    "raw_text_hex": "4275742c20616674657220612064697020696e2073616c65732c2067726f77746820776173207265636f726465642e0a",
+    "raw_text_sha256": "80e4b3b196cdfabece19d75032f19bfd39ca208dc38a5c55824abc879b90c69a",
+    "archive_entry": "trainset_28spk_txt/p287_037.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.1894826889038086,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.7581348419189453
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 36,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "kind": "root_metadata_review_not_scientific_completion",
+  "utc": "2026-10-19T06:19:02.026879+00:00",
+  "status": "passed_provenance_and_single_example_structure",
+  "artifacts_verified": 19,
+  "protected_locks_verified": 11,
+  "original_metrics_sha256": "852a893d0eec57d89a487570a8419f0292c57a24ee88aa684dd4bef67499e88d",
+  "source_sha256": "bb2e198e06fb6646f7f60f6548e5ed7d6d558987bad52c4d0e9a278190d88573",
+  "source_bytes": 3579,
+  "audit_directory_bytes_current": 66760,
+  "root_scope": "Read raw bytes, metrics, report, structure and independent validator source; verify frozen hashes and label inventory. No re-fetch, re-run of audit scripts, calls to v0 contract on actual labels, audio or model.",
+  "decisions": [
+    "Archive/provenance/structure gate passed for this explicit public example only.",
+    "Frozen v0 remains unmodified and not corpus-intake ready: sp/empty require source policy; do not silently coerce.",
+    "Full corpus access, realized-phone adjudication, proposal coverage and independent calibration remain unproven.",
+    "Do not promote one public example to a new enhancement experiment or independent confirmation set."
+  ],
+  "documents": [
+    {
+      "path": "/data/coding/sgmse/research_memos/p8_realized_phone_source_review_20261019.md",
+      "bytes": 7910,
+      "sha256": "81084ea4a7609b82f55ddfb65ebc8587064900795a5de87ae80757b4085f2b10"
+    },
+    {
+      "path": "/data/research/p8_v_counterfactual.md",
+      "bytes": 9860,
+      "sha256": "e12d41b1f3435e55d10ba003b3dcad9ff8bab5b423ab0b453c3804f876653f1c"
+    },
+    {
+      "path": "/data/research/evidence_summary.md",
+      "bytes": 10981,
+      "sha256": "61bb612f4aa0a66ecf61c73704bf49022ca829976dc2ff3ab294279f7b9dca77"
+    },
+    {
+      "path": "/data/research_plan.md",
+      "bytes": 9107,
+      "sha256": "d3bca6498c410b706ef7105f63fd6c00d2f58dfe635f4501a9ed8aec94728f78"
+    }
+  ]
+}

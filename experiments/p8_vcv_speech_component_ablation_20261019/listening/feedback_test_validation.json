@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "port": 8767,
+  "test_session_id": "b8072b89-a9f9-4adc-b792-75768d038a68",
+  "checks": [
+    "new session GET empty",
+    "valid POST durable tagged record",
+    "GET restores exact choices and IDs",
+    "same-response retry idempotent",
+    "same ID different content rejected",
+    "latest by session; prior record remains",
+    "partial case4/5 saves merge prior three; retries do not erase choices",
+    "invalid IDs/values/cases/note/oversize/type/origin rejected",
+    "arbitrary endpoints/traversal/record static reads rejected",
+    "static page/script/WAV byte equality",
+    "exactly four append-only records despite retries"
+  ],
+  "test_records": "responses/test_records.jsonl; all tagged test_record=true; never listener evidence"
+}

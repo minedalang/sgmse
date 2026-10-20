@@ -1,0 +1,22 @@
+{
+  "utc": "2026-10-19T06:42:13.823230+00:00",
+  "authority": "Research Lead approves unique Worker CPU input preparation after source/code review",
+  "scope": "input_stage prepare_inputs.py then independent validate_inputs.py once, full8/32/8 recipe",
+  "science_plan_sha256": "07eb33b6bb75ab37f37a6578e0ea092599c8c0e0b2c38ecbdb26ccbc0658a211",
+  "driver_sha256": "da437ba2c4a872c19da1abcd089425553c2acd11f39ab5f8183b041b3903df63",
+  "preparation_manifest_sha256": "cddd9b95f661bc26658a417238983b0ca677727221088ad3358cb982a199e117",
+  "verified_preparation_locks": 7,
+  "verified_source_locks": 32,
+  "named_synthetic_checks": 21,
+  "real_cpu_input_preparation_authorized": true,
+  "model_stage_authorized": false,
+  "training_authorized": false,
+  "network_authorized": false,
+  "no_retry": true,
+  "bounds": {
+    "total_seconds": 120,
+    "input_stage_bytes": 25165824,
+    "parent_bytes": 67108864
+  },
+  "note": "Minor pre-execution correction fixed report filename and enforced120s final bound; original metadata15 and science selection/recipe unchanged. This record does not authorize any model run."
+}

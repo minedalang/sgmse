@@ -1,0 +1,84 @@
+{
+  "request": {
+    "key": "p228_026_N2_snr_p0.wav__noisy",
+    "id": "p228_026",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p228_026_N2_snr_p0.wav",
+    "basename": "p228_026_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p228",
+    "input": {
+      "wav_sha256": "2efb01cf285e72b657b6dfbe36e416df18832fa02fbf925771cc7ca335af14f7",
+      "samples": 73760,
+      "array_sha256": "a6dcbe99e22ad13191aea2e262defd5180a0eb9d2551e44a573109f8f0d16953",
+      "peak": 0.11474609375,
+      "rms": 0.00955041481369648
+    }
+  },
+  "publisher_reference": {
+    "id": "p228_026",
+    "original_text": "So if we can take anything from tonight, it will be fantastic.\n",
+    "raw_text_hex": "536f2069662077652063616e2074616b6520616e797468696e672066726f6d20746f6e696768742c2069742077696c6c2062652066616e7461737469632e0a",
+    "raw_text_sha256": "5d3f96dd5ebb72508c9a1bed58796d850d1fba9ae8dde23fb51ba5f5a92c587c",
+    "archive_entry": "trainset_28spk_txt/p228_026.txt"
+  },
+  "raw_result": {
+    "text": " So if we can take anything from tonight, it will be found out.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " So if we can take anything from tonight, it will be found out.",
+        "tokens": [
+          50363,
+          1406,
+          611,
+          356,
+          460,
+          1011,
+          1997,
+          422,
+          9975,
+          11,
+          340,
+          481,
+          307,
+          1043,
+          503,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.5183870527479384,
+        "compression_ratio": 0.9538461538461539,
+        "no_speech_prob": 0.15764056146144867
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 42,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

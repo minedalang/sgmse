@@ -1,0 +1,26 @@
+{
+  "P7_0_status": "completed_with_scope_limits",
+  "matched_manifest_files": 32,
+  "all_waveforms_16k": true,
+  "all_off_length_matches_noisy": true,
+  "all_clean_length_matches_noisy": true,
+  "one_file_replay_bit_exact": true,
+  "PC_NFE": 30,
+  "EMA_shadow_tensors": 8,
+  "EMA_scope_note": "The saved EMA state contains 8 tensors; with rrsd_freeze_base=true the score backbone was frozen during this run, so inference --use_ema does not mean a full-backbone EMA. The Router-off baseline score weights are the checkpoint state_dict weights; active RRSD uses EMA for tracked trainable tensors.",
+  "150_file_router_off_directory": "enhanced/enahnced_sb61i0gj_80k_-20_-5_testset_norouter",
+  "150_file_basename_match_count": 150,
+  "150_file_sampling_provenance": "No per-run config/command log found; do not use this directory as the P7-0 authoritative replay baseline.",
+  "ODE_audit_findings": [
+    "ODE sampler exists, but current checkpoint sampler_type is pc. ScoreModel.enhance branches on self.sde.sampler_type; the joint_enhance_by_dir --sampler_type argument does not override that saved SDE field.",
+    "ODE sampler accepts z but implementation ignores it and always samples a fresh prior; exact shared-xT tolerance comparisons need a code fix or controlled wrapper.",
+    "get_ode_sampler reports solution.nfev but does not add the optional final denoise Score call to returned NFE."
+  ],
+  "unresolved": [
+    "No Frontend-only Y_pre WAV exists for the 32-file manifest; a matched deterministic export is next.",
+    "No probability-flow ODE quality/convergence experiment has been run."
+  ],
+  "dataset_modified": false,
+  "checkpoint_overwritten": false,
+  "training_run": false
+}

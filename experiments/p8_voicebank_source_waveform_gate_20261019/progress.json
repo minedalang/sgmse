@@ -1,0 +1,1035 @@
+{
+  "status": "running",
+  "failures": [],
+  "requests": [
+    {
+      "index": 0,
+      "label": "range_probe",
+      "requested_range": [
+        0,
+        0
+      ],
+      "expected_bytes": 1,
+      "request_headers": {
+        "Range": "bytes=0-0",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 1,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "1",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:12 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "DSPACE-XSRF-TOKEN": "f2c20637-1fc5-49a6-b47c-43afeecf46d9",
+        "Set-Cookie": "DSPACE-XSRF-COOKIE=f2c20637-1fc5-49a6-b47c-43afeecf46d9; Path=/server; Secure; HttpOnly; SameSite=None, RCKBMHKB=027ff8be59-56fd-48ESPEFkmYOzfqx0LZUGM2zNoWMrHfqiyVcBst-LiSC-rl7CvZYEIc7Hlpr0Gpt4YlzHw; path=/; SameSite=None; Secure",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:12 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 0-0/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "1eba9c9028b77ddcd4ddb0c65e713fc80b860b5624b845058f2538456a1d4059",
+      "header_bytes_estimated": 1717,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "5c62e091b8c0565f1bafad0dad5934276143ae2ccef7a5381e8ada5b1a8d26d2",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_00_range_probe.bin"
+    },
+    {
+      "index": 1,
+      "label": "eocd_suffix",
+      "requested_range": [
+        2485991722,
+        2486057278
+      ],
+      "expected_bytes": 65557,
+      "request_headers": {
+        "Range": "bytes=2485991722-2486057278",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 65557,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "65557",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:12 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:12 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2485991722-2486057278/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "48c490f3881387ea07d30cae8aaea699925c863842fa955e4948bb66d82e6c75",
+      "header_bytes_estimated": 1439,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "aca548c2e03ca1ed392dcd0ccb095f6846089307778c2d8815c36574e0082227",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_01_eocd_suffix.bin"
+    },
+    {
+      "index": 2,
+      "label": "central_directory",
+      "requested_range": [
+        2484957834,
+        2486057256
+      ],
+      "expected_bytes": 1099423,
+      "request_headers": {
+        "Range": "bytes=2484957834-2486057256",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 1099423,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "1099423",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:13 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:13 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2484957834-2486057256/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "6752a1c5cae0da818fb40a6410b29ae8d2c51d8fec6e790b9ac8834f438aafa3",
+      "header_bytes_estimated": 1441,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "2ad68f74443ad57a556fe62250aae1051327460a31a6ee59ff324e8d88cf16e7",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_02_central_directory.bin"
+    },
+    {
+      "index": 3,
+      "label": "p226_027_local_fixed",
+      "requested_range": [
+        11377093,
+        11377122
+      ],
+      "expected_bytes": 30,
+      "request_headers": {
+        "Range": "bytes=11377093-11377122",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 30,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "30",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:15 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:15 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 11377093-11377122/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "fac95882fb6298951e2b34240deae38f76cf0a2eace9612183111a4b5237dfa2",
+      "header_bytes_estimated": 1432,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "a16a90ef900ce7858ecfb0927f9a17fe98e1ddbb015afdd5a078a7c6be0c0b79",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_03_p226_027_local_fixed.bin"
+    },
+    {
+      "index": 4,
+      "label": "p226_027_local_name_extra",
+      "requested_range": [
+        11377123,
+        11377175
+      ],
+      "expected_bytes": 53,
+      "request_headers": {
+        "Range": "bytes=11377123-11377175",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 53,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "53",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:15 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:15 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 11377123-11377175/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "e55e0080bf3036f551f72d2940ea4596a1d611d4c6cdf927bbbd1508dc069ca9",
+      "header_bytes_estimated": 1432,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "60abe758b9f2e0e747b659678b1752d5f96da9a536ce7813316feaf497003d5c",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_04_p226_027_local_name_extra.bin"
+    },
+    {
+      "index": 5,
+      "label": "p226_027_payload",
+      "requested_range": [
+        11377176,
+        11672974
+      ],
+      "expected_bytes": 295799,
+      "request_headers": {
+        "Range": "bytes=11377176-11672974",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 295799,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "295799",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:16 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:16 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 11377176-11672974/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "b32a2252b232d8632a7c3afb507fd5572e918e7a563873a17bab9d7d04388fea",
+      "header_bytes_estimated": 1436,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "029d7a9a41aaf62854167905820944a679a245016f12314e3edcd6e02aeb093b",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_05_p226_027_payload.bin"
+    },
+    {
+      "index": 6,
+      "label": "p226_028_local_fixed",
+      "requested_range": [
+        11672991,
+        11673020
+      ],
+      "expected_bytes": 30,
+      "request_headers": {
+        "Range": "bytes=11672991-11673020",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 30,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "30",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:16 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:16 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 11672991-11673020/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "7d034c8e0d521973f5a118579135f671ef02583db8b981cb5de913a326a1ccfc",
+      "header_bytes_estimated": 1432,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "a16a90ef900ce7858ecfb0927f9a17fe98e1ddbb015afdd5a078a7c6be0c0b79",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_06_p226_028_local_fixed.bin"
+    },
+    {
+      "index": 7,
+      "label": "p226_028_local_name_extra",
+      "requested_range": [
+        11673021,
+        11673073
+      ],
+      "expected_bytes": 53,
+      "request_headers": {
+        "Range": "bytes=11673021-11673073",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 53,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "53",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:17 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:17 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 11673021-11673073/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "4dc8aa672955e53aad27a97a7719461a12ad98241aea182e324e01dd03433d6f",
+      "header_bytes_estimated": 1432,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "a2672172bcd3adc68bd984de52007ed0496177980c5311b8ca0ac7765b32464b",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_07_p226_028_local_name_extra.bin"
+    },
+    {
+      "index": 8,
+      "label": "p226_028_payload",
+      "requested_range": [
+        11673074,
+        11987244
+      ],
+      "expected_bytes": 314171,
+      "request_headers": {
+        "Range": "bytes=11673074-11987244",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 314171,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "314171",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:17 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:17 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 11673074-11987244/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "3d17eac7660ec21765f08dd899a463a4d077e4b7474fc1b6e2409d72a2a90610",
+      "header_bytes_estimated": 1436,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "6a64f878b178cdf1100e794bad95896431f6e238d92afccacdfb3290bfe1e134",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_08_p226_028_payload.bin"
+    },
+    {
+      "index": 9,
+      "label": "p287_037_local_fixed",
+      "requested_range": [
+        2412357455,
+        2412357484
+      ],
+      "expected_bytes": 30,
+      "request_headers": {
+        "Range": "bytes=2412357455-2412357484",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 30,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "30",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:18 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:18 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2412357455-2412357484/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "a5c741fce4d0a3127d2e697b17b76a2505480cbffabbbbc42767573cb37bfe9e",
+      "header_bytes_estimated": 1436,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "c4bcc1dd2b1c59b313cb06899da57c799b5bf025128519b9e7d127b63b102b1c",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_09_p287_037_local_fixed.bin"
+    },
+    {
+      "index": 10,
+      "label": "p287_037_local_name_extra",
+      "requested_range": [
+        2412357485,
+        2412357537
+      ],
+      "expected_bytes": 53,
+      "request_headers": {
+        "Range": "bytes=2412357485-2412357537",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 53,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "53",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:18 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:18 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2412357485-2412357537/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "10ae061634cea123f6cff2efae81f03ccab4673e8cc60bd8f5e9e9d7f0fe694a",
+      "header_bytes_estimated": 1436,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "9ba35e452a0cf3b0ebea571178f9c94aa9b806bcd5ccde1cfc1d82366160d193",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_10_p287_037_local_name_extra.bin"
+    },
+    {
+      "index": 11,
+      "label": "p287_037_payload",
+      "requested_range": [
+        2412357538,
+        2412628761
+      ],
+      "expected_bytes": 271224,
+      "request_headers": {
+        "Range": "bytes=2412357538-2412628761",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 271224,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "271224",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:18 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:18 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2412357538-2412628761/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "d9db000783678a1d6fa3d1e6e0d2de99d02717dc6c2b91a2c4fe9359957bf938",
+      "header_bytes_estimated": 1440,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "d736d66eafd6ddce76385e5f48158c360d601b991402d8752a2aac782007fbc0",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_11_p287_037_payload.bin"
+    },
+    {
+      "index": 12,
+      "label": "p287_054_local_fixed",
+      "requested_range": [
+        2415078746,
+        2415078775
+      ],
+      "expected_bytes": 30,
+      "request_headers": {
+        "Range": "bytes=2415078746-2415078775",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 30,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "30",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:19 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:19 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2415078746-2415078775/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "566e7d2d62189e436d5c86a844a5d0103193b988058836a1e750f546a897da7c",
+      "header_bytes_estimated": 1436,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "d80983a60302b6fdfc940e2d198e75a31190e75be614745ec9fb90b36e767258",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_12_p287_054_local_fixed.bin"
+    },
+    {
+      "index": 13,
+      "label": "p287_054_local_name_extra",
+      "requested_range": [
+        2415078776,
+        2415078828
+      ],
+      "expected_bytes": 53,
+      "request_headers": {
+        "Range": "bytes=2415078776-2415078828",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 53,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "53",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:19 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:19 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2415078776-2415078828/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "ee4d8ddeec3493b647e5f95503410eba2a537cff377f51acbbd142fc1afff357",
+      "header_bytes_estimated": 1436,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "86b2eefd37896c294c3f635792091423b345a49473d40082eff4ca7e627a3dd1",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_13_p287_054_local_name_extra.bin"
+    },
+    {
+      "index": 14,
+      "label": "p287_054_payload",
+      "requested_range": [
+        2415078829,
+        2415318589
+      ],
+      "expected_bytes": 239761,
+      "request_headers": {
+        "Range": "bytes=2415078829-2415318589",
+        "Accept-Encoding": "identity"
+      },
+      "payload_bytes": 239761,
+      "status": 206,
+      "response_headers": {
+        "Content-Type": "application/zip ;charset=UTF-8",
+        "Content-Length": "239761",
+        "Connection": "keep-alive",
+        "Date": "Mon, 19 Oct 2026 03:06:20 GMT",
+        "Server": "Apache",
+        "Strict-Transport-Security": "max-age=31536000, max-age=31536000 ; includeSubDomains",
+        "X-Content-Type-Options": "nosniff, nosniff",
+        "X-Frame-Options": "SAMEORIGIN, DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), geolocation=(), microphone=()",
+        "Content-Security-Policy": "default-src 'self' https: data: blob:; script-src 'self' https: 'unsafe-inline' 'unsafe-eval'; style-src 'self' https: 'unsafe-inline'; img-src 'self' https: data: blob:; font-src 'self' https: data:; connect-src 'self' https: wss:; frame-src 'self' https:; frame-ancestors 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https:",
+        "Vary": "Origin,Access-Control-Request-Method,Access-Control-Request-Headers",
+        "Content-Language": "en",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT",
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Accept-Ranges": "bytes",
+        "Expires": "Mon, 19 Oct 2026 04:06:20 GMT",
+        "Cache-Control": "private,no-cache",
+        "Access-Control-Expose-Headers": "Accept-Ranges",
+        "Content-Disposition": "attachment; filename=\"clean_trainset_28spk_wav.zip\"; filename*=UTF-8''clean_trainset_28spk_wav.zip",
+        "Content-Range": "bytes 2415078829-2415318589/2486057279",
+        "X-XSS-Protection": "0"
+      },
+      "response_headers_sha256": "0d2afd8112d2a9386953a0ac91c9f59bc19a036aea55fc83da01c7bf3756ecb5",
+      "header_bytes_estimated": 1440,
+      "accounted_header_overhead": 65536,
+      "validators": {
+        "ETag": "\"d2d5a45ec32f8fcbf201bde0447e20ba\"",
+        "Last-Modified": "Mon, 21 Aug 2017 10:32:37 GMT"
+      },
+      "success": true,
+      "payload_sha256": "e33e81bcf67de65f75468c61016d552f89dceafd8a971ea281695b3d4acb6e9c",
+      "partial_file": "/data/coding/sgmse/experiments/p8_voicebank_source_waveform_gate_20261019/outputs/request_14_p287_054_payload.bin"
+    }
+  ],
+  "network_bytes_accounted": 3269308,
+  "network_bytes_reserved_next_response": 0,
+  "samples": {
+    "p226_027": {
+      "official_sha256": "ad17535744a1353363bfcea4f022cadeed76281dff8e57a6ccd28dce31b763a9",
+      "official_bytes": 380724,
+      "member": {
+        "name": "clean_trainset_28spk_wav/p226_027.wav",
+        "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703232365f3032372e776176",
+        "version_needed": 20,
+        "flags": 8,
+        "method": 8,
+        "crc32": 1111473794,
+        "compressed_size": 295799,
+        "uncompressed_size": 380724,
+        "local_offset": 11377093
+      },
+      "local_source_sha256": "d56d7e5b9eda853a0d493c246f1e59ecd39cf830776ec1895691d57ec7e77385",
+      "comparison": {
+        "samples": 63447,
+        "max_abs_difference": 0.007998201996088028,
+        "max_abs_difference_LSB": 262.0850830078125,
+        "rms_difference_LSB": 14.874868530784351,
+        "correlation": 0.9999681281795144,
+        "correlation_status": "defined",
+        "snr_db": 41.93920945218139,
+        "snr_status": "finite",
+        "zero_alignment": true,
+        "gate_passed": false,
+        "exact_derived_PCM16_matches_local": false,
+        "derived_PCM16_serialization": "floor/saturate32768 then SoundFile int16 PCM_16; separate from rawfloat gate",
+        "raw_float_exact_local": false,
+        "official_header": {
+          "sample_rate": 48000,
+          "channels": 1,
+          "frames": 190340,
+          "subtype": "PCM_16"
+        },
+        "local_header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "frames": 63447,
+          "subtype": "PCM_16"
+        },
+        "derived_array_sha256": "914682a4987c4b0cd68bdf1f6eb4a1616bbd2e000eeb8c484a66e906e45a0d72"
+      }
+    },
+    "p226_028": {
+      "official_sha256": "8ff2ffbf13f231d707652ddb5b7b55381a5159ea4d5bc09e4aca4ac0189b063f",
+      "official_bytes": 405962,
+      "member": {
+        "name": "clean_trainset_28spk_wav/p226_028.wav",
+        "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703232365f3032382e776176",
+        "version_needed": 20,
+        "flags": 8,
+        "method": 8,
+        "crc32": 2382019220,
+        "compressed_size": 314171,
+        "uncompressed_size": 405962,
+        "local_offset": 11672991
+      },
+      "local_source_sha256": "7df2e7755da80d44493350eb7af61ebb022bd3bb9066f1145f028f35d574f3ec",
+      "comparison": {
+        "samples": 67653,
+        "max_abs_difference": 0.017477255314588547,
+        "max_abs_difference_LSB": 572.6947021484375,
+        "rms_difference_LSB": 34.725000535009016,
+        "correlation": 0.9997866662184469,
+        "correlation_status": "defined",
+        "snr_db": 33.69668540525969,
+        "snr_status": "finite",
+        "zero_alignment": true,
+        "gate_passed": false,
+        "exact_derived_PCM16_matches_local": false,
+        "derived_PCM16_serialization": "floor/saturate32768 then SoundFile int16 PCM_16; separate from rawfloat gate",
+        "raw_float_exact_local": false,
+        "official_header": {
+          "sample_rate": 48000,
+          "channels": 1,
+          "frames": 202959,
+          "subtype": "PCM_16"
+        },
+        "local_header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "frames": 67653,
+          "subtype": "PCM_16"
+        },
+        "derived_array_sha256": "a24329be8ab36e54109dc04440d38c3936570e168aa9d62cb55e0fe539b331db"
+      }
+    },
+    "p287_037": {
+      "official_sha256": "621597bfea6417286305aefab985c6940dc2f7cd82b9215a52123e1bb2ff3402",
+      "official_bytes": 360092,
+      "member": {
+        "name": "clean_trainset_28spk_wav/p287_037.wav",
+        "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703238375f3033372e776176",
+        "version_needed": 20,
+        "flags": 8,
+        "method": 8,
+        "crc32": 745520634,
+        "compressed_size": 271224,
+        "uncompressed_size": 360092,
+        "local_offset": 2412357455
+      },
+      "local_source_sha256": "bd02cedd2a8d847b8a4a0897ba61814ae6027faed162dce7f5e5bf557abfffcd",
+      "comparison": {
+        "samples": 60008,
+        "max_abs_difference": 0.013202652335166931,
+        "max_abs_difference_LSB": 432.62451171875,
+        "rms_difference_LSB": 21.581062922706717,
+        "correlation": 0.9999037160309923,
+        "correlation_status": "defined",
+        "snr_db": 37.15304440752016,
+        "snr_status": "finite",
+        "zero_alignment": true,
+        "gate_passed": false,
+        "exact_derived_PCM16_matches_local": false,
+        "derived_PCM16_serialization": "floor/saturate32768 then SoundFile int16 PCM_16; separate from rawfloat gate",
+        "raw_float_exact_local": false,
+        "official_header": {
+          "sample_rate": 48000,
+          "channels": 1,
+          "frames": 180024,
+          "subtype": "PCM_16"
+        },
+        "local_header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "frames": 60008,
+          "subtype": "PCM_16"
+        },
+        "derived_array_sha256": "8bfb33a09d39b5464aab9a1e9ae2d0af6230ce438c86c57b7f2351805af63ed6"
+      }
+    },
+    "p287_054": {
+      "official_sha256": "a5c405008a21adb42e7ed4ca68118c38f5ea336cf927a3fa6c1107b5ddd872ff",
+      "official_bytes": 306578,
+      "member": {
+        "name": "clean_trainset_28spk_wav/p287_054.wav",
+        "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703238375f3035342e776176",
+        "version_needed": 20,
+        "flags": 8,
+        "method": 8,
+        "crc32": 3800049610,
+        "compressed_size": 239761,
+        "uncompressed_size": 306578,
+        "local_offset": 2415078746
+      },
+      "local_source_sha256": "05690fdc79c92a9a54b6a8fe6c0acdcb1f10be090773a4090418458fff052e76",
+      "comparison": {
+        "samples": 51089,
+        "max_abs_difference": 0.0131534393876791,
+        "max_abs_difference_LSB": 431.01190185546875,
+        "rms_difference_LSB": 28.682933808306974,
+        "correlation": 0.9999037417668994,
+        "correlation_status": "defined",
+        "snr_db": 37.15242721962484,
+        "snr_status": "finite",
+        "zero_alignment": true,
+        "gate_passed": false,
+        "exact_derived_PCM16_matches_local": false,
+        "derived_PCM16_serialization": "floor/saturate32768 then SoundFile int16 PCM_16; separate from rawfloat gate",
+        "raw_float_exact_local": false,
+        "official_header": {
+          "sample_rate": 48000,
+          "channels": 1,
+          "frames": 153267,
+          "subtype": "PCM_16"
+        },
+        "local_header": {
+          "sample_rate": 16000,
+          "channels": 1,
+          "frames": 51089,
+          "subtype": "PCM_16"
+        },
+        "derived_array_sha256": "e676f9a08929623c6a89bd772ee0f9b162d47b1508b33d3e167fc6437b66de32"
+      }
+    }
+  },
+  "models": 0,
+  "training_calls": 0,
+  "audio_decodes": 8,
+  "resample_calls": 4,
+  "test_content_opened": false,
+  "automatic_retries": 0,
+  "pre_hashes": {
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/metrics.json": "233c1cce6615fa9a133fd3c503062f4e6fb7cbfc470edcd37ac4b29a67eea9c5",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/item.html": "f87f16037ef976f453950d591d6773eb606c0adcbb4f6d3257c143e8bf1fe2c0",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/license.txt": "b34e17103bfb246f2549fc82a279e6ba28834e0cb42f76a92efc14b72e3a3723",
+    "/data/datasets/vb/voicebank_demand/voicebank_prepare.py": "a659ad6f96441f4afe97e05e50638b6f45948b42efc2ed79b3bc545221076d6f",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_027.wav": "d56d7e5b9eda853a0d493c246f1e59ecd39cf830776ec1895691d57ec7e77385",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_028.wav": "7df2e7755da80d44493350eb7af61ebb022bd3bb9066f1145f028f35d574f3ec",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_037.wav": "bd02cedd2a8d847b8a4a0897ba61814ae6027faed162dce7f5e5bf557abfffcd",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_054.wav": "05690fdc79c92a9a54b6a8fe6c0acdcb1f10be090773a4090418458fff052e76"
+  },
+  "environment": {
+    "python": "3.10.22 (main, Oct  1 2026, 20:14:04) [GCC 14.3.0]",
+    "executable": "/data/coding/sgmse/env/bin/python",
+    "PATH": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+    "cwd": "/data/coding/sgmse",
+    "proxy": "http://127.0.0.1:7890",
+    "numpy": "2.2.6",
+    "soundfile": "0.14.0",
+    "torch": "2.14.1+cu130",
+    "torchaudio": "2.11.0+cu130"
+  },
+  "git_head": "4ff156483ec35302ba070cffffb27093debf8e52",
+  "git_status_before": " M experiment_logs/rrsd_conflict_weight001_1000_infer.log\n M experiments/p8_counterexample_listening_pack_20261020/config.yaml\n M experiments/p8_counterexample_listening_pack_20261020/experiment_report.md\n M experiments/p8_frontend_backend_audit_20261020/user_listening_observation.md\n M joint_train.py\n M sgmse/joint_data_module.py\n M sgmse/joint_model.py\n M \"\\345\\210\\233\\346\\226\\260\\347\\202\\271\\344\\274\\230\\345\\214\\226_\\351\\252\\214\\350\\257\\201\\345\\256\\236\\351\\252\\214\\344\\270\\216\\347\\240\\224\\347\\251\\266\\346\\226\\271\\345\\220\\221\\346\\200\\273\\347\\273\\223_2026-10-16.md\"\n?? \"10-17\\346\\227\\251\\344\\270\\212gpt\\345\\257\\271\\344\\272\\216\\345\\220\\216\\347\\273\\255\\347\\240\\224\\347\\251\\266\\350\\256\\241\\345\\210\\222\\347\\232\\204\\345\\273\\272\\350\\256\\256.md\"\n?? LISTENING_TODO.md\n?? RESEARCH_BRIEF_2026-10-18_TAIL.md\n?? RESEARCH_GOAL_ADDENDUM_2026-10-17.md\n?? experiment_logs/rrsd_conflict_weight001_1000/\n?? experiment_logs/rrsd_conflict_weight001_full_test/\n?? experiment_logs/rrsd_control1000_full_matched_20261017.log\n?? experiment_logs/rrsd_control1000_full_matched_20261017/\n?? experiment_logs/rrsd_cv_repeat32/\n?? experiment_logs/rrsd_gate_projection_smoke4.log\n?? experiment_logs/rrsd_harm_oracle_4_cuda/\n?? experiment_logs/rrsd_harm_oracle_n30_4_full/\n?? experiment_logs/rrsd_harm_oracle_n30_4_gate/\n?? experiment_logs/rrsd_harm_oracle_smoke/\n?? experiment_logs/rrsd_harm_oracle_smoke_cuda_2/\n?? experiment_logs/rrsd_projection_gate_1000.log\n?? experiment_logs/rrsd_projection_nogate_1000.log\n?? experiment_logs/rrsd_router_alt15_full_20261017.log\n?? experiment_logs/rrsd_router_alt15_full_20261017/\n?? experiment_logs/rrsd_router_full_matched_20261017.log\n?? experiment_logs/rrsd_router_full_matched_20261017/\n?? experiment_logs/rrsd_scale025_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017.log\n?? experiment_logs/rrsd_scale05_screen_20261017/\n?? experiment_logs/rrsd_speaker_eval_svproto_masked_sw05_1000/\n?? experiment_logs/rrsd_speaker_pair_masked1000.console.log\n?? experiment_logs/rrsd_speaker_pair_masked1000.log\n?? experiment_logs/rrsd_speaker_svproto_masked_sw05_1000.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017.log\n?? experiment_logs/rrsd_tcut005_alt15_full_20261017/\n?? experiment_logs/rrsd_tcut005_full_20261017.log\n?? experiment_logs/rrsd_tcut005_full_20261017/\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale025_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale05_screen_20261017/\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017.log\n?? experiment_logs/rrsd_tcut005_scale075_screen_20261017/\n?? experiment_logs/rrsd_tcut_scale_smoke_new.log\n?? experiment_logs/rrsd_tcut_scale_smoke_old.log\n?? experiment_logs/rrsd_tcut_screen/cut005/\n?? experiment_logs/rrsd_tcut_screen/router/\n?? experiment_logs/rrsd_tmax_none_fix_smoke2/\n?? experiment_logs/speaker_headroom_replication_64_20261017/\n?? experiments/anchor_v2_real_oracle_20261017/\n?? experiments/backend_adapter_architecture_audit_20261018/\n?? experiments/checkpoint_data_condition_audit_20261018_metrics.json\n?? experiments/final_eval_reverb_interaction_20261018_metrics.json\n?? experiments/multitrajectory_distillmos_audit_20261020/\n?? experiments/multitrajectory_oracle_20261017/\n?? experiments/multitrajectory_oracle_heldout16/\n?? experiments/multitrajectory_pair_subset_20261017/\n?? experiments/p3b_blind_listening_pilot_20261017/\n?? experiments/p3b_literature_code_audit_20261017/\n?? experiments/p7c_observable_repair_probe_20261017/\n?? experiments/p8_10720_content_identity_audit_20261018/\n?? experiments/p8_10720_pairing_forensics_20261018/\n?? experiments/p8_10720_snr_control_20261018/\n?? experiments/p8_10720_tail_causal_pilot_20261018/\n?? experiments/p8_10720_tail_condition20_20261018/\n?? experiments/p8_10720_tail_mechanism_20261018/\n?? experiments/p8_11999_forced_choice_pack_20261020/\n?? experiments/p8_3321_tail_condition_20261018/\n?? experiments/p8_5243_local_condition_necessity_20261019/\n?? experiments/p8_5243_native_replay_gate_20261019/\n?? experiments/p8_5243_natural_evidence_feasibility_20261019/\n?? experiments/p8_consonant_acoustic_probe_20261020/\n?? experiments/p8_counterexample_listening_pack_20261020/metrics.json\n?? experiments/p8_counterexample_listening_pack_20261020/phoneme_probe.py\n?? experiments/p8_e1_aligned_listening_20261020/\n?? experiments/p8_e1_candidate_listening_20261018/\n?? experiments/p8_e1_candidate_listening_aligned_20261020/\n?? experiments/p8_e1_candidate_ranking_20261018/\n?? experiments/p8_e1_clean_timestamp_prompt_20261018/\n?? experiments/p8_evidence_prior_audit_20261019/\n?? experiments/p8_noisy_condition_path_audit_20261018/\n?? experiments/p8_phoneme_probe_20261020/\n?? experiments/p8_q_a_ctc_boundary_audit_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_probe_20261020/\n?? experiments/p8_q_a_ctc_fixed_time_v2_20261018/\n?? experiments/p8_q_a_ctc_forced_alignment_20261020/\n?? experiments/p8_q_a_shorttime_probe_20261020/\n?? experiments/p8_q_external_corpus_audit_20261018/\n?? experiments/p8_q_vcv_clean_calibration_20261018/\n?? experiments/p8_q_vcv_enhance_follow_20261018/\n?? experiments/p8_q_vcv_fixed_noise_20261018/\n?? experiments/p8_q_vcv_lowsnr_challenge_20261018/\n?? experiments/p8_q_vcv_speaker_replication_20261019/\n?? experiments/p8_silent_gap_screen8_20261018/\n?? experiments/p8_text_source_external_audit_20261018/\n?? experiments/p8_text_source_repository_audit_20261018/\n?? experiments/p8_training_coverage_audit_20261020/\n?? experiments/p8_vcv_common_scale_factorial_20261019/\n?? experiments/p8_vcv_f20_noise_correspondence_20261019/\n?? experiments/p8_vcv_f20_tail_existing_audit_20261019/\n?? experiments/p8_vcv_fixed_norm_condition_swap_20261019/\n?? experiments/p8_vcv_speech_component_ablation_20261019/\n?? experiments/p8_voicebank_content_reference_audit_20261019/\n?? experiments/p8_voicebank_source_waveform_gate_20261019/\n?? experiments/p8_y_pre_mask_counterfactual_20261020/multiseed_run.log\n?? experiments/p8_y_pre_mask_counterfactual_20261020/run.log\n?? experiments/perceptual_representation_probe_20261017/\n?? experiments/research_audit_20261016/\n?? experiments/rollout_adapter_pilot_20261018/\n?? experiments/rrsd_conflict_weight001_1000/\n?? experiments/rrsd_conflict_weight001_full_test/\n?? experiments/rrsd_control1000_full_matched_20261017/\n?? experiments/rrsd_cv_repeat32/\n?? experiments/rrsd_harm_oracle_4_cuda/\n?? experiments/rrsd_harm_oracle_n30_4_full/\n?? experiments/rrsd_harm_oracle_n30_4_gate/\n?? experiments/rrsd_harm_oracle_n30_4_paired/\n?? experiments/rrsd_harm_oracle_smoke_cuda_2/\n?? experiments/rrsd_harm_teacher_fd_probe/\n?? experiments/rrsd_independent_speaker_probe_32/\n?? experiments/rrsd_observable_selector_probe_32_metrics.json\n?? experiments/rrsd_router_full_matched_20261017/\n?? experiments/rrsd_scale025_screen_20261017/\n?? experiments/rrsd_scale025_screen_20261017_eval/paired_metrics.csv\n?? experiments/rrsd_scale025_screen_20261017_eval/summary.txt\n?? experiments/rrsd_scale05_screen_20261017/\n?? experiments/rrsd_speaker_pair_masked1000/\n?? experiments/rrsd_tcut005_alt15_full_20261017/\n?? experiments/rrsd_tcut005_full_20261017/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut005/\n?? experiments/rrsd_tcut_screen_dns_20261017/cut010/\n?? experiments/rrsd_tcut_screen_dns_20261017/metrics.json\n?? experiments/speaker_backend_only_matched_500_20261018/\n?? experiments/speaker_backend_only_smoke_20261017/\n?? experiments/speaker_data_audit_20261017/\n?? experiments/speaker_headroom_20261017/\n?? experiments/speaker_headroom_replication_64_20261017/\n?? experiments/speaker_parameter_audit_20261017/\n?? experiments/storm_error_attribution_p7_20261017/\n?? lightning_logs/version_6/\n?? onnxruntime_profile__2026-10-17_16-35-36_395.json\n?? onnxruntime_profile__2026-10-17_16-35-36_791.json\n?? research_memos/\n?? rrsd_harm_oracle_infer.py\n?? sgmse/joint_training_utils.py\n?? tests/test_joint_training_options.py\n",
+  "publisher_metadata": {
+    "name": "clean_trainset_28spk_wav.zip",
+    "size": 2486057279,
+    "checksum_metadata_only_not_full_archive_verified": {
+      "checkSumAlgorithm": "MD5",
+      "value": "d2d5a45ec32f8fcbf201bde0447e20ba"
+    },
+    "source_html": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/item.html",
+    "license_path": "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/license.txt",
+    "license": "CC BY 4.0"
+  },
+  "eocd": {
+    "entries": 11573,
+    "size": 1099423,
+    "offset": 2484957834,
+    "eocd_offset": 2486057257,
+    "comment_bytes": 0
+  },
+  "central_selected": {
+    "clean_trainset_28spk_wav/p226_027.wav": {
+      "name": "clean_trainset_28spk_wav/p226_027.wav",
+      "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703232365f3032372e776176",
+      "version_needed": 20,
+      "flags": 8,
+      "method": 8,
+      "crc32": 1111473794,
+      "compressed_size": 295799,
+      "uncompressed_size": 380724,
+      "local_offset": 11377093
+    },
+    "clean_trainset_28spk_wav/p226_028.wav": {
+      "name": "clean_trainset_28spk_wav/p226_028.wav",
+      "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703232365f3032382e776176",
+      "version_needed": 20,
+      "flags": 8,
+      "method": 8,
+      "crc32": 2382019220,
+      "compressed_size": 314171,
+      "uncompressed_size": 405962,
+      "local_offset": 11672991
+    },
+    "clean_trainset_28spk_wav/p287_037.wav": {
+      "name": "clean_trainset_28spk_wav/p287_037.wav",
+      "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703238375f3033372e776176",
+      "version_needed": 20,
+      "flags": 8,
+      "method": 8,
+      "crc32": 745520634,
+      "compressed_size": 271224,
+      "uncompressed_size": 360092,
+      "local_offset": 2412357455
+    },
+    "clean_trainset_28spk_wav/p287_054.wav": {
+      "name": "clean_trainset_28spk_wav/p287_054.wav",
+      "name_bytes_hex": "636c65616e5f747261696e7365745f323873706b5f7761762f703238375f3035342e776176",
+      "version_needed": 20,
+      "flags": 8,
+      "method": 8,
+      "crc32": 3800049610,
+      "compressed_size": 239761,
+      "uncompressed_size": 306578,
+      "local_offset": 2415078746
+    }
+  },
+  "central_directory_sha256": "2ad68f74443ad57a556fe62250aae1051327460a31a6ee59ff324e8d88cf16e7",
+  "resample_recipe": {
+    "class": "torchaudio.transforms.Resample",
+    "orig_freq": 48000,
+    "new_freq": 16000,
+    "dtype": "float32",
+    "device": "cpu",
+    "defaults": {
+      "lowpass_filter_width": 6,
+      "rolloff": 0.99,
+      "resampling_method": "sinc_interp_hann",
+      "beta": null
+    },
+    "source_script": "/data/datasets/vb/voicebank_demand/voicebank_prepare.py",
+    "procedure_presence_is_not_execution_proof": true,
+    "gain_delay_trim_search": false
+  }
+}

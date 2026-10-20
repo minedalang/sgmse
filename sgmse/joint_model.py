@@ -42,11 +42,13 @@ from sgmse.sdes import SBVESDE
 from sgmse.frontends import build_frontend
 from sgmse.anchor_v2 import BandTimeAnchorV2Controller, solve_two_direction_tile_oracle
 from sgmse.reliability_router import BandTimeReliabilityRouter, solve_frontend_projection_oracle
+from sgmse.joint_training_utils import rrsd_aux_loss_enabled
 from sgmse.pathsim_vA import BandTimeVariancePathEstimator, load_pathsim_va_checkpoint
 from sgmse.residual_initializer import (
     ConfidenceGatedResidualPriorPredictor,
     build_residual_prior_predictor,
 )
+
 
 from contextlib import contextmanager
 from functools import partial
@@ -591,6 +593,18 @@ class JointFrontendSgmseModel(ScoreModel):
         parser.add_argument("--rrsd_freeze_base", action="store_true",
                             help="Freeze the frontend and score network; train only the RRSD router. Recommended for projection-gate and required for K-step teacher experiments.")
         parser.add_argument(
+            "--rrsd_freeze_router", action="store_true",
+            help="Freeze the RRSD router while leaving the score network trainable; use with a frozen frontend for backend-only adaptation.",
+        )
+        parser.add_argument(
+            "--rrsd_disable_aux_loss", action="store_true",
+            help="Skip the RRSD training auxiliary loss while retaining the frozen router for inference. Requires --rrsd_freeze_router.",
+        )
+        parser.add_argument(
+            "--speaker_balanced_batches", action="store_true",
+            help="Use speaker-balanced training batches even when contrastive loss is disabled.",
+        )
+        parser.add_argument(
             "--frontend_nr_weight",
             type=float,
             default=0.0,
@@ -885,6 +899,9 @@ class JointFrontendSgmseModel(ScoreModel):
         rrsd_gate_pos_weight: float = 2.0,
         rrsd_validate: bool = False,
         rrsd_freeze_base: bool = False,
+        rrsd_freeze_router: bool = False,
+        rrsd_disable_aux_loss: bool = False,
+        speaker_balanced_batches: bool = False,
         frontend_nr_weight: float = 0.0,
         frontend_nr_margin: float = 0.05,
         frontend_nr_t_max: float = 0.30,
@@ -1049,8 +1066,17 @@ class JointFrontendSgmseModel(ScoreModel):
         self.rrsd_gate_pos_weight = float(rrsd_gate_pos_weight)
         self.rrsd_validate = bool(rrsd_validate)
         self.rrsd_freeze_base = bool(rrsd_freeze_base)
+        self.rrsd_freeze_router = bool(rrsd_freeze_router)
+        self.rrsd_disable_aux_loss = bool(rrsd_disable_aux_loss)
+        self.speaker_balanced_batches = bool(speaker_balanced_batches)
+        if self.rrsd_freeze_router and self.rrsd_freeze_base:
+            raise ValueError("--rrsd_freeze_router cannot be combined with --rrsd_freeze_base.")
         if self.rrsd_weight < 0.0:
             raise ValueError("rrsd_weight must be >= 0.")
+        if self.rrsd_disable_aux_loss and self.rrsd_weight <= 0.0:
+            raise ValueError("--rrsd_disable_aux_loss requires --rrsd_weight > 0.")
+        if self.rrsd_disable_aux_loss and not self.rrsd_freeze_router:
+            raise ValueError("--rrsd_disable_aux_loss requires --rrsd_freeze_router.")
         if self.rrsd_benefit_weight < 0.0 or self.rrsd_recon_weight < 0.0 or self.rrsd_smooth_weight < 0.0:
             raise ValueError("RRSD loss weights must be >= 0.")
         if self.rrsd_gate_weight < 0.0 or self.rrsd_strength_weight < 0.0 or self.rrsd_gate_pos_weight <= 0.0:
@@ -1401,6 +1427,9 @@ class JointFrontendSgmseModel(ScoreModel):
         self.hparams["rrsd_gate_pos_weight"] = self.rrsd_gate_pos_weight
         self.hparams["rrsd_validate"] = self.rrsd_validate
         self.hparams["rrsd_freeze_base"] = self.rrsd_freeze_base
+        self.hparams["rrsd_freeze_router"] = self.rrsd_freeze_router
+        self.hparams["rrsd_disable_aux_loss"] = self.rrsd_disable_aux_loss
+        self.hparams["speaker_balanced_batches"] = self.speaker_balanced_batches
         self.hparams["anchor_v2_freeze_base"] = self.anchor_v2_freeze_base
         self.hparams["contrastive_margin"] = float(self.contrastive_margin)
         self.hparams["frontend_nr_weight"] = self.frontend_nr_weight
@@ -1507,6 +1536,13 @@ class JointFrontendSgmseModel(ScoreModel):
                 raise ValueError("--rrsd_freeze_base requires --rrsd_weight > 0 so a router exists.")
             for name, p in self.named_parameters():
                 p.requires_grad = name.startswith("rrsd_router.")
+
+        if self.rrsd_freeze_router:
+            if self.rrsd_router is None:
+                raise ValueError("--rrsd_freeze_router requires --rrsd_weight > 0 so a router exists.")
+            for name, p in self.named_parameters():
+                if name.startswith("rrsd_router."):
+                    p.requires_grad = False
 
         if self.anchor_v2_freeze_base:
             # Anchor V2 is trained as a small residual controller on top of a
@@ -1759,10 +1795,26 @@ class JointFrontendSgmseModel(ScoreModel):
             if getattr(self, "residual_initializer", None) is not None:
                 self.residual_initializer.eval()
             if getattr(self, "rrsd_router", None) is not None:
-                self.rrsd_router.train(bool(getattr(self, "rrsd_freeze_base", False)))
+                self.rrsd_router.train(
+                    bool(getattr(self, "rrsd_freeze_base", False))
+                    and not bool(getattr(self, "rrsd_freeze_router", False))
+                )
             if getattr(self, "anchor_v2_controller", None) is not None:
                 self.anchor_v2_controller.train(bool(getattr(self, "anchor_v2_freeze_base", False)))
+        if mode and bool(getattr(self, "rrsd_freeze_router", False)):
+            # Keep the fixed routing module deterministic while the backend
+            # trains, without changing the mode of the rest of the model.
+            if getattr(self, "rrsd_router", None) is not None:
+                self.rrsd_router.eval()
         return out
+
+    def train_dataloader(self):
+        return self.data_module.train_dataloader(
+            self.contrastive_weight,
+            speaker_balanced_batches=bool(
+                getattr(self, "speaker_balanced_batches", False)
+            ),
+        )
     def on_fit_start(self):
         # Make sure teacher model is on the same device
         super().on_fit_start()
@@ -5489,7 +5541,11 @@ class JointFrontendSgmseModel(ScoreModel):
         # In all modes the frozen/base DSM model parameters remain untouched when
         # --rrsd_freeze_base is used.
         loss_rrsd = torch.zeros((), device=x_wav.device, dtype=torch.float32)
-        if self.rrsd_router is not None and float(getattr(self, "rrsd_weight", 0.0)) > 0.0:
+        if rrsd_aux_loss_enabled(
+            self.rrsd_router,
+            getattr(self, "rrsd_weight", 0.0),
+            getattr(self, "rrsd_disable_aux_loss", False),
+        ):
             # Full-speech RRSD: Oracle-distill how far the current diffusion x0
             # estimate should move toward the frontend enhanced spectrum Y_pre.
             loss_rrsd, rrsd_stats = self._compute_rrsd_loss(

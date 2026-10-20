@@ -1,0 +1,12 @@
+experiment_id: rrsd_harm_teacher_fd_probe
+type: read_only_finite_difference_diagnostic
+checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+content_model: microsoft/wavlm-base-plus
+layer: 3
+anchor: router
+fd_eps: 0.005
+min_alpha: 0.006
+relative_tolerance: 0.10
+sources:
+  - experiment_logs/rrsd_pg_conflict_fd_router_wavlm_l3_cv_synthetic_64b_seed2026.log
+  - experiment_logs/rrsd_pg_conflict_fd_router_wavlm_l3_cv_synthetic_96b_seed2026.log

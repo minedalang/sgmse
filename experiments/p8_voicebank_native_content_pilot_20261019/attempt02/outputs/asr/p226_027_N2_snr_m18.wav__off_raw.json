@@ -1,0 +1,82 @@
+{
+  "request": {
+    "key": "p226_027_N2_snr_m18.wav__off",
+    "id": "p226_027",
+    "arm": "off",
+    "path": "outputs/off/p226_027_N2_snr_m18.wav",
+    "basename": "p226_027_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "input": {
+      "wav_sha256": "16528f7070b437cb28a2f71d10d30c8d3d4d418f26fc4ad73bad6ee3b0f0981f",
+      "samples": 63447,
+      "array_sha256": "91fb183eda5897b4c5b7e0d7ff3833976c71425ad3200ccbb96b0991ac79a012",
+      "peak": 0.08251953125,
+      "rms": 0.00940222513665256
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_027",
+    "original_text": "They should have a major rethink about the event for next year.\n",
+    "raw_text_hex": "546865792073686f756c6420686176652061206d616a6f722072657468696e6b2061626f757420746865206576656e7420666f72206e65787420796561722e0a",
+    "raw_text_sha256": "4c89a690f064039006e014051fd9c1520256f1fc8a454a312412600e13d8cbb3",
+    "archive_entry": "trainset_28spk_txt/p226_027.txt"
+  },
+  "raw_result": {
+    "text": " We should have the main reason to body of rins things again.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.7600000000000002,
+        "text": " We should have the main reason to body of rins things again.",
+        "tokens": [
+          50363,
+          775,
+          815,
+          423,
+          262,
+          1388,
+          1738,
+          284,
+          1767,
+          286,
+          374,
+          1040,
+          1243,
+          757,
+          13,
+          50551
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9448373457964729,
+        "compression_ratio": 0.9375,
+        "no_speech_prob": 0.11472518742084503
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 13,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

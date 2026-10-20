@@ -1,0 +1,75 @@
+{
+  "request": {
+    "key": "p230_027_N1_snr_m18.wav__frontend",
+    "id": "p230_027",
+    "arm": "frontend",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/model_stage/outputs/frontend/p230_027_N1_snr_m18.wav",
+    "basename": "p230_027_N1_snr_m18.wav",
+    "noise": "N1",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "752bfb9ca899fd79ccbf584ef47614e781a1dd07e5b50c0ad8d6c59d1bb43240",
+      "samples": 51162,
+      "array_sha256": "6f53721886b949f4bbfc7465be12c9ef717a912148c3fe52d533b421f3924825",
+      "peak": 0.052947998046875,
+      "rms": 0.006332495825547079
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_027",
+    "original_text": "He has the courage of the unaware.\n",
+    "raw_text_hex": "4865206861732074686520636f7572616765206f662074686520756e61776172652e0a",
+    "raw_text_sha256": "f1bb0b5762a1fb6e80a5e85073e6e89fcb5e0e3a43c5e8e11d980a572aa14ccc",
+    "archive_entry": "trainset_28spk_txt/p230_027.txt"
+  },
+  "raw_result": {
+    "text": " Not one, take care.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " Not one, take care.",
+        "tokens": [
+          50363,
+          1892,
+          530,
+          11,
+          1011,
+          1337,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.0068016052246094,
+        "compression_ratio": 0.7037037037037037,
+        "no_speech_prob": 0.6386842727661133
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 58,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

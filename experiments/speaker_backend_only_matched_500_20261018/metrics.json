@@ -1,0 +1,28 @@
+{
+  "experiment_id": "speaker_backend_only_matched_500_20261018",
+  "status": "control_complete_speaker_arm_not_started",
+  "arm": "no_loss_control",
+  "global_step": 500,
+  "epoch": 0,
+  "train_loss_epoch_logged": 5963.087,
+  "train_loss_step_logged": 10814.631,
+  "checkpoint": {
+    "path": "logs/None-speaker_backend_only_matched500_control/epoch=0-step=500-last.ckpt",
+    "sha256": "f42b60d0d25d6cfc0bfef3255ec3c0ef3926968367145c9f271eee1411106740",
+    "bytes": 554475520
+  },
+  "source_checkpoint_sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+  "dataset_modified": false,
+  "evaluation": {
+    "status": "complete_read_only_control",
+    "path": "control_eval_64",
+    "campp": "control-vs-off same-speaker cosine +0.00262482, 95% cluster CI [-0.00831924, 0.01452577]; AUC +0.00852361, CI [-0.00461871, 0.02485563]; EER -0.0173611, CI [-0.0625315, 0.0304609]; paired-clean cosine +0.00146493, CI [-0.00562499, 0.00846707]",
+    "quality_metrics": "control_eval_64/quality_cluster_metrics.json",
+    "dnsmos": "single-file smoke only; full three-arm evaluation not run due unverified CUDA provider"
+  },
+  "notes": [
+    "Training reached max_steps=500 without startup or runtime error.",
+    "The checkpoint is a control artifact only and does not establish a speaker-loss result.",
+    "No source dataset or original checkpoint was modified."
+  ]
+}

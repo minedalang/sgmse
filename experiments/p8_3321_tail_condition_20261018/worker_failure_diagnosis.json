@@ -1,0 +1,22 @@
+{
+  "status": "diagnosed_no_retry",
+  "cause": "PyYAML safe_load YAML 1.1 resolves unquoted mapping key off to boolean False; source_sha256 therefore lacks string off. Driver expected[k] raises KeyError before source reads/model load.",
+  "parsed_source_sha256_keys": [
+    "'clean'",
+    "'noisy'",
+    "False",
+    "'y_pre'"
+  ],
+  "inference_runs": 0,
+  "model_loaded": false,
+  "frontend_recomputed": false,
+  "source_hashes_unchanged": {
+    "clean": true,
+    "noisy": true,
+    "off": true,
+    "y_pre": true
+  },
+  "checkpoint_hash_unchanged": true,
+  "proposed_engineer_correction": "Quote the off key in YAML and validate all expected string arm keys before any launch. Preserve failed attempt and use new separately approved attempt directory.",
+  "original_artifacts_preserved": true
+}

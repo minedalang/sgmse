@@ -1,0 +1,24 @@
+experiment_id: rollout_adapter_pilot_20261018
+date: 2026-10-18
+type: bounded_rollout_aware_backend_adapter_pilot
+status: completed
+base_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+manifest: experiments/rollout_prediction_gap_20261018/fresh_cv_manifest.csv
+train_utterances: 6
+holdout_utterances: 2
+selected_reverse_steps: [3, 5, 7, 9]
+sampler_for_state_cache: pc_reverse_diffusion_N30_corrector_none_snr0.5
+trainable_parameters: zero_initialized_dnn_backend_adapter_module_33_only
+loss: clean_x0_complex_spectral_nmse_on_cached_rollout_states
+max_steps: 200  # unstable pilot; stable follow-up used 100 steps
+learning_rate: 0.001  # unstable pilot; stable follow-up used 1e-5
+new_audio_inference: true
+audio_metric_evaluation_scope: 6_adapter_train_utterances_plus_2_utterance_holdout; not independent_cv
+stable_followup_learning_rate: 0.00001
+stable_followup_steps: 100
+stable_followup_gradient_clip: 1.0
+dataset_modified: false
+checkpoint_overwrite: false
+success_gate: holdout_proxy_nmse_decrease_at_least_5_percent_with_finite_stable_training
+stop_gate: holdout_proxy_no_gain_or_degradation_or_nonfinite_loss
+next_step_if_success: completed_fresh_cv_audio_inference; replicate on independent CV before any official test use

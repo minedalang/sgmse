@@ -1,0 +1,43 @@
+{
+  "status": "completed_exploratory_no_preference",
+  "num_utterances": 8,
+  "num_pairwise_trials": 24,
+  "listener_count": 1,
+  "rating_counts": {
+    "A": 0,
+    "B": 0,
+    "tie": 24
+  },
+  "tie_rate": 1.0,
+  "non_tie_trials": 0,
+  "per_condition_pair_counts": {
+    "cut005_vs_selective": {
+      "A": 0,
+      "B": 0,
+      "tie": 8
+    },
+    "router_vs_cut005": {
+      "A": 0,
+      "B": 0,
+      "tie": 8
+    },
+    "router_vs_selective": {
+      "A": 0,
+      "B": 0,
+      "tie": 8
+    }
+  },
+  "strength_counts": {
+    "1": 0,
+    "2": 0
+  },
+  "inferential_statistics": null,
+  "interpretation": "All 24 paired comparisons were rated tie/no discernible preference by the single listener. This exploratory result does not establish perceptual equivalence or population-level preference.",
+  "listener_note": "The listener reported that corresponding regions sounded similarly clear or unclear across versions and that differences were not discernible.",
+  "limitations": [
+    "single listener",
+    "8 utterances reused across 24 comparisons",
+    "utterances came from a development set used for prior route selection",
+    "no independent generalization or paper-level perceptual claim"
+  ]
+}

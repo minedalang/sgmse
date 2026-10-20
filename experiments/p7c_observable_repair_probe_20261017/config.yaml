@@ -1,0 +1,108 @@
+schema_version: 1
+experiment_id: p7c_observable_repair_probe_20261017
+purpose: >-
+  Exploratory offline check of whether deployment-observable features from paired
+  noisy input and Frontend-only Y_pre predict local Router-off StoRM reconstruction
+  change relative to Y_pre.
+research_question: >-
+  Can features computed only from noisy and Y_pre predict where Router-off output
+  improves or worsens local reconstruction relative to Y_pre?
+status: exploratory_not_held_out_or_confirmatory
+split_context: >-
+  Existing 32-item P7-C development split; repeatedly screened, so results are
+  exploratory and not held-out or confirmatory.
+execution:
+  command: >-
+    CUDA_VISIBLE_DEVICES='' OMP_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
+    env/bin/python3.10
+    experiments/p7c_observable_repair_probe_20261017/analyze_observable_repair.py
+  device: cpu
+  gpu_used: false
+  training_run: false
+  inference_run: false
+  dataset_or_checkpoint_modified: false
+inputs:
+  manifest: experiments/storm_error_attribution_p7_20261017/baseline_manifest.csv
+  frontend_only_directory: experiments/storm_error_attribution_p7_20261017/frontend_only
+  router_off_directory: experiment_logs/rrsd_tcut_screen/off
+  clean_source: manifest_clean_path
+  noisy_source: manifest_noisy_path
+  frontend_source: frontend_only_directory_plus_manifest_filename
+  router_off_source: manifest_router_off_path
+  expected_manifest_sha256: 77b64db9da6a1ff372a22dcda4a6316743133f383103aaffb3dbce2c671c178e
+  expected_manifest_rows: 32
+  require_same_utterance: true
+  require_sample_rate_hz: 16000
+  require_aligned_sample_counts: true
+  input_file_hashes_verified: true
+chunking:
+  duration_seconds: 1.0
+  chunk_samples_at_16khz: 16000
+  alignment: start_at_sample_zero_non_overlapping_full_chunks
+  incomplete_tail: drop_if_present_and_record
+  clean_rms_exclusion_threshold: 0.0001
+  exclusion_rule: exclude_only_chunks_with_clean_rms_below_threshold
+target:
+  name: delta_log_waveform_nrmse
+  formula: log(nrmse_y_pre_vs_clean) - log(nrmse_router_off_vs_clean)
+  nrmse: sqrt(mean((estimate-clean)^2)) / sqrt(mean(clean^2))
+  log_base: natural
+  positive_means: router_off_reduces_error_relative_to_frontend_only
+  clean_used_only_for_offline_target_and_exclusion: true
+features:
+  allowed_sources:
+    - noisy_input
+    - frontend_only_y_pre
+  router_output_used_as_feature: false
+  clean_used_as_feature: false
+  prespecified_names:
+    - log_rms_noisy
+    - log_rms_y_pre
+    - rms_ratio_y_pre_over_noisy
+    - rms_difference_y_pre_minus_noisy
+    - band_energy_fraction_noisy_0_1khz
+    - band_energy_fraction_noisy_1_4khz
+    - band_energy_fraction_noisy_4_8khz
+    - band_energy_fraction_y_pre_0_1khz
+    - band_energy_fraction_y_pre_1_4khz
+    - band_energy_fraction_y_pre_4_8khz
+    - spectral_flatness_noisy
+    - spectral_flatness_y_pre
+  spectral_definition: >-
+    One-second rectangular-window real FFT; band-energy fraction uses one-sided
+    power (DC and Nyquist counted once; other bins twice) in [0,1k), [1k,4k),
+    [4k,8k] divided by total one-sided power; spectral flatness is geometric
+    mean power divided by arithmetic mean power, with a 1e-30 power floor for
+    logarithms.
+  rms_log_floor: 1.0e-12
+  ratio_denominator_floor: 1.0e-12
+  feature_selection_after_target_inspection: false
+evaluation:
+  primary_split: per_speaker_grouped_5_fold
+  speaker_id_rule: prefix_before__fileid__in_manifest_uttid
+  fallback_if_fewer_than_5_valid_groups: leave_one_speaker_out
+  models:
+    mean_only:
+      specification: training_fold_target_mean
+    ridge:
+      specification: sklearn_ridge_regression
+      alpha: 1.0
+      feature_standardization: fit_on_training_fold_only
+      hyperparameter_tuning: false
+  metrics:
+    - pooled_grouped_out_of_fold_r2
+    - pooled_grouped_out_of_fold_mae
+    - pooled_grouped_out_of_fold_spearman
+  uncertainty:
+    method: speaker_cluster_bootstrap_on_out_of_fold_predictions
+    replicates: 2000
+    confidence_level: 0.95
+    seed: 20261017
+descriptive_only:
+  report_fraction_chunks_delta_gt_zero: true
+  segments_are_independent_confirmation: false
+limitations:
+  - repeatedly_screened_small_development_split
+  - chunk_rows_within_utterance_and_speaker_are_not_independent
+  - local_waveform_nrmse_is_only_a_reconstruction_proxy
+  - no_dns_mos_or_local_perceptual_claims

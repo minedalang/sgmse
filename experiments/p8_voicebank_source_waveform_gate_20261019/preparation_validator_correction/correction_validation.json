@@ -1,0 +1,27 @@
+{
+  "status": "prepared_only",
+  "prior_prepared_hashes": {
+    "run_gate.py": "fb074781265d885fdb7b85d25d3ecdba68be5334859d79b0baff1aeb60850745",
+    "preparation_metrics.json": "52fb367eb17b9c52fbfeb14e076b2f0ce06b16d1e95f16cebbda8818fa3051a6",
+    "preparation_report.md": "8cbad4eefdac83aaa9912720e56e077e7a3aee670f395af46d08399c127466c8"
+  },
+  "unchanged_config_SHA256": "110a9242b724ad0a28e3f77ff8f88b2f7163ffd7acbd2370464337d270deb68a",
+  "unchanged_selection_SHA256": "60b69d1a39271e3514f5c423233e0b9ab0ce1e8d8ac3545db91095dc85568a0c",
+  "source_locks": {
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/train_reference_manifest.jsonl": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/metrics.json": "233c1cce6615fa9a133fd3c503062f4e6fb7cbfc470edcd37ac4b29a67eea9c5",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/attempt02/trainset_28spk_txt.zip": "5ec7d6ef99b78a7d039f1ecd6db7d0d5b660877b464de15e1d75de6425fbf3f8",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/item.html": "f87f16037ef976f453950d591d6773eb606c0adcbb4f6d3257c143e8bf1fe2c0",
+    "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/publisher/license.txt": "b34e17103bfb246f2549fc82a279e6ba28834e0cb42f76a92efc14b72e3a3723",
+    "/data/datasets/vb/voicebank_demand/voicebank_prepare.py": "a659ad6f96441f4afe97e05e50638b6f45948b42efc2ed79b3bc545221076d6f",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_027.wav": "d56d7e5b9eda853a0d493c246f1e59ecd39cf830776ec1895691d57ec7e77385",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p226_028.wav": "7df2e7755da80d44493350eb7af61ebb022bd3bb9066f1145f028f35d574f3ec",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_037.wav": "bd02cedd2a8d847b8a4a0897ba61814ae6027faed162dce7f5e5bf557abfffcd",
+    "/data/datasets/vb/voicebank_demand/16k/valid/clean/p287_054.wav": "05690fdc79c92a9a54b6a8fe6c0acdcb1f10be090773a4090418458fff052e76"
+  },
+  "driver_SHA256": "d7114eee7128bd61496926f8b692fc403514583a68cf6babbcfd9a43dfb49664",
+  "test_script_SHA256": "8c5dc0c8581933913570bfb97dc650d4c3f1195de16f5fcd19ca35d888df0860",
+  "test_results_SHA256": "2d81918a6d8c3b78bfd3e6c7292968d6e0dd78e5aff31e66e00dfb23dc5111ff",
+  "AST_parse": true,
+  "actual_execution_artifacts_absent": true
+}

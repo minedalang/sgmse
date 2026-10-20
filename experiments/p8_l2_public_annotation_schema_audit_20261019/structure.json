@@ -1,0 +1,354 @@
+{
+  "source_sha256": "bb2e198e06fb6646f7f60f6548e5ed7d6d558987bad52c4d0e9a278190d88573",
+  "global_xmin": "0",
+  "global_xmax": "1.6214965986394558",
+  "declared_tiers": 3,
+  "tiers": [
+    {
+      "index": 1,
+      "class": "IntervalTier",
+      "name": "words",
+      "xmin": "0",
+      "xmax": "1.6214965986394558",
+      "declared_intervals": 7,
+      "intervals": [
+        {
+          "index": 1,
+          "xmin": "0",
+          "xmax": "0.04",
+          "raw_label": ""
+        },
+        {
+          "index": 2,
+          "xmin": "0.04",
+          "xmax": "0.28",
+          "raw_label": "there"
+        },
+        {
+          "index": 3,
+          "xmin": "0.28",
+          "xmax": "0.53",
+          "raw_label": "was"
+        },
+        {
+          "index": 4,
+          "xmin": "0.53",
+          "xmax": "0.64",
+          "raw_label": "a"
+        },
+        {
+          "index": 5,
+          "xmin": "0.64",
+          "xmax": "1.01",
+          "raw_label": "change"
+        },
+        {
+          "index": 6,
+          "xmin": "1.01",
+          "xmax": "1.44",
+          "raw_label": "now"
+        },
+        {
+          "index": 7,
+          "xmin": "1.44",
+          "xmax": "1.6214965986394558",
+          "raw_label": ""
+        }
+      ],
+      "empty_label_count": 2
+    },
+    {
+      "index": 2,
+      "class": "IntervalTier",
+      "name": "phones",
+      "xmin": "0",
+      "xmax": "1.6214965986394558",
+      "declared_intervals": 16,
+      "intervals": [
+        {
+          "index": 1,
+          "xmin": "0",
+          "xmax": "0.04",
+          "raw_label": "sil"
+        },
+        {
+          "index": 2,
+          "xmin": "0.04",
+          "xmax": "0.11",
+          "raw_label": "DH"
+        },
+        {
+          "index": 3,
+          "xmin": "0.11",
+          "xmax": "0.2",
+          "raw_label": "EH1"
+        },
+        {
+          "index": 4,
+          "xmin": "0.2",
+          "xmax": "0.28",
+          "raw_label": "R,AH0,s"
+        },
+        {
+          "index": 5,
+          "xmin": "0.28",
+          "xmax": "0.34",
+          "raw_label": "W"
+        },
+        {
+          "index": 6,
+          "xmin": "0.34",
+          "xmax": "0.44",
+          "raw_label": "AH1"
+        },
+        {
+          "index": 7,
+          "xmin": "0.44",
+          "xmax": "0.53",
+          "raw_label": "Z,S,s"
+        },
+        {
+          "index": 8,
+          "xmin": "0.53",
+          "xmax": "0.64",
+          "raw_label": "AH0"
+        },
+        {
+          "index": 9,
+          "xmin": "0.64",
+          "xmax": "0.8",
+          "raw_label": "CH"
+        },
+        {
+          "index": 10,
+          "xmin": "0.8",
+          "xmax": "0.85",
+          "raw_label": "EY1"
+        },
+        {
+          "index": 11,
+          "xmin": "0.85",
+          "xmax": "0.94",
+          "raw_label": "N"
+        },
+        {
+          "index": 12,
+          "xmin": "0.94",
+          "xmax": "1.01",
+          "raw_label": "JH,CH,s"
+        },
+        {
+          "index": 13,
+          "xmin": "1.01",
+          "xmax": "1.16",
+          "raw_label": "N"
+        },
+        {
+          "index": 14,
+          "xmin": "1.16",
+          "xmax": "1.44",
+          "raw_label": "AW1"
+        },
+        {
+          "index": 15,
+          "xmin": "1.44",
+          "xmax": "1.6",
+          "raw_label": "sp"
+        },
+        {
+          "index": 16,
+          "xmin": "1.6",
+          "xmax": "1.6214965986394558",
+          "raw_label": ""
+        }
+      ],
+      "empty_label_count": 1
+    },
+    {
+      "index": 3,
+      "class": "IntervalTier",
+      "name": "IPA",
+      "xmin": "0",
+      "xmax": "1.6214965986394558",
+      "declared_intervals": 7,
+      "intervals": [
+        {
+          "index": 1,
+          "xmin": "0",
+          "xmax": "0.2",
+          "raw_label": ""
+        },
+        {
+          "index": 2,
+          "xmin": "0.2",
+          "xmax": "0.28",
+          "raw_label": "ɹ,ə,s"
+        },
+        {
+          "index": 3,
+          "xmin": "0.28",
+          "xmax": "0.44",
+          "raw_label": ""
+        },
+        {
+          "index": 4,
+          "xmin": "0.44",
+          "xmax": "0.53",
+          "raw_label": "z,s,s"
+        },
+        {
+          "index": 5,
+          "xmin": "0.53",
+          "xmax": "0.94",
+          "raw_label": ""
+        },
+        {
+          "index": 6,
+          "xmin": "0.94",
+          "xmax": "1.01",
+          "raw_label": "dʒ,tʃ,s"
+        },
+        {
+          "index": 7,
+          "xmin": "1.01",
+          "xmax": "1.6214965986394558",
+          "raw_label": ""
+        }
+      ],
+      "empty_label_count": 4
+    }
+  ],
+  "checks": [
+    "counts",
+    "indices",
+    "Decimal nonnegative ordered ranges",
+    "tier/global bounds",
+    "all adjacent continuity",
+    "all raw labels retained"
+  ],
+  "phone_label_inventory": {
+    "empty": {
+      "count": 1,
+      "examples_all": [
+        {
+          "index": 16,
+          "xmin": "1.6",
+          "xmax": "1.6214965986394558",
+          "raw_label": ""
+        }
+      ]
+    },
+    "no_comma": {
+      "count": 12,
+      "examples_all": [
+        {
+          "index": 1,
+          "xmin": "0",
+          "xmax": "0.04",
+          "raw_label": "sil"
+        },
+        {
+          "index": 2,
+          "xmin": "0.04",
+          "xmax": "0.11",
+          "raw_label": "DH"
+        },
+        {
+          "index": 3,
+          "xmin": "0.11",
+          "xmax": "0.2",
+          "raw_label": "EH1"
+        },
+        {
+          "index": 5,
+          "xmin": "0.28",
+          "xmax": "0.34",
+          "raw_label": "W"
+        },
+        {
+          "index": 6,
+          "xmin": "0.34",
+          "xmax": "0.44",
+          "raw_label": "AH1"
+        },
+        {
+          "index": 8,
+          "xmin": "0.53",
+          "xmax": "0.64",
+          "raw_label": "AH0"
+        },
+        {
+          "index": 9,
+          "xmin": "0.64",
+          "xmax": "0.8",
+          "raw_label": "CH"
+        },
+        {
+          "index": 10,
+          "xmin": "0.8",
+          "xmax": "0.85",
+          "raw_label": "EY1"
+        },
+        {
+          "index": 11,
+          "xmin": "0.85",
+          "xmax": "0.94",
+          "raw_label": "N"
+        },
+        {
+          "index": 13,
+          "xmin": "1.01",
+          "xmax": "1.16",
+          "raw_label": "N"
+        },
+        {
+          "index": 14,
+          "xmin": "1.16",
+          "xmax": "1.44",
+          "raw_label": "AW1"
+        },
+        {
+          "index": 15,
+          "xmin": "1.44",
+          "xmax": "1.6",
+          "raw_label": "sp"
+        }
+      ]
+    },
+    "triple_s": {
+      "count": 3,
+      "examples_all": [
+        {
+          "index": 4,
+          "xmin": "0.2",
+          "xmax": "0.28",
+          "raw_label": "R,AH0,s"
+        },
+        {
+          "index": 7,
+          "xmin": "0.44",
+          "xmax": "0.53",
+          "raw_label": "Z,S,s"
+        },
+        {
+          "index": 12,
+          "xmin": "0.94",
+          "xmax": "1.01",
+          "raw_label": "JH,CH,s"
+        }
+      ]
+    },
+    "triple_a": {
+      "count": 0,
+      "examples_all": []
+    },
+    "triple_d": {
+      "count": 0,
+      "examples_all": []
+    },
+    "unknown": {
+      "count": 0,
+      "examples_all": []
+    }
+  }
+}

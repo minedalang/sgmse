@@ -1,0 +1,72 @@
+{
+  "request": {
+    "key": "p230_029_N2_snr_m18.wav__noisy",
+    "id": "p230_029",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p230_029_N2_snr_m18.wav",
+    "basename": "p230_029_N2_snr_m18.wav",
+    "noise": "N2",
+    "snr_db": -18,
+    "speaker": "p230",
+    "input": {
+      "wav_sha256": "f2f474e0dc088e6a238df53ea4f2bda78d563210d0891aa99d83fc7e419c1330",
+      "samples": 56211,
+      "array_sha256": "e00ed46d012d550e9a8874f1966503c15168e426b9111a88856f512fc79bbaaf",
+      "peak": 0.88958740234375,
+      "rms": 0.09242144205351605
+    }
+  },
+  "publisher_reference": {
+    "id": "p230_029",
+    "original_text": "It shouldn't come as a surprise, but it does.\n",
+    "raw_text_hex": "49742073686f756c646e277420636f6d6520617320612073757270726973652c2062757420697420646f65732e0a",
+    "raw_text_sha256": "9aace1260cb45f60a3dbc481772286838b3ed253e6c1f6af11e2c59ed4e9db87",
+    "archive_entry": "trainset_28spk_txt/p230_029.txt"
+  },
+  "raw_result": {
+    "text": " Thank you.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 2.0,
+        "text": " Thank you.",
+        "tokens": [
+          50363,
+          6952,
+          345,
+          13,
+          50463
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -1.2985646724700928,
+        "compression_ratio": 0.5555555555555556,
+        "no_speech_prob": 0.81269770860672
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 75,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

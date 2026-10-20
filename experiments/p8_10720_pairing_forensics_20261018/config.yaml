@@ -1,0 +1,9 @@
+experiment_id: p8_10720_pairing_forensics_20261018
+fileid: 10720
+mode: read_only_pairing_forensics
+context_seconds: [13.75, 15.75]
+sample_range: [220000, 252000]
+clip_search: full_30s_valid_centered_normalized_correlation
+full_lag_search: minimum_15s_overlap_centered_normalized_correlation
+envelope: 10ms_RMS
+network: localhost_8766_only

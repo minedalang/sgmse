@@ -1,0 +1,926 @@
+{
+  "metadata": {
+    "n_files": 4,
+    "arms": [
+      "noisy",
+      "off",
+      "router",
+      "cut005",
+      "selective"
+    ],
+    "ranking_arms": [
+      "router",
+      "cut005",
+      "selective"
+    ],
+    "quality_sources": [
+      "rrsd_tcut_screen/paired_metrics.csv",
+      "rrsd_selective_screen/metrics/paired_metrics.csv",
+      "rrsd_selective_screen/router_dnsmos_metrics.csv",
+      "rrsd_tcut_screen/cut005/metrics/dnsmos_batch_metrics.csv",
+      "rrsd_selective_screen/selective_dnsmos_metrics.csv"
+    ],
+    "bootstrap": 20000,
+    "bootstrap_seed": 2026,
+    "smoke": true
+  },
+  "descriptive_means": {
+    "noisy": {
+      "wave_mse": 29.221684098243713,
+      "complex_stft_rel_mse": 29.31367915868759,
+      "log_mel_l1_db": 22.10996389389038,
+      "erb_l1_db": 21.223493576049805,
+      "mrstft_l1_db": 23.15968672434489,
+      "mrstft_sc": 4.771270036697388,
+      "envelope_rel_l1": 3.2111393809318542,
+      "modulation_l1_db": 18.66163468360901,
+      "pesq": 1.0461869537830353,
+      "stoi": 0.6479450553499385,
+      "si_sdr": -12.47190272808075
+    },
+    "off": {
+      "wave_mse": 0.2018823642283678,
+      "complex_stft_rel_mse": 0.2030105274170637,
+      "log_mel_l1_db": 7.166678786277771,
+      "erb_l1_db": 6.656641960144043,
+      "mrstft_l1_db": 9.011813124020893,
+      "mrstft_sc": 0.33788395176331204,
+      "envelope_rel_l1": 0.1688393224030733,
+      "modulation_l1_db": 4.330134272575378,
+      "pesq": 1.513324350118637,
+      "stoi": 0.8370935669888132,
+      "si_sdr": 6.569109086129265
+    },
+    "router": {
+      "wave_mse": 0.18497701920568943,
+      "complex_stft_rel_mse": 0.18608486838638783,
+      "log_mel_l1_db": 7.651554584503174,
+      "erb_l1_db": 7.116198182106018,
+      "mrstft_l1_db": 9.35561966896057,
+      "mrstft_sc": 0.3366006786624591,
+      "envelope_rel_l1": 0.17506516724824905,
+      "modulation_l1_db": 4.315952897071838,
+      "pesq": 1.5111043751239777,
+      "stoi": 0.8373456141606068,
+      "si_sdr": 6.971001389646388,
+      "dnsmos_sig": 3.4938820651333407,
+      "dnsmos_ovrl": 3.2108377881038748,
+      "dnsmos_bak": 4.164421338747665
+    },
+    "cut005": {
+      "wave_mse": 0.18707752414047718,
+      "complex_stft_rel_mse": 0.18818889930844307,
+      "log_mel_l1_db": 7.5310269594192505,
+      "erb_l1_db": 7.003068685531616,
+      "mrstft_l1_db": 9.27077297369639,
+      "mrstft_sc": 0.33643455058336263,
+      "envelope_rel_l1": 0.17397372610867023,
+      "modulation_l1_db": 4.316384971141815,
+      "pesq": 1.5152043104171753,
+      "stoi": 0.8373307731215514,
+      "si_sdr": 6.9114982058535634,
+      "dnsmos_sig": 3.501735151846481,
+      "dnsmos_ovrl": 3.218748157896507,
+      "dnsmos_bak": 4.1655728906351905
+    },
+    "selective": {
+      "wave_mse": 0.19717114232480526,
+      "complex_stft_rel_mse": 0.19829342141747475,
+      "log_mel_l1_db": 7.189735293388367,
+      "erb_l1_db": 6.681238532066345,
+      "mrstft_l1_db": 9.022700945536295,
+      "mrstft_sc": 0.3368430510163308,
+      "envelope_rel_l1": 0.16987499222159386,
+      "modulation_l1_db": 4.326690196990967,
+      "pesq": 1.5018555223941803,
+      "stoi": 0.8372645431525235,
+      "si_sdr": 6.659626171525162,
+      "dnsmos_sig": 3.5208084092358876,
+      "dnsmos_ovrl": 3.239101314820908,
+      "dnsmos_bak": 4.17022664549916
+    }
+  },
+  "rank_summary": {
+    "wave_mse": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.37499999999999994,
+        "spearman_ci95": [
+          0.075,
+          0.7499999999999999
+        ],
+        "pairwise_rank_agreement": 0.625,
+        "utterance_agreement_ci95": [
+          0.44999999999999996,
+          0.825
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.5249999999999999,
+        "spearman_ci95": [
+          0.049999999999999996,
+          0.9999999999999999
+        ],
+        "pairwise_rank_agreement": 0.725,
+        "utterance_agreement_ci95": [
+          0.44999999999999996,
+          1.0
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.9999999999999999,
+        "spearman_ci95": [
+          0.9999999999999999,
+          0.9999999999999999
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -1.0,
+        "spearman_ci95": [
+          -1.0,
+          -1.0
+        ],
+        "pairwise_rank_agreement": 0.0,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.875,
+        "spearman_ci95": [
+          -1.0,
+          -0.625
+        ],
+        "pairwise_rank_agreement": 0.08333333333333333,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.25
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.875,
+        "spearman_ci95": [
+          -1.0,
+          -0.625
+        ],
+        "pairwise_rank_agreement": 0.08333333333333333,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.25
+        ]
+      }
+    },
+    "complex_stft_rel_mse": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.37499999999999994,
+        "spearman_ci95": [
+          0.075,
+          0.7499999999999999
+        ],
+        "pairwise_rank_agreement": 0.625,
+        "utterance_agreement_ci95": [
+          0.44999999999999996,
+          0.825
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.5249999999999999,
+        "spearman_ci95": [
+          0.049999999999999996,
+          0.9999999999999999
+        ],
+        "pairwise_rank_agreement": 0.725,
+        "utterance_agreement_ci95": [
+          0.44999999999999996,
+          1.0
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.9999999999999999,
+        "spearman_ci95": [
+          0.9999999999999999,
+          0.9999999999999999
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -1.0,
+        "spearman_ci95": [
+          -1.0,
+          -1.0
+        ],
+        "pairwise_rank_agreement": 0.0,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.875,
+        "spearman_ci95": [
+          -1.0,
+          -0.625
+        ],
+        "pairwise_rank_agreement": 0.08333333333333333,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.25
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.875,
+        "spearman_ci95": [
+          -1.0,
+          -0.625
+        ],
+        "pairwise_rank_agreement": 0.08333333333333333,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.25
+        ]
+      }
+    },
+    "log_mel_l1_db": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.625,
+        "spearman_ci95": [
+          0.24999999999999997,
+          0.9249999999999999
+        ],
+        "pairwise_rank_agreement": 0.775,
+        "utterance_agreement_ci95": [
+          0.575,
+          0.95
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.4749999999999999,
+        "spearman_ci95": [
+          0.0,
+          0.9499999999999998
+        ],
+        "pairwise_rank_agreement": 0.675,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.95
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.0,
+        "spearman_ci95": [
+          0.0,
+          0.0
+        ],
+        "pairwise_rank_agreement": 0.4,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.4
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 1.0,
+        "spearman_ci95": [
+          1.0,
+          1.0
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      }
+    },
+    "erb_l1_db": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.625,
+        "spearman_ci95": [
+          0.24999999999999997,
+          0.9249999999999999
+        ],
+        "pairwise_rank_agreement": 0.775,
+        "utterance_agreement_ci95": [
+          0.575,
+          0.95
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.4749999999999999,
+        "spearman_ci95": [
+          0.0,
+          0.9499999999999998
+        ],
+        "pairwise_rank_agreement": 0.675,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.95
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.0,
+        "spearman_ci95": [
+          0.0,
+          0.0
+        ],
+        "pairwise_rank_agreement": 0.4,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.4
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 1.0,
+        "spearman_ci95": [
+          1.0,
+          1.0
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      }
+    },
+    "mrstft_l1_db": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.625,
+        "spearman_ci95": [
+          0.24999999999999997,
+          0.9249999999999999
+        ],
+        "pairwise_rank_agreement": 0.775,
+        "utterance_agreement_ci95": [
+          0.575,
+          0.95
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.4749999999999999,
+        "spearman_ci95": [
+          0.0,
+          0.9499999999999998
+        ],
+        "pairwise_rank_agreement": 0.675,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.95
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.0,
+        "spearman_ci95": [
+          0.0,
+          0.0
+        ],
+        "pairwise_rank_agreement": 0.4,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.4
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 1.0,
+        "spearman_ci95": [
+          1.0,
+          1.0
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      }
+    },
+    "mrstft_sc": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.25,
+        "spearman_ci95": [
+          0.0,
+          0.5249999999999999
+        ],
+        "pairwise_rank_agreement": 0.55,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.7000000000000001
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.9999999999999999,
+        "spearman_ci95": [
+          0.9999999999999999,
+          0.9999999999999999
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.5249999999999999,
+        "spearman_ci95": [
+          0.049999999999999996,
+          0.9999999999999999
+        ],
+        "pairwise_rank_agreement": 0.725,
+        "utterance_agreement_ci95": [
+          0.44999999999999996,
+          1.0
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.0,
+        "spearman_ci95": [
+          -1.0,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.5,
+        "utterance_agreement_ci95": [
+          0.0,
+          1.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.125,
+        "spearman_ci95": [
+          -1.0,
+          0.75
+        ],
+        "pairwise_rank_agreement": 0.4166666666666667,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.8333333333333333
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.125,
+        "spearman_ci95": [
+          -1.0,
+          0.75
+        ],
+        "pairwise_rank_agreement": 0.4166666666666667,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.8333333333333333
+        ]
+      }
+    },
+    "envelope_rel_l1": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.55,
+        "spearman_ci95": [
+          0.24999999999999997,
+          0.7
+        ],
+        "pairwise_rank_agreement": 0.725,
+        "utterance_agreement_ci95": [
+          0.575,
+          0.8
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.5499999999999999,
+        "spearman_ci95": [
+          0.15,
+          0.9499999999999998
+        ],
+        "pairwise_rank_agreement": 0.725,
+        "utterance_agreement_ci95": [
+          0.5,
+          0.95
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.075,
+        "spearman_ci95": [
+          0.0,
+          0.22499999999999998
+        ],
+        "pairwise_rank_agreement": 0.45,
+        "utterance_agreement_ci95": [
+          0.4,
+          0.55
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 1.0,
+        "spearman_ci95": [
+          1.0,
+          1.0
+        ],
+        "pairwise_rank_agreement": 1.0,
+        "utterance_agreement_ci95": [
+          1.0,
+          1.0
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.875,
+        "spearman_ci95": [
+          0.625,
+          1.0
+        ],
+        "pairwise_rank_agreement": 0.9166666666666666,
+        "utterance_agreement_ci95": [
+          0.7499999999999999,
+          1.0
+        ]
+      }
+    },
+    "modulation_l1_db": {
+      "pesq": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.5499999999999999,
+        "spearman_ci95": [
+          0.15,
+          0.8999999999999999
+        ],
+        "pairwise_rank_agreement": 0.7,
+        "utterance_agreement_ci95": [
+          0.475,
+          0.925
+        ]
+      },
+      "stoi": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.3,
+        "spearman_ci95": [
+          0.024999999999999998,
+          0.7749999999999999
+        ],
+        "pairwise_rank_agreement": 0.6,
+        "utterance_agreement_ci95": [
+          0.42500000000000004,
+          0.875
+        ]
+      },
+      "si_sdr": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": 0.7249999999999999,
+        "spearman_ci95": [
+          0.3,
+          0.9749999999999999
+        ],
+        "pairwise_rank_agreement": 0.825,
+        "utterance_agreement_ci95": [
+          0.6,
+          0.975
+        ]
+      },
+      "dnsmos_sig": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.5,
+        "spearman_ci95": [
+          -1.0,
+          0.5
+        ],
+        "pairwise_rank_agreement": 0.25,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.75
+        ]
+      },
+      "dnsmos_ovrl": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.375,
+        "spearman_ci95": [
+          -1.0,
+          0.5
+        ],
+        "pairwise_rank_agreement": 0.3333333333333333,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.75
+        ]
+      },
+      "dnsmos_bak": {
+        "utterances": 4,
+        "mean_spearman_quality_vs_negative_distance": -0.375,
+        "spearman_ci95": [
+          -1.0,
+          0.5
+        ],
+        "pairwise_rank_agreement": 0.3333333333333333,
+        "utterance_agreement_ci95": [
+          0.0,
+          0.75
+        ]
+      }
+    }
+  },
+  "sanity": {
+    "note": "clean-only perturbation sanity; gain/shift are not model outputs",
+    "rows": [
+      {
+        "filename": "000_fileid_2673.wav",
+        "variant": "clean_gain_0.8",
+        "wave_mse": 0.03999999910593033,
+        "complex_stft_rel_mse": 0.03999999538064003,
+        "log_mel_l1_db": 1.9382002353668213,
+        "erb_l1_db": 1.9381999969482422,
+        "mrstft_l1_db": 1.8959468603134155,
+        "mrstft_sc": 0.2000002066294352,
+        "envelope_rel_l1": 0.19999946653842926,
+        "modulation_l1_db": 1.9349265098571777
+      },
+      {
+        "filename": "000_fileid_2673.wav",
+        "variant": "clean_gain_1.2",
+        "wave_mse": 0.04000001400709152,
+        "complex_stft_rel_mse": 0.04000001773238182,
+        "log_mel_l1_db": 1.5836255550384521,
+        "erb_l1_db": 1.5836254358291626,
+        "mrstft_l1_db": 1.554880181948344,
+        "mrstft_sc": 0.20000025629997253,
+        "envelope_rel_l1": 0.1999996155500412,
+        "modulation_l1_db": 1.581286907196045
+      },
+      {
+        "filename": "000_fileid_2673.wav",
+        "variant": "clean_shift_80",
+        "wave_mse": 2.2672243118286133,
+        "complex_stft_rel_mse": 2.2672276496887207,
+        "log_mel_l1_db": 1.497422456741333,
+        "erb_l1_db": 1.3850537538528442,
+        "mrstft_l1_db": 2.7017135620117188,
+        "mrstft_sc": 0.15533686677614847,
+        "envelope_rel_l1": 0.0747774988412857,
+        "modulation_l1_db": 1.0597366094589233
+      },
+      {
+        "filename": "001_fileid_2972.wav",
+        "variant": "clean_gain_0.8",
+        "wave_mse": 0.03999999165534973,
+        "complex_stft_rel_mse": 0.03999999538064003,
+        "log_mel_l1_db": 1.9382002353668213,
+        "erb_l1_db": 1.9381999969482422,
+        "mrstft_l1_db": 1.9163721799850464,
+        "mrstft_sc": 0.20000019669532776,
+        "envelope_rel_l1": 0.19999980926513672,
+        "modulation_l1_db": 1.9365156888961792
+      },
+      {
+        "filename": "001_fileid_2972.wav",
+        "variant": "clean_gain_1.2",
+        "wave_mse": 0.04000002518296242,
+        "complex_stft_rel_mse": 0.04000001773238182,
+        "log_mel_l1_db": 1.5836254358291626,
+        "erb_l1_db": 1.5836254358291626,
+        "mrstft_l1_db": 1.5688373645146687,
+        "mrstft_sc": 0.20000026126702627,
+        "envelope_rel_l1": 0.1999998837709427,
+        "modulation_l1_db": 1.582733392715454
+      },
+      {
+        "filename": "001_fileid_2972.wav",
+        "variant": "clean_shift_80",
+        "wave_mse": 1.9034370183944702,
+        "complex_stft_rel_mse": 1.9033164978027344,
+        "log_mel_l1_db": 1.4209822416305542,
+        "erb_l1_db": 1.305823564529419,
+        "mrstft_l1_db": 2.7045489152272544,
+        "mrstft_sc": 0.17233251531918845,
+        "envelope_rel_l1": 0.07957616448402405,
+        "modulation_l1_db": 1.261030673980713
+      },
+      {
+        "filename": "002_fileid_7247.wav",
+        "variant": "clean_gain_0.8",
+        "wave_mse": 0.04000000283122063,
+        "complex_stft_rel_mse": 0.04000000283122063,
+        "log_mel_l1_db": 1.9370619058609009,
+        "erb_l1_db": 1.9381999969482422,
+        "mrstft_l1_db": 1.895693302154541,
+        "mrstft_sc": 0.2000002066294352,
+        "envelope_rel_l1": 0.19999974966049194,
+        "modulation_l1_db": 1.9368536472320557
+      },
+      {
+        "filename": "002_fileid_7247.wav",
+        "variant": "clean_gain_1.2",
+        "wave_mse": 0.04000002518296242,
+        "complex_stft_rel_mse": 0.040000028908252716,
+        "log_mel_l1_db": 1.5832644701004028,
+        "erb_l1_db": 1.583625316619873,
+        "mrstft_l1_db": 1.5546159744262695,
+        "mrstft_sc": 0.20000028113524118,
+        "envelope_rel_l1": 0.19999977946281433,
+        "modulation_l1_db": 1.5826629400253296
+      },
+      {
+        "filename": "002_fileid_7247.wav",
+        "variant": "clean_shift_80",
+        "wave_mse": 2.281294345855713,
+        "complex_stft_rel_mse": 2.264986515045166,
+        "log_mel_l1_db": 1.4992531538009644,
+        "erb_l1_db": 1.4066413640975952,
+        "mrstft_l1_db": 2.687415599822998,
+        "mrstft_sc": 0.1649376998345057,
+        "envelope_rel_l1": 0.07500168681144714,
+        "modulation_l1_db": 1.3417896032333374
+      },
+      {
+        "filename": "003_fileid_4431.wav",
+        "variant": "clean_gain_0.8",
+        "wave_mse": 0.03999999165534973,
+        "complex_stft_rel_mse": 0.04000000283122063,
+        "log_mel_l1_db": 1.9278334379196167,
+        "erb_l1_db": 1.9330084323883057,
+        "mrstft_l1_db": 1.906537373860677,
+        "mrstft_sc": 0.19999982913335165,
+        "envelope_rel_l1": 0.1999998539686203,
+        "modulation_l1_db": 1.9368565082550049
+      },
+      {
+        "filename": "003_fileid_4431.wav",
+        "variant": "clean_gain_1.2",
+        "wave_mse": 0.04000001400709152,
+        "complex_stft_rel_mse": 0.04000002518296242,
+        "log_mel_l1_db": 1.5761240720748901,
+        "erb_l1_db": 1.5794016122817993,
+        "mrstft_l1_db": 1.5613534053166707,
+        "mrstft_sc": 0.19999989370505014,
+        "envelope_rel_l1": 0.19999991357326508,
+        "modulation_l1_db": 1.5837736129760742
+      },
+      {
+        "filename": "003_fileid_4431.wav",
+        "variant": "clean_shift_80",
+        "wave_mse": 1.928969144821167,
+        "complex_stft_rel_mse": 1.9289498329162598,
+        "log_mel_l1_db": 1.4901841878890991,
+        "erb_l1_db": 1.3990802764892578,
+        "mrstft_l1_db": 2.7843214670817056,
+        "mrstft_sc": 0.1677974065144857,
+        "envelope_rel_l1": 0.09128457307815552,
+        "modulation_l1_db": 0.9195433259010315
+      }
+    ],
+    "mean_by_variant": {
+      "clean_gain_0.8": {
+        "wave_mse": 0.039999996311962605,
+        "complex_stft_rel_mse": 0.03999999910593033,
+        "log_mel_l1_db": 1.93532395362854,
+        "erb_l1_db": 1.936902105808258,
+        "mrstft_l1_db": 1.90363742907842,
+        "mrstft_sc": 0.20000010977188745,
+        "envelope_rel_l1": 0.19999971985816956,
+        "modulation_l1_db": 1.9362880885601044
+      },
+      "clean_gain_1.2": {
+        "wave_mse": 0.04000001959502697,
+        "complex_stft_rel_mse": 0.040000022388994694,
+        "log_mel_l1_db": 1.581659883260727,
+        "erb_l1_db": 1.5825694501399994,
+        "mrstft_l1_db": 1.5599217315514882,
+        "mrstft_sc": 0.20000017310182253,
+        "envelope_rel_l1": 0.19999979808926582,
+        "modulation_l1_db": 1.5826142132282257
+      },
+      "clean_shift_80": {
+        "wave_mse": 2.095231205224991,
+        "complex_stft_rel_mse": 2.09112012386322,
+        "log_mel_l1_db": 1.4769605100154877,
+        "erb_l1_db": 1.374149739742279,
+        "mrstft_l1_db": 2.719499886035919,
+        "mrstft_sc": 0.16510112211108208,
+        "envelope_rel_l1": 0.0801599808037281,
+        "modulation_l1_db": 1.1455250531435013
+      }
+    }
+  }
+}

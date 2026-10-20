@@ -1,0 +1,9 @@
+{
+  "large_training_inventory": "/data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/tr_synthetic_records.jsonl",
+  "lines_scanned": 10800,
+  "selected_id_hits": [],
+  "classification": "training coverage source inventory; selected ID matches would require distinguishing matching checkpoint training from inventory membership",
+  "reference_manifest": "already read in full for deterministic metadata selection; all-reference inventory, not model-use evidence",
+  "symlink_policy": "All symlink paths inspected for selected IDs; none matched. Binary audio target contents were not decoded or scanned. Textual symlink targets were not followed.",
+  "residual_limit": "Current-project identity/path/text evidence only; anonymized or external use cannot be excluded; pretraining exposure unknown."
+}

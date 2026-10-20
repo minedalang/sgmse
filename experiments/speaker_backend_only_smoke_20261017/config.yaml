@@ -1,0 +1,22 @@
+experiment_id: speaker_backend_only_smoke_20261017
+purpose: verify_backend_only_speaker_training_path
+init_checkpoint: joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt
+init_ckpt_use_ema: true
+dataset: /data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/scp_new/cv_synthetic/wav.scp
+max_steps: 1
+batch_size: 8
+seed: 2026
+lr: 3.0e-5
+rrsd_weight: 1.0
+rrsd_freeze_base: false
+rrsd_freeze_router: true
+frontend_trainable: false
+contrastive_weight: 10.0
+contrastive_speaker_weight: 0.5
+contrastive_mask_same_speaker_negatives: true
+plm_type: unispeech_sat
+unispeech_sv_head: true
+device: cuda
+checkpoint_written: false
+data_modified: false
+objective_audit_note: "rrsd_weight=1.0 kept the RRSD auxiliary loss active; smoke did not isolate score_matching plus speaker loss"

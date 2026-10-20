@@ -1,0 +1,54 @@
+{
+  "experiment_id": "p8_q_vcv_speaker_replication_20261019",
+  "status": "prepared",
+  "phases": {
+    "retrieval": "prepared",
+    "baseline": "prepared",
+    "enhancement": "prepared"
+  },
+  "speakers": [
+    "f18",
+    "m5",
+    "f20",
+    "m15"
+  ],
+  "old_fetch_sha256": "818cfebdfa9711de6e86d0aaeb5068b57b5ad815a88431c8fdfc9f102807385d",
+  "old_manifest_sha256": "ffe3d9372646269c6df48bbaafd7d13b30d4d331c7507113df59dec55a71f578",
+  "network_cap_bytes": 8000000,
+  "retrieval_cap_bytes": 16000000,
+  "artifact_cap_bytes": 200000000,
+  "compute_budget_seconds": 600,
+  "training": false,
+  "downloads": "bounded_corpus_range_retrieval_only",
+  "snrs_db": [
+    -6,
+    6
+  ],
+  "snr_definition": "full_two_second_carrier_not_phoneme_local; quiet_fraction_differs_from_historical_30s_nominal_training_SNR",
+  "arms": [
+    "y_pre",
+    "off",
+    "router"
+  ],
+  "gate": {
+    "clean_top1": 12,
+    "clean_binary": 14,
+    "each_contrast_top1": 6
+  },
+  "selection": "exclude_all_speakers_in_previous_28_raw_manifest; fixed_4_fresh_speakers_aCa1_no_supplementary",
+  "heldout_scope": "previous_project_analyses_only_not_pretraining_exposure_claim",
+  "driver_source_locks": {
+    "experiments/p8_q_vcv_enhance_follow_20261018/run_follow.py": "22ac6d87c52b5c6bbbb9f513212e24073c97263516cbca2c7bab232ba7fcb735",
+    "experiments/p8_q_vcv_fixed_noise_20261018/fixed_noise.py": "8d5aff2abc613148ce5e15bdafa5643863889954cbbe0d02dab3667955f7a061",
+    "experiments/p8_q_vcv_fixed_noise_20261018/inputs/recipe_frozen.json": "8936e3edc3f337356cba7943745a9ed2a9939a76e7ce0da4afd21eb84749d769",
+    "experiments/p8_q_vcv_clean_calibration_20261018/calibrate_clean.py": "25b0cd0b8fef639894f15383f0d54a36abd19a4d28b18010125c72b32a6b469c",
+    "experiments/p8_q_vcv_enhance_follow_20261018/metrics.json": "07e219d8aa024da017d86cbb7ddc67b9b98d48685f737b80c5e10e386009da6a",
+    "experiments/p8_q_vcv_lowsnr_challenge_20261018/metrics.json": "e07b0baf40a2e93d42dca1eecaa36d2e6472065b0b763d9695bbc968563af790",
+    "experiments/p8_10720_snr_control_20261018/metrics.json": "5481db0bbd0c94867423f741f95aca21ed1cd9e380d4c1812973767e65087af6",
+    "joint_enhance_by_dir.py": "522067d84bd87b2a6efe07346f30c1d0a6b539a2b5d253a88f3d04fb86f6d108",
+    "sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+    "sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+    "sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321"
+  }
+}

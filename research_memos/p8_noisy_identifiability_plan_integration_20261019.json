@@ -1,0 +1,58 @@
+{
+  "kind": "user_proposal_plan_integration_not_experiment_result",
+  "utc": "2026-10-19T08:26:30.104447+00:00",
+  "documents": {
+    "/data/research_plan.md": {
+      "bytes": 12657,
+      "sha256": "c2f753f905e54581df91fc64137b5d6e03d0557e272710ce44f371df640e1a4e"
+    },
+    "/data/research/p8_low_snr.md": {
+      "bytes": 9210,
+      "sha256": "96e297b23b77112d069ee542248280d433ef683f42d657f744b9dc8162be15a9"
+    },
+    "/data/research/p8_v_counterfactual.md": {
+      "bytes": 12281,
+      "sha256": "ff6c08c2d46046d1a5d5019b0513378ca7c93a94a361bf3f6c343f343a248730"
+    },
+    "/data/research/evidence_summary.md": {
+      "bytes": 20769,
+      "sha256": "34b737b421e1fecf2af468c7327d64ac258fb4872b4ffc3ac2039fe625e987a6"
+    },
+    "/data/research/p8_noisy_identifiability.md": {
+      "bytes": 9548,
+      "sha256": "97abb3b2f0018fd3d2daf4bdf8fb1234bae7cf2ecd9beea1b2c6971c6d71ccba"
+    },
+    "experiments/p8_noisy_local_identifiability_prep_20261019/analysis_plan.md": {
+      "bytes": 2965,
+      "sha256": "26c7cbc9316aa854983dfec941ce48709800612e9bfcc8078191872e65063223"
+    },
+    "experiments/p8_noisy_local_identifiability_prep_20261019/config.yaml": {
+      "bytes": 1949,
+      "sha256": "147cc0f083801da3b173d1281cc2e831105544ca8e05e2da97a87aec7e9d0c69"
+    }
+  },
+  "local_link_checks": 31,
+  "missing_links": [],
+  "source_manifest": {
+    "bytes": 12544390,
+    "sha256": "7f14a16a20880031932ab4ce7f7d3682c1b16cc0cc2eb8cd141e49ad7de087bc"
+  },
+  "protected_pre_post_match": true,
+  "protected_sha256": {
+    "sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+    "sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21",
+    "sgmse/backbones/ncsnpp_v2.py": "63e467295acd0a01d20fb4a4941addc12bfa4bd69bad43be15427c81b8767f5e",
+    "experiments/p8_vcv_speech_component_ablation_20261019/metrics.json": "b16c5d414f3b57163800b2272d1cc6e0aa54787560814c228c5cc77019fa2562",
+    "experiments/p8_vcv_speech_component_ablation_20261019/listener_assessment_20261019.md": "89eb1f6c44b8dd7801e6321dd5b52e53872ee8f5a732a7b57efcea4fb13bbb92",
+    "experiments/p8_vb_prospective_headroom_20261019/model_stage/metrics.json": "577b9567aaad1a7ffc7f5d3fdae0b9c2dcf0da0bd89b86c0f5bbe14818d73f04",
+    "experiments/p8_cached_multiseed_variance_audit_20261019/metrics.json": "1ba98c0cd57911327412339baa6b1b46d1ecf96bb73a3a00c587af10d41c942e"
+  },
+  "actual_audio_reads_or_decodes": 0,
+  "models": 0,
+  "training": 0,
+  "actual_counterfactual_construction": false,
+  "D0_D4_executed": false,
+  "research_goal_complete": false,
+  "engineer_scope": "I0 standard-library software preparation and synthetic tests only; no actual source audio or registration; Worker launch not authorized",
+  "preparation_only_not_scientific_evidence": true
+}

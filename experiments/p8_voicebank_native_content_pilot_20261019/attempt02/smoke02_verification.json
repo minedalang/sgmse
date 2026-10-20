@@ -1,0 +1,86 @@
+{
+  "status": "imports_passed_with_one_blocked_socket_constructor_attempt",
+  "smoke02_metrics_sha256": "6083f3cb5d60dc4b3e5b5eb518fe906f953509fa5d62d9ca5feca1caced8c4aa",
+  "seconds": 10.137220443924889,
+  "imports": [
+    {
+      "name": "torch",
+      "version": "2.14.1+cu130",
+      "source": "/data/coding/sgmse/env/lib/python3.10/site-packages/torch/__init__.py"
+    },
+    {
+      "name": "joint_enhance_by_dir",
+      "source": "/data/coding/sgmse/joint_enhance_by_dir.py"
+    },
+    {
+      "name": "whisper",
+      "version": "20250625",
+      "source": "/data/coding/sgmse/env/lib/python3.10/site-packages/whisper/__init__.py"
+    }
+  ],
+  "subprocesses": [
+    {
+      "original_executable": "/sbin/ldconfig",
+      "argv": [
+        "/sbin/ldconfig",
+        "-p"
+      ],
+      "cwd": null,
+      "executable": "/usr/sbin/ldconfig",
+      "kind": "ctypes_ldconfig_readonly"
+    },
+    {
+      "original_executable": "ninja",
+      "argv": [
+        "ninja",
+        "--version"
+      ],
+      "cwd": null,
+      "executable": "/data/coding/sgmse/env/bin/ninja",
+      "kind": "native_ninja_version"
+    },
+    {
+      "original_executable": "c++",
+      "argv": [
+        "c++",
+        "-dumpfullversion",
+        "-dumpversion"
+      ],
+      "cwd": null,
+      "executable": "/usr/bin/x86_64-linux-gnu-g++-11",
+      "kind": "native_compiler_version"
+    },
+    {
+      "original_executable": "ninja",
+      "argv": [
+        "ninja",
+        "-v"
+      ],
+      "cwd": "/root/.cache/torch_extensions/py310_cu130/upfirdn2d",
+      "executable": "/data/coding/sgmse/env/bin/ninja",
+      "kind": "native_cached_build"
+    }
+  ],
+  "network_attempts": [
+    {
+      "event": "network_refused",
+      "argument_types": [
+        "AddressFamily",
+        "SocketKind",
+        "int"
+      ]
+    }
+  ],
+  "network_bytes": 0,
+  "scientific_calls": 0,
+  "torch_weight_load_attempts": 0,
+  "model_load_entry_attempts": 0,
+  "cached_extension_path_from_observed_ninja_cwd": "/root/.cache/torch_extensions/py310_cu130/upfirdn2d/upfirdn2d.so",
+  "cached_extension_path_is_static_inference_not_direct_handle_log": true,
+  "cached_and_probe_source_locks": {
+    "/root/.cache/torch_extensions/py310_cu130/upfirdn2d/upfirdn2d.so": "5c0fbb536719e06656498a5bdd1cdf0061410ef3a169ca9006215bd08e72cafb",
+    "/data/coding/sgmse/env/lib/python3.10/site-packages/urllib3/util/connection.py": "2633bbdb69731e5ccb5cf4e4afd65605d86c7979cc5633126f50c92d5ad74a74"
+  },
+  "original78_unchanged": true,
+  "third_smoke_executed": false
+}

@@ -1,0 +1,13 @@
+{
+  "status": "passed",
+  "method": "Independent band inverse-RFFT then time-domain dot products",
+  "arm_interval_band_checks": 30,
+  "checked": [
+    "signed_rho",
+    "least_squares_gain",
+    "residual_mean_square"
+  ],
+  "source_locks_rechecked": true,
+  "CPU_wall_seconds": 0.5353230609325692,
+  "script_sha256": "bb591f9496cc62898e765d6150e60da0d7bf79a7dba4ffc163612d69ac039b11"
+}

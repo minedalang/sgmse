@@ -1,0 +1,15 @@
+{
+  "status": "passed_no_model_inference",
+  "AST": "passed",
+  "recipes_regenerated_and_hash_verified": 144,
+  "clean_arrays": 16,
+  "noise_arrays": 2,
+  "clean_rms_min": 0.009999999999999998,
+  "clean_rms_max": 0.010000000000000002,
+  "maximum_recipe_peak": 0.2965384380208995,
+  "max_actual_snr_error_db": 3.552713678800501e-15,
+  "synthetic_perfect_and_collapsed_pair_scoring": "passed",
+  "artifact_bytes": 1208525,
+  "runner_sha256": "8d5aff2abc613148ce5e15bdafa5643863889954cbbe0d02dab3667955f7a061",
+  "recipe_sha256": "8936e3edc3f337356cba7943745a9ed2a9939a76e7ce0da4afd21eb84749d769"
+}

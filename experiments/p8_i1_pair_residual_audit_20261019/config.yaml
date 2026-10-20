@@ -1,0 +1,391 @@
+{
+  "experiment_id": "p8_i1_pair_residual_audit_20261019",
+  "phase": "I1a_pair_residual_audit_preparation_only",
+  "registry": "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/registry.json",
+  "registry_sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6",
+  "expected_pairs": 12,
+  "expected_speakers": 6,
+  "ids": [
+    "p233_027",
+    "p233_028",
+    "p236_036",
+    "p236_040",
+    "p239_026",
+    "p239_028",
+    "p243_026",
+    "p243_027",
+    "p244_028",
+    "p244_034",
+    "p250_038",
+    "p250_050"
+  ],
+  "input_policy": "all24 I0 locked train WAVs only; no replacement or exclusion",
+  "sample_rate": 16000,
+  "channels": 1,
+  "sample_width_bytes": 2,
+  "decode": "little-endian int16 converted to float64 /32768; no resample, DC removal or normalization of source arrays",
+  "lag_samples": {
+    "minimum": -160,
+    "maximum": 160,
+    "step": 1,
+    "common_clean_start": 160,
+    "common_clean_stop": "L-160 exclusive",
+    "sign": "positive lag compares S[n] with X[n+lag] and denotes X delayed relative to S",
+    "selection": "max centered Pearson among defined lags; within1e-12 absolute of maximum tie by(abs(lag),lag)",
+    "tie_absolute_tolerance": 1e-12,
+    "undefined": "null with reason; excluded from best selection; all undefined =>best null"
+  },
+  "gain": "uncentered OLS dot(S,X)/dot(S,S) on exactly the stated support; no intercept; if denominator0 =>null; never used to alter source or generate outputs",
+  "frame_samples": 320,
+  "hop_samples": 160,
+  "frame_tail": "every start range(0,L,160), end=min(start+320,L); retain partial/no padding, report actual count",
+  "primary_residual": "full-length raw X-S, lag0 gain1",
+  "sensitivity_residuals": "full-length lag0 OLS, and fixed-common support lag0/best OLS only; not substitutes for primary",
+  "metric_schema": "summary_all_pairs.csv; lag_curve.csv includes all321/pair; frames.csv includes all frames; metrics.json full12 summaries and explicit unknown scientific gates",
+  "precision": "float64; nonfinite/undefined serialized null+reason, JSON allow_nan=false; no epsilon substitution",
+  "validation_tolerance": {
+    "relative": 1e-09,
+    "absolute": 1e-12,
+    "lag_curve_absolute": 1e-10
+  },
+  "numeric_tolerances_not_science_thresholds": true,
+  "source_record_locks": {
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/STARTED.json": {
+      "bytes": 156,
+      "sha256": "fdd45842c802515d56b7b112f7f8812e2c3bb111677faf22e0fe9f4086dbcc34"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/analysis_plan.md": {
+      "bytes": 2965,
+      "sha256": "26c7cbc9316aa854983dfec941ce48709800612e9bfcc8078191872e65063223"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/config.yaml": {
+      "bytes": 1949,
+      "sha256": "147cc0f083801da3b173d1281cc2e831105544ca8e05e2da97a87aec7e9d0c69"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/execution_provenance.json": {
+      "bytes": 2008,
+      "sha256": "ac6f4ce91b9ad603f0b97e0ab859c4e994d9f2f82f24632fb72bea3057012741"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/experiment_report.md": {
+      "bytes": 4097,
+      "sha256": "8aef061c273a3f57054dbfea5b8d639ba760ab774ad88b6e64915b261838864f"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/finalize_worker_record.py": {
+      "bytes": 7119,
+      "sha256": "a09cde960e52fa2da02f11da97c7b89810f57e57889623201df43549db509ee8"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/independent_validation.json": {
+      "bytes": 270,
+      "sha256": "aebd1becca187f2f8506d1afb74c5bae0b2264bce5154ff5507268827ff30d25"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/launch_authorization.json": {
+      "bytes": 2142,
+      "sha256": "76fac90748e69101f3c3bf9b317e53e111c50ca455a2934ce1e1fc3182f9ecb9"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/metrics.json": {
+      "bytes": 561,
+      "sha256": "9df573afc59542872c20545f2f3e1bdc3ed9a3b87f448860f43c709a54101ce7"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/preparation_manifest.json": {
+      "bytes": 945,
+      "sha256": "4cfac03d9a9d528d960f1a5c8cbc8c5fcbe927d38467ca253b673ce4cd4ca2cb"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/preparation_metrics.json": {
+      "bytes": 1540,
+      "sha256": "a369a235ed20b1b39508d797b61ea44d332ef01f6aba09712ddc6265e1407124"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/preparation_report.md": {
+      "bytes": 3172,
+      "sha256": "09f6521fb8db336f9af3c2ec64519217f3d16352562cf6e29802b25a289e52ed"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/register_metadata.py": {
+      "bytes": 12681,
+      "sha256": "b0cc5210ed48fe1ccb8135ae40011432267e3030417bbe1209a2f48f4062cc13"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/registry.json": {
+      "bytes": 24065,
+      "sha256": "817c6f7ef5450366fcf8d146675c761df4c17abcdf419f3bb8fd4c6a4aad7ee6"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/synthetic_test_results.json": {
+      "bytes": 1241,
+      "sha256": "1d7695b5b248494df65710a23f2ded4144fc88bbb0c47fdf1d6061e230b9c30a"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/test_synthetic.py": {
+      "bytes": 6778,
+      "sha256": "9068b30e1f522eeb11c8ebfc3900166e76965f0d55cbf95391b5ac3c64495a0e"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/validate_metadata.py": {
+      "bytes": 5074,
+      "sha256": "9af100a4cd2a2c77ac207914e1f8fbc7f58885957d66913fe80fdea6abf3cfe3"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/worker_final_freeze.json": {
+      "bytes": 2843,
+      "sha256": "6605d5d7aeac26fbfe9d7708065a05ff78128f4e9d31a3fd0ea38ab6162318cb"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/worker_preflight.json": {
+      "bytes": 407513,
+      "sha256": "246a7b0f75fef1c4658c07062352b70f772b0a3eec8bc9333d8407412a1b2ff8"
+    },
+    "/data/coding/sgmse/experiments/p8_noisy_local_identifiability_prep_20261019/worker_preservation_validation.json": {
+      "bytes": 759,
+      "sha256": "58e76d9dbde1cc754ea051cd2db19168b48c5d4a8798c15b7ec0c7a4d25c8a2a"
+    }
+  },
+  "audio_locks_from_I0": {
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_027.wav": {
+      "bytes": 124458,
+      "sha256": "b3ef605d47faf9a257f229872786539b613db2f66cde904de9ef9e506f635544",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 62207,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_027.wav": {
+      "bytes": 124458,
+      "sha256": "43c90191a014394df465082caf1cea0d9b765baeaf2c8cef18c94084c69fa737",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 62207,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p233_028.wav": {
+      "bytes": 110728,
+      "sha256": "fd077d2e99be321056e8f2de9b815cca7f004fb34f43b59b414737194c74a272",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 55342,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p233_028.wav": {
+      "bytes": 110728,
+      "sha256": "490007650366ac706d5cc3457555dead5a20df4729db5546f61b714aa431386c",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 55342,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_036.wav": {
+      "bytes": 109434,
+      "sha256": "cc3006ab471c3c7ab47e3dd0b37fb7eedb4a31d8f8fdd57b1eef47233c9597e8",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54695,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_036.wav": {
+      "bytes": 109434,
+      "sha256": "ffe701fa973ab369a04e93468a5319b64217c42978a63c26cf2a2d66cf350f7b",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54695,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p236_040.wav": {
+      "bytes": 120044,
+      "sha256": "0930bdb1874d99672095761b5bdefdaad8c8914b42bcc0548b5b4413df768459",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 60000,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p236_040.wav": {
+      "bytes": 120044,
+      "sha256": "0025bcd346f362690ae7d4946c6a8812068cf1957b9191dcb8bfbc38b624fa28",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 60000,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_026.wav": {
+      "bytes": 110024,
+      "sha256": "8c9a2baaf31ea6249ebb3358f836166a63542c70ddd92177040c80d036d258db",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54990,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_026.wav": {
+      "bytes": 110024,
+      "sha256": "f9978c4e9493fee803d8d97b103096af75cf50da468df5797533d92d4829bb62",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 54990,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p239_028.wav": {
+      "bytes": 103976,
+      "sha256": "95f8dbe4c630d0463ef3351fd094b382f9da211dc970a76eb3c2d7652d2d53df",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51966,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p239_028.wav": {
+      "bytes": 103976,
+      "sha256": "a3868abeeadf3827952eee206fb29ac76009ba46ba2dc545542a09706fa25baa",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51966,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_026.wav": {
+      "bytes": 142124,
+      "sha256": "38d4ef0db6aee4ad765b983f7f955fb45e514176a1f7bb4b93b1d5a5f1a605f9",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 71040,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_026.wav": {
+      "bytes": 142124,
+      "sha256": "66e1135b73583d31b6dfba19e6d12216e3fb45e05a7b544b2b9ec71c49d0edd8",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 71040,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p243_027.wav": {
+      "bytes": 130604,
+      "sha256": "c0972ae9cd32e002892881677824dbb306c7774bbe89bcf186a4d5d2931353ac",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 65280,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p243_027.wav": {
+      "bytes": 130604,
+      "sha256": "f887f3c7459e108c757129b75c7c3dbb6f3803774e0412de58a2abe248df13fb",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 65280,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_028.wav": {
+      "bytes": 102988,
+      "sha256": "a3ebe5ec8f93c315180e83cab6d1b1e5bcf756b7deccd08acb1b8b2119753469",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51472,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_028.wav": {
+      "bytes": 102988,
+      "sha256": "1a39c68d3c943b5752fff25e6c78c8c7907df2193a3e59e6807cac03879a7f99",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 51472,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p244_034.wav": {
+      "bytes": 104498,
+      "sha256": "93245e7a4f76ecdb8b0eab82435241997e514f72787d723bd52ea2dea194f3e3",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 52227,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p244_034.wav": {
+      "bytes": 104498,
+      "sha256": "23af8a7e9b1821cfcc552bd72551bbad68e56c501c5e45f8739ffbf300b8263e",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 52227,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_038.wav": {
+      "bytes": 113902,
+      "sha256": "d567291fa3e0eb621934cea103679da99ca2186e59f6049ed3308ac30ab2a1e8",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56929,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_038.wav": {
+      "bytes": 113902,
+      "sha256": "cbc06b2bfcb9f8eb59cad2ba8c3e4d05a84413129412d536b769670ba0221f68",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56929,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/clean/p250_050.wav": {
+      "bytes": 112582,
+      "sha256": "4f43a6da7ec23bb4b81be2aa8ee1329334e5060ac6deb69b3434fe9c08203264",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56269,
+        "subtype": "PCM_16"
+      }
+    },
+    "/data/datasets/vb/voicebank_demand/16k/train/noisy/p250_050.wav": {
+      "bytes": 112582,
+      "sha256": "e7d33dae85b04133df7aa1307c6faa01d55aabbdb808b9e7cb1ae0fa17ae730b",
+      "header": {
+        "sample_rate": 16000,
+        "channels": 1,
+        "frames": 56269,
+        "subtype": "PCM_16"
+      }
+    }
+  },
+  "budgets": {
+    "main_seconds": 120,
+    "validation_seconds": 120,
+    "artifact_bytes": 8388608,
+    "max_main_pcm_file_decodes": 24,
+    "max_validation_pcm_file_decodes": 24,
+    "network_bytes": 0
+  },
+  "scientific_gate_ready": false,
+  "noise_disjoint_ready": false,
+  "split_frozen": false,
+  "launch_authorized": false,
+  "editing_mixing_allowed": false,
+  "model_calls_allowed": false,
+  "training_allowed": false
+}

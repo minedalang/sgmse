@@ -1,0 +1,80 @@
+{
+  "request": {
+    "key": "p226_028_N1_snr_p0.wav__off",
+    "id": "p226_028",
+    "arm": "off",
+    "path": "outputs/off/p226_028_N1_snr_p0.wav",
+    "basename": "p226_028_N1_snr_p0.wav",
+    "noise": "N1",
+    "snr_db": 0,
+    "input": {
+      "wav_sha256": "deaddae15856b6627f388d00facc238fdee3ca02a1ebc89b5d623eb314e329b5",
+      "samples": 67653,
+      "array_sha256": "f878551d4776315a0b6e964034fc8f0b8c01afec324af77f2e2a689cafb98e20",
+      "peak": 0.057037353515625,
+      "rms": 0.006392896560885511
+    }
+  },
+  "publisher_reference": {
+    "id": "p226_028",
+    "original_text": "Suggestions of the action being a punishment were dismissed.\n",
+    "raw_text_hex": "53756767657374696f6e73206f662074686520616374696f6e206265696e6720612070756e6973686d656e742077657265206469736d69737365642e0a",
+    "raw_text_sha256": "75d6246c7da5fa48ca234b7d6954adcf200c7a363e80dccae14975db56210148",
+    "archive_entry": "trainset_28spk_txt/p226_028.txt"
+  },
+  "raw_result": {
+    "text": " Suggestions of the action being a punishment for the animals.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 4.0,
+        "text": " Suggestions of the action being a punishment for the animals.",
+        "tokens": [
+          50363,
+          35042,
+          507,
+          286,
+          262,
+          2223,
+          852,
+          257,
+          9837,
+          329,
+          262,
+          4695,
+          13,
+          50563
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.8031924565633138,
+        "compression_ratio": 0.9838709677419355,
+        "no_speech_prob": 0.06633110344409943
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 22,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}

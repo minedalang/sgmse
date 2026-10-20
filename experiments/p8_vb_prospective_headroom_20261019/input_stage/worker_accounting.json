@@ -1,0 +1,8 @@
+{
+  "input_stage_bytes_before_accounting_file": 14156430,
+  "parent_bytes_before_accounting_file": 15122547,
+  "exclude_symlink_targets": true,
+  "parent_contains_concurrent_model_stage_draft": true,
+  "input_cap": 25165824,
+  "parent_cap": 67108864
+}

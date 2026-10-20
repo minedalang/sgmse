@@ -1,0 +1,116 @@
+{
+  "status": "completed",
+  "pid": 38411,
+  "sources": {
+    "X": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noisy/book_03133_chp_0017_reader_11236_27_yjerdOIXk60-EfR6T4i-odg-9H0WfcI8e7s_snr-20_fileid_6794.wav",
+      "format": "WAV",
+      "format_info": "WAV (Microsoft)",
+      "subtype": "PCM_16",
+      "subtype_info": "Signed 16 bit PCM",
+      "bits": 16,
+      "samplerate": 16000,
+      "channels": 1,
+      "source_frames": 480000,
+      "crop_samples": 32640,
+      "quantum": 3.0517578125e-05,
+      "crop_min": -0.055755615234375,
+      "crop_max": 0.033538818359375,
+      "negative_endpoint_count": 0,
+      "positive_endpoint_count": 0,
+      "endpoint_scope": "Selected crop only; endpoint equality indicates possible saturation, not proof of clipping."
+    },
+    "S": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/clean/clean_fileid_6794.wav",
+      "format": "WAV",
+      "format_info": "WAV (Microsoft)",
+      "subtype": "PCM_16",
+      "subtype_info": "Signed 16 bit PCM",
+      "bits": 16,
+      "samplerate": 16000,
+      "channels": 1,
+      "source_frames": 480000,
+      "crop_samples": 32640,
+      "quantum": 3.0517578125e-05,
+      "crop_min": -0.056488037109375,
+      "crop_max": 0.033050537109375,
+      "negative_endpoint_count": 0,
+      "positive_endpoint_count": 0,
+      "endpoint_scope": "Selected crop only; endpoint equality indicates possible saturation, not proof of clipping."
+    },
+    "N": {
+      "path": "/data/datasets/dns_ins20/dns_snr_-20_-5/synthetic_snr-20_-5/noise/noise_fileid_6794.wav",
+      "format": "WAV",
+      "format_info": "WAV (Microsoft)",
+      "subtype": "PCM_16",
+      "subtype_info": "Signed 16 bit PCM",
+      "bits": 16,
+      "samplerate": 16000,
+      "channels": 1,
+      "source_frames": 480000,
+      "crop_samples": 32640,
+      "quantum": 3.0517578125e-05,
+      "crop_min": -0.01824951171875,
+      "crop_max": 0.015899658203125,
+      "negative_endpoint_count": 0,
+      "positive_endpoint_count": 0,
+      "endpoint_scope": "Selected crop only; endpoint equality indicates possible saturation, not proof of clipping."
+    }
+  },
+  "failures": [],
+  "source_sha_pre": {
+    "X": "cc7cf48d7033c6ee76c17774542a59543345de56527914ba20616476ad836ccf",
+    "S": "bf98a4d1e17fe76d3e19eaa9d8a65d3cd3668587c13a62e89ee1bac7dc0a0b10",
+    "N": "16a99eb99d91bd92d28b4caf9f93bf70dc218269f74a1e91669659a3e109f7b5"
+  },
+  "residual": {
+    "raw_rms": 2.143324498396268e-05,
+    "raw_max_abs": 3.0517578125e-05,
+    "X_raw_rms": 0.006387328946105625,
+    "relative_rms": 0.003355588097123227,
+    "signed_quantiles": {
+      "0": 0.0,
+      "0.01": 0.0,
+      "0.05": 0.0,
+      "0.25": 0.0,
+      "0.5": 0.0,
+      "0.75": 3.0517578125e-05,
+      "0.95": 3.0517578125e-05,
+      "0.99": 3.0517578125e-05,
+      "1": 3.0517578125e-05
+    },
+    "absolute_quantiles": {
+      "0": 0.0,
+      "0.01": 0.0,
+      "0.05": 0.0,
+      "0.25": 0.0,
+      "0.5": 0.0,
+      "0.75": 3.0517578125e-05,
+      "0.95": 3.0517578125e-05,
+      "0.99": 3.0517578125e-05,
+      "1": 3.0517578125e-05
+    }
+  },
+  "rounding_bound": {
+    "status": "known_integer_PCM_conditional_bound",
+    "worst_bound": 4.57763671875e-05,
+    "numeric_tolerance": 1e-12,
+    "exceeding_samples": 0,
+    "total_samples": 32640,
+    "exceeding_fraction": 0.0,
+    "max_excess_over_bound": 0.0,
+    "interpretation": "compatible_with_final_nearest_rounding_only",
+    "qualification": "Conditional consistency only, not proof of noise purity or original synthesis identity; clipping or other processing invalidates premise."
+  },
+  "source_sha_post": {
+    "X": "cc7cf48d7033c6ee76c17774542a59543345de56527914ba20616476ad836ccf",
+    "S": "bf98a4d1e17fe76d3e19eaa9d8a65d3cd3668587c13a62e89ee1bac7dc0a0b10",
+    "N": "16a99eb99d91bd92d28b4caf9f93bf70dc218269f74a1e91669659a3e109f7b5"
+  },
+  "source_unchanged": true,
+  "seconds": 0.00929500802885741,
+  "code_sha256": "4f22143ce037c9df2d7c26a90627a1ee89d900220d7add1a0cd0f9652f3a3666",
+  "config_sha256": "c382991f3f10714c14c10d52e7ae658709c4a16a271cb1ea4d5529972176e264",
+  "numpy_version": "2.2.6",
+  "soundfile_version": "0.14.0"
+}

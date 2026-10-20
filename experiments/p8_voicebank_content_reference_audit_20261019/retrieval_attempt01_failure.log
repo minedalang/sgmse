@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/retrieve_and_map.py", line 33, in <module>
+    r=fetch(name,url)
+  File "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/retrieve_and_map.py", line 21, in fetch
+    budget();b=response.read(min(262144,CAP-transferred+1))
+  File "/data/coding/sgmse/env/lib/python3.10/http/client.py", line 481, in read
+    s = self.fp.read(amt)
+  File "/data/coding/sgmse/env/lib/python3.10/socket.py", line 717, in readinto
+    return self._sock.recv_into(b)
+  File "/data/coding/sgmse/env/lib/python3.10/ssl.py", line 1320, in recv_into
+    return self.read(nbytes, buffer)
+  File "/data/coding/sgmse/env/lib/python3.10/ssl.py", line 1176, in read
+    return self._sslobj.read(len, buffer)
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "/data/coding/sgmse/experiments/p8_voicebank_content_reference_audit_20261019/retrieve_and_map.py", line 77, in <module>
+    result.update(retrieval_finished_utc=now(),retrieval_records=records,cumulative_download_bytes=transferred,network_and_mapping_wall_seconds=time.monotonic()-T,local_inventory_metrics_sha256=sha((H/'preparation_metrics.json').read_bytes()),source_locks_before_after=read(H/'preparation_metrics.json')['source_locks_before_after'],driver_sha256=sha(Path(__file__).read_bytes()))
+NameError: name 'read' is not defined

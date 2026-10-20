@@ -1,0 +1,83 @@
+{
+  "request": {
+    "key": "p231_032_N2_snr_p0.wav__noisy",
+    "id": "p231_032",
+    "arm": "noisy",
+    "path": "/data/coding/sgmse/experiments/p8_vb_prospective_headroom_20261019/input_stage/inputs/p231_032_N2_snr_p0.wav",
+    "basename": "p231_032_N2_snr_p0.wav",
+    "noise": "N2",
+    "snr_db": 0,
+    "speaker": "p231",
+    "input": {
+      "wav_sha256": "cfc9d140a3abc386bed87bc946f911eb736015f09fd2e4267d44e8cd43e088f6",
+      "samples": 55680,
+      "array_sha256": "27c2091ec99ae15abdb078dba2eb1812ab76b9851a3c50b2236f9831b43a2de6",
+      "peak": 0.12188720703125,
+      "rms": 0.016387236584735176
+    }
+  },
+  "publisher_reference": {
+    "id": "p231_032",
+    "original_text": "If we cannot succeed in this endeavour, then so be it.\n",
+    "raw_text_hex": "49662077652063616e6e6f74207375636365656420696e207468697320656e646561766f75722c207468656e20736f2062652069742e0a",
+    "raw_text_sha256": "fe264f3d3966fb657a004889c63ca286bfc8bd003ee793fcf88c500fa73ac715",
+    "archive_entry": "trainset_28spk_txt/p231_032.txt"
+  },
+  "raw_result": {
+    "text": " But we cannot just dig in this and tell about some phobia.",
+    "segments": [
+      {
+        "id": 0,
+        "seek": 0,
+        "start": 0.0,
+        "end": 3.0,
+        "text": " But we cannot just dig in this and tell about some phobia.",
+        "tokens": [
+          50363,
+          887,
+          356,
+          2314,
+          655,
+          3100,
+          287,
+          428,
+          290,
+          1560,
+          546,
+          617,
+          872,
+          30665,
+          13,
+          50513
+        ],
+        "temperature": 0.0,
+        "avg_logprob": -0.9328782137702493,
+        "compression_ratio": 0.9206349206349206,
+        "no_speech_prob": 0.1550735980272293
+      }
+    ],
+    "language": "en"
+  },
+  "decode_calls": [
+    {
+      "index": 102,
+      "options": {
+        "task": "transcribe",
+        "language": "en",
+        "temperature": 0.0,
+        "sample_len": null,
+        "best_of": null,
+        "beam_size": 1,
+        "patience": null,
+        "length_penalty": null,
+        "prompt": [],
+        "prefix": null,
+        "suppress_tokens": "-1",
+        "suppress_blank": true,
+        "without_timestamps": false,
+        "max_initial_timestamp": 1.0,
+        "fp16": false
+      }
+    }
+  ]
+}
