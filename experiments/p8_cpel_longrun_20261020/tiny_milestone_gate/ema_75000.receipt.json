@@ -1,0 +1,1 @@
+{"status": "complete", "identity": {"arm": "N", "toy": true}, "completed_step": 75000, "path": "ema_75000.pt", "sha256": "9f693ac266f39298951e8c77a71354a0fb3b62499cf248eecde8850902b0f25c", "bytes": 1957, "dnn_sha256": "869701618e1790ec1bf8d53aac741fd200d803a6ddc99ae8147a1b3df5e0edca"}

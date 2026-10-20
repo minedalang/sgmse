@@ -1,0 +1,2 @@
+{"attempt_id": "603-1792464249405824594", "calls": {"frontend": 10, "optimizer": 5, "pcm_reads": 10, "public": 0, "reverse": 10, "score": 20, "source_loads": 1}, "physical_attempt": "603-1792464249405824594", "pid": 603, "retained_step": 3, "wall_time": 1792464264.3013473}
+{"attempt_id": "603-1792464249405824594", "calls": {"frontend": 12, "optimizer": 6, "pcm_reads": 12, "public": 0, "reverse": 12, "score": 24, "source_loads": 1}, "physical_attempt": "603-1792464249405824594", "pid": 603, "retained_step": 4, "wall_time": 1792464264.6627824}

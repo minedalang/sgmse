@@ -1,0 +1,20 @@
+{
+  "status": "passed_cpu_shared_update_only",
+  "four_matched_updates": true,
+  "score_per_arm": 16,
+  "reverse_per_arm": 8,
+  "optimizer_per_arm": 4,
+  "n_applied_pair_zero": true,
+  "d_budget_within_1percent": true,
+  "draws": [
+    "tiny-3",
+    "tiny-0",
+    "tiny-4",
+    "tiny-1"
+  ],
+  "real_model_audio_cuda_access": false,
+  "code_sha256": {
+    "train_longrun.py": "e1e16f2de27c74d195836f54ff59f55a8fc52cdbf8a5f8bdd1b3ae74ed1cf396",
+    "training_core.py": "e804a164ad8894f5926b83b91af9e6f5cf2b2ccf00407d24cbe7979a6329a6db"
+  }
+}

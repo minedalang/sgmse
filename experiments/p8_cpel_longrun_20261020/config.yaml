@@ -1,0 +1,354 @@
+{
+  "schema_version": 1,
+  "protocol_version": "cpel_matched_fulltrain_100k_v1",
+  "status": "software_preparation_only_not_execution_authorized",
+  "experiment_id": "p8_cpel_longrun_20261020",
+  "labels": {
+    "N": "ordinary denoising on counterfactual edited pairs",
+    "D": "same training plus original CPEL paired-response gradient"
+  },
+  "source": {
+    "checkpoint": {
+      "path": "/data/coding/sgmse/joint_train_logs/sb61i0gj_RRSD/epoch=118-step=80000.ckpt",
+      "sha256": "ab50510ca7fd80798b70f3f0b5365b17448a5f98c75d38755b82212ae2a119c9",
+      "initialization": "same source EMA, no old500 EMA resume",
+      "source_checkpoint_writes": false,
+      "save_final": "backend dnn EMA state only, no frontend copy or optimizer checkpoint"
+    },
+    "initialization": "strict source topology; materialize source EMA once before enabling dnn gradients",
+    "core_sha256": {
+      "/data/coding/sgmse/sgmse/__init__.py": "3ebbb4065141012142168ecc70776886d2a452d80c3c3c1b19fc94665136fd5c",
+      "/data/coding/sgmse/sgmse/anchor_v2.py": "95293234e77bd3155f5f9b592bea747a9179f12e403ae8f92f3b672428016c9a",
+      "/data/coding/sgmse/sgmse/backbones/__init__.py": "345d30172586d9bc866e167b44642fb3d8af793ec53fe85112972c75badedca0",
+      "/data/coding/sgmse/sgmse/backbones/dcunet.py": "7820bc595acce30b7cb98d2c9c808f1d2a041e1e3c74770c09345fb8d9b79e5d",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp.py": "9326d9b3d1dfa092144d927e235b5f68e58a5edaae755b344bfb085d76b03a47",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_48k.py": "3448d346920d7b8fe4c7e9d3125e1f6875b1476fe2d0a5d051ba9c80f1f18dab",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/layers.py": "1bc76e88c0f599016f1add9adb3646d922f1ecb10cbbd1876d05b82060ad568a",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/layerspp.py": "55714531661209ede4c30df64f8660abcf21addc09d6ccf947911dd7e8e8da50",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/normalization.py": "0195a2f50be2df649e823a6a2bda91090d54f6c7ab480bbda99376898395c447",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/__init__.py": "385ed65df84a4d59caf7d3f1d7611fa77ee46cc880e5bb080cf4096cbcc104e8",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/upfirdn2d.cpp": "d7e4b98b3056a102ecbfbf32826be11f8c0d68786f158bfa24f682d89fa6c5b8",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/upfirdn2d.py": "7277e8d18861b2ae55c0fdb5093b24637460316fff5f80dd53f66a53ad47a66f",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/upfirdn2d_kernel.cu": "c985d8214394b35ebe9e3190d52a6d30eae07cd3ff222f5b4020d8a999e15fdf",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/op/upfirdn2d_native.py": "141d9338787b06014813583dd3fd848637190908c8eb3c687d39799e1ac13e98",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/up_or_down_sampling.py": "60fcb69165ab6990676c3d232e7bed936c6b9330e1ff8d59f48293a84784649c",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_utils/utils.py": "3d335173d3a8dbc54535677915ff6a173e621c9f8df9b60ae3f4152822d39934",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_v2 3-17以前的film结构.py": "773bab2c30fbee6eae363c0cae07970f58e196c909885318ccb456c1920cd4fd",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_v2.py": "63e467295acd0a01d20fb4a4941addc12bfa4bd69bad43be15427c81b8767f5e",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_v2_3-9bak.py": "2f7b08b3c0fc6dd07a446c0760d84e42e3baedc4d1da42a29694ca05abecce30",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_v2_cross以y为kv.py": "4a7e6d5bb0bb2ecfb8ce475b442e6755a57166471a95a4bde40705147bd48ee0",
+      "/data/coding/sgmse/sgmse/backbones/ncsnpp_v2_原始未改动结构.py": "a065d549b78ae60235e5f8e580340e211e88ba9a213e22e6453a78adb4322462",
+      "/data/coding/sgmse/sgmse/backbones/shared.py": "fa84028375eeaf86ec3d846322c236e704a4a45cdf0f7d0d07d958c613a26917",
+      "/data/coding/sgmse/sgmse/campplus_standalone.py": "e68a40fa0ebe9c87c33e060f61566ca79c04afcbec50175f553f3907dce1b670",
+      "/data/coding/sgmse/sgmse/data_module.py": "693cc2b85c8e6c816d82ecc8dcfac4ef084b2f4bea810d1e6dca9e0f07842895",
+      "/data/coding/sgmse/sgmse/data_module_只加载noisy和clean.py": "230c523d595198eb0cb97a8dc4be22a9563103d4120bbe870b0773c1bbc0ab2d",
+      "/data/coding/sgmse/sgmse/frontend_pretrain_model.py": "b150d02bb617893ad93296bb5ada42adcc484c84de57c74adc2c448114ff7798",
+      "/data/coding/sgmse/sgmse/frontends/__init__.py": "032c13fce68677c44aa31912065d3ce2455dfbc143a171f2ee744c1db222874d",
+      "/data/coding/sgmse/sgmse/frontends/base.py": "90099c5cbad9f1caa126c411b23eace79aae2ee4e7745e5f4bc56700b9ae7f1b",
+      "/data/coding/sgmse/sgmse/frontends/external.py": "ff75f3241b97ab9f389733700933ab2038365c57d40c22cfbca41589e2f893dd",
+      "/data/coding/sgmse/sgmse/frontends/registry.py": "bc4dec5a1c83a66078540b9d014b0a6db33c1ff7636fb2c2a1b414e9a2a83079",
+      "/data/coding/sgmse/sgmse/frontends/semamba.py": "e311c1791a944c91dadb709a739c20a6c03902dea86e01e9719c40c3c24973cf",
+      "/data/coding/sgmse/sgmse/frontends/storm.py": "9caa9a7225b5376631374c3065ec887ec8bef042ecee15e3b52234287ac3d321",
+      "/data/coding/sgmse/sgmse/frontends/tfgridnet.py": "51a329ec590bbb3cb6f9e24553c0de0a71ed3826aaa65a0d92bb6a41e2f3c41e",
+      "/data/coding/sgmse/sgmse/joint_data_module.py": "4824a6f15e03c930a32439ea955642df406cdc0641be00a59eed2ac6e4b5462a",
+      "/data/coding/sgmse/sgmse/joint_model.py": "0e714397676a04be0e8f8e393fb139df810b2dd41761aaf3fae8673f8d30e9d8",
+      "/data/coding/sgmse/sgmse/joint_training_utils.py": "da24954803d2515f55137fb2b77f765fd1065dbae0cd26e08fe80f7f07e4db5f",
+      "/data/coding/sgmse/sgmse/model.py": "fcf6e6ab1efefc3615d3ed4044bf33ad1195c43a62573c1f8311f9abf1af7b5d",
+      "/data/coding/sgmse/sgmse/model_noCL.py": "2234fb7c02ea2e3ea471647dcb16a89cfe7e389e9721e2a7dfb71e3f7331e9ab",
+      "/data/coding/sgmse/sgmse/pathsim_vA.py": "5951bebf085122227476fde7d68cf9ca29f60a768eca80b2385da7a7e0a0ccd8",
+      "/data/coding/sgmse/sgmse/reliability_router.py": "fe1e4a8ef87e38593f89d7910c0a89ce43bc0864d9f7df92a78a02bf82c2cdf9",
+      "/data/coding/sgmse/sgmse/residual_initializer.py": "2df289b0467dcbe91794151dc7bf54b91ccfaebbe29e61fe503359cd57452e2a",
+      "/data/coding/sgmse/sgmse/sampler.py": "7cb769caab43d79a8f674cadaf7da456230ab186c840f234cc6d62f105e4a6f6",
+      "/data/coding/sgmse/sgmse/sampling/__init__.py": "d4b7cbbbe5b456e850c1b8d9281df3550d550b29e2cb254e4b1bf207c6095acd",
+      "/data/coding/sgmse/sgmse/sampling/correctors.py": "5253b099827b913e5200fe6326c9759a991d673754cbc2436906824aa6f7a289",
+      "/data/coding/sgmse/sgmse/sampling/predictors.py": "85819b1cfb4e853b92858803beae63a6c287a1efa84cd71c95a070ff8be342e1",
+      "/data/coding/sgmse/sgmse/sdes.py": "c40add0718dda70e2125ba5bab57703dbd193734d43ad6205e2765720fa38d21",
+      "/data/coding/sgmse/sgmse/speaker_encoders.py": "2ca5a9431605d3acb4a70be6a42ae09febc375bff45780c5c800147b51dbb60e",
+      "/data/coding/sgmse/sgmse/util/inference.py": "c43dbc31d3d01f8f0a714031ab15ef42006a159ed9857c4478cb595f4344a8eb",
+      "/data/coding/sgmse/sgmse/util/other.py": "092efb6e7da82d11c0afa555e5b124dd950e1216237e1c165a3aea8d4551ffd0",
+      "/data/coding/sgmse/sgmse/util/registry.py": "89dc143d28c450a8f8c1edb65ee38662f0958ed1fd6fc1875093787165fb2a9a",
+      "/data/coding/sgmse/sgmse/util/tensors.py": "bb6264d7aa45000997d804273e1b952cdf28f61000b46113f7ef284f939e4c49",
+      "/data/coding/sgmse/sgmse/xvector_encoder.py": "88f312d73c270f303585c6968f4e5a562652d90121b7fdc14b538a21ed5aee80"
+    },
+    "source_git_commit": "912e267f8df9110ddc6fb880f4d98742161629ec"
+  },
+  "registries": {
+    "train": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/full_train_registry.jsonl",
+      "sha256": "b374f7b0d4affac8fc1454ed7887259bf3f48c3360046f526f2671b861ae399f",
+      "records": 10797
+    },
+    "cv": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/eligible_cv_registry.jsonl",
+      "sha256": "abfa11d7227a65e18c2033d0800984326986ef4763b80282e684a193ec05d055",
+      "records": 1186
+    },
+    "validation": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/validation256_registry.jsonl",
+      "sha256": "cdc78461726021bcdaa2143796b3b83d307a0fca7e0dd0af71ba3e7c7aa2dd93",
+      "records": 256
+    },
+    "diagnostic64": {
+      "path": "/data/coding/sgmse/experiments/p8_cpel_mp_pilot_20261019/dev_registry.jsonl",
+      "sha256": "ea124e44613961a2481d6e8dcc900b688da0d1ba3e51c85a285c0553ace753cc",
+      "records": 64
+    }
+  },
+  "metadata_receipt": {
+    "path": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/metadata_registration_receipt.json",
+    "sha256": "8ae9a2876bad5c10fafaa4ae15094c7ba034cdf38bd9d13ab29f1c370f032014"
+  },
+  "device": "cuda:0",
+  "native_path": "/data/coding/sgmse/env/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/command:/usr/local/cuda/bin",
+  "seed": 20261019,
+  "data": {
+    "sample_rate": 16000,
+    "expected_num_frames": 256,
+    "expected_n_fft": 510,
+    "expected_hop_length": 128,
+    "crop_samples": 32640,
+    "train_crop": "seeded random crop from complete10797 registry; matched between new N/D, not old256 prefix",
+    "dev_crop": "center crop fixed, no content-based recropping",
+    "normalization": "single original Noisy crop peak for both counterfactual arms, clamp_min 1e-12",
+    "edit_domain": "waveform before STFT and compression",
+    "expected_spec_transform": "exponent",
+    "expected_spec_abs_exponent": 0.5,
+    "expected_spec_factor": 0.15,
+    "additivity_relative_rms_tolerance": 0.001,
+    "noise_control": "v2 engineering interpretation: compute strict, nearest and general codec columns separately; codec-compatible zero-lag triplets may describe recorded noise-instance edit response, not noise purity/FPR; no gain fitting, no threshold replacement"
+  },
+  "editing": {
+    "attenuation": 0.5,
+    "duration_samples": 1280,
+    "train_window": "Hann",
+    "heldout_window": "Tukey with 160-sample edges, same duration",
+    "band_edges_hz": [
+      1500,
+      2500,
+      6500,
+      7500
+    ],
+    "band_operator": "real FFT, cosine rise/fall, plateau, inverse real FFT",
+    "center_selection": "maximum 80ms high-band clean energy; candidate centers at least 0.25s from crop edges; fixed tie rule first",
+    "event_center_edge_margin_samples": 4000,
+    "response_soft_window_samples": 3072,
+    "response_soft_window": "time Hann centered on event, all model frequency bins; overlapping inside/outside weights, not orthogonal projections"
+  },
+  "optimization": {
+    "optimizer": "Adam",
+    "learning_rate": 1e-05,
+    "betas": [
+      0.9,
+      0.999
+    ],
+    "epsilon": 1e-08,
+    "weight_decay": 0.0,
+    "max_steps_per_arm": 100000,
+    "original_pairs_per_step": 1,
+    "gradient_clip_norm": 1.0,
+    "backend_ema_decay": 0.999,
+    "precision": "float32 and complex64; no AMP",
+    "native_time_range": [
+      0.03,
+      1.0
+    ],
+    "aux_time_range": [
+      0.3,
+      0.7
+    ],
+    "common_parent": "uniform random 0 or 1; detached frontend/state",
+    "score_sample_equivalents_per_step": 4,
+    "native_noise": "shared Gaussian draw across the two legal native states; not claimed as fixed-state isolation",
+    "aux_noise": "independent Gaussian draw for selected parent at common aux time",
+    "native_loss": "0.5 mean |sigma*q + epsilon|^2 over both valid native branches and all coordinates",
+    "aux_clean_weight": 0.0,
+    "aux_clean_loss": "absent: common_point is not called; no zero-multiplied auxiliary target",
+    "pair_lower_margin": 0.1,
+    "pair_upper_margin": 1.5,
+    "pair_component_weights": {
+      "lower": 1.0,
+      "upper": 1.0,
+      "orthogonal": 0.25,
+      "outside": 0.2
+    },
+    "pair_min_raw_target_mean_energy": 1e-12,
+    "pair_definition": "energy-scaled phase-aware response in whitened Score coordinates; see analysis_plan; not stage0 ratio objective copied unchanged",
+    "invalid_pair": "skip pair term; retain native DSM only; no common-point clean regression; report coverage",
+    "M_control": "not applicable; old M/P retained as separate historical aux=1 comparison",
+    "selection": "fixed100k per arm, all immutable milestones retained; no step/window/weight sweep",
+    "intrinsic_fixed_parameters": [
+      "GaussianFourierProjection.W"
+    ],
+    "backend_ema_parameter_scope": "requires_grad=True dnn parameters only; intrinsic fixed parameters and buffers saved unchanged",
+    "reverse_traversals_per_step": 2,
+    "update_rule": {
+      "name": "stop_gradient_raw_gradient_budget",
+      "target_norm_fraction": 0.01,
+      "max_coefficient": 100.0,
+      "min_coefficient": 0.0,
+      "zero_or_inactive": "eta=0; preserve coverage",
+      "nonfinite": "terminal failure, not silent zero",
+      "unused": "both None -> param.grad=None; pair nonNone with M None -> assert graph-subset violation; M nonNone/pair None -> M gradient",
+      "clipping": "global grad norm1 after composition, same optimizer in M/P",
+      "interpretation": "clip/Adam-preceding current-parameter-vector norm budget only; not Adam updates or fixed global scalar loss derivative",
+      "N": "same native/pair gradient computation; applied pair coefficient zero",
+      "D": "eta=min(100,.01*norm(grad_native)/norm(grad_pair)); pair is sole common-state training objective",
+      "meaning": "native gradient is budget denominator; not comparable to old native+aux budget denominator; not Adam bound"
+    },
+    "scalar_logging": "native DSM + detached applied eta*pair is a logged surrogate, not a fixed-lambda objective fully differentiated",
+    "pair_weight_N": 0.0,
+    "pair_weight_D": null,
+    "N_control": "same 4Score/two gradients and budget computation, apply native gradient only"
+  },
+  "disable": [
+    "rrsd",
+    "anchor_v2",
+    "score_calibration",
+    "residual_refine",
+    "pathsim",
+    "ctm",
+    "contrastive",
+    "speaker_losses",
+    "other_auxiliary_hooks"
+  ],
+  "schedule": {
+    "max_steps_per_arm": 100000,
+    "checkpoint_every_updates": 5000,
+    "immutable_EMA_steps": [
+      10000,
+      25000,
+      50000,
+      75000,
+      100000
+    ],
+    "evaluation_timing": "save fixed milestones during training; evaluate all after training without selecting best checkpoint",
+    "intermediate_score_early_exit": false
+  },
+  "checkpointing": {
+    "module": "resume_io.py",
+    "schema": "cpel-exact-resume-v1",
+    "per_arm_root": "runs/{arm}",
+    "log": "train_steps.jsonl",
+    "mutable_latest": "latest_resume.pt",
+    "temporary_reserve_bytes": 629145600,
+    "save_boundary": "optimizer then EMA then committed log; synchronize current CUDA stream before CPU-cloned packet",
+    "resume_requires_new_explicit_authorization": true,
+    "automatic_retry": false,
+    "immutable_overwrite": false
+  },
+  "limits": {
+    "training_seconds_per_arm": 86400,
+    "total_training_seconds": 172800,
+    "max_directory_bytes": 21474836480,
+    "minimum_free_disk_bytes": 10737418240,
+    "planned_final_audio_max_bytes": 8589934592,
+    "checkpoint_and_metadata_reserve_bytes": 4294967296,
+    "network": false,
+    "install": false,
+    "frozen_test": false,
+    "source_writes": false,
+    "final_evaluation_seconds": 86400,
+    "combined_study_seconds": 259200
+  },
+  "technical_smoke": {
+    "execution_requires_separate_authorization": true,
+    "score_selection": false,
+    "maximum_seconds": 600,
+    "retained_updates_per_arm": 4,
+    "extra_replayed_updates_per_arm": 2,
+    "max_complete_sentence_public_calls": 4,
+    "source_loads_limit": 2,
+    "no_full_training_after_smoke": true
+  },
+  "evaluation": {
+    "primary_checkpoint": 100000,
+    "readout": "final EMA only; no best raw/EMA or milestone choice",
+    "sampler": {
+      "N": 30,
+      "predictor": "reverse_diffusion",
+      "corrector": "none",
+      "corrector_steps": 1,
+      "snr": 0.5,
+      "rrsd": false
+    },
+    "diagnostic": {
+      "registry": "diagnostic64",
+      "crop_samples": 32640,
+      "controlled_packets": [
+        "speech_Hann",
+        "speech_heldout_Tukey",
+        "noise_instance_heldout_Tukey",
+        "speech_precision_matched_Tukey"
+      ],
+      "time": 0.5,
+      "parents": [
+        0,
+        1
+      ],
+      "historical_10_percent_gate": "report as old diagnostic criterion; never a long-training early-stop rule"
+    },
+    "milestone_public": {
+      "registry": "validation",
+      "crop_samples": 32640,
+      "metrics": [
+        "normalized_wave_mse",
+        "si_sdr_db",
+        "stoi",
+        "pesq"
+      ],
+      "meaning": "fixed center short crops for trend only, not full utterance deployment"
+    },
+    "final_public": {
+      "registry": "cv",
+      "duration": "complete source utterance; historical metadata 30s, verify actual length at execution",
+      "arms": [
+        "source",
+        "N",
+        "D"
+      ],
+      "output_format": "16k mono FLOAT WAV physical scale; no added clipping/gain/segmentation fallback",
+      "metrics": [
+        "si_sdr_db",
+        "stoi",
+        "pesq",
+        "normalized_wave_mse"
+      ],
+      "quality_metric_stage": "fixed existing DNSMOS version on full saved outputs; no optimization against score",
+      "identity_stage": "separate fixed speaker-similarity protocol, no unsupported EER or content claim",
+      "content_limit": "current DNS synthetic references have no trustworthy sentence transcripts; do not invent WER/CER or phoneme labels"
+    },
+    "uncertainty": "predeclared paired speaker-cluster bootstrap, seed20261020,10000 resamples, conditional on CV/single training seed; no uncorrected global superiority claim",
+    "original_cv_metadata": {
+      "path": "/data/coding/sgmse/experiments/p8_training_coverage_audit_20261020/cv_synthetic_records.jsonl",
+      "sha256": "3389ab8d99dad93f134e0a2b8aa5d80cf910e2cacb61d4656484095ecab2cf6c"
+    },
+    "seed_rule": {
+      "diagnostic64": "seed+100000+position_in_old64_registry",
+      "public_short_and_complete": "seed+100000+original_index_in_source_1200_CV_metadata",
+      "no_index_reassignment": true
+    },
+    "public_input_invariants": [
+      "same complete Noisy peak for source/N/D",
+      "same cached physical frontend output and original Noisy",
+      "no independent output normalization",
+      "complete sentence no chunk or crop fallback",
+      "all finite/length/NFE/missing flags retained"
+    ]
+  },
+  "comparison": "same100k N versus D isolates extra pair; larger-data/longer-budget versus old500 not pure update-count causality",
+  "unverified": [
+    "real source CUDA exact resume",
+    "full30s native public feasibility/throughput/memory",
+    "final quality/identity protocol identity gates",
+    "all scientific outcomes"
+  ],
+  "runtime_directories": {
+    "output_root": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020",
+    "only_data": true,
+    "TMPDIR": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/runtime_cache/tmp",
+    "XDG_CACHE_HOME": "/data/.rootcache",
+    "CUDA_CACHE_PATH": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/runtime_cache/cuda",
+    "MPLCONFIGDIR": "/data/coding/sgmse/experiments/p8_cpel_longrun_20261020/runtime_cache/matplotlib",
+    "PYTHONDONTWRITEBYTECODE": "1"
+  }
+}

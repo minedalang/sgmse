@@ -1,0 +1,8 @@
+{
+  "status": "passed",
+  "actual_torch_state_dict_ordereddict": true,
+  "normalized_plain_cpu_dict": true,
+  "detached_independent_storage": true,
+  "packet_validation_and_weights_only_roundtrip": true,
+  "cuda_or_real_weights": false
+}

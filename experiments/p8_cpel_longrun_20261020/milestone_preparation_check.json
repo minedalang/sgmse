@@ -1,0 +1,8 @@
+{
+  "status": "passed_cpu_synthetic_only",
+  "all5_immutable_receipts_sha_content": true,
+  "existing_valid_not_overwritten": true,
+  "missing_boundary_written_once": true,
+  "partial_existing_refused_and_retained": true,
+  "real_weights_or_cuda": false
+}
